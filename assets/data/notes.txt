@@ -1,0 +1,4 @@
+# Verb JSON Structure
+- Regular verbs are marked as "type": "regular"
+- Irregular verbs are marked as "type": "irregular"
+- Conjugations are stored under "conjugations"
