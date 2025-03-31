@@ -1,6 +1,4 @@
-
 enum Auxiliary { avere('avere'), essere('essere');
-
 
   final String jsonKey;
   const Auxiliary(this.jsonKey);

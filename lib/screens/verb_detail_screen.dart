@@ -2,34 +2,49 @@ import 'package:coniugatto/models/moods/indicative.dart';
 import 'package:coniugatto/screens/conjugation_table.dart';
 import 'package:flutter/material.dart';
 
+import '../models/auxiliary.dart';
 import '../models/verb.dart';
 
-class VerbDetailScreen extends StatelessWidget {
+class VerbDetailScreen extends StatefulWidget {
   final Verb verb;
 
   const VerbDetailScreen({super.key, required this.verb});
 
   @override
+  State<VerbDetailScreen> createState() => _VerbDetailScreenState();
+}
+
+class _VerbDetailScreenState extends State<VerbDetailScreen> {
+  late Auxiliary selectedAuxiliary;
+
+  @override
+  void initState() {
+    selectedAuxiliary = widget.verb.auxiliaries.first;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(verb.infinitive)),
+      appBar: AppBar(title: Text(widget.verb.infinitive)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text(verb.regularity.name),
+            Text(widget.verb.regularity.name),
 
-            if(verb.auxiliaries.length > 1)
-            ToggleButtons(isSelected: [true, false], children: [Text(verb.auxiliaries.first.name), Text(verb.auxiliaries.last.name)]),
+            if(widget.verb.auxiliaries.length > 1)
+            ToggleButtons(isSelected: [true, false], children: [Text(widget.verb.auxiliaries.first.name), Text(widget.verb.auxiliaries.last.name)]),
 
             // INDICATIVO
             ExpansionTile(
               title: Text('Indicativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', verb.moods.indicative.present),
-                _buildTenseTile('Imperfetto', verb.moods.indicative.imperfect),
-                _buildTenseTile('Passato Remoto', verb.moods.indicative.historicalPresentPerfect),
-                _buildTenseTile('Futuro Semplice', verb.moods.indicative.simpleFuture),
+                _buildTenseTile('Presente', widget.verb.moods.indicative.present),
+                _buildTenseTile('Imperfetto', widget.verb.moods.indicative.imperfect),
+                _buildTenseTile('Passato Prossimo', widget.verb.moods.indicative.presentPerfect(selectedAuxiliary, widget.verb.pastParticiple)),
+                _buildTenseTile('Passato Remoto', widget.verb.moods.indicative.historicalPresentPerfect),
+                _buildTenseTile('Futuro Semplice', widget.verb.moods.indicative.simpleFuture),
               ],
             ),
 
@@ -37,8 +52,8 @@ class VerbDetailScreen extends StatelessWidget {
             ExpansionTile(
               title: Text('Congiuntivo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', verb.moods.subjunctive.present),
-                _buildTenseTile('Imperfetto', verb.moods.subjunctive.imperfect),
+                _buildTenseTile('Presente', widget.verb.moods.subjunctive.present),
+                _buildTenseTile('Imperfetto', widget.verb.moods.subjunctive.imperfect),
               ],
             ),
 
@@ -46,7 +61,7 @@ class VerbDetailScreen extends StatelessWidget {
             ExpansionTile(
               title: Text('Condizionale', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', verb.moods.conditional.present),
+                _buildTenseTile('Presente', widget.verb.moods.conditional.present),
               ],
             ),
 
@@ -54,7 +69,7 @@ class VerbDetailScreen extends StatelessWidget {
             ExpansionTile(
               title: Text('Imperativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Positivo Afirmativo', verb.moods.imperative.positive),
+                _buildTenseTile('Positivo Afirmativo', widget.verb.moods.imperative.positive),
               ],
             ),
           ],

@@ -2,6 +2,7 @@ import 'package:coniugatto/models/auxiliary.dart';
 import 'package:coniugatto/models/regularity.dart';
 
 import '../models/moods/moods.dart';
+import '../models/pronoun.dart';
 import '../models/verb.dart';
 
 class CompoundVerbs {
@@ -267,11 +268,11 @@ class CompoundVerbs {
     ),
   );
 
-  /*// Helper methods
-  Verb getAuxiliary(Auxiliary auxiliary) => switch (auxiliary) {
-    Auxiliary.avere => essere,
-    Auxiliary.avere => avere,
-  };*/
+  // Helper methods
+  String? getAuxiliary(Pronoun pronoun, Auxiliary auxiliary/*, Tense tense*/) => switch (auxiliary) {
+    Auxiliary.avere => avere.moods.indicative.present[pronoun],
+    Auxiliary.essere => essere.moods.indicative.present[pronoun],
+  };
 
   bool isHelperVerb(String infinitive) =>
       [essere.infinitive, avere.infinitive, stare.infinitive].contains(infinitive);

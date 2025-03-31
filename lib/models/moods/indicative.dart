@@ -1,3 +1,6 @@
+import 'package:coniugatto/models/auxiliary.dart';
+
+import '../../data/compound_verbs.dart';
 import '../pronoun.dart';
 typedef Conjugations = Map<Pronoun, String?>;
 
@@ -10,7 +13,19 @@ class Indicative {
   final Conjugations historicalPresentPerfect; // Passato Remoto
   // final Conjugation trapassato remoto; // Historical Past Perfect
   final Conjugations simpleFuture; // Futuro Semplice
+  // final Conjugation futuro prossimo; // Futuro GOING TO
   // final Conjugation futuro anteriore; // Futuro Perfect
+
+  Conjugations presentPerfect(Auxiliary auxiliary, String pastParticiple) {
+    return {
+      Pronoun.firstSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.firstSingular, auxiliary)!} $pastParticiple",
+      Pronoun.secondSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.secondSingular, auxiliary)!} $pastParticiple",
+      Pronoun.thirdSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.thirdSingular, auxiliary)!} $pastParticiple",
+      Pronoun.firstPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.firstPlural, auxiliary)!} $pastParticiple",
+      Pronoun.secondPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.secondPlural, auxiliary)!} $pastParticiple",
+      Pronoun.thirdPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.thirdPlural, auxiliary)!} $pastParticiple",
+    };
+}
 
   // Compound tenses will be generated dynamically
   Indicative({
@@ -31,6 +46,12 @@ class Indicative {
 }
 
 Conjugations parseConjugations(Map<String, dynamic> json) {
-  return Pronoun.values.asMap().
-  map((index, pronoun) => MapEntry(pronoun, json[pronoun.jsonKey()]));
+  return {
+    Pronoun.firstSingular: json[Pronoun.firstSingular.jsonKey()],
+    Pronoun.secondSingular: json[Pronoun.secondSingular.jsonKey()],
+    Pronoun.thirdSingular: json[Pronoun.thirdSingular.jsonKey()],
+    Pronoun.firstPlural: json[Pronoun.firstPlural.jsonKey()],
+    Pronoun.secondPlural: json[Pronoun.secondPlural.jsonKey()],
+    Pronoun.thirdPlural: json[Pronoun.thirdPlural.jsonKey()],
+  };
 }
