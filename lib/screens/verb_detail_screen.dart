@@ -17,6 +17,11 @@ class VerbDetailScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
+            Text(verb.regularity.name),
+
+            if(verb.auxiliaries.length > 1)
+            ToggleButtons(isSelected: [true, false], children: [Text(verb.auxiliaries.first.name), Text(verb.auxiliaries.last.name)]),
+
             // INDICATIVO
             ExpansionTile(
               title: Text('Indicativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),

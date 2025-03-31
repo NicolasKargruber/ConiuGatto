@@ -19,7 +19,7 @@ class ConjugationTable extends StatelessWidget {
       ],
       rows: conjugations.entries.map((entry) => DataRow(
         cells: <DataCell>[
-          DataCell(Text(entry.key.name)),
+          DataCell(Text(entry.key.italian)),
           DataCell(Text(entry.value ?? "-")),
         ],
       )).toList()

@@ -30,13 +30,7 @@ class Indicative {
   }
 }
 
-Map<Pronoun, String> parseConjugations(Map<String, dynamic> json) {
-  return {
-    Pronoun.io: json['io'],
-    Pronoun.tu: json['tu'],
-    Pronoun.luiLei: json['lui/lei'],
-    Pronoun.noi: json['noi'],
-    Pronoun.voi: json['voi'],
-    Pronoun.loro: json['loro'],
-  };
+Conjugations parseConjugations(Map<String, dynamic> json) {
+  return Pronoun.values.asMap().
+  map((index, pronoun) => MapEntry(pronoun, json[pronoun.jsonKey()]));
 }

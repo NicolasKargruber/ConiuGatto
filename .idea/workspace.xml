@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a59ac523-22d3-43e5-b306-b7ed21f81022" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/screens/conjugation_table.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/moods/conditional.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/moods/conditional.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/moods/imperative.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/moods/imperative.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/moods/indicative.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/moods/indicative.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/moods/subjunctive.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/moods/subjunctive.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/verb_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/verb_detail_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/verb_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/verb_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/conjugation_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/conjugation_table.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +108,11 @@
           <url>file://$PROJECT_DIR$/lib/models/moods/conditional.dart</url>
           <line>13</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/verb_detail_screen.dart</url>
+          <line>21</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
