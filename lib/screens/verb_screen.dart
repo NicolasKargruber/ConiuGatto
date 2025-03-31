@@ -1,3 +1,4 @@
+import 'package:coniugatto/utilities/verb_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../models/verb.dart';
@@ -18,7 +19,7 @@ class _VerbScreenState extends State<VerbScreen> {
   @override
   void initState() {
     super.initState();
-    futureVerbs = loadVerbs();
+    futureVerbs = VerbManager.loadVerbs();
     futureVerbs.then((loadedVerbs) {
       setState(() {
         verbs = loadedVerbs;

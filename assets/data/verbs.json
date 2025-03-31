@@ -2,10 +2,8 @@
   {
     "infinitive": "essere",
     "translation": "to be",
-    "type": "irregular",
-    "auxiliary": [
-      "essere"
-    ],
+    "regularity": "irregular",
+    "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -86,8 +84,8 @@
   {
     "infinitive": "avere",
     "translation": "to have",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -170,8 +168,8 @@
   {
     "infinitive": "volere",
     "translation": "to want",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -254,8 +252,8 @@
   {
     "infinitive": "fare",
     "translation": "to do",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -338,8 +336,8 @@
   {
     "infinitive": "dire",
     "translation": "to say",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -422,8 +420,8 @@
   {
     "infinitive": "capire",
     "translation": "to understand",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -506,8 +504,8 @@
   {
     "infinitive": "sapere",
     "translation": "to know",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -590,8 +588,8 @@
   {
     "infinitive": "spiegare",
     "translation": "to explain",
-    "type": "regular",
-    "auxiliary": [
+    "regularity": "regular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -674,8 +672,8 @@
   {
     "infinitive": "uscire",
     "translation": "to exit",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere"
     ],
     "conjugations": {
@@ -758,8 +756,8 @@
   {
     "infinitive": "andare",
     "translation": "to go",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere"
     ],
     "conjugations": {
@@ -842,8 +840,8 @@
   {
     "infinitive": "venire",
     "translation": "to come",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere"
     ],
     "conjugations": {
@@ -926,8 +924,8 @@
   {
     "infinitive": "potere",
     "translation": "can/to be able to",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1010,8 +1008,8 @@
   {
     "infinitive": "dovere",
     "translation": "must/to have to",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1094,8 +1092,8 @@
   {
     "infinitive": "preferire",
     "translation": "to prefer",
-    "type": "regular",
-    "auxiliary": [
+    "regularity": "regular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1178,8 +1176,8 @@
   {
     "infinitive": "bere",
     "translation": "to drink",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1262,8 +1260,8 @@
   {
     "infinitive": "salire",
     "translation": "to go up",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere",
       "avere"
     ],
@@ -1347,8 +1345,8 @@
   {
     "infinitive": "rimanere",
     "translation": "to stay",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere"
     ],
     "conjugations": {
@@ -1431,8 +1429,8 @@
   {
     "infinitive": "morire",
     "translation": "to die",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "essere"
     ],
     "conjugations": {
@@ -1515,8 +1513,8 @@
   {
     "infinitive": "finire",
     "translation": "to finish",
-    "type": "regular",
-    "auxiliary": [
+    "regularity": "regular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1599,8 +1597,8 @@
   {
     "infinitive": "vedere",
     "translation": "to see",
-    "type": "irregular",
-    "auxiliary": [
+    "regularity": "irregular",
+    "auxiliaries": [
       "avere"
     ],
     "conjugations": {
@@ -1679,5 +1677,88 @@
     },
     "participio_passato": "visto",
     "gerundio_presente": "vedendo"
+  },
+
+  {
+    "infinitive": "stare",
+    "translation": "to stay, to be (temporary)",
+    "regularity": "irregular",
+    "auxiliaries": ["essere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": "sto",
+          "tu": "stai",
+          "lui/lei": "sta",
+          "noi": "stiamo",
+          "voi": "state",
+          "loro": "stanno"
+        },
+        "imperfetto": {
+          "io": "stavo",
+          "tu": "stavi",
+          "lui/lei": "stava",
+          "noi": "stavamo",
+          "voi": "stavate",
+          "loro": "stavano"
+        },
+        "passato_remoto": {
+          "io": "stetti",
+          "tu": "stesti",
+          "lui/lei": "stette",
+          "noi": "stemmo",
+          "voi": "steste",
+          "loro": "stettero"
+        },
+        "futuro_semplice": {
+          "io": "starò",
+          "tu": "starai",
+          "lui/lei": "starà",
+          "noi": "staremo",
+          "voi": "starete",
+          "loro": "staranno"
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": "stia",
+          "tu": "stia",
+          "lui/lei": "stia",
+          "noi": "stiamo",
+          "voi": "stiate",
+          "loro": "stiano"
+        },
+        "imperfetto": {
+          "io": "stessi",
+          "tu": "stessi",
+          "lui/lei": "stesse",
+          "noi": "stessimo",
+          "voi": "steste",
+          "loro": "stessero"
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": "starei",
+          "tu": "staresti",
+          "lui/lei": "starebbe",
+          "noi": "staremmo",
+          "voi": "stareste",
+          "loro": "starebbero"
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": "-",
+          "tu": "sta' (or stai)",
+          "lui/lei": "-",
+          "noi": "stiamo",
+          "voi": "state",
+          "loro": "stiano"
+        }
+      }
+    },
+    "participio_passato": "stato",
+    "gerundio_presente": "stando"
   }
 ]
