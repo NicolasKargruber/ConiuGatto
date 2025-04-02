@@ -1,6 +1,11 @@
-import 'indicative.dart';
+import '../verb.dart';
+import 'mood.dart';
 
-class Imperative {
+class Imperative extends Mood {
+  // Parent Reference
+  late final Verb verb;
+
+  // Conjugations
   final Conjugations positive; // Positivo Afirmativo
   // final Conjugation negative; // Negativo Afirmativo
 
@@ -10,7 +15,7 @@ class Imperative {
 
   factory Imperative.fromJson(Map<String, dynamic> json) {
     return Imperative(
-        positive: parseConjugations(json['positivo'])
+        positive: MoodExtensions.parseConjugations(json['positivo'])
     );
   }
 }

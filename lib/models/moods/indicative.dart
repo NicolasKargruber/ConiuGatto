@@ -1,57 +1,50 @@
 import 'package:coniugatto/models/auxiliary.dart';
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
-import '../../data/compound_verbs.dart';
 import '../pronoun.dart';
-typedef Conjugations = Map<Pronoun, String?>;
+import '../verb.dart';
+import 'mood.dart';
 
-class Indicative {
+class Indicative extends Mood {
+  // Parent Reference
+  late final Verb verb;
+
+  // Simple Tenses - Stored in JSON
   final Conjugations present; // Presente
-  // final Conjugation presente progresivo; // Present Continious
+  // final Conjugation presente progresivo; // Present Continuous
   final Conjugations imperfect; // Imperfecto
-  // final Conjugation passato prossimo; // Present Perfect
-  // final Conjugation trapassato prossimo; // Past Perfect
   final Conjugations historicalPresentPerfect; // Passato Remoto
   // final Conjugation trapassato remoto; // Historical Past Perfect
-  final Conjugations simpleFuture; // Futuro Semplice
+  final Conjugations future; // Futuro Semplice
   // final Conjugation futuro prossimo; // Futuro GOING TO
   // final Conjugation futuro anteriore; // Futuro Perfect
 
-  Conjugations presentPerfect(Auxiliary auxiliary, String pastParticiple) {
-    return {
-      Pronoun.firstSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.firstSingular, auxiliary)!} $pastParticiple",
-      Pronoun.secondSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.secondSingular, auxiliary)!} $pastParticiple",
-      Pronoun.thirdSingular: "${CompoundVerbs.instance.getAuxiliary(Pronoun.thirdSingular, auxiliary)!} $pastParticiple",
-      Pronoun.firstPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.firstPlural, auxiliary)!} $pastParticiple",
-      Pronoun.secondPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.secondPlural, auxiliary)!} $pastParticiple",
-      Pronoun.thirdPlural: "${CompoundVerbs.instance.getAuxiliary(Pronoun.thirdPlural, auxiliary)!} $pastParticiple",
-    };
-}
+
+  // Compound Tenses - Generated dynamically
+  // Passato Prossimo
+  Conjugations presentPerfect(Auxiliary auxiliary) {
+    return verb.presentPerfect(auxiliary);
+  }
+
+  // Trapassato prossimo
+  Conjugations pastPerfect(Auxiliary auxiliary) {
+    return verb.pastPerfect(auxiliary);
+  }
 
   // Compound tenses will be generated dynamically
   Indicative({
     required this.present,
     required this.imperfect,
     required this.historicalPresentPerfect,
-    required this.simpleFuture,
+    required this.future,
   });
 
   factory Indicative.fromJson(Map<String, dynamic> json) {
     return Indicative(
-      present: parseConjugations(json['presente']),
-      imperfect: parseConjugations(json['imperfetto']),
-      historicalPresentPerfect: parseConjugations(json['passato_remoto']),
-      simpleFuture: parseConjugations(json['futuro_semplice']),
+      present: MoodExtensions.parseConjugations(json['presente']),
+      imperfect: MoodExtensions.parseConjugations(json['imperfetto']),
+      historicalPresentPerfect: MoodExtensions.parseConjugations(json['passato_remoto']),
+      future: MoodExtensions.parseConjugations(json['futuro_semplice']),
     );
   }
-}
-
-Conjugations parseConjugations(Map<String, dynamic> json) {
-  return {
-    Pronoun.firstSingular: json[Pronoun.firstSingular.jsonKey()],
-    Pronoun.secondSingular: json[Pronoun.secondSingular.jsonKey()],
-    Pronoun.thirdSingular: json[Pronoun.thirdSingular.jsonKey()],
-    Pronoun.firstPlural: json[Pronoun.firstPlural.jsonKey()],
-    Pronoun.secondPlural: json[Pronoun.secondPlural.jsonKey()],
-    Pronoun.thirdPlural: json[Pronoun.thirdPlural.jsonKey()],
-  };
 }

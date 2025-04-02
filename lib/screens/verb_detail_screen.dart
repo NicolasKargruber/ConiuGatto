@@ -40,11 +40,12 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             ExpansionTile(
               title: Text('Indicativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', widget.verb.moods.indicative.present),
-                _buildTenseTile('Imperfetto', widget.verb.moods.indicative.imperfect),
-                _buildTenseTile('Passato Prossimo', widget.verb.moods.indicative.presentPerfect(selectedAuxiliary, widget.verb.pastParticiple)),
-                _buildTenseTile('Passato Remoto', widget.verb.moods.indicative.historicalPresentPerfect),
-                _buildTenseTile('Futuro Semplice', widget.verb.moods.indicative.simpleFuture),
+                _buildTenseTile('Presente', widget.verb.indicative.present),
+                _buildTenseTile('Imperfetto', widget.verb.indicative.imperfect),
+                _buildTenseTile('Passato Prossimo', widget.verb.indicative.presentPerfect(selectedAuxiliary)),
+                _buildTenseTile('Trapassato Prossimo', widget.verb.indicative.pastPerfect(selectedAuxiliary)),
+                _buildTenseTile('Passato Remoto', widget.verb.indicative.historicalPresentPerfect),
+                _buildTenseTile('Futuro Semplice', widget.verb.indicative.future),
               ],
             ),
 
@@ -52,8 +53,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             ExpansionTile(
               title: Text('Congiuntivo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', widget.verb.moods.subjunctive.present),
-                _buildTenseTile('Imperfetto', widget.verb.moods.subjunctive.imperfect),
+                _buildTenseTile('Presente', widget.verb.subjunctive.present),
+                _buildTenseTile('Imperfetto', widget.verb.subjunctive.imperfect),
               ],
             ),
 
@@ -61,7 +62,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             ExpansionTile(
               title: Text('Condizionale', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Presente', widget.verb.moods.conditional.present),
+                _buildTenseTile('Presente', widget.verb.conditional.present),
               ],
             ),
 
@@ -69,7 +70,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             ExpansionTile(
               title: Text('Imperativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
-                _buildTenseTile('Positivo Afirmativo', widget.verb.moods.imperative.positive),
+                _buildTenseTile('Positivo Afirmativo', widget.verb.imperative.positive),
               ],
             ),
           ],

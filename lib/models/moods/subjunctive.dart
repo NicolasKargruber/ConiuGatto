@@ -1,6 +1,12 @@
+import '../verb.dart';
 import 'indicative.dart';
+import 'mood.dart';
 
-class Subjunctive {
+class Subjunctive extends Mood {
+  // Parent Reference
+  late final Verb verb;
+
+  // Conjugations
   final Conjugations present; // Presente
   final Conjugations imperfect; // Imperfetto
   // final Conjugation passato; // Present Perfect
@@ -13,8 +19,8 @@ class Subjunctive {
 
   factory Subjunctive.fromJson(Map<String, dynamic> json) {
     return Subjunctive(
-      present: parseConjugations(json['presente']),
-      imperfect: parseConjugations(json['imperfetto']),
+      present: MoodExtensions.parseConjugations(json['presente']),
+      imperfect: MoodExtensions.parseConjugations(json['imperfetto']),
     );
   }
 }

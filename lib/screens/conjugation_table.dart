@@ -1,5 +1,6 @@
-import 'package:coniugatto/models/moods/indicative.dart';
 import 'package:flutter/material.dart';
+
+import '../models/verb.dart';
 
 class ConjugationTable extends StatelessWidget {
   const ConjugationTable({super.key, required this.conjugations});
