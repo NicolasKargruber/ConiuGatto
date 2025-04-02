@@ -23,6 +23,9 @@ class Verb {
   final String pastParticiple;
   final String presentGerund;
 
+  String pastParticipleWithGender(Pronoun pronoun) => pronoun.isPlural ?
+      pastParticiple.replaceAll('o', 'i/e') : pastParticiple.replaceAll('o', 'o/a');
+
   Verb({
     required this.infinitive,
     required this.translation,

@@ -64,6 +64,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             // INDICATIVO
             ExpansionTile(
+              initiallyExpanded: true,
               title: Text('Indicativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
                 SingleChildScrollView(
@@ -74,8 +75,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     (label: 'Imperfetto', conjugations: widget.verb.indicative.imperfect),
                     (label: 'Passato Prossimo', conjugations: widget.verb.indicative.presentPerfect(selectedAuxiliary)),
                     (label: 'Trapassato Prossimo', conjugations: widget.verb.indicative.pastPerfect(selectedAuxiliary)),
-                    (label: 'Trapassato Remoto', conjugations: widget.verb.indicative.historicalPastPerfect(selectedAuxiliary)),
                     (label: 'Passato Remoto', conjugations: widget.verb.indicative.historicalPresentPerfect),
+                    (label: 'Trapassato Remoto', conjugations: widget.verb.indicative.historicalPastPerfect(selectedAuxiliary)),
                     (label: 'Futuro', conjugations: widget.verb.indicative.future),
                     (label: 'Futuro Anteriore', conjugations: widget.verb.indicative.futurePerfect(selectedAuxiliary)),
                   ]),
@@ -91,8 +92,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                   scrollDirection: Axis.horizontal,
                   child: ConjugationTable(conjugatedTenses: [
                     (label: 'Presente', conjugations: widget.verb.subjunctive.present),
-                    (label: 'Passato', conjugations: widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary)),
                     (label: 'Imperfetto', conjugations: widget.verb.subjunctive.imperfect),
+                    (label: 'Passato', conjugations: widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary)),
                     (label: 'Trapassato', conjugations: widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary)),
                   ]),
                 ),

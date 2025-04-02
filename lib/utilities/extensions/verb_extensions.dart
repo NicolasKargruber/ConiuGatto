@@ -9,40 +9,50 @@ extension GenerateIndicative on Verb {
 
   /// => Presente Progressivo
   Conjugations get presentContinuous {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateStare(pronoun)!} $presentGerund");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateStare(pronoun)!} $presentGerund",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Passato Prossimo
   Conjugations presentPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.present)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.present)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Prossimo
   Conjugations pastPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfect)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfect)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Remoto
   Conjugations historicalPastPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.historicalPresentPerfect)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.historicalPresentPerfect)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Futuro Anteriore
   Conjugations futurePerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.future)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.future)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
@@ -53,16 +63,20 @@ extension GenerateSubjunctive on Verb {
 
   /// => Congiuntivo Passato
   Conjugations presentPerfectSubjunctive(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentSubjunctive)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentSubjunctive)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Congiuntivo Trapassato
   Conjugations pastPerfectSubjunctive(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfectSubjunctive)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfectSubjunctive)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
@@ -73,8 +87,10 @@ extension GenerateConditional on Verb {
 
   /// => Condizionale Passato
   Conjugations presentPerfectConditional(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentConditional)!} $pastParticiple");
+    conjugate(Pronoun pronoun) => MapEntry(
+      pronoun,
+      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentConditional)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
+    );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
@@ -84,8 +100,8 @@ extension GenerateImperative on Verb {
   /// => Imperativo Negativo
   Conjugations get negativeImperative {
     // Clone (..) and update
-    return imperative.positive..updateAll((pronoun, conjugation) {
-    if(conjugation == null) return null;
+    return {...imperative.positive}..updateAll((pronoun, conjugation) {
+      if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
           return "non $infinitive";
