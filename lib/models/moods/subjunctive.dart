@@ -1,16 +1,24 @@
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
+
 import '../verb.dart';
-import 'indicative.dart';
 import 'mood.dart';
 
 class Subjunctive extends Mood {
   // Parent Reference
   late final Verb verb;
 
-  // Conjugations
+  // Simple Tenses - Stored in JSON
+  /// Presente
   final Conjugations present; // Presente
+  /// Imperfetto
   final Conjugations imperfect; // Imperfetto
-  // final Conjugation passato; // Present Perfect
-  // final Conjugation trapassato; // Past Perfect
+
+  // Compound Tenses - Generated dynamically
+  /// Congiuntivo Passato
+  Conjugations presentPerfectSubjunctive(auxiliary) => verb.presentPerfectSubjunctive(auxiliary);
+
+  /// Congiuntivo Trapassato
+  Conjugations pastPerfectSubjunctive(auxiliary) => verb.pastPerfectSubjunctive(auxiliary);
 
   Subjunctive({
     required this.present,

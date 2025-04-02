@@ -955,5 +955,6 @@ class CompoundVerbs {
     };
   }
 
-  String? conjugateStare(Pronoun pronoun) => stare.indicative.present[pronoun];
+  String? conjugateStare(Pronoun pronoun, {BaseTense tense = BaseTense.present}) =>
+      stare.indicative.present[pronoun];
 }

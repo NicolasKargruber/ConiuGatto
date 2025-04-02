@@ -69,9 +69,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "sii",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "siamo",
           "voi": "siate",
           "loro": "siano"
@@ -153,12 +153,12 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "abbi",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "abbiamo",
           "voi": "abbiate",
-          "loro": "-"
+          "loro": null
         }
       }
     },
@@ -237,9 +237,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "vogli",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "vogliamo",
           "voi": "vogliate",
           "loro": "vogliano"
@@ -321,9 +321,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "fai",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "facciamo",
           "voi": "fate",
           "loro": "facciano"
@@ -405,9 +405,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "di'",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "diciamo",
           "voi": "dite",
           "loro": "dicano"
@@ -489,9 +489,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "capisci",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "capiamo",
           "voi": "capite",
           "loro": "capiscano"
@@ -573,9 +573,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "sappi",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "sappiamo",
           "voi": "sapete",
           "loro": "sappiano"
@@ -657,9 +657,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "spiega",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "spieghiamo",
           "voi": "spiegate",
           "loro": "spieghino"
@@ -741,9 +741,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "esci",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "usciamo",
           "voi": "uscite",
           "loro": "escano"
@@ -825,9 +825,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "vai",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "andiamo",
           "voi": "andate",
           "loro": "vadano"
@@ -909,9 +909,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "vieni",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "veniamo",
           "voi": "venite",
           "loro": "vengano"
@@ -993,12 +993,12 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
-          "tu": "-",
-          "lui/lei": "-",
-          "noi": "-",
-          "voi": "-",
-          "loro": "-"
+          "io": null,
+          "tu": null,
+          "lui/lei": null,
+          "noi": null,
+          "voi": null,
+          "loro": null
         }
       }
     },
@@ -1077,12 +1077,12 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
-          "tu": "-",
-          "lui/lei": "-",
-          "noi": "-",
-          "voi": "-",
-          "loro": "-"
+          "io": null,
+          "tu": null,
+          "lui/lei": null,
+          "noi": null,
+          "voi": null,
+          "loro": null
         }
       }
     },
@@ -1161,9 +1161,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "preferisci",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "preferiamo",
           "voi": "preferite",
           "loro": "preferiscano"
@@ -1245,9 +1245,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "bevi",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "beviamo",
           "voi": "bevete",
           "loro": "bevano"
@@ -1330,9 +1330,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "sali",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "saliamo",
           "voi": "salite",
           "loro": "salgono"
@@ -1414,9 +1414,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "rimani",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "rimaniamo",
           "voi": "rimanete",
           "loro": "rimangano"
@@ -1498,9 +1498,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "muori",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "moriamo",
           "voi": "morite",
           "loro": "muoiano"
@@ -1582,9 +1582,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "finisci",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "finiamo",
           "voi": "finite",
           "loro": "finiscano"
@@ -1666,9 +1666,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "vedi",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "vediamo",
           "voi": "vedete",
           "loro": "vedano"
@@ -1749,9 +1749,9 @@
       },
       "imperativo": {
         "positivo": {
-          "io": "-",
+          "io": null,
           "tu": "sta' (or stai)",
-          "lui/lei": "-",
+          "lui/lei": null,
           "noi": "stiamo",
           "voi": "state",
           "loro": "stiano"

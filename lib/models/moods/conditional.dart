@@ -1,3 +1,5 @@
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
+
 import '../verb.dart';
 import 'mood.dart';
 
@@ -5,9 +7,13 @@ class Conditional extends Mood {
   // Parent Reference
   late final Verb verb;
 
-  // Conjugations
+  // Simple Tenses - Stored in JSON
+  /// Presente
   final Conjugations present; // Presente
-  // final Conjugation passato; // Present Perfect
+
+  // Compound Tenses - Generated dynamically
+  /// Condizionale Passato
+  Conjugations presentPerfectConditional(auxiliary) => verb.presentPerfectConditional(auxiliary);
 
   Conditional({
     required this.present

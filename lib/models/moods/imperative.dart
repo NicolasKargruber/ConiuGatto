@@ -1,3 +1,5 @@
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
+
 import '../verb.dart';
 import 'mood.dart';
 
@@ -5,9 +7,11 @@ class Imperative extends Mood {
   // Parent Reference
   late final Verb verb;
 
-  // Conjugations
+  // Simple Tenses - Stored in JSON
   final Conjugations positive; // Positivo Afirmativo
-  // final Conjugation negative; // Negativo Afirmativo
+
+  // Compound Tenses - Generated dynamically
+  Conjugations get negative => verb.negativeImperative;
 
   Imperative({
     required this.positive,

@@ -1,7 +1,5 @@
-import 'package:coniugatto/models/auxiliary.dart';
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
-import '../pronoun.dart';
 import '../verb.dart';
 import 'mood.dart';
 
@@ -10,26 +8,33 @@ class Indicative extends Mood {
   late final Verb verb;
 
   // Simple Tenses - Stored in JSON
-  final Conjugations present; // Presente
-  // final Conjugation presente progresivo; // Present Continuous
-  final Conjugations imperfect; // Imperfecto
-  final Conjugations historicalPresentPerfect; // Passato Remoto
-  // final Conjugation trapassato remoto; // Historical Past Perfect
-  final Conjugations future; // Futuro Semplice
-  // final Conjugation futuro prossimo; // Futuro GOING TO
-  // final Conjugation futuro anteriore; // Futuro Perfect
-
+  /// Presente
+  final Conjugations present;
+  /// Imperfecto
+  final Conjugations imperfect;
+  /// Passato Remoto
+  final Conjugations historicalPresentPerfect;
+  /// Futuro Semplice
+  final Conjugations future;
 
   // Compound Tenses - Generated dynamically
-  // Passato Prossimo
-  Conjugations presentPerfect(Auxiliary auxiliary) {
-    return verb.presentPerfect(auxiliary);
-  }
+  /// Presente Progressivo
+  Conjugations get presentContinuous => verb.presentContinuous;
 
-  // Trapassato prossimo
-  Conjugations pastPerfect(Auxiliary auxiliary) {
-    return verb.pastPerfect(auxiliary);
-  }
+  /// Passato Prossimo
+  Conjugations presentPerfect(auxiliary) => verb.presentPerfect(auxiliary);
+
+  /// Trapassato Prossimo
+  Conjugations pastPerfect(auxiliary) => verb.pastPerfect(auxiliary);
+
+  /// Trapassato Prossimo
+  Conjugations historicalPastPerfect(auxiliary) => verb.historicalPastPerfect(auxiliary);
+
+  /// Futuro Anteriore
+  Conjugations futurePerfect(auxiliary) => verb.futurePerfect(auxiliary);
+
+  // Futuro Prossimo
+  // TODO: => Futuro GOING TO - futuro prossimo
 
   // Compound tenses will be generated dynamically
   Indicative({

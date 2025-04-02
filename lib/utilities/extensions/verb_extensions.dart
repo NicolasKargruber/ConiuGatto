@@ -4,34 +4,94 @@ import '../../models/moods/base_tense.dart';
 import '../../models/pronoun.dart';
 import '../../models/verb.dart';
 
-extension GeneratedTenses on Verb {
-  static final compoundVerbs = CompoundVerbs.instance;
+extension GenerateIndicative on Verb {
+  static final _compoundVerbs = CompoundVerbs.instance;
 
-  Conjugations presentPerfect(Auxiliary auxiliary) {
+  /// => Presente Progressivo
+  Conjugations get presentContinuous {
     conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.present)!} $pastParticiple");
+        MapEntry(pronoun, "${_compoundVerbs.conjugateStare(pronoun)!} $presentGerund");
 
-    return <Pronoun, String?>{}..addEntries([
-      conjugate(Pronoun.firstSingular),
-      conjugate(Pronoun.secondSingular),
-      conjugate(Pronoun.thirdSingular),
-      conjugate(Pronoun.firstPlural),
-      conjugate(Pronoun.secondPlural),
-      conjugate(Pronoun.thirdPlural),
-    ]);
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
+  /// => Passato Prossimo
+  Conjugations presentPerfect(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.present)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+
+  /// => Trapassato Prossimo
   Conjugations pastPerfect(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) =>
-        MapEntry(pronoun, "${compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfect)!} $pastParticiple");
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfect)!} $pastParticiple");
 
-    return <Pronoun, String?>{}..addEntries([
-      conjugate(Pronoun.firstSingular),
-      conjugate(Pronoun.secondSingular),
-      conjugate(Pronoun.thirdSingular),
-      conjugate(Pronoun.firstPlural),
-      conjugate(Pronoun.secondPlural),
-      conjugate(Pronoun.thirdPlural),
-    ]);
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+
+  /// => Trapassato Remoto
+  Conjugations historicalPastPerfect(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.historicalPresentPerfect)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+
+  /// => Futuro Anteriore
+  Conjugations futurePerfect(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.future)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+}
+
+extension GenerateSubjunctive on Verb {
+  static final _compoundVerbs = CompoundVerbs.instance;
+
+  /// => Congiuntivo Passato
+  Conjugations presentPerfectSubjunctive(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentSubjunctive)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+
+  /// => Congiuntivo Trapassato
+  Conjugations pastPerfectSubjunctive(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfectSubjunctive)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+}
+
+extension GenerateConditional on Verb {
+  static final _compoundVerbs = CompoundVerbs.instance;
+
+  /// => Condizionale Passato
+  Conjugations presentPerfectConditional(Auxiliary auxiliary) {
+    conjugate(Pronoun pronoun) =>
+        MapEntry(pronoun, "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentConditional)!} $pastParticiple");
+
+    return Conjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+}
+
+extension GenerateImperative on Verb {
+  /// => Imperativo Negativo
+  Conjugations get negativeImperative {
+    // Clone (..) and update
+    return imperative.positive..updateAll((pronoun, conjugation) {
+    if(conjugation == null) return null;
+      switch (pronoun) {
+        case Pronoun.secondSingular:
+          return "non $infinitive";
+        default:
+          return "non $conjugation";
+      }
+    });
   }
 }
