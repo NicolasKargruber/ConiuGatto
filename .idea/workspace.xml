@@ -9,6 +9,7 @@
       <change afterPath="$PROJECT_DIR$/lib/screens/home_screen.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/screens/quiz_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/verb_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/verb_screen.dart" afterDir="false" />
     </list>
