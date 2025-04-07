@@ -7,6 +7,9 @@ class Subjunctive extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Congiuntivo";
+
   // Simple Tenses - Stored in JSON
   /// Presente
   final Conjugations present; // Presente

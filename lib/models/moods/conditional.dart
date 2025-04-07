@@ -7,6 +7,9 @@ class Conditional extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Condizionale";
+
   // Simple Tenses - Stored in JSON
   /// Presente
   final Conjugations present; // Presente

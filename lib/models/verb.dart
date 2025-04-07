@@ -2,6 +2,7 @@ import 'auxiliary.dart';
 import 'moods/conditional.dart';
 import 'moods/imperative.dart';
 import 'moods/indicative.dart';
+import 'moods/mood.dart';
 import 'moods/subjunctive.dart';
 import 'pronoun.dart';
 import 'regularity.dart';
@@ -20,6 +21,7 @@ class Verb {
   final Subjunctive subjunctive;
   final Conditional conditional;
   final Imperative imperative;
+  List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
 
   final ({String italian, String english}) pastParticiple;
   final ({String italian, String english}) presentGerund;

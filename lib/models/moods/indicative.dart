@@ -7,6 +7,9 @@ class Indicative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Indicativo";
+
   // Simple Tenses - Stored in JSON
   /// Presente
   final Conjugations present;

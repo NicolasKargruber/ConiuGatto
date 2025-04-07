@@ -7,7 +7,7 @@ import '../../models/verb.dart';
 extension GenerateIndicative on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
-  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
     final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
     final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
     final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
@@ -30,25 +30,25 @@ extension GenerateIndicative on Verb {
 
   /// => Passato Prossimo
   Conjugations presentPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.present);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.present);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Prossimo
   Conjugations pastPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.imperfect);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfect);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Remoto
   Conjugations historicalPastPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.historicalPresentPerfect);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.historicalPresentPerfect);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Futuro Anteriore
   Conjugations futurePerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.future);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.future);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }
@@ -56,7 +56,7 @@ extension GenerateIndicative on Verb {
 extension GenerateSubjunctive on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
-  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
     final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
     final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
     final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
@@ -68,13 +68,13 @@ extension GenerateSubjunctive on Verb {
 
   /// => Congiuntivo Passato
   Conjugations presentPerfectSubjunctive(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.presentSubjunctive);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.presentSubjunctive);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Congiuntivo Trapassato
   Conjugations pastPerfectSubjunctive(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.imperfectSubjunctive);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfectSubjunctive);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }
@@ -82,7 +82,7 @@ extension GenerateSubjunctive on Verb {
 extension GenerateConditional on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
-  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
     final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
     final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
     final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
@@ -94,7 +94,7 @@ extension GenerateConditional on Verb {
 
   /// => Condizionale Passato
   Conjugations presentPerfectConditional(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.presentConditional);
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.presentConditional);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }

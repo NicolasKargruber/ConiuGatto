@@ -1,5 +1,5 @@
 /// Only simple tenses WITHOUT compound tenses
-enum BaseTense {
+enum SimpleTense {
   present('Presente'),
   imperfect('Imperfetto'),
   historicalPresentPerfect('Passato Remoto'),
@@ -9,5 +9,5 @@ enum BaseTense {
   presentConditional('Condizionale Presente');
 
   final String italianName;
-  const BaseTense(this.italianName);
+  const SimpleTense(this.italianName);
 }

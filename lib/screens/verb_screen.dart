@@ -12,15 +12,15 @@ class VerbScreen extends StatefulWidget {
 }
 
 class _VerbScreenState extends State<VerbScreen> {
-  late Future<List<Verb>> futureVerbs;
+  late Future<List<Verb>> _futureVerbs;
   Verb? currentVerb;
   List<Verb> verbs = [];
 
   @override
   void initState() {
     super.initState();
-    futureVerbs = VerbManager.loadVerbs();
-    futureVerbs.then((loadedVerbs) {
+    _futureVerbs = VerbManager.loadVerbs();
+    _futureVerbs.then((loadedVerbs) {
       setState(() {
         verbs = loadedVerbs;
       });
@@ -32,7 +32,7 @@ class _VerbScreenState extends State<VerbScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Verbs 📚')),
       body: FutureBuilder<List<Verb>>(
-        future: futureVerbs,
+        future: _futureVerbs,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

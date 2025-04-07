@@ -1,7 +1,9 @@
 import '../pronoun.dart';
 import '../verb.dart';
 
-class Mood {}
+abstract class Mood {
+  abstract final String name;
+}
 
 extension MoodExtensions on Mood {
   static Conjugations parseConjugations(Map<String, dynamic> json) {

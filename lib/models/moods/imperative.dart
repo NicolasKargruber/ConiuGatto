@@ -7,6 +7,9 @@ class Imperative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Imperativo";
+
   // Simple Tenses - Stored in JSON
   final Conjugations positive; // Positivo Afirmativo
 
