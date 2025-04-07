@@ -1,4 +1,4 @@
-import 'package:coniugatto/screens/conjugation_table.dart';
+import 'package:coniugatto/widgets/conjugation_table.dart';
 import 'package:flutter/material.dart';
 
 import '../models/auxiliary.dart';
