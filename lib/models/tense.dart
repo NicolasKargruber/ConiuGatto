@@ -3,11 +3,12 @@ import 'package:coniugatto/models/verb.dart';
 
 class Tense {
   final String name;
+  final bool usesPastParticiple;
   final Conjugations conjugations;
 
   operator [](Pronoun pronoun) => conjugations[pronoun];
 
-  Tense({required this.name, required this.conjugations});
+  Tense({required this.name, required this.conjugations, this.usesPastParticiple = false});
 
   factory Tense.fromJson(Map<String, dynamic> json, {required String name}) {
     mapToConjugations(Pronoun pronoun) {

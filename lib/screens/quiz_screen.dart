@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:coniugatto/models/auxiliary.dart';
 import 'package:coniugatto/models/pronoun.dart';
+import 'package:coniugatto/utilities/extensions/string_extensions.dart';
 import 'package:coniugatto/widgets/shake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -37,12 +38,24 @@ class _QuizScreenState extends State<QuizScreen> {
   final _shakeKey = GlobalKey<ShakeWidgetState>();
 
   _checkAnswer() {
+    final String currentAnswer;
+    if((currentAuxiliary?.requiresGenderedParticiple??false) && (currentTense?.usesPastParticiple??false)) {
+      currentAnswer = currentPronoun.genderItalianConjugationIfPossible(_textController.text);
+    } else {
+      currentAnswer = _textController.text;
+    }
+    debugPrint("QuizScreen | Current Answer : $currentAnswer");
+    final bool areAnswersEqual = currentAnswer == currentTense?[currentPronoun]?.italian;
     setState(() {
-      if (_textController.text == currentTense?[currentPronoun]?.italian) {
+      if (areAnswersEqual) {
           activeIndex++;
           _textController.clear();
         _randomizeVerb();
       } else {
+        final diff = currentAnswer.compareTo(currentTense?[currentPronoun]?.italian);
+        debugPrint("QuizScreen | Unfortunately wrong!!!");
+        //debugPrint("QuizScreen | Here the difference: $diff");
+        currentAnswer.printDifferences(currentTense?[currentPronoun]?.italian??'');
         _shakeKey.currentState?.shake();
       }
     });
@@ -57,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
       currentTense = tenses?[_random.nextInt(tenses.length)];
       currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
       debugPrint("QuizScreen | Current Verb : ${currentVerb?.infinitive}");
-      debugPrint("QuizScreen | Solution : ${currentPronoun.italian} ${currentTense?[currentPronoun]?.italian}");
+      debugPrint("QuizScreen | Solution : (${currentPronoun.italian}) ${currentTense?[currentPronoun]?.italian}");
     });
   }
 
