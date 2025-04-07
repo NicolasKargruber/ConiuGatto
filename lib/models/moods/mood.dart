@@ -5,13 +5,16 @@ class Mood {}
 
 extension MoodExtensions on Mood {
   static Conjugations parseConjugations(Map<String, dynamic> json) {
-    return {
-      Pronoun.firstSingular: json[Pronoun.firstSingular.jsonKey()],
-      Pronoun.secondSingular: json[Pronoun.secondSingular.jsonKey()],
-      Pronoun.thirdSingular: json[Pronoun.thirdSingular.jsonKey()],
-      Pronoun.firstPlural: json[Pronoun.firstPlural.jsonKey()],
-      Pronoun.secondPlural: json[Pronoun.secondPlural.jsonKey()],
-      Pronoun.thirdPlural: json[Pronoun.thirdPlural.jsonKey()],
-    };
+    mapToConjugations(Pronoun pronoun) {
+      final verbConjugation = json[pronoun.jsonKey()];
+      return Conjugation(
+        pronoun,
+        verbConjugation == null
+            ? null
+            : (italian: verbConjugation['italian'], english: verbConjugation['english']),
+      );
+    }
+
+    return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
   }
 }

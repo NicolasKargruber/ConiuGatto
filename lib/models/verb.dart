@@ -6,7 +6,8 @@ import 'moods/subjunctive.dart';
 import 'pronoun.dart';
 import 'regularity.dart';
 
-typedef Conjugations = Map<Pronoun, String?>;
+typedef Conjugations = Map<Pronoun, ({String italian, String english})?>;
+typedef Conjugation = MapEntry<Pronoun, ({String italian, String english})?>;
 
 class Verb {
   final String infinitive;
@@ -20,11 +21,14 @@ class Verb {
   final Conditional conditional;
   final Imperative imperative;
 
-  final String pastParticiple;
-  final String presentGerund;
+  final ({String italian, String english}) pastParticiple;
+  final ({String italian, String english}) presentGerund;
 
   String pastParticipleWithGender(Pronoun pronoun) => pronoun.isPlural ?
-      pastParticiple.replaceAll('o', 'i/e') : pastParticiple.replaceAll('o', 'o/a');
+      pastParticiple.italian.replaceAll('o', 'i/e') : pastParticiple.italian.replaceAll('o', 'o/a');
+
+  // TODO use this
+   ({String name, int age})? _verbConjugationFromJson(Map<String, dynamic> json){}
 
   Verb({
     required this.infinitive,
@@ -54,8 +58,8 @@ class Verb {
       subjunctive: Subjunctive.fromJson(json['conjugations']['congiuntivo']),
       conditional: Conditional.fromJson(json['conjugations']['condizionale']),
       imperative: Imperative.fromJson(json['conjugations']['imperativo']),
-      pastParticiple: json['participio_passato'],
-      presentGerund: json['gerundio_presente'],
+      pastParticiple: (italian: json['participio_passato']['italian'], english: json['participio_passato']['english']),
+      presentGerund: (italian: json['gerundio_presente']['italian'], english: json['gerundio_presente']['english']),
     );
   }
 }

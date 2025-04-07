@@ -7,11 +7,22 @@ import '../../models/verb.dart';
 extension GenerateIndicative on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+    final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
+    final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
+    final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
+    return Conjugation(pronoun, (
+      italian: "$conjugatedItalianAuxiliary $italianPastParticiple",
+      english: "$conjugatedEnglishAuxiliary ${pastParticiple.english}",
+    ));
+  }
+
   /// => Presente Progressivo
   Conjugations get presentContinuous {
-    conjugate(Pronoun pronoun) => MapEntry(
+    conjugate(Pronoun pronoun) => Conjugation(
       pronoun,
-      "${_compoundVerbs.conjugateStare(pronoun)!} $presentGerund",
+        (italian: "${_compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}", english: "${_compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}")
+      ,
     );
 
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
@@ -19,41 +30,25 @@ extension GenerateIndicative on Verb {
 
   /// => Passato Prossimo
   Conjugations presentPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.present)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.present);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Prossimo
   Conjugations pastPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfect)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.imperfect);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Remoto
   Conjugations historicalPastPerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.historicalPresentPerfect)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.historicalPresentPerfect);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Futuro Anteriore
   Conjugations futurePerfect(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.future)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.future);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }
@@ -61,23 +56,25 @@ extension GenerateIndicative on Verb {
 extension GenerateSubjunctive on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+    final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
+    final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
+    final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
+    return Conjugation(pronoun, (
+    italian: "$conjugatedItalianAuxiliary $italianPastParticiple",
+    english: "$conjugatedEnglishAuxiliary ${pastParticiple.english}",
+    ));
+  }
+
   /// => Congiuntivo Passato
   Conjugations presentPerfectSubjunctive(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentSubjunctive)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.presentSubjunctive);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Congiuntivo Trapassato
   Conjugations pastPerfectSubjunctive(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.imperfectSubjunctive)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.imperfectSubjunctive);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }
@@ -85,13 +82,19 @@ extension GenerateSubjunctive on Verb {
 extension GenerateConditional on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;
 
+  _conjugate(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+    final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
+    final conjugatedEnglishAuxiliary = _compoundVerbs.conjugateEnglishAuxiliary(pronoun, tense);
+    final italianPastParticiple = auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple.italian;
+    return Conjugation(pronoun, (
+    italian: "$conjugatedItalianAuxiliary $italianPastParticiple",
+    english: "$conjugatedEnglishAuxiliary ${pastParticiple.english}",
+    ));
+  }
+
   /// => Condizionale Passato
   Conjugations presentPerfectConditional(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => MapEntry(
-      pronoun,
-      "${_compoundVerbs.conjugateAuxiliary(pronoun, auxiliary, BaseTense.presentConditional)!} ${auxiliary == Auxiliary.essere ? pastParticipleWithGender(pronoun) : pastParticiple}",
-    );
-
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, BaseTense.presentConditional);
     return Conjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 }
@@ -104,9 +107,11 @@ extension GenerateImperative on Verb {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
-          return "non $infinitive";
+          return (italian: "non $infinitive", english: conjugation.english.replaceAll(")", ") don't"));
+          case Pronoun.firstPlural:
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "));
         default:
-          return "non $conjugation";
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"));
       }
     });
   }
