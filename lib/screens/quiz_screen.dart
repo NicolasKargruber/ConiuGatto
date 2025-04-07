@@ -1,11 +1,14 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:coniugatto/models/auxiliary.dart';
 import 'package:coniugatto/models/pronoun.dart';
 import 'package:coniugatto/widgets/shake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../models/moods/mood.dart';
+import '../models/tense.dart';
 import '../models/verb.dart';
 import '../utilities/verb_manager.dart';
 
@@ -19,6 +22,9 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   late Future<List<Verb>> _futureVerbs;
   Verb? currentVerb;
+  Auxiliary? currentAuxiliary;
+  Mood? currentMood;
+  Tense? currentTense;
   Pronoun currentPronoun = Pronoun.firstSingular;
   List<Verb> verbs = [];
   int activeIndex = 0;
@@ -32,8 +38,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   _checkAnswer() {
     setState(() {
-      if (_textController.text ==
-          currentVerb?.indicative.present[currentPronoun]?.italian) {
+      if (_textController.text == currentTense?[currentPronoun]?.italian) {
           activeIndex++;
           _textController.clear();
         _randomizeVerb();
@@ -46,11 +51,17 @@ class _QuizScreenState extends State<QuizScreen> {
   _randomizeVerb() {
     setState(() {
       currentVerb = verbs[_random.nextInt(verbs.length)];
+      currentAuxiliary = currentVerb?.auxiliaries[_random.nextInt(currentVerb!.auxiliaries.length)];
+      currentMood = currentVerb?.moods[_random.nextInt(currentVerb!.moods.length)];
+      final tenses = currentMood?.getTenses(currentAuxiliary??Auxiliary.avere);
+      currentTense = tenses?[_random.nextInt(tenses.length)];
       currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
+      debugPrint("QuizScreen | Current Verb : ${currentVerb?.infinitive}");
+      debugPrint("QuizScreen | Solution : ${currentPronoun.italian} ${currentTense?[currentPronoun]?.italian}");
     });
   }
 
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
+  final _pageController = PageController(viewportFraction: 0.8, keepPage: true);
 
   @override
   void initState() {
@@ -84,12 +95,13 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Presente - ${currentVerb?.indicative.name}",
+                    AutoSizeText(
+                      "${currentTense?.name} - ${currentMood?.name}",
                       style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 24,
                       ),
+                      maxLines: 1,
                     ),
 
                     SizedBox(height: 18),
@@ -106,7 +118,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     SizedBox(height: 4),
 
                     Text(
-                      "${currentPronoun.english} ${currentVerb?.indicative.present[currentPronoun]?.english}",
+                      "${currentPronoun.english} ${currentTense?[currentPronoun]?.english}",
                       style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 20,

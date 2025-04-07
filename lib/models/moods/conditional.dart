@@ -1,3 +1,4 @@
+import 'package:coniugatto/models/auxiliary.dart';
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
 import '../tense.dart';
@@ -10,6 +11,9 @@ class Conditional extends Mood {
 
   @override
   String get name => "Condizionale";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [present, presentPerfectConditional(auxiliary)];
 
   // Simple Tenses - Stored in JSON
   /// Presente

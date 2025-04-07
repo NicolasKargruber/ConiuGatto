@@ -1,8 +1,8 @@
-import '../pronoun.dart';
+import 'package:coniugatto/models/auxiliary.dart';
+
 import '../tense.dart';
-import '../verb.dart';
 
 abstract class Mood {
   abstract final String name;
-  //abstract final List<Conjugations> tenses;
+  List<Tense> getTenses(Auxiliary auxiliary);
 }

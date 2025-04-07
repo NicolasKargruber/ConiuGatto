@@ -34,7 +34,9 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
+              child: widget.verb.regularity.isRegular ?
+              FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
+              FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
             ),
 
             if(widget.verb.auxiliaries.length > 1)

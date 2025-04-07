@@ -29,9 +29,6 @@ class Verb {
   String pastParticipleWithGender(Pronoun pronoun) => pronoun.isPlural ?
       pastParticiple.italian.replaceAll('o', 'i/e') : pastParticiple.italian.replaceAll('o', 'o/a');
 
-  // TODO use this
-   ({String name, int age})? _verbConjugationFromJson(Map<String, dynamic> json){}
-
   Verb({
     required this.infinitive,
     required this.translation,

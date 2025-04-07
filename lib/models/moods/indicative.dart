@@ -1,5 +1,6 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
+import '../auxiliary.dart';
 import '../tense.dart';
 import '../verb.dart';
 import 'mood.dart';
@@ -10,6 +11,9 @@ class Indicative extends Mood {
 
   @override
   String get name => "Indicativo";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [present, presentContinuous, imperfect, presentPerfect(auxiliary), pastPerfect(auxiliary), historicalPresentPerfect, historicalPastPerfect(auxiliary), future, futurePerfect(auxiliary)];
 
   // Simple Tenses - Stored in JSON
   /// Presente

@@ -1,5 +1,6 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
+import '../auxiliary.dart';
 import '../tense.dart';
 import '../verb.dart';
 import 'mood.dart';
@@ -10,6 +11,9 @@ class Imperative extends Mood {
 
   @override
   String get name => "Imperativo";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [positive, negative];
 
   // Simple Tenses - Stored in JSON
   final Tense positive; // Positivo Afirmativo

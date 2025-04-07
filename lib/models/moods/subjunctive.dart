@@ -1,5 +1,6 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
+import '../auxiliary.dart';
 import '../tense.dart';
 import '../verb.dart';
 import 'mood.dart';
@@ -10,6 +11,9 @@ class Subjunctive extends Mood {
 
   @override
   String get name => "Congiuntivo";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [present, imperfect, presentPerfectSubjunctive(auxiliary), pastPerfectSubjunctive(auxiliary) ];
 
   // Simple Tenses - Stored in JSON
   /// Presente
