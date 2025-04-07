@@ -6,6 +6,8 @@ enum Pronoun {
   secondPlural('voi', 'you all', 'vi'),
   thirdPlural('loro', 'they', 'si');
 
+  bool get isPlural => this == Pronoun.firstPlural || this == Pronoun.secondPlural || this == Pronoun.thirdPlural;
+
   String jsonKey()  => italian; // => "io"
   final String italian; // => "io"
   final String english; // => "I"

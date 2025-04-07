@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a59ac523-22d3-43e5-b306-b7ed21f81022" name="Changes" comment="" />
+    <list default="true" id="a59ac523-22d3-43e5-b306-b7ed21f81022" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/screens/verb_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/verb_detail_screen.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +72,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/nicolaskargruber/Development/projects/ConiuGatto",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -98,21 +100,5 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/models/moods/conditional.dart</url>
-          <line>13</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/verb_detail_screen.dart</url>
-          <line>21</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

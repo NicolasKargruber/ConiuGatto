@@ -1,8 +1,17 @@
-import 'indicative.dart';
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
-class Imperative {
+import '../verb.dart';
+import 'mood.dart';
+
+class Imperative extends Mood {
+  // Parent Reference
+  late final Verb verb;
+
+  // Simple Tenses - Stored in JSON
   final Conjugations positive; // Positivo Afirmativo
-  // final Conjugation negative; // Negativo Afirmativo
+
+  // Compound Tenses - Generated dynamically
+  Conjugations get negative => verb.negativeImperative;
 
   Imperative({
     required this.positive,
@@ -10,7 +19,7 @@ class Imperative {
 
   factory Imperative.fromJson(Map<String, dynamic> json) {
     return Imperative(
-        positive: parseConjugations(json['positivo'])
+        positive: MoodExtensions.parseConjugations(json['positivo'])
     );
   }
 }

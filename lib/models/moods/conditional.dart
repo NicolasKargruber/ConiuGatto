@@ -1,8 +1,19 @@
-import 'indicative.dart';
+import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
-class Conditional {
+import '../verb.dart';
+import 'mood.dart';
+
+class Conditional extends Mood {
+  // Parent Reference
+  late final Verb verb;
+
+  // Simple Tenses - Stored in JSON
+  /// Presente
   final Conjugations present; // Presente
-  // final Conjugation passato; // Present Perfect
+
+  // Compound Tenses - Generated dynamically
+  /// Condizionale Passato
+  Conjugations presentPerfectConditional(auxiliary) => verb.presentPerfectConditional(auxiliary);
 
   Conditional({
     required this.present
@@ -10,7 +21,7 @@ class Conditional {
 
   factory Conditional.fromJson(Map<String, dynamic> json) {
     return Conditional(
-      present: parseConjugations(json['presente']),
+      present: MoodExtensions.parseConjugations(json['presente']),
     );
   }
 }
