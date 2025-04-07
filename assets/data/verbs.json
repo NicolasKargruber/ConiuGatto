@@ -2,7 +2,8 @@
   {
     "infinitive": "essere",
     "translation": "to be",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13,14 +14,6 @@
           "voi": "siete",
           "loro": "sono"
         },
-        "passato_prossimo": {
-          "io": "sono stato",
-          "tu": "sei stato",
-          "lui/lei": "è stato",
-          "noi": "siamo stati",
-          "voi": "siete stati",
-          "loro": "sono stati"
-        },
         "imperfetto": {
           "io": "ero",
           "tu": "eri",
@@ -28,14 +21,6 @@
           "noi": "eravamo",
           "voi": "eravate",
           "loro": "erano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero stato",
-          "tu": "eri stato",
-          "lui/lei": "era stato",
-          "noi": "eravamo stati",
-          "voi": "eravate stati",
-          "loro": "erano stati"
         },
         "passato_remoto": {
           "io": "fui",
@@ -45,14 +30,6 @@
           "voi": "foste",
           "loro": "furono"
         },
-        "trapassato_remoto": {
-          "io": "fui stato",
-          "tu": "fosti stato",
-          "lui/lei": "fu stato",
-          "noi": "fummo stati",
-          "voi": "foste stati",
-          "loro": "furono stati"
-        },
         "futuro_semplice": {
           "io": "sarò",
           "tu": "sarai",
@@ -60,14 +37,6 @@
           "noi": "saremo",
           "voi": "sarete",
           "loro": "saranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò stato",
-          "tu": "sarai stato",
-          "lui/lei": "sarà stato",
-          "noi": "saremo stati",
-          "voi": "sarete stati",
-          "loro": "saranno stati"
         }
       },
       "congiuntivo": {
@@ -79,14 +48,6 @@
           "voi": "siate",
           "loro": "siano"
         },
-        "passato": {
-          "io": "sia stato",
-          "tu": "sia stato",
-          "lui/lei": "sia stato",
-          "noi": "siamo stati",
-          "voi": "siate stati",
-          "loro": "siano stati"
-        },
         "imperfetto": {
           "io": "fossi",
           "tu": "fossi",
@@ -94,14 +55,6 @@
           "noi": "fossimo",
           "voi": "foste",
           "loro": "fossero"
-        },
-        "trapassato": {
-          "io": "fossi stato",
-          "tu": "fossi stato",
-          "lui/lei": "fosse stato",
-          "noi": "fossimo stati",
-          "voi": "foste stati",
-          "loro": "fossero stati"
         }
       },
       "condizionale": {
@@ -112,43 +65,29 @@
           "noi": "saremmo",
           "voi": "sareste",
           "loro": "sarebbero"
-        },
-        "passato": {
-          "io": "sarei stato",
-          "tu": "saresti stato",
-          "lui/lei": "sarebbe stato",
-          "noi": "saremmo stati",
-          "voi": "sareste stati",
-          "loro": "sarebbero stati"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "sii",
           "lui/lei": "-",
           "noi": "siamo",
           "voi": "siate",
           "loro": "siano"
         }
-      },
-      "infinito": {
-        "presente": "essere",
-        "passato": "essere stato"
-      },
-      "participio": {
-        "presente": "essente",
-        "passato": "stato"
-      },
-      "gerundio": {
-        "presente": "essendo",
-        "passato": "essendo stato"
       }
-    }
+    },
+    "participio_passato": "stato",
+    "gerundio_presente": "essendo"
   },
   {
     "infinitive": "avere",
     "translation": "to have",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -159,14 +98,6 @@
           "voi": "avete",
           "loro": "hanno"
         },
-        "passato_prossimo": {
-          "io": "ho avuto",
-          "tu": "hai avuto",
-          "lui/lei": "ha avuto",
-          "noi": "abbiamo avuto",
-          "voi": "avete avuto",
-          "loro": "hanno avuto"
-        },
         "imperfetto": {
           "io": "avevo",
           "tu": "avevi",
@@ -174,14 +105,6 @@
           "noi": "avevamo",
           "voi": "avevate",
           "loro": "avevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo avuto",
-          "tu": "avevi avuto",
-          "lui/lei": "aveva avuto",
-          "noi": "avevamo avuto",
-          "voi": "avevate avuto",
-          "loro": "avevano avuto"
         },
         "passato_remoto": {
           "io": "ebbi",
@@ -191,14 +114,6 @@
           "voi": "aveste",
           "loro": "ebbero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi avuto",
-          "tu": "avesti avuto",
-          "lui/lei": "ebbe avuto",
-          "noi": "avemmo avuto",
-          "voi": "aveste avuto",
-          "loro": "ebbero avuto"
-        },
         "futuro_semplice": {
           "io": "avrò",
           "tu": "avrai",
@@ -206,14 +121,6 @@
           "noi": "avremo",
           "voi": "avrete",
           "loro": "avranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò avuto",
-          "tu": "avrai avuto",
-          "lui/lei": "avrà avuto",
-          "noi": "avremo avuto",
-          "voi": "avrete avuto",
-          "loro": "avranno avuto"
         }
       },
       "congiuntivo": {
@@ -225,14 +132,6 @@
           "voi": "abbiate",
           "loro": "abbiano"
         },
-        "passato": {
-          "io": "abbia avuto",
-          "tu": "abbia avuto",
-          "lui/lei": "abbia avuto",
-          "noi": "abbiamo avuto",
-          "voi": "abbiate avuto",
-          "loro": "abbiano avuto"
-        },
         "imperfetto": {
           "io": "avessi",
           "tu": "avessi",
@@ -240,14 +139,6 @@
           "noi": "avessimo",
           "voi": "aveste",
           "loro": "avessero"
-        },
-        "trapassato": {
-          "io": "avessi avuto",
-          "tu": "avessi avuto",
-          "lui/lei": "avesse avuto",
-          "noi": "avessimo avuto",
-          "voi": "aveste avuto",
-          "loro": "avessero avuto"
         }
       },
       "condizionale": {
@@ -258,43 +149,29 @@
           "noi": "avremmo",
           "voi": "avreste",
           "loro": "avrebbero"
-        },
-        "passato": {
-          "io": "avrei avuto",
-          "tu": "avresti avuto",
-          "lui/lei": "avrebbe avuto",
-          "noi": "avremmo avuto",
-          "voi": "avreste avuto",
-          "loro": "avrebbero avuto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "abbi",
           "lui/lei": "-",
           "noi": "abbiamo",
           "voi": "abbiate",
-          "loro": "abbiano"
+          "loro": "-"
         }
-      },
-      "infinito": {
-        "presente": "avere",
-        "passato": "avere avuto"
-      },
-      "participio": {
-        "presente": "avente",
-        "passato": "avuto"
-      },
-      "gerundio": {
-        "presente": "avendo",
-        "passato": "avendo avuto"
       }
-    }
+    },
+    "participio_passato": "avuto",
+    "gerundio_presente": "avendo"
   },
   {
     "infinitive": "volere",
     "translation": "to want",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -305,14 +182,6 @@
           "voi": "volete",
           "loro": "vogliono"
         },
-        "passato_prossimo": {
-          "io": "ho voluto",
-          "tu": "hai voluto",
-          "lui/lei": "ha voluto",
-          "noi": "abbiamo voluto",
-          "voi": "avete voluto",
-          "loro": "hanno voluto"
-        },
         "imperfetto": {
           "io": "volevo",
           "tu": "volevi",
@@ -320,14 +189,6 @@
           "noi": "volevamo",
           "voi": "volevate",
           "loro": "volevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo voluto",
-          "tu": "avevi voluto",
-          "lui/lei": "aveva voluto",
-          "noi": "avevamo voluto",
-          "voi": "avevate voluto",
-          "loro": "avevano voluto"
         },
         "passato_remoto": {
           "io": "volli",
@@ -337,14 +198,6 @@
           "voi": "voleste",
           "loro": "vollero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi voluto",
-          "tu": "avesti voluto",
-          "lui/lei": "ebbe voluto",
-          "noi": "avemmo voluto",
-          "voi": "aveste voluto",
-          "loro": "ebbero voluto"
-        },
         "futuro_semplice": {
           "io": "vorrò",
           "tu": "vorrai",
@@ -352,14 +205,6 @@
           "noi": "vorremo",
           "voi": "vorrete",
           "loro": "vorranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò voluto",
-          "tu": "avrai voluto",
-          "lui/lei": "avrà voluto",
-          "noi": "avremo voluto",
-          "voi": "avrete voluto",
-          "loro": "avranno voluto"
         }
       },
       "congiuntivo": {
@@ -371,14 +216,6 @@
           "voi": "vogliate",
           "loro": "vogliano"
         },
-        "passato": {
-          "io": "abbia voluto",
-          "tu": "abbia voluto",
-          "lui/lei": "abbia voluto",
-          "noi": "abbiamo voluto",
-          "voi": "abbiate voluto",
-          "loro": "abbiano voluto"
-        },
         "imperfetto": {
           "io": "volessi",
           "tu": "volessi",
@@ -386,14 +223,6 @@
           "noi": "volessimo",
           "voi": "voleste",
           "loro": "volessero"
-        },
-        "trapassato": {
-          "io": "avessi voluto",
-          "tu": "avessi voluto",
-          "lui/lei": "avesse voluto",
-          "noi": "avessimo voluto",
-          "voi": "aveste voluto",
-          "loro": "avessero voluto"
         }
       },
       "condizionale": {
@@ -404,43 +233,29 @@
           "noi": "vorremmo",
           "voi": "vorreste",
           "loro": "vorrebbero"
-        },
-        "passato": {
-          "io": "avrei voluto",
-          "tu": "avresti voluto",
-          "lui/lei": "avrebbe voluto",
-          "noi": "avremmo voluto",
-          "voi": "avreste voluto",
-          "loro": "avrebbero voluto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "vogli",
           "lui/lei": "-",
           "noi": "vogliamo",
           "voi": "vogliate",
           "loro": "vogliano"
         }
-      },
-      "infinito": {
-        "presente": "volere",
-        "passato": "avere voluto"
-      },
-      "participio": {
-        "presente": "volente",
-        "passato": "voluto"
-      },
-      "gerundio": {
-        "presente": "volendo",
-        "passato": "avendo voluto"
       }
-    }
+    },
+    "participio_passato": "voluto",
+    "gerundio_presente": "volendo"
   },
   {
     "infinitive": "fare",
-    "translation": "to make",
-    "type": "irregular",
+    "translation": "to do",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -451,14 +266,6 @@
           "voi": "fate",
           "loro": "fanno"
         },
-        "passato_prossimo": {
-          "io": "ho fatto",
-          "tu": "hai fatto",
-          "lui/lei": "ha fatto",
-          "noi": "abbiamo fatto",
-          "voi": "avete fatto",
-          "loro": "hanno fatto"
-        },
         "imperfetto": {
           "io": "facevo",
           "tu": "facevi",
@@ -466,14 +273,6 @@
           "noi": "facevamo",
           "voi": "facevate",
           "loro": "facevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo fatto",
-          "tu": "avevi fatto",
-          "lui/lei": "aveva fatto",
-          "noi": "avevamo fatto",
-          "voi": "avevate fatto",
-          "loro": "avevano fatto"
         },
         "passato_remoto": {
           "io": "feci",
@@ -483,14 +282,6 @@
           "voi": "faceste",
           "loro": "fecero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi fatto",
-          "tu": "avesti fatto",
-          "lui/lei": "ebbe fatto",
-          "noi": "avemmo fatto",
-          "voi": "aveste fatto",
-          "loro": "ebbero fatto"
-        },
         "futuro_semplice": {
           "io": "farò",
           "tu": "farai",
@@ -498,14 +289,6 @@
           "noi": "faremo",
           "voi": "farete",
           "loro": "faranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò fatto",
-          "tu": "avrai fatto",
-          "lui/lei": "avrà fatto",
-          "noi": "avremo fatto",
-          "voi": "avrete fatto",
-          "loro": "avranno fatto"
         }
       },
       "congiuntivo": {
@@ -517,14 +300,6 @@
           "voi": "facciate",
           "loro": "facciano"
         },
-        "passato": {
-          "io": "abbia fatto",
-          "tu": "abbia fatto",
-          "lui/lei": "abbia fatto",
-          "noi": "abbiamo fatto",
-          "voi": "abbiate fatto",
-          "loro": "abbiano fatto"
-        },
         "imperfetto": {
           "io": "facessi",
           "tu": "facessi",
@@ -532,14 +307,6 @@
           "noi": "facessimo",
           "voi": "faceste",
           "loro": "facessero"
-        },
-        "trapassato": {
-          "io": "avessi fatto",
-          "tu": "avessi fatto",
-          "lui/lei": "avesse fatto",
-          "noi": "avessimo fatto",
-          "voi": "aveste fatto",
-          "loro": "avessero fatto"
         }
       },
       "condizionale": {
@@ -550,43 +317,29 @@
           "noi": "faremmo",
           "voi": "fareste",
           "loro": "farebbero"
-        },
-        "passato": {
-          "io": "avrei fatto",
-          "tu": "avresti fatto",
-          "lui/lei": "avrebbe fatto",
-          "noi": "avremmo fatto",
-          "voi": "avreste fatto",
-          "loro": "avrebbero fatto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "fai",
           "lui/lei": "-",
           "noi": "facciamo",
           "voi": "fate",
           "loro": "facciano"
         }
-      },
-      "infinito": {
-        "presente": "fare",
-        "passato": "avere fatto"
-      },
-      "participio": {
-        "presente": "facente",
-        "passato": "fatto"
-      },
-      "gerundio": {
-        "presente": "facendo",
-        "passato": "avendo fatto"
       }
-    }
+    },
+    "participio_passato": "fatto",
+    "gerundio_presente": "facendo"
   },
   {
     "infinitive": "dire",
     "translation": "to say",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -597,14 +350,6 @@
           "voi": "dite",
           "loro": "dicono"
         },
-        "passato_prossimo": {
-          "io": "ho detto",
-          "tu": "hai detto",
-          "lui/lei": "ha detto",
-          "noi": "abbiamo detto",
-          "voi": "avete detto",
-          "loro": "hanno detto"
-        },
         "imperfetto": {
           "io": "dicevo",
           "tu": "dicevi",
@@ -612,14 +357,6 @@
           "noi": "dicevamo",
           "voi": "dicevate",
           "loro": "dicevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo detto",
-          "tu": "avevi detto",
-          "lui/lei": "aveva detto",
-          "noi": "avevamo detto",
-          "voi": "avevate detto",
-          "loro": "avevano detto"
         },
         "passato_remoto": {
           "io": "dissi",
@@ -629,14 +366,6 @@
           "voi": "diceste",
           "loro": "dissero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi detto",
-          "tu": "avesti detto",
-          "lui/lei": "ebbe detto",
-          "noi": "avemmo detto",
-          "voi": "aveste detto",
-          "loro": "ebbero detto"
-        },
         "futuro_semplice": {
           "io": "dirò",
           "tu": "dirai",
@@ -644,14 +373,6 @@
           "noi": "diremo",
           "voi": "direte",
           "loro": "diranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò detto",
-          "tu": "avrai detto",
-          "lui/lei": "avrà detto",
-          "noi": "avremo detto",
-          "voi": "avrete detto",
-          "loro": "avranno detto"
         }
       },
       "congiuntivo": {
@@ -663,29 +384,13 @@
           "voi": "diciate",
           "loro": "dicano"
         },
-        "passato": {
-          "io": "abbia detto",
-          "tu": "abbia detto",
-          "lui/lei": "abbia detto",
-          "noi": "abbiamo detto",
-          "voi": "abbiate detto",
-          "loro": "abbiano detto"
-        },
         "imperfetto": {
           "io": "dicessi",
           "tu": "dicessi",
-          "lui/lei": "desse",
+          "lui/lei": "dicesse",
           "noi": "dicessimo",
           "voi": "diceste",
           "loro": "dicessero"
-        },
-        "trapassato": {
-          "io": "avessi detto",
-          "tu": "avessi detto",
-          "lui/lei": "avesse detto",
-          "noi": "avessimo detto",
-          "voi": "aveste detto",
-          "loro": "avessero detto"
         }
       },
       "condizionale": {
@@ -696,43 +401,29 @@
           "noi": "diremmo",
           "voi": "direste",
           "loro": "direbbero"
-        },
-        "passato": {
-          "io": "avrei detto",
-          "tu": "avresti detto",
-          "lui/lei": "avrebbe detto",
-          "noi": "avremmo detto",
-          "voi": "avreste detto",
-          "loro": "avrebbero detto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "di'",
           "lui/lei": "-",
           "noi": "diciamo",
           "voi": "dite",
           "loro": "dicano"
         }
-      },
-      "infinito": {
-        "presente": "dire",
-        "passato": "avere detto"
-      },
-      "participio": {
-        "presente": "dicente",
-        "passato": "detto"
-      },
-      "gerundio": {
-        "presente": "dicendo",
-        "passato": "avendo detto"
       }
-    }
+    },
+    "participio_passato": "detto",
+    "gerundio_presente": "dicendo"
   },
   {
     "infinitive": "capire",
     "translation": "to understand",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -743,14 +434,6 @@
           "voi": "capite",
           "loro": "capiscono"
         },
-        "passato_prossimo": {
-          "io": "ho capito",
-          "tu": "hai capito",
-          "lui/lei": "ha capito",
-          "noi": "abbiamo capito",
-          "voi": "avete capito",
-          "loro": "hanno capito"
-        },
         "imperfetto": {
           "io": "capivo",
           "tu": "capivi",
@@ -758,14 +441,6 @@
           "noi": "capivamo",
           "voi": "capivate",
           "loro": "capivano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo capito",
-          "tu": "avevi capito",
-          "lui/lei": "aveva capito",
-          "noi": "avevamo capito",
-          "voi": "avevate capito",
-          "loro": "avevano capito"
         },
         "passato_remoto": {
           "io": "capii",
@@ -775,14 +450,6 @@
           "voi": "capiste",
           "loro": "capirono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi capito",
-          "tu": "avesti capito",
-          "lui/lei": "ebbe capito",
-          "noi": "avemmo capito",
-          "voi": "aveste capito",
-          "loro": "ebbero capito"
-        },
         "futuro_semplice": {
           "io": "capirò",
           "tu": "capirai",
@@ -790,14 +457,6 @@
           "noi": "capiremo",
           "voi": "capirete",
           "loro": "capiranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò capito",
-          "tu": "avrai capito",
-          "lui/lei": "avrà capito",
-          "noi": "avremo capito",
-          "voi": "avrete capito",
-          "loro": "avranno capito"
         }
       },
       "congiuntivo": {
@@ -809,14 +468,6 @@
           "voi": "capiate",
           "loro": "capiscano"
         },
-        "passato": {
-          "io": "abbia capito",
-          "tu": "abbia capito",
-          "lui/lei": "abbia capito",
-          "noi": "abbiamo capito",
-          "voi": "abbiate capito",
-          "loro": "abbiano capito"
-        },
         "imperfetto": {
           "io": "capissi",
           "tu": "capissi",
@@ -824,14 +475,6 @@
           "noi": "capissimo",
           "voi": "capiste",
           "loro": "capissero"
-        },
-        "trapassato": {
-          "io": "avessi capito",
-          "tu": "avessi capito",
-          "lui/lei": "avesse capito",
-          "noi": "avessimo capito",
-          "voi": "aveste capito",
-          "loro": "avessero capito"
         }
       },
       "condizionale": {
@@ -842,43 +485,29 @@
           "noi": "capiremmo",
           "voi": "capireste",
           "loro": "capirebbero"
-        },
-        "passato": {
-          "io": "avrei capito",
-          "tu": "avresti capito",
-          "lui/lei": "avrebbe capito",
-          "noi": "avremmo capito",
-          "voi": "avreste capito",
-          "loro": "avrebbero capito"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "capisci",
           "lui/lei": "-",
           "noi": "capiamo",
           "voi": "capite",
           "loro": "capiscano"
         }
-      },
-      "infinito": {
-        "presente": "capire",
-        "passato": "avere capito"
-      },
-      "participio": {
-        "presente": "capente",
-        "passato": "capito"
-      },
-      "gerundio": {
-        "presente": "capendo",
-        "passato": "avendo capito"
       }
-    }
+    },
+    "participio_passato": "capito",
+    "gerundio_presente": "capendo"
   },
   {
     "infinitive": "sapere",
     "translation": "to know",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -889,14 +518,6 @@
           "voi": "sapete",
           "loro": "sanno"
         },
-        "passato_prossimo": {
-          "io": "ho saputo",
-          "tu": "hai saputo",
-          "lui/lei": "ha saputo",
-          "noi": "abbiamo saputo",
-          "voi": "avete saputo",
-          "loro": "hanno saputo"
-        },
         "imperfetto": {
           "io": "sapevo",
           "tu": "sapevi",
@@ -904,14 +525,6 @@
           "noi": "sapevamo",
           "voi": "sapevate",
           "loro": "sapevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo saputo",
-          "tu": "avevi saputo",
-          "lui/lei": "aveva saputo",
-          "noi": "avevamo saputo",
-          "voi": "avevate saputo",
-          "loro": "avevano saputo"
         },
         "passato_remoto": {
           "io": "seppi",
@@ -921,14 +534,6 @@
           "voi": "sapeste",
           "loro": "seppero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi saputo",
-          "tu": "avesti saputo",
-          "lui/lei": "ebbe saputo",
-          "noi": "avemmo saputo",
-          "voi": "aveste saputo",
-          "loro": "ebbero saputo"
-        },
         "futuro_semplice": {
           "io": "saprò",
           "tu": "saprai",
@@ -936,14 +541,6 @@
           "noi": "sapremo",
           "voi": "saprete",
           "loro": "sapranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò saputo",
-          "tu": "avrai saputo",
-          "lui/lei": "avrà saputo",
-          "noi": "avremo saputo",
-          "voi": "avrete saputo",
-          "loro": "avranno saputo"
         }
       },
       "congiuntivo": {
@@ -955,14 +552,6 @@
           "voi": "sappiate",
           "loro": "sappiano"
         },
-        "passato": {
-          "io": "abbia saputo",
-          "tu": "abbia saputo",
-          "lui/lei": "abbia saputo",
-          "noi": "abbiamo saputo",
-          "voi": "abbiate saputo",
-          "loro": "abbiano saputo"
-        },
         "imperfetto": {
           "io": "sapessi",
           "tu": "sapessi",
@@ -970,61 +559,39 @@
           "noi": "sapessimo",
           "voi": "sapeste",
           "loro": "sapessero"
-        },
-        "trapassato": {
-          "io": "avessi saputo",
-          "tu": "avessi saputo",
-          "lui/lei": "avesse saputo",
-          "noi": "avessimo saputo",
-          "voi": "aveste saputo",
-          "loro": "avessero saputo"
         }
       },
       "condizionale": {
         "presente": {
           "io": "saprei",
-          "tu": "saresti",
+          "tu": "sapresti",
           "lui/lei": "saprebbe",
           "noi": "sapremmo",
           "voi": "sapreste",
           "loro": "saprebbero"
-        },
-        "passato": {
-          "io": "avrei saputo",
-          "tu": "avresti saputo",
-          "lui/lei": "avrebbe saputo",
-          "noi": "avremmo saputo",
-          "voi": "avreste saputo",
-          "loro": "avrebbero saputo"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "sappi",
           "lui/lei": "-",
           "noi": "sappiamo",
           "voi": "sapete",
           "loro": "sappiano"
         }
-      },
-      "infinito": {
-        "presente": "sapere",
-        "passato": "avere saputo"
-      },
-      "participio": {
-        "presente": "sapente",
-        "passato": "saputo"
-      },
-      "gerundio": {
-        "presente": "sapendo",
-        "passato": "avendo saputo"
       }
-    }
+    },
+    "participio_passato": "saputo",
+    "gerundio_presente": "sapendo"
   },
   {
     "infinitive": "spiegare",
     "translation": "to explain",
-    "type": "irregular",
+    "regularity": "regular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1035,14 +602,6 @@
           "voi": "spiegate",
           "loro": "spiegano"
         },
-        "passato_prossimo": {
-          "io": "ho spiegato",
-          "tu": "hai spiegato",
-          "lui/lei": "ha spiegato",
-          "noi": "abbiamo spiegato",
-          "voi": "avete spiegato",
-          "loro": "hanno spiegato"
-        },
         "imperfetto": {
           "io": "spiegavo",
           "tu": "spiegavi",
@@ -1050,14 +609,6 @@
           "noi": "spiegavamo",
           "voi": "spiegavate",
           "loro": "spiegavano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo spiegato",
-          "tu": "avevi spiegato",
-          "lui/lei": "aveva spiegato",
-          "noi": "avevamo spiegato",
-          "voi": "avevate spiegato",
-          "loro": "avevano spiegato"
         },
         "passato_remoto": {
           "io": "spiegai",
@@ -1067,14 +618,6 @@
           "voi": "spiegaste",
           "loro": "spiegarono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi spiegato",
-          "tu": "avesti spiegato",
-          "lui/lei": "ebbe spiegato",
-          "noi": "avemmo spiegato",
-          "voi": "aveste spiegato",
-          "loro": "ebbero spiegato"
-        },
         "futuro_semplice": {
           "io": "spiegherò",
           "tu": "spiegherai",
@@ -1082,14 +625,6 @@
           "noi": "spiegheremo",
           "voi": "spiegherete",
           "loro": "spiegheranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò spiegato",
-          "tu": "avrai spiegato",
-          "lui/lei": "avrà spiegato",
-          "noi": "avremo spiegato",
-          "voi": "avrete spiegato",
-          "loro": "avranno spiegato"
         }
       },
       "congiuntivo": {
@@ -1101,14 +636,6 @@
           "voi": "spieghiate",
           "loro": "spieghino"
         },
-        "passato": {
-          "io": "abbia spiegato",
-          "tu": "abbia spiegato",
-          "lui/lei": "abbia spiegato",
-          "noi": "abbiamo spiegato",
-          "voi": "abbiate spiegato",
-          "loro": "abbiano spiegato"
-        },
         "imperfetto": {
           "io": "spiegassi",
           "tu": "spiegassi",
@@ -1116,14 +643,6 @@
           "noi": "spiegassimo",
           "voi": "spiegaste",
           "loro": "spiegassero"
-        },
-        "trapassato": {
-          "io": "avessi spiegato",
-          "tu": "avessi spiegato",
-          "lui/lei": "avesse spiegato",
-          "noi": "avessimo spiegato",
-          "voi": "aveste spiegato",
-          "loro": "avessero spiegato"
         }
       },
       "condizionale": {
@@ -1134,43 +653,29 @@
           "noi": "spiegheremmo",
           "voi": "spieghereste",
           "loro": "spiegherebbero"
-        },
-        "passato": {
-          "io": "avrei spiegato",
-          "tu": "avresti spiegato",
-          "lui/lei": "avrebbe spiegato",
-          "noi": "avremmo spiegato",
-          "voi": "avreste spiegato",
-          "loro": "avrebbero spiegato"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "spiega",
           "lui/lei": "-",
           "noi": "spieghiamo",
           "voi": "spiegate",
           "loro": "spieghino"
         }
-      },
-      "infinito": {
-        "presente": "spiegare",
-        "passato": "avere spiegato"
-      },
-      "participio": {
-        "presente": "spiegante",
-        "passato": "spiegato"
-      },
-      "gerundio": {
-        "presente": "spiegando",
-        "passato": "avendo spiegato"
       }
-    }
+    },
+    "participio_passato": "spiegato",
+    "gerundio_presente": "spiegando"
   },
   {
     "infinitive": "uscire",
     "translation": "to exit",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1181,14 +686,6 @@
           "voi": "uscite",
           "loro": "escono"
         },
-        "passato_prossimo": {
-          "io": "sono uscito",
-          "tu": "sei uscito",
-          "lui/lei": "è uscito",
-          "noi": "siamo usciti",
-          "voi": "siete usciti",
-          "loro": "sono usciti"
-        },
         "imperfetto": {
           "io": "uscivo",
           "tu": "uscivi",
@@ -1196,14 +693,6 @@
           "noi": "uscivamo",
           "voi": "uscivate",
           "loro": "uscivano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero uscito",
-          "tu": "eri uscito",
-          "lui/lei": "era uscito",
-          "noi": "eravamo usciti",
-          "voi": "eravate usciti",
-          "loro": "erano usciti"
         },
         "passato_remoto": {
           "io": "uscii",
@@ -1213,14 +702,6 @@
           "voi": "usciste",
           "loro": "uscirono"
         },
-        "trapassato_remoto": {
-          "io": "fui uscito",
-          "tu": "fosti uscito",
-          "lui/lei": "fu uscito",
-          "noi": "fummo usciti",
-          "voi": "foste usciti",
-          "loro": "furono usciti"
-        },
         "futuro_semplice": {
           "io": "uscirò",
           "tu": "uscirai",
@@ -1228,14 +709,6 @@
           "noi": "usciremo",
           "voi": "uscirete",
           "loro": "usciranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò uscito",
-          "tu": "sarai uscito",
-          "lui/lei": "sarà uscito",
-          "noi": "saremo usciti",
-          "voi": "sarete usciti",
-          "loro": "saranno usciti"
         }
       },
       "congiuntivo": {
@@ -1247,14 +720,6 @@
           "voi": "usciate",
           "loro": "escano"
         },
-        "passato": {
-          "io": "sia uscito",
-          "tu": "sia uscito",
-          "lui/lei": "sia uscito",
-          "noi": "siamo usciti",
-          "voi": "siate usciti",
-          "loro": "siano usciti"
-        },
         "imperfetto": {
           "io": "uscissi",
           "tu": "uscissi",
@@ -1262,14 +727,6 @@
           "noi": "uscissimo",
           "voi": "usciste",
           "loro": "uscissero"
-        },
-        "trapassato": {
-          "io": "fossi uscito",
-          "tu": "fossi uscito",
-          "lui/lei": "fosse uscito",
-          "noi": "fossimo usciti",
-          "voi": "foste usciti",
-          "loro": "fossero usciti"
         }
       },
       "condizionale": {
@@ -1280,43 +737,29 @@
           "noi": "usciremmo",
           "voi": "uscireste",
           "loro": "uscirebbero"
-        },
-        "passato": {
-          "io": "sarei uscito",
-          "tu": "saresti uscito",
-          "lui/lei": "sarebbe uscito",
-          "noi": "saremmo usciti",
-          "voi": "sareste usciti",
-          "loro": "sarebbero usciti"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "esci",
           "lui/lei": "-",
           "noi": "usciamo",
           "voi": "uscite",
           "loro": "escano"
         }
-      },
-      "infinito": {
-        "presente": "uscire",
-        "passato": "essere uscito"
-      },
-      "participio": {
-        "presente": "uscente",
-        "passato": "uscito"
-      },
-      "gerundio": {
-        "presente": "uscendo",
-        "passato": "essendo uscito"
       }
-    }
+    },
+    "participio_passato": "uscito",
+    "gerundio_presente": "uscendo"
   },
   {
     "infinitive": "andare",
     "translation": "to go",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1327,14 +770,6 @@
           "voi": "andate",
           "loro": "vanno"
         },
-        "passato_prossimo": {
-          "io": "sono andato",
-          "tu": "sei andato",
-          "lui/lei": "è andato",
-          "noi": "siamo andati",
-          "voi": "siete andati",
-          "loro": "sono andati"
-        },
         "imperfetto": {
           "io": "andavo",
           "tu": "andavi",
@@ -1342,14 +777,6 @@
           "noi": "andavamo",
           "voi": "andavate",
           "loro": "andavano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero andato",
-          "tu": "eri andato",
-          "lui/lei": "era andato",
-          "noi": "eravamo andati",
-          "voi": "eravate andati",
-          "loro": "erano andati"
         },
         "passato_remoto": {
           "io": "andai",
@@ -1359,14 +786,6 @@
           "voi": "andaste",
           "loro": "andarono"
         },
-        "trapassato_remoto": {
-          "io": "fui andato",
-          "tu": "fosti andato",
-          "lui/lei": "fu andato",
-          "noi": "fummo andati",
-          "voi": "foste andati",
-          "loro": "furono andati"
-        },
         "futuro_semplice": {
           "io": "andrò",
           "tu": "andrai",
@@ -1374,14 +793,6 @@
           "noi": "andremo",
           "voi": "andrete",
           "loro": "andranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò andato",
-          "tu": "sarai andato",
-          "lui/lei": "sarà andato",
-          "noi": "saremo andati",
-          "voi": "sarete andati",
-          "loro": "saranno andati"
         }
       },
       "congiuntivo": {
@@ -1393,14 +804,6 @@
           "voi": "andiate",
           "loro": "vadano"
         },
-        "passato": {
-          "io": "sia andato",
-          "tu": "sia andato",
-          "lui/lei": "sia andato",
-          "noi": "siamo andati",
-          "voi": "siate andati",
-          "loro": "siano andati"
-        },
         "imperfetto": {
           "io": "andassi",
           "tu": "andassi",
@@ -1408,14 +811,6 @@
           "noi": "andassimo",
           "voi": "andaste",
           "loro": "andassero"
-        },
-        "trapassato": {
-          "io": "fossi andato",
-          "tu": "fossi andato",
-          "lui/lei": "fosse andato",
-          "noi": "fossimo andati",
-          "voi": "foste andati",
-          "loro": "fossero andati"
         }
       },
       "condizionale": {
@@ -1426,44 +821,29 @@
           "noi": "andremmo",
           "voi": "andreste",
           "loro": "andrebbero"
-        },
-        "passato": {
-          "io": "sarei andato",
-          "tu": "saresti andato",
-          "lui/lei": "sarebbe andato",
-          "noi": "saremmo andati",
-          "voi": "sareste andati",
-          "loro": "sarebbero andati"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "vai",
           "lui/lei": "-",
           "noi": "andiamo",
           "voi": "andate",
           "loro": "vadano"
         }
-      },
-      "infinito": {
-        "presente": "andare",
-        "passato": "essere andato"
-      },
-      "participio": {
-        "presente": "andante",
-        "passato": "andato"
-      },
-      "gerundio": {
-        "presente": "andando",
-        "passato": "essendo andato"
       }
-    }
+    },
+    "participio_passato": "andato",
+    "gerundio_presente": "andando"
   },
-  
   {
     "infinitive": "venire",
     "translation": "to come",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1474,14 +854,6 @@
           "voi": "venite",
           "loro": "vengono"
         },
-        "passato_prossimo": {
-          "io": "sono venuto",
-          "tu": "sei venuto",
-          "lui/lei": "è venuto",
-          "noi": "siamo venuti",
-          "voi": "siete venuti",
-          "loro": "sono venuti"
-        },
         "imperfetto": {
           "io": "venivo",
           "tu": "venivi",
@@ -1489,14 +861,6 @@
           "noi": "venivamo",
           "voi": "venivate",
           "loro": "venivano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero venuto",
-          "tu": "eri venuto",
-          "lui/lei": "era venuto",
-          "noi": "eravamo venuti",
-          "voi": "eravate venuti",
-          "loro": "erano venuti"
         },
         "passato_remoto": {
           "io": "venni",
@@ -1506,14 +870,6 @@
           "voi": "veniste",
           "loro": "vennero"
         },
-        "trapassato_remoto": {
-          "io": "fui venuto",
-          "tu": "fosti venuto",
-          "lui/lei": "fu venuto",
-          "noi": "fummo venuti",
-          "voi": "foste venuti",
-          "loro": "furono venuti"
-        },
         "futuro_semplice": {
           "io": "verrò",
           "tu": "verrai",
@@ -1521,14 +877,6 @@
           "noi": "verremo",
           "voi": "verrete",
           "loro": "verranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò venuto",
-          "tu": "sarai venuto",
-          "lui/lei": "sarà venuto",
-          "noi": "saremo venuti",
-          "voi": "sarete venuti",
-          "loro": "saranno venuti"
         }
       },
       "congiuntivo": {
@@ -1540,14 +888,6 @@
           "voi": "veniate",
           "loro": "vengano"
         },
-        "passato": {
-          "io": "sia venuto",
-          "tu": "sia venuto",
-          "lui/lei": "sia venuto",
-          "noi": "siamo venuti",
-          "voi": "siate venuti",
-          "loro": "siano venuti"
-        },
         "imperfetto": {
           "io": "venissi",
           "tu": "venissi",
@@ -1555,14 +895,6 @@
           "noi": "venissimo",
           "voi": "veniste",
           "loro": "venissero"
-        },
-        "trapassato": {
-          "io": "fossi venuto",
-          "tu": "fossi venuto",
-          "lui/lei": "fosse venuto",
-          "noi": "fossimo venuti",
-          "voi": "foste venuti",
-          "loro": "fossero venuti"
         }
       },
       "condizionale": {
@@ -1573,43 +905,29 @@
           "noi": "verremmo",
           "voi": "verreste",
           "loro": "verrebbero"
-        },
-        "passato": {
-          "io": "sarei venuto",
-          "tu": "saresti venuto",
-          "lui/lei": "sarebbe venuto",
-          "noi": "saremmo venuti",
-          "voi": "sareste venuti",
-          "loro": "sarebbero venuti"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "vieni",
-          "lui/lei": "venga",
+          "lui/lei": "-",
           "noi": "veniamo",
           "voi": "venite",
           "loro": "vengano"
         }
-      },
-      "infinito": {
-        "presente": "venire",
-        "passato": "essere venuto"
-      },
-      "participio": {
-        "presente": "veniente",
-        "passato": "venuto"
-      },
-      "gerundio": {
-        "presente": "venendo",
-        "passato": "essendo venuto"
       }
-    }
+    },
+    "participio_passato": "venuto",
+    "gerundio_presente": "venendo"
   },
   {
     "infinitive": "potere",
-    "translation": "can, to be able to",
-    "type": "irregular",
+    "translation": "can/to be able to",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1620,14 +938,6 @@
           "voi": "potete",
           "loro": "possono"
         },
-        "passato_prossimo": {
-          "io": "ho potuto",
-          "tu": "hai potuto",
-          "lui/lei": "ha potuto",
-          "noi": "abbiamo potuto",
-          "voi": "avete potuto",
-          "loro": "hanno potuto"
-        },
         "imperfetto": {
           "io": "potevo",
           "tu": "potevi",
@@ -1635,14 +945,6 @@
           "noi": "potevamo",
           "voi": "potevate",
           "loro": "potevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo potuto",
-          "tu": "avevi potuto",
-          "lui/lei": "aveva potuto",
-          "noi": "avevamo potuto",
-          "voi": "avevate potuto",
-          "loro": "avevano potuto"
         },
         "passato_remoto": {
           "io": "potei",
@@ -1652,14 +954,6 @@
           "voi": "poteste",
           "loro": "poterono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi potuto",
-          "tu": "avesti potuto",
-          "lui/lei": "ebbe potuto",
-          "noi": "avemmo potuto",
-          "voi": "aveste potuto",
-          "loro": "ebbero potuto"
-        },
         "futuro_semplice": {
           "io": "potrò",
           "tu": "potrai",
@@ -1667,14 +961,6 @@
           "noi": "potremo",
           "voi": "potrete",
           "loro": "potranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò potuto",
-          "tu": "avrai potuto",
-          "lui/lei": "avrà potuto",
-          "noi": "avremo potuto",
-          "voi": "avrete potuto",
-          "loro": "avranno potuto"
         }
       },
       "congiuntivo": {
@@ -1686,14 +972,6 @@
           "voi": "possiate",
           "loro": "possano"
         },
-        "passato": {
-          "io": "abbia potuto",
-          "tu": "abbia potuto",
-          "lui/lei": "abbia potuto",
-          "noi": "abbiamo potuto",
-          "voi": "abbiate potuto",
-          "loro": "abbiano potuto"
-        },
         "imperfetto": {
           "io": "potessi",
           "tu": "potessi",
@@ -1701,14 +979,6 @@
           "noi": "potessimo",
           "voi": "poteste",
           "loro": "potessero"
-        },
-        "trapassato": {
-          "io": "avessi potuto",
-          "tu": "avessi potuto",
-          "lui/lei": "avesse potuto",
-          "noi": "avessimo potuto",
-          "voi": "aveste potuto",
-          "loro": "avessero potuto"
         }
       },
       "condizionale": {
@@ -1719,43 +989,29 @@
           "noi": "potremmo",
           "voi": "potreste",
           "loro": "potrebbero"
-        },
-        "passato": {
-          "io": "avrei potuto",
-          "tu": "avresti potuto",
-          "lui/lei": "avrebbe potuto",
-          "noi": "avremmo potuto",
-          "voi": "avreste potuto",
-          "loro": "avrebbero potuto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "-",
           "lui/lei": "-",
           "noi": "-",
           "voi": "-",
           "loro": "-"
         }
-      },
-      "infinito": {
-        "presente": "potere",
-        "passato": "aver potuto"
-      },
-      "participio": {
-        "presente": "potente",
-        "passato": "potuto"
-      },
-      "gerundio": {
-        "presente": "potendo",
-        "passato": "avendo potuto"
       }
-    }
+    },
+    "participio_passato": "potuto",
+    "gerundio_presente": "potendo"
   },
   {
     "infinitive": "dovere",
-    "translation": "to have to, must",
-    "type": "irregular",
+    "translation": "must/to have to",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1766,14 +1022,6 @@
           "voi": "dovete",
           "loro": "devono"
         },
-        "passato_prossimo": {
-          "io": "ho dovuto",
-          "tu": "hai dovuto",
-          "lui/lei": "ha dovuto",
-          "noi": "abbiamo dovuto",
-          "voi": "avete dovuto",
-          "loro": "hanno dovuto"
-        },
         "imperfetto": {
           "io": "dovevo",
           "tu": "dovevi",
@@ -1781,14 +1029,6 @@
           "noi": "dovevamo",
           "voi": "dovevate",
           "loro": "dovevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo dovuto",
-          "tu": "avevi dovuto",
-          "lui/lei": "aveva dovuto",
-          "noi": "avevamo dovuto",
-          "voi": "avevate dovuto",
-          "loro": "avevano dovuto"
         },
         "passato_remoto": {
           "io": "dovei",
@@ -1798,14 +1038,6 @@
           "voi": "doveste",
           "loro": "doverono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi dovuto",
-          "tu": "avesti dovuto",
-          "lui/lei": "ebbe dovuto",
-          "noi": "avemmo dovuto",
-          "voi": "aveste dovuto",
-          "loro": "ebbero dovuto"
-        },
         "futuro_semplice": {
           "io": "dovrò",
           "tu": "dovrai",
@@ -1813,14 +1045,6 @@
           "noi": "dovremo",
           "voi": "dovrete",
           "loro": "dovranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò dovuto",
-          "tu": "avrai dovuto",
-          "lui/lei": "avrà dovuto",
-          "noi": "avremo dovuto",
-          "voi": "avrete dovuto",
-          "loro": "avranno dovuto"
         }
       },
       "congiuntivo": {
@@ -1832,14 +1056,6 @@
           "voi": "dobbiate",
           "loro": "debbano"
         },
-        "passato": {
-          "io": "abbia dovuto",
-          "tu": "abbia dovuto",
-          "lui/lei": "abbia dovuto",
-          "noi": "abbiamo dovuto",
-          "voi": "abbiate dovuto",
-          "loro": "abbiano dovuto"
-        },
         "imperfetto": {
           "io": "dovessi",
           "tu": "dovessi",
@@ -1847,14 +1063,6 @@
           "noi": "dovessimo",
           "voi": "doveste",
           "loro": "dovessero"
-        },
-        "trapassato": {
-          "io": "avessi dovuto",
-          "tu": "avessi dovuto",
-          "lui/lei": "avesse dovuto",
-          "noi": "avessimo dovuto",
-          "voi": "aveste dovuto",
-          "loro": "avessero dovuto"
         }
       },
       "condizionale": {
@@ -1865,43 +1073,29 @@
           "noi": "dovremmo",
           "voi": "dovreste",
           "loro": "dovrebbero"
-        },
-        "passato": {
-          "io": "avrei dovuto",
-          "tu": "avresti dovuto",
-          "lui/lei": "avrebbe dovuto",
-          "noi": "avremmo dovuto",
-          "voi": "avreste dovuto",
-          "loro": "avrebbero dovuto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "-",
           "lui/lei": "-",
           "noi": "-",
           "voi": "-",
           "loro": "-"
         }
-      },
-      "infinito": {
-        "presente": "dovere",
-        "passato": "aver dovuto"
-      },
-      "participio": {
-        "presente": "dovente",
-        "passato": "dovuto"
-      },
-      "gerundio": {
-        "presente": "dovendo",
-        "passato": "avendo dovuto"
       }
-    }
+    },
+    "participio_passato": "dovuto",
+    "gerundio_presente": "dovendo"
   },
   {
     "infinitive": "preferire",
     "translation": "to prefer",
-    "type": "irregular",
+    "regularity": "regular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1912,14 +1106,6 @@
           "voi": "preferite",
           "loro": "preferiscono"
         },
-        "passato_prossimo": {
-          "io": "ho preferito",
-          "tu": "hai preferito",
-          "lui/lei": "ha preferito",
-          "noi": "abbiamo preferito",
-          "voi": "avete preferito",
-          "loro": "hanno preferito"
-        },
         "imperfetto": {
           "io": "preferivo",
           "tu": "preferivi",
@@ -1927,14 +1113,6 @@
           "noi": "preferivamo",
           "voi": "preferivate",
           "loro": "preferivano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo preferito",
-          "tu": "avevi preferito",
-          "lui/lei": "aveva preferito",
-          "noi": "avevamo preferito",
-          "voi": "avevate preferito",
-          "loro": "avevano preferito"
         },
         "passato_remoto": {
           "io": "preferii",
@@ -1944,14 +1122,6 @@
           "voi": "preferiste",
           "loro": "preferirono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi preferito",
-          "tu": "avesti preferito",
-          "lui/lei": "ebbe preferito",
-          "noi": "avemmo preferito",
-          "voi": "aveste preferito",
-          "loro": "ebbero preferito"
-        },
         "futuro_semplice": {
           "io": "preferirò",
           "tu": "preferirai",
@@ -1959,14 +1129,6 @@
           "noi": "preferiremo",
           "voi": "preferirete",
           "loro": "preferiranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò preferito",
-          "tu": "avrai preferito",
-          "lui/lei": "avrà preferito",
-          "noi": "avremo preferito",
-          "voi": "avrete preferito",
-          "loro": "avranno preferito"
         }
       },
       "congiuntivo": {
@@ -1978,14 +1140,6 @@
           "voi": "preferiate",
           "loro": "preferiscano"
         },
-        "passato": {
-          "io": "abbia preferito",
-          "tu": "abbia preferito",
-          "lui/lei": "abbia preferito",
-          "noi": "abbiamo preferito",
-          "voi": "abbiate preferito",
-          "loro": "abbiano preferito"
-        },
         "imperfetto": {
           "io": "preferissi",
           "tu": "preferissi",
@@ -1993,14 +1147,6 @@
           "noi": "preferissimo",
           "voi": "preferiste",
           "loro": "preferissero"
-        },
-        "trapassato": {
-          "io": "avessi preferito",
-          "tu": "avessi preferito",
-          "lui/lei": "avesse preferito",
-          "noi": "avessimo preferito",
-          "voi": "aveste preferito",
-          "loro": "avessero preferito"
         }
       },
       "condizionale": {
@@ -2011,43 +1157,29 @@
           "noi": "preferiremmo",
           "voi": "preferireste",
           "loro": "preferirebbero"
-        },
-        "passato": {
-          "io": "avrei preferito",
-          "tu": "avresti preferito",
-          "lui/lei": "avrebbe preferito",
-          "noi": "avremmo preferito",
-          "voi": "avreste preferito",
-          "loro": "avrebbero preferito"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "preferisci",
-          "lui/lei": "preferisca",
+          "lui/lei": "-",
           "noi": "preferiamo",
           "voi": "preferite",
           "loro": "preferiscano"
         }
-      },
-      "infinito": {
-        "presente": "preferire",
-        "passato": "aver preferito"
-      },
-      "participio": {
-        "presente": "preferente",
-        "passato": "preferito"
-      },
-      "gerundio": {
-        "presente": "preferendo",
-        "passato": "avendo preferito"
       }
-    }
+    },
+    "participio_passato": "preferito",
+    "gerundio_presente": "preferendo"
   },
   {
     "infinitive": "bere",
     "translation": "to drink",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2058,14 +1190,6 @@
           "voi": "bevete",
           "loro": "bevono"
         },
-        "passato_prossimo": {
-          "io": "ho bevuto",
-          "tu": "hai bevuto",
-          "lui/lei": "ha bevuto",
-          "noi": "abbiamo bevuto",
-          "voi": "avete bevuto",
-          "loro": "hanno bevuto"
-        },
         "imperfetto": {
           "io": "bevevo",
           "tu": "bevevi",
@@ -2073,14 +1197,6 @@
           "noi": "bevevamo",
           "voi": "bevevate",
           "loro": "bevevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo bevuto",
-          "tu": "avevi bevuto",
-          "lui/lei": "aveva bevuto",
-          "noi": "avevamo bevuto",
-          "voi": "avevate bevuto",
-          "loro": "avevano bevuto"
         },
         "passato_remoto": {
           "io": "bevvi",
@@ -2090,14 +1206,6 @@
           "voi": "beveste",
           "loro": "bevvero"
         },
-        "trapassato_remoto": {
-          "io": "ebbi bevuto",
-          "tu": "avesti bevuto",
-          "lui/lei": "ebbe bevuto",
-          "noi": "avemmo bevuto",
-          "voi": "aveste bevuto",
-          "loro": "ebbero bevuto"
-        },
         "futuro_semplice": {
           "io": "berrò",
           "tu": "berrai",
@@ -2105,14 +1213,6 @@
           "noi": "berremo",
           "voi": "berrete",
           "loro": "berranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò bevuto",
-          "tu": "avrai bevuto",
-          "lui/lei": "avrà bevuto",
-          "noi": "avremo bevuto",
-          "voi": "avrete bevuto",
-          "loro": "avranno bevuto"
         }
       },
       "congiuntivo": {
@@ -2124,14 +1224,6 @@
           "voi": "beviate",
           "loro": "bevano"
         },
-        "passato": {
-          "io": "abbia bevuto",
-          "tu": "abbia bevuto",
-          "lui/lei": "abbia bevuto",
-          "noi": "abbiamo bevuto",
-          "voi": "abbiate bevuto",
-          "loro": "abbiano bevuto"
-        },
         "imperfetto": {
           "io": "bevessi",
           "tu": "bevessi",
@@ -2139,14 +1231,6 @@
           "noi": "bevessimo",
           "voi": "beveste",
           "loro": "bevessero"
-        },
-        "trapassato": {
-          "io": "avessi bevuto",
-          "tu": "avessi bevuto",
-          "lui/lei": "avesse bevuto",
-          "noi": "avessimo bevuto",
-          "voi": "aveste bevuto",
-          "loro": "avessero bevuto"
         }
       },
       "condizionale": {
@@ -2157,43 +1241,30 @@
           "noi": "berremmo",
           "voi": "berreste",
           "loro": "berrebbero"
-        },
-        "passato": {
-          "io": "avrei bevuto",
-          "tu": "avresti bevuto",
-          "lui/lei": "avrebbe bevuto",
-          "noi": "avremmo bevuto",
-          "voi": "avreste bevuto",
-          "loro": "avrebbero bevuto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "bevi",
-          "lui/lei": "beva",
+          "lui/lei": "-",
           "noi": "beviamo",
           "voi": "bevete",
           "loro": "bevano"
         }
-      },
-      "infinito": {
-        "presente": "bere",
-        "passato": "aver bevuto"
-      },
-      "participio": {
-        "presente": "bevente",
-        "passato": "bevuto"
-      },
-      "gerundio": {
-        "presente": "bevendo",
-        "passato": "avendo bevuto"
       }
-    }
+    },
+    "participio_passato": "bevuto",
+    "gerundio_presente": "bevendo"
   },
   {
     "infinitive": "salire",
-    "translation": "to go up, to climb",
-    "type": "irregular",
+    "translation": "to go up",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere",
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2204,14 +1275,6 @@
           "voi": "salite",
           "loro": "salgono"
         },
-        "passato_prossimo": {
-          "io": "sono salito",
-          "tu": "sei salito",
-          "lui/lei": "è salito",
-          "noi": "siamo saliti",
-          "voi": "siete saliti",
-          "loro": "sono saliti"
-        },
         "imperfetto": {
           "io": "salivo",
           "tu": "salivi",
@@ -2219,14 +1282,6 @@
           "noi": "salivamo",
           "voi": "salivate",
           "loro": "salivano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero salito",
-          "tu": "eri salito",
-          "lui/lei": "era salito",
-          "noi": "eravamo saliti",
-          "voi": "eravate saliti",
-          "loro": "erano saliti"
         },
         "passato_remoto": {
           "io": "salii",
@@ -2236,14 +1291,6 @@
           "voi": "saliste",
           "loro": "salirono"
         },
-        "trapassato_remoto": {
-          "io": "fui salito",
-          "tu": "fosti salito",
-          "lui/lei": "fu salito",
-          "noi": "fummo saliti",
-          "voi": "foste saliti",
-          "loro": "furono saliti"
-        },
         "futuro_semplice": {
           "io": "salirò",
           "tu": "salirai",
@@ -2251,14 +1298,6 @@
           "noi": "saliremo",
           "voi": "salirete",
           "loro": "saliranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò salito",
-          "tu": "sarai salito",
-          "lui/lei": "sarà salito",
-          "noi": "saremo saliti",
-          "voi": "sarete saliti",
-          "loro": "saranno saliti"
         }
       },
       "congiuntivo": {
@@ -2270,14 +1309,6 @@
           "voi": "saliate",
           "loro": "salgono"
         },
-        "passato": {
-          "io": "sia salito",
-          "tu": "sia salito",
-          "lui/lei": "sia salito",
-          "noi": "siamo saliti",
-          "voi": "siate saliti",
-          "loro": "siano saliti"
-        },
         "imperfetto": {
           "io": "salissi",
           "tu": "salissi",
@@ -2285,14 +1316,6 @@
           "noi": "salissimo",
           "voi": "saliste",
           "loro": "salissero"
-        },
-        "trapassato": {
-          "io": "fossi salito",
-          "tu": "fossi salito",
-          "lui/lei": "fosse salito",
-          "noi": "fossimo saliti",
-          "voi": "foste saliti",
-          "loro": "fossero saliti"
         }
       },
       "condizionale": {
@@ -2303,43 +1326,29 @@
           "noi": "saliremmo",
           "voi": "salireste",
           "loro": "salirebbero"
-        },
-        "passato": {
-          "io": "sarei salito",
-          "tu": "saresti salito",
-          "lui/lei": "sarebbe salito",
-          "noi": "saremmo saliti",
-          "voi": "sareste saliti",
-          "loro": "sarebbero saliti"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "sali",
-          "lui/lei": "salga",
+          "lui/lei": "-",
           "noi": "saliamo",
           "voi": "salite",
           "loro": "salgono"
         }
-      },
-      "infinito": {
-        "presente": "salire",
-        "passato": "esser salito"
-      },
-      "participio": {
-        "presente": "saliente",
-        "passato": "salito"
-      },
-      "gerundio": {
-        "presente": "salendo",
-        "passato": "essendo salito"
       }
-    }
+    },
+    "participio_passato": "salito",
+    "gerundio_presente": "salendo"
   },
   {
     "infinitive": "rimanere",
-    "translation": "to stay, to remain",
-    "type": "irregular",
+    "translation": "to stay",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2350,14 +1359,6 @@
           "voi": "rimanete",
           "loro": "rimangono"
         },
-        "passato_prossimo": {
-          "io": "sono rimasto",
-          "tu": "sei rimasto",
-          "lui/lei": "è rimasto",
-          "noi": "siamo rimasti",
-          "voi": "siete rimasti",
-          "loro": "sono rimasti"
-        },
         "imperfetto": {
           "io": "rimanevo",
           "tu": "rimanevi",
@@ -2365,14 +1366,6 @@
           "noi": "rimanevamo",
           "voi": "rimanevate",
           "loro": "rimanevano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero rimasto",
-          "tu": "eri rimasto",
-          "lui/lei": "era rimasto",
-          "noi": "eravamo rimasti",
-          "voi": "eravate rimasti",
-          "loro": "erano rimasti"
         },
         "passato_remoto": {
           "io": "rimasi",
@@ -2382,14 +1375,6 @@
           "voi": "rimaneste",
           "loro": "rimasero"
         },
-        "trapassato_remoto": {
-          "io": "fui rimasto",
-          "tu": "fosti rimasto",
-          "lui/lei": "fu rimasto",
-          "noi": "fummo rimasti",
-          "voi": "foste rimasti",
-          "loro": "furono rimasti"
-        },
         "futuro_semplice": {
           "io": "rimarrò",
           "tu": "rimarrai",
@@ -2397,14 +1382,6 @@
           "noi": "rimarremo",
           "voi": "rimarrete",
           "loro": "rimarranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò rimasto",
-          "tu": "sarai rimasto",
-          "lui/lei": "sarà rimasto",
-          "noi": "saremo rimasti",
-          "voi": "sarete rimasti",
-          "loro": "saranno rimasti"
         }
       },
       "congiuntivo": {
@@ -2416,14 +1393,6 @@
           "voi": "rimaniate",
           "loro": "rimangano"
         },
-        "passato": {
-          "io": "sia rimasto",
-          "tu": "sia rimasto",
-          "lui/lei": "sia rimasto",
-          "noi": "siamo rimasti",
-          "voi": "siate rimasti",
-          "loro": "siano rimasti"
-        },
         "imperfetto": {
           "io": "rimanessi",
           "tu": "rimanessi",
@@ -2431,14 +1400,6 @@
           "noi": "rimanessimo",
           "voi": "rimaneste",
           "loro": "rimanessero"
-        },
-        "trapassato": {
-          "io": "fossi rimasto",
-          "tu": "fossi rimasto",
-          "lui/lei": "fosse rimasto",
-          "noi": "fossimo rimasti",
-          "voi": "foste rimasti",
-          "loro": "fossero rimasti"
         }
       },
       "condizionale": {
@@ -2447,45 +1408,31 @@
           "tu": "rimarresti",
           "lui/lei": "rimarrebbe",
           "noi": "rimarremmo",
-          "voi": "rimarreste",
+          "voi": "rimarrete",
           "loro": "rimarrebbero"
-        },
-        "passato": {
-          "io": "sarei rimasto",
-          "tu": "saresti rimasto",
-          "lui/lei": "sarebbe rimasto",
-          "noi": "saremmo rimasti",
-          "voi": "sareste rimasti",
-          "loro": "sarebbero rimasti"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "rimani",
-          "lui/lei": "rimanga",
+          "lui/lei": "-",
           "noi": "rimaniamo",
           "voi": "rimanete",
           "loro": "rimangano"
         }
-      },
-      "infinito": {
-        "presente": "rimanere",
-        "passato": "esser rimasto"
-      },
-      "participio": {
-        "presente": "rimanente",
-        "passato": "rimasto"
-      },
-      "gerundio": {
-        "presente": "rimanendo",
-        "passato": "essendo rimasto"
       }
-    }
+    },
+    "participio_passato": "rimasto",
+    "gerundio_presente": "rimanendo"
   },
   {
     "infinitive": "morire",
     "translation": "to die",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "essere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2496,14 +1443,6 @@
           "voi": "morite",
           "loro": "muoiono"
         },
-        "passato_prossimo": {
-          "io": "sono morto",
-          "tu": "sei morto",
-          "lui/lei": "è morto",
-          "noi": "siamo morti",
-          "voi": "siete morti",
-          "loro": "sono morti"
-        },
         "imperfetto": {
           "io": "morivo",
           "tu": "morivi",
@@ -2511,14 +1450,6 @@
           "noi": "morivamo",
           "voi": "morivate",
           "loro": "morivano"
-        },
-        "trapassato_prossimo": {
-          "io": "ero morto",
-          "tu": "eri morto",
-          "lui/lei": "era morto",
-          "noi": "eravamo morti",
-          "voi": "eravate morti",
-          "loro": "erano morti"
         },
         "passato_remoto": {
           "io": "morii",
@@ -2528,14 +1459,6 @@
           "voi": "moriste",
           "loro": "morirono"
         },
-        "trapassato_remoto": {
-          "io": "fui morto",
-          "tu": "fosti morto",
-          "lui/lei": "fu morto",
-          "noi": "fummo morti",
-          "voi": "foste morti",
-          "loro": "furono morti"
-        },
         "futuro_semplice": {
           "io": "morirò",
           "tu": "morirai",
@@ -2543,14 +1466,6 @@
           "noi": "moriremo",
           "voi": "morirete",
           "loro": "moriranno"
-        },
-        "futuro_anteriore": {
-          "io": "sarò morto",
-          "tu": "sarai morto",
-          "lui/lei": "sarà morto",
-          "noi": "saremo morti",
-          "voi": "sarete morti",
-          "loro": "saranno morti"
         }
       },
       "congiuntivo": {
@@ -2562,14 +1477,6 @@
           "voi": "moriate",
           "loro": "muoiano"
         },
-        "passato": {
-          "io": "sia morto",
-          "tu": "sia morto",
-          "lui/lei": "sia morto",
-          "noi": "siamo morti",
-          "voi": "siate morti",
-          "loro": "siano morti"
-        },
         "imperfetto": {
           "io": "morissi",
           "tu": "morissi",
@@ -2577,14 +1484,6 @@
           "noi": "morissimo",
           "voi": "moriste",
           "loro": "morissero"
-        },
-        "trapassato": {
-          "io": "fossi morto",
-          "tu": "fossi morto",
-          "lui/lei": "fosse morto",
-          "noi": "fossimo morti",
-          "voi": "foste morti",
-          "loro": "fossero morti"
         }
       },
       "condizionale": {
@@ -2595,43 +1494,29 @@
           "noi": "moriremmo",
           "voi": "morireste",
           "loro": "morirebbero"
-        },
-        "passato": {
-          "io": "sarei morto",
-          "tu": "saresti morto",
-          "lui/lei": "sarebbe morto",
-          "noi": "saremmo morti",
-          "voi": "sareste morti",
-          "loro": "sarebbero morti"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "muori",
-          "lui/lei": "muoia",
+          "lui/lei": "-",
           "noi": "moriamo",
           "voi": "morite",
           "loro": "muoiano"
         }
-      },
-      "infinito": {
-        "presente": "morire",
-        "passato": "esser morto"
-      },
-      "participio": {
-        "presente": "morente",
-        "passato": "morto"
-      },
-      "gerundio": {
-        "presente": "morendo",
-        "passato": "essendo morto"
       }
-    }
+    },
+    "participio_passato": "morto",
+    "gerundio_presente": "morendo"
   },
   {
     "infinitive": "finire",
     "translation": "to finish",
-    "type": "regular",
+    "regularity": "regular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2642,14 +1527,6 @@
           "voi": "finite",
           "loro": "finiscono"
         },
-        "passato_prossimo": {
-          "io": "ho finito",
-          "tu": "hai finito",
-          "lui/lei": "ha finito",
-          "noi": "abbiamo finito",
-          "voi": "avete finito",
-          "loro": "hanno finito"
-        },
         "imperfetto": {
           "io": "finivo",
           "tu": "finivi",
@@ -2657,14 +1534,6 @@
           "noi": "finivamo",
           "voi": "finivate",
           "loro": "finivano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo finito",
-          "tu": "avevi finito",
-          "lui/lei": "aveva finito",
-          "noi": "avevamo finito",
-          "voi": "avevate finito",
-          "loro": "avevano finito"
         },
         "passato_remoto": {
           "io": "finii",
@@ -2674,14 +1543,6 @@
           "voi": "finiste",
           "loro": "finirono"
         },
-        "trapassato_remoto": {
-          "io": "ebbi finito",
-          "tu": "avesti finito",
-          "lui/lei": "ebbe finito",
-          "noi": "avemmo finito",
-          "voi": "aveste finito",
-          "loro": "ebbero finito"
-        },
         "futuro_semplice": {
           "io": "finirò",
           "tu": "finirai",
@@ -2689,14 +1550,6 @@
           "noi": "finiremo",
           "voi": "finirete",
           "loro": "finiranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò finito",
-          "tu": "avrai finito",
-          "lui/lei": "avrà finito",
-          "noi": "avremo finito",
-          "voi": "avrete finito",
-          "loro": "avranno finito"
         }
       },
       "congiuntivo": {
@@ -2708,14 +1561,6 @@
           "voi": "finiate",
           "loro": "finiscano"
         },
-        "passato": {
-          "io": "abbia finito",
-          "tu": "abbia finito",
-          "lui/lei": "abbia finito",
-          "noi": "abbiamo finito",
-          "voi": "abbiate finito",
-          "loro": "abbiano finito"
-        },
         "imperfetto": {
           "io": "finissi",
           "tu": "finissi",
@@ -2723,14 +1568,6 @@
           "noi": "finissimo",
           "voi": "finiste",
           "loro": "finissero"
-        },
-        "trapassato": {
-          "io": "avessi finito",
-          "tu": "avessi finito",
-          "lui/lei": "avesse finito",
-          "noi": "avessimo finito",
-          "voi": "aveste finito",
-          "loro": "avessero finito"
         }
       },
       "condizionale": {
@@ -2741,43 +1578,29 @@
           "noi": "finiremmo",
           "voi": "finireste",
           "loro": "finirebbero"
-        },
-        "passato": {
-          "io": "avrei finito",
-          "tu": "avresti finito",
-          "lui/lei": "avrebbe finito",
-          "noi": "avremmo finito",
-          "voi": "avreste finito",
-          "loro": "avrebbero finito"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "finisci",
-          "lui/lei": "finisca",
+          "lui/lei": "-",
           "noi": "finiamo",
           "voi": "finite",
           "loro": "finiscano"
         }
-      },
-      "infinito": {
-        "presente": "finire",
-        "passato": "aver finito"
-      },
-      "participio": {
-        "presente": "finente",
-        "passato": "finito"
-      },
-      "gerundio": {
-        "presente": "finendo",
-        "passato": "avendo finito"
       }
-    }
+    },
+    "participio_passato": "finito",
+    "gerundio_presente": "finendo"
   },
   {
     "infinitive": "vedere",
     "translation": "to see",
-    "type": "irregular",
+    "regularity": "irregular",
+    "auxiliaries": [
+      "avere"
+    ],
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2788,14 +1611,6 @@
           "voi": "vedete",
           "loro": "vedono"
         },
-        "passato_prossimo": {
-          "io": "ho visto",
-          "tu": "hai visto",
-          "lui/lei": "ha visto",
-          "noi": "abbiamo visto",
-          "voi": "avete visto",
-          "loro": "hanno visto"
-        },
         "imperfetto": {
           "io": "vedevo",
           "tu": "vedevi",
@@ -2803,14 +1618,6 @@
           "noi": "vedevamo",
           "voi": "vedevate",
           "loro": "vedevano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo visto",
-          "tu": "avevi visto",
-          "lui/lei": "aveva visto",
-          "noi": "avevamo visto",
-          "voi": "avevate visto",
-          "loro": "avevano visto"
         },
         "passato_remoto": {
           "io": "vidi",
@@ -2820,14 +1627,6 @@
           "voi": "vedeste",
           "loro": "videro"
         },
-        "trapassato_remoto": {
-          "io": "ebbi visto",
-          "tu": "avesti visto",
-          "lui/lei": "ebbe visto",
-          "noi": "avemmo visto",
-          "voi": "aveste visto",
-          "loro": "ebbero visto"
-        },
         "futuro_semplice": {
           "io": "vedrò",
           "tu": "vedrai",
@@ -2835,14 +1634,6 @@
           "noi": "vedremo",
           "voi": "vedrete",
           "loro": "vedranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò visto",
-          "tu": "avrai visto",
-          "lui/lei": "avrà visto",
-          "noi": "avremo visto",
-          "voi": "avrete visto",
-          "loro": "avranno visto"
         }
       },
       "congiuntivo": {
@@ -2854,14 +1645,6 @@
           "voi": "vediate",
           "loro": "vedano"
         },
-        "passato": {
-          "io": "abbia visto",
-          "tu": "abbia visto",
-          "lui/lei": "abbia visto",
-          "noi": "abbiamo visto",
-          "voi": "abbiate visto",
-          "loro": "abbiano visto"
-        },
         "imperfetto": {
           "io": "vedessi",
           "tu": "vedessi",
@@ -2869,14 +1652,6 @@
           "noi": "vedessimo",
           "voi": "vedeste",
           "loro": "vedessero"
-        },
-        "trapassato": {
-          "io": "avessi visto",
-          "tu": "avessi visto",
-          "lui/lei": "avesse visto",
-          "noi": "avessimo visto",
-          "voi": "aveste visto",
-          "loro": "avessero visto"
         }
       },
       "condizionale": {
@@ -2887,184 +1662,103 @@
           "noi": "vedremmo",
           "voi": "vedreste",
           "loro": "vedrebbero"
-        },
-        "passato": {
-          "io": "avrei visto",
-          "tu": "avresti visto",
-          "lui/lei": "avrebbe visto",
-          "noi": "avremmo visto",
-          "voi": "avreste visto",
-          "loro": "avrebbero visto"
         }
       },
       "imperativo": {
-        "presente": {
+        "positivo": {
+          "io": "-",
           "tu": "vedi",
-          "lui/lei": "veda",
+          "lui/lei": "-",
           "noi": "vediamo",
           "voi": "vedete",
           "loro": "vedano"
         }
-      },
-      "infinito": {
-        "presente": "vedere",
-        "passato": "aver visto"
-      },
-      "participio": {
-        "presente": "vedente",
-        "passato": "visto"
-      },
-      "gerundio": {
-        "presente": "vedendo",
-        "passato": "avendo visto"
       }
-    }
+    },
+    "participio_passato": "visto",
+    "gerundio_presente": "vedendo"
   },
 
   {
-    "infinitive": "parlare",
-    "translation": "to speak",
-    "type": "regular",
+    "infinitive": "stare",
+    "translation": "to stay, to be (temporary)",
+    "regularity": "irregular",
+    "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": "parlo",
-          "tu": "parli",
-          "lui/lei": "parla",
-          "noi": "parliamo",
-          "voi": "parlate",
-          "loro": "parlano"
-        },
-        "passato_prossimo": {
-          "io": "ho parlato",
-          "tu": "hai parlato",
-          "lui/lei": "ha parlato",
-          "noi": "abbiamo parlato",
-          "voi": "avete parlato",
-          "loro": "hanno parlato"
+          "io": "sto",
+          "tu": "stai",
+          "lui/lei": "sta",
+          "noi": "stiamo",
+          "voi": "state",
+          "loro": "stanno"
         },
         "imperfetto": {
-          "io": "parlavo",
-          "tu": "parlavi",
-          "lui/lei": "parlava",
-          "noi": "parlavamo",
-          "voi": "parlavate",
-          "loro": "parlavano"
-        },
-        "trapassato_prossimo": {
-          "io": "avevo parlato",
-          "tu": "avevi parlato",
-          "lui/lei": "aveva parlato",
-          "noi": "avevamo parlato",
-          "voi": "avevate parlato",
-          "loro": "avevano parlato"
+          "io": "stavo",
+          "tu": "stavi",
+          "lui/lei": "stava",
+          "noi": "stavamo",
+          "voi": "stavate",
+          "loro": "stavano"
         },
         "passato_remoto": {
-          "io": "parlai",
-          "tu": "parlasti",
-          "lui/lei": "parlò",
-          "noi": "parlammo",
-          "voi": "parlaste",
-          "loro": "parlarono"
-        },
-        "trapassato_remoto": {
-          "io": "ebbi parlato",
-          "tu": "avesti parlato",
-          "lui/lei": "ebbe parlato",
-          "noi": "avemmo parlato",
-          "voi": "aveste parlato",
-          "loro": "ebbero parlato"
+          "io": "stetti",
+          "tu": "stesti",
+          "lui/lei": "stette",
+          "noi": "stemmo",
+          "voi": "steste",
+          "loro": "stettero"
         },
         "futuro_semplice": {
-          "io": "parlerò",
-          "tu": "parlerai",
-          "lui/lei": "parlerà",
-          "noi": "parleremo",
-          "voi": "parlerete",
-          "loro": "parleranno"
-        },
-        "futuro_anteriore": {
-          "io": "avrò parlato",
-          "tu": "avrai parlato",
-          "lui/lei": "avrà parlato",
-          "noi": "avremo parlato",
-          "voi": "avrete parlato",
-          "loro": "avranno parlato"
+          "io": "starò",
+          "tu": "starai",
+          "lui/lei": "starà",
+          "noi": "staremo",
+          "voi": "starete",
+          "loro": "staranno"
         }
       },
       "congiuntivo": {
         "presente": {
-          "io": "parli",
-          "tu": "parli",
-          "lui/lei": "parli",
-          "noi": "parliamo",
-          "voi": "parliate",
-          "loro": "parlino"
-        },
-        "passato": {
-          "io": "abbia parlato",
-          "tu": "abbia parlato",
-          "lui/lei": "abbia parlato",
-          "noi": "abbiamo parlato",
-          "voi": "abbiate parlato",
-          "loro": "abbiano parlato"
+          "io": "stia",
+          "tu": "stia",
+          "lui/lei": "stia",
+          "noi": "stiamo",
+          "voi": "stiate",
+          "loro": "stiano"
         },
         "imperfetto": {
-          "io": "parlassi",
-          "tu": "parlassi",
-          "lui/lei": "parlasse",
-          "noi": "parlassimo",
-          "voi": "parlaste",
-          "loro": "parlassero"
-        },
-        "trapassato": {
-          "io": "avessi parlato",
-          "tu": "avessi parlato",
-          "lui/lei": "avesse parlato",
-          "noi": "avessimo parlato",
-          "voi": "aveste parlato",
-          "loro": "avessero parlato"
+          "io": "stessi",
+          "tu": "stessi",
+          "lui/lei": "stesse",
+          "noi": "stessimo",
+          "voi": "steste",
+          "loro": "stessero"
         }
       },
       "condizionale": {
         "presente": {
-          "io": "parlerei",
-          "tu": "parleresti",
-          "lui/lei": "parlerebbe",
-          "noi": "parleremmo",
-          "voi": "parlereste",
-          "loro": "parlerebbero"
-        },
-        "passato": {
-          "io": "avrei parlato",
-          "tu": "avresti parlato",
-          "lui/lei": "avrebbe parlato",
-          "noi": "avremmo parlato",
-          "voi": "avreste parlato",
-          "loro": "avrebbero parlato"
+          "io": "starei",
+          "tu": "staresti",
+          "lui/lei": "starebbe",
+          "noi": "staremmo",
+          "voi": "stareste",
+          "loro": "starebbero"
         }
       },
       "imperativo": {
-        "presente": {
-          "tu": "parla",
+        "positivo": {
+          "io": "-",
+          "tu": "sta' (or stai)",
           "lui/lei": "-",
-          "noi": "parliamo",
-          "voi": "parlate",
-          "loro": "parlino"
+          "noi": "stiamo",
+          "voi": "state",
+          "loro": "stiano"
         }
-      },
-      "infinito": {
-        "presente": "parlare",
-        "passato": "aver parlato"
-      },
-      "participio": {
-        "presente": "parlante",
-        "passato": "parlato"
-      },
-      "gerundio": {
-        "presente": "parlando",
-        "passato": "avendo parlato"
       }
-    }
+    },
+    "participio_passato": "stato",
+    "gerundio_presente": "stando"
   }
 ]
