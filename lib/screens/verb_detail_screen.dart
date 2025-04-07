@@ -120,10 +120,11 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(conjugatedTenses: [
-                    (label: 'Positivo', conjugations: widget.verb.imperative.positive),
-                    (label: 'Negative', conjugations: widget.verb.imperative.negative),
-                  ]),
+                  child: ConjugationTable(
+                      conjugatedTenses: [
+                        (label: 'Positivo', conjugations: widget.verb.imperative.positive),
+                        (label: 'Negative', conjugations: widget.verb.imperative.negative),
+                  ], showEnglishPronouns: false),
                 ),
               ],
             ),

@@ -6,9 +6,10 @@ import '../models/verb.dart';
 typedef ConjugatedTense = ({String label, Conjugations conjugations});
 
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.conjugatedTenses});
+  const ConjugationTable({super.key, required this.conjugatedTenses, this.showEnglishPronouns = true});
 
   final List<ConjugatedTense> conjugatedTenses;
+  final bool showEnglishPronouns;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,15 @@ class ConjugationTable extends StatelessWidget {
         cells: <DataCell>[
           DataCell(Text(pronoun.italian)),
           ...conjugatedTenses.map((conjugatedTense) =>
-              DataCell(Text((conjugatedTense.conjugations as Map)[pronoun] ?? "-"))
+              DataCell(Column( crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if(conjugatedTense.conjugations[pronoun] != null) ...[
+                      Text(conjugatedTense.conjugations[pronoun]?.italian ?? "-"),
+                      Text("${showEnglishPronouns ? "${pronoun.english} " : ""}${conjugatedTense.conjugations[pronoun]?.english
+                      }", style: TextStyle(fontStyle: FontStyle.italic))]
+                  else Text("-")
+                ],
+              ))
           ),
         ],
       )).toList()

@@ -30,7 +30,7 @@ class _VerbScreenState extends State<VerbScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ConiuGatto 🇮🇹')),
+      appBar: AppBar(title: Text('Verbs 📚')),
       body: FutureBuilder<List<Verb>>(
         future: futureVerbs,
         builder: (context, snapshot) {

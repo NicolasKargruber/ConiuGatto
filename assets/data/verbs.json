@@ -1,1764 +1,685 @@
 [
   {
-    "infinitive": "essere",
-    "translation": "to be",
-    "regularity": "irregular",
-    "auxiliaries": ["essere"],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "sono",
-          "tu": "sei",
-          "lui/lei": "è",
-          "noi": "siamo",
-          "voi": "siete",
-          "loro": "sono"
-        },
-        "imperfetto": {
-          "io": "ero",
-          "tu": "eri",
-          "lui/lei": "era",
-          "noi": "eravamo",
-          "voi": "eravate",
-          "loro": "erano"
-        },
-        "passato_remoto": {
-          "io": "fui",
-          "tu": "fosti",
-          "lui/lei": "fu",
-          "noi": "fummo",
-          "voi": "foste",
-          "loro": "furono"
-        },
-        "futuro_semplice": {
-          "io": "sarò",
-          "tu": "sarai",
-          "lui/lei": "sarà",
-          "noi": "saremo",
-          "voi": "sarete",
-          "loro": "saranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "sia",
-          "tu": "sia",
-          "lui/lei": "sia",
-          "noi": "siamo",
-          "voi": "siate",
-          "loro": "siano"
-        },
-        "imperfetto": {
-          "io": "fossi",
-          "tu": "fossi",
-          "lui/lei": "fosse",
-          "noi": "fossimo",
-          "voi": "foste",
-          "loro": "fossero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "sarei",
-          "tu": "saresti",
-          "lui/lei": "sarebbe",
-          "noi": "saremmo",
-          "voi": "sareste",
-          "loro": "sarebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "sii",
-          "lui/lei": null,
-          "noi": "siamo",
-          "voi": "siate",
-          "loro": "siano"
-        }
-      }
-    },
-    "participio_passato": "stato",
-    "gerundio_presente": "essendo"
-  },
-  {
     "infinitive": "avere",
     "translation": "to have",
     "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
+    "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": "ho",
-          "tu": "hai",
-          "lui/lei": "ha",
-          "noi": "abbiamo",
-          "voi": "avete",
-          "loro": "hanno"
+          "io": {
+            "italian": "ho",
+            "english": "have"
+          },
+          "tu": {
+            "italian": "hai",
+            "english": "have"
+          },
+          "lui/lei": {
+            "italian": "ha",
+            "english": "has"
+          },
+          "noi": {
+            "italian": "abbiamo",
+            "english": "have"
+          },
+          "voi": {
+            "italian": "avete",
+            "english": "have"
+          },
+          "loro": {
+            "italian": "hanno",
+            "english": "have"
+          }
         },
         "imperfetto": {
-          "io": "avevo",
-          "tu": "avevi",
-          "lui/lei": "aveva",
-          "noi": "avevamo",
-          "voi": "avevate",
-          "loro": "avevano"
+          "io": {
+            "italian": "avevo",
+            "english": "used to have"
+          },
+          "tu": {
+            "italian": "avevi",
+            "english": "used to have"
+          },
+          "lui/lei": {
+            "italian": "aveva",
+            "english": "used to have"
+          },
+          "noi": {
+            "italian": "avevamo",
+            "english": "used to have"
+          },
+          "voi": {
+            "italian": "avevate",
+            "english": " used to have"
+          },
+          "loro": {
+            "italian": "avevano",
+            "english": "had"
+          }
         },
         "passato_remoto": {
-          "io": "ebbi",
-          "tu": "avesti",
-          "lui/lei": "ebbe",
-          "noi": "avemmo",
-          "voi": "aveste",
-          "loro": "ebbero"
+          "io": {
+            "italian": "ebbi",
+            "english": "had"
+          },
+          "tu": {
+            "italian": "avesti",
+            "english": "had"
+          },
+          "lui/lei": {
+            "italian": "ebbe",
+            "english": "had"
+          },
+          "noi": {
+            "italian": "avemmo",
+            "english": "had"
+          },
+          "voi": {
+            "italian": "aveste",
+            "english": "had"
+          },
+          "loro": {
+            "italian": "ebbero",
+            "english": "had"
+          }
         },
         "futuro_semplice": {
-          "io": "avrò",
-          "tu": "avrai",
-          "lui/lei": "avrà",
-          "noi": "avremo",
-          "voi": "avrete",
-          "loro": "avranno"
+          "io": {
+            "italian": "avrò",
+            "english": "will have"
+          },
+          "tu": {
+            "italian": "avrai",
+            "english": "will have"
+          },
+          "lui/lei": {
+            "italian": "avrà",
+            "english": "will have"
+          },
+          "noi": {
+            "italian": "avremo",
+            "english": "will have"
+          },
+          "voi": {
+            "italian": "avrete",
+            "english": " will have"
+          },
+          "loro": {
+            "italian": "avranno",
+            "english": "will have"
+          }
         }
       },
       "congiuntivo": {
         "presente": {
-          "io": "abbia",
-          "tu": "abbia",
-          "lui/lei": "abbia",
-          "noi": "abbiamo",
-          "voi": "abbiate",
-          "loro": "abbiano"
+          "io": {
+            "italian": "abbia",
+            "english": "have"
+          },
+          "tu": {
+            "italian": "abbia",
+            "english": "have"
+          },
+          "lui/lei": {
+            "italian": "abbia",
+            "english": "has"
+          },
+          "noi": {
+            "italian": "abbiamo",
+            "english": "have"
+          },
+          "voi": {
+            "italian": "abbiate",
+            "english": " have"
+          },
+          "loro": {
+            "italian": "abbiano",
+            "english": "have"
+          }
         },
         "imperfetto": {
-          "io": "avessi",
-          "tu": "avessi",
-          "lui/lei": "avesse",
-          "noi": "avessimo",
-          "voi": "aveste",
-          "loro": "avessero"
+          "io": {
+            "italian": "avessi",
+            "english": "used to have"
+          },
+          "tu": {
+            "italian": "avessi",
+            "english": "used to have"
+          },
+          "lui/lei": {
+            "italian": "avesse",
+            "english": "used to have"
+          },
+          "noi": {
+            "italian": "avessimo",
+            "english": "used to have"
+          },
+          "voi": {
+            "italian": "aveste",
+            "english": " used to have"
+          },
+          "loro": {
+            "italian": "avessero",
+            "english": "used to have"
+          }
         }
       },
       "condizionale": {
         "presente": {
-          "io": "avrei",
-          "tu": "avresti",
-          "lui/lei": "avrebbe",
-          "noi": "avremmo",
-          "voi": "avreste",
-          "loro": "avrebbero"
+          "io": {
+            "italian": "avrei",
+            "english": "would have"
+          },
+          "tu": {
+            "italian": "avresti",
+            "english": "would have"
+          },
+          "lui/lei": {
+            "italian": "avrebbe",
+            "english": "would have"
+          },
+          "noi": {
+            "italian": "avremmo",
+            "english": "would have"
+          },
+          "voi": {
+            "italian": "avreste",
+            "english": "would have"
+          },
+          "loro": {
+            "italian": "avrebbero",
+            "english": "would have"
+          }
         }
       },
       "imperativo": {
         "positivo": {
           "io": null,
-          "tu": "abbi",
-          "lui/lei": null,
-          "noi": "abbiamo",
-          "voi": "abbiate",
-          "loro": null
+          "tu": {
+            "italian": "abbi",
+            "english": "(to you) have!"
+          },
+          "lui/lei": {
+            "italian": "abbia",
+            "english": "(to you formal) have!"
+          },
+          "noi": {
+            "italian": "abbiamo",
+            "english": "let's have!"
+          },
+          "voi": {
+            "italian": "abbiate",
+            "english": "(to you plural) have!"
+          },
+          "loro": {
+            "italian": "abbiano",
+            "english": "(to you plural formal) have!"
+          }
         }
       }
     },
-    "participio_passato": "avuto",
-    "gerundio_presente": "avendo"
-  },
-  {
-    "infinitive": "volere",
-    "translation": "to want",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "voglio",
-          "tu": "vuoi",
-          "lui/lei": "vuole",
-          "noi": "vogliamo",
-          "voi": "volete",
-          "loro": "vogliono"
-        },
-        "imperfetto": {
-          "io": "volevo",
-          "tu": "volevi",
-          "lui/lei": "voleva",
-          "noi": "volevamo",
-          "voi": "volevate",
-          "loro": "volevano"
-        },
-        "passato_remoto": {
-          "io": "volli",
-          "tu": "volesti",
-          "lui/lei": "volle",
-          "noi": "vollemmo",
-          "voi": "voleste",
-          "loro": "vollero"
-        },
-        "futuro_semplice": {
-          "io": "vorrò",
-          "tu": "vorrai",
-          "lui/lei": "vorrà",
-          "noi": "vorremo",
-          "voi": "vorrete",
-          "loro": "vorranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "voglia",
-          "tu": "voglia",
-          "lui/lei": "voglia",
-          "noi": "vogliamo",
-          "voi": "vogliate",
-          "loro": "vogliano"
-        },
-        "imperfetto": {
-          "io": "volessi",
-          "tu": "volessi",
-          "lui/lei": "volesse",
-          "noi": "volessimo",
-          "voi": "voleste",
-          "loro": "volessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "vorrei",
-          "tu": "vorresti",
-          "lui/lei": "vorrebbe",
-          "noi": "vorremmo",
-          "voi": "vorreste",
-          "loro": "vorrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "vogli",
-          "lui/lei": null,
-          "noi": "vogliamo",
-          "voi": "vogliate",
-          "loro": "vogliano"
-        }
-      }
+    "participio_passato": {
+      "italian": "avuto",
+      "english": "had"
     },
-    "participio_passato": "voluto",
-    "gerundio_presente": "volendo"
+    "gerundio_presente": {
+      "italian": "avendo",
+      "english": "having"
+    }
   },
   {
-    "infinitive": "fare",
-    "translation": "to do",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "faccio",
-          "tu": "fai",
-          "lui/lei": "fa",
-          "noi": "facciamo",
-          "voi": "fate",
-          "loro": "fanno"
-        },
-        "imperfetto": {
-          "io": "facevo",
-          "tu": "facevi",
-          "lui/lei": "faceva",
-          "noi": "facevamo",
-          "voi": "facevate",
-          "loro": "facevano"
-        },
-        "passato_remoto": {
-          "io": "feci",
-          "tu": "facesti",
-          "lui/lei": "fece",
-          "noi": "facemmo",
-          "voi": "faceste",
-          "loro": "fecero"
-        },
-        "futuro_semplice": {
-          "io": "farò",
-          "tu": "farai",
-          "lui/lei": "farà",
-          "noi": "faremo",
-          "voi": "farete",
-          "loro": "faranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "faccia",
-          "tu": "faccia",
-          "lui/lei": "faccia",
-          "noi": "facciamo",
-          "voi": "facciate",
-          "loro": "facciano"
-        },
-        "imperfetto": {
-          "io": "facessi",
-          "tu": "facessi",
-          "lui/lei": "facesse",
-          "noi": "facessimo",
-          "voi": "faceste",
-          "loro": "facessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "farei",
-          "tu": "faresti",
-          "lui/lei": "farebbe",
-          "noi": "faremmo",
-          "voi": "fareste",
-          "loro": "farebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "fai",
-          "lui/lei": null,
-          "noi": "facciamo",
-          "voi": "fate",
-          "loro": "facciano"
-        }
-      }
-    },
-    "participio_passato": "fatto",
-    "gerundio_presente": "facendo"
-  },
-  {
-    "infinitive": "dire",
-    "translation": "to say",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "dico",
-          "tu": "dici",
-          "lui/lei": "dice",
-          "noi": "diciamo",
-          "voi": "dite",
-          "loro": "dicono"
-        },
-        "imperfetto": {
-          "io": "dicevo",
-          "tu": "dicevi",
-          "lui/lei": "diceva",
-          "noi": "dicevamo",
-          "voi": "dicevate",
-          "loro": "dicevano"
-        },
-        "passato_remoto": {
-          "io": "dissi",
-          "tu": "dicesti",
-          "lui/lei": "disse",
-          "noi": "dicemmo",
-          "voi": "diceste",
-          "loro": "dissero"
-        },
-        "futuro_semplice": {
-          "io": "dirò",
-          "tu": "dirai",
-          "lui/lei": "dirà",
-          "noi": "diremo",
-          "voi": "direte",
-          "loro": "diranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "dica",
-          "tu": "dica",
-          "lui/lei": "dica",
-          "noi": "diciamo",
-          "voi": "diciate",
-          "loro": "dicano"
-        },
-        "imperfetto": {
-          "io": "dicessi",
-          "tu": "dicessi",
-          "lui/lei": "dicesse",
-          "noi": "dicessimo",
-          "voi": "diceste",
-          "loro": "dicessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "direi",
-          "tu": "diresti",
-          "lui/lei": "direbbe",
-          "noi": "diremmo",
-          "voi": "direste",
-          "loro": "direbbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "di'",
-          "lui/lei": null,
-          "noi": "diciamo",
-          "voi": "dite",
-          "loro": "dicano"
-        }
-      }
-    },
-    "participio_passato": "detto",
-    "gerundio_presente": "dicendo"
-  },
-  {
-    "infinitive": "capire",
-    "translation": "to understand",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "capisco",
-          "tu": "capisci",
-          "lui/lei": "capisce",
-          "noi": "capiamo",
-          "voi": "capite",
-          "loro": "capiscono"
-        },
-        "imperfetto": {
-          "io": "capivo",
-          "tu": "capivi",
-          "lui/lei": "capiva",
-          "noi": "capivamo",
-          "voi": "capivate",
-          "loro": "capivano"
-        },
-        "passato_remoto": {
-          "io": "capii",
-          "tu": "capisti",
-          "lui/lei": "capì",
-          "noi": "capimmo",
-          "voi": "capiste",
-          "loro": "capirono"
-        },
-        "futuro_semplice": {
-          "io": "capirò",
-          "tu": "capirai",
-          "lui/lei": "capirà",
-          "noi": "capiremo",
-          "voi": "capirete",
-          "loro": "capiranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "capisca",
-          "tu": "capisca",
-          "lui/lei": "capisca",
-          "noi": "capiamo",
-          "voi": "capiate",
-          "loro": "capiscano"
-        },
-        "imperfetto": {
-          "io": "capissi",
-          "tu": "capissi",
-          "lui/lei": "capisse",
-          "noi": "capissimo",
-          "voi": "capiste",
-          "loro": "capissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "capirei",
-          "tu": "capiresti",
-          "lui/lei": "capirebbe",
-          "noi": "capiremmo",
-          "voi": "capireste",
-          "loro": "capirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "capisci",
-          "lui/lei": null,
-          "noi": "capiamo",
-          "voi": "capite",
-          "loro": "capiscano"
-        }
-      }
-    },
-    "participio_passato": "capito",
-    "gerundio_presente": "capendo"
-  },
-  {
-    "infinitive": "sapere",
-    "translation": "to know",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "so",
-          "tu": "sai",
-          "lui/lei": "sa",
-          "noi": "sappiamo",
-          "voi": "sapete",
-          "loro": "sanno"
-        },
-        "imperfetto": {
-          "io": "sapevo",
-          "tu": "sapevi",
-          "lui/lei": "sapeva",
-          "noi": "sapevamo",
-          "voi": "sapevate",
-          "loro": "sapevano"
-        },
-        "passato_remoto": {
-          "io": "seppi",
-          "tu": "sapesti",
-          "lui/lei": "seppe",
-          "noi": "sapemmo",
-          "voi": "sapeste",
-          "loro": "seppero"
-        },
-        "futuro_semplice": {
-          "io": "saprò",
-          "tu": "saprai",
-          "lui/lei": "saprà",
-          "noi": "sapremo",
-          "voi": "saprete",
-          "loro": "sapranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "sappia",
-          "tu": "sappia",
-          "lui/lei": "sappia",
-          "noi": "sappiamo",
-          "voi": "sappiate",
-          "loro": "sappiano"
-        },
-        "imperfetto": {
-          "io": "sapessi",
-          "tu": "sapessi",
-          "lui/lei": "sapesse",
-          "noi": "sapessimo",
-          "voi": "sapeste",
-          "loro": "sapessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "saprei",
-          "tu": "sapresti",
-          "lui/lei": "saprebbe",
-          "noi": "sapremmo",
-          "voi": "sapreste",
-          "loro": "saprebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "sappi",
-          "lui/lei": null,
-          "noi": "sappiamo",
-          "voi": "sapete",
-          "loro": "sappiano"
-        }
-      }
-    },
-    "participio_passato": "saputo",
-    "gerundio_presente": "sapendo"
-  },
-  {
-    "infinitive": "spiegare",
-    "translation": "to explain",
-    "regularity": "regular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "spiego",
-          "tu": "spieghi",
-          "lui/lei": "spiega",
-          "noi": "spieghiamo",
-          "voi": "spiegate",
-          "loro": "spiegano"
-        },
-        "imperfetto": {
-          "io": "spiegavo",
-          "tu": "spiegavi",
-          "lui/lei": "spiegava",
-          "noi": "spiegavamo",
-          "voi": "spiegavate",
-          "loro": "spiegavano"
-        },
-        "passato_remoto": {
-          "io": "spiegai",
-          "tu": "spiegasti",
-          "lui/lei": "spiegò",
-          "noi": "spiegammo",
-          "voi": "spiegaste",
-          "loro": "spiegarono"
-        },
-        "futuro_semplice": {
-          "io": "spiegherò",
-          "tu": "spiegherai",
-          "lui/lei": "spiegherà",
-          "noi": "spiegheremo",
-          "voi": "spiegherete",
-          "loro": "spiegheranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "spieghi",
-          "tu": "spieghi",
-          "lui/lei": "spieghi",
-          "noi": "spieghiamo",
-          "voi": "spieghiate",
-          "loro": "spieghino"
-        },
-        "imperfetto": {
-          "io": "spiegassi",
-          "tu": "spiegassi",
-          "lui/lei": "spiegasse",
-          "noi": "spiegassimo",
-          "voi": "spiegaste",
-          "loro": "spiegassero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "spiegherei",
-          "tu": "spiegheresti",
-          "lui/lei": "spiegherebbe",
-          "noi": "spiegheremmo",
-          "voi": "spieghereste",
-          "loro": "spiegherebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "spiega",
-          "lui/lei": null,
-          "noi": "spieghiamo",
-          "voi": "spiegate",
-          "loro": "spieghino"
-        }
-      }
-    },
-    "participio_passato": "spiegato",
-    "gerundio_presente": "spiegando"
-  },
-  {
-    "infinitive": "uscire",
-    "translation": "to exit",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "esco",
-          "tu": "esci",
-          "lui/lei": "esce",
-          "noi": "usciamo",
-          "voi": "uscite",
-          "loro": "escono"
-        },
-        "imperfetto": {
-          "io": "uscivo",
-          "tu": "uscivi",
-          "lui/lei": "usciva",
-          "noi": "uscivamo",
-          "voi": "uscivate",
-          "loro": "uscivano"
-        },
-        "passato_remoto": {
-          "io": "uscii",
-          "tu": "uscisti",
-          "lui/lei": "uscì",
-          "noi": "uscimmo",
-          "voi": "usciste",
-          "loro": "uscirono"
-        },
-        "futuro_semplice": {
-          "io": "uscirò",
-          "tu": "uscirai",
-          "lui/lei": "uscirà",
-          "noi": "usciremo",
-          "voi": "uscirete",
-          "loro": "usciranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "esca",
-          "tu": "esca",
-          "lui/lei": "esca",
-          "noi": "usciamo",
-          "voi": "usciate",
-          "loro": "escano"
-        },
-        "imperfetto": {
-          "io": "uscissi",
-          "tu": "uscissi",
-          "lui/lei": "uscisse",
-          "noi": "uscissimo",
-          "voi": "usciste",
-          "loro": "uscissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "uscirei",
-          "tu": "usciresti",
-          "lui/lei": "uscirebbe",
-          "noi": "usciremmo",
-          "voi": "uscireste",
-          "loro": "uscirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "esci",
-          "lui/lei": null,
-          "noi": "usciamo",
-          "voi": "uscite",
-          "loro": "escano"
-        }
-      }
-    },
-    "participio_passato": "uscito",
-    "gerundio_presente": "uscendo"
-  },
-  {
-    "infinitive": "andare",
-    "translation": "to go",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "vado",
-          "tu": "vai",
-          "lui/lei": "va",
-          "noi": "andiamo",
-          "voi": "andate",
-          "loro": "vanno"
-        },
-        "imperfetto": {
-          "io": "andavo",
-          "tu": "andavi",
-          "lui/lei": "andava",
-          "noi": "andavamo",
-          "voi": "andavate",
-          "loro": "andavano"
-        },
-        "passato_remoto": {
-          "io": "andai",
-          "tu": "andasti",
-          "lui/lei": "andò",
-          "noi": "andammo",
-          "voi": "andaste",
-          "loro": "andarono"
-        },
-        "futuro_semplice": {
-          "io": "andrò",
-          "tu": "andrai",
-          "lui/lei": "andrà",
-          "noi": "andremo",
-          "voi": "andrete",
-          "loro": "andranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "vada",
-          "tu": "vada",
-          "lui/lei": "vada",
-          "noi": "andiamo",
-          "voi": "andiate",
-          "loro": "vadano"
-        },
-        "imperfetto": {
-          "io": "andassi",
-          "tu": "andassi",
-          "lui/lei": "andasse",
-          "noi": "andassimo",
-          "voi": "andaste",
-          "loro": "andassero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "andrei",
-          "tu": "andresti",
-          "lui/lei": "andrebbe",
-          "noi": "andremmo",
-          "voi": "andreste",
-          "loro": "andrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "vai",
-          "lui/lei": null,
-          "noi": "andiamo",
-          "voi": "andate",
-          "loro": "vadano"
-        }
-      }
-    },
-    "participio_passato": "andato",
-    "gerundio_presente": "andando"
-  },
-  {
-    "infinitive": "venire",
-    "translation": "to come",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "vengo",
-          "tu": "vieni",
-          "lui/lei": "viene",
-          "noi": "veniamo",
-          "voi": "venite",
-          "loro": "vengono"
-        },
-        "imperfetto": {
-          "io": "venivo",
-          "tu": "venivi",
-          "lui/lei": "veniva",
-          "noi": "venivamo",
-          "voi": "venivate",
-          "loro": "venivano"
-        },
-        "passato_remoto": {
-          "io": "venni",
-          "tu": "venisti",
-          "lui/lei": "venne",
-          "noi": "venimmo",
-          "voi": "veniste",
-          "loro": "vennero"
-        },
-        "futuro_semplice": {
-          "io": "verrò",
-          "tu": "verrai",
-          "lui/lei": "verrà",
-          "noi": "verremo",
-          "voi": "verrete",
-          "loro": "verranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "venga",
-          "tu": "venga",
-          "lui/lei": "venga",
-          "noi": "veniamo",
-          "voi": "veniate",
-          "loro": "vengano"
-        },
-        "imperfetto": {
-          "io": "venissi",
-          "tu": "venissi",
-          "lui/lei": "venisse",
-          "noi": "venissimo",
-          "voi": "veniste",
-          "loro": "venissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "verrei",
-          "tu": "verresti",
-          "lui/lei": "verrebbe",
-          "noi": "verremmo",
-          "voi": "verreste",
-          "loro": "verrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "vieni",
-          "lui/lei": null,
-          "noi": "veniamo",
-          "voi": "venite",
-          "loro": "vengano"
-        }
-      }
-    },
-    "participio_passato": "venuto",
-    "gerundio_presente": "venendo"
-  },
-  {
-    "infinitive": "potere",
-    "translation": "can/to be able to",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "posso",
-          "tu": "puoi",
-          "lui/lei": "può",
-          "noi": "possiamo",
-          "voi": "potete",
-          "loro": "possono"
-        },
-        "imperfetto": {
-          "io": "potevo",
-          "tu": "potevi",
-          "lui/lei": "poteva",
-          "noi": "potevamo",
-          "voi": "potevate",
-          "loro": "potevano"
-        },
-        "passato_remoto": {
-          "io": "potei",
-          "tu": "potesti",
-          "lui/lei": "poté",
-          "noi": "potemmo",
-          "voi": "poteste",
-          "loro": "poterono"
-        },
-        "futuro_semplice": {
-          "io": "potrò",
-          "tu": "potrai",
-          "lui/lei": "potrà",
-          "noi": "potremo",
-          "voi": "potrete",
-          "loro": "potranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "possa",
-          "tu": "possa",
-          "lui/lei": "possa",
-          "noi": "possiamo",
-          "voi": "possiate",
-          "loro": "possano"
-        },
-        "imperfetto": {
-          "io": "potessi",
-          "tu": "potessi",
-          "lui/lei": "potesse",
-          "noi": "potessimo",
-          "voi": "poteste",
-          "loro": "potessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "potrei",
-          "tu": "potresti",
-          "lui/lei": "potrebbe",
-          "noi": "potremmo",
-          "voi": "potreste",
-          "loro": "potrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": null,
-          "lui/lei": null,
-          "noi": null,
-          "voi": null,
-          "loro": null
-        }
-      }
-    },
-    "participio_passato": "potuto",
-    "gerundio_presente": "potendo"
-  },
-  {
-    "infinitive": "dovere",
-    "translation": "must/to have to",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "devo",
-          "tu": "devi",
-          "lui/lei": "deve",
-          "noi": "dobbiamo",
-          "voi": "dovete",
-          "loro": "devono"
-        },
-        "imperfetto": {
-          "io": "dovevo",
-          "tu": "dovevi",
-          "lui/lei": "doveva",
-          "noi": "dovevamo",
-          "voi": "dovevate",
-          "loro": "dovevano"
-        },
-        "passato_remoto": {
-          "io": "dovei",
-          "tu": "dovesti",
-          "lui/lei": "dové",
-          "noi": "dovemmo",
-          "voi": "doveste",
-          "loro": "doverono"
-        },
-        "futuro_semplice": {
-          "io": "dovrò",
-          "tu": "dovrai",
-          "lui/lei": "dovrà",
-          "noi": "dovremo",
-          "voi": "dovrete",
-          "loro": "dovranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "debba",
-          "tu": "debba",
-          "lui/lei": "debba",
-          "noi": "dobbiamo",
-          "voi": "dobbiate",
-          "loro": "debbano"
-        },
-        "imperfetto": {
-          "io": "dovessi",
-          "tu": "dovessi",
-          "lui/lei": "dovesse",
-          "noi": "dovessimo",
-          "voi": "doveste",
-          "loro": "dovessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "dovrei",
-          "tu": "dovresti",
-          "lui/lei": "dovrebbe",
-          "noi": "dovremmo",
-          "voi": "dovreste",
-          "loro": "dovrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": null,
-          "lui/lei": null,
-          "noi": null,
-          "voi": null,
-          "loro": null
-        }
-      }
-    },
-    "participio_passato": "dovuto",
-    "gerundio_presente": "dovendo"
-  },
-  {
-    "infinitive": "preferire",
-    "translation": "to prefer",
-    "regularity": "regular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "preferisco",
-          "tu": "preferisci",
-          "lui/lei": "preferisce",
-          "noi": "preferiamo",
-          "voi": "preferite",
-          "loro": "preferiscono"
-        },
-        "imperfetto": {
-          "io": "preferivo",
-          "tu": "preferivi",
-          "lui/lei": "preferiva",
-          "noi": "preferivamo",
-          "voi": "preferivate",
-          "loro": "preferivano"
-        },
-        "passato_remoto": {
-          "io": "preferii",
-          "tu": "preferisti",
-          "lui/lei": "preferì",
-          "noi": "preferimmo",
-          "voi": "preferiste",
-          "loro": "preferirono"
-        },
-        "futuro_semplice": {
-          "io": "preferirò",
-          "tu": "preferirai",
-          "lui/lei": "preferirà",
-          "noi": "preferiremo",
-          "voi": "preferirete",
-          "loro": "preferiranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "preferisca",
-          "tu": "preferisca",
-          "lui/lei": "preferisca",
-          "noi": "preferiamo",
-          "voi": "preferiate",
-          "loro": "preferiscano"
-        },
-        "imperfetto": {
-          "io": "preferissi",
-          "tu": "preferissi",
-          "lui/lei": "preferisse",
-          "noi": "preferissimo",
-          "voi": "preferiste",
-          "loro": "preferissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "preferirei",
-          "tu": "preferiresti",
-          "lui/lei": "preferirebbe",
-          "noi": "preferiremmo",
-          "voi": "preferireste",
-          "loro": "preferirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "preferisci",
-          "lui/lei": null,
-          "noi": "preferiamo",
-          "voi": "preferite",
-          "loro": "preferiscano"
-        }
-      }
-    },
-    "participio_passato": "preferito",
-    "gerundio_presente": "preferendo"
-  },
-  {
-    "infinitive": "bere",
-    "translation": "to drink",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "bevo",
-          "tu": "bevi",
-          "lui/lei": "beve",
-          "noi": "beviamo",
-          "voi": "bevete",
-          "loro": "bevono"
-        },
-        "imperfetto": {
-          "io": "bevevo",
-          "tu": "bevevi",
-          "lui/lei": "beveva",
-          "noi": "bevevamo",
-          "voi": "bevevate",
-          "loro": "bevevano"
-        },
-        "passato_remoto": {
-          "io": "bevvi",
-          "tu": "bevesti",
-          "lui/lei": "bevve",
-          "noi": "bevemmo",
-          "voi": "beveste",
-          "loro": "bevvero"
-        },
-        "futuro_semplice": {
-          "io": "berrò",
-          "tu": "berrai",
-          "lui/lei": "berrà",
-          "noi": "berremo",
-          "voi": "berrete",
-          "loro": "berranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "beva",
-          "tu": "beva",
-          "lui/lei": "beva",
-          "noi": "beviamo",
-          "voi": "beviate",
-          "loro": "bevano"
-        },
-        "imperfetto": {
-          "io": "bevessi",
-          "tu": "bevessi",
-          "lui/lei": "bevesse",
-          "noi": "bevessimo",
-          "voi": "beveste",
-          "loro": "bevessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "berrei",
-          "tu": "berresti",
-          "lui/lei": "berrebbe",
-          "noi": "berremmo",
-          "voi": "berreste",
-          "loro": "berrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "bevi",
-          "lui/lei": null,
-          "noi": "beviamo",
-          "voi": "bevete",
-          "loro": "bevano"
-        }
-      }
-    },
-    "participio_passato": "bevuto",
-    "gerundio_presente": "bevendo"
-  },
-  {
-    "infinitive": "salire",
-    "translation": "to go up",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere",
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "salgo",
-          "tu": "sali",
-          "lui/lei": "sale",
-          "noi": "saliamo",
-          "voi": "salite",
-          "loro": "salgono"
-        },
-        "imperfetto": {
-          "io": "salivo",
-          "tu": "salivi",
-          "lui/lei": "saliva",
-          "noi": "salivamo",
-          "voi": "salivate",
-          "loro": "salivano"
-        },
-        "passato_remoto": {
-          "io": "salii",
-          "tu": "salisti",
-          "lui/lei": "salì",
-          "noi": "salimmo",
-          "voi": "saliste",
-          "loro": "salirono"
-        },
-        "futuro_semplice": {
-          "io": "salirò",
-          "tu": "salirai",
-          "lui/lei": "salirà",
-          "noi": "saliremo",
-          "voi": "salirete",
-          "loro": "saliranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "salga",
-          "tu": "salga",
-          "lui/lei": "salga",
-          "noi": "saliamo",
-          "voi": "saliate",
-          "loro": "salgono"
-        },
-        "imperfetto": {
-          "io": "salissi",
-          "tu": "salissi",
-          "lui/lei": "salisse",
-          "noi": "salissimo",
-          "voi": "saliste",
-          "loro": "salissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "salirei",
-          "tu": "saliresti",
-          "lui/lei": "salirebbe",
-          "noi": "saliremmo",
-          "voi": "salireste",
-          "loro": "salirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "sali",
-          "lui/lei": null,
-          "noi": "saliamo",
-          "voi": "salite",
-          "loro": "salgono"
-        }
-      }
-    },
-    "participio_passato": "salito",
-    "gerundio_presente": "salendo"
-  },
-  {
-    "infinitive": "rimanere",
-    "translation": "to stay",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "rimango",
-          "tu": "rimani",
-          "lui/lei": "rimane",
-          "noi": "rimaniamo",
-          "voi": "rimanete",
-          "loro": "rimangono"
-        },
-        "imperfetto": {
-          "io": "rimanevo",
-          "tu": "rimanevi",
-          "lui/lei": "rimaneva",
-          "noi": "rimanevamo",
-          "voi": "rimanevate",
-          "loro": "rimanevano"
-        },
-        "passato_remoto": {
-          "io": "rimasi",
-          "tu": "rimanesti",
-          "lui/lei": "rimase",
-          "noi": "rimanemmo",
-          "voi": "rimaneste",
-          "loro": "rimasero"
-        },
-        "futuro_semplice": {
-          "io": "rimarrò",
-          "tu": "rimarrai",
-          "lui/lei": "rimarrà",
-          "noi": "rimarremo",
-          "voi": "rimarrete",
-          "loro": "rimarranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "rimanga",
-          "tu": "rimanga",
-          "lui/lei": "rimanga",
-          "noi": "rimaniamo",
-          "voi": "rimaniate",
-          "loro": "rimangano"
-        },
-        "imperfetto": {
-          "io": "rimanessi",
-          "tu": "rimanessi",
-          "lui/lei": "rimanesse",
-          "noi": "rimanessimo",
-          "voi": "rimaneste",
-          "loro": "rimanessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "rimarrei",
-          "tu": "rimarresti",
-          "lui/lei": "rimarrebbe",
-          "noi": "rimarremmo",
-          "voi": "rimarrete",
-          "loro": "rimarrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "rimani",
-          "lui/lei": null,
-          "noi": "rimaniamo",
-          "voi": "rimanete",
-          "loro": "rimangano"
-        }
-      }
-    },
-    "participio_passato": "rimasto",
-    "gerundio_presente": "rimanendo"
-  },
-  {
-    "infinitive": "morire",
-    "translation": "to die",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "muoio",
-          "tu": "muori",
-          "lui/lei": "muore",
-          "noi": "moriamo",
-          "voi": "morite",
-          "loro": "muoiono"
-        },
-        "imperfetto": {
-          "io": "morivo",
-          "tu": "morivi",
-          "lui/lei": "moriva",
-          "noi": "morivamo",
-          "voi": "morivate",
-          "loro": "morivano"
-        },
-        "passato_remoto": {
-          "io": "morii",
-          "tu": "moristi",
-          "lui/lei": "morì",
-          "noi": "morimmo",
-          "voi": "moriste",
-          "loro": "morirono"
-        },
-        "futuro_semplice": {
-          "io": "morirò",
-          "tu": "morirai",
-          "lui/lei": "morirà",
-          "noi": "moriremo",
-          "voi": "morirete",
-          "loro": "moriranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "muoia",
-          "tu": "muoia",
-          "lui/lei": "muoia",
-          "noi": "moriamo",
-          "voi": "moriate",
-          "loro": "muoiano"
-        },
-        "imperfetto": {
-          "io": "morissi",
-          "tu": "morissi",
-          "lui/lei": "morisse",
-          "noi": "morissimo",
-          "voi": "moriste",
-          "loro": "morissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "morirei",
-          "tu": "moriresti",
-          "lui/lei": "morirebbe",
-          "noi": "moriremmo",
-          "voi": "morireste",
-          "loro": "morirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "muori",
-          "lui/lei": null,
-          "noi": "moriamo",
-          "voi": "morite",
-          "loro": "muoiano"
-        }
-      }
-    },
-    "participio_passato": "morto",
-    "gerundio_presente": "morendo"
-  },
-  {
-    "infinitive": "finire",
-    "translation": "to finish",
-    "regularity": "regular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "finisco",
-          "tu": "finisci",
-          "lui/lei": "finisce",
-          "noi": "finiamo",
-          "voi": "finite",
-          "loro": "finiscono"
-        },
-        "imperfetto": {
-          "io": "finivo",
-          "tu": "finivi",
-          "lui/lei": "finiva",
-          "noi": "finivamo",
-          "voi": "finivate",
-          "loro": "finivano"
-        },
-        "passato_remoto": {
-          "io": "finii",
-          "tu": "finisti",
-          "lui/lei": "finì",
-          "noi": "finimmo",
-          "voi": "finiste",
-          "loro": "finirono"
-        },
-        "futuro_semplice": {
-          "io": "finirò",
-          "tu": "finirai",
-          "lui/lei": "finirà",
-          "noi": "finiremo",
-          "voi": "finirete",
-          "loro": "finiranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "finisca",
-          "tu": "finisca",
-          "lui/lei": "finisca",
-          "noi": "finiamo",
-          "voi": "finiate",
-          "loro": "finiscano"
-        },
-        "imperfetto": {
-          "io": "finissi",
-          "tu": "finissi",
-          "lui/lei": "finisse",
-          "noi": "finissimo",
-          "voi": "finiste",
-          "loro": "finissero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "finirei",
-          "tu": "finiresti",
-          "lui/lei": "finirebbe",
-          "noi": "finiremmo",
-          "voi": "finireste",
-          "loro": "finirebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "finisci",
-          "lui/lei": null,
-          "noi": "finiamo",
-          "voi": "finite",
-          "loro": "finiscano"
-        }
-      }
-    },
-    "participio_passato": "finito",
-    "gerundio_presente": "finendo"
-  },
-  {
-    "infinitive": "vedere",
-    "translation": "to see",
-    "regularity": "irregular",
-    "auxiliaries": [
-      "avere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": "vedo",
-          "tu": "vedi",
-          "lui/lei": "vede",
-          "noi": "vediamo",
-          "voi": "vedete",
-          "loro": "vedono"
-        },
-        "imperfetto": {
-          "io": "vedevo",
-          "tu": "vedevi",
-          "lui/lei": "vedeva",
-          "noi": "vedevamo",
-          "voi": "vedevate",
-          "loro": "vedevano"
-        },
-        "passato_remoto": {
-          "io": "vidi",
-          "tu": "vedesti",
-          "lui/lei": "vide",
-          "noi": "vedemmo",
-          "voi": "vedeste",
-          "loro": "videro"
-        },
-        "futuro_semplice": {
-          "io": "vedrò",
-          "tu": "vedrai",
-          "lui/lei": "vedrà",
-          "noi": "vedremo",
-          "voi": "vedrete",
-          "loro": "vedranno"
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": "veda",
-          "tu": "veda",
-          "lui/lei": "veda",
-          "noi": "vediamo",
-          "voi": "vediate",
-          "loro": "vedano"
-        },
-        "imperfetto": {
-          "io": "vedessi",
-          "tu": "vedessi",
-          "lui/lei": "vedesse",
-          "noi": "vedessimo",
-          "voi": "vedeste",
-          "loro": "vedessero"
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": "vedrei",
-          "tu": "vedresti",
-          "lui/lei": "vedrebbe",
-          "noi": "vedremmo",
-          "voi": "vedreste",
-          "loro": "vedrebbero"
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": "vedi",
-          "lui/lei": null,
-          "noi": "vediamo",
-          "voi": "vedete",
-          "loro": "vedano"
-        }
-      }
-    },
-    "participio_passato": "visto",
-    "gerundio_presente": "vedendo"
-  },
-
-  {
-    "infinitive": "stare",
-    "translation": "to stay, to be (temporary)",
+    "infinitive": "essere",
+    "translation": "to be (permanent)",
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": "sto",
-          "tu": "stai",
-          "lui/lei": "sta",
-          "noi": "stiamo",
-          "voi": "state",
-          "loro": "stanno"
+          "io": {
+            "italian": "sono",
+            "english": "am"
+          },
+          "tu": {
+            "italian": "sei",
+            "english": "are"
+          },
+          "lui/lei": {
+            "italian": "è",
+            "english": "is"
+          },
+          "noi": {
+            "italian": "siamo",
+            "english": "are"
+          },
+          "voi": {
+            "italian": "siete",
+            "english": "are"
+          },
+          "loro": {
+            "italian": "sono",
+            "english": "are"
+          }
         },
         "imperfetto": {
-          "io": "stavo",
-          "tu": "stavi",
-          "lui/lei": "stava",
-          "noi": "stavamo",
-          "voi": "stavate",
-          "loro": "stavano"
+          "io": {
+            "italian": "ero",
+            "english": "used to be"
+          },
+          "tu": {
+            "italian": "eri",
+            "english": "used to be"
+          },
+          "lui/lei": {
+            "italian": "era",
+            "english": "used to be"
+          },
+          "noi": {
+            "italian": "eravamo",
+            "english": "used to be"
+          },
+          "voi": {
+            "italian": "eravate",
+            "english": "used to be"
+          },
+          "loro": {
+            "italian": "erano",
+            "english": "used to be"
+          }
         },
         "passato_remoto": {
-          "io": "stetti",
-          "tu": "stesti",
-          "lui/lei": "stette",
-          "noi": "stemmo",
-          "voi": "steste",
-          "loro": "stettero"
+          "io": {
+            "italian": "fui",
+            "english": "was"
+          },
+          "tu": {
+            "italian": "fosti",
+            "english": "were"
+          },
+          "lui/lei": {
+            "italian": "fu",
+            "english": "was"
+          },
+          "noi": {
+            "italian": "fummo",
+            "english": "were"
+          },
+          "voi": {
+            "italian": "foste",
+            "english": "were"
+          },
+          "loro": {
+            "italian": "furono",
+            "english": "were"
+          }
         },
         "futuro_semplice": {
-          "io": "starò",
-          "tu": "starai",
-          "lui/lei": "starà",
-          "noi": "staremo",
-          "voi": "starete",
-          "loro": "staranno"
+          "io": {
+            "italian": "sarò",
+            "english": "will be"
+          },
+          "tu": {
+            "italian": "sarai",
+            "english": "will be"
+          },
+          "lui/lei": {
+            "italian": "sarà",
+            "english": "will be"
+          },
+          "noi": {
+            "italian": "saremo",
+            "english": "will be"
+          },
+          "voi": {
+            "italian": "sarete",
+            "english": "will be"
+          },
+          "loro": {
+            "italian": "saranno",
+            "english": "will be"
+          }
         }
       },
       "congiuntivo": {
         "presente": {
-          "io": "stia",
-          "tu": "stia",
-          "lui/lei": "stia",
-          "noi": "stiamo",
-          "voi": "stiate",
-          "loro": "stiano"
+          "io": {
+            "italian": "sia",
+            "english": "am"
+          },
+          "tu": {
+            "italian": "sia",
+            "english": "are"
+          },
+          "lui/lei": {
+            "italian": "sia",
+            "english": "is"
+          },
+          "noi": {
+            "italian": "siamo",
+            "english": "are"
+          },
+          "voi": {
+            "italian": "siate",
+            "english": "are"
+          },
+          "loro": {
+            "italian": "siano",
+            "english": "are"
+          }
         },
         "imperfetto": {
-          "io": "stessi",
-          "tu": "stessi",
-          "lui/lei": "stesse",
-          "noi": "stessimo",
-          "voi": "steste",
-          "loro": "stessero"
+          "io": {
+            "italian": "fosse",
+            "english": "used to be"
+          },
+          "tu": {
+            "italian": "fossi",
+            "english": "used to be"
+          },
+          "lui/lei": {
+            "italian": "fosse",
+            "english": "used to be"
+          },
+          "noi": {
+            "italian": "fossimo",
+            "english": "used to be"
+          },
+          "loro": {
+            "italian": "fossero",
+            "english": "used to be"
+          }
         }
       },
       "condizionale": {
         "presente": {
-          "io": "starei",
-          "tu": "staresti",
-          "lui/lei": "starebbe",
-          "noi": "staremmo",
-          "voi": "stareste",
-          "loro": "starebbero"
+          "io": {
+            "italian": "sarei",
+            "english": "would be"
+          },
+          "tu": {
+            "italian": "saresti",
+            "english": "would be"
+          },
+          "lui/lei": {
+            "italian": "sarebbe",
+            "english": "would be"
+          },
+          "noi": {
+            "italian": "saremmo",
+            "english": "would be"
+          },
+          "voi": {
+            "italian": "sareste",
+            "english": "would be"
+          },
+          "loro": {
+            "italian": "sarebbero",
+            "english": "would be"
+          }
         }
       },
       "imperativo": {
         "positivo": {
           "io": null,
-          "tu": "sta' (or stai)",
-          "lui/lei": null,
-          "noi": "stiamo",
-          "voi": "state",
-          "loro": "stiano"
+          "tu": {
+            "italian": "sii",
+            "english": "(to you) be!"
+          },
+          "lui/lei": {
+            "italian": "sia",
+            "english": "(to you formal) be!"
+          },
+          "noi": {
+            "italian": "siamo",
+            "english": "let's be!"
+          },
+          "voi": {
+            "italian": "siate",
+            "english": "(to you plural) be!"
+          },
+          "loro": {
+            "italian": "siano",
+            "english": "(to you plural formal) be!"
+          }
         }
       }
     },
-    "participio_passato": "stato",
-    "gerundio_presente": "stando"
+    "participio_passato": {
+      "italian": "stato",
+      "english": "been"
+    },
+    "gerundio_presente": {
+      "italian": "essendo",
+      "english": "being"
+    }
+  },
+  {
+    "infinitive": "stare",
+    "translation": "to be (temporary), to stay",
+    "regularity": "irregular",
+    "auxiliaries": ["essere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {
+            "italian": "sto",
+            "english": "am"
+          },
+          "tu": {
+            "italian": "stai",
+            "english": "are"
+          },
+          "lui/lei": {
+            "italian": "sta",
+            "english": "is"
+          },
+          "noi": {
+            "italian": "stiamo",
+            "english": "are"
+          },
+          "voi": {
+            "italian": "state",
+            "english": "are"
+          },
+          "loro": {
+            "italian": "stanno",
+            "english": "are"
+          }
+        },
+        "imperfetto": {
+          "io": {
+            "italian": "stavo",
+            "english": "used to be"
+          },
+          "tu": {
+            "italian": "stavi",
+            "english": "used to be"
+          },
+          "lui/lei": {
+            "italian": "stava",
+            "english": "used to be"
+          },
+          "noi": {
+            "italian": "stavamo",
+            "english": "used to be"
+          },
+          "voi": {
+            "italian": "stavate",
+            "english": "used to be"
+          },
+          "loro": {
+            "italian": "stavano",
+            "english": "used to be"
+          }
+        },
+        "passato_remoto": {
+          "io": {
+            "italian": "stetti",
+            "english": "was"
+          },
+          "tu": {
+            "italian": "stesti",
+            "english": "were"
+          },
+          "lui/lei": {
+            "italian": "stette",
+            "english": "was"
+          },
+          "noi": {
+            "italian": "stemmo",
+            "english": "were"
+          },
+          "voi": {
+            "italian": "steste",
+            "english": "were"
+          },
+          "loro": {
+            "italian": "stettero",
+            "english": "were"
+          }
+        },
+        "futuro_semplice": {
+          "io": {
+            "italian": "starò",
+            "english": "will be"
+          },
+          "tu": {
+            "italian": "starai",
+            "english": "will be"
+          },
+          "lui/lei": {
+            "italian": "starà",
+            "english": "will be"
+          },
+          "noi": {
+            "italian": "staremo",
+            "english": "will be"
+          },
+          "voi": {
+            "italian": "starete",
+            "english": "will be"
+          },
+          "loro": {
+            "italian": "staranno",
+            "english": "will be"
+          }
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {
+            "italian": "stia",
+            "english": "am"
+          },
+          "tu": {
+            "italian": "stia",
+            "english": "are"
+          },
+          "lui/lei": {
+            "italian": "stia",
+            "english": "is"
+          },
+          "noi": {
+            "italian": "stiamo",
+            "english": "are"
+          },
+          "voi": {
+            "italian": "stiate",
+            "english": "are"
+          },
+          "loro": {
+            "italian": "stiano",
+            "english": "are"
+          }
+        },
+        "imperfetto": {
+          "io": {
+            "italian": "stessi",
+            "english": "used to be"
+          },
+          "tu": {
+            "italian": "stessi",
+            "english": "used to be"
+          },
+          "lui/lei": {
+            "italian": "stesse",
+            "english": "used to be"
+          },
+          "noi": {
+            "italian": "stessimo",
+            "english": "used to be"
+          },
+          "voi": {
+            "italian": "steste",
+            "english": "used to be"
+          },
+          "loro": {
+            "italian": "stessero",
+            "english": "used to be"
+          }
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {
+            "italian": "starei",
+            "english": "would be"
+          },
+          "tu": {
+            "italian": "staresti",
+            "english": "would be"
+          },
+          "lui/lei": {
+            "italian": "starebbe",
+            "english": "would be"
+          },
+          "noi": {
+            "italian": "staremmo",
+            "english": "would be"
+          },
+          "voi": {
+            "italian": "stareste",
+            "english": "would be"
+          },
+          "loro": {
+            "italian": "starebbero",
+            "english": "would be"
+          }
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {
+            "italian": "stai",
+            "english": "(to you) be!"
+          },
+          "lui/lei": {
+            "italian": "stia",
+            "english": "(to you formal) be!"
+          },
+          "noi": {
+            "italian": "stiamo",
+            "english": "let's be!"
+          },
+          "voi": {
+            "italian": "state",
+            "english": "(to you plural) be!"
+          },
+          "loro": {
+            "italian": "stiano",
+            "english": "(to you plural formal) be!"
+          }
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "stato",
+      "english": "been"
+    },
+    "gerundio_presente": {
+      "italian": "stando",
+      "english": "being"
+    }
   }
 ]
