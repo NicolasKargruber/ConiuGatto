@@ -1,5 +1,5 @@
 import 'package:coniugatto/models/auxiliary.dart';
-import 'package:coniugatto/models/moods/base_tense.dart';
+import 'package:coniugatto/models/moods/simple_tense.dart';
 import 'package:coniugatto/models/regularity.dart';
 
 import '../models/moods/conditional.dart';

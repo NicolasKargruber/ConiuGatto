@@ -69,16 +69,16 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(conjugatedTenses: [
-                    (label: 'Presente', conjugations: widget.verb.indicative.present),
-                    (label: 'Presente Progressivo', conjugations: widget.verb.indicative.presentContinuous),
-                    (label: 'Imperfetto', conjugations: widget.verb.indicative.imperfect),
-                    (label: 'Passato Prossimo', conjugations: widget.verb.indicative.presentPerfect(selectedAuxiliary)),
-                    (label: 'Trapassato Prossimo', conjugations: widget.verb.indicative.pastPerfect(selectedAuxiliary)),
-                    (label: 'Passato Remoto', conjugations: widget.verb.indicative.historicalPresentPerfect),
-                    (label: 'Trapassato Remoto', conjugations: widget.verb.indicative.historicalPastPerfect(selectedAuxiliary)),
-                    (label: 'Futuro', conjugations: widget.verb.indicative.future),
-                    (label: 'Futuro Anteriore', conjugations: widget.verb.indicative.futurePerfect(selectedAuxiliary)),
+                  child: ConjugationTable(tenses: [
+                    widget.verb.indicative.present,
+                    widget.verb.indicative.presentContinuous,
+                    widget.verb.indicative.imperfect,
+                    widget.verb.indicative.presentPerfect(selectedAuxiliary),
+                    widget.verb.indicative.pastPerfect(selectedAuxiliary),
+                    widget.verb.indicative.historicalPresentPerfect,
+                    widget.verb.indicative.historicalPastPerfect(selectedAuxiliary),
+                    widget.verb.indicative.future,
+                    widget.verb.indicative.futurePerfect(selectedAuxiliary),
                   ]),
                 )
               ],
@@ -90,11 +90,11 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(conjugatedTenses: [
-                    (label: 'Presente', conjugations: widget.verb.subjunctive.present),
-                    (label: 'Imperfetto', conjugations: widget.verb.subjunctive.imperfect),
-                    (label: 'Passato', conjugations: widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary)),
-                    (label: 'Trapassato', conjugations: widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary)),
+                  child: ConjugationTable(tenses: [
+                    widget.verb.subjunctive.present,
+                    widget.verb.subjunctive.imperfect,
+                    widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary),
+                   widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary),
                   ]),
                 ),
               ],
@@ -106,9 +106,9 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(conjugatedTenses: [
-                    (label: 'Presente', conjugations: widget.verb.conditional.present),
-                    (label: 'Passato', conjugations: widget.verb.conditional.presentPerfectConditional(selectedAuxiliary)),
+                  child: ConjugationTable(tenses: [
+                    widget.verb.conditional.present,
+                    widget.verb.conditional.presentPerfectConditional(selectedAuxiliary),
                   ]),
                 ),
               ],
@@ -121,9 +121,9 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: ConjugationTable(
-                      conjugatedTenses: [
-                        (label: 'Positivo', conjugations: widget.verb.imperative.positive),
-                        (label: 'Negative', conjugations: widget.verb.imperative.negative),
+                      tenses: [
+                        widget.verb.imperative.positive,
+                        widget.verb.imperative.negative,
                   ], showEnglishPronouns: false),
                 ),
               ],
