@@ -44,7 +44,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   void initState() {
     super.initState();
-    _loadingVerbs = context.read<VerbViewModel>().loadVerbs();
+    _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
     _loadingVerbs.then((_) {
       debugPrint("QuizScreen | _loadingVerbs.then()");
       debugPrint("QuizScreen | mounted: $mounted");

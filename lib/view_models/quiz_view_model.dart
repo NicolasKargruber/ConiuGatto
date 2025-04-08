@@ -15,6 +15,12 @@ class QuizViewModel extends ViewModel {
   // Update & Notify
   List<Verb> _verbs = [];
 
+  // Initialized in Parent Constructor
+  @override
+  Future initialize() async {
+    debugPrint("QuizViewModel | initialize()");
+  }
+
   // Random Quiz
   Verb? currentVerb;
   Auxiliary? currentAuxiliary;

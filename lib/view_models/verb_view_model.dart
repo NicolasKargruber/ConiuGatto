@@ -10,9 +10,11 @@ class VerbViewModel extends ViewModel{
   List<Verb> _verbs = [];
   List<Verb> get verbs => [..._verbs];
 
-  // Constructor
-  VerbViewModel(){
-    loadVerbs();
+  // Initialized in Parent Constructor
+  @override
+  Future initialize() async {
+    debugPrint("VerbViewModel | initialize()");
+    await loadVerbs();
   }
 
   Future loadVerbs() async {
