@@ -1,5 +1,5 @@
 import 'package:coniugatto/models/auxiliary.dart';
-import 'package:coniugatto/models/moods/base_tense.dart';
+import 'package:coniugatto/models/moods/simple_tense.dart';
 import 'package:coniugatto/models/regularity.dart';
 
 import '../models/moods/conditional.dart';
@@ -2614,39 +2614,39 @@ class CompoundVerbs {
     ),
   );
 
-  String? conjugateItalianAuxiliary(Pronoun pronoun, Auxiliary auxiliary, BaseTense tense) {
+  String? conjugateItalianAuxiliary(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
     final verb = switch (auxiliary) {
       Auxiliary.avere => avere,
       Auxiliary.essere => essere,
     };
 
     return switch (tense) {
-      BaseTense.present => verb.indicative.present[pronoun]?.italian,
-      BaseTense.imperfect => verb.indicative.imperfect[pronoun]?.italian,
-      BaseTense.future => verb.indicative.future[pronoun]?.italian,
-      BaseTense.historicalPresentPerfect => verb.indicative.historicalPresentPerfect[pronoun]?.italian,
-      BaseTense.presentSubjunctive => verb.subjunctive.present[pronoun]?.italian,
-      BaseTense.imperfectSubjunctive => verb.subjunctive.imperfect[pronoun]?.italian,
-      BaseTense.presentConditional => verb.conditional.present[pronoun]?.italian,
+      SimpleTense.present => verb.indicative.present[pronoun]?.italian,
+      SimpleTense.imperfect => verb.indicative.imperfect[pronoun]?.italian,
+      SimpleTense.future => verb.indicative.future[pronoun]?.italian,
+      SimpleTense.historicalPresentPerfect => verb.indicative.historicalPresentPerfect[pronoun]?.italian,
+      SimpleTense.presentSubjunctive => verb.subjunctive.present[pronoun]?.italian,
+      SimpleTense.imperfectSubjunctive => verb.subjunctive.imperfect[pronoun]?.italian,
+      SimpleTense.presentConditional => verb.conditional.present[pronoun]?.italian,
     };
   }
 
   // TODO implement english auxiliaries
-  String? conjugateEnglishAuxiliary(Pronoun pronoun, BaseTense tense) {
+  String? conjugateEnglishAuxiliary(Pronoun pronoun, SimpleTense tense) {
     return switch (tense) {
-      BaseTense.present => avere.indicative.present[pronoun]?.english,
-      BaseTense.imperfect => avere.indicative.historicalPresentPerfect[pronoun]?.english,
-      BaseTense.future => "will have",
-      BaseTense.historicalPresentPerfect => avere.indicative.historicalPresentPerfect[pronoun]?.english,
-      BaseTense.presentSubjunctive => avere.subjunctive.present[pronoun]?.english,
-      BaseTense.imperfectSubjunctive => avere.indicative.historicalPresentPerfect[pronoun]?.english,
-      BaseTense.presentConditional => avere.conditional.present[pronoun]?.english,
+      SimpleTense.present => avere.indicative.present[pronoun]?.english,
+      SimpleTense.imperfect => avere.indicative.historicalPresentPerfect[pronoun]?.english,
+      SimpleTense.future => "will have",
+      SimpleTense.historicalPresentPerfect => avere.indicative.historicalPresentPerfect[pronoun]?.english,
+      SimpleTense.presentSubjunctive => avere.subjunctive.present[pronoun]?.english,
+      SimpleTense.imperfectSubjunctive => avere.indicative.historicalPresentPerfect[pronoun]?.english,
+      SimpleTense.presentConditional => avere.conditional.present[pronoun]?.english,
     };
   }
 
-  String? conjugateStare(Pronoun pronoun, {BaseTense tense = BaseTense.present}) =>
+  String? conjugateStare(Pronoun pronoun, {SimpleTense tense = SimpleTense.present}) =>
       stare.indicative.present[pronoun]?.italian;
 
-  String? conjugateStareInEnglish(Pronoun pronoun, {BaseTense tense = BaseTense.present}) =>
+  String? conjugateStareInEnglish(Pronoun pronoun, {SimpleTense tense = SimpleTense.present}) =>
       stare.indicative.present[pronoun]?.english;
 }

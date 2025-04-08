@@ -1,13 +1,17 @@
+import 'package:coniugatto/utilities/extensions/string_extensions.dart';
+
 import 'auxiliary.dart';
 import 'moods/conditional.dart';
 import 'moods/imperative.dart';
 import 'moods/indicative.dart';
+import 'moods/mood.dart';
 import 'moods/subjunctive.dart';
 import 'pronoun.dart';
 import 'regularity.dart';
 
-typedef Conjugations = Map<Pronoun, ({String italian, String english})?>;
-typedef Conjugation = MapEntry<Pronoun, ({String italian, String english})?>;
+typedef ConjugatedVerb = ({String italian, String english});
+typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
+typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
 
 class Verb {
   final String infinitive;
@@ -20,15 +24,14 @@ class Verb {
   final Subjunctive subjunctive;
   final Conditional conditional;
   final Imperative imperative;
+  List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
 
-  final ({String italian, String english}) pastParticiple;
-  final ({String italian, String english}) presentGerund;
+  final ConjugatedVerb pastParticiple;
+  final ConjugatedVerb presentGerund;
 
-  String pastParticipleWithGender(Pronoun pronoun) => pronoun.isPlural ?
-      pastParticiple.italian.replaceAll('o', 'i/e') : pastParticiple.italian.replaceAll('o', 'o/a');
+  String conditionallyGenderedParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
+      auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(pastParticiple.italian, forceGender: true): pastParticiple.italian;
 
-  // TODO use this
-   ({String name, int age})? _verbConjugationFromJson(Map<String, dynamic> json){}
 
   Verb({
     required this.infinitive,

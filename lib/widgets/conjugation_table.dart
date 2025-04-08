@@ -1,14 +1,13 @@
 import 'package:coniugatto/models/pronoun.dart';
 import 'package:flutter/material.dart';
 
+import '../models/tense.dart';
 import '../models/verb.dart';
 
-typedef ConjugatedTense = ({String label, Conjugations conjugations});
-
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.conjugatedTenses, this.showEnglishPronouns = true});
+  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true});
 
-  final List<ConjugatedTense> conjugatedTenses;
+  final List<Tense> tenses;
   final bool showEnglishPronouns;
 
   @override
@@ -16,19 +15,19 @@ class ConjugationTable extends StatelessWidget {
     return DataTable(
       columns: [
         DataColumn(label: Expanded(child: Text('Pronoun', style: TextStyle(fontStyle: FontStyle.italic))),),
-        ...conjugatedTenses.map((conjugatedTense) =>
-            DataColumn(label: Expanded(child: Text(conjugatedTense.label, style: TextStyle(fontStyle: FontStyle.italic))))
+        ...tenses.map((tense) =>
+            DataColumn(label: Expanded(child: Text(tense.name, style: TextStyle(fontStyle: FontStyle.italic))))
         )
       ],
       rows: Pronoun.values.map((pronoun) => DataRow(
         cells: <DataCell>[
           DataCell(Text(pronoun.italian)),
-          ...conjugatedTenses.map((conjugatedTense) =>
+          ...tenses.map((tense) =>
               DataCell(Column( crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if(conjugatedTense.conjugations[pronoun] != null) ...[
-                      Text(conjugatedTense.conjugations[pronoun]?.italian ?? "-"),
-                      Text("${showEnglishPronouns ? "${pronoun.english} " : ""}${conjugatedTense.conjugations[pronoun]?.english
+                  if(tense.conjugations[pronoun] != null) ...[
+                      Text(tense.conjugations[pronoun]?.italian ?? "-"),
+                      Text("${showEnglishPronouns ? "${pronoun.english} " : ""}${tense.conjugations[pronoun]?.english
                       }", style: TextStyle(fontStyle: FontStyle.italic))]
                   else Text("-")
                 ],

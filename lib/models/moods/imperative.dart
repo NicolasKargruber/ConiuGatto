@@ -1,5 +1,7 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
+import '../auxiliary.dart';
+import '../tense.dart';
 import '../verb.dart';
 import 'mood.dart';
 
@@ -7,11 +9,17 @@ class Imperative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Imperativo";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [positive, negative];
+
   // Simple Tenses - Stored in JSON
-  final Conjugations positive; // Positivo Afirmativo
+  final Tense positive; // Positivo Afirmativo
 
   // Compound Tenses - Generated dynamically
-  Conjugations get negative => verb.negativeImperative;
+  Tense get negative => verb.negativeImperative;
 
   Imperative({
     required this.positive,
@@ -19,7 +27,7 @@ class Imperative extends Mood {
 
   factory Imperative.fromJson(Map<String, dynamic> json) {
     return Imperative(
-        positive: MoodExtensions.parseConjugations(json['positivo'])
+        positive: Tense.fromJson(json['positivo'], name: 'Positivo')
     );
   }
 }

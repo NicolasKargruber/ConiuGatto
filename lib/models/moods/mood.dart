@@ -1,20 +1,8 @@
-import '../pronoun.dart';
-import '../verb.dart';
+import 'package:coniugatto/models/auxiliary.dart';
 
-class Mood {}
+import '../tense.dart';
 
-extension MoodExtensions on Mood {
-  static Conjugations parseConjugations(Map<String, dynamic> json) {
-    mapToConjugations(Pronoun pronoun) {
-      final verbConjugation = json[pronoun.jsonKey()];
-      return Conjugation(
-        pronoun,
-        verbConjugation == null
-            ? null
-            : (italian: verbConjugation['italian'], english: verbConjugation['english']),
-      );
-    }
-
-    return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
-  }
+abstract class Mood {
+  abstract final String name;
+  List<Tense> getTenses(Auxiliary auxiliary);
 }

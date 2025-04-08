@@ -1,7 +1,10 @@
 import 'package:coniugatto/screens/grammar_screen.dart';
 import 'package:coniugatto/screens/quiz_screen.dart';
 import 'package:coniugatto/screens/verb_screen.dart';
+import 'package:coniugatto/view_models/quiz_view_model.dart';
+import 'package:coniugatto/view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     GrammarScreen(),
-    QuizScreen(),
+    // Quiz Screen
+    ChangeNotifierProxyProvider<VerbViewModel, QuizViewModel>(
+      create: (_ )=> QuizViewModel(),
+      update: (_, verbViewModel, quizViewModel) => quizViewModel!..updateVerbs(verbViewModel.verbs),
+      child: QuizScreen(),
+    ),
     VerbScreen(),
   ];
 

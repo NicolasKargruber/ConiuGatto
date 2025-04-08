@@ -1,5 +1,7 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
+import '../auxiliary.dart';
+import '../tense.dart';
 import '../verb.dart';
 import 'mood.dart';
 
@@ -7,31 +9,37 @@ class Indicative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  @override
+  String get name => "Indicativo";
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [present, presentContinuous, imperfect, presentPerfect(auxiliary), pastPerfect(auxiliary), historicalPresentPerfect, historicalPastPerfect(auxiliary), future, futurePerfect(auxiliary)];
+
   // Simple Tenses - Stored in JSON
   /// Presente
-  final Conjugations present;
+  final Tense present;
   /// Imperfecto
-  final Conjugations imperfect;
+  final Tense imperfect;
   /// Passato Remoto
-  final Conjugations historicalPresentPerfect;
+  final Tense historicalPresentPerfect;
   /// Futuro Semplice
-  final Conjugations future;
+  final Tense future;
 
   // Compound Tenses - Generated dynamically
   /// Presente Progressivo
-  Conjugations get presentContinuous => verb.presentContinuous;
+  Tense get presentContinuous => verb.presentContinuous;
 
   /// Passato Prossimo
-  Conjugations presentPerfect(auxiliary) => verb.presentPerfect(auxiliary);
+  Tense presentPerfect(auxiliary) => verb.presentPerfect(auxiliary);
 
   /// Trapassato Prossimo
-  Conjugations pastPerfect(auxiliary) => verb.pastPerfect(auxiliary);
+  Tense pastPerfect(auxiliary) => verb.pastPerfect(auxiliary);
 
   /// Trapassato Prossimo
-  Conjugations historicalPastPerfect(auxiliary) => verb.historicalPastPerfect(auxiliary);
+  Tense historicalPastPerfect(auxiliary) => verb.historicalPastPerfect(auxiliary);
 
   /// Futuro Anteriore
-  Conjugations futurePerfect(auxiliary) => verb.futurePerfect(auxiliary);
+  Tense futurePerfect(auxiliary) => verb.futurePerfect(auxiliary);
 
   // Futuro Prossimo
   // TODO: => Futuro GOING TO - futuro prossimo
@@ -46,10 +54,10 @@ class Indicative extends Mood {
 
   factory Indicative.fromJson(Map<String, dynamic> json) {
     return Indicative(
-      present: MoodExtensions.parseConjugations(json['presente']),
-      imperfect: MoodExtensions.parseConjugations(json['imperfetto']),
-      historicalPresentPerfect: MoodExtensions.parseConjugations(json['passato_remoto']),
-      future: MoodExtensions.parseConjugations(json['futuro_semplice']),
+      present: Tense.fromJson(json['presente'], name: 'Presente'),
+      imperfect: Tense.fromJson(json['imperfetto'], name: 'Imperfetto'),
+      historicalPresentPerfect: Tense.fromJson(json['passato_remoto'], name: 'Passato Remoto'),
+      future: Tense.fromJson(json['futuro_semplice'], name: 'Futuro Semplice'),
     );
   }
 }
