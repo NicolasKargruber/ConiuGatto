@@ -46,11 +46,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.initState();
     _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
     _loadingVerbs.then((_) {
-      debugPrint("QuizScreen | _loadingVerbs.then()");
-      debugPrint("QuizScreen | mounted: $mounted");
-      if(mounted) {
-        context.read<QuizViewModel>().randomizeVerb();
-      }
+      if(mounted) context.read<QuizViewModel>().randomizeVerb();
     });
   }
 

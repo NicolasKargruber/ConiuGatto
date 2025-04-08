@@ -57,18 +57,25 @@ class QuizViewModel extends ViewModel {
     if (_verbs.isEmpty) return debugPrint("QuizViewModel | no verbs to randomize");
     debugPrint("QuizViewModel | randomizeVerb() started");
 
-    currentVerb = _verbs[_random.nextInt(_verbs.length)];
-    currentAuxiliary = currentVerb?.auxiliaries[_random.nextInt(currentVerb!.auxiliaries.length)];
-    currentMood = currentVerb?.moods[_random.nextInt(currentVerb!.moods.length)];
-    currentTenses = currentMood?.getTenses(currentAuxiliary ?? Auxiliary.avere) ?? [];
-    currentTense = currentTenses[_random.nextInt(currentTenses.length)];
-    currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
-    currentSolution = currentTense?[currentPronoun].italian;
+    do{
+      if(currentTense?[currentPronoun].italian == null){
+        debugPrint("QuizViewModel | Got a NULL Conjugation for Tense: ${currentTense?.name} and Pronoun: ${currentPronoun.italian}");
+        debugPrint("QuizViewModel | Re-Randomize verb");
+      }
+      currentVerb = _verbs[_random.nextInt(_verbs.length)];
+      currentAuxiliary = currentVerb?.auxiliaries[_random.nextInt(currentVerb!.auxiliaries.length)];
+      currentMood = currentVerb?.moods[_random.nextInt(currentVerb!.moods.length)];
+      currentTenses = currentMood?.getTenses(currentAuxiliary ?? Auxiliary.avere) ?? [];
+      currentTense = currentTenses[_random.nextInt(currentTenses.length)];
+      currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
+      currentSolution = currentTense?[currentPronoun].italian;
+    } while(currentTense?[currentPronoun].italian == null);
+
     debugPrint("QuizViewModel | Current Verb: ${currentVerb?.infinitive}");
     debugPrint("QuizViewModel | Solution: (${currentPronoun.italian}) $currentSolution");
 
     notifyListeners();
-    debugPrint("QuizViewModel | _randomizeVerb() ended");
+    debugPrint("QuizViewModel | randomizeVerb() ended");
   }
 
   areAnswersEqual(String answer) {
