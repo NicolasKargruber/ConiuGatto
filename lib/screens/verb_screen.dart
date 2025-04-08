@@ -1,5 +1,6 @@
-import 'package:coniugatto/utilities/verb_manager.dart';
+import 'package:coniugatto/viewmodels/verb_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/verb.dart';
 import 'verb_detail_screen.dart';
@@ -12,27 +13,22 @@ class VerbScreen extends StatefulWidget {
 }
 
 class _VerbScreenState extends State<VerbScreen> {
-  late Future<List<Verb>> _futureVerbs;
+  late Future _loadingVerbs;
   Verb? currentVerb;
-  List<Verb> verbs = [];
+  List<Verb> get verbs => context.read<VerbViewModel>().verbs;
 
   @override
   void initState() {
     super.initState();
-    _futureVerbs = VerbManager.loadVerbs();
-    _futureVerbs.then((loadedVerbs) {
-      setState(() {
-        verbs = loadedVerbs;
-      });
-    });
+    _loadingVerbs = context.read<VerbViewModel>().loadVerbs();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Verbs 📚')),
-      body: FutureBuilder<List<Verb>>(
-        future: _futureVerbs,
+      body: FutureBuilder(
+        future: _loadingVerbs,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

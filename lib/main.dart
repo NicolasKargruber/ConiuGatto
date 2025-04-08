@@ -1,5 +1,7 @@
 import 'package:coniugatto/screens/home_screen.dart';
+import 'package:coniugatto/viewmodels/verb_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
       ),
-      home: HomeScreen(),
+      home: ChangeNotifierProvider(
+        create: (_) => VerbViewModel(),
+        child: HomeScreen(),
+      ),
     );
   }
 }
