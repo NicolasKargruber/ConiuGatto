@@ -78,7 +78,35 @@ class _QuizScreenState extends State<QuizScreen> {
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (verbs.isEmpty) {
-              return Center(child: Text('No verbs available'));
+              return Center(child: Text('No verbs available 💨'));
+            } else if(!context.read<QuizViewModel>().hasQuizzableTenses) {
+              return Center(child: Column(
+                spacing: 8,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('No Quizzable Tenses available! 😭',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),),
+
+                  SizedBox(height: 16),
+
+                  Text('Check your Filters in the Settings'),
+                  FilledButton.tonalIcon(
+                    onPressed: _showSettingsScreen,
+                    icon: Icon(Icons.settings_rounded),
+                    label: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Go to Settings",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 16),
+                      ),
+                    ),
+                  )
+                ],
+              ));
             } else {
               return Column(
                 children: [
