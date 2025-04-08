@@ -7,7 +7,6 @@ import '../../models/pronoun.dart';
 import '../../models/tenses/conditional_tenses.dart';
 import '../../models/tenses/imperative_tenses.dart';
 import '../../models/tenses/indicative_tenses.dart';
-import '../../models/tenses/tense.dart';
 import '../../models/verb.dart';
 
 extension GenerateIndicative on Verb {

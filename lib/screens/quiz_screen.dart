@@ -1,14 +1,13 @@
-import 'package:coniugatto/view_models/quiz_view_model.dart';
-import 'package:coniugatto/widgets/quiz_content.dart';
-import 'package:coniugatto/widgets/shake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../models/moods/mood.dart';
-import '../models/tenses/tense.dart';
 import '../models/verb.dart';
+import '../view_models/quiz_view_model.dart';
 import '../view_models/verb_view_model.dart';
+import '../widgets/quiz_content.dart';
+import '../widgets/shake_widget.dart';
+import 'settings_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -43,6 +42,10 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
+  _showSettingsScreen() async {
+    await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -61,7 +64,10 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Quiz 🕹️")),
+      appBar: AppBar(
+        title: Text("Quiz 🕹️"),
+        actions: [IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded))],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder(
