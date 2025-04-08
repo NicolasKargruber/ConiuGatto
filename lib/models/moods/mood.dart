@@ -1,8 +1,8 @@
 import 'package:coniugatto/models/auxiliary.dart';
 
-import '../tense.dart';
+import '../tenses/tense.dart';
 
 abstract class Mood {
-  abstract final String name;
+  abstract final String label;
   List<Tense> getTenses(Auxiliary auxiliary);
 }

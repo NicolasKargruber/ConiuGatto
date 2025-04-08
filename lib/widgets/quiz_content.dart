@@ -16,7 +16,7 @@ class QuizContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AutoSizeText(
-              context.watch<QuizViewModel>().currentTitle,
+              context.watch<QuizViewModel>().currentTitle ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 24,
@@ -27,7 +27,7 @@ class QuizContent extends StatelessWidget {
             SizedBox(height: 18),
 
             AutoSizeText(
-              context.watch<QuizViewModel>().currentQuestion,
+              context.watch<QuizViewModel>().currentQuestion ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 28,
@@ -38,7 +38,7 @@ class QuizContent extends StatelessWidget {
             SizedBox(height: 4),
 
             Text(
-              context.watch<QuizViewModel>().currentTranslation,
+              context.watch<QuizViewModel>().currentTranslation ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 20,

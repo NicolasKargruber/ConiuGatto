@@ -1,12 +1,13 @@
-import 'package:coniugatto/view_models/quiz_view_model.dart';
-import 'package:coniugatto/widgets/quiz_content.dart';
-import 'package:coniugatto/widgets/shake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../models/verb.dart';
+import '../view_models/quiz_view_model.dart';
 import '../view_models/verb_view_model.dart';
+import '../widgets/quiz_content.dart';
+import '../widgets/shake_widget.dart';
+import 'settings_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -41,6 +42,11 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
+  _showSettingsScreen() async {
+    final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+    if(mounted) context.read<QuizViewModel>().randomizeVerb();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -59,7 +65,10 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Quiz 🕹️")),
+      appBar: AppBar(
+        title: Text("Quiz 🕹️"),
+        actions: [IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded))],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder(
@@ -70,7 +79,35 @@ class _QuizScreenState extends State<QuizScreen> {
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (verbs.isEmpty) {
-              return Center(child: Text('No verbs available'));
+              return Center(child: Text('No verbs available 💨'));
+            } else if(!context.watch<QuizViewModel>().hasQuizzableTenses) {
+              return Center(child: Column(
+                spacing: 8,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('No Quizzable Tenses available! 😭',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),),
+
+                  SizedBox(height: 16),
+
+                  Text('Check your Filters in the Settings'),
+                  FilledButton.tonalIcon(
+                    onPressed: _showSettingsScreen,
+                    icon: Icon(Icons.settings_rounded),
+                    label: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Go to Settings",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 16),
+                      ),
+                    ),
+                  )
+                ],
+              ));
             } else {
               return Column(
                 children: [

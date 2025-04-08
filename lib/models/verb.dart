@@ -1,5 +1,3 @@
-import 'package:coniugatto/utilities/extensions/string_extensions.dart';
-
 import 'auxiliary.dart';
 import 'moods/conditional.dart';
 import 'moods/imperative.dart';
