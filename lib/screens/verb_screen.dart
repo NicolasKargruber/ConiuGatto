@@ -1,10 +1,11 @@
-import 'package:coniugatto/viewmodels/verb_manager.dart';
+import 'package:coniugatto/view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/verb.dart';
 import 'verb_detail_screen.dart';
 
+// TODO Make stateless
 class VerbScreen extends StatefulWidget {
   const VerbScreen({super.key});
 

@@ -1,5 +1,5 @@
 import 'package:coniugatto/screens/home_screen.dart';
-import 'package:coniugatto/viewmodels/verb_manager.dart';
+import 'package:coniugatto/view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

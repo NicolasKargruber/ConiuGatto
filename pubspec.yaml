@@ -37,6 +37,7 @@ dependencies:
   auto_size_text: ^3.0.0
   smooth_page_indicator: ^1.2.1
   provider: ^6.1.4
+  collection: ^1.19.1
 
 dev_dependencies:
   flutter_test:
