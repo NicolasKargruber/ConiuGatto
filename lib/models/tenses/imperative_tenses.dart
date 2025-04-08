@@ -2,7 +2,8 @@ import 'tense.dart';
 
 /// => Imperativo Positivo
 final class PositiveImperative extends Tense {
-  PositiveImperative({required super.conjugations}) : super(label: 'Positivo');
+  static const String name = 'Positivo';
+  PositiveImperative({required super.conjugations}) : super(label: name);
 
   factory PositiveImperative.fromJson(Map<String, dynamic> json) {
     return PositiveImperative(conjugations: Tense.convertJsonToConjugations(json));
@@ -11,5 +12,6 @@ final class PositiveImperative extends Tense {
 
 /// => Imperativo Negativo
 final class NegativeImperative extends Tense {
-  NegativeImperative({required super.conjugations}) : super(label: 'Negativo');
+  static const String name = 'Negativo';
+  NegativeImperative({required super.conjugations}) : super(label: name);
 }

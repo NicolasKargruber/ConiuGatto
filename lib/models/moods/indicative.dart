@@ -4,27 +4,42 @@ import '../auxiliary.dart';
 import '../tenses/indicative_tenses.dart';
 import '../tenses/tense.dart';
 import '../verb.dart';
+import 'imperative.dart';
 import 'mood.dart';
 
 class Indicative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  // Static Labels
+  static const String name = "Indicativo";
+  static List<LabeledTense> get getLabeledTenses => [
+    (PresentIndicative, label: PresentIndicative.name),
+    (PresentContinuousIndicative, label: PresentContinuousIndicative.name),
+    (ImperfectIndicative, label: ImperfectIndicative.name),
+    (PresentPerfectIndicative, label: PresentPerfectIndicative.name),
+    (PastPerfectIndicative, label: PastPerfectIndicative.name),
+    (HistoricalPresentPerfectIndicative, label: HistoricalPresentPerfectIndicative.name),
+    (HistoricalPastPerfectIndicative, label: HistoricalPastPerfectIndicative.name),
+    (FutureIndicative, label: FutureIndicative.name),
+    (FuturePerfectIndicative, label: FuturePerfectIndicative.name)
+  ];
+
   @override
-  String get label => "Indicativo";
+  final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, presentContinuous, imperfect, presentPerfect(auxiliary), pastPerfect(auxiliary), historicalPresentPerfect, historicalPastPerfect(auxiliary), future, futurePerfect(auxiliary)];
 
   // Simple Tenses - Stored in JSON
   /// => Presente
-  final Tense present;
+  final PresentIndicative present;
   /// => Imperfecto
-  final Tense imperfect;
+  final ImperfectIndicative imperfect;
   /// => Passato Remoto
-  final Tense historicalPresentPerfect;
+  final HistoricalPresentPerfectIndicative historicalPresentPerfect;
   /// => Futuro Semplice
-  final Tense future;
+  final FutureIndicative future;
 
   // Compound Tenses - Generated dynamically
   /// => Presente Progressivo

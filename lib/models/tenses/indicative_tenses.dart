@@ -3,7 +3,8 @@ import 'tense.dart';
 
 /// => Indicativo Presente
 final class PresentIndicative extends Tense {
-  PresentIndicative({required super.conjugations}) : super(label: 'Presente');
+  static const String name = 'Presente';
+  PresentIndicative({required super.conjugations}) : super(label: name);
   
   factory PresentIndicative.fromJson(Map<String, dynamic> json) {
     return PresentIndicative(conjugations: Tense.convertJsonToConjugations(json));
@@ -12,13 +13,15 @@ final class PresentIndicative extends Tense {
 
 /// => Indicativo Presente Progressivo
 final class PresentContinuousIndicative extends Tense {
-  PresentContinuousIndicative({required super.conjugations}) : super(label: 'Presente Progressivo', isCompound: true);
+  static const String name = 'Presente Progressivo';
+  PresentContinuousIndicative({required super.conjugations}) : super(label: name, isCompound: true);
 }
 
 
 /// => Indicativo Imperfetto
 final class ImperfectIndicative extends Tense {
-  ImperfectIndicative({required super.conjugations}) : super(label: 'Imperfetto');
+  static const String name = 'Imperfetto';
+  ImperfectIndicative({required super.conjugations}) : super(label: name);
 
   factory ImperfectIndicative.fromJson(Map<String, dynamic> json) {
     return ImperfectIndicative(conjugations: Tense.convertJsonToConjugations(json));
@@ -27,17 +30,20 @@ final class ImperfectIndicative extends Tense {
 
 /// => Indicativo Passato Prossimo
 final class PresentPerfectIndicative extends Tense {
-  PresentPerfectIndicative({required super.conjugations}) : super(label: 'Passato Prossimo', isCompound: true, usesPastParticiple: true);
+  static const String name = 'Passato Prossimo';
+  PresentPerfectIndicative({required super.conjugations}) : super(label: name, isCompound: true, usesPastParticiple: true);
 }
 
 /// => Indicativo Trapassato Prossimo
 final class PastPerfectIndicative extends Tense {
-  PastPerfectIndicative({required super.conjugations}) : super(label: 'Trapassato Prossimo', isCompound: true, usesPastParticiple: true);
+  static const String name = 'Trapassato Prossimo';
+  PastPerfectIndicative({required super.conjugations}) : super(label: name, isCompound: true, usesPastParticiple: true);
 }
 
 /// => Indicativo Passato Remoto
 final class HistoricalPresentPerfectIndicative extends Tense {
-  HistoricalPresentPerfectIndicative({required super.conjugations}) : super(label: 'Passato Remoto');
+  static const String name = 'Passato Remoto';
+  HistoricalPresentPerfectIndicative({required super.conjugations}) : super(label: name);
 
   factory HistoricalPresentPerfectIndicative.fromJson(Map<String, dynamic> json) {
     return HistoricalPresentPerfectIndicative(conjugations: Tense.convertJsonToConjugations(json));
@@ -46,12 +52,14 @@ final class HistoricalPresentPerfectIndicative extends Tense {
 
 /// => Indicativo Trapassato Remoto
 final class HistoricalPastPerfectIndicative extends Tense {
-  HistoricalPastPerfectIndicative({required super.conjugations}) : super(label: 'Trapassato Remoto', isCompound: true, usesPastParticiple: true);
+  static const String name = 'Trapassato Remoto';
+  HistoricalPastPerfectIndicative({required super.conjugations}) : super(label: name, isCompound: true, usesPastParticiple: true);
 }
 
 /// => Indicativo Futuro
 final class FutureIndicative extends Tense {
-  FutureIndicative({required super.conjugations}) : super(label: 'Futuro');
+  static const String name = 'Futuro';
+  FutureIndicative({required super.conjugations}) : super(label: name);
 
   factory FutureIndicative.fromJson(Map<String, dynamic> json) {
     return FutureIndicative(conjugations: Tense.convertJsonToConjugations(json));
@@ -60,6 +68,7 @@ final class FutureIndicative extends Tense {
 
 /// => Indicativo Futuro Anteriore
 final class FuturePerfectIndicative extends Tense {
-  FuturePerfectIndicative({required super.conjugations}) : super(label: 'Futuro Anteriore', isCompound: true, usesPastParticiple: true);
+  static const String name = 'Futuro Anteriore';
+  FuturePerfectIndicative({required super.conjugations}) : super(label: name, isCompound: true, usesPastParticiple: true);
 }
 

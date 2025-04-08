@@ -1,8 +1,12 @@
-import 'package:coniugatto/widgets/conjugation_table.dart';
 import 'package:flutter/material.dart';
 
 import '../models/auxiliary.dart';
+import '../models/moods/conditional.dart';
+import '../models/moods/imperative.dart';
+import '../models/moods/indicative.dart';
+import '../models/moods/subjunctive.dart';
 import '../models/verb.dart';
+import '../widgets/conjugation_table.dart';
 
 class VerbDetailScreen extends StatefulWidget {
   final Verb verb;
@@ -67,7 +71,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             // INDICATIVO
             ExpansionTile(
               initiallyExpanded: true,
-              title: Text('Indicativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              title: Text(Indicative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -88,7 +92,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             // CONGIUNTIVO
             ExpansionTile(
-              title: Text('Congiuntivo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              title: Text(Subjunctive.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -104,7 +108,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             // CONDIZIONALE
             ExpansionTile(
-              title: Text('Condizionale', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              title: Text(Conditional.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -118,7 +122,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             // IMPERATIVO
             ExpansionTile(
-              title: Text('Imperativo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              title: Text(Imperative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,

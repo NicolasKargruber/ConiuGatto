@@ -1,6 +1,8 @@
 import 'package:coniugatto/models/pronoun.dart';
 import 'package:coniugatto/models/verb.dart';
 
+typedef LabeledTense = (Type, {String label});
+
 ConjugatedVerb? _conjugatedVerb(Map<String, dynamic>? json) {
   try {
      return (italian: json?['italian'], english: json?['english']);
@@ -14,6 +16,8 @@ base class Tense {
   final bool usesPastParticiple;
   final bool isCompound;
   final Conjugations conjugations;
+
+  static final String labeled = "";
 
   operator [](Pronoun pronoun) => conjugations[pronoun];
 

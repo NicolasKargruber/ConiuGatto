@@ -2,7 +2,8 @@ import 'tense.dart';
 
 /// => Condizionale Presente
 final class PresentConditional extends Tense {
-  PresentConditional({required super.conjugations}) : super(label: 'Presente');
+  static const String name = 'Presente';
+  PresentConditional({required super.conjugations}) : super(label: name);
 
   factory PresentConditional.fromJson(Map<String, dynamic> json) {
     return PresentConditional(conjugations: Tense.convertJsonToConjugations(json));
@@ -11,5 +12,6 @@ final class PresentConditional extends Tense {
 
 /// => Condizionale Passato
 final class PresentPerfectConditional extends Tense {
-  PresentPerfectConditional({required super.conjugations}) : super(label: 'Passato', isCompound: true, usesPastParticiple: true);
+  static const String name = 'Passato';
+  PresentPerfectConditional({required super.conjugations}) : super(label: name, isCompound: true, usesPastParticiple: true);
 }

@@ -10,8 +10,17 @@ class Subjunctive extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  // Static labels
+  static const String name = "Congiuntivo";
+  static List<LabeledTense> get getLabeledTenses => [
+    (PresentSubjunctive, label: PresentSubjunctive.name),
+    (ImperfectSubjunctive, label: ImperfectSubjunctive.name),
+    (PresentPerfectSubjunctive, label: PresentPerfectSubjunctive.name),
+    (PastPerfectSubjunctive, label: PastPerfectSubjunctive.name)
+  ];
+
   @override
-  String get label => "Congiuntivo";
+  final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, imperfect, presentPerfectSubjunctive(auxiliary), pastPerfectSubjunctive(auxiliary) ];

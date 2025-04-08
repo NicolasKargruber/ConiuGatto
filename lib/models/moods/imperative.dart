@@ -10,8 +10,15 @@ class Imperative extends Mood {
   // Parent Reference
   late final Verb verb;
 
+  // Static Labels
+  static const String name = "Imperativo";
+  static List<LabeledTense> get getLabeledTenses => [
+    (PositiveImperative, label: PositiveImperative.name),
+    (NegativeImperative, label: NegativeImperative.name)
+  ];
+
   @override
-  String get label => "Imperativo";
+  final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [positive, negative];
