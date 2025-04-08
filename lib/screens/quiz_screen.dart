@@ -86,18 +86,21 @@ class _QuizScreenState extends State<QuizScreen> {
 
                   SizedBox(height: 64),
 
-                  TextField(
-                    textAlign: TextAlign.center,
-                    controller: _textController,
-                    decoration: InputDecoration(
-                      suffixIconConstraints: BoxConstraints(
-                        maxHeight: 24,
-                        maxWidth: 24,
-                      ),
-                      suffixIcon: IconButton.filledTonal(
-                        padding: EdgeInsets.all(0.0),
-                        onPressed: _textController.clear,
-                        icon: Icon(Icons.clear, size: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:  48.0),
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: _textController,
+                      decoration: InputDecoration(
+                        suffixIconConstraints: BoxConstraints(
+                          maxHeight: 24,
+                          maxWidth: 24,
+                        ),
+                        suffixIcon: IconButton.filledTonal(
+                          padding: EdgeInsets.all(0.0),
+                          onPressed: _textController.clear,
+                          icon: Icon(Icons.clear, size: 12),
+                        ),
                       ),
                     ),
                   ),

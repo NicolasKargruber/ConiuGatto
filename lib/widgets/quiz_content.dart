@@ -10,7 +10,7 @@ class QuizContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(48.0),
+      padding: const EdgeInsets.symmetric(horizontal:  48.0),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
