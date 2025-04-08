@@ -43,7 +43,8 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   _showSettingsScreen() async {
-    await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+    final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+    if(mounted) context.read<QuizViewModel>().randomizeVerb();
   }
 
   @override
@@ -79,7 +80,7 @@ class _QuizScreenState extends State<QuizScreen> {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (verbs.isEmpty) {
               return Center(child: Text('No verbs available 💨'));
-            } else if(!context.read<QuizViewModel>().hasQuizzableTenses) {
+            } else if(!context.watch<QuizViewModel>().hasQuizzableTenses) {
               return Center(child: Column(
                 spacing: 8,
                 mainAxisAlignment: MainAxisAlignment.center,

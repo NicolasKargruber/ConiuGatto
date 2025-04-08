@@ -14,7 +14,7 @@ class QuizViewModel extends ViewModel {
   List<Verb> _verbs = [];
 
   // Shared Preferences
-  late SharedPreferences prefs;
+  SharedPreferences? prefs;
   Set<String> _tensePrefs = {};
 
   // Initialized in Parent Constructor
@@ -22,8 +22,6 @@ class QuizViewModel extends ViewModel {
   Future initialize() async {
     debugPrint("QuizViewModel | initialize()");
     prefs = await SharedPreferences.getInstance();
-    _tensePrefs = prefs.getStringList('tenseLabels')?.toSet() ?? {};
-    debugPrint("QuizViewModel | Available Prefs: $_tensePrefs");
     randomizeVerb();
   }
 
@@ -48,7 +46,17 @@ class QuizViewModel extends ViewModel {
   String? get currentQuestion => _currentQuizzableTense?.question(currentPronoun);
   String? get currentTranslation => _currentQuizzableTense?.translation(currentPronoun);
 
+
+  void _updateTensePrefs() {
+    debugPrint("QuizViewModel | _updateTensePrefs()");
+    _tensePrefs = prefs?.getStringList('tenseLabels')?.toSet() ?? {};
+    debugPrint("QuizViewModel | Available Prefs: $_tensePrefs");
+    notifyListeners();
+  }
+
   void _findQuizzableTenses() {
+    _updateTensePrefs();
+
     if (currentVerb == null) {
       return debugPrint("QuizViewModel | No current Verb -> Cannot find QuizzableTenses");
     }
@@ -68,7 +76,7 @@ class QuizViewModel extends ViewModel {
       }
     }
 
-    debugPrint("QuizViewModel | Available Quiz Items Count: ${_quizzableTenses.length}");
+    debugPrint("QuizViewModel | QuizzableTense Count: ${_quizzableTenses.length}");
 
     debugPrint("QuizViewModel | _findQuizzableTenses() ended");
   }
@@ -83,7 +91,10 @@ class QuizViewModel extends ViewModel {
   }
 
   randomizeVerb() {
-    if (_verbs.isEmpty) return debugPrint("QuizViewModel | no verbs to randomize");
+    if (_verbs.isEmpty) {
+      notifyListeners();
+      return debugPrint("QuizViewModel | no verbs to randomize");
+    }
     debugPrint("QuizViewModel | randomizeVerb() started");
 
     do{
@@ -101,7 +112,12 @@ class QuizViewModel extends ViewModel {
 
       // Find quizzable Tenses
       _findQuizzableTenses();
-      _currentQuizzableTense = _quizzableTenses[_random.nextInt(_quizzableTenses.length)];
+      if(!hasQuizzableTenses) {
+        _currentQuizzableTense = null;
+        notifyListeners();
+        return debugPrint("QuizViewModel | No QuizzableTenses found");
+      }
+      _currentQuizzableTense = _quizzableTenses.elementAtOrNull(_random.nextInt(_quizzableTenses.length));
 
       currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
     } while(!_tensePrefs.contains(currentPref) || currentSolution == null);
