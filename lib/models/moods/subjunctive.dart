@@ -1,7 +1,8 @@
+import 'package:coniugatto/models/tenses/subjunctive_tenses.dart';
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
 import '../auxiliary.dart';
-import '../tense.dart';
+import '../tenses/tense.dart';
 import '../verb.dart';
 import 'mood.dart';
 
@@ -10,23 +11,23 @@ class Subjunctive extends Mood {
   late final Verb verb;
 
   @override
-  String get name => "Congiuntivo";
+  String get label => "Congiuntivo";
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, imperfect, presentPerfectSubjunctive(auxiliary), pastPerfectSubjunctive(auxiliary) ];
 
   // Simple Tenses - Stored in JSON
-  /// Presente
-  final Tense present; // Presente
-  /// Imperfetto
-  final Tense imperfect; // Imperfetto
+  /// => Presente
+  final PresentSubjunctive present; // Presente
+  /// => Imperfetto
+  final ImperfectSubjunctive imperfect; // Imperfetto
 
   // Compound Tenses - Generated dynamically
-  /// Congiuntivo Passato
-  Tense presentPerfectSubjunctive(auxiliary) => verb.presentPerfectSubjunctive(auxiliary);
+  /// => Congiuntivo Passato
+  PresentPerfectSubjunctive presentPerfectSubjunctive(auxiliary) => verb.presentPerfectSubjunctive(auxiliary);
 
-  /// Congiuntivo Trapassato
-  Tense pastPerfectSubjunctive(auxiliary) => verb.pastPerfectSubjunctive(auxiliary);
+  /// => Congiuntivo Trapassato
+  PastPerfectSubjunctive pastPerfectSubjunctive(auxiliary) => verb.pastPerfectSubjunctive(auxiliary);
 
   Subjunctive({
     required this.present,
@@ -35,8 +36,8 @@ class Subjunctive extends Mood {
 
   factory Subjunctive.fromJson(Map<String, dynamic> json) {
     return Subjunctive(
-      present: Tense.fromJson(json['presente'], name: 'Presente'),
-      imperfect: Tense.fromJson(json['imperfetto'], name: 'Imperfetto'),
+      present: PresentSubjunctive.fromJson(json['presente']),
+      imperfect: ImperfectSubjunctive.fromJson(json['imperfetto']),
     );
   }
 }

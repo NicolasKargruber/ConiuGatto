@@ -1,7 +1,8 @@
 import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
 
 import '../auxiliary.dart';
-import '../tense.dart';
+import '../tenses/indicative_tenses.dart';
+import '../tenses/tense.dart';
 import '../verb.dart';
 import 'mood.dart';
 
@@ -10,38 +11,38 @@ class Indicative extends Mood {
   late final Verb verb;
 
   @override
-  String get name => "Indicativo";
+  String get label => "Indicativo";
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, presentContinuous, imperfect, presentPerfect(auxiliary), pastPerfect(auxiliary), historicalPresentPerfect, historicalPastPerfect(auxiliary), future, futurePerfect(auxiliary)];
 
   // Simple Tenses - Stored in JSON
-  /// Presente
+  /// => Presente
   final Tense present;
-  /// Imperfecto
+  /// => Imperfecto
   final Tense imperfect;
-  /// Passato Remoto
+  /// => Passato Remoto
   final Tense historicalPresentPerfect;
-  /// Futuro Semplice
+  /// => Futuro Semplice
   final Tense future;
 
   // Compound Tenses - Generated dynamically
-  /// Presente Progressivo
-  Tense get presentContinuous => verb.presentContinuous;
+  /// => Presente Progressivo
+  PresentContinuousIndicative get presentContinuous => verb.presentContinuous;
 
-  /// Passato Prossimo
-  Tense presentPerfect(auxiliary) => verb.presentPerfect(auxiliary);
+  /// => Passato Prossimo
+  PresentPerfectIndicative presentPerfect(auxiliary) => verb.presentPerfect(auxiliary);
 
-  /// Trapassato Prossimo
-  Tense pastPerfect(auxiliary) => verb.pastPerfect(auxiliary);
+  /// => Trapassato Prossimo
+  PastPerfectIndicative pastPerfect(auxiliary) => verb.pastPerfect(auxiliary);
 
-  /// Trapassato Prossimo
-  Tense historicalPastPerfect(auxiliary) => verb.historicalPastPerfect(auxiliary);
+  /// => Trapassato Remoto
+  HistoricalPastPerfectIndicative historicalPastPerfect(auxiliary) => verb.historicalPastPerfect(auxiliary);
 
-  /// Futuro Anteriore
-  Tense futurePerfect(auxiliary) => verb.futurePerfect(auxiliary);
+  /// => Futuro Anteriore
+  FuturePerfectIndicative futurePerfect(auxiliary) => verb.futurePerfect(auxiliary);
 
-  // Futuro Prossimo
+  // => Futuro Prossimo
   // TODO: => Futuro GOING TO - futuro prossimo
 
   // Compound tenses will be generated dynamically
@@ -54,10 +55,10 @@ class Indicative extends Mood {
 
   factory Indicative.fromJson(Map<String, dynamic> json) {
     return Indicative(
-      present: Tense.fromJson(json['presente'], name: 'Presente'),
-      imperfect: Tense.fromJson(json['imperfetto'], name: 'Imperfetto'),
-      historicalPresentPerfect: Tense.fromJson(json['passato_remoto'], name: 'Passato Remoto'),
-      future: Tense.fromJson(json['futuro_semplice'], name: 'Futuro Semplice'),
+      present: PresentIndicative.fromJson(json['presente']),
+      imperfect: ImperfectIndicative.fromJson(json['imperfetto']),
+      historicalPresentPerfect: HistoricalPresentPerfectIndicative.fromJson(json['passato_remoto']),
+      future: FutureIndicative.fromJson(json['futuro_semplice']),
     );
   }
 }

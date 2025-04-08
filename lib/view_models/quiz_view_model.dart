@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../models/auxiliary.dart';
 import '../models/moods/mood.dart';
 import '../models/pronoun.dart';
-import '../models/tense.dart';
+import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 import 'view_model.dart';
 
@@ -40,7 +40,7 @@ class QuizViewModel extends ViewModel {
         currentTense != null;
   }
 
-  String get currentTitle => "${currentTense?.name} - ${currentMood?.name}";
+  String get currentTitle => "${currentTense?.label} - ${currentMood?.label}";
   String get currentQuestion => "${currentPronoun.italian} (${currentVerb?.infinitive})";
   String get currentTranslation => "${currentPronoun.english} ${currentTense?[currentPronoun]?.english}";
 
@@ -59,7 +59,7 @@ class QuizViewModel extends ViewModel {
 
     do{
       if(currentTense?[currentPronoun].italian == null){
-        debugPrint("QuizViewModel | Got a NULL Conjugation for Tense: ${currentTense?.name} and Pronoun: ${currentPronoun.italian}");
+        debugPrint("QuizViewModel | Got a NULL Conjugation for Tense: ${currentTense?.label} and Pronoun: ${currentPronoun.italian}");
         debugPrint("QuizViewModel | Re-Randomize verb");
       }
       currentVerb = _verbs[_random.nextInt(_verbs.length)];

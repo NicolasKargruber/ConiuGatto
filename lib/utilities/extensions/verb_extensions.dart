@@ -1,9 +1,13 @@
-import 'package:coniugatto/models/tense.dart';
+import 'package:coniugatto/models/tenses/subjunctive_tenses.dart';
 
 import '../../data/compound_verbs.dart';
 import '../../models/auxiliary.dart';
 import '../../models/moods/simple_tense.dart';
 import '../../models/pronoun.dart';
+import '../../models/tenses/conditional_tenses.dart';
+import '../../models/tenses/imperative_tenses.dart';
+import '../../models/tenses/indicative_tenses.dart';
+import '../../models/tenses/tense.dart';
 import '../../models/verb.dart';
 
 extension GenerateIndicative on Verb {
@@ -20,38 +24,33 @@ extension GenerateIndicative on Verb {
   }
 
   /// => Presente Progressivo
-  Tense get presentContinuous {
-    conjugate(Pronoun pronoun) => Conjugation(
-      pronoun,
-        (italian: "${_compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}", english: "${_compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}")
-      ,
-    );
-
-    return Tense(name: 'Presente Progressivo', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
+  PresentContinuousIndicative get presentContinuous {
+    conjugate(Pronoun pronoun) => Conjugation(pronoun, (italian: "${_compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}", english: "${_compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}"));
+    return PresentContinuousIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => Passato Prossimo
-  Tense presentPerfect(Auxiliary auxiliary) {
+  PresentPerfectIndicative presentPerfect(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.present);
-    return Tense(name: 'Passato Prossimo', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return PresentPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => Trapassato Prossimo
-  Tense pastPerfect(Auxiliary auxiliary) {
+  PastPerfectIndicative pastPerfect(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfect);
-    return Tense(name: 'Trapassato Prossimo', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return PastPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => Trapassato Remoto
-  Tense historicalPastPerfect(Auxiliary auxiliary) {
+  HistoricalPastPerfectIndicative historicalPastPerfect(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.historicalPresentPerfect);
-    return Tense(name: 'Trapassato Remoto', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return HistoricalPastPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => Futuro Anteriore
-  Tense futurePerfect(Auxiliary auxiliary) {
+  FuturePerfectIndicative futurePerfect(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.future);
-    return Tense(name: 'Futuro Anteriore', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return FuturePerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 }
 
@@ -69,15 +68,15 @@ extension GenerateSubjunctive on Verb {
   }
 
   /// => Congiuntivo Passato
-  Tense presentPerfectSubjunctive(Auxiliary auxiliary) {
+  PresentPerfectSubjunctive presentPerfectSubjunctive(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.presentSubjunctive);
-    return Tense(name: 'Congiuntivo Passato', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return PresentPerfectSubjunctive(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => Congiuntivo Trapassato
-  Tense pastPerfectSubjunctive(Auxiliary auxiliary) {
+  PastPerfectSubjunctive pastPerfectSubjunctive(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfectSubjunctive);
-    return Tense(name: 'Congiuntivo Trapassato', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return PastPerfectSubjunctive(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 }
 
@@ -97,15 +96,15 @@ extension GenerateConditional on Verb {
   }
 
   /// => Condizionale Passato
-  Tense presentPerfectConditional(Auxiliary auxiliary) {
+  PresentPerfectConditional presentPerfectConditional(Auxiliary auxiliary) {
     Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.presentConditional);
-    return Tense(name: 'Condizionale Passato', conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)), usesPastParticiple: true);
+    return PresentPerfectConditional(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 }
 
 extension GenerateImperative on Verb {
   /// => Imperativo Negativo
-  Tense get negativeImperative {
+  NegativeImperative get negativeImperative {
     // Clone (..) and update
     final conjugations = {...imperative.positive.conjugations}..updateAll((pronoun, conjugation) {
       if (conjugation == null) return null;
@@ -118,6 +117,6 @@ extension GenerateImperative on Verb {
           return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"));
       }
     });
-    return Tense(name: 'Negativo', conjugations: conjugations);
+    return NegativeImperative(conjugations: conjugations);
   }
 }

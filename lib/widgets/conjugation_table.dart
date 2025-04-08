@@ -1,7 +1,7 @@
 import 'package:coniugatto/models/pronoun.dart';
 import 'package:flutter/material.dart';
 
-import '../models/tense.dart';
+import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 
 class ConjugationTable extends StatelessWidget {
@@ -16,7 +16,7 @@ class ConjugationTable extends StatelessWidget {
       columns: [
         DataColumn(label: Expanded(child: Text('Pronoun', style: TextStyle(fontStyle: FontStyle.italic))),),
         ...tenses.map((tense) =>
-            DataColumn(label: Expanded(child: Text(tense.name, style: TextStyle(fontStyle: FontStyle.italic))))
+            DataColumn(label: Expanded(child: Text(tense.label, style: TextStyle(fontStyle: FontStyle.italic))))
         )
       ],
       rows: Pronoun.values.map((pronoun) => DataRow(

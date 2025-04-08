@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../models/moods/mood.dart';
+import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 import '../view_models/verb_view_model.dart';
 
