@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,6 +6,7 @@ import '../models/auxiliary.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/iterable_extensions.dart';
 import '../utilities/extensions/string_extensions.dart';
 import 'view_model.dart';
 
@@ -44,8 +43,7 @@ class QuizViewModel extends ViewModel {
   Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
   bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
 
-  // Randomize Quiz
-  final _random = Random();
+  // Randomized Quiz
   bool get hasRandomizedValues {
     return _currentVerb != null && _currentQuizzableTense != null;
   }
@@ -142,9 +140,7 @@ class QuizViewModel extends ViewModel {
 
       // Find quizzable Verb
       _findQuizzableVerb();
-      // TODO Create extensions
-      if(_quizzableVerbs.isEmpty) _currentVerb = null;
-      else _currentVerb = _quizzableVerbs[_random.nextInt(_quizzableVerbs.length)];
+      _currentVerb = _quizzableVerbs.randomElementOrNull;
 
       // Find quizzable Tenses
       _findQuizzableTenses();
@@ -153,9 +149,9 @@ class QuizViewModel extends ViewModel {
         notifyListeners();
         return debugPrint("QuizViewModel | No QuizzableTenses found");
       }
-      _currentQuizzableTense = _quizzableTenses.elementAtOrNull(_random.nextInt(_quizzableTenses.length));
+      _currentQuizzableTense = _quizzableTenses.randomElementOrNull;
 
-      _currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
+      _currentPronoun = Pronoun.values.randomElementOrNull;
 
       // TODO Check if QuizzableTense is equal to the previous
     } while(!_tensePrefs.contains(_currentTensePrefKey) || _currentSolution == null);
