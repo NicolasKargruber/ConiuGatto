@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/shared_preference_keys.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
@@ -21,14 +22,20 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   Future _loadPrefs() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      _tenseLabels = prefs.getStringList('tenseLabels')?.toSet() ?? {};
+      _tenseLabels = prefs.getStringList(SharedPreferenceKeys.quizzableTenses)?.toSet() ?? {};
     });
   }
 
   _onSelectTense(bool selected, {required String prefValue}) {
     setState(() {
-      if(selected) { _tenseLabels.add(prefValue); }
-      else { _tenseLabels.remove(prefValue); }
+      if(selected) {
+        _tenseLabels.add(prefValue);
+        debugPrint("ChooseTensesSheet | Added $prefValue");
+      }
+      else {
+        _tenseLabels.remove(prefValue);
+        debugPrint("ChooseTensesSheet | Removed $prefValue");
+      }
     });
   }
 
@@ -42,7 +49,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   @override
   void dispose() {
     debugPrint("ChooseTensesSheet | Dispose() ");
-    prefs.setStringList('tenseLabels', _tenseLabels.toList());
+    prefs.setStringList(SharedPreferenceKeys.quizzableTenses, _tenseLabels.toList());
     super.dispose();
   }
   
@@ -94,12 +101,12 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           child: Wrap(
             spacing: 8,
             children: labeledTenses.map((labeledTense) {
-              final prefValue = "$moodLabel-${labeledTense.label}";
+              final prefKey = (labeledTense.$1).toString();
               return FilterChip(
                     label: Text(labeledTense.label),
-                    selected: _tenseLabels.contains(prefValue),
+                    selected: _tenseLabels.contains(prefKey),
                     onSelected: (selected) =>
-                        _onSelectTense(selected, prefValue: prefValue)
+                        _onSelectTense(selected, prefValue: prefKey)
                 );
             },
             ).toList(),

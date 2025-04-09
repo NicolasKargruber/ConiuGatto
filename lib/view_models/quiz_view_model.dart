@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../data/shared_preference_keys.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
 import '../models/verb.dart';
@@ -32,7 +33,7 @@ class QuizViewModel extends ViewModel {
   Pronoun currentPronoun = Pronoun.firstSingular;
   String? get currentSolution => _currentQuizzableTense?.solution(currentPronoun);
   String? currentAnswer;
-  String? get currentPref => _currentQuizzableTense?.currentPref;
+  String? get currentPrefKey => _currentQuizzableTense?.prefKey;
   bool get hasQuizzableTenses => _quizzableTenses.isNotEmpty;
 
   // Randomize Quiz
@@ -49,7 +50,7 @@ class QuizViewModel extends ViewModel {
 
   void _updateTensePrefs() {
     debugPrint("QuizViewModel | _updateTensePrefs()");
-    _tensePrefs = prefs?.getStringList('tenseLabels')?.toSet() ?? {};
+    _tensePrefs = prefs?.getStringList(SharedPreferenceKeys.quizzableTenses)?.toSet() ?? {};
     debugPrint("QuizViewModel | Available Prefs: $_tensePrefs");
     notifyListeners();
   }
@@ -68,7 +69,7 @@ class QuizViewModel extends ViewModel {
       for (final mood in currentVerb!.moods) {
         final tenses = mood.getTenses(auxiliary);
         for (final tense in tenses) {
-          final prefKey = "${mood.label}-${tense.label}";
+          final prefKey = tense.runtimeType.toString();
           if (!_tensePrefs.contains(prefKey)) continue;
           final quizzableTense = QuizzableTense(verb: currentVerb!, auxiliary: auxiliary, mood: mood, tense: tense);
           if(quizzableTense.hasConjugatedVerbs) _quizzableTenses.add(quizzableTense);
@@ -103,8 +104,8 @@ class QuizViewModel extends ViewModel {
           debugPrint(
               "QuizViewModel | Got a NULL Conjugation for Tense: ${_currentQuizzableTense?.tense.label} and Pronoun: ${currentPronoun.italian}");
         }
-        if(!_tensePrefs.contains(currentPref)){
-          debugPrint("QuizViewModel | Tense Pref not found: $currentPref");
+        if(!_tensePrefs.contains(currentPrefKey)){
+          debugPrint("QuizViewModel | Tense Pref not found: $currentPrefKey");
         }
         debugPrint("QuizViewModel | Re-Randomize verb");
       }
@@ -120,7 +121,7 @@ class QuizViewModel extends ViewModel {
       _currentQuizzableTense = _quizzableTenses.elementAtOrNull(_random.nextInt(_quizzableTenses.length));
 
       currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
-    } while(!_tensePrefs.contains(currentPref) || currentSolution == null);
+    } while(!_tensePrefs.contains(currentPrefKey) || currentSolution == null);
 
     debugPrint("QuizViewModel | Current Verb: ${currentVerb?.infinitive}");
     debugPrint("QuizViewModel | Solution: (${currentPronoun.italian}) $currentSolution");
