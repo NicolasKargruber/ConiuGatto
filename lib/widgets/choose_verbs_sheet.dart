@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
@@ -7,37 +8,42 @@ import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/tenses/tense.dart';
+import '../models/verb.dart';
+import '../view_models/verb_view_model.dart';
 
-class ChooseTensesSheet extends StatefulWidget {
-  const ChooseTensesSheet({super.key});
+class ChooseVerbsSheet extends StatefulWidget {
+  const ChooseVerbsSheet({super.key});
 
   @override
-  State<ChooseTensesSheet> createState() => _ChooseTensesSheetState();
+  State<ChooseVerbsSheet> createState() => _ChooseVerbsSheetState();
 }
 
-class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
+class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   late String logTag = (widget).toString();
   
   // SharedPreferences
   late final SharedPreferences prefs;
-  final key = SharedPreferenceKeys.quizzableTenses;
-  Set<String> _tenseLabels = {};
+  final key = SharedPreferenceKeys.quizzableVerbs;
+  Set<String> _verbLabels = {};
 
   Future _loadPrefs() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      _tenseLabels = prefs.getStringList(key)?.toSet() ?? {};
+      _verbLabels = prefs.getStringList(key)?.toSet() ?? {};
     });
   }
 
-  _onSelectTense(bool selected, {required String prefValue}) {
+  // Choosing from
+  late final List<Verb> _verbs = context.read<VerbViewModel>().verbs;
+
+  _onSelectVerb(bool selected, {required String prefValue}) {
     setState(() {
       if(selected) {
-        _tenseLabels.add(prefValue);
+        _verbLabels.add(prefValue);
         debugPrint("$logTag | Added $prefValue");
       }
       else {
-        _tenseLabels.remove(prefValue);
+        _verbLabels.remove(prefValue);
         debugPrint("$logTag | Removed $prefValue");
       }
     });
@@ -53,7 +59,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   @override
   void dispose() {
     debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _tenseLabels.toList());
+    prefs.setStringList(key, _verbLabels.toList());
     super.dispose();
   }
   
@@ -66,7 +72,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           alignment: Alignment.center,
           padding: EdgeInsets.all(12),
           child: Text(
-            "Choose from the Tenses below",
+            "Choose from the Verbs below",
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 18,
@@ -74,15 +80,12 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           ),
         ),
 
-        _buildMoodSection(Indicative.name, Indicative.getLabeledTenses),
-        _buildMoodSection(Conditional.name, Conditional.getLabeledTenses),
-        _buildMoodSection(Subjunctive.name, Subjunctive.getLabeledTenses),
-        _buildMoodSection(Imperative.name, Imperative.getLabeledTenses),
+        _buildVerbSection(_verbs)
       ],
     );
   }
 
-  _buildMoodSection(String moodLabel, List<LabeledTense> labeledTenses) {
+  _buildVerbSection(List<Verb> verbs) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -92,11 +95,8 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             padding: EdgeInsets.all(12),
             color: Colors.black12,
             child: Text(
-              moodLabel,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-              ),
+              "Verbs",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ),
         ),
@@ -104,13 +104,12 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           padding: const EdgeInsets.all(12.0),
           child: Wrap(
             spacing: 8,
-            children: labeledTenses.map((labeledTense) {
-              final prefKey = (labeledTense.$1).toString();
+            children: verbs.map((verb) {
               return FilterChip(
-                    label: Text(labeledTense.label),
-                    selected: _tenseLabels.contains(prefKey),
+                    label: Text(verb.infinitive),
+                    selected: _verbLabels.contains(verb.prefKey),
                     onSelected: (selected) =>
-                        _onSelectTense(selected, prefValue: prefKey)
+                        _onSelectVerb(selected, prefValue: verb.prefKey)
                 );
             },
             ).toList(),

@@ -29,7 +29,7 @@ class _QuizScreenState extends State<QuizScreen> {
   final _textController = TextEditingController();
   final _shakeKey = GlobalKey<ShakeWidgetState>();
 
-  bool get areAnswersEqual => context.read<QuizViewModel>().areAnswersEqual(_textController.text);
+  bool get areAnswersEqual => context.read<QuizViewModel>().isAnswerCorrect(_textController.text);
 
   _checkAnswer() {
     setState(() {
@@ -58,7 +58,12 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   _showSettingsScreen() async {
-    await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+    await Navigator.push(context, MaterialPageRoute(builder: (_) =>
+        ChangeNotifierProvider.value(
+          value: context.read<VerbViewModel>(),
+          child: SettingsScreen(),
+        ))
+    );
     if(mounted) context.read<QuizViewModel>().randomizeVerb();
   }
 

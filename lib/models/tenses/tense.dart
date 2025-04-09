@@ -1,5 +1,5 @@
-import 'package:coniugatto/models/pronoun.dart';
-import 'package:coniugatto/models/verb.dart';
+import '../pronoun.dart';
+import '../verb.dart';
 
 typedef LabeledTense = (Type, {String label});
 
@@ -17,7 +17,8 @@ base class Tense {
   final bool isCompound;
   final Conjugations conjugations;
 
-  static final String labeled = "";
+  /// Used for Shared Preferences
+  String get prefKey => runtimeType.toString();
 
   operator [](Pronoun pronoun) => conjugations[pronoun];
 

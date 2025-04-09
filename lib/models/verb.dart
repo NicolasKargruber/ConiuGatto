@@ -20,6 +20,9 @@ class Verb {
   final Regularity regularity;
   final Set<Auxiliary> auxiliaries;
 
+  /// Used for Shared Preferences
+  String get prefKey => infinitive;
+
   bool get isRegular => regularity.isRegular;
   bool get isDoubleAuxiliary {
     return UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
