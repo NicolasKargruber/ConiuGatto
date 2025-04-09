@@ -11,7 +11,6 @@ class QuizzableTense {
   Mood mood;
   Tense tense;
 
-  String get currentPref => "${mood.label}-${tense.label}";
   String get currentTitle => "${tense.label} - ${mood.label}";
   bool get hasConjugatedVerbs => tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
 

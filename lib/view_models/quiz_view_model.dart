@@ -1,11 +1,12 @@
-import 'dart:math';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../data/shared_preference_keys.dart';
+import '../models/auxiliary.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/iterable_extensions.dart';
 import '../utilities/extensions/string_extensions.dart';
 import 'view_model.dart';
 
@@ -16,6 +17,7 @@ class QuizViewModel extends ViewModel {
   // Shared Preferences
   SharedPreferences? prefs;
   Set<String> _tensePrefs = {};
+  Set<String> _verbPrefs = {};
 
   // Initialized in Parent Constructor
   @override
@@ -25,52 +27,79 @@ class QuizViewModel extends ViewModel {
     randomizeVerb();
   }
 
-  // Quiz Values
+  // Quizzable Items
+  final List<Verb> _quizzableVerbs = [];
   final List<QuizzableTense> _quizzableTenses = [];
   QuizzableTense? _currentQuizzableTense;
-  Verb? currentVerb;
-  Pronoun currentPronoun = Pronoun.firstSingular;
-  String? get currentSolution => _currentQuizzableTense?.solution(currentPronoun);
-  String? currentAnswer;
-  String? get currentPref => _currentQuizzableTense?.currentPref;
-  bool get hasQuizzableTenses => _quizzableTenses.isNotEmpty;
+  Verb? _currentVerb;
+  Pronoun _currentPronoun = Pronoun.firstSingular;
 
-  // Randomize Quiz
-  final _random = Random();
+  // Quiz Values
+  String? get _currentSolution => _currentQuizzableTense?.solution(_currentPronoun);
+  String? _currentAnswer;
+  String? get _currentVerbPrefKey => _currentQuizzableTense?.verb.prefKey;
+  String? get _currentTensePrefKey => _currentQuizzableTense?.tense.prefKey;
+  bool get hasQuizzableTenses => _quizzableTenses.isNotEmpty;
+  Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
+  bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
+
+  // Randomized Quiz
   bool get hasRandomizedValues {
-    return currentVerb != null && _currentQuizzableTense != null;
+    return _currentVerb != null && _currentQuizzableTense != null;
   }
 
   // Quiz Labels
   String? get currentTitle => _currentQuizzableTense?.currentTitle;
-  String? get currentQuestion => _currentQuizzableTense?.question(currentPronoun);
-  String? get currentTranslation => _currentQuizzableTense?.translation(currentPronoun);
+  String? get currentQuestion => _currentQuizzableTense?.question(_currentPronoun);
+  String? get currentTranslation => _currentQuizzableTense?.translation(_currentPronoun);
 
-
-  void _updateTensePrefs() {
-    debugPrint("QuizViewModel | _updateTensePrefs()");
-    _tensePrefs = prefs?.getStringList('tenseLabels')?.toSet() ?? {};
-    debugPrint("QuizViewModel | Available Prefs: $_tensePrefs");
+  void _loadVerbPrefs() {
+    debugPrint("QuizViewModel | _loadVerbPrefs()");
+    _verbPrefs = prefs?.getStringList(SharedPreferenceKeys.quizzableVerbs)?.toSet() ?? {};
+    debugPrint("QuizViewModel | Available Verb Prefs: $_verbPrefs");
     notifyListeners();
   }
 
-  void _findQuizzableTenses() {
-    _updateTensePrefs();
+  void _loadTensePrefs() {
+    debugPrint("QuizViewModel | _loadTensePrefs()");
+    _tensePrefs = prefs?.getStringList(SharedPreferenceKeys.quizzableTenses)?.toSet() ?? {};
+    debugPrint("QuizViewModel | Available Tense Prefs: $_tensePrefs");
+    notifyListeners();
+  }
 
-    if (currentVerb == null) {
+  void _findQuizzableVerb() {
+    _loadVerbPrefs();
+
+    debugPrint("QuizViewModel | _findQuizzableVerb() started");
+    _quizzableVerbs.clear();
+
+    for (final verb in _verbs) {
+      if (!_verbPrefs.contains(verb.prefKey)) continue;
+      _quizzableVerbs.add(verb);
+    }
+
+    debugPrint("QuizViewModel | QuizzableVerbs Count: ${_quizzableVerbs.length}");
+
+    debugPrint("QuizViewModel | _findQuizzableVerb() ended");
+  }
+
+  void _findQuizzableTenses() {
+    _loadTensePrefs();
+
+    if (_currentVerb == null) {
       return debugPrint("QuizViewModel | No current Verb -> Cannot find QuizzableTenses");
     }
 
     debugPrint("QuizViewModel | _findQuizzableTenses() started");
     _quizzableTenses.clear();
 
-    for (final auxiliary in currentVerb!.auxiliaries) {
-      for (final mood in currentVerb!.moods) {
+    for (final auxiliary in _currentVerb!.auxiliaries) {
+      for (final mood in _currentVerb!.moods) {
         final tenses = mood.getTenses(auxiliary);
         for (final tense in tenses) {
-          final prefKey = "${mood.label}-${tense.label}";
+          final prefKey = tense.runtimeType.toString();
           if (!_tensePrefs.contains(prefKey)) continue;
-          final quizzableTense = QuizzableTense(verb: currentVerb!, auxiliary: auxiliary, mood: mood, tense: tense);
+          final quizzableTense = QuizzableTense(verb: _currentVerb!, auxiliary: auxiliary, mood: mood, tense: tense);
           if(quizzableTense.hasConjugatedVerbs) _quizzableTenses.add(quizzableTense);
         }
       }
@@ -98,17 +127,20 @@ class QuizViewModel extends ViewModel {
     debugPrint("QuizViewModel | randomizeVerb() started");
 
     do{
-      if(currentVerb != null) {
-        if (currentSolution == null) {
+      if(_currentVerb != null) {
+        if (_currentSolution == null) {
           debugPrint(
-              "QuizViewModel | Got a NULL Conjugation for Tense: ${_currentQuizzableTense?.tense.label} and Pronoun: ${currentPronoun.italian}");
+              "QuizViewModel | Got a NULL Conjugation for Tense: ${_currentQuizzableTense?.tense.label} and Pronoun: ${_currentPronoun.italian}");
         }
-        if(!_tensePrefs.contains(currentPref)){
-          debugPrint("QuizViewModel | Tense Pref not found: $currentPref");
+        if(!_tensePrefs.contains(_currentTensePrefKey)){
+          debugPrint("QuizViewModel | Tense Pref not found: $_currentTensePrefKey");
         }
         debugPrint("QuizViewModel | Re-Randomize verb");
       }
-      currentVerb = _verbs[_random.nextInt(_verbs.length)];
+
+      // Find quizzable Verb
+      _findQuizzableVerb();
+      _currentVerb = _quizzableVerbs.randomElementOrNull;
 
       // Find quizzable Tenses
       _findQuizzableTenses();
@@ -117,33 +149,35 @@ class QuizViewModel extends ViewModel {
         notifyListeners();
         return debugPrint("QuizViewModel | No QuizzableTenses found");
       }
-      _currentQuizzableTense = _quizzableTenses.elementAtOrNull(_random.nextInt(_quizzableTenses.length));
+      _currentQuizzableTense = _quizzableTenses.randomElementOrNull;
 
-      currentPronoun = Pronoun.values[_random.nextInt(Pronoun.values.length)];
-    } while(!_tensePrefs.contains(currentPref) || currentSolution == null);
+      _currentPronoun = Pronoun.values.randomElementOrNull;
 
-    debugPrint("QuizViewModel | Current Verb: ${currentVerb?.infinitive}");
-    debugPrint("QuizViewModel | Solution: (${currentPronoun.italian}) $currentSolution");
+      // TODO Check if QuizzableTense is equal to the previous
+    } while(!_tensePrefs.contains(_currentTensePrefKey) || _currentSolution == null);
+
+    debugPrint("QuizViewModel | Current Verb: ${_currentVerb?.infinitive}");
+    debugPrint("QuizViewModel | Solution: (${_currentPronoun.italian}) $_currentSolution");
 
     notifyListeners();
     debugPrint("QuizViewModel | randomizeVerb() ended");
   }
 
-  areAnswersEqual(String answer) {
-    debugPrint("QuizViewModel | areAnswersEqual()");
-    currentAnswer = answer;
+  isAnswerCorrect(String answer) {
+    debugPrint("QuizViewModel | isAnswerCorrect()");
+    _currentAnswer = answer;
     final usingEssere = _currentQuizzableTense?.auxiliary.requiresGenderedParticiple ?? false;
     final usingParticiple = _currentQuizzableTense?.tense.usesPastParticiple ?? false;
     if (usingEssere && usingParticiple) {
-      currentAnswer = currentPronoun.genderItalianConjugationIfPossible(answer);
+      _currentAnswer = _currentPronoun.genderItalianConjugationIfPossible(answer);
     }
-    debugPrint("QuizViewModel | Current Answer : $currentAnswer");
-    return currentAnswer == currentSolution;
+    debugPrint("QuizViewModel | Formatted Answer : $_currentAnswer");
+    return _currentAnswer == _currentSolution;
   }
 
   printDifferences() {
     debugPrint("QuizViewModel | printDifferences() started");
-    currentAnswer?.printDifferences(currentSolution ?? '');
+    _currentAnswer?.printDifferences(_currentSolution ?? '');
     debugPrint("QuizViewModel | printDifferences() ended");
   }
 }

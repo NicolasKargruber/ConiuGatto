@@ -1,3 +1,6 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+
 import 'auxiliary.dart';
 import 'moods/conditional.dart';
 import 'moods/imperative.dart';
@@ -15,7 +18,15 @@ class Verb {
   final String infinitive;
   final String translation;
   final Regularity regularity;
-  final List<Auxiliary> auxiliaries;
+  final Set<Auxiliary> auxiliaries;
+
+  /// Used for Shared Preferences
+  String get prefKey => infinitive;
+
+  bool get isRegular => regularity.isRegular;
+  bool get isDoubleAuxiliary {
+    return UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
+  }
 
   // Moods
   final Indicative indicative;
@@ -54,7 +65,7 @@ class Verb {
       infinitive: json['infinitive'],
       translation: json['translation'],
       regularity: Regularity.fromJson(json['regularity']),
-      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toList(),
+      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toSet(),
       indicative: Indicative.fromJson(json['conjugations']['indicativo']),
       subjunctive: Subjunctive.fromJson(json['conjugations']['congiuntivo']),
       conditional: Conditional.fromJson(json['conjugations']['condizionale']),

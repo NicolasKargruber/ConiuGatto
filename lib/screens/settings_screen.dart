@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../view_models/verb_view_model.dart';
 import '../widgets/choose_tenses_sheet.dart';
+import '../widgets/choose_verbs_sheet.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  showSheet(BuildContext context) {
+  _showSelectTensesSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) => SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: ChooseTensesSheet(),
       ),
+    );
+  }
+
+  _showSelectVerbsSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        final verbViewModel = context.read<VerbViewModel>();
+        return ChangeNotifierProvider.value(
+          value: verbViewModel,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: ChooseVerbsSheet(),
+          ),
+        );
+      },
     );
   }
 
@@ -40,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Center(
               child: FilledButton.tonal(
-                onPressed: () => showSheet(context),
+                onPressed: () => _showSelectTensesSheet(context),
                 child: Text("Update tenses"),
               ),
             ),
@@ -68,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Center(
               child: FilledButton.tonal(
-                onPressed: null,
+                onPressed: () => _showSelectVerbsSheet(context),
                 child: Text("Update verbs"),
               ),
             ),

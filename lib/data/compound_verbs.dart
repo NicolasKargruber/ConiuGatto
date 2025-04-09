@@ -15,7 +15,8 @@ class CompoundVerbs {
   final Verb stare; // Progressivo
   // final Verb andare; // Futuro Prossimo
 
-  const CompoundVerbs({
+  // Private Constructor
+  const CompoundVerbs._({
     required this.essere,
     required this.avere,
     required this.stare,
@@ -23,12 +24,12 @@ class CompoundVerbs {
   });
 
   // Singleton instance (since these never change)
-  static final instance = CompoundVerbs(
+  static final instance = CompoundVerbs._(
     avere: Verb(
       infinitive: "avere",
       translation: "to have",
       regularity: Regularity.irregular,
-      auxiliaries: [ Auxiliary.avere ],
+      auxiliaries: { Auxiliary.avere},
       indicative: Indicative.fromJson({
         "indicativo": {
           "presente": {
@@ -896,7 +897,7 @@ class CompoundVerbs {
       infinitive: "essere",
       translation: "to be (permanent)",
       regularity: Regularity.irregular,
-      auxiliaries: [ Auxiliary.essere ],
+      auxiliaries: { Auxiliary.essere},
       indicative: Indicative.fromJson({
         "indicativo": {
           "presente": {
@@ -1748,7 +1749,7 @@ class CompoundVerbs {
       infinitive: "stare",
       translation: "to stay, to be (temporary)",
       regularity: Regularity.irregular,
-      auxiliaries: [ Auxiliary.essere ],
+      auxiliaries: { Auxiliary.essere},
       indicative: Indicative.fromJson( {
         "indicativo": {
           "presente": {
