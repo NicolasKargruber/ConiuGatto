@@ -38,12 +38,12 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: widget.verb.regularity.isRegular ?
+              child: widget.verb.isRegular ?
               FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
               FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
             ),
 
-            if(widget.verb.auxiliaries.length > 1)
+            if(widget.verb.isDoubleAuxiliary)
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(8.0),
@@ -51,7 +51,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                   isSelected: selectedAuxiliaries,
                   onPressed: (index){
                     setState(() {
-                      selectedAuxiliary = widget.verb.auxiliaries[index];
+                      selectedAuxiliary = widget.verb.auxiliaries.elementAt(index);
                       selectedAuxiliaries = [false, false];
                       selectedAuxiliaries[index] = true;
                     });
