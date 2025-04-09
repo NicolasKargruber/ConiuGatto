@@ -9,14 +9,18 @@ class QuizContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<QuizViewModel>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal:  48.0),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            if(viewModel.isDoubleAuxiliary)
+              Chip(label: Text("${viewModel.currentAuxiliary?.name.toUpperCase()}")),
+            SizedBox(height: 4),
             AutoSizeText(
-              context.watch<QuizViewModel>().currentTitle ?? "Not available",
+              viewModel.currentTitle ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 24,
@@ -27,7 +31,7 @@ class QuizContent extends StatelessWidget {
             SizedBox(height: 18),
 
             AutoSizeText(
-              context.watch<QuizViewModel>().currentQuestion ?? "Not available",
+              viewModel.currentQuestion ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 28,
@@ -38,7 +42,7 @@ class QuizContent extends StatelessWidget {
             SizedBox(height: 4),
 
             Text(
-              context.watch<QuizViewModel>().currentTranslation ?? "Not available",
+              viewModel.currentTranslation ?? "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 20,

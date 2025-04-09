@@ -20,6 +20,10 @@ class _QuizScreenState extends State<QuizScreen> {
   late Future _loadingVerbs;
   List<Verb> get verbs => context.read<VerbViewModel>().verbs;
 
+  int triesLeft = 2;
+  int correctAnswerCount = 0;
+  int wrongAnswerCount = 0;
+
   // UI Stuff
   int activeIndex = 0;
   final _textController = TextEditingController();
@@ -31,19 +35,30 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       if (areAnswersEqual) {
         debugPrint("QuizScreen | Correct Answer!!!");
-        activeIndex++;
-        _textController.clear();
-        context.read<QuizViewModel>().randomizeVerb();
+        correctAnswerCount++;
+        _showNextQuestion();
       } else {
         debugPrint("QuizScreen | Unfortunately wrong!!!");
         context.read<QuizViewModel>().printDifferences();
         _shakeKey.currentState?.shake();
+        if(triesLeft > 0) { triesLeft--; }
+        else {
+          wrongAnswerCount++;
+          _showNextQuestion();
+        }
       }
     });
   }
 
+  _showNextQuestion() {
+    activeIndex++;
+    triesLeft = 2;
+    _textController.clear();
+    context.read<QuizViewModel>().randomizeVerb();
+  }
+
   _showSettingsScreen() async {
-    final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+    await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
     if(mounted) context.read<QuizViewModel>().randomizeVerb();
   }
 
@@ -67,7 +82,22 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Quiz 🕹️"),
-        actions: [IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded))],
+        actions: [
+          if(context.watch<QuizViewModel>().hasQuizzableTenses) ...[
+            Text("$wrongAnswerCount",
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
+            ),
+            SizedBox(width: 2),
+            Text("❌"),
+            SizedBox(width: 8),
+            Text("$correctAnswerCount",
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
+            ),
+            SizedBox(width: 2),
+            Text("✓", style: TextStyle(color: Colors.green, fontWeight: FontWeight.w800, fontSize: 20)),
+          ],
+          IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded)),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -86,10 +116,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('No Quizzable Tenses available! 😭',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20)
+                  ),
 
                   SizedBox(height: 16),
 
@@ -100,9 +128,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     label: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Go to Settings",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                          "Go to Settings",
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
                       ),
                     ),
                   )
@@ -128,6 +155,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: TextField(
                       textAlign: TextAlign.center,
                       controller: _textController,
+                      onSubmitted: (_) => _checkAnswer(),
                       decoration: InputDecoration(
                         suffixIconConstraints: BoxConstraints(
                           maxHeight: 24,

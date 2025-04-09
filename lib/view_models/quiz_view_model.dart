@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/shared_preference_keys.dart';
+import '../models/auxiliary.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
 import '../models/verb.dart';
@@ -35,6 +36,8 @@ class QuizViewModel extends ViewModel {
   String? currentAnswer;
   String? get currentPrefKey => _currentQuizzableTense?.prefKey;
   bool get hasQuizzableTenses => _quizzableTenses.isNotEmpty;
+  Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
+  bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
 
   // Randomize Quiz
   final _random = Random();
