@@ -20,10 +20,10 @@ base class Tense {
   /// Used for Shared Preferences
   String get prefKey => runtimeType.toString();
 
-  operator [](Pronoun pronoun) => conjugations[pronoun];
+  operator [](Pronoun? pronoun) => conjugations[pronoun];
 
   static Conjugations convertJsonToConjugations(Map<String, dynamic> json) {
-    mapToConjugations(Pronoun pronoun) => Conjugation(pronoun, _conjugatedVerb(json[pronoun.jsonKey()]));
+    mapToConjugations(Pronoun pronoun) => Conjugation(pronoun, _conjugatedVerb(json[pronoun.jsonKey]));
     return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
   }
 

@@ -59,7 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
     activeIndex++;
     triesLeft = 2;
     _textController.clear();
-    context.read<QuizViewModel>().randomizeVerb();
+    context.read<QuizViewModel>().createQuizItem();
   }
 
   _addLetterToAnswer(String letter) {
@@ -74,7 +74,7 @@ class _QuizScreenState extends State<QuizScreen> {
           child: SettingsScreen(),
         ))
     );
-    if(mounted) context.read<QuizViewModel>().randomizeVerb();
+    if(mounted) context.read<QuizViewModel>().createQuizItem();
   }
 
   @override
@@ -82,7 +82,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.initState();
     _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
     _loadingVerbs.then((_) {
-      if(mounted) context.read<QuizViewModel>().randomizeVerb();
+      if(mounted) context.read<QuizViewModel>().createQuizItem();
     });
   }
 
@@ -107,7 +107,7 @@ class _QuizScreenState extends State<QuizScreen> {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (verbs.isEmpty) {
               return Center(child: Text('No verbs available 💨'));
-            } else if(!context.watch<QuizViewModel>().hasQuizzableTenses) {
+            } else if(!context.watch<QuizViewModel>().hasQuizzableItems) {
               return Center(child: _buildNoTensesAvailableContent());
             } else {
               return Padding(
@@ -166,7 +166,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return AppBar(
       title: Text("Quiz 🕹️"),
       actions: [
-        if(context.watch<QuizViewModel>().hasQuizzableTenses) ...[
+        if(context.watch<QuizViewModel>().hasQuizzableItems) ...[
           Text("$wrongAnswerCount",
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
           ),

@@ -11,87 +11,70 @@ import '../utilities/extensions/string_extensions.dart';
 import 'view_model.dart';
 
 class QuizViewModel extends ViewModel {
-  // Update & Notify
-  List<Verb> _verbs = [];
+  final _logTag = (QuizViewModel).toString();
 
   // Shared Preferences
-  SharedPreferences? prefs;
-  Set<String> _tensePrefs = {};
-  Set<String> _verbPrefs = {};
+  SharedPreferences? _prefs;
+  final Set<String> _tensePrefs = {};
+  final Set<String> _verbPrefs = {};
+  final Set<String> _pronounPrefs = {};
 
   // Initialized in Parent Constructor
   @override
   Future initialize() async {
-    debugPrint("QuizViewModel | initialize()");
-    prefs = await SharedPreferences.getInstance();
-    randomizeVerb();
+    debugPrint("$_logTag | initialize()");
+    _prefs = await SharedPreferences.getInstance();
+    createQuizItem();
   }
 
-  // Quizzable Items
+  // Update & Notify
+  List<Verb> _verbs = [];
+  updateVerbs(List<Verb> verbs) {
+    debugPrint("$_logTag | updateVerbs()");
+    Function eq = const ListEquality().equals;
+    if(eq(_verbs, verbs)) return debugPrint("$_logTag | loaded verbs are still the same");
+    _verbs = verbs;
+    //notifyListeners();
+    createQuizItem();
+  }
+
+  // Quizzable State
+  Verb? _currentVerb;
   final List<Verb> _quizzableVerbs = [];
   final List<QuizzableTense> _quizzableTenses = [];
   QuizzableTense? _currentQuizzableTense;
-  Verb? _currentVerb;
-  Pronoun _currentPronoun = Pronoun.firstSingular;
-
-  // Quiz Values
-  String? get _currentSolution => _currentQuizzableTense?.solution(_currentPronoun);
+  final List<Pronoun> _quizzablePronouns = [];
+  Pronoun? _currentPronoun;
   String? _currentAnswer;
-  String? get _currentVerbPrefKey => _currentQuizzableTense?.verb.prefKey;
-  String? get _currentTensePrefKey => _currentQuizzableTense?.tense.prefKey;
-  bool get hasQuizzableTenses => _quizzableTenses.isNotEmpty;
+
+  // Getters - Quiz State
+  String? get _currentSolution => _currentQuizzableTense?.solution(_currentPronoun);
   Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
   bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
+  bool get hasQuizzableItems => _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
 
-  // Randomized Quiz
-  bool get hasRandomizedValues {
-    return _currentVerb != null && _currentQuizzableTense != null;
-  }
-
-  // Quiz Labels
+  // Getters - Quiz Labels
   String? get currentTitle => _currentQuizzableTense?.currentTitle;
   String? get currentQuestion => _currentQuizzableTense?.question(_currentPronoun);
   String? get currentTranslation => _currentQuizzableTense?.translation(_currentPronoun);
 
-  void _loadVerbPrefs() {
-    debugPrint("QuizViewModel | _loadVerbPrefs()");
-    _verbPrefs = prefs?.getStringList(SharedPreferenceKeys.quizzableVerbs)?.toSet() ?? {};
-    debugPrint("QuizViewModel | Available Verb Prefs: $_verbPrefs");
-    notifyListeners();
-  }
-
-  void _loadTensePrefs() {
-    debugPrint("QuizViewModel | _loadTensePrefs()");
-    _tensePrefs = prefs?.getStringList(SharedPreferenceKeys.quizzableTenses)?.toSet() ?? {};
-    debugPrint("QuizViewModel | Available Tense Prefs: $_tensePrefs");
-    notifyListeners();
-  }
-
-  void _findQuizzableVerb() {
-    _loadVerbPrefs();
-
-    debugPrint("QuizViewModel | _findQuizzableVerb() started");
+  void _findQuizzableVerbs() {
+    debugPrint("$_logTag | _findQuizzableVerbs() started");
+    _loadPrefs(SharedPreferenceKeys.quizzableVerbs, _verbPrefs);
     _quizzableVerbs.clear();
-
-    for (final verb in _verbs) {
-      if (!_verbPrefs.contains(verb.prefKey)) continue;
-      _quizzableVerbs.add(verb);
-    }
-
-    debugPrint("QuizViewModel | QuizzableVerbs Count: ${_quizzableVerbs.length}");
-
-    debugPrint("QuizViewModel | _findQuizzableVerb() ended");
+    _quizzableVerbs.addAll(_verbs.where((verb) => _verbPrefs.contains(verb.prefKey)));
+    debugPrint("$_logTag | Quizzable Verb Count: ${_quizzableVerbs.length}");
+    debugPrint("$_logTag | _findQuizzableVerbs() ended");
   }
 
   void _findQuizzableTenses() {
-    _loadTensePrefs();
+    debugPrint("$_logTag | _findQuizzableTenses() started");
+    _loadPrefs(SharedPreferenceKeys.quizzableTenses, _tensePrefs);
+    _quizzableTenses.clear();
 
     if (_currentVerb == null) {
-      return debugPrint("QuizViewModel | No current Verb -> Cannot find QuizzableTenses");
+      return debugPrint("$_logTag | No current Verb -> Cannot find QuizzableTenses");
     }
-
-    debugPrint("QuizViewModel | _findQuizzableTenses() started");
-    _quizzableTenses.clear();
 
     for (final auxiliary in _currentVerb!.auxiliaries) {
       for (final mood in _currentVerb!.moods) {
@@ -105,79 +88,96 @@ class QuizViewModel extends ViewModel {
       }
     }
 
-    debugPrint("QuizViewModel | QuizzableTense Count: ${_quizzableTenses.length}");
-
-    debugPrint("QuizViewModel | _findQuizzableTenses() ended");
+    debugPrint("$_logTag | QuizzableTense Count: ${_quizzableTenses.length}");
+    debugPrint("$_logTag | _findQuizzableTenses() ended");
   }
 
-  updateVerbs(List<Verb> verbs) {
-    Function eq = const ListEquality().equals;
-    if(eq(_verbs, verbs)) return debugPrint("QuizViewModel | loaded verbs are still the same");
-    debugPrint("QuizViewModel | updateVerbs()");
-    _verbs = verbs;
-    //notifyListeners();
-    randomizeVerb();
+  void _findQuizzablePronouns() {
+    debugPrint("$_logTag | _findQuizzablePronouns() started");
+    _loadPrefs(SharedPreferenceKeys.quizzablePronouns, _pronounPrefs);
+    _quizzablePronouns.clear();
+    _quizzablePronouns.addAll(Pronoun.values.where((pronoun) => _pronounPrefs.contains(pronoun.prefKey)));
+    debugPrint("$_logTag | Quizzable Pronoun Count: ${_quizzablePronouns.length}");
+    debugPrint("$_logTag | _findQuizzablePronouns() ended");
   }
 
-  randomizeVerb() {
+  createQuizItem() {
+    debugPrint("$_logTag | createQuizItem() started");
     if (_verbs.isEmpty) {
       notifyListeners();
-      return debugPrint("QuizViewModel | no verbs to randomize");
+      return debugPrint("$_logTag | no verbs to randomize");
     }
-    debugPrint("QuizViewModel | randomizeVerb() started");
 
-    do{
-      if(_currentVerb != null) {
-        if (_currentSolution == null) {
-          debugPrint(
-              "QuizViewModel | Got a NULL Conjugation for Tense: ${_currentQuizzableTense?.tense.label} and Pronoun: ${_currentPronoun.italian}");
-        }
-        if(!_tensePrefs.contains(_currentTensePrefKey)){
-          debugPrint("QuizViewModel | Tense Pref not found: $_currentTensePrefKey");
-        }
-        debugPrint("QuizViewModel | Re-Randomize verb");
+    // Find Quizzable Verb
+    _findQuizzableVerbs();
+    _currentVerb = _quizzableVerbs.randomElementOrNull;
+
+    // Find Quizzable Tense, Pronoun & Solution
+    _findQuizzableTenses();
+    _findQuizzablePronouns();
+    _randomizeQuizItem();
+
+    if(!hasQuizzableItems) {
+      notifyListeners();
+      if (_quizzableVerbs.isEmpty) {
+        return debugPrint("$_logTag | No Quizzable Verbs found");
+      } else if (_quizzableTenses.isEmpty) {
+        return debugPrint("$_logTag | No QuizzableTenses found");
+      } else if (_quizzablePronouns.isEmpty) {
+        return debugPrint("$_logTag | No Quizzable Pronouns found");
       }
+    }
 
-      // Find quizzable Verb
-      _findQuizzableVerb();
-      _currentVerb = _quizzableVerbs.randomElementOrNull;
+    while (_currentSolution == null){
+      debugPrint("$_logTag | Re-Randomize Quiz Item");
+      _randomizeQuizItem();
 
-      // Find quizzable Tenses
-      _findQuizzableTenses();
-      if(!hasQuizzableTenses) {
-        _currentQuizzableTense = null;
-        notifyListeners();
-        return debugPrint("QuizViewModel | No QuizzableTenses found");
+      // TODO check for previous Quiz being the same
+      /*final newQuizzableTense = _quizzableTenses.randomElementOrNull;
+      if(newQuizzableTense == _currentQuizzableTense) {
+        debugPrint("$_logTag | QuizzableTense is still the same");
+        continue;
       }
-      _currentQuizzableTense = _quizzableTenses.randomElementOrNull;
+      _currentQuizzableTense = newQuizzableTense;*/
+    }
 
-      _currentPronoun = Pronoun.values.randomElementOrNull;
-
-      // TODO Check if QuizzableTense is equal to the previous
-    } while(!_tensePrefs.contains(_currentTensePrefKey) || _currentSolution == null);
-
-    debugPrint("QuizViewModel | Current Verb: ${_currentVerb?.infinitive}");
-    debugPrint("QuizViewModel | Solution: (${_currentPronoun.italian}) $_currentSolution");
+    debugPrint("$_logTag | Current Verb: ${_currentVerb?.infinitive}");
+    debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $_currentSolution");
 
     notifyListeners();
-    debugPrint("QuizViewModel | randomizeVerb() ended");
+    debugPrint("$_logTag | createQuizItem() ended");
+  }
+
+  void _randomizeQuizItem() {
+    _currentVerb = _quizzableVerbs.randomElementOrNull;
+    _currentQuizzableTense = _quizzableTenses.randomElementOrNull;
+    _currentPronoun = _quizzablePronouns.randomElementOrNull;
   }
 
   isAnswerCorrect(String answer) {
-    debugPrint("QuizViewModel | isAnswerCorrect()");
+    debugPrint("$_logTag | isAnswerCorrect()");
     _currentAnswer = answer;
     final usingEssere = _currentQuizzableTense?.auxiliary.requiresGenderedParticiple ?? false;
     final usingParticiple = _currentQuizzableTense?.tense.usesPastParticiple ?? false;
     if (usingEssere && usingParticiple) {
-      _currentAnswer = _currentPronoun.genderItalianConjugationIfPossible(answer);
+      _currentAnswer = _currentPronoun?.genderItalianConjugationIfPossible(answer);
     }
-    debugPrint("QuizViewModel | Formatted Answer : $_currentAnswer");
+    debugPrint("$_logTag | Formatted Answer : $_currentAnswer");
     return _currentAnswer == _currentSolution;
   }
 
   printDifferences() {
-    debugPrint("QuizViewModel | printDifferences() started");
+    debugPrint("$_logTag | printDifferences() started");
     _currentAnswer?.printDifferences(_currentSolution ?? '');
-    debugPrint("QuizViewModel | printDifferences() ended");
+    debugPrint("$_logTag | printDifferences() ended");
+  }
+
+  // Private Helpers
+  void _loadPrefs(String key, Set<String> targetSet) {
+    debugPrint('$_logTag | _loadPrefs($key)');
+    targetSet.clear();
+    targetSet.addAll(_prefs?.getStringList(key) ?? []);
+    debugPrint('$_logTag | Available $key Prefs: $targetSet');
+    notifyListeners();
   }
 }
