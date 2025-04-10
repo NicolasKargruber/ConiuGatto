@@ -1,4 +1,4 @@
-import 'package:coniugatto/utilities/extensions/string_extensions.dart';
+import '../utilities/extensions/string_extensions.dart';
 
 enum Pronoun {
   firstSingular('io', 'I', 'mi'),
@@ -27,7 +27,8 @@ enum Pronoun {
     }
   }
 
-  String jsonKey()  => italian; // => "io"
+  String get prefKey => jsonKey;
+  String get jsonKey  => italian; // => "io"
   final String italian; // => "io"
   final String english; // => "I"
   final String reflexivePronoun; // => "mi"

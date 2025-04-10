@@ -24,12 +24,12 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   // SharedPreferences
   late final SharedPreferences prefs;
   final key = SharedPreferenceKeys.quizzableVerbs;
-  Set<String> _verbLabels = {};
+  Set<String> _verbPrefs = {};
 
   Future _loadPrefs() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      _verbLabels = prefs.getStringList(key)?.toSet() ?? {};
+      _verbPrefs = prefs.getStringList(key)?.toSet() ?? {};
     });
   }
 
@@ -39,11 +39,11 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   _onSelectVerb(bool selected, {required String prefValue}) {
     setState(() {
       if(selected) {
-        _verbLabels.add(prefValue);
+        _verbPrefs.add(prefValue);
         debugPrint("$logTag | Added $prefValue");
       }
       else {
-        _verbLabels.remove(prefValue);
+        _verbPrefs.remove(prefValue);
         debugPrint("$logTag | Removed $prefValue");
       }
     });
@@ -59,29 +59,32 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   @override
   void dispose() {
     debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _verbLabels.toList());
+    prefs.setStringList(key, _verbPrefs.toList());
     super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(12),
-          child: Text(
-            "Choose from the Verbs below",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(12),
+            child: Text(
+              "Choose from the Verbs below",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
             ),
           ),
-        ),
 
-        _buildVerbSection(_verbs)
-      ],
+          _buildVerbSection(_verbs)
+        ],
+      ),
     );
   }
 
@@ -107,7 +110,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             children: verbs.map((verb) {
               return FilterChip(
                     label: Text(verb.infinitive),
-                    selected: _verbLabels.contains(verb.prefKey),
+                    selected: _verbPrefs.contains(verb.prefKey),
                     onSelected: (selected) =>
                         _onSelectVerb(selected, prefValue: verb.prefKey)
                 );

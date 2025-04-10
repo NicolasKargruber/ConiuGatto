@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
@@ -6,38 +7,41 @@ import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
+import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
+import '../models/verb.dart';
+import '../view_models/verb_view_model.dart';
 
-class ChooseTensesSheet extends StatefulWidget {
-  const ChooseTensesSheet({super.key});
+class ChoosePronounsSheet extends StatefulWidget {
+  const ChoosePronounsSheet({super.key});
 
   @override
-  State<ChooseTensesSheet> createState() => _ChooseTensesSheetState();
+  State<ChoosePronounsSheet> createState() => _ChoosePronounsSheetState();
 }
 
-class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
+class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
   late String logTag = (widget).toString();
   
   // SharedPreferences
   late final SharedPreferences prefs;
-  final key = SharedPreferenceKeys.quizzableTenses;
-  Set<String> _tensePrefs = {};
+  final key = SharedPreferenceKeys.quizzablePronouns;
+  Set<String> _pronounPrefs = {};
 
   Future _loadPrefs() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      _tensePrefs = prefs.getStringList(key)?.toSet() ?? {};
+      _pronounPrefs = prefs.getStringList(key)?.toSet() ?? {};
     });
   }
 
-  _onSelectTense(bool selected, {required String prefValue}) {
+  _onSelectPronoun(bool selected, {required String prefValue}) {
     setState(() {
       if(selected) {
-        _tensePrefs.add(prefValue);
+        _pronounPrefs.add(prefValue);
         debugPrint("$logTag | Added $prefValue");
       }
       else {
-        _tensePrefs.remove(prefValue);
+        _pronounPrefs.remove(prefValue);
         debugPrint("$logTag | Removed $prefValue");
       }
     });
@@ -53,14 +57,14 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   @override
   void dispose() {
     debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _tensePrefs.toList());
+    prefs.setStringList(key, _pronounPrefs.toList());
     super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -68,7 +72,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             alignment: Alignment.center,
             padding: EdgeInsets.all(12),
             child: Text(
-              "Choose from the Tenses below",
+              "Choose from the Pronouns below",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
@@ -76,16 +80,13 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             ),
           ),
 
-          _buildMoodSection(Indicative.name, Indicative.getLabeledTenses),
-          _buildMoodSection(Conditional.name, Conditional.getLabeledTenses),
-          _buildMoodSection(Subjunctive.name, Subjunctive.getLabeledTenses),
-          _buildMoodSection(Imperative.name, Imperative.getLabeledTenses),
+          _buildPronounSection(Pronoun.values)
         ],
       ),
     );
   }
 
-  _buildMoodSection(String moodLabel, List<LabeledTense> labeledTenses) {
+  _buildPronounSection(List<Pronoun> pronouns) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -95,11 +96,8 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             padding: EdgeInsets.all(12),
             color: Colors.black12,
             child: Text(
-              moodLabel,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-              ),
+              "Pronouns",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ),
         ),
@@ -107,13 +105,12 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           padding: const EdgeInsets.all(12.0),
           child: Wrap(
             spacing: 8,
-            children: labeledTenses.map((labeledTense) {
-              final prefKey = (labeledTense.$1).toString();
+            children: pronouns.map((pronoun) {
               return FilterChip(
-                    label: Text(labeledTense.label),
-                    selected: _tensePrefs.contains(prefKey),
+                    label: Text(pronoun.italian),
+                    selected: _pronounPrefs.contains(pronoun.prefKey),
                     onSelected: (selected) =>
-                        _onSelectTense(selected, prefValue: prefKey)
+                        _onSelectPronoun(selected, prefValue: pronoun.prefKey)
                 );
             },
             ).toList(),
