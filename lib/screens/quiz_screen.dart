@@ -62,9 +62,25 @@ class _QuizScreenState extends State<QuizScreen> {
     context.read<QuizViewModel>().createQuizItem();
   }
 
-  _addLetterToAnswer(String letter) {
-    _textController.text += letter;
-    debugPrint("$logTag | Added letter '$letter' to answer");
+  void _addLetterAtSelection(String letter) {
+    final selection = _textController.selection;
+    final text = _textController.text;
+
+    // Handle text replacement when there's a selection
+    if (selection.isValid && !selection.isCollapsed) {
+      final start = selection.start;
+      final end = selection.end;
+      _textController.text = text.replaceRange(start, end, letter);
+      _textController.selection = TextSelection.collapsed(offset: start + letter.length);
+    }
+    // Handle normal insertion at cursor position
+    else {
+      final cursorPos = selection.base.offset;
+      _textController.text = text.replaceRange(cursorPos, cursorPos, letter);
+      _textController.selection = TextSelection.collapsed(offset: cursorPos + letter.length);
+    }
+
+    debugPrint("$logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
   }
 
   _showSettingsScreen() async {
@@ -228,7 +244,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return Wrap(children: ["è", "à", "ò", "é"]
         .map((letter) => ActionChip(
       label: Text(letter),
-      onPressed: () => _addLetterToAnswer(letter),
+      onPressed: () => _addLetterAtSelection(letter),
     )).toList());
   }
 
