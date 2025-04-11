@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../models/answer_result.dart';
 import '../models/verb.dart';
 import '../view_models/quiz_view_model.dart';
 import '../view_models/verb_view_model.dart';
@@ -34,23 +35,37 @@ class _QuizScreenState extends State<QuizScreen> {
   final _textController = TextEditingController();
   final _shakeKey = GlobalKey<ShakeWidgetState>();
 
-  bool get areAnswersEqual => context.read<QuizViewModel>().isAnswerCorrect(_textController.text);
+  AnswerResult get answerResult => context.read<QuizViewModel>().isAnswerCorrect(_textController.text);
 
   _checkAnswer() {
     setState(() {
-      if (areAnswersEqual) {
-        debugPrint("$logTag | Correct Answer!!!");
-        correctAnswerCount++;
-        _showNextQuestion();
-      } else {
-        debugPrint("$logTag | Unfortunately wrong!!!");
-        context.read<QuizViewModel>().printDifferences();
-        _shakeKey.currentState?.shake();
-        if(triesLeft > 0) { triesLeft--; }
-        else {
-          wrongAnswerCount++;
+      switch (answerResult) {
+        case AnswerResult.correct:
+          debugPrint("$logTag | Correct Answer!!!");
+          correctAnswerCount++;
           _showNextQuestion();
-        }
+          return;
+        case AnswerResult.almostCorrect:
+          triesLeft--;
+          break;
+        case AnswerResult.missingAccents:
+          triesLeft--;
+          break;
+        case AnswerResult.incorrect:
+          // TODO if INCORRECT, show Snackbar with correct answer
+          triesLeft--;
+          break;
+      }
+
+      // Show WRONG animation
+      // TODO message on screen
+      debugPrint("$logTag | Unfortunately wrong!!!");
+      _shakeKey.currentState?.shake();
+
+      // After 2 tries => Show next question
+      if(triesLeft <= 0) {
+        wrongAnswerCount++;
+        _showNextQuestion();
       }
     });
   }
@@ -146,9 +161,12 @@ class _QuizScreenState extends State<QuizScreen> {
                               QuizContent(),
                           
                               SizedBox(height: 64),
-                          
+
                               // Answer Text Field
                               _buildTextField(),
+
+                              if(triesLeft < 2 && !answerResult.isCorrect)
+                                Text(answerResult.message),
                           
                               SizedBox(height: 4),
                           

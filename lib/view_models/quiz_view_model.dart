@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/shared_preference_keys.dart';
 import '../main.dart';
+import '../models/answer_result.dart';
 import '../models/auxiliary.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
@@ -53,6 +54,8 @@ class QuizViewModel extends ViewModel {
   Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
   bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
   bool get hasQuizzableItems => _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
+  bool get usesEssere => _currentQuizzableTense?.auxiliary.requiresGenderedParticiple ?? false;
+  bool get usesPastParticiple => _currentQuizzableTense?.tense.usesPastParticiple ?? false;
 
   // Getters - Quiz Labels
   String? get currentTitle => _currentQuizzableTense?.currentTitle;
@@ -155,21 +158,47 @@ class QuizViewModel extends ViewModel {
     _currentPronoun = _quizzablePronouns.randomElementOrNull;
   }
 
-  isAnswerCorrect(String answer) {
+  AnswerResult isAnswerCorrect(String answer) {
     debugPrint("$_logTag | isAnswerCorrect()");
     _currentAnswer = answer;
-    final usingEssere = _currentQuizzableTense?.auxiliary.requiresGenderedParticiple ?? false;
-    final usingParticiple = _currentQuizzableTense?.tense.usesPastParticiple ?? false;
-    if (usingEssere && usingParticiple) {
+
+    // Add Gender to Participle if necessary
+    if (usesEssere && usesPastParticiple) {
       _currentAnswer = _currentPronoun?.genderItalianConjugationIfPossible(answer);
+      debugPrint("$_logTag | Gendered Answer : $_currentAnswer");
     }
-    debugPrint("$_logTag | Formatted Answer : $_currentAnswer");
-    return _currentAnswer == _currentSolution;
+
+    // Correct
+    if (_currentAnswer == _currentSolution) return AnswerResult.correct;
+
+    // Missing Accents
+    if (_currentAnswer == _currentSolution?.removeDiacritics()) return AnswerResult.missingAccents;
+    debugPrint("$_logTag | Solution without Accents: ${_currentSolution?.removeDiacritics()}");
+
+    // Missing a letter
+    final differences = _currentSolution?.diff(_currentAnswer ?? '') ?? [];
+    if(differences.isNotEmpty) {
+      // Print Differences
+      printDifferences(differences);
+
+      // Single typo
+      // TODO Additionally check weather before and after the typo are the same -> CON-41
+      if(differences.length == 1) return AnswerResult.almostCorrect;
+
+      // Force Gendered Participle
+      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == _currentSolution)
+        return AnswerResult.almostCorrect;
+    }
+
+    // Incorrect
+    return AnswerResult.incorrect;
   }
 
-  printDifferences() {
+  printDifferences(List<Difference> differences) {
     debugPrint("$_logTag | printDifferences() started");
-    _currentAnswer?.printDifferences(_currentSolution ?? '');
+    for (final difference in differences) {
+      debugPrint("$_logTag | Difference at index ${difference.index}: '${difference.$1}' vs '${difference.$2}'");
+    }
     debugPrint("$_logTag | printDifferences() ended");
   }
 }
