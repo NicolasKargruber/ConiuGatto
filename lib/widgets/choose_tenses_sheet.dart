@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
+import '../main.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
+import '../models/tenses/indicative_tenses.dart';
 import '../models/tenses/tense.dart';
 
 class ChooseTensesSheet extends StatefulWidget {
@@ -19,14 +21,12 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   late String logTag = (widget).toString();
   
   // SharedPreferences
-  late final SharedPreferences prefs;
   final key = SharedPreferenceKeys.quizzableTenses;
   Set<String> _tensePrefs = {};
 
-  Future _loadPrefs() async {
-    prefs = await SharedPreferences.getInstance();
+   _loadPrefs() {
     setState(() {
-      _tensePrefs = prefs.getStringList(key)?.toSet() ?? {};
+      _tensePrefs = preferenceManager.loadTensePrefs();
     });
   }
 
@@ -52,8 +52,8 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
 
   @override
   void dispose() {
-    debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _tensePrefs.toList());
+    debugPrint("$logTag | dispose() ");
+    preferenceManager.updateTensePrefs(_tensePrefs);
     super.dispose();
   }
   

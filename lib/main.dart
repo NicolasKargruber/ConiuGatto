@@ -2,8 +2,16 @@ import 'package:coniugatto/screens/home_screen.dart';
 import 'package:coniugatto/view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'utilities/shared_preference_manager.dart';
+
+// TODO Use GetIt for Dependency Injection
+late SharedPreferenceManager preferenceManager;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  preferenceManager = await SharedPreferenceManager.initialize();
   runApp(const MyApp());
 }
 

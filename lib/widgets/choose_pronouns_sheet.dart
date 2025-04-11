@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
+import '../main.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
@@ -23,14 +24,11 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
   late String logTag = (widget).toString();
   
   // SharedPreferences
-  late final SharedPreferences prefs;
-  final key = SharedPreferenceKeys.quizzablePronouns;
   Set<String> _pronounPrefs = {};
 
-  Future _loadPrefs() async {
-    prefs = await SharedPreferences.getInstance();
+  _loadPrefs() {
     setState(() {
-      _pronounPrefs = prefs.getStringList(key)?.toSet() ?? {};
+      _pronounPrefs = preferenceManager.loadPronounPrefs();
     });
   }
 
@@ -56,8 +54,8 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
 
   @override
   void dispose() {
-    debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _pronounPrefs.toList());
+    debugPrint("$logTag | dispose() ");
+    preferenceManager.updatePronounPrefs(_pronounPrefs);
     super.dispose();
   }
   

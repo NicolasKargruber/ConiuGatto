@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
+import '../main.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
@@ -20,21 +21,19 @@ class ChooseVerbsSheet extends StatefulWidget {
 
 class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   late String logTag = (widget).toString();
+
+  // ViewModel
+  List<Verb> get _verbs => context.read<VerbViewModel>().verbs;
   
   // SharedPreferences
-  late final SharedPreferences prefs;
-  final key = SharedPreferenceKeys.quizzableVerbs;
   Set<String> _verbPrefs = {};
+  get _defaultVerbPrefs => _verbs.map((e) => e.prefKey);
 
-  Future _loadPrefs() async {
-    prefs = await SharedPreferences.getInstance();
+  _loadPrefs() {
     setState(() {
-      _verbPrefs = prefs.getStringList(key)?.toSet() ?? {};
+      _verbPrefs = preferenceManager.loadVerbPrefs(_defaultVerbPrefs);
     });
   }
-
-  // Choosing from
-  late final List<Verb> _verbs = context.read<VerbViewModel>().verbs;
 
   _onSelectVerb(bool selected, {required String prefValue}) {
     setState(() {
@@ -58,8 +57,8 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
 
   @override
   void dispose() {
-    debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _verbPrefs.toList());
+    debugPrint("$logTag | dispose() ");
+    preferenceManager.updateVerbPrefs(_verbPrefs);
     super.dispose();
   }
   

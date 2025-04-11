@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/shared_preference_keys.dart';
+import '../main.dart';
 import '../models/auxiliary.dart';
 import '../models/pronoun.dart';
 import '../models/quizzable_tense.dart';
@@ -14,16 +15,16 @@ class QuizViewModel extends ViewModel {
   final _logTag = (QuizViewModel).toString();
 
   // Shared Preferences
-  SharedPreferences? _prefs;
-  final Set<String> _tensePrefs = {};
-  final Set<String> _verbPrefs = {};
-  final Set<String> _pronounPrefs = {};
+  // SharedPreferences? _prefs;
+  Set<String> _tensePrefs = {};
+  Set<String> _verbPrefs = {};
+  Set<String> _pronounPrefs = {};
 
   // Initialized in Parent Constructor
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
-    _prefs = await SharedPreferences.getInstance();
+    // _prefs = await SharedPreferences.getInstance();
     createQuizItem();
   }
 
@@ -60,7 +61,7 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzableVerbs() {
     debugPrint("$_logTag | _findQuizzableVerbs() started");
-    _loadPrefs(SharedPreferenceKeys.quizzableVerbs, _verbPrefs);
+    _verbPrefs = preferenceManager.loadVerbPrefs(_verbs.map((e) => e.prefKey));
     _quizzableVerbs.clear();
     _quizzableVerbs.addAll(_verbs.where((verb) => _verbPrefs.contains(verb.prefKey)));
     debugPrint("$_logTag | Quizzable Verb Count: ${_quizzableVerbs.length}");
@@ -69,7 +70,7 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzableTenses() {
     debugPrint("$_logTag | _findQuizzableTenses() started");
-    _loadPrefs(SharedPreferenceKeys.quizzableTenses, _tensePrefs);
+    _tensePrefs = preferenceManager.loadTensePrefs();
     _quizzableTenses.clear();
 
     if (_currentVerb == null) {
@@ -94,7 +95,7 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzablePronouns() {
     debugPrint("$_logTag | _findQuizzablePronouns() started");
-    _loadPrefs(SharedPreferenceKeys.quizzablePronouns, _pronounPrefs);
+    _pronounPrefs = preferenceManager.loadPronounPrefs();
     _quizzablePronouns.clear();
     _quizzablePronouns.addAll(Pronoun.values.where((pronoun) => _pronounPrefs.contains(pronoun.prefKey)));
     debugPrint("$_logTag | Quizzable Pronoun Count: ${_quizzablePronouns.length}");
@@ -170,14 +171,5 @@ class QuizViewModel extends ViewModel {
     debugPrint("$_logTag | printDifferences() started");
     _currentAnswer?.printDifferences(_currentSolution ?? '');
     debugPrint("$_logTag | printDifferences() ended");
-  }
-
-  // Private Helpers
-  void _loadPrefs(String key, Set<String> targetSet) {
-    debugPrint('$_logTag | _loadPrefs($key)');
-    targetSet.clear();
-    targetSet.addAll(_prefs?.getStringList(key) ?? []);
-    debugPrint('$_logTag | Available $key Prefs: $targetSet');
-    notifyListeners();
   }
 }
