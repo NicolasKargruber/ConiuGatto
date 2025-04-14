@@ -181,9 +181,9 @@ class QuizViewModel extends ViewModel {
       // Print Differences
       printDifferences(differences);
 
-      // Single typo
-      // TODO Additionally check weather before and after the typo are the same -> CON-41
-      if(differences.length == 1) return AnswerResult.almostCorrect;
+      // 1 Letter Away
+      if(_currentAnswer?.levenshteinDistance(_currentSolution ?? '') == 1)
+        return AnswerResult.almostCorrect;
 
       // Force Gendered Participle
       if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == _currentSolution)
