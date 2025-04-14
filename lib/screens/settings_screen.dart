@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../view_models/verb_view_model.dart';
+import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verbs_sheet.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  _showSelectTensesSheet(BuildContext context) {
+  _showChooseTensesSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) => SingleChildScrollView(
@@ -18,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  _showSelectVerbsSheet(BuildContext context) {
+  _showChooseVerbsSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (_) {
@@ -28,6 +29,22 @@ class SettingsScreen extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChooseVerbsSheet(),
+          ),
+        );
+      },
+    );
+  }
+
+  _showChoosePronounsSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        final verbViewModel = context.read<VerbViewModel>();
+        return ChangeNotifierProvider.value(
+          value: verbViewModel,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: ChoosePronounsSheet(),
           ),
         );
       },
@@ -59,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Center(
               child: FilledButton.tonal(
-                onPressed: () => _showSelectTensesSheet(context),
+                onPressed: () => _showChooseTensesSheet(context),
                 child: Text("Update tenses"),
               ),
             ),
@@ -87,7 +104,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Center(
               child: FilledButton.tonal(
-                onPressed: () => _showSelectVerbsSheet(context),
+                onPressed: () => _showChooseVerbsSheet(context),
                 child: Text("Update verbs"),
               ),
             ),
@@ -115,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Center(
               child: FilledButton.tonal(
-                onPressed: null,
+                onPressed: ()=> _showChoosePronounsSheet(context),
                 child: Text("Update pronouns"),
               ),
             ),

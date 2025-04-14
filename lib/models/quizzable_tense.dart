@@ -14,9 +14,9 @@ class QuizzableTense {
   String get currentTitle => "${tense.label} - ${mood.label}";
   bool get hasConjugatedVerbs => tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
 
-  String? solution(Pronoun pronoun) => tense[pronoun]?.italian;
-  String? question(Pronoun pronoun) => "${pronoun.italian} (${verb.infinitive})";
-  String? translation(Pronoun pronoun) => "${pronoun.english} ${tense[pronoun]?.english}";
+  String? solution(Pronoun? pronoun) => tense[pronoun]?.italian;
+  String? question(Pronoun? pronoun) => "${pronoun?.italian} (${verb.infinitive})";
+  String? translation(Pronoun? pronoun) => "${pronoun?.english} ${tense[pronoun]?.english}";
 
   QuizzableTense({
     required this.verb,

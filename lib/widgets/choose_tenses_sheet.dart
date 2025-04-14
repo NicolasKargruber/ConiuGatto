@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
+import '../main.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
+import '../models/tenses/indicative_tenses.dart';
 import '../models/tenses/tense.dart';
 
 class ChooseTensesSheet extends StatefulWidget {
@@ -19,25 +21,23 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   late String logTag = (widget).toString();
   
   // SharedPreferences
-  late final SharedPreferences prefs;
   final key = SharedPreferenceKeys.quizzableTenses;
-  Set<String> _tenseLabels = {};
+  Set<String> _tensePrefs = {};
 
-  Future _loadPrefs() async {
-    prefs = await SharedPreferences.getInstance();
+   _loadPrefs() {
     setState(() {
-      _tenseLabels = prefs.getStringList(key)?.toSet() ?? {};
+      _tensePrefs = preferenceManager.loadTensePrefs();
     });
   }
 
   _onSelectTense(bool selected, {required String prefValue}) {
     setState(() {
       if(selected) {
-        _tenseLabels.add(prefValue);
+        _tensePrefs.add(prefValue);
         debugPrint("$logTag | Added $prefValue");
       }
       else {
-        _tenseLabels.remove(prefValue);
+        _tensePrefs.remove(prefValue);
         debugPrint("$logTag | Removed $prefValue");
       }
     });
@@ -52,33 +52,36 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
 
   @override
   void dispose() {
-    debugPrint("$logTag | Dispose() ");
-    prefs.setStringList(key, _tenseLabels.toList());
+    debugPrint("$logTag | dispose() ");
+    preferenceManager.updateTensePrefs(_tensePrefs);
     super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(12),
-          child: Text(
-            "Choose from the Tenses below",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(12),
+            child: Text(
+              "Choose from the Tenses below",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
             ),
           ),
-        ),
 
-        _buildMoodSection(Indicative.name, Indicative.getLabeledTenses),
-        _buildMoodSection(Conditional.name, Conditional.getLabeledTenses),
-        _buildMoodSection(Subjunctive.name, Subjunctive.getLabeledTenses),
-        _buildMoodSection(Imperative.name, Imperative.getLabeledTenses),
-      ],
+          _buildMoodSection(Indicative.name, Indicative.getLabeledTenses),
+          _buildMoodSection(Conditional.name, Conditional.getLabeledTenses),
+          _buildMoodSection(Subjunctive.name, Subjunctive.getLabeledTenses),
+          _buildMoodSection(Imperative.name, Imperative.getLabeledTenses),
+        ],
+      ),
     );
   }
 
@@ -108,7 +111,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
               final prefKey = (labeledTense.$1).toString();
               return FilterChip(
                     label: Text(labeledTense.label),
-                    selected: _tenseLabels.contains(prefKey),
+                    selected: _tensePrefs.contains(prefKey),
                     onSelected: (selected) =>
                         _onSelectTense(selected, prefValue: prefKey)
                 );

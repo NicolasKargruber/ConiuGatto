@@ -1,9 +1,9 @@
 import 'dart:math';
 
-extension Randomize on Iterable {
+extension Randomize<E> on Iterable<E> {
   static final _random = Random();
-  get randomElementOrNull {
+  E? get randomElementOrNull {
     if(isEmpty) return null;
-    return elementAtOrNull(_random.nextInt(length));
+    return elementAt(_random.nextInt(length));
   }
 }

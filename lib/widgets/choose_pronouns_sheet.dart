@@ -8,41 +8,38 @@ import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
+import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 import '../view_models/verb_view_model.dart';
 
-class ChooseVerbsSheet extends StatefulWidget {
-  const ChooseVerbsSheet({super.key});
+class ChoosePronounsSheet extends StatefulWidget {
+  const ChoosePronounsSheet({super.key});
 
   @override
-  State<ChooseVerbsSheet> createState() => _ChooseVerbsSheetState();
+  State<ChoosePronounsSheet> createState() => _ChoosePronounsSheetState();
 }
 
-class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
+class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
   late String logTag = (widget).toString();
-
-  // ViewModel
-  List<Verb> get _verbs => context.read<VerbViewModel>().verbs;
   
   // SharedPreferences
-  Set<String> _verbPrefs = {};
-  get _defaultVerbPrefs => _verbs.map((e) => e.prefKey);
+  Set<String> _pronounPrefs = {};
 
   _loadPrefs() {
     setState(() {
-      _verbPrefs = preferenceManager.loadVerbPrefs(_defaultVerbPrefs);
+      _pronounPrefs = preferenceManager.loadPronounPrefs();
     });
   }
 
-  _onSelectVerb(bool selected, {required String prefValue}) {
+  _onSelectPronoun(bool selected, {required String prefValue}) {
     setState(() {
       if(selected) {
-        _verbPrefs.add(prefValue);
+        _pronounPrefs.add(prefValue);
         debugPrint("$logTag | Added $prefValue");
       }
       else {
-        _verbPrefs.remove(prefValue);
+        _pronounPrefs.remove(prefValue);
         debugPrint("$logTag | Removed $prefValue");
       }
     });
@@ -58,14 +55,14 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   @override
   void dispose() {
     debugPrint("$logTag | dispose() ");
-    preferenceManager.updateVerbPrefs(_verbPrefs);
+    preferenceManager.updatePronounPrefs(_pronounPrefs);
     super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,7 +70,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             alignment: Alignment.center,
             padding: EdgeInsets.all(12),
             child: Text(
-              "Choose from the Verbs below",
+              "Choose from the Pronouns below",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
@@ -81,13 +78,13 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             ),
           ),
 
-          _buildVerbSection(_verbs)
+          _buildPronounSection(Pronoun.values)
         ],
       ),
     );
   }
 
-  _buildVerbSection(List<Verb> verbs) {
+  _buildPronounSection(List<Pronoun> pronouns) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -97,7 +94,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             padding: EdgeInsets.all(12),
             color: Colors.black12,
             child: Text(
-              "Verbs",
+              "Pronouns",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ),
@@ -106,12 +103,12 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
           padding: const EdgeInsets.all(12.0),
           child: Wrap(
             spacing: 8,
-            children: verbs.map((verb) {
+            children: pronouns.map((pronoun) {
               return FilterChip(
-                    label: Text(verb.infinitive),
-                    selected: _verbPrefs.contains(verb.prefKey),
+                    label: Text(pronoun.italian),
+                    selected: _pronounPrefs.contains(pronoun.prefKey),
                     onSelected: (selected) =>
-                        _onSelectVerb(selected, prefValue: verb.prefKey)
+                        _onSelectPronoun(selected, prefValue: pronoun.prefKey)
                 );
             },
             ).toList(),
