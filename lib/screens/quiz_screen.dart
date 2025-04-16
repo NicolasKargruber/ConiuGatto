@@ -37,7 +37,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   AnswerResult get answerResult => context.read<QuizViewModel>().isAnswerCorrect(_textController.text);
 
-  _checkAnswer() {
+  _checkAnswer()  {
     setState(() {
       switch (answerResult) {
         case AnswerResult.correct:
@@ -52,22 +52,24 @@ class _QuizScreenState extends State<QuizScreen> {
           triesLeft--;
           break;
         case AnswerResult.incorrect:
-          // TODO if INCORRECT, show Snackbar with correct answer
-          triesLeft--;
+          triesLeft-=2;
           break;
       }
 
       // Show WRONG animation
-      // TODO message on screen
       debugPrint("$logTag | Unfortunately wrong!!!");
       _shakeKey.currentState?.shake();
 
-      // After 2 tries => Show next question
-      if(triesLeft <= 0) {
+    });
+
+    // After 2 tries => Show next question
+    if (triesLeft <= 0) {
+      setState(() async {
+        await _showCorrectAnswer();
         wrongAnswerCount++;
         _showNextQuestion();
-      }
-    });
+      });
+    }
   }
 
   _showNextQuestion() {
@@ -96,6 +98,54 @@ class _QuizScreenState extends State<QuizScreen> {
     }
 
     debugPrint("$logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
+  }
+
+  // TODO Move to separate View => CON-45
+  Future _showCorrectAnswer() async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        final solution = context.read<QuizViewModel>().currentSolution;
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 48.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(12),
+                child: Text(
+                  "Correct answer",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+
+              IntrinsicWidth(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    solution ?? '',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 28,
+                        color: Colors.green.shade700
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   _showSettingsScreen() async {

@@ -50,7 +50,7 @@ class QuizViewModel extends ViewModel {
   String? _currentAnswer;
 
   // Getters - Quiz State
-  String? get _currentSolution => _currentQuizzableTense?.solution(_currentPronoun);
+  String? get currentSolution => _currentQuizzableTense?.solution(_currentPronoun);
   Auxiliary? get currentAuxiliary => _currentQuizzableTense?.auxiliary;
   bool get isDoubleAuxiliary => _currentQuizzableTense?.verb.isDoubleAuxiliary ?? false;
   bool get hasQuizzableItems => _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
@@ -132,7 +132,7 @@ class QuizViewModel extends ViewModel {
       }
     }
 
-    while (_currentSolution == null){
+    while (currentSolution == null){
       debugPrint("$_logTag | Re-Randomize Quiz Item");
       _randomizeQuizItem();
 
@@ -146,7 +146,7 @@ class QuizViewModel extends ViewModel {
     }
 
     debugPrint("$_logTag | Current Verb: ${_currentVerb?.infinitive}");
-    debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $_currentSolution");
+    debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $currentSolution");
 
     notifyListeners();
     debugPrint("$_logTag | createQuizItem() ended");
@@ -169,24 +169,24 @@ class QuizViewModel extends ViewModel {
     }
 
     // Correct
-    if (_currentAnswer == _currentSolution) return AnswerResult.correct;
+    if (_currentAnswer == currentSolution) return AnswerResult.correct;
 
     // Missing Accents
-    if (_currentAnswer == _currentSolution?.removeDiacritics()) return AnswerResult.missingAccents;
-    debugPrint("$_logTag | Solution without Accents: ${_currentSolution?.removeDiacritics()}");
+    if (_currentAnswer == currentSolution?.removeDiacritics()) return AnswerResult.missingAccents;
+    debugPrint("$_logTag | Solution without Accents: ${currentSolution?.removeDiacritics()}");
 
     // Missing a letter
-    final differences = _currentSolution?.diff(_currentAnswer ?? '') ?? [];
+    final differences = currentSolution?.diff(_currentAnswer ?? '') ?? [];
     if(differences.isNotEmpty) {
       // Print Differences
       printDifferences(differences);
 
       // 1 Letter Away
-      if(_currentAnswer?.levenshteinDistance(_currentSolution ?? '') == 1)
+      if(_currentAnswer?.levenshteinDistance(currentSolution ?? '') == 1)
         return AnswerResult.almostCorrect;
 
       // Force Gendered Participle
-      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == _currentSolution)
+      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == currentSolution)
         return AnswerResult.almostCorrect;
     }
 
