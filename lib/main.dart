@@ -1,8 +1,7 @@
-import 'package:coniugatto/screens/home_screen.dart';
-import 'package:coniugatto/view_models/verb_view_model.dart';
+import 'screens/home_screen.dart';
+import 'view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'utilities/shared_preference_manager.dart';
 

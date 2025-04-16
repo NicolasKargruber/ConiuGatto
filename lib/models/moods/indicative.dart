@@ -1,10 +1,9 @@
-import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
+import '../../utilities/extensions/verb_extensions.dart';
 
 import '../auxiliary.dart';
 import '../tenses/indicative_tenses.dart';
 import '../tenses/tense.dart';
 import '../verb.dart';
-import 'imperative.dart';
 import 'mood.dart';
 
 class Indicative extends Mood {

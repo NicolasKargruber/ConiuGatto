@@ -1,6 +1,6 @@
-import 'package:coniugatto/models/auxiliary.dart';
-import 'package:coniugatto/models/moods/simple_tense.dart';
-import 'package:coniugatto/models/regularity.dart';
+import '../models/auxiliary.dart';
+import '../models/moods/simple_tense.dart';
+import '../models/regularity.dart';
 
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';

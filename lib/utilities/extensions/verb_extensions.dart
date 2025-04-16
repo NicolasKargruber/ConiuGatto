@@ -1,4 +1,4 @@
-import 'package:coniugatto/models/tenses/subjunctive_tenses.dart';
+import '../../models/tenses/subjunctive_tenses.dart';
 
 import '../../data/compound_verbs.dart';
 import '../../models/auxiliary.dart';

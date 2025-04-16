@@ -1,8 +1,7 @@
-import 'package:coniugatto/models/pronoun.dart';
+import '../models/pronoun.dart';
 import 'package:flutter/material.dart';
 
 import '../models/tenses/tense.dart';
-import '../models/verb.dart';
 
 class ConjugationTable extends StatelessWidget {
   const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true});
