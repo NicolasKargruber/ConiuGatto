@@ -33,106 +33,140 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
       appBar: AppBar(title: Text(widget.verb.infinitive)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Padding(
+              padding: const EdgeInsets.symmetric(horizontal:  8.0),
+              child: Text(widget.verb.infinitive, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold )),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:  8.0),
+              child: Text(widget.verb.translation, style: TextStyle(fontSize: 16,)),
+            ),
+
+            Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(8.0),
               child: widget.verb.isRegular ?
               FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
               FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
             ),
 
+            // TODO Move to separate widget
             if(widget.verb.isDoubleAuxiliary)
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(8.0),
-              child: ToggleButtons(
-                  isSelected: selectedAuxiliaries,
-                  onPressed: (index){
-                    setState(() {
-                      selectedAuxiliary = widget.verb.auxiliaries.elementAt(index);
-                      selectedAuxiliaries = [false, false];
-                      selectedAuxiliaries[index] = true;
-                    });
-                  },
-                  children: [
-                Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(widget.verb.auxiliaries.first.name.toUpperCase()),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(widget.verb.auxiliaries.last.name.toUpperCase()),
-                )
-              ]),
-            ),
+              Container(
+                alignment: Alignment.center,
+                child: ToggleButtons(
+                    borderRadius: BorderRadius.circular(24.0),
+                    isSelected: selectedAuxiliaries,
+                    onPressed: (index) {
+                      setState(() {
+                        selectedAuxiliary = widget.verb.auxiliaries.elementAt(index);
+                        selectedAuxiliaries = [false, false];
+                        selectedAuxiliaries[index] = true;
+                      });
+                    },
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(widget.verb.auxiliaries.first.name.toUpperCase()),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(widget.verb.auxiliaries.last.name.toUpperCase()),
+                      )
+                    ]),
+              ),
 
-            // INDICATIVO
-            ExpansionTile(
-              initiallyExpanded: true,
-              title: Text(Indicative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(tenses: [
-                    widget.verb.indicative.present,
-                    widget.verb.indicative.presentContinuous,
-                    widget.verb.indicative.imperfect,
-                    widget.verb.indicative.presentPerfect(selectedAuxiliary),
-                    widget.verb.indicative.pastPerfect(selectedAuxiliary),
-                    widget.verb.indicative.historicalPresentPerfect,
-                    widget.verb.indicative.historicalPastPerfect(selectedAuxiliary),
-                    widget.verb.indicative.future,
-                    widget.verb.indicative.futurePerfect(selectedAuxiliary),
-                  ]),
-                )
-              ],
-            ),
+            SizedBox(height: 8),
 
-            // CONGIUNTIVO
-            ExpansionTile(
-              title: Text(Subjunctive.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(tenses: [
-                    widget.verb.subjunctive.present,
-                    widget.verb.subjunctive.imperfect,
-                    widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary),
-                   widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary),
-                  ]),
-                ),
-              ],
-            ),
+            Divider(),
 
-            // CONDIZIONALE
-            ExpansionTile(
-              title: Text(Conditional.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(tenses: [
-                    widget.verb.conditional.present,
-                    widget.verb.conditional.presentPerfectConditional(selectedAuxiliary),
-                  ]),
-                ),
-              ],
-            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  // INDICATIVO
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      spacing: 16.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Indicative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(tenses: [
+                          widget.verb.indicative.present,
+                          widget.verb.indicative.presentContinuous,
+                          widget.verb.indicative.imperfect,
+                          widget.verb.indicative.presentPerfect(selectedAuxiliary),
+                          widget.verb.indicative.pastPerfect(selectedAuxiliary),
+                          widget.verb.indicative.historicalPresentPerfect,
+                          widget.verb.indicative.historicalPastPerfect(selectedAuxiliary),
+                          widget.verb.indicative.future,
+                          widget.verb.indicative.futurePerfect(selectedAuxiliary),
+                        ])
+                      ],
+                    ),
+                  ),
 
-            // IMPERATIVO
-            ExpansionTile(
-              title: Text(Imperative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ConjugationTable(
-                      tenses: [
-                        widget.verb.imperative.positive,
-                        widget.verb.imperative.negative,
-                  ], showEnglishPronouns: false),
-                ),
-              ],
+                  Divider(height: 36.0),
+
+                  // CONGIUNTIVO
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      spacing: 16.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Subjunctive.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(tenses: [
+                          widget.verb.subjunctive.present,
+                          widget.verb.subjunctive.imperfect,
+                          widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary),
+                         widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary),
+                        ]),
+                      ],
+                    ),
+                  ),
+
+                  Divider(height: 36.0),
+
+                  // CONDIZIONALE
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      spacing: 16.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Conditional.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(tenses: [
+                          widget.verb.conditional.present,
+                          widget.verb.conditional.presentPerfectConditional(selectedAuxiliary),
+                        ]),
+                      ],
+                    ),
+                  ),
+
+                  Divider(height: 36.0),
+
+                  // IMPERATIVO
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      spacing: 16.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Imperative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(
+                            tenses: [
+                              widget.verb.imperative.positive,
+                              widget.verb.imperative.negative,
+                        ], showEnglishPronouns: false),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
