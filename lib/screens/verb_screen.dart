@@ -33,7 +33,7 @@ class VerbScreen extends StatelessWidget {
             return Center(child: Text('No verbs available'));
           } else {
             final verbs = context.watch<SearchViewModel>().filteredVerbs;
-            debugPrint("$_logTag | verbs: ${verbs.map((e) => e.infinitive).toList()}");
+            debugPrint("$_logTag | verbs: ${verbs.map((e) => e.italianInfinitive).toList()}");
             return Column(
               children: [
                 Padding(
@@ -71,7 +71,7 @@ class VerbScreen extends StatelessWidget {
                     itemCount: verbs.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(verbs[index].infinitive),
+                        title: Text(verbs[index].italianInfinitive),
                         subtitle: Text(verbs[index].translation),
                         onTap: () {
                           Navigator.push(

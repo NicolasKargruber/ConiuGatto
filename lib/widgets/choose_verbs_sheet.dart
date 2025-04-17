@@ -101,7 +101,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             spacing: 8,
             children: verbs.map((verb) {
               return FilterChip(
-                    label: Text(verb.infinitive),
+                    label: Text(verb.italianInfinitive),
                     selected: _verbPrefs.contains(verb.prefKey),
                     onSelected: (selected) =>
                         _onSelectVerb(selected, prefValue: verb.prefKey)

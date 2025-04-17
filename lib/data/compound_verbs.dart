@@ -26,8 +26,7 @@ class CompoundVerbs {
   // Singleton instance (since these never change)
   static final instance = CompoundVerbs._(
     avere: Verb(
-      infinitive: "avere",
-      translation: "to have",
+      infinitive: (italian: "avere", english: "to have"),
       regularity: Regularity.irregular,
       auxiliaries: { Auxiliary.avere},
       indicative: Indicative.fromJson({
@@ -894,8 +893,7 @@ class CompoundVerbs {
       presentGerund: (italian: "avendo", english: "having"),
     ),
     essere: Verb(
-      infinitive: "essere",
-      translation: "to be (permanent)",
+      infinitive: (italian: "essere", english: "to be (permanent)"),
       regularity: Regularity.irregular,
       auxiliaries: { Auxiliary.essere},
       indicative: Indicative.fromJson({
@@ -1746,8 +1744,7 @@ class CompoundVerbs {
       presentGerund: (italian: "essendo", english: "being"),
   ),
     stare: Verb(
-      infinitive: "stare",
-      translation: "to stay, to be (temporary)",
+      infinitive: (italian: "stare", english: "to stay, to be (temporary)"),
       regularity: Regularity.irregular,
       auxiliaries: { Auxiliary.essere},
       indicative: Indicative.fromJson( {

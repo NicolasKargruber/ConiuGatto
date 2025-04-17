@@ -30,7 +30,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.verb.infinitive)),
+      appBar: AppBar(title: Text(widget.verb.italianInfinitive)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -38,7 +38,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal:  8.0),
-              child: Text(widget.verb.infinitive, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold )),
+              child: Text(widget.verb.italianInfinitive, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold )),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal:  8.0),

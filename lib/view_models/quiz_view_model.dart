@@ -143,7 +143,7 @@ class QuizViewModel extends ViewModel {
       _currentQuizzableTense = newQuizzableTense;*/
     }
 
-    debugPrint("$_logTag | Current Verb: ${_currentVerb?.infinitive}");
+    debugPrint("$_logTag | Current Verb: ${_currentVerb?.italianInfinitive}");
     debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $currentSolution");
 
     notifyListeners();

@@ -33,14 +33,14 @@ class SearchViewModel extends ViewModel{
 
   _sortVerbs() {
     debugPrint("$_logTag | _sortVerbs()");
-    _verbs.sort((a, b) => a.infinitive.compareTo(b.infinitive));
+    _verbs.sort((a, b) => a.italianInfinitive.compareTo(b.italianInfinitive));
     notifyListeners();
   }
 
   filterVerbs(String search) {
     debugPrint("$_logTag | filterVerbs()");
     search = search.toLowerCase();
-    _filteredVerbs = _verbs.where((verb) => verb.infinitive.contains(search)).toList();
+    _filteredVerbs = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
     notifyListeners();
   }
 }

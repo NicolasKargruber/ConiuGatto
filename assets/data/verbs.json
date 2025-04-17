@@ -1,7 +1,6 @@
 [
   {
-    "infinitive": "avere",
-    "translation": "to have",
+    "infinitive": { "italian": "avere", "english": "to have", "german": "haben" },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -229,8 +228,11 @@
     }
   },
   {
-    "infinitive": "essere",
-    "translation": "to be (permanent)",
+    "infinitive": {
+      "italian": "essere",
+      "english": "to be (permanent)",
+      "german": "sein (permanent)"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -454,8 +456,11 @@
     }
   },
   {
-    "infinitive": "stare",
-    "translation": "to be (temporary), to stay",
+    "infinitive": {
+      "italian": "stare",
+      "english": "to be (temporary), to stay",
+      "german": "sein (temporary), bleiben"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -684,8 +689,11 @@
   },
 
   {
-    "infinitive": "volere",
-    "translation": "to want",
+    "infinitive": {
+      "italian": "volere",
+      "english": "to want",
+      "german": "wollen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -766,8 +774,11 @@
     "gerundio_presente": {"italian": "volendo", "english": "wanting"}
   },
   {
-    "infinitive": "fare",
-    "translation": "to do/make",
+    "infinitive": {
+      "italian": "fare",
+      "english": "to do/make",
+      "german": "machen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -848,8 +859,11 @@
     "gerundio_presente": {"italian": "facendo", "english": "doing"}
   },
   {
-    "infinitive": "dire",
-    "translation": "to say",
+    "infinitive": {
+      "italian": "dire",
+      "english": "to say",
+      "german": "sagen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -929,8 +943,11 @@
     "gerundio_presente": {"italian": "dicendo", "english": "saying"}
   },
   {
-    "infinitive": "capire",
-    "translation": "to understand",
+    "infinitive": {
+      "italian": "capire",
+      "english": "to understand",
+      "german": "verstehen"
+    },
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1010,8 +1027,11 @@
     "gerundio_presente": {"italian": "capendo", "english": "understanding"}
   },
   {
-    "infinitive": "sapere",
-    "translation": "to know",
+    "infinitive": {
+      "italian": "sapere",
+      "english": "to know",
+      "german": "wissen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1091,90 +1111,11 @@
     "gerundio_presente": {"italian": "sapendo", "english": "knowing"}
   },
   {
-    "infinitive": "sapere",
-    "translation": "to know",
-    "regularity": "irregular",
-    "auxiliaries": ["avere"],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": {"italian": "so", "english": "know"},
-          "tu": {"italian": "sai", "english": "know"},
-          "lui/lei": {"italian": "sa", "english": "knows"},
-          "noi": {"italian": "sappiamo", "english": "know"},
-          "voi": {"italian": "sapete", "english": "know"},
-          "loro": {"italian": "sanno", "english": "know"}
-        },
-        "imperfetto": {
-          "io": {"italian": "sapevo", "english": "used to know"},
-          "tu": {"italian": "sapevi", "english": "used to know"},
-          "lui/lei": {"italian": "sapeva", "english": "used to know"},
-          "noi": {"italian": "sapevamo", "english": "used to know"},
-          "voi": {"italian": "sapevate", "english": "used to know"},
-          "loro": {"italian": "sapevano", "english": "used to know"}
-        },
-        "passato_remoto": {
-          "io": {"italian": "seppi", "english": "knew"},
-          "tu": {"italian": "sapesti", "english": "knew"},
-          "lui/lei": {"italian": "seppe", "english": "knew"},
-          "noi": {"italian": "sapemmo", "english": "knew"},
-          "voi": {"italian": "sapeste", "english": "knew"},
-          "loro": {"italian": "seppero", "english": "knew"}
-        },
-        "futuro_semplice": {
-          "io": {"italian": "saprò", "english": "will know"},
-          "tu": {"italian": "saprai", "english": "will know"},
-          "lui/lei": {"italian": "saprà", "english": "will know"},
-          "noi": {"italian": "sapremo", "english": "will know"},
-          "voi": {"italian": "saprete", "english": "will know"},
-          "loro": {"italian": "sapranno", "english": "will know"}
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": {"italian": "sappia", "english": "know"},
-          "tu": {"italian": "sappia", "english": "know"},
-          "lui/lei": {"italian": "sappia", "english": "know"},
-          "noi": {"italian": "sappiamo", "english": "know"},
-          "voi": {"italian": "sappiate", "english": "know"},
-          "loro": {"italian": "sappiano", "english": "know"}
-        },
-        "imperfetto": {
-          "io": {"italian": "sapessi", "english": "knew"},
-          "tu": {"italian": "sapessi", "english": "knew"},
-          "lui/lei": {"italian": "sapesse", "english": "knew"},
-          "noi": {"italian": "sapessimo", "english": "knew"},
-          "voi": {"italian": "sapeste", "english": "knew"},
-          "loro": {"italian": "sapessero", "english": "knew"}
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": {"italian": "saprei", "english": "would know"},
-          "tu": {"italian": "sapresti", "english": "would know"},
-          "lui/lei": {"italian": "saprebbe", "english": "would know"},
-          "noi": {"italian": "sapremmo", "english": "would know"},
-          "voi": {"italian": "sapreste", "english": "would know"},
-          "loro": {"italian": "saprebbero", "english": "would know"}
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": {"italian": "sappi", "english": "know!"},
-          "lui/lei": {"italian": "sappia", "english": "know!"},
-          "noi": {"italian": "sappiamo", "english": "let's know!"},
-          "voi": {"italian": "sapete", "english": "know!"},
-          "loro": {"italian": "sappiano", "english": "know!"}
-        }
-      }
+    "infinitive": {
+      "italian": "spiegare",
+      "english": "to explain",
+      "german": "erklären"
     },
-    "participio_passato": {"italian": "saputo", "english": "known"},
-    "gerundio_presente": {"italian": "sapendo", "english": "knowing"}
-  },
-  {
-    "infinitive": "spiegare",
-    "translation": "to explain",
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1255,8 +1196,11 @@
     "gerundio_presente": {"italian": "spiegando", "english": "explaining"}
   },
   {
-    "infinitive": "uscire",
-    "translation": "to go out / to exit",
+    "infinitive": {
+      "italian": "uscire",
+      "english": "to go out, to exit",
+      "german": "ausgehen, verlassen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1337,8 +1281,11 @@
     "gerundio_presente": {"italian": "uscendo", "english": "going out"}
   },
   {
-    "infinitive": "andare",
-    "translation": "to go",
+    "infinitive": {
+      "italian": "andare",
+      "english": "to go",
+      "german": "gehen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1419,8 +1366,11 @@
     "gerundio_presente": {"italian": "andando", "english": "going"}
   },
   {
-    "infinitive": "venire",
-    "translation": "to come",
+    "infinitive": {
+      "italian": "venire",
+      "english": "to come",
+      "german": "kommen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1501,8 +1451,11 @@
     "gerundio_presente": {"italian": "venendo", "english": "coming"}
   },
   {
-    "infinitive": "potere",
-    "translation": "can / to be able to",
+    "infinitive": {
+      "italian": "potere",
+      "english": "can, to be able to",
+      "german": "können"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1583,8 +1536,11 @@
     "gerundio_presente": {"italian": "potendo", "english": "being able to"}
   },
   {
-    "infinitive": "dovere",
-    "translation": "must / to have to",
+    "infinitive": {
+      "italian": "dovere",
+      "english": "must, to have to",
+      "german": "müssen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1665,8 +1621,11 @@
     "gerundio_presente": {"italian": "dovendo", "english": "having to"}
   },
   {
-    "infinitive": "preferire",
-    "translation": "to prefer",
+    "infinitive": {
+      "italian": "preferire",
+      "english": "to prefer",
+      "german": "bevorzuge, präferieren"
+    },
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1747,8 +1706,11 @@
     "gerundio_presente": {"italian": "preferendo", "english": "preferring"}
   },
   {
-    "infinitive": "bere",
-    "translation": "to drink",
+    "infinitive": {
+      "italian": "bere",
+      "english": "to drink",
+      "german": "trinken"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1829,8 +1791,11 @@
     "gerundio_presente": {"italian": "bevendo", "english": "drinking"}
   },
   {
-    "infinitive": "salire",
-    "translation": "to go up / to climb",
+    "infinitive": {
+      "italian": "salire",
+      "english": "to go up / to climb",
+      "german": "steigen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere", "avere"],
     "conjugations": {
