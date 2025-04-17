@@ -1,3 +1,4 @@
+import '../view_models/search_view_model.dart';
 import 'grammar_screen.dart';
 import 'quiz_screen.dart';
 import 'verb_screen.dart';
@@ -20,11 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
     GrammarScreen(),
     // Quiz Screen
     ChangeNotifierProxyProvider<VerbViewModel, QuizViewModel>(
-      create: (_ )=> QuizViewModel(),
+      create: (_) => QuizViewModel(),
       update: (_, verbViewModel, quizViewModel) => quizViewModel!..updateVerbs(verbViewModel.verbs),
       child: QuizScreen(),
     ),
-    VerbScreen(),
+    ChangeNotifierProxyProvider<VerbViewModel, SearchViewModel>(
+      create: (_) => SearchViewModel(),
+      update: (_, verbViewModel, searchViewModel) => searchViewModel!..updateVerbs(verbViewModel.verbs),
+      child: VerbScreen(),
+    ),
   ];
 
   @override

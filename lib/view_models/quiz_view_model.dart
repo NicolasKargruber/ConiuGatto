@@ -24,7 +24,7 @@ class QuizViewModel extends ViewModel {
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
     // _prefs = await SharedPreferences.getInstance();
-    createQuizItem();
+    //createQuizItem();
   }
 
   // Update & Notify
