@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 
 import 'auxiliary.dart';
 import 'moods/conditional.dart';
@@ -15,14 +14,15 @@ typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
 typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
 
 class Verb {
-  final String infinitive;
-  final String translation;
+  final ConjugatedVerb infinitive;
   final Regularity regularity;
   final Set<Auxiliary> auxiliaries;
 
   /// Used for Shared Preferences
-  String get prefKey => infinitive;
+  String get prefKey => italianInfinitive;
 
+  String get italianInfinitive => infinitive.italian;
+  String get translation => infinitive.english;
   bool get isRegular => regularity.isRegular;
   bool get isDoubleAuxiliary {
     return UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
@@ -44,7 +44,6 @@ class Verb {
 
   Verb({
     required this.infinitive,
-    required this.translation,
     required this.regularity,
     required this.auxiliaries,
     required this.indicative,
@@ -62,16 +61,17 @@ class Verb {
 
   factory Verb.fromJson(Map<String, dynamic> json) {
     return Verb(
-      infinitive: json['infinitive'],
-      translation: json['translation'],
+      infinitive: conjugatedVerbFrom(json['infinitive']),
       regularity: Regularity.fromJson(json['regularity']),
       auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toSet(),
       indicative: Indicative.fromJson(json['conjugations']['indicativo']),
       subjunctive: Subjunctive.fromJson(json['conjugations']['congiuntivo']),
       conditional: Conditional.fromJson(json['conjugations']['condizionale']),
       imperative: Imperative.fromJson(json['conjugations']['imperativo']),
-      pastParticiple: (italian: json['participio_passato']['italian'], english: json['participio_passato']['english']),
-      presentGerund: (italian: json['gerundio_presente']['italian'], english: json['gerundio_presente']['english']),
+      pastParticiple: conjugatedVerbFrom(json['participio_passato']),
+      presentGerund: conjugatedVerbFrom(json['gerundio_presente']),
     );
   }
 }
+
+conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);

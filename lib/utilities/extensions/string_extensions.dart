@@ -29,8 +29,12 @@ extension StringExtensions on String {
   int levenshteinDistance(String s) {
     final matrix = List.generate(length + 1, (i) => List.filled(s.length + 1, 0));
 
-    for (var i = 0; i <= length; i++)matrix[i][0] = i;
-    for (var j = 0; j <= s.length; j++) matrix[0][j] = j;
+    for (var i = 0; i <= length; i++) {
+      matrix[i][0] = i;
+    }
+    for (var j = 0; j <= s.length; j++) {
+      matrix[0][j] = j;
+    }
 
     for (var i = 1; i <= length; i++) {
       for (var j = 1; j <= s.length; j++) {

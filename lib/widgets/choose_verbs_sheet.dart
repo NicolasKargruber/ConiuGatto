@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../data/shared_preference_keys.dart';
 import '../main.dart';
-import '../models/moods/conditional.dart';
-import '../models/moods/imperative.dart';
-import '../models/moods/indicative.dart';
-import '../models/moods/subjunctive.dart';
-import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 import '../view_models/verb_view_model.dart';
 
@@ -108,7 +101,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
             spacing: 8,
             children: verbs.map((verb) {
               return FilterChip(
-                    label: Text(verb.infinitive),
+                    label: Text(verb.italianInfinitive),
                     selected: _verbPrefs.contains(verb.prefKey),
                     onSelected: (selected) =>
                         _onSelectVerb(selected, prefValue: verb.prefKey)

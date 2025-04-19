@@ -1,7 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../data/shared_preference_keys.dart';
 import '../main.dart';
 import '../models/answer_result.dart';
 import '../models/auxiliary.dart';
@@ -26,7 +24,7 @@ class QuizViewModel extends ViewModel {
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
     // _prefs = await SharedPreferences.getInstance();
-    createQuizItem();
+    //createQuizItem();
   }
 
   // Update & Notify
@@ -145,7 +143,7 @@ class QuizViewModel extends ViewModel {
       _currentQuizzableTense = newQuizzableTense;*/
     }
 
-    debugPrint("$_logTag | Current Verb: ${_currentVerb?.infinitive}");
+    debugPrint("$_logTag | Current Verb: ${_currentVerb?.italianInfinitive}");
     debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $currentSolution");
 
     notifyListeners();
@@ -182,12 +180,14 @@ class QuizViewModel extends ViewModel {
       printDifferences(differences);
 
       // 1 Letter Away
-      if(_currentAnswer?.levenshteinDistance(currentSolution ?? '') == 1)
+      if(_currentAnswer?.levenshteinDistance(currentSolution ?? '') == 1) {
         return AnswerResult.almostCorrect;
+      }
 
       // Force Gendered Participle
-      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == currentSolution)
+      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == currentSolution) {
         return AnswerResult.almostCorrect;
+      }
     }
 
     // Incorrect

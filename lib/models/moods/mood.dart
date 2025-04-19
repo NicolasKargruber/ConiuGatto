@@ -1,4 +1,4 @@
-import 'package:coniugatto/models/auxiliary.dart';
+import '../auxiliary.dart';
 
 import '../tenses/tense.dart';
 

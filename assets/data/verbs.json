@@ -1,7 +1,6 @@
 [
   {
-    "infinitive": "avere",
-    "translation": "to have",
+    "infinitive": { "italian": "avere", "english": "to have", "german": "haben" },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -229,8 +228,11 @@
     }
   },
   {
-    "infinitive": "essere",
-    "translation": "to be (permanent)",
+    "infinitive": {
+      "italian": "essere",
+      "english": "to be (permanent)",
+      "german": "sein (permanent)"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -454,8 +456,11 @@
     }
   },
   {
-    "infinitive": "stare",
-    "translation": "to be (temporary), to stay",
+    "infinitive": {
+      "italian": "stare",
+      "english": "to be (temporary), to stay",
+      "german": "sein (temporary), bleiben"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -684,8 +689,11 @@
   },
 
   {
-    "infinitive": "volere",
-    "translation": "to want",
+    "infinitive": {
+      "italian": "volere",
+      "english": "to want",
+      "german": "wollen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -733,12 +741,12 @@
           "loro": {"italian": "vogliano", "english": "want"}
         },
         "imperfetto": {
-          "io": {"italian": "volessi", "english": "wanted"},
-          "tu": {"italian": "volessi", "english": "wanted"},
-          "lui/lei": {"italian": "volesse", "english": "wanted"},
-          "noi": {"italian": "volessimo", "english": "wanted"},
-          "voi": {"italian": "voleste", "english": "wanted"},
-          "loro": {"italian": "volessero", "english": "wanted"}
+          "io": {"italian": "volessi", "english": "used to want"},
+          "tu": {"italian": "volessi", "english": "used to want"},
+          "lui/lei": {"italian": "volesse", "english": "used to want"},
+          "noi": {"italian": "volessimo", "english": "used to want"},
+          "voi": {"italian": "voleste", "english": "used to want"},
+          "loro": {"italian": "volessero", "english": "used to want"}
         }
       },
       "condizionale": {
@@ -766,8 +774,11 @@
     "gerundio_presente": {"italian": "volendo", "english": "wanting"}
   },
   {
-    "infinitive": "fare",
-    "translation": "to do/make",
+    "infinitive": {
+      "italian": "fare",
+      "english": "to do/make",
+      "german": "machen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -815,12 +826,12 @@
           "loro": {"italian": "facciano", "english": "do"}
         },
         "imperfetto": {
-          "io": {"italian": "facessi", "english": "did"},
-          "tu": {"italian": "facessi", "english": "did"},
-          "lui/lei": {"italian": "facesse", "english": "did"},
-          "noi": {"italian": "facessimo", "english": "did"},
-          "voi": {"italian": "faceste", "english": "did"},
-          "loro": {"italian": "facessero", "english": "did"}
+          "io": {"italian": "facessi", "english": "used to do"},
+          "tu": {"italian": "facessi", "english": "used to do"},
+          "lui/lei": {"italian": "facesse", "english": "used to do"},
+          "noi": {"italian": "facessimo", "english": "used to do"},
+          "voi": {"italian": "faceste", "english": "used to do"},
+          "loro": {"italian": "facessero", "english": "used to do"}
         }
       },
       "condizionale": {
@@ -848,8 +859,11 @@
     "gerundio_presente": {"italian": "facendo", "english": "doing"}
   },
   {
-    "infinitive": "dire",
-    "translation": "to say",
+    "infinitive": {
+      "italian": "dire",
+      "english": "to say",
+      "german": "sagen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -863,12 +877,12 @@
           "loro": {"italian": "dicono", "english": "say"}
         },
         "imperfetto": {
-          "io": {"italian": "dicevo", "english": "was saying"},
-          "tu": {"italian": "dicevi", "english": "were saying"},
-          "lui/lei": {"italian": "diceva", "english": "was saying"},
-          "noi": {"italian": "dicevamo", "english": "were saying"},
-          "voi": {"italian": "dicevate", "english": "were saying"},
-          "loro": {"italian": "dicevano", "english": "were saying"}
+          "io": {"italian": "dicevo", "english": "used to say"},
+          "tu": {"italian": "dicevi", "english": "used to say"},
+          "lui/lei": {"italian": "diceva", "english": "used to say"},
+          "noi": {"italian": "dicevamo", "english": "used to say"},
+          "voi": {"italian": "dicevate", "english": "used to say"},
+          "loro": {"italian": "dicevano", "english": "used to say"}
         },
         "passato_remoto": {
           "io": {"italian": "dissi", "english": "said"},
@@ -897,12 +911,12 @@
           "loro": {"italian": "dicano", "english": "say"}
         },
         "imperfetto": {
-          "io": {"italian": "dicessi", "english": "said"},
-          "tu": {"italian": "dicessi", "english": "said"},
-          "lui/lei": {"italian": "dicesse", "english": "said"},
-          "noi": {"italian": "dicessimo", "english": "said"},
-          "voi": {"italian": "diceste", "english": "said"},
-          "loro": {"italian": "dicessero", "english": "said"}
+          "io": {"italian": "dicessi", "english": "used to say"},
+          "tu": {"italian": "dicessi", "english": "used to say"},
+          "lui/lei": {"italian": "dicesse", "english": "used to say"},
+          "noi": {"italian": "dicessimo", "english": "used to say"},
+          "voi": {"italian": "diceste", "english": "used to say"},
+          "loro": {"italian": "dicessero", "english": "used to say"}
         }
       },
       "condizionale": {
@@ -929,8 +943,11 @@
     "gerundio_presente": {"italian": "dicendo", "english": "saying"}
   },
   {
-    "infinitive": "capire",
-    "translation": "to understand",
+    "infinitive": {
+      "italian": "capire",
+      "english": "to understand",
+      "german": "verstehen"
+    },
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -978,12 +995,12 @@
           "loro": {"italian": "capiscano", "english": "understand"}
         },
         "imperfetto": {
-          "io": {"italian": "capissi", "english": "understood"},
-          "tu": {"italian": "capissi", "english": "understood"},
-          "lui/lei": {"italian": "capisse", "english": "understood"},
-          "noi": {"italian": "capissimo", "english": "understood"},
-          "voi": {"italian": "capiste", "english": "understood"},
-          "loro": {"italian": "capissero", "english": "understood"}
+          "io": {"italian": "capissi", "english": "used to understand"},
+          "tu": {"italian": "capissi", "english": "used to understand"},
+          "lui/lei": {"italian": "capisse", "english": "used to understand"},
+          "noi": {"italian": "capissimo", "english": "used to understand"},
+          "voi": {"italian": "capiste", "english": "used to understand"},
+          "loro": {"italian": "capissero", "english": "used to understand"}
         }
       },
       "condizionale": {
@@ -1010,8 +1027,11 @@
     "gerundio_presente": {"italian": "capendo", "english": "understanding"}
   },
   {
-    "infinitive": "sapere",
-    "translation": "to know",
+    "infinitive": {
+      "italian": "sapere",
+      "english": "to know",
+      "german": "wissen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1025,12 +1045,12 @@
           "loro": {"italian": "sanno", "english": "know"}
         },
         "imperfetto": {
-          "io": {"italian": "sapevo", "english": "knew"},
-          "tu": {"italian": "sapevi", "english": "knew"},
-          "lui/lei": {"italian": "sapeva", "english": "knew"},
-          "noi": {"italian": "sapevamo", "english": "knew"},
-          "voi": {"italian": "sapevate", "english": "all knew"},
-          "loro": {"italian": "sapevano", "english": "knew"}
+          "io": {"italian": "sapevo", "english": "used to know"},
+          "tu": {"italian": "sapevi", "english": "used to know"},
+          "lui/lei": {"italian": "sapeva", "english": "used to know"},
+          "noi": {"italian": "sapevamo", "english": "used to know"},
+          "voi": {"italian": "sapevate", "english": "used to know"},
+          "loro": {"italian": "sapevano", "english": "used to know"}
         },
         "passato_remoto": {
           "io": {"italian": "seppi", "english": "knew"},
@@ -1059,12 +1079,12 @@
           "loro": {"italian": "sappiano", "english": "know"}
         },
         "imperfetto": {
-          "io": {"italian": "sapessi", "english": "knew"},
-          "tu": {"italian": "sapessi", "english": "knew"},
-          "lui/lei": {"italian": "sapesse", "english": "knew"},
-          "noi": {"italian": "sapessimo", "english": "knew"},
-          "voi": {"italian": "sapeste", "english": "all knew"},
-          "loro": {"italian": "sapessero", "english": "knew"}
+          "io": {"italian": "sapessi", "english": "used to know"},
+          "tu": {"italian": "sapessi", "english": "used to know"},
+          "lui/lei": {"italian": "sapesse", "english": "used to know"},
+          "noi": {"italian": "sapessimo", "english": "used to know"},
+          "voi": {"italian": "sapeste", "english": "used to know"},
+          "loro": {"italian": "sapessero", "english": "used to know"}
         }
       },
       "condizionale": {
@@ -1091,90 +1111,11 @@
     "gerundio_presente": {"italian": "sapendo", "english": "knowing"}
   },
   {
-    "infinitive": "sapere",
-    "translation": "to know",
-    "regularity": "irregular",
-    "auxiliaries": ["avere"],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": {"italian": "so", "english": "know"},
-          "tu": {"italian": "sai", "english": "know"},
-          "lui/lei": {"italian": "sa", "english": "knows"},
-          "noi": {"italian": "sappiamo", "english": "know"},
-          "voi": {"italian": "sapete", "english": "know"},
-          "loro": {"italian": "sanno", "english": "know"}
-        },
-        "imperfetto": {
-          "io": {"italian": "sapevo", "english": "used to know"},
-          "tu": {"italian": "sapevi", "english": "used to know"},
-          "lui/lei": {"italian": "sapeva", "english": "used to know"},
-          "noi": {"italian": "sapevamo", "english": "used to know"},
-          "voi": {"italian": "sapevate", "english": "used to know"},
-          "loro": {"italian": "sapevano", "english": "used to know"}
-        },
-        "passato_remoto": {
-          "io": {"italian": "seppi", "english": "knew"},
-          "tu": {"italian": "sapesti", "english": "knew"},
-          "lui/lei": {"italian": "seppe", "english": "knew"},
-          "noi": {"italian": "sapemmo", "english": "knew"},
-          "voi": {"italian": "sapeste", "english": "knew"},
-          "loro": {"italian": "seppero", "english": "knew"}
-        },
-        "futuro_semplice": {
-          "io": {"italian": "saprò", "english": "will know"},
-          "tu": {"italian": "saprai", "english": "will know"},
-          "lui/lei": {"italian": "saprà", "english": "will know"},
-          "noi": {"italian": "sapremo", "english": "will know"},
-          "voi": {"italian": "saprete", "english": "will know"},
-          "loro": {"italian": "sapranno", "english": "will know"}
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": {"italian": "sappia", "english": "know"},
-          "tu": {"italian": "sappia", "english": "know"},
-          "lui/lei": {"italian": "sappia", "english": "know"},
-          "noi": {"italian": "sappiamo", "english": "know"},
-          "voi": {"italian": "sappiate", "english": "know"},
-          "loro": {"italian": "sappiano", "english": "know"}
-        },
-        "imperfetto": {
-          "io": {"italian": "sapessi", "english": "knew"},
-          "tu": {"italian": "sapessi", "english": "knew"},
-          "lui/lei": {"italian": "sapesse", "english": "knew"},
-          "noi": {"italian": "sapessimo", "english": "knew"},
-          "voi": {"italian": "sapeste", "english": "knew"},
-          "loro": {"italian": "sapessero", "english": "knew"}
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": {"italian": "saprei", "english": "would know"},
-          "tu": {"italian": "sapresti", "english": "would know"},
-          "lui/lei": {"italian": "saprebbe", "english": "would know"},
-          "noi": {"italian": "sapremmo", "english": "would know"},
-          "voi": {"italian": "sapreste", "english": "would know"},
-          "loro": {"italian": "saprebbero", "english": "would know"}
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": {"italian": "sappi", "english": "know!"},
-          "lui/lei": {"italian": "sappia", "english": "know!"},
-          "noi": {"italian": "sappiamo", "english": "let's know!"},
-          "voi": {"italian": "sapete", "english": "know!"},
-          "loro": {"italian": "sappiano", "english": "know!"}
-        }
-      }
+    "infinitive": {
+      "italian": "spiegare",
+      "english": "to explain",
+      "german": "erklären"
     },
-    "participio_passato": {"italian": "saputo", "english": "known"},
-    "gerundio_presente": {"italian": "sapendo", "english": "knowing"}
-  },
-  {
-    "infinitive": "spiegare",
-    "translation": "to explain",
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1222,12 +1163,12 @@
           "loro": {"italian": "spieghino", "english": "explain"}
         },
         "imperfetto": {
-          "io": {"italian": "spiegassi", "english": "explained"},
-          "tu": {"italian": "spiegassi", "english": "explained"},
-          "lui/lei": {"italian": "spiegasse", "english": "explained"},
-          "noi": {"italian": "spiegassimo", "english": "explained"},
-          "voi": {"italian": "spiegaste", "english": "explained"},
-          "loro": {"italian": "spiegassero", "english": "explained"}
+          "io": {"italian": "spiegassi", "english": "used to explain"},
+          "tu": {"italian": "spiegassi", "english": "used to explain"},
+          "lui/lei": {"italian": "spiegasse", "english": "used to explain"},
+          "noi": {"italian": "spiegassimo", "english": "used to explain"},
+          "voi": {"italian": "spiegaste", "english": "used to explain"},
+          "loro": {"italian": "spiegassero", "english": "used to explain"}
         }
       },
       "condizionale": {
@@ -1255,8 +1196,11 @@
     "gerundio_presente": {"italian": "spiegando", "english": "explaining"}
   },
   {
-    "infinitive": "uscire",
-    "translation": "to go out / to exit",
+    "infinitive": {
+      "italian": "uscire",
+      "english": "to go out, to exit",
+      "german": "ausgehen, verlassen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1304,12 +1248,12 @@
           "loro": {"italian": "escano", "english": "go out"}
         },
         "imperfetto": {
-          "io": {"italian": "uscissi", "english": "went out"},
-          "tu": {"italian": "uscissi", "english": "went out"},
-          "lui/lei": {"italian": "uscisse", "english": "went out"},
-          "noi": {"italian": "uscissimo", "english": "went out"},
-          "voi": {"italian": "usciste", "english": "went out"},
-          "loro": {"italian": "uscissero", "english": "went out"}
+          "io": {"italian": "uscissi", "english": "used to go out"},
+          "tu": {"italian": "uscissi", "english": "used to go out"},
+          "lui/lei": {"italian": "uscisse", "english": "used to go out"},
+          "noi": {"italian": "uscissimo", "english": "used to go out"},
+          "voi": {"italian": "usciste", "english": "used to go out"},
+          "loro": {"italian": "uscissero", "english": "used to go out"}
         }
       },
       "condizionale": {
@@ -1337,8 +1281,11 @@
     "gerundio_presente": {"italian": "uscendo", "english": "going out"}
   },
   {
-    "infinitive": "andare",
-    "translation": "to go",
+    "infinitive": {
+      "italian": "andare",
+      "english": "to go",
+      "german": "gehen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1386,12 +1333,12 @@
           "loro": {"italian": "vadano", "english": "go"}
         },
         "imperfetto": {
-          "io": {"italian": "andassi", "english": "went"},
-          "tu": {"italian": "andassi", "english": "went"},
-          "lui/lei": {"italian": "andasse", "english": "went"},
-          "noi": {"italian": "andassimo", "english": "went"},
-          "voi": {"italian": "andaste", "english": "went"},
-          "loro": {"italian": "andassero", "english": "went"}
+          "io": {"italian": "andassi", "english": "used to go"},
+          "tu": {"italian": "andassi", "english": "used to go"},
+          "lui/lei": {"italian": "andasse", "english": "used to go"},
+          "noi": {"italian": "andassimo", "english": "used to go"},
+          "voi": {"italian": "andaste", "english": "used to go"},
+          "loro": {"italian": "andassero", "english": "used to go"}
         }
       },
       "condizionale": {
@@ -1419,8 +1366,11 @@
     "gerundio_presente": {"italian": "andando", "english": "going"}
   },
   {
-    "infinitive": "venire",
-    "translation": "to come",
+    "infinitive": {
+      "italian": "venire",
+      "english": "to come",
+      "german": "kommen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -1468,12 +1418,12 @@
           "loro": {"italian": "vengano", "english": "come"}
         },
         "imperfetto": {
-          "io": {"italian": "venissi", "english": "came"},
-          "tu": {"italian": "venissi", "english": "came"},
-          "lui/lei": {"italian": "venisse", "english": "came"},
-          "noi": {"italian": "venissimo", "english": "came"},
-          "voi": {"italian": "veniste", "english": "came"},
-          "loro": {"italian": "venissero", "english": "came"}
+          "io": {"italian": "venissi", "english": "used to come"},
+          "tu": {"italian": "venissi", "english": "used to come"},
+          "lui/lei": {"italian": "venisse", "english": "used to come"},
+          "noi": {"italian": "venissimo", "english": "used to come"},
+          "voi": {"italian": "veniste", "english": "used to come"},
+          "loro": {"italian": "venissero", "english": "used to come"}
         }
       },
       "condizionale": {
@@ -1501,27 +1451,30 @@
     "gerundio_presente": {"italian": "venendo", "english": "coming"}
   },
   {
-    "infinitive": "potere",
-    "translation": "can / to be able to",
+    "infinitive": {
+      "italian": "potere",
+      "english": "can, to be able to",
+      "german": "können"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": {"italian": "posso", "english": "can"},
-          "tu": {"italian": "puoi", "english": "can"},
-          "lui/lei": {"italian": "può", "english": "can"},
-          "noi": {"italian": "possiamo", "english": "can"},
-          "voi": {"italian": "potete", "english": "can"},
-          "loro": {"italian": "possono", "english": "can"}
+          "io": {"italian": "posso", "english": "am able to"},
+          "tu": {"italian": "puoi", "english": "are able to"},
+          "lui/lei": {"italian": "può", "english": "is able to"},
+          "noi": {"italian": "possiamo", "english": "are able to"},
+          "voi": {"italian": "potete", "english": "are able to"},
+          "loro": {"italian": "possono", "english": "are able to"}
         },
         "imperfetto": {
-          "io": {"italian": "potevo", "english": "could / was able to"},
-          "tu": {"italian": "potevi", "english": "could"},
-          "lui/lei": {"italian": "poteva", "english": "could"},
-          "noi": {"italian": "potevamo", "english": "could"},
-          "voi": {"italian": "potevate", "english": "could"},
-          "loro": {"italian": "potevano", "english": "could"}
+          "io": {"italian": "potevo", "english": "used to be able to"},
+          "tu": {"italian": "potevi", "english": "used to be able to"},
+          "lui/lei": {"italian": "poteva", "english": "used to be able to"},
+          "noi": {"italian": "potevamo", "english": "used to be able to"},
+          "voi": {"italian": "potevate", "english": "used to be able to"},
+          "loro": {"italian": "potevano", "english": "used to be able to"}
         },
         "passato_remoto": {
           "io": {"italian": "potei", "english": "was able to"},
@@ -1542,30 +1495,30 @@
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "possa", "english": "may be able to"},
-          "tu": {"italian": "possa", "english": "may be able to"},
-          "lui/lei": {"italian": "possa", "english": "may be able to"},
-          "noi": {"italian": "possiamo", "english": "may be able to"},
-          "voi": {"italian": "possiate", "english": "may be able to"},
-          "loro": {"italian": "possano", "english": "may be able to"}
+          "io": {"italian": "possa", "english": "am able to"},
+          "tu": {"italian": "possa", "english": "are able to"},
+          "lui/lei": {"italian": "possa", "english": "is able to"},
+          "noi": {"italian": "possiamo", "english": "are able to"},
+          "voi": {"italian": "possiate", "english": "are able to"},
+          "loro": {"italian": "possano", "english": "are able to"}
         },
         "imperfetto": {
-          "io": {"italian": "potessi", "english": "might be able to"},
-          "tu": {"italian": "potessi", "english": "might be able to"},
-          "lui/lei": {"italian": "potesse", "english": "might be able to"},
-          "noi": {"italian": "potessimo", "english": "might be able to"},
-          "voi": {"italian": "poteste", "english": "might be able to"},
-          "loro": {"italian": "potessero", "english": "might be able to"}
+          "io": {"italian": "potessi", "english": "used to be able to"},
+          "tu": {"italian": "potessi", "english": "used to be able to"},
+          "lui/lei": {"italian": "potesse", "english": "used to be able to"},
+          "noi": {"italian": "potessimo", "english": "used to be able to"},
+          "voi": {"italian": "poteste", "english": "used to be able to"},
+          "loro": {"italian": "potessero", "english": "used to be able to"}
         }
       },
       "condizionale": {
         "presente": {
-          "io": {"italian": "potrei", "english": "could / would be able to"},
-          "tu": {"italian": "potresti", "english": "could"},
-          "lui/lei": {"italian": "potrebbe", "english": "could"},
-          "noi": {"italian": "potremmo", "english": "could"},
-          "voi": {"italian": "potreste", "english": "could"},
-          "loro": {"italian": "potrebbero", "english": "could"}
+          "io": {"italian": "potrei", "english": "would be able to"},
+          "tu": {"italian": "potresti", "english": "would be able to"},
+          "lui/lei": {"italian": "potrebbe", "english": "would be able to"},
+          "noi": {"italian": "potremmo", "english": "would be able to"},
+          "voi": {"italian": "potreste", "english": "would be able to"},
+          "loro": {"italian": "potrebbero", "english": "would be able to"}
         }
       },
       "imperativo": {
@@ -1582,28 +1535,32 @@
     "participio_passato": {"italian": "potuto", "english": "been able to"},
     "gerundio_presente": {"italian": "potendo", "english": "being able to"}
   },
+
   {
-    "infinitive": "dovere",
-    "translation": "must / to have to",
+    "infinitive": {
+      "italian": "dovere",
+      "english": "must, to have to",
+      "german": "müssen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": {"italian": "devo", "english": "must / have to"},
-          "tu": {"italian": "devi", "english": "must / have to"},
-          "lui/lei": {"italian": "deve", "english": "must / has to"},
-          "noi": {"italian": "dobbiamo", "english": "must / have to"},
-          "voi": {"italian": "dovete", "english": "must / have to"},
-          "loro": {"italian": "devono", "english": "must / have to"}
+          "io": {"italian": "devo", "english": "have to"},
+          "tu": {"italian": "devi", "english": "have to"},
+          "lui/lei": {"italian": "deve", "english": "has to"},
+          "noi": {"italian": "dobbiamo", "english": "have to"},
+          "voi": {"italian": "dovete", "english": "have to"},
+          "loro": {"italian": "devono", "english": "have to"}
         },
         "imperfetto": {
-          "io": {"italian": "dovevo", "english": "had to / used to have to"},
-          "tu": {"italian": "dovevi", "english": "had to"},
-          "lui/lei": {"italian": "doveva", "english": "had to"},
-          "noi": {"italian": "dovevamo", "english": "had to"},
-          "voi": {"italian": "dovevate", "english": "had to"},
-          "loro": {"italian": "dovevano", "english": "had to"}
+          "io": {"italian": "dovevo", "english": "used to have to"},
+          "tu": {"italian": "dovevi", "english": "used to have to"},
+          "lui/lei": {"italian": "doveva", "english": "used to have to"},
+          "noi": {"italian": "dovevamo", "english": "used to have to"},
+          "voi": {"italian": "dovevate", "english": "used to have to"},
+          "loro": {"italian": "dovevano", "english": "used to have to"}
         },
         "passato_remoto": {
           "io": {"italian": "dovetti", "english": "had to"},
@@ -1624,30 +1581,30 @@
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "debba", "english": "may have to"},
-          "tu": {"italian": "debba", "english": "may have to"},
-          "lui/lei": {"italian": "debba", "english": "may have to"},
-          "noi": {"italian": "dobbiamo", "english": "may have to"},
-          "voi": {"italian": "dobbiate", "english": "may have to"},
-          "loro": {"italian": "debbano", "english": "may have to"}
+          "io": {"italian": "debba", "english": "have to"},
+          "tu": {"italian": "debba", "english": "have to"},
+          "lui/lei": {"italian": "debba", "english": "have to"},
+          "noi": {"italian": "dobbiamo", "english": "have to"},
+          "voi": {"italian": "dobbiate", "english": "have to"},
+          "loro": {"italian": "debbano", "english": "have to"}
         },
         "imperfetto": {
-          "io": {"italian": "dovessi", "english": "might have to"},
-          "tu": {"italian": "dovessi", "english": "might have to"},
-          "lui/lei": {"italian": "dovesse", "english": "might have to"},
-          "noi": {"italian": "dovessimo", "english": "might have to"},
-          "voi": {"italian": "doveste", "english": "might have to"},
-          "loro": {"italian": "dovessero", "english": "might have to"}
+          "io": {"italian": "dovessi", "english": "used to have to"},
+          "tu": {"italian": "dovessi", "english": "used to have to"},
+          "lui/lei": {"italian": "dovesse", "english": "used to have to"},
+          "noi": {"italian": "dovessimo", "english": "used to have to"},
+          "voi": {"italian": "doveste", "english": "used to have to"},
+          "loro": {"italian": "dovessero", "english": "used to have to"}
         }
       },
       "condizionale": {
         "presente": {
-          "io": {"italian": "dovrei", "english": "should / would have to"},
-          "tu": {"italian": "dovresti", "english": "should"},
-          "lui/lei": {"italian": "dovrebbe", "english": "should"},
-          "noi": {"italian": "dovremmo", "english": "should"},
-          "voi": {"italian": "dovreste", "english": "should"},
-          "loro": {"italian": "dovrebbero", "english": "should"}
+          "io": {"italian": "dovrei", "english": "would have to"},
+          "tu": {"italian": "dovresti", "english": "would have to"},
+          "lui/lei": {"italian": "dovrebbe", "english": "would have to"},
+          "noi": {"italian": "dovremmo", "english": "would have to"},
+          "voi": {"italian": "dovreste", "english": "would have to"},
+          "loro": {"italian": "dovrebbero", "english": "would have to"}
         }
       },
       "imperativo": {
@@ -1665,8 +1622,11 @@
     "gerundio_presente": {"italian": "dovendo", "english": "having to"}
   },
   {
-    "infinitive": "preferire",
-    "translation": "to prefer",
+    "infinitive": {
+      "italian": "preferire",
+      "english": "to prefer",
+      "german": "bevorzuge, präferieren"
+    },
     "regularity": "regular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1714,12 +1674,12 @@
           "loro": {"italian": "preferiscano", "english": "prefer"}
         },
         "imperfetto": {
-          "io": {"italian": "preferissi", "english": "preferred"},
-          "tu": {"italian": "preferissi", "english": "preferred"},
-          "lui/lei": {"italian": "preferisse", "english": "preferred"},
-          "noi": {"italian": "preferissimo", "english": "preferred"},
-          "voi": {"italian": "preferiste", "english": "preferred"},
-          "loro": {"italian": "preferissero", "english": "preferred"}
+          "io": {"italian": "preferissi", "english": "used to prefer"},
+          "tu": {"italian": "preferissi", "english": "used to prefer"},
+          "lui/lei": {"italian": "preferisse", "english": "used to prefer"},
+          "noi": {"italian": "preferissimo", "english": "used to prefer"},
+          "voi": {"italian": "preferiste", "english": "used to prefer"},
+          "loro": {"italian": "preferissero", "english": "used to prefer"}
         }
       },
       "condizionale": {
@@ -1747,8 +1707,11 @@
     "gerundio_presente": {"italian": "preferendo", "english": "preferring"}
   },
   {
-    "infinitive": "bere",
-    "translation": "to drink",
+    "infinitive": {
+      "italian": "bere",
+      "english": "to drink",
+      "german": "trinken"
+    },
     "regularity": "irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
@@ -1762,12 +1725,12 @@
           "loro": {"italian": "bevono", "english": "drink"}
         },
         "imperfetto": {
-          "io": {"italian": "bevevo", "english": "was drinking / used to drink"},
-          "tu": {"italian": "bevevi", "english": "were drinking"},
-          "lui/lei": {"italian": "beveva", "english": "was drinking"},
-          "noi": {"italian": "bevevamo", "english": "were drinking"},
-          "voi": {"italian": "bevevate", "english": "were drinking"},
-          "loro": {"italian": "bevevano", "english": "were drinking"}
+          "io": {"italian": "bevevo", "english": "used to drink"},
+          "tu": {"italian": "bevevi", "english": "used to drink"},
+          "lui/lei": {"italian": "beveva", "english": "used to drink"},
+          "noi": {"italian": "bevevamo", "english": "used to drink"},
+          "voi": {"italian": "bevevate", "english": "used to drink"},
+          "loro": {"italian": "bevevano", "english": "used to drink"}
         },
         "passato_remoto": {
           "io": {"italian": "bevvi", "english": "drank"},
@@ -1788,20 +1751,20 @@
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "beva", "english": "may drink"},
-          "tu": {"italian": "beva", "english": "may drink"},
-          "lui/lei": {"italian": "beva", "english": "may drink"},
-          "noi": {"italian": "beviamo", "english": "may drink"},
-          "voi": {"italian": "beviate", "english": "may drink"},
-          "loro": {"italian": "bevanno", "english": "may drink"}
+          "io": {"italian": "beva", "english": "drink"},
+          "tu": {"italian": "beva", "english": "drink"},
+          "lui/lei": {"italian": "beva", "english": "drink"},
+          "noi": {"italian": "beviamo", "english": "drink"},
+          "voi": {"italian": "beviate", "english": "drink"},
+          "loro": {"italian": "bevanno", "english": "drink"}
         },
         "imperfetto": {
-          "io": {"italian": "bevessi", "english": "might drink"},
-          "tu": {"italian": "bevessi", "english": "might drink"},
-          "lui/lei": {"italian": "bevesse", "english": "might drink"},
-          "noi": {"italian": "bevessimo", "english": "might drink"},
-          "voi": {"italian": "beveste", "english": "might drink"},
-          "loro": {"italian": "bevessero", "english": "might drink"}
+          "io": {"italian": "bevessi", "english": "used to drink"},
+          "tu": {"italian": "bevessi", "english": "used to drink"},
+          "lui/lei": {"italian": "bevesse", "english": "used to drink"},
+          "noi": {"italian": "bevessimo", "english": "used to drink"},
+          "voi": {"italian": "beveste", "english": "used to drink"},
+          "loro": {"italian": "bevessero", "english": "used to drink"}
         }
       },
       "condizionale": {
@@ -1829,8 +1792,11 @@
     "gerundio_presente": {"italian": "bevendo", "english": "drinking"}
   },
   {
-    "infinitive": "salire",
-    "translation": "to go up / to climb",
+    "infinitive": {
+      "italian": "salire",
+      "english": "to go up / to climb",
+      "german": "steigen"
+    },
     "regularity": "irregular",
     "auxiliaries": ["essere", "avere"],
     "conjugations": {
@@ -1844,12 +1810,12 @@
           "loro": {"italian": "salgono", "english": "go up"}
         },
         "imperfetto": {
-          "io": {"italian": "salivo", "english": "was going up / used to go up"},
-          "tu": {"italian": "salivi", "english": "were going up"},
-          "lui/lei": {"italian": "saliva", "english": "was going up"},
-          "noi": {"italian": "salivamo", "english": "were going up"},
-          "voi": {"italian": "salivate", "english": "were going up"},
-          "loro": {"italian": "salivano", "english": "were going up"}
+          "io": {"italian": "salivo", "english": "used to go up"},
+          "tu": {"italian": "salivi", "english": "used to go up"},
+          "lui/lei": {"italian": "saliva", "english": "used to go up"},
+          "noi": {"italian": "salivamo", "english": "used to go up"},
+          "voi": {"italian": "salivate", "english": "used to go up"},
+          "loro": {"italian": "salivano", "english": "used to go up"}
         },
         "passato_remoto": {
           "io": {"italian": "salii", "english": "went up"},
@@ -1870,20 +1836,20 @@
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "salga", "english": "may go up"},
-          "tu": {"italian": "salga", "english": "may go up"},
-          "lui/lei": {"italian": "salga", "english": "may go up"},
-          "noi": {"italian": "saliamo", "english": "may go up"},
-          "voi": {"italian": "saliate", "english": "may go up"},
-          "loro": {"italian": "salgano", "english": "may go up"}
+          "io": {"italian": "salga", "english": "go up"},
+          "tu": {"italian": "salga", "english": "go up"},
+          "lui/lei": {"italian": "salga", "english": "go up"},
+          "noi": {"italian": "saliamo", "english": "go up"},
+          "voi": {"italian": "saliate", "english": "go up"},
+          "loro": {"italian": "salgano", "english": "go up"}
         },
         "imperfetto": {
-          "io": {"italian": "salissi", "english": "might go up"},
-          "tu": {"italian": "salissi", "english": "might go up"},
-          "lui/lei": {"italian": "salisse", "english": "might go up"},
-          "noi": {"italian": "salissimo", "english": "might go up"},
-          "voi": {"italian": "saliste", "english": "might go up"},
-          "loro": {"italian": "salissero", "english": "might go up"}
+          "io": {"italian": "salissi", "english": "used to go up"},
+          "tu": {"italian": "salissi", "english": "used to go up"},
+          "lui/lei": {"italian": "salisse", "english": "used to go up"},
+          "noi": {"italian": "salissimo", "english": "used to go up"},
+          "voi": {"italian": "saliste", "english": "used to go up"},
+          "loro": {"italian": "salissero", "english": "used to go up"}
         }
       },
       "condizionale": {

@@ -1,5 +1,5 @@
-import 'package:coniugatto/models/tenses/subjunctive_tenses.dart';
-import 'package:coniugatto/utilities/extensions/verb_extensions.dart';
+import '../tenses/subjunctive_tenses.dart';
+import '../../utilities/extensions/verb_extensions.dart';
 
 import '../auxiliary.dart';
 import '../tenses/tense.dart';

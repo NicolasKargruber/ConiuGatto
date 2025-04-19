@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/shared_preference_keys.dart';
 import '../main.dart';
@@ -7,7 +6,6 @@ import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
-import '../models/tenses/indicative_tenses.dart';
 import '../models/tenses/tense.dart';
 
 class ChooseTensesSheet extends StatefulWidget {

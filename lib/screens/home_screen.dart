@@ -1,12 +1,12 @@
-import 'package:coniugatto/screens/grammar_screen.dart';
-import 'package:coniugatto/screens/quiz_screen.dart';
-import 'package:coniugatto/screens/verb_screen.dart';
-import 'package:coniugatto/view_models/quiz_view_model.dart';
-import 'package:coniugatto/view_models/verb_view_model.dart';
+import '../view_models/search_view_model.dart';
+import 'grammar_screen.dart';
+import 'quiz_screen.dart';
+import 'verb_screen.dart';
+import '../view_models/quiz_view_model.dart';
+import '../view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,11 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
     GrammarScreen(),
     // Quiz Screen
     ChangeNotifierProxyProvider<VerbViewModel, QuizViewModel>(
-      create: (_ )=> QuizViewModel(),
+      create: (_) => QuizViewModel(),
       update: (_, verbViewModel, quizViewModel) => quizViewModel!..updateVerbs(verbViewModel.verbs),
       child: QuizScreen(),
     ),
-    VerbScreen(),
+    ChangeNotifierProxyProvider<VerbViewModel, SearchViewModel>(
+      create: (_) => SearchViewModel(),
+      update: (_, verbViewModel, searchViewModel) => searchViewModel!..updateVerbs(verbViewModel.verbs),
+      child: VerbScreen(),
+    ),
   ];
 
   @override

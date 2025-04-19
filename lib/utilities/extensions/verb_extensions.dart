@@ -1,4 +1,4 @@
-import 'package:coniugatto/models/tenses/subjunctive_tenses.dart';
+import '../../models/tenses/subjunctive_tenses.dart';
 
 import '../../data/compound_verbs.dart';
 import '../../models/auxiliary.dart';
@@ -109,7 +109,7 @@ extension GenerateImperative on Verb {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
-          return (italian: "non $infinitive", english: conjugation.english.replaceAll(")", ") don't"));
+          return (italian: "non $italianInfinitive", english: conjugation.english.replaceAll(")", ") don't"));
           case Pronoun.firstPlural:
           return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "));
         default:
