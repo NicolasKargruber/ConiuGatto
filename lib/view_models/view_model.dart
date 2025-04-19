@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class ViewModel extends ChangeNotifier{
   bool _isInitialized = false;

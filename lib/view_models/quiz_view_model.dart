@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+
 import '../main.dart';
 import '../models/answer_result.dart';
 import '../models/auxiliary.dart';
