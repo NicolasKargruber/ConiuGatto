@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+final _logTag = (GrammarScreen).toString();
+
 class GrammarScreen extends StatelessWidget {
   const GrammarScreen({super.key});
 

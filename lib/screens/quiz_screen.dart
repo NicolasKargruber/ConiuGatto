@@ -18,7 +18,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final logTag = (QuizScreen).toString();
+  final _logTag = (QuizScreen).toString();
   
   // ViewModel
   late Future _loadingVerbs;
@@ -41,7 +41,7 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       switch (answerResult) {
         case AnswerResult.correct:
-          debugPrint("$logTag | Correct Answer!!!");
+          debugPrint("$_logTag | Correct Answer!!!");
           correctAnswerCount++;
           _showNextQuestion();
           return;
@@ -57,7 +57,7 @@ class _QuizScreenState extends State<QuizScreen> {
       }
 
       // Show WRONG animation
-      debugPrint("$logTag | Unfortunately wrong!!!");
+      debugPrint("$_logTag | Unfortunately wrong!!!");
       _shakeKey.currentState?.shake();
 
     });
@@ -97,7 +97,7 @@ class _QuizScreenState extends State<QuizScreen> {
       _textController.selection = TextSelection.collapsed(offset: cursorPos + letter.length);
     }
 
-    debugPrint("$logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
+    debugPrint("$_logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
   }
 
   // TODO Move to separate View => CON-45

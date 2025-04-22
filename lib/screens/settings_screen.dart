@@ -6,6 +6,8 @@ import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verbs_sheet.dart';
 
+final _logTag = (SettingsScreen).toString();
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 

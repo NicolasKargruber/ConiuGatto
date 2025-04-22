@@ -16,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _logTag = (HomeScreen).toString();
+
   int _currentIndex = 1;
   final List<Widget> _screens = [
     GrammarScreen(),

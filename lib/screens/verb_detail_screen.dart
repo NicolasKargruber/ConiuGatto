@@ -18,6 +18,8 @@ class VerbDetailScreen extends StatefulWidget {
 }
 
 class _VerbDetailScreenState extends State<VerbDetailScreen> {
+  final _logTag = (VerbDetailScreen).toString();
+
   late Auxiliary selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
 
