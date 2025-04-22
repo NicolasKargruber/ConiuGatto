@@ -67,22 +67,26 @@ class VerbScreen extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: verbs.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(verbs[index].italianInfinitive),
-                        subtitle: Text(verbs[index].translation),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => VerbDetailScreen(verb: verbs[index]),
-                            ),
-                          );
-                        },
-                      );
-                    },
+                  child: Scrollbar(
+                    interactive: true,
+                    thumbVisibility: true,
+                    child: ListView.builder(
+                      itemCount: verbs.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(verbs[index].italianInfinitive),
+                          subtitle: Text(verbs[index].translation),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VerbDetailScreen(verb: verbs[index]),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
