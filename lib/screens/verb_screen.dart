@@ -1,3 +1,4 @@
+import '../data/app_values.dart';
 import '../view_models/search_view_model.dart';
 import '../view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
@@ -37,25 +38,25 @@ class VerbScreen extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(AppValues.p16),
                   child: SearchBar(
                     controller: _searchTextController,
                     leading: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(AppValues.p8),
                       child: Icon(Icons.search),
                     ),
                     trailing: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(AppValues.p8),
                         child: ClipOval(
                           child: Container(
-                            width: 24,
-                            height: 24,
+                            width: AppValues.s24,
+                            height: AppValues.s24,
                             color: Colors.black12,
                             child: IconButton(
-                              padding: EdgeInsets.all(0.0),
+                              padding: EdgeInsets.all(AppValues.p0),
                               onPressed: () => clearSearch(context),
-                              icon: Icon(Icons.clear, size: 12),
+                              icon: Icon(Icons.clear, size: AppValues.s12),
                             ),
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/app_values.dart';
 import '../main.dart';
 import '../models/pronoun.dart';
 
@@ -52,18 +53,18 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: AppValues.p4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppValues.p12),
             child: Text(
               "Choose from the Pronouns below",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: 18,
+                fontSize: AppValues.fs18,
               ),
             ),
           ),
@@ -81,18 +82,18 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
         SizedBox(
           width: double.maxFinite,
           child: Container(
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppValues.p12),
             color: Colors.black12,
             child: Text(
               "Pronouns",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
-            spacing: 8,
+            spacing: AppValues.s8,
             children: pronouns.map((pronoun) {
               return FilterChip(
                     label: Text(pronoun.italian),

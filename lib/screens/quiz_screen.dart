@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../data/app_values.dart';
 import '../models/answer_result.dart';
 import '../models/verb.dart';
 import '../view_models/quiz_view_model.dart';
@@ -18,7 +19,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final logTag = (QuizScreen).toString();
+  final _logTag = (QuizScreen).toString();
   
   // ViewModel
   late Future _loadingVerbs;
@@ -41,7 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       switch (answerResult) {
         case AnswerResult.correct:
-          debugPrint("$logTag | Correct Answer!!!");
+          debugPrint("$_logTag | Correct Answer!!!");
           correctAnswerCount++;
           _showNextQuestion();
           return;
@@ -57,7 +58,7 @@ class _QuizScreenState extends State<QuizScreen> {
       }
 
       // Show WRONG animation
-      debugPrint("$logTag | Unfortunately wrong!!!");
+      debugPrint("$_logTag | Unfortunately wrong!!!");
       _shakeKey.currentState?.shake();
 
     });
@@ -97,7 +98,7 @@ class _QuizScreenState extends State<QuizScreen> {
       _textController.selection = TextSelection.collapsed(offset: cursorPos + letter.length);
     }
 
-    debugPrint("$logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
+    debugPrint("$_logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");
   }
 
   // TODO Move to separate View => CON-45
@@ -107,18 +108,18 @@ class _QuizScreenState extends State<QuizScreen> {
       builder: (_) {
         final solution = context.read<QuizViewModel>().currentSolution;
         return Padding(
-          padding: const EdgeInsets.only(bottom: 48.0),
+          padding: const EdgeInsets.only(bottom: AppValues.p48),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.all(AppValues.p12),
                 child: Text(
                   "Correct answer",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 20,
+                    fontSize: AppValues.fs20,
                   ),
                 ),
               ),
@@ -128,14 +129,14 @@ class _QuizScreenState extends State<QuizScreen> {
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(AppValues.r12)),
                   ),
-                  padding: EdgeInsets.all(12),
+                  padding: EdgeInsets.all(AppValues.p12),
                   child: Text(
                     solution ?? '',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 28,
+                        fontSize: AppValues.fs28,
                         color: Colors.green.shade700
                     ),
                   ),
@@ -178,7 +179,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       appBar: _buildAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
         child: FutureBuilder(
           future: _loadingVerbs,
           builder: (context, snapshot) {
@@ -192,7 +193,7 @@ class _QuizScreenState extends State<QuizScreen> {
               return Center(child: _buildNoTensesAvailableContent());
             } else {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal:  48.0, vertical: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -210,7 +211,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             children: [
                               QuizContent(),
                           
-                              SizedBox(height: 64),
+                              SizedBox(height: AppValues.s64),
 
                               // Answer Text Field
                               _buildTextField(),
@@ -218,12 +219,12 @@ class _QuizScreenState extends State<QuizScreen> {
                               if(triesLeft < 2 && !answerResult.isCorrect)
                                 Text(answerResult.message),
                           
-                              SizedBox(height: 4),
+                              SizedBox(height: AppValues.s4),
                           
                               // Accents Buttons
                               _buildAccentButtons(),
                           
-                              SizedBox(height: 12),
+                              SizedBox(height: AppValues.s12),
                           
                               // Check Button
                               ShakeWidget(
@@ -252,16 +253,16 @@ class _QuizScreenState extends State<QuizScreen> {
       actions: [
         if(context.watch<QuizViewModel>().hasQuizzableItems) ...[
           Text("$wrongAnswerCount",
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
-          SizedBox(width: 2),
+          SizedBox(width: AppValues.s2),
           Text("❌"),
-          SizedBox(width: 8),
+          SizedBox(width: AppValues.s8),
           Text("$correctAnswerCount",
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
-          SizedBox(width: 2),
-          Text("✓", style: TextStyle(color: Colors.green, fontWeight: FontWeight.w800, fontSize: 20)),
+          SizedBox(width: AppValues.s2),
+          Text("✓", style: TextStyle(color: Colors.green, fontWeight: FontWeight.w800, fontSize: AppValues.fs20)),
         ],
         IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded)),
       ],
@@ -270,24 +271,24 @@ class _QuizScreenState extends State<QuizScreen> {
 
   _buildNoTensesAvailableContent(){
     return Column(
-      spacing: 8,
+      spacing: AppValues.s8,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('No Quizzable Tenses available! 😭',
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20)
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20)
         ),
 
-        SizedBox(height: 16),
+        SizedBox(height: AppValues.s16),
 
         Text('Check your Filters in the Settings'),
         FilledButton.tonalIcon(
           onPressed: _showSettingsScreen,
           icon: Icon(Icons.settings_rounded),
           label: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(AppValues.p8),
             child: Text(
                 "Go to Settings",
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
             ),
           ),
         )
@@ -300,8 +301,8 @@ class _QuizScreenState extends State<QuizScreen> {
     return FilledButton(
       onPressed: _checkAnswer,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text("Check", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24),
+        padding: const EdgeInsets.all(AppValues.p8),
+        child: Text("Check", style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs24),
         ),
       ),
     );
@@ -324,13 +325,13 @@ class _QuizScreenState extends State<QuizScreen> {
       onSubmitted: (_) => _checkAnswer(),
       decoration: InputDecoration(
         suffixIconConstraints: BoxConstraints(
-          maxHeight: 24,
-          maxWidth: 24,
+          maxHeight: AppValues.s24,
+          maxWidth: AppValues.s24,
         ),
         suffixIcon: IconButton.filledTonal(
-          padding: EdgeInsets.all(0.0),
+          padding: EdgeInsets.all(AppValues.p0),
           onPressed: _textController.clear,
-          icon: Icon(Icons.clear, size: 12),
+          icon: Icon(Icons.clear, size: AppValues.s12),
         ),
       ),
     );

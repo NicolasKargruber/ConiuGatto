@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/app_values.dart';
 import '../models/auxiliary.dart';
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
@@ -18,6 +19,8 @@ class VerbDetailScreen extends StatefulWidget {
 }
 
 class _VerbDetailScreenState extends State<VerbDetailScreen> {
+  final _logTag = (VerbDetailScreen).toString();
+
   late Auxiliary selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
 
@@ -32,22 +35,22 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.verb.italianInfinitive)),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(AppValues.p16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:  8.0),
-              child: Text(widget.verb.italianInfinitive, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold )),
+              padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
+              child: Text(widget.verb.italianInfinitive, style: TextStyle(fontSize: AppValues.fs24, fontWeight: FontWeight.bold )),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:  8.0),
-              child: Text(widget.verb.translation, style: TextStyle(fontSize: 16,)),
+              padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
+              child: Text(widget.verb.translation, style: TextStyle(fontSize: AppValues.fs16,)),
             ),
 
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(AppValues.p8),
               child: widget.verb.isRegular ?
               FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
               FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
@@ -58,7 +61,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               Container(
                 alignment: Alignment.center,
                 child: ToggleButtons(
-                    borderRadius: BorderRadius.circular(24.0),
+                    borderRadius: BorderRadius.circular(AppValues.r24),
                     isSelected: selectedAuxiliaries,
                     onPressed: (index) {
                       setState(() {
@@ -69,17 +72,17 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     },
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(AppValues.p12),
                         child: Text(widget.verb.auxiliaries.first.name.toUpperCase()),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(AppValues.p12),
                         child: Text(widget.verb.auxiliaries.last.name.toUpperCase()),
                       )
                     ]),
               ),
 
-            SizedBox(height: 8),
+            SizedBox(height: AppValues.s8),
 
             Divider(),
 
@@ -88,12 +91,12 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                 children: [
                   // INDICATIVO
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(AppValues.p4),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Indicative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        Text(Indicative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(tenses: [
                           widget.verb.indicative.present,
                           widget.verb.indicative.presentContinuous,
@@ -109,16 +112,16 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: 36.0),
+                  Divider(height: AppValues.s36),
 
                   // CONGIUNTIVO
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(AppValues.p4),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Subjunctive.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        Text(Subjunctive.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(tenses: [
                           widget.verb.subjunctive.present,
                           widget.verb.subjunctive.imperfect,
@@ -129,16 +132,16 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: 36.0),
+                  Divider(height: AppValues.s36),
 
                   // CONDIZIONALE
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(AppValues.p4),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Conditional.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        Text(Conditional.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(tenses: [
                           widget.verb.conditional.present,
                           widget.verb.conditional.presentPerfectConditional(selectedAuxiliary),
@@ -147,16 +150,16 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: 36.0),
+                  Divider(height: AppValues.s36),
 
                   // IMPERATIVO
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(AppValues.p4),
                     child: Column(
-                      spacing: 16.0,
+                      spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Imperative.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        Text(Imperative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
                             tenses: [
                               widget.verb.imperative.positive,

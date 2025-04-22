@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/app_values.dart';
 import '../data/shared_preference_keys.dart';
 import '../main.dart';
 import '../models/moods/conditional.dart';
@@ -58,18 +59,18 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:4),
+      padding: const EdgeInsets.symmetric(vertical: AppValues.p4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppValues.p12),
             child: Text(
               "Choose from the Tenses below",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: 18,
+                fontSize: AppValues.fs18,
               ),
             ),
           ),
@@ -90,21 +91,21 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
         SizedBox(
           width: double.maxFinite,
           child: Container(
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppValues.p12),
             color: Colors.black12,
             child: Text(
               moodLabel,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: 18,
+                fontSize: AppValues.fs18,
               ),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
-            spacing: 8,
+            spacing: AppValues.s8,
             children: labeledTenses.map((labeledTense) {
               final prefKey = (labeledTense.$1).toString();
               return FilterChip(

@@ -1,3 +1,4 @@
+import '../data/app_values.dart';
 import '../models/pronoun.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class ConjugationTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppValues.r12),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -27,10 +28,10 @@ class ConjugationTable extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
-                dividerThickness: 1,
-                dataRowMinHeight: 48,
-                dataRowMaxHeight: 52,
-                headingRowHeight: 56,
+                dividerThickness: AppValues.s1,
+                dataRowMinHeight: AppValues.s48,
+                dataRowMaxHeight: AppValues.s52,
+                headingRowHeight: AppValues.s56,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade300),
                   color: Theme.of(context).cardColor,
@@ -48,10 +49,10 @@ class ConjugationTable extends StatelessWidget {
   _buildPronounTable(BuildContext context){
     return DataTable(
         headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
-        dividerThickness: 1,
-        dataRowMinHeight: 48,
-        dataRowMaxHeight: 52,
-        headingRowHeight: 56,
+        dividerThickness: AppValues.s1,
+        dataRowMinHeight: AppValues.s48,
+        dataRowMaxHeight: AppValues.s52,
+        headingRowHeight: AppValues.s56,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300),
           color: Theme.of(context).cardColor,
@@ -62,7 +63,7 @@ class ConjugationTable extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.blueGrey.shade800,
-                fontSize: 14,
+                fontSize: AppValues.fs14,
               ),
             ),
           ),
@@ -74,7 +75,7 @@ class ConjugationTable extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.blueGrey.shade900,
-                  fontSize: 13,
+                  fontSize: AppValues.fs13,
                 ),
               ),
             ),
@@ -90,7 +91,7 @@ class ConjugationTable extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.w500,
           color: Colors.blueGrey.shade700,
-          fontSize: 13,
+          fontSize: AppValues.fs13,
         ),
       ),
     ),

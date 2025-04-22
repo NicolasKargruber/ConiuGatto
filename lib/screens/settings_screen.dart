@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../data/app_values.dart';
 import '../view_models/verb_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verbs_sheet.dart';
+
+final _logTag = (SettingsScreen).toString();
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -63,18 +66,21 @@ class SettingsScreen extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: Colors.black12,
                 child: Text(
                   "Tenses",
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
             ),
-            SizedBox(height: 8),
+
+            SizedBox(height: AppValues.s8),
+
             ListTile(
               title: Text("The following tenses will be included in your Quiz."),
             ),
+
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
@@ -84,25 +90,28 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
         
-            SizedBox(height: 8),
+            SizedBox(height: AppValues.s8),
         
             SizedBox(
               width: double.maxFinite,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: Colors.black12,
                 child: Text(
                   "Verbs",
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
             ),
-            SizedBox(height: 8),
+
+            SizedBox(height: AppValues.s8),
+
             ListTile(
               title: Text(
                 "The following verbs will be included up in your Quiz.",
               ),
             ),
+
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
@@ -112,25 +121,28 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
         
-            SizedBox(height: 8),
+            SizedBox(height: AppValues.s8),
         
             SizedBox(
               width: double.maxFinite,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: Colors.black12,
                 child: Text(
                   "Pronouns",
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
             ),
-            SizedBox(height: 8),
+
+            SizedBox(height: AppValues.s8),
+
             ListTile(
               title: Text(
                 "The following pronouns will be included up in your Quiz.",
               ),
             ),
+
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
