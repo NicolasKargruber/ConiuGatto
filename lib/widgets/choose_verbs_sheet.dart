@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../data/app_values.dart';
 import '../main.dart';
 import '../models/verb.dart';
 import '../view_models/verb_view_model.dart';
@@ -87,18 +88,18 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
         SizedBox(
           width: double.maxFinite,
           child: Container(
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppValues.p12),
             color: Colors.black12,
             child: Text(
               "Verbs",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
-            spacing: 8,
+            spacing: AppValues.s8,
             children: verbs.map((verb) {
               return FilterChip(
                     label: Text(verb.italianInfinitive),
