@@ -134,10 +134,10 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Subjunctive.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(tenses: [
-                          widget.verb.subjunctive.present,
-                          widget.verb.subjunctive.imperfect,
-                          widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary),
-                         widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary),
+                          widget.verb.subjunctive.present..generatedConjugations = widget.verb.generatedPresentSubjunctive,
+                          widget.verb.subjunctive.imperfect..generatedConjugations = widget.verb.generatedImperfectSubjunctive,
+                          widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectSubjunctive(selectedAuxiliary),
+                          widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPastPerfectSubjunctive(selectedAuxiliary),
                         ]),
                       ],
                     ),
@@ -154,8 +154,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Conditional.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(tenses: [
-                          widget.verb.conditional.present,
-                          widget.verb.conditional.presentPerfectConditional(selectedAuxiliary),
+                          widget.verb.conditional.present..generatedConjugations = widget.verb.generatedPresentConditional,
+                          widget.verb.conditional.presentPerfectConditional(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectConditional(selectedAuxiliary),
                         ]),
                       ],
                     ),
@@ -173,8 +173,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                         Text(Imperative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
                             tenses: [
-                              widget.verb.imperative.positive,
-                              widget.verb.imperative.negative,
+                              widget.verb.imperative.positive..generatedConjugations = widget.verb.generatedPositiveImperative,
+                              widget.verb.imperative.negative..generatedConjugations = widget.verb.generatedNegativeImperative,
                         ], showEnglishPronouns: false),
                       ],
                     ),
