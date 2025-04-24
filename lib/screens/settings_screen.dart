@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: Colors.black12,
+                color: context.colors.scheme.surfaceContainer,
                 child: Text(
                   "Tenses",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
@@ -96,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: Colors.black12,
+                color: context.colors.scheme.surfaceContainer,
                 child: Text(
                   "Verbs",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
@@ -127,7 +128,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: Colors.black12,
+                color: context.colors.scheme.surfaceContainer,
                 child: Text(
                   "Pronouns",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

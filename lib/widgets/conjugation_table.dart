@@ -21,7 +21,7 @@ class ConjugationTable extends StatelessWidget {
           // Fixed Section
           // Pronouns (io, tu, lui/lei, noi, voi, loro)
           _buildPronounTable(context),
-
+      
           // Scrollable Section:
           // Tenses (Presente, ...) + Conjugations (mangio, mangi, ...)
           Flexible(
@@ -33,12 +33,20 @@ class ConjugationTable extends StatelessWidget {
                 dataRowMinHeight: AppValues.s48,
                 dataRowMaxHeight: AppValues.s52,
                 headingRowHeight: AppValues.s56,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
+                decoration: BoxDecoration(border: Border(
+                    right: BorderSide(color: Colors.grey.shade300),
+                    top: BorderSide(color: Colors.grey.shade300),
+                    bottom: BorderSide(color: Colors.grey.shade300))
+                  ,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(AppValues.r12),
+                    bottomRight: Radius.circular(AppValues.r12),
+                  ),
                   //color: Theme.of(context).cardColor,
                 ),
                 columns: _buildTenseColumns(context),
                 rows: _buildTenseRows(),
+                clipBehavior: Clip.hardEdge,
               ),
             ),
           ),
@@ -54,9 +62,15 @@ class ConjugationTable extends StatelessWidget {
         dataRowMinHeight: AppValues.s48,
         dataRowMaxHeight: AppValues.s52,
         headingRowHeight: AppValues.s56,
+
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          //color: Theme.of(context).cardColor,
+            border: Border.all(color: Colors.grey.shade300),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(AppValues.r12),
+              bottomLeft: Radius.circular(AppValues.r12),
+            ),
+            color: context.colors.highlight.withValues(alpha: 0.2)
         ),
         columns: [
           DataColumn(
