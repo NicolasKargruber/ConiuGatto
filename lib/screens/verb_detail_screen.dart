@@ -23,6 +23,13 @@ class VerbDetailScreen extends StatefulWidget {
 class _VerbDetailScreenState extends State<VerbDetailScreen> {
   final _logTag = (VerbDetailScreen).toString();
 
+  // Colors
+  Color dividerColor(BuildContext context) {
+    return context.isLightMode ?
+    context.colors.scheme.surfaceDim : 
+    context.colors.scheme.surfaceBright;
+  }
+
   late Auxiliary selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
 
@@ -54,8 +61,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
               child: widget.verb.isRegular ?
-              FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
-              FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)),
+              FilledButton(onPressed: (){}, child: Text("Regular")) :
+              FilledButton.tonal(onPressed: (){}, child: Text("Irregular")),
             ),
 
             // TODO Move to separate widget
@@ -86,7 +93,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             SizedBox(height: AppValues.s8),
 
-            Divider(color: context.colors.scheme.surfaceBright),
+            Divider(color: dividerColor(context)),
 
             Expanded(
               child: ListView(
@@ -136,7 +143,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
+                  Divider(height: AppValues.s36, color: dividerColor(context)),
 
                   // CONDIZIONALE
                   Padding(
@@ -154,7 +161,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
+                  Divider(height: AppValues.s36, color: dividerColor(context)),
 
                   // IMPERATIVO
                   Padding(

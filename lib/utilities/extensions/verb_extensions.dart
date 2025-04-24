@@ -22,7 +22,7 @@ extension GenerateIndicative on Verb {
     ));
   }
 
- MapEntry<Pronoun, String> _conjugateGenerated(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
+  MapEntry<Pronoun, String> _conjugateGenerated(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
     final conjugatedItalianAuxiliary = _compoundVerbs.conjugateItalianAuxiliary(pronoun, auxiliary, tense);
     final italianPastParticiple = conditionallyGenderGenderedParticiple(pronoun: pronoun, auxiliary: auxiliary);
     return MapEntry(pronoun, "$conjugatedItalianAuxiliary $italianPastParticiple");
