@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
@@ -20,7 +21,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.blue.shade50,
+                color: context.colors.scheme.onSurface.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(AppValues.p12),
               ),
               child: Column(
@@ -43,7 +44,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.blue.shade100,
+                color: context.colors.scheme.onSurface.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(
@@ -66,7 +67,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.indigo.shade100,
+                color: context.colors.scheme.onSurface.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(

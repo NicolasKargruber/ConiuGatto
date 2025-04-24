@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -89,7 +90,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
           width: double.maxFinite,
           child: Container(
             padding: EdgeInsets.all(AppValues.p12),
-            color: Colors.black12,
+            color: context.colors.scheme.surfaceContainerHigh,
             child: Text(
               "Verbs",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

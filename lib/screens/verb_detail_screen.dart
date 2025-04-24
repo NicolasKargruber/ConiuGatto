@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
@@ -52,8 +53,8 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
               child: widget.verb.isRegular ?
-              FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
-              FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)),
+              FilledButton(onPressed: (){}, child: Text(widget.verb.regularity.name)) :
+              FilledButton.tonal(onPressed: (){}, child: Text(widget.verb.regularity.name)),
             ),
 
             // TODO Move to separate widget
@@ -84,7 +85,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
             SizedBox(height: AppValues.s8),
 
-            Divider(),
+            Divider(color: context.colors.scheme.surfaceBright),
 
             Expanded(
               child: ListView(
@@ -112,7 +113,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36),
+                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
 
                   // CONGIUNTIVO
                   Padding(
@@ -132,7 +133,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36),
+                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
 
                   // CONDIZIONALE
                   Padding(
@@ -150,7 +151,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36),
+                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
 
                   // IMPERATIVO
                   Padding(
