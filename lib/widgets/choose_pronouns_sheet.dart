@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
@@ -83,7 +84,7 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
           width: double.maxFinite,
           child: Container(
             padding: EdgeInsets.all(AppValues.p12),
-            color: Colors.black12,
+            color: context.colors.scheme.surfaceContainerHigh,
             child: Text(
               "Pronouns",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

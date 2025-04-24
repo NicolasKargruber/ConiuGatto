@@ -1,7 +1,8 @@
-import '../data/app_values.dart';
-import '../models/pronoun.dart';
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
+import '../data/app_values.dart';
+import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
 
 class ConjugationTable extends StatelessWidget {
@@ -20,24 +21,32 @@ class ConjugationTable extends StatelessWidget {
           // Fixed Section
           // Pronouns (io, tu, lui/lei, noi, voi, loro)
           _buildPronounTable(context),
-
+      
           // Scrollable Section:
           // Tenses (Presente, ...) + Conjugations (mangio, mangi, ...)
           Flexible(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
+                headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
                 dividerThickness: AppValues.s1,
                 dataRowMinHeight: AppValues.s48,
                 dataRowMaxHeight: AppValues.s52,
                 headingRowHeight: AppValues.s56,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
-                  color: Theme.of(context).cardColor,
+                decoration: BoxDecoration(border: Border(
+                    right: BorderSide(color: Colors.grey.shade300),
+                    top: BorderSide(color: Colors.grey.shade300),
+                    bottom: BorderSide(color: Colors.grey.shade300))
+                  ,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(AppValues.r12),
+                    bottomRight: Radius.circular(AppValues.r12),
+                  ),
+                  //color: Theme.of(context).cardColor,
                 ),
-                columns: _buildTenseColumns(),
+                columns: _buildTenseColumns(context),
                 rows: _buildTenseRows(),
+                clipBehavior: Clip.hardEdge,
               ),
             ),
           ),
@@ -48,21 +57,27 @@ class ConjugationTable extends StatelessWidget {
 
   _buildPronounTable(BuildContext context){
     return DataTable(
-        headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
+        headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
         dividerThickness: AppValues.s1,
         dataRowMinHeight: AppValues.s48,
         dataRowMaxHeight: AppValues.s52,
         headingRowHeight: AppValues.s56,
+
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          color: Theme.of(context).cardColor,
+            border: Border.all(color: Colors.grey.shade300),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(AppValues.r12),
+              bottomLeft: Radius.circular(AppValues.r12),
+            ),
+            color: context.colors.highlight.withValues(alpha: 0.2)
         ),
         columns: [
           DataColumn(
             label: Text('Pronoun',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: Colors.blueGrey.shade800,
+                color: context.colors.scheme.onInverseSurface,
                 fontSize: AppValues.fs14,
               ),
             ),
@@ -74,7 +89,6 @@ class ConjugationTable extends StatelessWidget {
               Text(pronoun.italian,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  color: Colors.blueGrey.shade900,
                   fontSize: AppValues.fs13,
                 ),
               ),
@@ -84,13 +98,13 @@ class ConjugationTable extends StatelessWidget {
     );
   }
 
-  _buildTenseColumns() => tenses.map((tense) => DataColumn(
+  _buildTenseColumns(BuildContext context) => tenses.map((tense) => DataColumn(
     label: Tooltip(
       message: tense.label,
       child: Text(tense.label,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          color: Colors.blueGrey.shade700,
+          color: context.colors.scheme.onInverseSurface,
           fontSize: AppValues.fs13,
         ),
       ),
