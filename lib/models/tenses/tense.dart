@@ -16,6 +16,7 @@ base class Tense {
   final bool usesPastParticiple;
   final bool isCompound;
   final Conjugations conjugations;
+  ItalianConjugations? generatedConjugations;
 
   /// Used for Shared Preferences
   String get prefKey => runtimeType.toString();

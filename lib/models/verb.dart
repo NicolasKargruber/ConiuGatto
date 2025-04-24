@@ -12,6 +12,7 @@ import 'regularity.dart';
 typedef ConjugatedVerb = ({String italian, String english});
 typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
 typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
+typedef ItalianConjugations = Map<Pronoun, String?>;
 
 class Verb {
   final ConjugatedVerb infinitive;
@@ -21,12 +22,12 @@ class Verb {
   /// Used for Shared Preferences
   String get prefKey => italianInfinitive;
 
+  String get stem => italianInfinitive.substring(0, italianInfinitive.length - 3); // ex. 'parl'
+  String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ARE, ERE, IRE
   String get italianInfinitive => infinitive.italian;
   String get translation => infinitive.english;
   bool get isRegular => regularity.isRegular;
-  bool get isDoubleAuxiliary {
-    return UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
-  }
+  bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
 
   // Moods
   final Indicative indicative;
@@ -36,10 +37,15 @@ class Verb {
   List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
 
   final ConjugatedVerb pastParticiple;
+  String get _generatedPastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";
   final ConjugatedVerb presentGerund;
+  String get generatedPresentGerund => "$stem${ending == 'ARE' ? 'ando' : ending == 'ERE' ? 'endo' : 'endo'}";
 
-  String conditionallyGenderedParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
+  String conditionallyGenderParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
       auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(pastParticiple.italian, forceGender: true): pastParticiple.italian;
+
+  String conditionallyGenderGenderedParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
+      auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(_generatedPastParticiple, forceGender: true): _generatedPastParticiple;
 
 
   Verb({

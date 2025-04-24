@@ -1,4 +1,7 @@
-enum Regularity { regular('regular'), irregular('irregular');
+enum Regularity {
+  regular('regular'),
+  irregular('irregular'),
+  highlyIrregular('highly irregular');
 
   final String jsonKey;
   const Regularity(this.jsonKey);

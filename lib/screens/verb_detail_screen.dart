@@ -8,6 +8,7 @@ import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/verb_extensions.dart';
 import '../widgets/conjugation_table.dart';
 
 class VerbDetailScreen extends StatefulWidget {
@@ -98,22 +99,24 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Indicative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(tenses: [
-                          widget.verb.indicative.present,
-                          widget.verb.indicative.presentContinuous,
-                          widget.verb.indicative.imperfect,
-                          widget.verb.indicative.presentPerfect(selectedAuxiliary),
-                          widget.verb.indicative.pastPerfect(selectedAuxiliary),
-                          widget.verb.indicative.historicalPresentPerfect,
-                          widget.verb.indicative.historicalPastPerfect(selectedAuxiliary),
-                          widget.verb.indicative.future,
-                          widget.verb.indicative.futurePerfect(selectedAuxiliary),
-                        ])
+                        ConjugationTable(
+                            tenses: [
+                          widget.verb.indicative.present..generatedConjugations = widget.verb.generatedPresentIndicative,
+                          widget.verb.indicative.presentContinuous..generatedConjugations = widget.verb.generatedPresentContinuousIndicative,
+                          widget.verb.indicative.imperfect..generatedConjugations = widget.verb.generatedImperfectIndicative,
+                          widget.verb.indicative.presentPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectIndicative(selectedAuxiliary),
+                          widget.verb.indicative.pastPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPastPerfectIndicative(selectedAuxiliary),
+                          widget.verb.indicative.historicalPresentPerfect..generatedConjugations = widget.verb.generatedHistoricalPresentPerfectIndicative,
+                          widget.verb.indicative.historicalPastPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedHistoricalPastPerfectIndicative(selectedAuxiliary),
+                          widget.verb.indicative.future..generatedConjugations = widget.verb.generatedFutureIndicative,
+                          widget.verb.indicative.futurePerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedFuturePerfectIndicative(selectedAuxiliary),
+                        ], stem: widget.verb.stem,
+                        )
                       ],
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: context.colors.scheme.surfaceBright),
+                  Divider(height: AppValues.s36, color: dividerColor(context)),
 
                   // CONGIUNTIVO
                   Padding(

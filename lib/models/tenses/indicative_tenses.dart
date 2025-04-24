@@ -1,3 +1,4 @@
+import '../verb.dart';
 import 'tense.dart';
 
 /// => Indicativo Presente
