@@ -1,3 +1,4 @@
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -331,7 +332,7 @@ class _QuizScreenState extends State<QuizScreen> {
         suffixIcon: IconButton.filled(
           padding: EdgeInsets.all(AppValues.p0),
           onPressed: _textController.clear,
-          icon: Icon(Icons.clear, size: AppValues.s12, color: Theme.of(context).colorScheme.onPrimary),
+          icon: Icon(Icons.clear, size: AppValues.s12, color: context.colors.scheme.onPrimary),
         ),
       ),
     );

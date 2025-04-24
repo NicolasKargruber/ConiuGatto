@@ -1,7 +1,8 @@
-import '../data/app_values.dart';
-import '../models/pronoun.dart';
+import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
+import '../data/app_values.dart';
+import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
 
 class ConjugationTable extends StatelessWidget {
@@ -27,7 +28,7 @@ class ConjugationTable extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                headingRowColor: WidgetStateColor.resolveWith((states) => Theme.of(context).colorScheme.inverseSurface),
+                headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
                 dividerThickness: AppValues.s1,
                 dataRowMinHeight: AppValues.s48,
                 dataRowMaxHeight: AppValues.s52,
@@ -48,7 +49,7 @@ class ConjugationTable extends StatelessWidget {
 
   _buildPronounTable(BuildContext context){
     return DataTable(
-        headingRowColor: WidgetStateColor.resolveWith((states) => Theme.of(context).colorScheme.inverseSurface),
+        headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
         dividerThickness: AppValues.s1,
         dataRowMinHeight: AppValues.s48,
         dataRowMaxHeight: AppValues.s52,
@@ -62,7 +63,7 @@ class ConjugationTable extends StatelessWidget {
             label: Text('Pronoun',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).colorScheme.onInverseSurface,
+                color: context.colors.scheme.onInverseSurface,
                 fontSize: AppValues.fs14,
               ),
             ),
@@ -89,7 +90,7 @@ class ConjugationTable extends StatelessWidget {
       child: Text(tense.label,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          color: Theme.of(context).colorScheme.onInverseSurface,
+          color: context.colors.scheme.onInverseSurface,
           fontSize: AppValues.fs13,
         ),
       ),
