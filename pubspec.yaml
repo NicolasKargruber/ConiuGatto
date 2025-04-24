@@ -39,6 +39,7 @@ dependencies:
   provider: ^6.1.4
   collection: ^1.19.1
   shared_preferences: ^2.5.3
+  flex_seed_scheme: ^3.5.1
 
 dev_dependencies:
   flutter_test:

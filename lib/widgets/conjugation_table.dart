@@ -27,16 +27,16 @@ class ConjugationTable extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
+                headingRowColor: WidgetStateColor.resolveWith((states) => Theme.of(context).colorScheme.inverseSurface),
                 dividerThickness: AppValues.s1,
                 dataRowMinHeight: AppValues.s48,
                 dataRowMaxHeight: AppValues.s52,
                 headingRowHeight: AppValues.s56,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade300),
-                  color: Theme.of(context).cardColor,
+                  //color: Theme.of(context).cardColor,
                 ),
-                columns: _buildTenseColumns(),
+                columns: _buildTenseColumns(context),
                 rows: _buildTenseRows(),
               ),
             ),
@@ -48,21 +48,21 @@ class ConjugationTable extends StatelessWidget {
 
   _buildPronounTable(BuildContext context){
     return DataTable(
-        headingRowColor: WidgetStateColor.resolveWith((states) => Colors.indigo.shade50),
+        headingRowColor: WidgetStateColor.resolveWith((states) => Theme.of(context).colorScheme.inverseSurface),
         dividerThickness: AppValues.s1,
         dataRowMinHeight: AppValues.s48,
         dataRowMaxHeight: AppValues.s52,
         headingRowHeight: AppValues.s56,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300),
-          color: Theme.of(context).cardColor,
+          //color: Theme.of(context).cardColor,
         ),
         columns: [
           DataColumn(
             label: Text('Pronoun',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: Colors.blueGrey.shade800,
+                color: Theme.of(context).colorScheme.onInverseSurface,
                 fontSize: AppValues.fs14,
               ),
             ),
@@ -74,7 +74,6 @@ class ConjugationTable extends StatelessWidget {
               Text(pronoun.italian,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  color: Colors.blueGrey.shade900,
                   fontSize: AppValues.fs13,
                 ),
               ),
@@ -84,13 +83,13 @@ class ConjugationTable extends StatelessWidget {
     );
   }
 
-  _buildTenseColumns() => tenses.map((tense) => DataColumn(
+  _buildTenseColumns(BuildContext context) => tenses.map((tense) => DataColumn(
     label: Tooltip(
       message: tense.label,
       child: Text(tense.label,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          color: Colors.blueGrey.shade700,
+          color: Theme.of(context).colorScheme.onInverseSurface,
           fontSize: AppValues.fs13,
         ),
       ),

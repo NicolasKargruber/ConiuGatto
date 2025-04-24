@@ -1,3 +1,4 @@
+import 'data/theme.dart';
 import 'screens/home_screen.dart';
 import 'view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo)
+          colorScheme: schemeLight,
       ),
       darkTheme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo, brightness: Brightness.dark),
+          colorScheme: schemeDark,
       ),
       home: ChangeNotifierProvider(
         create: (_) => VerbViewModel(),

@@ -43,20 +43,19 @@ class VerbScreen extends StatelessWidget {
                     controller: _searchTextController,
                     leading: Padding(
                       padding: const EdgeInsets.all(AppValues.p8),
-                      child: Icon(Icons.search),
+                      child: Icon(Icons.search, color: Theme.of(context).colorScheme.onSurfaceVariant),
                     ),
                     trailing: [
                       Padding(
                         padding: const EdgeInsets.all(AppValues.p8),
                         child: ClipOval(
-                          child: Container(
+                          child: SizedBox(
                             width: AppValues.s24,
                             height: AppValues.s24,
-                            color: Colors.black12,
-                            child: IconButton(
+                            child: IconButton.filled(
                               padding: EdgeInsets.all(AppValues.p0),
                               onPressed: () => clearSearch(context),
-                              icon: Icon(Icons.clear, size: AppValues.s12),
+                              icon: Icon(Icons.clear, size: AppValues.s12, color: Theme.of(context).colorScheme.onPrimary),
                             ),
                           ),
                         ),

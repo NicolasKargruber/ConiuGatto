@@ -20,7 +20,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.blue.shade50,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(AppValues.p12),
               ),
               child: Column(
@@ -43,7 +43,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.blue.shade100,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(
@@ -66,7 +66,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.indigo.shade100,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(

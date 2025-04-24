@@ -328,10 +328,10 @@ class _QuizScreenState extends State<QuizScreen> {
           maxHeight: AppValues.s24,
           maxWidth: AppValues.s24,
         ),
-        suffixIcon: IconButton.filledTonal(
+        suffixIcon: IconButton.filled(
           padding: EdgeInsets.all(AppValues.p0),
           onPressed: _textController.clear,
-          icon: Icon(Icons.clear, size: AppValues.s12),
+          icon: Icon(Icons.clear, size: AppValues.s12, color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
     );
