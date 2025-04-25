@@ -6940,5 +6940,381 @@
       "english": "working",
       "german": "arbeitend"
     }
+  },
+  {
+    "infinitive": {
+      "italian": "sedere",
+      "english": "to sit",
+      "german": "sitzen"
+    },
+    "regularity": "irregular",
+    "irregularities": ["stem change"],
+    "auxiliaries": ["avere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {"italian": "siedo", "english": "sit", "german": "sitze"},
+          "tu": {"italian": "siedi", "english": "sit", "german": "sitzt"},
+          "lui/lei": {"italian": "siede", "english": "sits", "german": "sitzt"},
+          "noi": {"italian": "sediamo", "english": "sit", "german": "sitzen"},
+          "voi": {"italian": "sedete", "english": "sit", "german": "sitzt"},
+          "loro": {"italian": "siedono", "english": "sit", "german": "sitzen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "sedevo", "english": "used to sit", "german": "saß"},
+          "tu": {"italian": "sedevi", "english": "used to sit", "german": "saßest"},
+          "lui/lei": {"italian": "sedeva", "english": "used to sit", "german": "saß"},
+          "noi": {"italian": "sedevamo", "english": "used to sit", "german": "saßen"},
+          "voi": {"italian": "sedevate", "english": "used to sit", "german": "saßt"},
+          "loro": {"italian": "sedevano", "english": "used to sit", "german": "saßen"}
+        },
+        "passato_remoto": {
+          "io": {"italian": "sedetti", "english": "sat", "german": "saß"},
+          "tu": {"italian": "sedesti", "english": "sat", "german": "saßest"},
+          "lui/lei": {"italian": "sedette", "english": "sat", "german": "saß"},
+          "noi": {"italian": "sedemmo", "english": "sat", "german": "saßen"},
+          "voi": {"italian": "sedeste", "english": "sat", "german": "saßt"},
+          "loro": {"italian": "sedettero", "english": "sat", "german": "saßen"}
+        },
+        "futuro_semplice": {
+          "io": {"italian": "sederò", "english": "will sit", "german": "werde sitzen"},
+          "tu": {"italian": "sederai", "english": "will sit", "german": "wirst sitzen"},
+          "lui/lei": {"italian": "sederà", "english": "will sit", "german": "wird sitzen"},
+          "noi": {"italian": "sederemo", "english": "will sit", "german": "werden sitzen"},
+          "voi": {"italian": "sederete", "english": "will sit", "german": "werdet sitzen"},
+          "loro": {"italian": "sederanno", "english": "will sit", "german": "werden sitzen"}
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {"italian": "sieda", "english": "sit", "german": "sitze"},
+          "tu": {"italian": "sieda", "english": "sit", "german": "sitzest"},
+          "lui/lei": {"italian": "sieda", "english": "sit", "german": "sitze"},
+          "noi": {"italian": "sediamo", "english": "sit", "german": "sitzen"},
+          "voi": {"italian": "sediate", "english": "sit", "german": "sitzet"},
+          "loro": {"italian": "siedano", "english": "sit", "german": "sitzen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "sedessi", "english": "used to sit", "german": "säße"},
+          "tu": {"italian": "sedessi", "english": "used to sit", "german": "säßest"},
+          "lui/lei": {"italian": "sedesse", "english": "used to sit", "german": "säße"},
+          "noi": {"italian": "sedessimo", "english": "used to sit", "german": "säßen"},
+          "voi": {"italian": "sedeste", "english": "used to sit", "german": "säßet"},
+          "loro": {"italian": "sedessero", "english": "used to sit", "german": "säßen"}
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {"italian": "sederei", "english": "would sit", "german": "würde sitzen"},
+          "tu": {"italian": "sederesti", "english": "would sit", "german": "würdest sitzen"},
+          "lui/lei": {"italian": "sederebbe", "english": "would sit", "german": "würde sitzen"},
+          "noi": {"italian": "sederemmo", "english": "would sit", "german": "würden sitzen"},
+          "voi": {"italian": "sedereste", "english": "would sit", "german": "würdet sitzen"},
+          "loro": {"italian": "sederebbero", "english": "would sit", "german": "würden sitzen"}
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {"italian": "siedi", "english": "sit!", "german": "sitz!"},
+          "lui/lei": {"italian": "sieda", "english": "sit!", "german": "sitze!"},
+          "noi": {"italian": "sediamo", "english": "let's sit!", "german": "sitzen wir!"},
+          "voi": {"italian": "sedete", "english": "sit!", "german": "sitzt!"},
+          "loro": {"italian": "siedano", "english": "sit!", "german": "sitzen Sie!"}
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "seduto",
+      "english": "sat",
+      "german": "gesessen"
+    },
+    "gerundio_presente": {
+      "italian": "sedendo",
+      "english": "sitting",
+      "german": "sitzend"
+    }
+  },
+  {
+    "infinitive": {
+      "italian": "tenere",
+      "english": "to hold",
+      "german": "halten"
+    },
+    "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
+    "auxiliaries": ["avere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {"italian": "tengo", "english": "hold", "german": "halte"},
+          "tu": {"italian": "tieni", "english": "hold", "german": "hältst"},
+          "lui/lei": {"italian": "tiene", "english": "holds", "german": "hält"},
+          "noi": {"italian": "teniamo", "english": "hold", "german": "halten"},
+          "voi": {"italian": "tenete", "english": "hold", "german": "haltet"},
+          "loro": {"italian": "tengono", "english": "hold", "german": "halten"}
+        },
+        "imperfetto": {
+          "io": {"italian": "tenevo", "english": "used to hold", "german": "hielt"},
+          "tu": {"italian": "tenevi", "english": "used to hold", "german": "hieltest"},
+          "lui/lei": {"italian": "teneva", "english": "used to hold", "german": "hielt"},
+          "noi": {"italian": "tenevamo", "english": "used to hold", "german": "hielten"},
+          "voi": {"italian": "tenevate", "english": "used to hold", "german": "hieltet"},
+          "loro": {"italian": "tenevano", "english": "used to hold", "german": "hielten"}
+        },
+        "passato_remoto": {
+          "io": {"italian": "tenni", "english": "held", "german": "hielt"},
+          "tu": {"italian": "tenesti", "english": "held", "german": "hieltest"},
+          "lui/lei": {"italian": "tenne", "english": "held", "german": "hielt"},
+          "noi": {"italian": "tenemmo", "english": "held", "german": "hielten"},
+          "voi": {"italian": "teneste", "english": "held", "german": "hieltet"},
+          "loro": {"italian": "tennero", "english": "held", "german": "hielten"}
+        },
+        "futuro_semplice": {
+          "io": {"italian": "terrò", "english": "will hold", "german": "werde halten"},
+          "tu": {"italian": "terrai", "english": "will hold", "german": "wirst halten"},
+          "lui/lei": {"italian": "terrà", "english": "will hold", "german": "wird halten"},
+          "noi": {"italian": "terremo", "english": "will hold", "german": "werden halten"},
+          "voi": {"italian": "terrete", "english": "will hold", "german": "werdet halten"},
+          "loro": {"italian": "terranno", "english": "will hold", "german": "werden halten"}
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {"italian": "tenga", "english": "hold", "german": "halte"},
+          "tu": {"italian": "tenga", "english": "hold", "german": "haltest"},
+          "lui/lei": {"italian": "tenga", "english": "hold", "german": "halte"},
+          "noi": {"italian": "teniamo", "english": "hold", "german": "halten"},
+          "voi": {"italian": "teniate", "english": "hold", "german": "haltet"},
+          "loro": {"italian": "tengano", "english": "hold", "german": "halten"}
+        },
+        "imperfetto": {
+          "io": {"italian": "tenessi", "english": "used to hold", "german": "hielte"},
+          "tu": {"italian": "tenessi", "english": "used to hold", "german": "hieltest"},
+          "lui/lei": {"italian": "tenesse", "english": "used to hold", "german": "hielte"},
+          "noi": {"italian": "tenessimo", "english": "used to hold", "german": "hielten"},
+          "voi": {"italian": "teneste", "english": "used to hold", "german": "hieltet"},
+          "loro": {"italian": "tenessero", "english": "used to hold", "german": "hielten"}
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {"italian": "terrei", "english": "would hold", "german": "würde halten"},
+          "tu": {"italian": "terresti", "english": "would hold", "german": "würdest halten"},
+          "lui/lei": {"italian": "terrebbe", "english": "would hold", "german": "würde halten"},
+          "noi": {"italian": "terremmo", "english": "would hold", "german": "würden halten"},
+          "voi": {"italian": "terreste", "english": "would hold", "german": "würdet halten"},
+          "loro": {"italian": "terrebbero", "english": "would hold", "german": "würden halten"}
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {"italian": "tieni", "english": "hold!", "german": "halt!"},
+          "lui/lei": {"italian": "tenga", "english": "hold!", "german": "halte!"},
+          "noi": {"italian": "teniamo", "english": "let's hold!", "german": "halten wir!"},
+          "voi": {"italian": "tenete", "english": "hold!", "german": "haltet!"},
+          "loro": {"italian": "tengano", "english": "hold!", "german": "halten Sie!"}
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "tenuto",
+      "english": "held",
+      "german": "gehalten"
+    },
+    "gerundio_presente": {
+      "italian": "tenendo",
+      "english": "holding",
+      "german": "haltend"
+    }
+  },
+  {
+    "infinitive": {
+      "italian": "scegliere",
+      "english": "to choose",
+      "german": "wählen"
+    },
+    "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
+    "auxiliaries": ["avere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {"italian": "scelgo", "english": "choose", "german": "wähle"},
+          "tu": {"italian": "scegli", "english": "choose", "german": "wählst"},
+          "lui/lei": {"italian": "sceglie", "english": "chooses", "german": "wählt"},
+          "noi": {"italian": "scegliamo", "english": "choose", "german": "wählen"},
+          "voi": {"italian": "scegliete", "english": "choose", "german": "wählt"},
+          "loro": {"italian": "scelgono", "english": "choose", "german": "wählen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "sceglievo", "english": "used to choose", "german": "wählte"},
+          "tu": {"italian": "sceglievi", "english": "used to choose", "german": "wähltest"},
+          "lui/lei": {"italian": "sceglieva", "english": "used to choose", "german": "wählte"},
+          "noi": {"italian": "sceglievamo", "english": "used to choose", "german": "wählten"},
+          "voi": {"italian": "sceglievate", "english": "used to choose", "german": "wähltet"},
+          "loro": {"italian": "sceglievano", "english": "used to choose", "german": "wählten"}
+        },
+        "passato_remoto": {
+          "io": {"italian": "scelsi", "english": "chose", "german": "wählte"},
+          "tu": {"italian": "scegliesti", "english": "chose", "german": "wähltest"},
+          "lui/lei": {"italian": "scelse", "english": "chose", "german": "wählte"},
+          "noi": {"italian": "scegliemmo", "english": "chose", "german": "wählten"},
+          "voi": {"italian": "sceglieste", "english": "chose", "german": "wähltet"},
+          "loro": {"italian": "scelsero", "english": "chose", "german": "wählten"}
+        },
+        "futuro_semplice": {
+          "io": {"italian": "sceglierò", "english": "will choose", "german": "werde wählen"},
+          "tu": {"italian": "sceglierai", "english": "will choose", "german": "wirst wählen"},
+          "lui/lei": {"italian": "sceglierà", "english": "will choose", "german": "wird wählen"},
+          "noi": {"italian": "sceglieremo", "english": "will choose", "german": "werden wählen"},
+          "voi": {"italian": "sceglierete", "english": "will choose", "german": "werdet wählen"},
+          "loro": {"italian": "sceglieranno", "english": "will choose", "german": "werden wählen"}
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {"italian": "scelga", "english": "choose", "german": "wähle"},
+          "tu": {"italian": "scelga", "english": "choose", "german": "wählest"},
+          "lui/lei": {"italian": "scelga", "english": "choose", "german": "wähle"},
+          "noi": {"italian": "scegliamo", "english": "choose", "german": "wählen"},
+          "voi": {"italian": "scegliate", "english": "choose", "german": "wählet"},
+          "loro": {"italian": "scelgano", "english": "choose", "german": "wählen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "scegliessi", "english": "used to choose", "german": "wählte"},
+          "tu": {"italian": "scegliessi", "english": "used to choose", "german": "wähltest"},
+          "lui/lei": {"italian": "scegliesse", "english": "used to choose", "german": "wählte"},
+          "noi": {"italian": "scegliessimo", "english": "used to choose", "german": "wählten"},
+          "voi": {"italian": "sceglieste", "english": "used to choose", "german": "wähltet"},
+          "loro": {"italian": "scegliessero", "english": "used to choose", "german": "wählten"}
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {"italian": "sceglierei", "english": "would choose", "german": "würde wählen"},
+          "tu": {"italian": "sceglieresti", "english": "would choose", "german": "würdest wählen"},
+          "lui/lei": {"italian": "sceglierebbe", "english": "would choose", "german": "würde wählen"},
+          "noi": {"italian": "sceglieremmo", "english": "would choose", "german": "würden wählen"},
+          "voi": {"italian": "scegliereste", "english": "would choose", "german": "würdet wählen"},
+          "loro": {"italian": "sceglierebbero", "english": "would choose", "german": "würden wählen"}
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {"italian": "scegli", "english": "choose!", "german": "wähl!"},
+          "lui/lei": {"italian": "scelga", "english": "choose!", "german": "wähle!"},
+          "noi": {"italian": "scegliamo", "english": "let's choose!", "german": "wählen wir!"},
+          "voi": {"italian": "scegliete", "english": "choose!", "german": "wählt!"},
+          "loro": {"italian": "scelgano", "english": "choose!", "german": "wählen Sie!"}
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "scelto",
+      "english": "chosen",
+      "german": "gewählt"
+    },
+    "gerundio_presente": {
+      "italian": "scegliendo",
+      "english": "choosing",
+      "german": "wählend"
+    }
+  },
+  {
+    "infinitive": {
+      "italian": "pulire",
+      "english": "to clean",
+      "german": "putzen"
+    },
+    "regularity": "irregular",
+    "irregularities": ["using -isc-"],
+    "auxiliaries": ["avere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {"italian": "pulisco", "english": "clean", "german": "putze"},
+          "tu": {"italian": "pulisci", "english": "clean", "german": "putzt"},
+          "lui/lei": {"italian": "pulisce", "english": "cleans", "german": "putzt"},
+          "noi": {"italian": "puliamo", "english": "clean", "german": "putzen"},
+          "voi": {"italian": "pulite", "english": "clean", "german": "putzt"},
+          "loro": {"italian": "puliscono", "english": "clean", "german": "putzen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "pulivo", "english": "used to clean", "german": "putzte"},
+          "tu": {"italian": "pulivi", "english": "used to clean", "german": "putztest"},
+          "lui/lei": {"italian": "puliva", "english": "used to clean", "german": "putzte"},
+          "noi": {"italian": "pulivamo", "english": "used to clean", "german": "putzten"},
+          "voi": {"italian": "pulivate", "english": "used to clean", "german": "putztet"},
+          "loro": {"italian": "pulivano", "english": "used to clean", "german": "putzten"}
+        },
+        "passato_remoto": {
+          "io": {"italian": "pulii", "english": "cleaned", "german": "putzte"},
+          "tu": {"italian": "pulisti", "english": "cleaned", "german": "putztest"},
+          "lui/lei": {"italian": "pulì", "english": "cleaned", "german": "putzte"},
+          "noi": {"italian": "pulimmo", "english": "cleaned", "german": "putzten"},
+          "voi": {"italian": "puliste", "english": "cleaned", "german": "putztet"},
+          "loro": {"italian": "pulirono", "english": "cleaned", "german": "putzten"}
+        },
+        "futuro_semplice": {
+          "io": {"italian": "pulirò", "english": "will clean", "german": "werde putzen"},
+          "tu": {"italian": "pulirai", "english": "will clean", "german": "wirst putzen"},
+          "lui/lei": {"italian": "pulirà", "english": "will clean", "german": "wird putzen"},
+          "noi": {"italian": "puliremo", "english": "will clean", "german": "werden putzen"},
+          "voi": {"italian": "pulirete", "english": "will clean", "german": "werdet putzen"},
+          "loro": {"italian": "puliranno", "english": "will clean", "german": "werden putzen"}
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {"italian": "pulisca", "english": "clean", "german": "putze"},
+          "tu": {"italian": "pulisca", "english": "clean", "german": "putzest"},
+          "lui/lei": {"italian": "pulisca", "english": "clean", "german": "putze"},
+          "noi": {"italian": "puliamo", "english": "clean", "german": "putzen"},
+          "voi": {"italian": "puliate", "english": "clean", "german": "putzet"},
+          "loro": {"italian": "puliscano", "english": "clean", "german": "putzen"}
+        },
+        "imperfetto": {
+          "io": {"italian": "pulissi", "english": "used to clean", "german": "putzte"},
+          "tu": {"italian": "pulissi", "english": "used to clean", "german": "putztest"},
+          "lui/lei": {"italian": "pulisse", "english": "used to clean", "german": "putzte"},
+          "noi": {"italian": "pulissimo", "english": "used to clean", "german": "putzten"},
+          "voi": {"italian": "puliste", "english": "used to clean", "german": "putztet"},
+          "loro": {"italian": "pulissero", "english": "used to clean", "german": "putzten"}
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {"italian": "pulirei", "english": "would clean", "german": "würde putzen"},
+          "tu": {"italian": "puliresti", "english": "would clean", "german": "würdest putzen"},
+          "lui/lei": {"italian": "pulirebbe", "english": "would clean", "german": "würde putzen"},
+          "noi": {"italian": "puliremmo", "english": "would clean", "german": "würden putzen"},
+          "voi": {"italian": "pulireste", "english": "would clean", "german": "würdet putzen"},
+          "loro": {"italian": "pulirebbero", "english": "would clean", "german": "würden putzen"}
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {"italian": "pulisci", "english": "clean!", "german": "putze!"},
+          "lui/lei": {"italian": "pulisca", "english": "clean!", "german": "putze!"},
+          "noi": {"italian": "puliamo", "english": "let's clean!", "german": "putzen wir!"},
+          "voi": {"italian": "pulite", "english": "clean!", "german": "putzt!"},
+          "loro": {"italian": "puliscano", "english": "clean!", "german": "putzen Sie!"}
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "pulito",
+      "english": "cleaned",
+      "german": "geputzt"
+    },
+    "gerundio_presente": {
+      "italian": "pulendo",
+      "english": "cleaning",
+      "german": "putzend"
+    }
   }
 ]
