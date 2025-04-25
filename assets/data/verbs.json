@@ -233,7 +233,8 @@
       "english": "to be (permanent)",
       "german": "sein (permanent)"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -461,7 +462,7 @@
       "english": "to be (temporary), to stay",
       "german": "sein (temporary), bleiben"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -695,6 +696,7 @@
       "german": "wollen"
     },
     "regularity": "highly irregular",
+    "irregularities": ["stem change"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -780,6 +782,7 @@
       "german": "machen"
     },
     "regularity": "highly irregular",
+    "irregularities": ["present gerund", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -865,6 +868,7 @@
       "german": "sagen"
     },
     "regularity": "highly irregular",
+    "irregularities": ["present gerund", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -949,7 +953,7 @@
       "german": "verstehen"
     },
     "regularity": "irregular",
-    "irregularities": ["stem change"],
+    "irregularities": ["using -isc-"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -1033,7 +1037,7 @@
       "english": "to know",
       "german": "wissen"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -1117,7 +1121,8 @@
       "english": "to explain",
       "german": "erklären"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -1203,6 +1208,7 @@
       "german": "ausgehen, verlassen"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -1373,6 +1379,7 @@
       "german": "kommen"
     },
     "regularity": "highly irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -1543,7 +1550,7 @@
       "english": "must, to have to",
       "german": "müssen"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -1629,7 +1636,7 @@
       "german": "bevorzuge, präferieren"
     },
     "regularity": "irregular",
-    "irregularities": ["stem change"],
+    "irregularities": ["using -isc-"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -1796,10 +1803,11 @@
   {
     "infinitive": {
       "italian": "salire",
-      "english": "to go up / to climb",
+      "english": "to go up, to climb",
       "german": "steigen"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change"],
     "auxiliaries": ["essere", "avere"],
     "conjugations": {
       "indicativo": {
@@ -1886,6 +1894,7 @@
       "german": "bleiben"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -1979,6 +1988,7 @@
       "german": "sterben"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -2072,7 +2082,7 @@
       "german": "beenden"
     },
     "regularity": "irregular",
-    "irregularities": ["stem change"],
+    "irregularities": ["using -isc-"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2165,7 +2175,8 @@
       "english": "to see",
       "german": "sehen"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2259,6 +2270,7 @@
       "german": "lesen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2352,6 +2364,7 @@
       "german": "geboren werden"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -2395,7 +2408,7 @@
           "lui/lei": {"italian": "nasca", "english": "be born", "german": "werde geboren"},
           "noi": {"italian": "nasciamo", "english": "be born", "german": "werden geboren"},
           "voi": {"italian": "nasciate", "english": "be born", "german": "werdet geboren"},
-          "loro": {"italian": "nascono", "english": "be born", "german": "werden geboren"}
+          "loro": {"italian": "nascano", "english": "be born", "german": "werden geboren"}
         },
         "imperfetto": {
           "io": {"italian": "nascessi", "english": "were born", "german": "würde geboren werden"},
@@ -2423,7 +2436,7 @@
           "lui/lei": {"italian": "nasca", "english": "be born!", "german": "werde geboren!"},
           "noi": {"italian": "nasciamo", "english": "let's be born!", "german": "werden wir geboren!"},
           "voi": {"italian": "nascete", "english": "be born!", "german": "werdet geboren!"},
-          "loro": {"italian": "nascono", "english": "be born!", "german": "werden Sie geboren!"}
+          "loro": {"italian": "nascano", "english": "be born!", "german": "werden Sie geboren!"}
         }
       }
     },
@@ -2445,7 +2458,8 @@
       "english": "to ask",
       "german": "fragen"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2538,7 +2552,8 @@
       "english": "to reply",
       "german": "antworten"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2632,6 +2647,7 @@
       "german": "kennen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2725,6 +2741,7 @@
       "german": "legen, stellen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2818,6 +2835,7 @@
       "german": "öffnen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2830,15 +2848,15 @@
           "loro": {"italian": "aprono", "english": "open", "german": "öffnen"}
         },
         "imperfetto": {
-          "io": {"italian": "aprivò", "english": "used to open", "german": "öffnete"},
+          "io": {"italian": "aprivo", "english": "used to open", "german": "öffnete"},
           "tu": {"italian": "aprivi", "english": "used to open", "german": "öffnetest"},
           "lui/lei": {"italian": "apriva", "english": "used to open", "german": "öffnete"},
           "noi": {"italian": "aprivamo", "english": "used to open", "german": "öffneten"},
-          "voi": {"italian": "aprivàte", "english": "used to open", "german": "öffnetet"},
+          "voi": {"italian": "aprivate", "english": "used to open", "german": "öffnetet"},
           "loro": {"italian": "aprivano", "english": "used to open", "german": "öffneten"}
         },
         "passato_remoto": {
-          "io": {"italian": "aprìi", "english": "opened", "german": "öffnete"},
+          "io": {"italian": "aprii", "english": "opened", "german": "öffnete"},
           "tu": {"italian": "apristi", "english": "opened", "german": "öffnetest"},
           "lui/lei": {"italian": "aprì", "english": "opened", "german": "öffnete"},
           "noi": {"italian": "aprimmo", "english": "opened", "german": "öffneten"},
@@ -2867,7 +2885,7 @@
           "io": {"italian": "aprissi", "english": "opened", "german": "öffnete"},
           "tu": {"italian": "aprissi", "english": "opened", "german": "öffnetest"},
           "lui/lei": {"italian": "aprisse", "english": "opened", "german": "öffnete"},
-          "noi": {"italian": "apriàssimo", "english": "opened", "german": "öffneten"},
+          "noi": {"italian": "aprissimo", "english": "opened", "german": "öffneten"},
           "voi": {"italian": "apriste", "english": "opened", "german": "öffnetet"},
           "loro": {"italian": "aprissero", "english": "opened", "german": "öffneten"}
         }
@@ -2911,6 +2929,7 @@
       "german": "verlieren"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -2920,14 +2939,14 @@
           "lui/lei": {"italian": "perde", "english": "loses", "german": "verliert"},
           "noi": {"italian": "perdiamo", "english": "lose", "german": "verlieren"},
           "voi": {"italian": "perdete", "english": "lose", "german": "verliert"},
-          "loro": {"italian": "pèrdono", "english": "lose", "german": "verlieren"}
+          "loro": {"italian": "perdono", "english": "lose", "german": "verlieren"}
         },
         "imperfetto": {
           "io": {"italian": "perdevo", "english": "used to lose", "german": "verlor"},
           "tu": {"italian": "perdevi", "english": "used to lose", "german": "verlorst"},
           "lui/lei": {"italian": "perdeva", "english": "used to lose", "german": "verlor"},
           "noi": {"italian": "perdevamo", "english": "used to lose", "german": "verloren"},
-          "voi": {"italian": "perdevàte", "english": "used to lose", "german": "verlort"},
+          "voi": {"italian": "perdevate", "english": "used to lose", "german": "verlort"},
           "loro": {"italian": "perdevano", "english": "used to lose", "german": "verloren"}
         },
         "passato_remoto": {
@@ -2936,7 +2955,7 @@
           "lui/lei": {"italian": "perse", "english": "lost", "german": "verlor"},
           "noi": {"italian": "perdemmo", "english": "lost", "german": "verloren"},
           "voi": {"italian": "perdeste", "english": "lost", "german": "verlort"},
-          "loro": {"italian": "pèrsero", "english": "lost", "german": "verloren"}
+          "loro": {"italian": "persero", "english": "lost", "german": "verloren"}
         },
         "futuro_semplice": {
           "io": {"italian": "perderò", "english": "will lose", "german": "werde verlieren"},
@@ -2953,16 +2972,16 @@
           "tu": {"italian": "perda", "english": "lose", "german": "verlierest"},
           "lui/lei": {"italian": "perda", "english": "lose", "german": "verliere"},
           "noi": {"italian": "perdiamo", "english": "lose", "german": "verlieren"},
-          "voi": {"italian": "perdiàte", "english": "lose", "german": "verlieret"},
-          "loro": {"italian": "pèrdano", "english": "lose", "german": "verlieren"}
+          "voi": {"italian": "perdiate", "english": "lose", "german": "verlieret"},
+          "loro": {"italian": "perdano", "english": "lose", "german": "verlieren"}
         },
         "imperfetto": {
           "io": {"italian": "perdessi", "english": "lost", "german": "verlöre"},
           "tu": {"italian": "perdessi", "english": "lost", "german": "verlörest"},
           "lui/lei": {"italian": "perdesse", "english": "lost", "german": "verlöre"},
-          "noi": {"italian": "perdéssimo", "english": "lost", "german": "verlören"},
+          "noi": {"italian": "perdessimo", "english": "lost", "german": "verlören"},
           "voi": {"italian": "perdeste", "english": "lost", "german": "verlöret"},
-          "loro": {"italian": "perdéssero", "english": "lost", "german": "verlören"}
+          "loro": {"italian": "perdessero", "english": "lost", "german": "verlören"}
         }
       },
       "condizionale": {
@@ -2982,7 +3001,7 @@
           "lui/lei": {"italian": "perda", "english": "lose!", "german": "verliere!"},
           "noi": {"italian": "perdiamo", "english": "let's lose!", "german": "verlieren wir!"},
           "voi": {"italian": "perdete", "english": "lose!", "german": "verliert!"},
-          "loro": {"italian": "pèrdano", "english": "lose!", "german": "verlieren Sie!"}
+          "loro": {"italian": "perdano", "english": "lose!", "german": "verlieren Sie!"}
         }
       }
     },
@@ -3004,6 +3023,7 @@
       "german": "leben"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3097,6 +3117,7 @@
       "german": "kochen"
     },
     "regularity": "irregular",
+    "irregularities": ["spelling change", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3190,6 +3211,7 @@
       "german": "hinuntergehen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3283,6 +3305,7 @@
       "german": "schreiben"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3376,6 +3399,7 @@
       "german": "nehmen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3469,6 +3493,7 @@
       "german": "brechen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3562,6 +3587,7 @@
       "german": "rennen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3655,6 +3681,7 @@
       "german": "gewinnen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3748,6 +3775,7 @@
       "german": "übersetzen"
     },
     "regularity": "irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3841,6 +3869,7 @@
       "german": "schließen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3934,6 +3963,7 @@
       "german": "einschalten"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -3976,7 +4006,7 @@
           "tu": {"italian": "accenda", "english": "switch on", "german": "schaltest ein"},
           "lui/lei": {"italian": "accenda", "english": "switch on", "german": "schalte ein"},
           "noi": {"italian": "accendiamo", "english": "switch on", "german": "schalten ein"},
-          "voi": {"italian": "acciate", "english": "switch on", "german": "schaltet ein"},
+          "voi": {"italian": "accendiate", "english": "switch on", "german": "schaltet ein"},
           "loro": {"italian": "accendano", "english": "switch on", "german": "schalten ein"}
         },
         "imperfetto": {
@@ -4027,6 +4057,7 @@
       "german": "aufwachsen"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -4120,6 +4151,7 @@
       "german": "schieben"
     },
     "regularity": "irregular",
+    "irregularities": ["past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -4213,6 +4245,7 @@
       "german": "gefallen"
     },
     "regularity": "highly irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -4306,6 +4339,7 @@
       "german": "leid tun"
     },
     "regularity": "highly irregular",
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
@@ -4398,79 +4432,80 @@
       "english": "to miss",
       "german": "fehlen"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
     "auxiliaries": ["essere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": {"italian": "mànco", "english": "miss", "german": "fehle"},
-          "tu": {"italian": "mànchi", "english": "miss", "german": "fehlst"},
-          "lui/lei": {"italian": "mànca", "english": "misses", "german": "fehlt"},
-          "noi": {"italian": "mancàmo", "english": "miss", "german": "fehlen"},
-          "voi": {"italian": "mancàte", "english": "miss", "german": "fehlt"},
-          "loro": {"italian": "màncano", "english": "miss", "german": "fehlen"}
+          "io": {"italian": "manco", "english": "miss", "german": "fehle"},
+          "tu": {"italian": "manchi", "english": "miss", "german": "fehlst"},
+          "lui/lei": {"italian": "manca", "english": "misses", "german": "fehlt"},
+          "noi": {"italian": "mancamo", "english": "miss", "german": "fehlen"},
+          "voi": {"italian": "mancate", "english": "miss", "german": "fehlt"},
+          "loro": {"italian": "mancano", "english": "miss", "german": "fehlen"}
         },
         "imperfetto": {
-          "io": {"italian": "mancàvo", "english": "used to miss", "german": "fehlte"},
-          "tu": {"italian": "mancàvi", "english": "used to miss", "german": "fehltest"},
-          "lui/lei": {"italian": "mancàva", "english": "used to miss", "german": "fehlte"},
-          "noi": {"italian": "mancavàmo", "english": "used to miss", "german": "fehlten"},
-          "voi": {"italian": "mancavàte", "english": "used to miss", "german": "fehltet"},
-          "loro": {"italian": "mancàvano", "english": "used to miss", "german": "fehlten"}
+          "io": {"italian": "mancavo", "english": "used to miss", "german": "fehlte"},
+          "tu": {"italian": "mancavi", "english": "used to miss", "german": "fehltest"},
+          "lui/lei": {"italian": "mancava", "english": "used to miss", "german": "fehlte"},
+          "noi": {"italian": "mancavamo", "english": "used to miss", "german": "fehlten"},
+          "voi": {"italian": "mancavate", "english": "used to miss", "german": "fehltet"},
+          "loro": {"italian": "mancavano", "english": "used to miss", "german": "fehlten"}
         },
         "passato_remoto": {
-          "io": {"italian": "mancài", "english": "missed", "german": "fehlte"},
-          "tu": {"italian": "mancàsti", "english": "missed", "german": "fehltest"},
+          "io": {"italian": "mancai", "english": "missed", "german": "fehlte"},
+          "tu": {"italian": "mancasti", "english": "missed", "german": "fehltest"},
           "lui/lei": {"italian": "mancò", "english": "missed", "german": "fehlte"},
-          "noi": {"italian": "mancàmmo", "english": "missed", "german": "fehlten"},
-          "voi": {"italian": "mancàste", "english": "missed", "german": "fehltet"},
-          "loro": {"italian": "mancàrono", "english": "missed", "german": "fehlten"}
+          "noi": {"italian": "mancammo", "english": "missed", "german": "fehlten"},
+          "voi": {"italian": "mancaste", "english": "missed", "german": "fehltet"},
+          "loro": {"italian": "mancarono", "english": "missed", "german": "fehlten"}
         },
         "futuro_semplice": {
-          "io": {"italian": "manche-rò", "english": "will miss", "german": "werde fehlen"},
-          "tu": {"italian": "manche-rai", "english": "will miss", "german": "wirst fehlen"},
-          "lui/lei": {"italian": "manche-rà", "english": "will miss", "german": "wird fehlen"},
-          "noi": {"italian": "manche-remo", "english": "will miss", "german": "werden fehlen"},
-          "voi": {"italian": "manche-rete", "english": "will miss", "german": "werdet fehlen"},
-          "loro": {"italian": "manche-ranno", "english": "will miss", "german": "werden fehlen"}
+          "io": {"italian": "mancherò", "english": "will miss", "german": "werde fehlen"},
+          "tu": {"italian": "mancherai", "english": "will miss", "german": "wirst fehlen"},
+          "lui/lei": {"italian": "mancherà", "english": "will miss", "german": "wird fehlen"},
+          "noi": {"italian": "mancheremo", "english": "will miss", "german": "werden fehlen"},
+          "voi": {"italian": "mancherete", "english": "will miss", "german": "werdet fehlen"},
+          "loro": {"italian": "mancheranno", "english": "will miss", "german": "werden fehlen"}
         }
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "mànchi", "english": "miss", "german": "fehle"},
-          "tu": {"italian": "mànchi", "english": "miss", "german": "fehlest"},
-          "lui/lei": {"italian": "mànchi", "english": "miss", "german": "fehle"},
+          "io": {"italian": "manchi", "english": "miss", "german": "fehle"},
+          "tu": {"italian": "manchi", "english": "miss", "german": "fehlest"},
+          "lui/lei": {"italian": "manchi", "english": "miss", "german": "fehle"},
           "noi": {"italian": "mancìamo", "english": "miss", "german": "fehlen"},
           "voi": {"italian": "manciàte", "english": "miss", "german": "fehlet"},
-          "loro": {"italian": "mànchino", "english": "miss", "german": "fehlen"}
+          "loro": {"italian": "manchino", "english": "miss", "german": "fehlen"}
         },
         "imperfetto": {
-          "io": {"italian": "mancàssi", "english": "missed", "german": "fehlte"},
-          "tu": {"italian": "mancàssi", "english": "missed", "german": "fehltest"},
-          "lui/lei": {"italian": "mancàsse", "english": "missed", "german": "fehlte"},
-          "noi": {"italian": "mancàssimo", "english": "missed", "german": "fehlten"},
-          "voi": {"italian": "mancàste", "english": "missed", "german": "fehltet"},
-          "loro": {"italian": "mancàssero", "english": "missed", "german": "fehlten"}
+          "io": {"italian": "mancassi", "english": "missed", "german": "fehlte"},
+          "tu": {"italian": "mancassi", "english": "missed", "german": "fehltest"},
+          "lui/lei": {"italian": "mancasse", "english": "missed", "german": "fehlte"},
+          "noi": {"italian": "mancassimo", "english": "missed", "german": "fehlten"},
+          "voi": {"italian": "mancaste", "english": "missed", "german": "fehltet"},
+          "loro": {"italian": "mancassero", "english": "missed", "german": "fehlten"}
         }
       },
       "condizionale": {
         "presente": {
-          "io": {"italian": "manche-rei", "english": "would miss", "german": "würde fehlen"},
-          "tu": {"italian": "manche-resti", "english": "would miss", "german": "würdest fehlen"},
-          "lui/lei": {"italian": "manche-rebbe", "english": "would miss", "german": "würde fehlen"},
-          "noi": {"italian": "manche-remmo", "english": "would miss", "german": "würden fehlen"},
-          "voi": {"italian": "manche-reste", "english": "would miss", "german": "würdet fehlen"},
-          "loro": {"italian": "manche-rebbero", "english": "would miss", "german": "würden fehlen"}
+          "io": {"italian": "mancherei", "english": "would miss", "german": "würde fehlen"},
+          "tu": {"italian": "mancheresti", "english": "would miss", "german": "würdest fehlen"},
+          "lui/lei": {"italian": "mancherebbe", "english": "would miss", "german": "würde fehlen"},
+          "noi": {"italian": "mancheremmo", "english": "would miss", "german": "würden fehlen"},
+          "voi": {"italian": "manchereste", "english": "would miss", "german": "würdet fehlen"},
+          "loro": {"italian": "mancherebbero", "english": "would miss", "german": "würden fehlen"}
         }
       },
       "imperativo": {
         "positivo": {
           "io": null,
-          "tu": {"italian": "mànca", "english": "miss!", "german": "fehl!"},
-          "lui/lei": {"italian": "mànchi", "english": "miss!", "german": "fehle!"},
+          "tu": {"italian": "manca", "english": "miss!", "german": "fehl!"},
+          "lui/lei": {"italian": "manchi", "english": "miss!", "german": "fehle!"},
           "noi": {"italian": "mancìamo", "english": "let's miss!", "german": "fehlen wir!"},
           "voi": {"italian": "mancàte", "english": "miss!", "german": "fehlt!"},
-          "loro": {"italian": "mànchino", "english": "miss!", "german": "fehlen Sie!"}
+          "loro": {"italian": "manchino", "english": "miss!", "german": "fehlen Sie!"}
         }
       }
     },
@@ -5142,79 +5177,80 @@
       "english": "to look for",
       "german": "suchen"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
         "presente": {
-          "io": {"italian": "cèrco", "english": "look for", "german": "suche"},
-          "tu": {"italian": "cèrchi", "english": "look for", "german": "suchst"},
-          "lui/lei": {"italian": "cèrca", "english": "looks for", "german": "sucht"},
-          "noi": {"italian": "cerchiàmo", "english": "look for", "german": "suchen"},
-          "voi": {"italian": "cercàte", "english": "look for", "german": "sucht"},
-          "loro": {"italian": "cèrcano", "english": "look for", "german": "suchen"}
+          "io": {"italian": "cerco", "english": "look for", "german": "suche"},
+          "tu": {"italian": "cerchi", "english": "look for", "german": "suchst"},
+          "lui/lei": {"italian": "cerca", "english": "looks for", "german": "sucht"},
+          "noi": {"italian": "cerchiamo", "english": "look for", "german": "suchen"},
+          "voi": {"italian": "cercate", "english": "look for", "german": "sucht"},
+          "loro": {"italian": "cercano", "english": "look for", "german": "suchen"}
         },
         "imperfetto": {
-          "io": {"italian": "cercàvo", "english": "used to look for", "german": "suchte"},
-          "tu": {"italian": "cercàvi", "english": "used to look for", "german": "suchtest"},
-          "lui/lei": {"italian": "cercàva", "english": "used to look for", "german": "suchte"},
-          "noi": {"italian": "cercavàmo", "english": "used to look for", "german": "suchten"},
-          "voi": {"italian": "cercavàte", "english": "used to look for", "german": "suchtet"},
-          "loro": {"italian": "cercàvano", "english": "used to look for", "german": "suchten"}
+          "io": {"italian": "cercavo", "english": "used to look for", "german": "suchte"},
+          "tu": {"italian": "cercavi", "english": "used to look for", "german": "suchtest"},
+          "lui/lei": {"italian": "cercava", "english": "used to look for", "german": "suchte"},
+          "noi": {"italian": "cercavamo", "english": "used to look for", "german": "suchten"},
+          "voi": {"italian": "cercavate", "english": "used to look for", "german": "suchtet"},
+          "loro": {"italian": "cercavano", "english": "used to look for", "german": "suchten"}
         },
         "passato_remoto": {
-          "io": {"italian": "cercài", "english": "looked for", "german": "suchte"},
-          "tu": {"italian": "cercàsti", "english": "looked for", "german": "suchtest"},
-          "lui/lei": {"italian": "cercò", "english": "looked for", "german": "suchte"},
-          "noi": {"italian": "cercàmmo", "english": "looked for", "german": "suchten"},
-          "voi": {"italian": "cercàste", "english": "looked for", "german": "suchtet"},
-          "loro": {"italian": "cercàrono", "english": "looked for", "german": "suchten"}
+          "io": {"italian": "cercai", "english": "looked for", "german": "suchte"},
+          "tu": {"italian": "cercasti", "english": "looked for", "german": "suchtest"},
+          "lui/lei": {"italian": "cerco", "english": "looked for", "german": "suchte"},
+          "noi": {"italian": "cercammo", "english": "looked for", "german": "suchten"},
+          "voi": {"italian": "cercaste", "english": "looked for", "german": "suchtet"},
+          "loro": {"italian": "cercarono", "english": "looked for", "german": "suchten"}
         },
         "futuro_semplice": {
           "io": {"italian": "cercherò", "english": "will look for", "german": "werde suchen"},
-          "tu": {"italian": "cercherài", "english": "will look for", "german": "wirst suchen"},
+          "tu": {"italian": "cercherai", "english": "will look for", "german": "wirst suchen"},
           "lui/lei": {"italian": "cercherà", "english": "will look for", "german": "wird suchen"},
-          "noi": {"italian": "cercherémo", "english": "will look for", "german": "werden suchen"},
-          "voi": {"italian": "cercheréte", "english": "will look for", "german": "werdet suchen"},
-          "loro": {"italian": "cercherànno", "english": "will look for", "german": "werden suchen"}
+          "noi": {"italian": "cercheremo", "english": "will look for", "german": "werden suchen"},
+          "voi": {"italian": "cercherete", "english": "will look for", "german": "werdet suchen"},
+          "loro": {"italian": "cercheranno", "english": "will look for", "german": "werden suchen"}
         }
       },
       "congiuntivo": {
         "presente": {
-          "io": {"italian": "cèrchi", "english": "look for", "german": "suche"},
-          "tu": {"italian": "cèrchi", "english": "look for", "german": "suchest"},
-          "lui/lei": {"italian": "cèrchi", "english": "look for", "german": "suche"},
-          "noi": {"italian": "cerchiàmo", "english": "look for", "german": "suchen"},
-          "voi": {"italian": "cerchiàte", "english": "look for", "german": "suchet"},
-          "loro": {"italian": "cèrchino", "english": "look for", "german": "suchen"}
+          "io": {"italian": "cerchi", "english": "look for", "german": "suche"},
+          "tu": {"italian": "cerchi", "english": "look for", "german": "suchest"},
+          "lui/lei": {"italian": "cerchi", "english": "look for", "german": "suche"},
+          "noi": {"italian": "cerchiamo", "english": "look for", "german": "suchen"},
+          "voi": {"italian": "cerchiate", "english": "look for", "german": "suchet"},
+          "loro": {"italian": "cerchino", "english": "look for", "german": "suchen"}
         },
         "imperfetto": {
-          "io": {"italian": "cercàssi", "english": "looked for", "german": "suchte"},
-          "tu": {"italian": "cercàssi", "english": "looked for", "german": "suchtest"},
-          "lui/lei": {"italian": "cercàsse", "english": "looked for", "german": "suchte"},
-          "noi": {"italian": "cercàssimo", "english": "looked for", "german": "suchten"},
-          "voi": {"italian": "cercàste", "english": "looked for", "german": "suchtet"},
-          "loro": {"italian": "cercàssero", "english": "looked for", "german": "suchten"}
+          "io": {"italian": "cercassi", "english": "looked for", "german": "suchte"},
+          "tu": {"italian": "cercassi", "english": "looked for", "german": "suchtest"},
+          "lui/lei": {"italian": "cercasse", "english": "looked for", "german": "suchte"},
+          "noi": {"italian": "cercassimo", "english": "looked for", "german": "suchten"},
+          "voi": {"italian": "cercaste", "english": "looked for", "german": "suchtet"},
+          "loro": {"italian": "cercassero", "english": "looked for", "german": "suchten"}
         }
       },
       "condizionale": {
         "presente": {
-          "io": {"italian": "cercherèi", "english": "would look for", "german": "würde suchen"},
-          "tu": {"italian": "cercherésti", "english": "would look for", "german": "würdest suchen"},
-          "lui/lei": {"italian": "cercherèbbe", "english": "would look for", "german": "würde suchen"},
-          "noi": {"italian": "cercherémmo", "english": "would look for", "german": "würden suchen"},
-          "voi": {"italian": "cercheréste", "english": "would look for", "german": "würdet suchen"},
-          "loro": {"italian": "cercherèbbero", "english": "would look for", "german": "würden suchen"}
+          "io": {"italian": "cercherei", "english": "would look for", "german": "würde suchen"},
+          "tu": {"italian": "cercheresti", "english": "would look for", "german": "würdest suchen"},
+          "lui/lei": {"italian": "cercherebbe", "english": "would look for", "german": "würde suchen"},
+          "noi": {"italian": "cercheremmo", "english": "would look for", "german": "würden suchen"},
+          "voi": {"italian": "cerchereste", "english": "would look for", "german": "würdet suchen"},
+          "loro": {"italian": "cercherebbero", "english": "would look for", "german": "würden suchen"}
         }
       },
       "imperativo": {
         "positivo": {
           "io": null,
-          "tu": {"italian": "cèrca", "english": "look for!", "german": "such!"},
-          "lui/lei": {"italian": "cèrchi", "english": "look for!", "german": "suche!"},
-          "noi": {"italian": "cerchiàmo", "english": "let's look for!", "german": "suchen wir!"},
-          "voi": {"italian": "cercàte", "english": "look for!", "german": "sucht!"},
-          "loro": {"italian": "cèrchino", "english": "look for!", "german": "suchen Sie!"}
+          "tu": {"italian": "cerca", "english": "look for!", "german": "such!"},
+          "lui/lei": {"italian": "cerchi", "english": "look for!", "german": "suche!"},
+          "noi": {"italian": "cerchiamo", "english": "let's look for!", "german": "suchen wir!"},
+          "voi": {"italian": "cercate", "english": "look for!", "german": "sucht!"},
+          "loro": {"italian": "cerchino", "english": "look for!", "german": "suchen Sie!"}
         }
       }
     },
@@ -5514,7 +5550,8 @@
       "english": "to touch",
       "german": "berühren"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -5886,7 +5923,7 @@
       "english": "to give",
       "german": "geben"
     },
-    "regularity": "irregular",
+    "regularity": "highly irregular",
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
@@ -6194,12 +6231,12 @@
           "loro": {"italian": "aspettarono", "english": "waited", "german": "warteten"}
         },
         "futuro_semplice": {
-          "io": {"italian": "aspettterò", "english": "will wait", "german": "werde warten"},
-          "tu": {"italian": "aspettterai", "english": "will wait", "german": "wirst warten"},
-          "lui/lei": {"italian": "aspettterà", "english": "will wait", "german": "wird warten"},
-          "noi": {"italian": "aspettteremo", "english": "will wait", "german": "werden warten"},
-          "voi": {"italian": "aspettterete", "english": "will wait", "german": "werdet warten"},
-          "loro": {"italian": "aspettteranno", "english": "will wait", "german": "werden warten"}
+          "io": {"italian": "aspetterò", "english": "will wait", "german": "werde warten"},
+          "tu": {"italian": "aspetterai", "english": "will wait", "german": "wirst warten"},
+          "lui/lei": {"italian": "aspetterà", "english": "will wait", "german": "wird warten"},
+          "noi": {"italian": "aspetteremo", "english": "will wait", "german": "werden warten"},
+          "voi": {"italian": "aspetterete", "english": "will wait", "german": "werdet warten"},
+          "loro": {"italian": "aspetteranno", "english": "will wait", "german": "werden warten"}
         }
       },
       "congiuntivo": {
@@ -6222,12 +6259,12 @@
       },
       "condizionale": {
         "presente": {
-          "io": {"italian": "aspettterei", "english": "would wait", "german": "würde warten"},
-          "tu": {"italian": "aspettteresti", "english": "would wait", "german": "würdest warten"},
-          "lui/lei": {"italian": "aspettterebbe", "english": "would wait", "german": "würde warten"},
-          "noi": {"italian": "aspettteremmo", "english": "would wait", "german": "würden warten"},
-          "voi": {"italian": "aspetttereste", "english": "would wait", "german": "würdet warten"},
-          "loro": {"italian": "aspettterebbero", "english": "would wait", "german": "würden warten"}
+          "io": {"italian": "aspetterei", "english": "would wait", "german": "würde warten"},
+          "tu": {"italian": "aspetteresti", "english": "would wait", "german": "würdest warten"},
+          "lui/lei": {"italian": "aspetterebbe", "english": "would wait", "german": "würde warten"},
+          "noi": {"italian": "aspetteremmo", "english": "would wait", "german": "würden warten"},
+          "voi": {"italian": "aspettereste", "english": "would wait", "german": "würdet warten"},
+          "loro": {"italian": "aspetterebbero", "english": "would wait", "german": "würden warten"}
         }
       },
       "imperativo": {
@@ -6630,7 +6667,8 @@
       "english": "to pay",
       "german": "bezahlen"
     },
-    "regularity": "regular",
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {

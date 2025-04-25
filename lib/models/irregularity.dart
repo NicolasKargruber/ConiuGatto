@@ -1,4 +1,9 @@
-enum Irregularity { stemChange('stem change'), spellingChange('spelling change');
+enum Irregularity {
+  stemChange('stem change'),
+  spellingChange('spelling change'),
+  usingIsc('using -isc-'),
+  presentGerund('present gerund'),
+  pastParticiple('past participle');
 
   final String jsonKey;
   const Irregularity(this.jsonKey);

@@ -22,6 +22,7 @@ class VerbDetailScreen extends StatefulWidget {
 
 class _VerbDetailScreenState extends State<VerbDetailScreen> {
   final _logTag = (VerbDetailScreen).toString();
+  get verb => widget.verb;
 
   // Colors
   Color dividerColor(BuildContext context) {
@@ -30,6 +31,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
     context.colors.scheme.surfaceBright;
   }
 
+  // Optional auxiliaries
   late Auxiliary selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
 
@@ -41,6 +43,9 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
+    debugPrint("$_logTag | Irregularities: ${widget.verb.irregularities}");
+    
     return Scaffold(
       appBar: AppBar(title: Text(widget.verb.italianInfinitive)),
       body: Padding(

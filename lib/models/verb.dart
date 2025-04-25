@@ -1,6 +1,8 @@
 import 'package:collection/collection.dart';
 
 import 'auxiliary.dart';
+import 'base_verb.dart';
+import 'irregularity.dart';
 import 'moods/conditional.dart';
 import 'moods/imperative.dart';
 import 'moods/indicative.dart';
@@ -14,9 +16,10 @@ typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
 typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
 typedef ItalianConjugations = Map<Pronoun, String?>;
 
-class Verb {
+class Verb implements BaseVerb {
   final ConjugatedVerb infinitive;
   final Regularity regularity;
+  final Set<Irregularity> irregularities;
   final Set<Auxiliary> auxiliaries;
 
   /// Used for Shared Preferences
@@ -30,9 +33,13 @@ class Verb {
   bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
 
   // Moods
+  @override
   final Indicative indicative;
+  @override
   final Subjunctive subjunctive;
+  @override
   final Conditional conditional;
+  @override
   final Imperative imperative;
   List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
 
@@ -51,6 +58,7 @@ class Verb {
   Verb({
     required this.infinitive,
     required this.regularity,
+    required this.irregularities,
     required this.auxiliaries,
     required this.indicative,
     required this.subjunctive,
@@ -69,6 +77,7 @@ class Verb {
     return Verb(
       infinitive: conjugatedVerbFrom(json['infinitive']),
       regularity: Regularity.fromJson(json['regularity']),
+      irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),
       auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toSet(),
       indicative: Indicative.fromJson(json['conjugations']['indicativo']),
       subjunctive: Subjunctive.fromJson(json['conjugations']['congiuntivo']),

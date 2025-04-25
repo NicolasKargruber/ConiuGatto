@@ -133,8 +133,8 @@ class ConjugationTable extends StatelessWidget {
         return spans;
       }*/
 
-      debugPrint("conjugatedForm: $conjugatedForm");
-      debugPrint("generatedForm: $generatedForm");
+      // debugPrint("conjugatedForm: $conjugatedForm");
+      // debugPrint("generatedForm: $generatedForm");
 
       // Find the matching prefix (regular part)
       while (i < generatedForm.length &&
