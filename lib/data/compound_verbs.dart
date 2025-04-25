@@ -1,4 +1,5 @@
 import '../models/auxiliary.dart';
+import '../models/base_verb.dart';
 import '../models/moods/simple_tense.dart';
 import '../models/regularity.dart';
 
@@ -10,9 +11,9 @@ import '../models/pronoun.dart';
 import '../models/verb.dart';
 
 class CompoundVerbs {
-  final Verb essere; // Ausiliare
-  final Verb avere; // Ausiliare
-  final Verb stare; // Progressivo
+  final BaseVerb essere; // Ausiliare
+  final BaseVerb avere; // Ausiliare
+  final BaseVerb stare; // Progressivo
   // final Verb andare; // Futuro Prossimo
 
   // Private Constructor
@@ -25,10 +26,7 @@ class CompoundVerbs {
 
   // Singleton instance (since these never change)
   static final instance = CompoundVerbs._(
-    avere: Verb(
-      infinitive: (italian: "avere", english: "to have"),
-      regularity: Regularity.irregular,
-      auxiliaries: { Auxiliary.avere},
+    avere: BaseVerb(
       indicative: Indicative.fromJson({
         "indicativo": {
           "presente": {
@@ -889,13 +887,8 @@ class CompoundVerbs {
           }
         }
       } ['imperativo']!),
-      pastParticiple: (italian: "avuto", english: "had"),
-      presentGerund: (italian: "avendo", english: "having"),
     ),
-    essere: Verb(
-      infinitive: (italian: "essere", english: "to be (permanent)"),
-      regularity: Regularity.irregular,
-      auxiliaries: { Auxiliary.essere},
+    essere: BaseVerb(
       indicative: Indicative.fromJson({
         "indicativo": {
           "presente": {
@@ -1740,13 +1733,8 @@ class CompoundVerbs {
           }
         }
       } ['imperativo']!),
-      pastParticiple: (italian: "stato", english: "been"),
-      presentGerund: (italian: "essendo", english: "being"),
   ),
-    stare: Verb(
-      infinitive: (italian: "stare", english: "to stay, to be (temporary)"),
-      regularity: Regularity.irregular,
-      auxiliaries: { Auxiliary.essere},
+    stare: BaseVerb(
       indicative: Indicative.fromJson( {
         "indicativo": {
           "presente": {
@@ -2607,8 +2595,6 @@ class CompoundVerbs {
           }
         }
       } ['imperativo']!),
-      pastParticiple: (italian: "stato", english: "been"),
-      presentGerund: (italian: "stando", english: "being"),
     ),
   );
 
@@ -2629,7 +2615,6 @@ class CompoundVerbs {
     };
   }
 
-  // TODO implement english auxiliaries
   String? conjugateEnglishAuxiliary(Pronoun pronoun, SimpleTense tense) {
     return switch (tense) {
       SimpleTense.present => avere.indicative.present[pronoun]?.english,

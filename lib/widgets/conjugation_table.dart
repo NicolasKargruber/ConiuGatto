@@ -6,8 +6,9 @@ import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
 
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true});
+  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true, this.stem = ""});
 
+  final String stem;
   final List<Tense> tenses;
   final bool showEnglishPronouns;
 
@@ -45,7 +46,7 @@ class ConjugationTable extends StatelessWidget {
                   //color: Theme.of(context).cardColor,
                 ),
                 columns: _buildTenseColumns(context),
-                rows: _buildTenseRows(),
+                rows: _buildTenseRows(context),
                 clipBehavior: Clip.hardEdge,
               ),
             ),
@@ -111,7 +112,57 @@ class ConjugationTable extends StatelessWidget {
     ),
   )).toList();
 
-  _buildTenseRows() => Pronoun.values.map((pronoun) =>
+  // TODO Move to ViewModel
+  _buildTenseRows(BuildContext context) {
+    // Helper function to highlight irregular parts
+    List<TextSpan> buildSpans(String conjugatedForm, String? generatedForm) {
+      List<TextSpan> spans = [];
+      int i = 0;
+
+      // Check if generated is provided
+      if (generatedForm == null) {
+        return spans..add(TextSpan(text: conjugatedForm,
+            style: const TextStyle(color: Colors.black)));
+      }
+
+      // TODO Use
+      // When conjugation is shorter than generation
+      /*if (conjugatedForm.length < generatedForm.length) {
+        spans.add(TextSpan(text: stem, style: const TextStyle(color: Colors.black)));
+        spans.add(TextSpan(text: conjugatedForm.substring(stem.length), style: const TextStyle(color: Colors.indigoAccent, fontWeight: FontWeight.bold)));
+        return spans;
+      }*/
+
+      // debugPrint("conjugatedForm: $conjugatedForm");
+      // debugPrint("generatedForm: $generatedForm");
+
+      // Find the matching prefix (regular part)
+      while (i < generatedForm.length &&
+          i < conjugatedForm.length &&
+          conjugatedForm[i].toLowerCase() == generatedForm[i].toLowerCase()) {
+        i++;
+      }
+
+      // Add regular part in default style
+      if (i > 0) {
+        spans.add(TextSpan(
+          text: conjugatedForm.substring(0, i),
+          style: TextStyle(color: context.colors.scheme.onSurface),
+        ));
+      }
+
+      // Add irregular part in red
+      if (i < conjugatedForm.length) {
+        spans.add(TextSpan(
+          text: conjugatedForm.substring(i),
+          style: TextStyle(color: context.colors.scheme.secondary, fontWeight: FontWeight.bold),
+        ));
+      }
+
+      return spans;
+    }
+
+    return Pronoun.values.map((pronoun) =>
       DataRow(
         cells: tenses.map((tense) =>
             DataCell(
@@ -120,7 +171,11 @@ class ConjugationTable extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if(tense.conjugations[pronoun] != null) ...[
-                    Text(tense.conjugations[pronoun]?.italian ?? "-"),
+            RichText(
+              text: TextSpan(
+                children: buildSpans(tense.conjugations[pronoun]?.italian ?? "-", tense.generatedConjugations?[pronoun]),
+              ),
+            ),
                     Text(
                         "${showEnglishPronouns ? "${pronoun.english} " : ""}${tense.conjugations[pronoun]?.english}",
                         style: TextStyle(fontStyle: FontStyle.italic)
@@ -131,4 +186,5 @@ class ConjugationTable extends StatelessWidget {
               ),
             )).toList(),
       )).toList();
+  }
 }
