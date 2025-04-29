@@ -1,14 +1,12 @@
 import '../models/auxiliary.dart';
 import '../models/base_verb.dart';
 import '../models/moods/simple_tense.dart';
-import '../models/regularity.dart';
 
 import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/pronoun.dart';
-import '../models/verb.dart';
 
 class CompoundVerbs {
   final BaseVerb essere; // Ausiliare

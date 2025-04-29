@@ -1,4 +1,3 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
@@ -8,6 +7,7 @@ import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import '../utilities/extensions/verb_extensions.dart';
 import '../widgets/conjugation_table.dart';
 
@@ -24,11 +24,12 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
   final _logTag = (VerbDetailScreen).toString();
   get verb => widget.verb;
 
+  // TODO factory
   // Colors
   Color dividerColor(BuildContext context) {
     return context.isLightMode ?
-    context.colors.scheme.surfaceDim : 
-    context.colors.scheme.surfaceBright;
+    context.colorScheme.surfaceDim :
+    context.colorScheme.surfaceBright;
   }
 
   // Optional auxiliaries
@@ -65,6 +66,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
+              // TODO factory
               child: widget.verb.isRegular ?
               FilledButton(onPressed: (){}, child: Text("Regular")) :
               FilledButton.tonal(onPressed: (){}, child: Text("Irregular")),

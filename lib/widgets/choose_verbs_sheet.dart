@@ -1,10 +1,10 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data/app_values.dart';
 import '../main.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_view_model.dart';
 
 class ChooseVerbsSheet extends StatefulWidget {
@@ -90,7 +90,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
           width: double.maxFinite,
           child: Container(
             padding: EdgeInsets.all(AppValues.p12),
-            color: context.colors.scheme.surfaceContainerHigh,
+            color: context.colorScheme.surfaceContainerHigh,
             child: Text(
               "Verbs",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

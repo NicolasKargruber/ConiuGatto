@@ -1,9 +1,9 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
 import '../main.dart';
 import '../models/pronoun.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 
 class ChoosePronounsSheet extends StatefulWidget {
   const ChoosePronounsSheet({super.key});
@@ -84,7 +84,7 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
           width: double.maxFinite,
           child: Container(
             padding: EdgeInsets.all(AppValues.p12),
-            color: context.colors.scheme.surfaceContainerHigh,
+            color: context.colorScheme.surfaceContainerHigh,
             child: Text(
               "Pronouns",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

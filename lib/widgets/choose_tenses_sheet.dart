@@ -1,4 +1,3 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
@@ -9,6 +8,7 @@ import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/tenses/tense.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 
 class ChooseTensesSheet extends StatefulWidget {
   const ChooseTensesSheet({super.key});
@@ -93,7 +93,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           width: double.maxFinite,
           child: Container(
             padding: EdgeInsets.all(AppValues.p12),
-            color: context.colors.scheme.surfaceContainerHigh,
+            color: context.colorScheme.surfaceContainerHigh,
             child: Text(
               moodLabel,
               style: TextStyle(

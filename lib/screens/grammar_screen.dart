@@ -1,7 +1,7 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 
 final _logTag = (GrammarScreen).toString();
 
@@ -21,7 +21,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: context.colors.scheme.primaryContainer.withValues(alpha: 0.8),
+                color: context.colorScheme.primaryContainer.withValues(alpha: 0.8),
                 borderRadius: BorderRadius.circular(AppValues.p12),
               ),
               child: Column(
@@ -44,7 +44,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: context.colors.scheme.primaryContainer.withValues(alpha: 0.9),
+                color: context.colorScheme.primaryContainer.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(
@@ -67,7 +67,7 @@ class GrammarScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: context.colors.scheme.primaryContainer,
+                color: context.colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(AppValues.r12),
               ),
               child: Column(

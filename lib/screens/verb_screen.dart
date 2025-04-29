@@ -1,8 +1,8 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data/app_values.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/search_view_model.dart';
 import '../view_models/verb_view_model.dart';
 import 'verb_detail_screen.dart';
@@ -44,7 +44,7 @@ class VerbScreen extends StatelessWidget {
                     controller: _searchTextController,
                     leading: Padding(
                       padding: const EdgeInsets.all(AppValues.p8),
-                      child: Icon(Icons.search, color: context.colors.scheme.onSurfaceVariant),
+                      child: Icon(Icons.search, color: context.colorScheme.onSurfaceVariant),
                     ),
                     trailing: [
                       Padding(
@@ -56,7 +56,7 @@ class VerbScreen extends StatelessWidget {
                             child: IconButton.filled(
                               padding: EdgeInsets.all(AppValues.p0),
                               onPressed: () => clearSearch(context),
-                              icon: Icon(Icons.clear, size: AppValues.s12, color: context.colors.scheme.onPrimary),
+                              icon: Icon(Icons.clear, size: AppValues.s12, color: context.colorScheme.onPrimary),
                             ),
                           ),
                         ),

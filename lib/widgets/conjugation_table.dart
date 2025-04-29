@@ -1,9 +1,9 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
 import '../models/pronoun.dart';
 import '../models/tenses/tense.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 
 class ConjugationTable extends StatelessWidget {
   const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true, this.stem = ""});
@@ -29,7 +29,7 @@ class ConjugationTable extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
+                headingRowColor: WidgetStateColor.resolveWith((states) => context.colorScheme.inverseSurface),
                 dividerThickness: AppValues.s1,
                 dataRowMinHeight: AppValues.s48,
                 dataRowMaxHeight: AppValues.s52,
@@ -58,7 +58,7 @@ class ConjugationTable extends StatelessWidget {
 
   _buildPronounTable(BuildContext context){
     return DataTable(
-        headingRowColor: WidgetStateColor.resolveWith((states) => context.colors.scheme.inverseSurface),
+        headingRowColor: WidgetStateColor.resolveWith((states) => context.colorScheme.inverseSurface),
         dividerThickness: AppValues.s1,
         dataRowMinHeight: AppValues.s48,
         dataRowMaxHeight: AppValues.s52,
@@ -71,14 +71,14 @@ class ConjugationTable extends StatelessWidget {
               topLeft: Radius.circular(AppValues.r12),
               bottomLeft: Radius.circular(AppValues.r12),
             ),
-            color: context.colors.highlight.withValues(alpha: 0.2)
+            color: context.theme.highlightColor.withValues(alpha: 0.2)
         ),
         columns: [
           DataColumn(
             label: Text('Pronoun',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: context.colors.scheme.onInverseSurface,
+                color: context.colorScheme.onInverseSurface,
                 fontSize: AppValues.fs14,
               ),
             ),
@@ -105,7 +105,7 @@ class ConjugationTable extends StatelessWidget {
       child: Text(tense.label,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          color: context.colors.scheme.onInverseSurface,
+          color: context.colorScheme.onInverseSurface,
           fontSize: AppValues.fs13,
         ),
       ),
@@ -147,7 +147,7 @@ class ConjugationTable extends StatelessWidget {
       if (i > 0) {
         spans.add(TextSpan(
           text: conjugatedForm.substring(0, i),
-          style: TextStyle(color: context.colors.scheme.onSurface),
+          style: TextStyle(color: context.colorScheme.onSurface),
         ));
       }
 
@@ -155,7 +155,7 @@ class ConjugationTable extends StatelessWidget {
       if (i < conjugatedForm.length) {
         spans.add(TextSpan(
           text: conjugatedForm.substring(i),
-          style: TextStyle(color: context.colors.scheme.secondary, fontWeight: FontWeight.bold),
+          style: TextStyle(color: context.colorScheme.secondary, fontWeight: FontWeight.bold),
         ));
       }
 

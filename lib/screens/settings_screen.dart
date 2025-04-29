@@ -1,8 +1,8 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data/app_values.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
@@ -68,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: context.colors.scheme.surfaceContainer,
+                color: context.colorScheme.surfaceContainer,
                 child: Text(
                   "Tenses",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
@@ -97,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: context.colors.scheme.surfaceContainer,
+                color: context.colorScheme.surfaceContainer,
                 child: Text(
                   "Verbs",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
@@ -128,7 +128,7 @@ class SettingsScreen extends StatelessWidget {
               width: double.maxFinite,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
-                color: context.colors.scheme.surfaceContainer,
+                color: context.colorScheme.surfaceContainer,
                 child: Text(
                   "Pronouns",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),

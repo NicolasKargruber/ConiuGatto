@@ -1,4 +1,3 @@
-import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,6 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../data/app_values.dart';
 import '../models/answer_result.dart';
 import '../models/verb.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/quiz_view_model.dart';
 import '../view_models/verb_view_model.dart';
 import '../widgets/quiz_content.dart';
@@ -26,7 +26,6 @@ class _QuizScreenState extends State<QuizScreen> {
   late Future _loadingVerbs;
   List<Verb> get verbs => context.read<VerbViewModel>().verbs;
 
-  // TODO Move to viewModel
   // Answer Count
   int triesLeft = 2;
   int correctAnswerCount = 0;
@@ -332,7 +331,7 @@ class _QuizScreenState extends State<QuizScreen> {
         suffixIcon: IconButton.filled(
           padding: EdgeInsets.all(AppValues.p0),
           onPressed: _textController.clear,
-          icon: Icon(Icons.clear, size: AppValues.s12, color: context.colors.scheme.onPrimary),
+          icon: Icon(Icons.clear, size: AppValues.s12, color: context.colorScheme.onPrimary),
         ),
       ),
     );
