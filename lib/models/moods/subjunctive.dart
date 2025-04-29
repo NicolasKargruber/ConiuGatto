@@ -12,18 +12,21 @@ class Subjunctive extends Mood {
 
   // Static labels
   static const String name = "Congiuntivo";
-  static List<LabeledTense> get getLabeledTenses => [
-    (PresentSubjunctive, label: PresentSubjunctive.name),
-    (ImperfectSubjunctive, label: ImperfectSubjunctive.name),
-    (PresentPerfectSubjunctive, label: PresentPerfectSubjunctive.name),
-    (PastPerfectSubjunctive, label: PastPerfectSubjunctive.name)
-  ];
 
   @override
   final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, imperfect, presentPerfectSubjunctive(auxiliary), pastPerfectSubjunctive(auxiliary) ];
+
+  Tense Function(Auxiliary) getTense(SubjunctiveTense tense) =>
+      switch(tense)
+      {
+        SubjunctiveTense.present => (_) => present,
+        SubjunctiveTense.imperfect => (_) => imperfect,
+        SubjunctiveTense.presentPerfect => presentPerfectSubjunctive,
+        SubjunctiveTense.pastPerfect => pastPerfectSubjunctive
+      };
 
   // Simple Tenses - Stored in JSON
   /// => Presente
@@ -49,4 +52,19 @@ class Subjunctive extends Mood {
       imperfect: ImperfectSubjunctive.fromJson(json['imperfetto']),
     );
   }
+}
+
+typedef LabeledTense = ({String prefKey, String label});
+
+enum SubjunctiveTense {
+  present("Presente"),
+  imperfect("Imperfetto"),
+  presentPerfect("Passato"),
+  pastPerfect("Trapassato");
+
+  final String label;
+  const SubjunctiveTense(this.label);
+
+  String get prefKey => toString();
+  static List<LabeledTense>  get valuesLabeled => values.map((e) => (prefKey: e.prefKey, label: e.label)).toList();
 }

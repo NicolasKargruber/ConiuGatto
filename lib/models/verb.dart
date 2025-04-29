@@ -10,6 +10,7 @@ import 'moods/mood.dart';
 import 'moods/subjunctive.dart';
 import 'pronoun.dart';
 import 'regularity.dart';
+import 'tenses/tense.dart';
 
 typedef ConjugatedVerb = ({String italian, String english});
 typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
@@ -42,6 +43,21 @@ class Verb implements BaseVerb {
   @override
   final Imperative imperative;
   List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
+
+  Tense Function(Auxiliary) getTense(Enum tense) {
+    switch(tense) {
+      case IndicativeTense tense:
+        return indicative.getTense(tense);
+      case SubjunctiveTense tense:
+        return subjunctive.getTense(tense);
+      case ConditionalTense tense:
+        return conditional.getTense(tense);
+      case ImperativeTense tense:
+        return imperative.getTense(tense);
+      default:
+        throw ArgumentError('Unsupported tense type: ${tense.runtimeType}');
+    }
+  }
 
   final ConjugatedVerb pastParticiple;
   String get _generatedPastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";

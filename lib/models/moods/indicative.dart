@@ -5,6 +5,7 @@ import '../tenses/indicative_tenses.dart';
 import '../tenses/tense.dart';
 import '../verb.dart';
 import 'mood.dart';
+import 'subjunctive.dart';
 
 class Indicative extends Mood {
   // Parent Reference
@@ -12,23 +13,37 @@ class Indicative extends Mood {
 
   // Static Labels
   static const String name = "Indicativo";
-  static List<LabeledTense> get getLabeledTenses => [
-    (PresentIndicative, label: PresentIndicative.name),
-    (PresentContinuousIndicative, label: PresentContinuousIndicative.name),
-    (ImperfectIndicative, label: ImperfectIndicative.name),
-    (PresentPerfectIndicative, label: PresentPerfectIndicative.name),
-    (PastPerfectIndicative, label: PastPerfectIndicative.name),
-    (HistoricalPresentPerfectIndicative, label: HistoricalPresentPerfectIndicative.name),
-    (HistoricalPastPerfectIndicative, label: HistoricalPastPerfectIndicative.name),
-    (FutureIndicative, label: FutureIndicative.name),
-    (FuturePerfectIndicative, label: FuturePerfectIndicative.name)
+
+  @override
+  List<Tense> getTenses(Auxiliary auxiliary) => [
+    present,
+    presentContinuous,
+    imperfect,
+    presentPerfect(auxiliary),
+    pastPerfect(auxiliary),
+    historicalPresentPerfect,
+    historicalPastPerfect(auxiliary),
+    future,
+    futurePerfect(auxiliary)
   ];
 
   @override
   final String label = name;
 
-  @override
-  List<Tense> getTenses(Auxiliary auxiliary) => [present, presentContinuous, imperfect, presentPerfect(auxiliary), pastPerfect(auxiliary), historicalPresentPerfect, historicalPastPerfect(auxiliary), future, futurePerfect(auxiliary)];
+  //@override
+  Tense Function(Auxiliary) getTense(IndicativeTense tense) =>
+  switch(tense)
+      {
+        IndicativeTense.present => (_) => present,
+        IndicativeTense.presentContinuous => (_) => presentContinuous,
+        IndicativeTense.imperfect => (_) => imperfect,
+        IndicativeTense.presentPerfect => presentPerfect,
+        IndicativeTense.pastPerfect => pastPerfect,
+        IndicativeTense.historicalPresentPerfect => (_) => historicalPresentPerfect,
+        IndicativeTense.historicalPastPerfect => historicalPastPerfect,
+        IndicativeTense.future => (_) => future,
+        IndicativeTense.futurePerfect => futurePerfect,
+      };
 
   // Simple Tenses - Stored in JSON
   /// => Presente
@@ -75,4 +90,22 @@ class Indicative extends Mood {
       future: FutureIndicative.fromJson(json['futuro_semplice']),
     );
   }
+}
+
+enum IndicativeTense {
+  present("Presente"),
+  presentContinuous("Presente Progressivo"),
+  imperfect("Imperfetto"),
+  presentPerfect("Passato Prossimo"),
+  pastPerfect("Trapassato Prossimo"),
+  historicalPresentPerfect("Passato Remoto"),
+  historicalPastPerfect("Trapassato Remoto"),
+  future("Futuro"),
+  futurePerfect("Futuro Anteriore");
+
+  final String label;
+  const IndicativeTense(this.label);
+
+  String get prefKey => toString();
+  static List<LabeledTense> get valuesLabeled => values.map((e) => (prefKey: e.prefKey, label: e.label)).toList();
 }

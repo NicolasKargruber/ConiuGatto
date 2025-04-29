@@ -7,7 +7,6 @@ import '../models/moods/conditional.dart';
 import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
-import '../models/tenses/tense.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 
 class ChooseTensesSheet extends StatefulWidget {
@@ -76,10 +75,10 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             ),
           ),
 
-          _buildMoodSection(Indicative.name, Indicative.getLabeledTenses),
-          _buildMoodSection(Conditional.name, Conditional.getLabeledTenses),
-          _buildMoodSection(Subjunctive.name, Subjunctive.getLabeledTenses),
-          _buildMoodSection(Imperative.name, Imperative.getLabeledTenses),
+          _buildMoodSection(Indicative.name, IndicativeTense.valuesLabeled),
+          _buildMoodSection(Conditional.name, ConditionalTense.valuesLabeled),
+          _buildMoodSection(Subjunctive.name, SubjunctiveTense.valuesLabeled),
+          _buildMoodSection(Imperative.name, ImperativeTense.valuesLabeled),
         ],
       ),
     );
@@ -108,12 +107,10 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           child: Wrap(
             spacing: AppValues.s8,
             children: labeledTenses.map((labeledTense) {
-              final prefKey = (labeledTense.$1).toString();
               return FilterChip(
                     label: Text(labeledTense.label),
-                    selected: _tensePrefs.contains(prefKey),
-                    onSelected: (selected) =>
-                        _onSelectTense(selected, prefValue: prefKey)
+                    selected: _tensePrefs.contains(labeledTense.prefKey),
+                    onSelected: (selected) => _onSelectTense(selected, prefValue: labeledTense.prefKey)
                 );
             },
             ).toList(),

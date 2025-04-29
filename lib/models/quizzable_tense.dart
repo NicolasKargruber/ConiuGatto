@@ -4,24 +4,23 @@ import 'pronoun.dart';
 import 'tenses/tense.dart';
 import 'verb.dart';
 
-class QuizzableTense {
-  // Quiz Values
+class QuizItem {
   Verb verb;
   Auxiliary auxiliary;
-  Mood mood;
+  Pronoun pronoun;
   Tense tense;
 
-  String get currentTitle => "${tense.label} - ${mood.label}";
-  bool get hasConjugatedVerbs => tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
-
-  String? solution(Pronoun? pronoun) => tense[pronoun]?.italian;
-  String? question(Pronoun? pronoun) => "${pronoun?.italian} (${verb.italianInfinitive})";
-  String? translation(Pronoun? pronoun) => "${pronoun?.english} ${tense[pronoun]?.english}";
-
-  QuizzableTense({
+  QuizItem({
     required this.verb,
     required this.auxiliary,
-    required this.mood,
-    required this.tense
+    required this.tense,
+    required this.pronoun
   });
+
+  String get currentTitle => tense.extendedLabel;
+  bool get hasConjugations => tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
+
+  String? get solution => tense[pronoun]?.italian;
+  String? get question => "${pronoun.italian} (${verb.italianInfinitive})";
+  String? get translation => "${pronoun.english} ${tense[pronoun]?.english}";
 }

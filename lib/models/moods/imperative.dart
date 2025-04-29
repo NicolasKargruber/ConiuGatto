@@ -5,6 +5,7 @@ import '../tenses/imperative_tenses.dart';
 import '../tenses/tense.dart';
 import '../verb.dart';
 import 'mood.dart';
+import 'subjunctive.dart';
 
 class Imperative extends Mood {
   // Parent Reference
@@ -12,16 +13,19 @@ class Imperative extends Mood {
 
   // Static Labels
   static const String name = "Imperativo";
-  static List<LabeledTense> get getLabeledTenses => [
-    (PositiveImperative, label: PositiveImperative.name),
-    (NegativeImperative, label: NegativeImperative.name)
-  ];
 
   @override
   final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [positive, negative];
+
+  Tense Function(Auxiliary) getTense(ImperativeTense tense) =>
+      switch(tense)
+      {
+        ImperativeTense.positive => (_) => positive,
+        ImperativeTense.negative => (_) => negative
+      };
 
   // Simple Tenses - Stored in JSON
   /// => Imperativo Positivo
@@ -40,4 +44,13 @@ class Imperative extends Mood {
         positive: PositiveImperative.fromJson(json['positivo'])
     );
   }
+}
+
+enum ImperativeTense { positive("Positivo"), negative("Negativo");
+
+  final String label;
+  const ImperativeTense(this.label);
+
+  String get prefKey => toString();
+  static List<LabeledTense>  get valuesLabeled => values.map((e) => (prefKey: e.prefKey, label: e.label)).toList();
 }

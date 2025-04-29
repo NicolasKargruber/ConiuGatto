@@ -5,6 +5,7 @@ import '../tenses/conditional_tenses.dart';
 import '../tenses/tense.dart';
 import '../verb.dart';
 import 'mood.dart';
+import 'subjunctive.dart';
 
 class Conditional extends Mood {
   // Parent Reference
@@ -12,16 +13,19 @@ class Conditional extends Mood {
 
   // Static Labels
   static const String name = "Condizionale";
-  static List<LabeledTense> get getLabeledTenses => [
-    (PresentConditional, label: PresentConditional.name),
-    (PresentPerfectConditional, label: PresentPerfectConditional.name)
-  ];
 
   @override
   final String label = name;
 
   @override
   List<Tense> getTenses(Auxiliary auxiliary) => [present, presentPerfectConditional(auxiliary)];
+
+  Tense Function(Auxiliary) getTense(ConditionalTense tense) =>
+      switch(tense)
+      {
+        ConditionalTense.present => (_) => present,
+        ConditionalTense.presentPerfect => presentPerfectConditional,
+      };
 
   // Simple Tenses - Stored in JSON
   /// Presente
@@ -40,4 +44,13 @@ class Conditional extends Mood {
       present: PresentConditional.fromJson(json['presente']),
     );
   }
+}
+
+enum ConditionalTense { present("Presente"), presentPerfect("Passato");
+
+  final String label;
+  const ConditionalTense(this.label);
+
+  String get prefKey => toString();
+  static List<LabeledTense>  get valuesLabeled => values.map((e) => (prefKey: e.prefKey, label: e.label)).toList();
 }

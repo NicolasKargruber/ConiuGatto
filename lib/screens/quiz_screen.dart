@@ -77,7 +77,7 @@ class _QuizScreenState extends State<QuizScreen> {
     activeIndex++;
     triesLeft = 2;
     _textController.clear();
-    context.read<QuizViewModel>().createQuizItem();
+    context.read<QuizViewModel>().createNewQuizItem();
   }
 
   void _addLetterAtSelection(String letter) {
@@ -156,7 +156,7 @@ class _QuizScreenState extends State<QuizScreen> {
           child: SettingsScreen(),
         ))
     );
-    if(mounted) context.read<QuizViewModel>().createQuizItem();
+    if(mounted) context.read<QuizViewModel>().createNewQuizItem();
   }
 
   @override
@@ -164,7 +164,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.initState();
     _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
     _loadingVerbs.then((_) {
-      if(mounted) context.read<QuizViewModel>().createQuizItem();
+      if(mounted) context.read<QuizViewModel>().createNewQuizItem();
     });
   }
 
