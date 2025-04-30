@@ -16,7 +16,7 @@ class QuizContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if(viewModel.isDoubleAuxiliary)
-            Chip(label: Text("${viewModel.currentAuxiliary?.name.toUpperCase()}")),
+            Chip(label: Text("${viewModel.currentAuxiliaryLabel}")),
           SizedBox(height: AppValues.s4),
           AutoSizeText(
             viewModel.currentTitle ?? "Not available",

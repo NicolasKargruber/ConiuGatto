@@ -9,7 +9,7 @@ import '../models/moods/imperative.dart';
 import '../models/moods/indicative.dart';
 import '../models/moods/subjunctive.dart';
 import '../models/pronoun.dart';
-import '../models/quizzable_tense.dart';
+import '../models/quiz_item.dart';
 import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 import '../utilities/extensions/iterable_extensions.dart';
@@ -27,9 +27,10 @@ class QuizViewModel extends ViewModel {
 
   // Update & Notify
   List<Verb> _verbs = [];
+
   updateVerbs(List<Verb> verbs) {
     debugPrint("$_logTag | updateVerbs()");
-    if(ListEquality().equals(_verbs, verbs)) {
+    if (ListEquality().equals(_verbs, verbs)) {
       return debugPrint("$_logTag | loaded verbs are still the same");
     }
     _verbs = verbs;
@@ -46,31 +47,37 @@ class QuizViewModel extends ViewModel {
   final List<Enum> _quizzableTenses = [];
   final List<Pronoun> _quizzablePronouns = [];
 
-  _initializeQuizzable(){
+  _initializeQuizzable() {
     _findQuizzableVerbs();
     _findQuizzableTenses();
     _findQuizzablePronouns();
   }
 
-  // TODO Move to QuizItem
-  Verb? _currentVerb;
-  Auxiliary? currentAuxiliary;
+  // Quiz State
   QuizItem? _currentQuizItem;
-  Pronoun? _currentPronoun;
-  String? _currentAnswer;
+  final List<QuizItem> _quizHistory = [];
 
   // Getters - Quiz State
-  String? get currentSolution => _currentQuizItem?.solution;
-  // TODO Move to quizItem
-  bool get isDoubleAuxiliary => _currentQuizItem?.verb.isDoubleAuxiliary ?? false;
-  bool get hasQuizzableItems => _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
-  bool get usesEssere => _currentQuizItem?.auxiliary.requiresGenderedParticiple ?? false;
-  bool get usesPastParticiple => _currentQuizItem?.tense.usesPastParticiple ?? false;
+  List<QuizItem> get _negativeQuizHistory => _quizHistory.where((quiz) => quiz.answerResult?.isCorrect == false).toList();
+  List<QuizItem> get _positiveQuizHistory => _quizHistory.where((quiz) => quiz.answerResult?.isCorrect == true).toList();
+  int get negativeQuizCount => _negativeQuizHistory.length;
+  int get positiveQuizCount => _positiveQuizHistory.length;
+  int get totalQuizCount => _quizHistory.length;
+  bool get hasQuizzableItems =>
+      _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
+  bool get usesEssere => _currentQuizItem?.usesEssere ?? false;
+  bool get usesPastParticiple => _currentQuizItem?.usesPastParticiple ?? false;
+  bool get hasCurrentAnswer => _currentQuizItem?.answer != null;
+  bool get isDoubleAuxiliary => _currentQuizItem?.isDoubleAuxiliary ?? false;
+  AnswerResult? get currentAnswerResult => _currentQuizItem?.answerResult;
+  bool get hasTriesLeft => _currentQuizItem?.hasTriesLeft ?? false;
 
   // Getters - Quiz Labels
   String? get currentTitle => _currentQuizItem?.currentTitle;
   String? get currentQuestion => _currentQuizItem?.question;
   String? get currentTranslation => _currentQuizItem?.translation;
+  String? get currentSolution => _currentQuizItem?.solution;
+  String? get currentAuxiliaryLabel => _currentQuizItem?.auxiliary.name.toUpperCase();
 
   void _findQuizzableVerbs() {
     debugPrint("$_logTag | _findQuizzableVerbs() started");
@@ -87,7 +94,8 @@ class QuizViewModel extends ViewModel {
     _quizzableTenses.clear();
 
     for (final prefKey in tensePrefs) {
-      final tense = IndicativeTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
+      final tense =
+          IndicativeTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
           ConditionalTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
           SubjunctiveTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
           ImperativeTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey);
@@ -109,13 +117,17 @@ class QuizViewModel extends ViewModel {
 
   createNewQuizItem() {
     debugPrint("$_logTag | createNewQuizItem() started");
+    if(_currentQuizItem != null) {
+      _quizHistory.add(_currentQuizItem!);
+      _currentQuizItem = null;
+    }
+
     if (_verbs.isEmpty) {
       notifyListeners();
       return debugPrint("$_logTag | no verbs to randomize");
     }
 
-    if(!hasQuizzableItems) {
-      notifyListeners();
+    if (!hasQuizzableItems) {
       if (_quizzableVerbs.isEmpty) {
         return debugPrint("$_logTag | No Quizzable Verbs found");
       } else if (_quizzableTenses.isEmpty) {
@@ -125,80 +137,49 @@ class QuizViewModel extends ViewModel {
       }
     }
 
+    // Create NEW RANDOM Quiz Values
     _randomizeQuizItem();
 
-    while (currentSolution == null){
+    while (currentSolution == null) {
       debugPrint("$_logTag | Re-Randomize Quiz Item");
       _randomizeQuizItem();
-
-      // TODO check for previous Quiz being the same
-      /*final newQuizzableTense = _quizzableTenses.randomElementOrNull;
-      if(newQuizzableTense == _currentQuizzableTense) {
-        debugPrint("$_logTag | QuizzableTense is still the same");
-        continue;
-      }
-      _currentQuizzableTense = newQuizzableTense;*/
     }
 
-    debugPrint("$_logTag | Current Verb: ${_currentVerb?.italianInfinitive}");
-    debugPrint("$_logTag | Solution: (${_currentPronoun?.italian}) $currentSolution");
+    // Check Previous Quiz
+    if(_quizHistory.lastOrNull?.solution == _currentQuizItem?.solution) {
+      debugPrint("$_logTag | QuizItem again the same");
+      _randomizeQuizItem();
+    }
+
+    debugPrint("$_logTag | Current Verb: ${_currentQuizItem?.verb.italianInfinitive}");
+    debugPrint("$_logTag | Solution: ${_currentQuizItem?.solutionExtended}");
 
     notifyListeners();
     debugPrint("$_logTag | createNewQuizItem() ended");
   }
 
   void _randomizeQuizItem() {
-    _currentVerb = _quizzableVerbs.randomElementOrNull;
-    currentAuxiliary = _currentVerb?.auxiliaries.randomElementOrNull;
-    _currentPronoun = _quizzablePronouns.randomElementOrNull;
-    final quizzableTense = _currentVerb?.getTense(_quizzableTenses.randomElement)(currentAuxiliary!);
-    if(hasQuizzableItems && quizzableTense != null) _currentQuizItem = QuizItem(verb: _currentVerb!, auxiliary: currentAuxiliary!, tense: quizzableTense, pronoun: _currentPronoun!);
+    final currentPronoun = _quizzablePronouns.randomElement;
+    final currentVerb = _quizzableVerbs.randomElementOrNull;
+    if (currentVerb == null) return;
+    final currentAuxiliary = currentVerb.auxiliaries.randomElement;
+    final quizzableTense = currentVerb.getTense(_quizzableTenses.randomElement)(currentAuxiliary);
+    _currentQuizItem = QuizItem(
+      verb: currentVerb,
+      auxiliary: currentAuxiliary,
+      tense: quizzableTense,
+      pronoun: currentPronoun,
+    );
   }
 
-  // TODO Move to QuizItem
-  AnswerResult isAnswerCorrect(String answer) {
-    debugPrint("$_logTag | isAnswerCorrect()");
-    _currentAnswer = answer;
-
-    // Add Gender to Participle if necessary
-    if (usesEssere && usesPastParticiple) {
-      _currentAnswer = _currentPronoun?.genderItalianConjugationIfPossible(answer);
-      debugPrint("$_logTag | Gendered Answer : $_currentAnswer");
-    }
-
-    // Correct
-    if (_currentAnswer == currentSolution) return AnswerResult.correct;
-
-    // Missing Accents
-    if (_currentAnswer == currentSolution?.removeDiacritics()) return AnswerResult.missingAccents;
-    debugPrint("$_logTag | Solution without Accents: ${currentSolution?.removeDiacritics()}");
-
-    // Missing a letter
-    final differences = currentSolution?.diff(_currentAnswer ?? '') ?? [];
-    if(differences.isNotEmpty) {
-      // Print Differences
-      printDifferences(differences);
-
-      // 1 Letter Away
-      if(_currentAnswer?.levenshteinDistance(currentSolution ?? '') == 1) {
-        return AnswerResult.almostCorrect;
-      }
-
-      // Force Gendered Participle
-      if(_currentPronoun?.genderItalianConjugationIfPossible(answer, forceGender: true) == currentSolution) {
-        return AnswerResult.almostCorrect;
+  void checkAnswer(String answer){
+    // Null safety
+    if (_currentQuizItem case var quizItem?) {
+      quizItem.checkAnswer(answer);
+      // Null safety
+      if (quizItem.answerResult case var result?) {
+          debugPrint("$_logTag | ${result.message}");
       }
     }
-
-    // Incorrect
-    return AnswerResult.incorrect;
-  }
-
-  printDifferences(List<Difference> differences) {
-    debugPrint("$_logTag | printDifferences() started");
-    for (final difference in differences) {
-      debugPrint("$_logTag | Difference at index ${difference.index}: '${difference.$1}' vs '${difference.$2}'");
-    }
-    debugPrint("$_logTag | printDifferences() ended");
   }
 }

@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../data/app_values.dart';
-import '../models/answer_result.dart';
 import '../models/verb.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/quiz_view_model.dart';
@@ -24,60 +23,30 @@ class _QuizScreenState extends State<QuizScreen> {
   
   // ViewModel
   late Future _loadingVerbs;
-  List<Verb> get verbs => context.read<VerbViewModel>().verbs;
-
-  // Answer Count
-  int triesLeft = 2;
-  int correctAnswerCount = 0;
-  int wrongAnswerCount = 0;
+  List<Verb> get _verbs => context.read<VerbViewModel>().verbs;
+  late final _viewModel = context.read<QuizViewModel>();
 
   // UI Stuff
-  int activeIndex = 0;
   final _textController = TextEditingController();
   final _shakeKey = GlobalKey<ShakeWidgetState>();
 
-  AnswerResult get answerResult => context.read<QuizViewModel>().isAnswerCorrect(_textController.text);
+  _checkAnswer() {
+    setState(() async {
+      _viewModel.checkAnswer(_textController.text);
 
-  _checkAnswer()  {
-    setState(() {
-      switch (answerResult) {
-        case AnswerResult.correct:
-          debugPrint("$_logTag | Correct Answer!!!");
-          correctAnswerCount++;
-          _showNextQuestion();
-          return;
-        case AnswerResult.almostCorrect:
-          triesLeft--;
-          break;
-        case AnswerResult.missingAccents:
-          triesLeft--;
-          break;
-        case AnswerResult.incorrect:
-          triesLeft-=2;
-          break;
+      if(!(_viewModel.currentAnswerResult?.isCorrect ?? false)) {
+        // Show WRONG animation
+        debugPrint("$_logTag | Unfortunately wrong!!!");
+        _shakeKey.currentState?.shake();
+
+        if(!_viewModel.hasTriesLeft) await _showCorrectAnswer();
       }
 
-      // Show WRONG animation
-      debugPrint("$_logTag | Unfortunately wrong!!!");
-      _shakeKey.currentState?.shake();
-
+      if(!_viewModel.hasTriesLeft) {
+        _textController.clear();
+        _viewModel.createNewQuizItem();
+      }
     });
-
-    // After 2 tries => Show next question
-    if (triesLeft <= 0) {
-      setState(() async {
-        await _showCorrectAnswer();
-        wrongAnswerCount++;
-        _showNextQuestion();
-      });
-    }
-  }
-
-  _showNextQuestion() {
-    activeIndex++;
-    triesLeft = 2;
-    _textController.clear();
-    context.read<QuizViewModel>().createNewQuizItem();
   }
 
   void _addLetterAtSelection(String letter) {
@@ -176,6 +145,8 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<QuizViewModel>();
+
     return Scaffold(
       appBar: _buildAppBar(),
       body: Padding(
@@ -187,9 +158,9 @@ class _QuizScreenState extends State<QuizScreen> {
               return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
-            } else if (verbs.isEmpty) {
+            } else if (_verbs.isEmpty) {
               return Center(child: Text('No verbs available 💨'));
-            } else if(!context.watch<QuizViewModel>().hasQuizzableItems) {
+            } else if(!viewModel.hasQuizzableItems) {
               return Center(child: _buildNoTensesAvailableContent());
             } else {
               return Padding(
@@ -198,7 +169,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     AnimatedSmoothIndicator(
-                      activeIndex: activeIndex, // PageController
+                      activeIndex: viewModel.totalQuizCount, // PageController
                       count: 10,
                       effect: WormEffect(), // your preferred effect
                     ),
@@ -216,8 +187,8 @@ class _QuizScreenState extends State<QuizScreen> {
                               // Answer Text Field
                               _buildTextField(),
 
-                              if(triesLeft < 2 && !answerResult.isCorrect)
-                                Text(answerResult.message),
+                              if(_viewModel.currentAnswerResult case var result?)
+                                Text(result.message),
                           
                               SizedBox(height: AppValues.s4),
                           
@@ -251,14 +222,14 @@ class _QuizScreenState extends State<QuizScreen> {
     return AppBar(
       title: Text("Quiz 🕹️"),
       actions: [
-        if(context.watch<QuizViewModel>().hasQuizzableItems) ...[
-          Text("$wrongAnswerCount",
+        if(_viewModel.hasQuizzableItems) ...[
+          Text("${_viewModel.negativeQuizCount}",
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
           SizedBox(width: AppValues.s2),
           Text("❌"),
           SizedBox(width: AppValues.s8),
-          Text("$correctAnswerCount",
+          Text("${_viewModel.positiveQuizCount}",
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
           SizedBox(width: AppValues.s2),

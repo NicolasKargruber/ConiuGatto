@@ -18,7 +18,7 @@ enum Pronoun {
     }
   }
 
-  String genderItalianConjugationIfPossible(String italianParticiple,{bool forceGender = false}) {
+  String genderItalianConjugationIfPossible(String italianParticiple, {bool forceGender = false}) {
     if (forceGender || _canBeGendered(italianParticiple)) {
       return isPlural ?
       italianParticiple.replaceLastWith('i/e') : italianParticiple.replaceLastWith('o/a');
