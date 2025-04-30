@@ -8,7 +8,7 @@ import 'tenses/tense.dart';
 import 'verb.dart';
 
 class QuizItem {
-  late final _logTag = (this).toString();
+  final _logTag = (QuizItem).toString();
 
   final Verb verb;
   final Auxiliary auxiliary;
@@ -20,9 +20,6 @@ class QuizItem {
 
   int _triesLeft = 2;
   int get triesLeft => _triesLeft;
-
-  AnswerResult? _answerResult;
-  AnswerResult? get answerResult => _answerResult;
 
   QuizItem({
     required this.verb,
@@ -39,6 +36,7 @@ class QuizItem {
     return tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
   }
   bool get hasTriesLeft => _triesLeft > 0;
+  bool get isCorrect => _answer == solution;
 
   // Helper Method
   void genderAnswer() {
@@ -48,39 +46,40 @@ class QuizItem {
     }
   }
 
-  void checkAnswer(String answer) {
+  AnswerResult checkAnswer(String answer) {
     if(triesLeft > 0) {
       _triesLeft--;
       _answer = answer;
 
       // Correct
       if (answer == solution) {
-        _answerResult = AnswerResult.correct;
-        return debugPrint("$_logTag | Answer Correct: $answer");
+        debugPrint("$_logTag | Answer Correct: $answer");
+        return AnswerResult.correct;
       }
 
       // Missing Accents
       if (answer == solution?.removeDiacritics()) {
-        _answerResult = AnswerResult.missingAccents;
-        return debugPrint("$_logTag | Solution without Accents: ${solution?.removeDiacritics()}");
+        debugPrint("$_logTag | Solution without Accents: ${solution?.removeDiacritics()}");
+        return AnswerResult.missingAccents;
       }
 
       // 1 Letter Away
       if (answer.levenshteinDistance(solution ?? '') == 1) {
-        _answerResult = AnswerResult.almostCorrect;
-        return debugPrint("$_logTag | Answer 1 Letter Away: $answer");
+        debugPrint("$_logTag | Answer 1 Letter Away: $answer");
+        return AnswerResult.almostCorrect;
       }
 
       // Force Gendered Participle
       if (pronoun.genderItalianConjugationIfPossible(answer, forceGender: true) == solution) {
-        _answerResult = AnswerResult.almostCorrect;
-        return debugPrint("$_logTag | Answer with forced gender: ${pronoun.genderItalianConjugationIfPossible(answer, forceGender: true)}");
+        debugPrint("$_logTag | Answer with forced gender: ${pronoun.genderItalianConjugationIfPossible(answer, forceGender: true)}");
+        return AnswerResult.almostCorrect;
       }
     }
 
     // Incorrect
-    _answerResult = AnswerResult.incorrect;
     _triesLeft = 0;
+    debugPrint("$_logTag | Incorrect, no tries left.");
+    return AnswerResult.incorrect;
   }
 
   // Labels

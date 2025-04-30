@@ -36,18 +36,20 @@ class QuizViewModel extends ViewModel {
     _verbs = verbs;
 
     // Find Quizzable
-    _initializeQuizzable();
+    updateQuizzable();
 
     // Random
     createNewQuizItem();
   }
+
+  // TODO update when new prefs come in
 
   // Quizzable State
   final List<Verb> _quizzableVerbs = [];
   final List<Enum> _quizzableTenses = [];
   final List<Pronoun> _quizzablePronouns = [];
 
-  _initializeQuizzable() {
+  updateQuizzable() {
     _findQuizzableVerbs();
     _findQuizzableTenses();
     _findQuizzablePronouns();
@@ -56,10 +58,12 @@ class QuizViewModel extends ViewModel {
   // Quiz State
   QuizItem? _currentQuizItem;
   final List<QuizItem> _quizHistory = [];
+  AnswerResult? _currentAnswerResult;
+  AnswerResult? get currentAnswerResult => _currentAnswerResult;
 
   // Getters - Quiz State
-  List<QuizItem> get _negativeQuizHistory => _quizHistory.where((quiz) => quiz.answerResult?.isCorrect == false).toList();
-  List<QuizItem> get _positiveQuizHistory => _quizHistory.where((quiz) => quiz.answerResult?.isCorrect == true).toList();
+  List<QuizItem> get _negativeQuizHistory => _quizHistory.whereNot((quiz) => quiz.isCorrect).toList();
+  List<QuizItem> get _positiveQuizHistory => _quizHistory.where((quiz) => quiz.isCorrect).toList();
   int get negativeQuizCount => _negativeQuizHistory.length;
   int get positiveQuizCount => _positiveQuizHistory.length;
   int get totalQuizCount => _quizHistory.length;
@@ -69,7 +73,6 @@ class QuizViewModel extends ViewModel {
   bool get usesPastParticiple => _currentQuizItem?.usesPastParticiple ?? false;
   bool get hasCurrentAnswer => _currentQuizItem?.answer != null;
   bool get isDoubleAuxiliary => _currentQuizItem?.isDoubleAuxiliary ?? false;
-  AnswerResult? get currentAnswerResult => _currentQuizItem?.answerResult;
   bool get hasTriesLeft => _currentQuizItem?.hasTriesLeft ?? false;
 
   // Getters - Quiz Labels
@@ -117,9 +120,16 @@ class QuizViewModel extends ViewModel {
 
   createNewQuizItem() {
     debugPrint("$_logTag | createNewQuizItem() started");
-    if(_currentQuizItem != null) {
-      _quizHistory.add(_currentQuizItem!);
+
+    // Reset QuizValues
+    if(_currentQuizItem case var quizItem?) {
+      // QuizItem Done
+      debugPrint("$_logTag | Add QuizItem to history");
+      _quizHistory.add(quizItem);
+      debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      debugPrint("$_logTag | Reset Quiz Values");
       _currentQuizItem = null;
+      _currentAnswerResult = null;
     }
 
     if (_verbs.isEmpty) {
@@ -128,6 +138,7 @@ class QuizViewModel extends ViewModel {
     }
 
     if (!hasQuizzableItems) {
+      notifyListeners();
       if (_quizzableVerbs.isEmpty) {
         return debugPrint("$_logTag | No Quizzable Verbs found");
       } else if (_quizzableTenses.isEmpty) {
@@ -175,11 +186,10 @@ class QuizViewModel extends ViewModel {
   void checkAnswer(String answer){
     // Null safety
     if (_currentQuizItem case var quizItem?) {
-      quizItem.checkAnswer(answer);
-      // Null safety
-      if (quizItem.answerResult case var result?) {
-          debugPrint("$_logTag | ${result.message}");
-      }
+      final result = quizItem.checkAnswer(answer);
+      debugPrint("$_logTag | ${result.message}");
+      _currentAnswerResult = result;
+      notifyListeners();
     }
   }
 }
