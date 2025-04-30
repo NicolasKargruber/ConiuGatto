@@ -1,17 +1,17 @@
+import 'italian_tense.dart';
 import 'tense.dart';
 
 /// => Condizionale Presente
 final class PresentConditional extends Tense {
-  static const String name = 'Presente';
-  PresentConditional({required super.conjugations}) : super(label: name, extendedLabel: '$name - Condizionale');
+  static const String jsonKey = 'presente';
+  PresentConditional({required super.conjugations}) : super(type: ItalianTense.presentConditional);
 
   factory PresentConditional.fromJson(Map<String, dynamic> json) {
-    return PresentConditional(conjugations: Tense.convertJsonToConjugations(json));
+    return PresentConditional(conjugations: Tense.convertJsonToConjugations(json[jsonKey]));
   }
 }
 
 /// => Condizionale Passato
 final class PresentPerfectConditional extends Tense {
-  static const String name = 'Passato';
-  PresentPerfectConditional({required super.conjugations}) : super(label: name, extendedLabel: '$name - Condizionale', isCompound: true, usesPastParticiple: true);
+  PresentPerfectConditional({required super.conjugations}) : super(type: ItalianTense.presentPerfectConditional, isCompound: true, usesPastParticiple: true);
 }

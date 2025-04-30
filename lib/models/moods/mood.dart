@@ -1,8 +1,10 @@
-import '../auxiliary.dart';
+enum Mood {
+  indicative("Indicativo"),
+  subjunctive("Congiuntivo"),
+  conditional("Condizionale"),
+  imperative("Imperativo");
 
-import '../tenses/tense.dart';
-
-abstract class Mood {
-  abstract final String label;
-  List<Tense> getTenses(Auxiliary auxiliary);
+  final String label;
+  String get jsonKey => name;
+  const Mood(this.label);
 }

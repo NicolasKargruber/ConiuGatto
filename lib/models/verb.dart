@@ -1,15 +1,16 @@
 import 'package:collection/collection.dart';
 
+import '../utilities/extensions/verb_extensions.dart';
 import 'auxiliary.dart';
 import 'base_verb.dart';
 import 'irregularity.dart';
-import 'moods/conditional.dart';
-import 'moods/imperative.dart';
-import 'moods/indicative.dart';
-import 'moods/mood.dart';
-import 'moods/subjunctive.dart';
 import 'pronoun.dart';
 import 'regularity.dart';
+import 'tenses/conditional_tenses.dart';
+import 'tenses/imperative_tenses.dart';
+import 'tenses/indicative_tenses.dart';
+import 'tenses/italian_tense.dart';
+import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
 
 typedef ConjugatedVerb = ({String italian, String english});
@@ -17,7 +18,7 @@ typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
 typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
 typedef ItalianConjugations = Map<Pronoun, String?>;
 
-class Verb implements BaseVerb {
+class Verb extends BaseVerb {
   final ConjugatedVerb infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
@@ -33,30 +34,26 @@ class Verb implements BaseVerb {
   bool get isRegular => regularity.isRegular;
   bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
 
-  // Moods
-  @override
-  final Indicative indicative;
-  @override
-  final Subjunctive subjunctive;
-  @override
-  final Conditional conditional;
-  @override
-  final Imperative imperative;
-  List<Mood> get moods => [indicative, subjunctive, conditional, imperative];
-
-  Tense Function(Auxiliary) getTense(Enum tense) {
-    switch(tense) {
-      case IndicativeTense tense:
-        return indicative.getTense(tense);
-      case SubjunctiveTense tense:
-        return subjunctive.getTense(tense);
-      case ConditionalTense tense:
-        return conditional.getTense(tense);
-      case ImperativeTense tense:
-        return imperative.getTense(tense);
-      default:
-        throw ArgumentError('Unsupported tense type: ${tense.runtimeType}');
-    }
+  Tense Function(Auxiliary) getTense(ItalianTense tense) {
+    return switch(tense) {
+      ItalianTense.presentIndicative => (_) => presentIndicative,
+      ItalianTense.presentContinuousIndicative => (_) => presentContinuousIndicative,
+      ItalianTense.imperfectIndicative => (_) => imperfectIndicative,
+      ItalianTense.presentPerfectIndicative => presentPerfectIndicative,
+      ItalianTense.pastPerfectIndicative => pastPerfectIndicative,
+      ItalianTense.historicalPresentPerfectIndicative => (_) => historicalPresentPerfectIndicative,
+      ItalianTense.historicalPastPerfectIndicative => historicalPastPerfectIndicative,
+      ItalianTense.futureIndicative => (_) => futureIndicative,
+      ItalianTense.futurePerfectIndicative => futurePerfectIndicative,
+      ItalianTense.presentSubjunctive => (_) => presentSubjunctive,
+      ItalianTense.imperfectSubjunctive => (_) => imperfectSubjunctive,
+      ItalianTense.presentPerfectSubjunctive => presentPerfectSubjunctive,
+      ItalianTense.pastPerfectSubjunctive => pastPerfectSubjunctive,
+      ItalianTense.presentConditional => (_) => presentConditional,
+      ItalianTense.presentPerfectConditional => presentPerfectConditional,
+      ItalianTense.positiveImperative => (_) => positiveImperative,
+      ItalianTense.negativeImperative => (_) => negativeImperative,
+    };
   }
 
   final ConjugatedVerb pastParticiple;
@@ -76,18 +73,17 @@ class Verb implements BaseVerb {
     required this.regularity,
     required this.irregularities,
     required this.auxiliaries,
-    required this.indicative,
-    required this.subjunctive,
-    required this.conditional,
-    required this.imperative,
+    required super.presentIndicative,
+    required super.imperfectIndicative,
+    required super.historicalPresentPerfectIndicative,
+    required super.futureIndicative,
+    required super.presentSubjunctive,
+    required super.imperfectSubjunctive,
+    required super.presentConditional,
+    required super.positiveImperative,
     required this.pastParticiple,
     required this.presentGerund,
-  }){
-    indicative.verb = this;
-    subjunctive.verb = this;
-    conditional.verb = this;
-    imperative.verb = this;
-  }
+  });
 
   factory Verb.fromJson(Map<String, dynamic> json) {
     return Verb(
@@ -95,10 +91,14 @@ class Verb implements BaseVerb {
       regularity: Regularity.fromJson(json['regularity']),
       irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),
       auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toSet(),
-      indicative: Indicative.fromJson(json['conjugations']['indicativo']),
-      subjunctive: Subjunctive.fromJson(json['conjugations']['congiuntivo']),
-      conditional: Conditional.fromJson(json['conjugations']['condizionale']),
-      imperative: Imperative.fromJson(json['conjugations']['imperativo']),
+      presentIndicative: PresentIndicative.fromJson(json['conjugations']['indicativo']),
+      imperfectIndicative: ImperfectIndicative.fromJson(json['conjugations']['indicativo']),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson(json['conjugations']['indicativo']),
+      futureIndicative: FutureIndicative.fromJson(json['conjugations']['indicativo']),
+      presentSubjunctive: PresentSubjunctive.fromJson(json['conjugations']['congiuntivo']),
+      imperfectSubjunctive: ImperfectSubjunctive.fromJson(json['conjugations']['congiuntivo']),
+      presentConditional: PresentConditional.fromJson(json['conjugations']['condizionale']),
+      positiveImperative: PositiveImperative.fromJson(json['conjugations']['imperativo']),
       pastParticiple: conjugatedVerbFrom(json['participio_passato']),
       presentGerund: conjugatedVerbFrom(json['gerundio_presente']),
     );

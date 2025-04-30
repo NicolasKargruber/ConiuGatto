@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/app_values.dart';
 import '../models/auxiliary.dart';
-import '../models/moods/conditional.dart';
-import '../models/moods/imperative.dart';
-import '../models/moods/indicative.dart';
-import '../models/moods/subjunctive.dart';
+import '../models/moods/mood.dart';
 import '../models/verb.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 import '../utilities/extensions/verb_extensions.dart';
@@ -112,19 +109,9 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Indicative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
+                        Text(Mood.indicative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                            tenses: [
-                          widget.verb.indicative.present..generatedConjugations = widget.verb.generatedPresentIndicative,
-                          widget.verb.indicative.presentContinuous..generatedConjugations = widget.verb.generatedPresentContinuousIndicative,
-                          widget.verb.indicative.imperfect..generatedConjugations = widget.verb.generatedImperfectIndicative,
-                          widget.verb.indicative.presentPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectIndicative(selectedAuxiliary),
-                          widget.verb.indicative.pastPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPastPerfectIndicative(selectedAuxiliary),
-                          widget.verb.indicative.historicalPresentPerfect..generatedConjugations = widget.verb.generatedHistoricalPresentPerfectIndicative,
-                          widget.verb.indicative.historicalPastPerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedHistoricalPastPerfectIndicative(selectedAuxiliary),
-                          widget.verb.indicative.future..generatedConjugations = widget.verb.generatedFutureIndicative,
-                          widget.verb.indicative.futurePerfect(selectedAuxiliary)..generatedConjugations = widget.verb.generatedFuturePerfectIndicative(selectedAuxiliary),
-                        ], stem: widget.verb.stem,
+                          tenses: widget.verb.getIndicativeTenses(selectedAuxiliary, includeGenerated: true),
                         )
                       ],
                     ),
@@ -139,13 +126,10 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Subjunctive.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(tenses: [
-                          widget.verb.subjunctive.present..generatedConjugations = widget.verb.generatedPresentSubjunctive,
-                          widget.verb.subjunctive.imperfect..generatedConjugations = widget.verb.generatedImperfectSubjunctive,
-                          widget.verb.subjunctive.presentPerfectSubjunctive(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectSubjunctive(selectedAuxiliary),
-                          widget.verb.subjunctive.pastPerfectSubjunctive(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPastPerfectSubjunctive(selectedAuxiliary),
-                        ]),
+                        Text(Mood.subjunctive.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(
+                          tenses: widget.verb.getSubjunctiveTenses(selectedAuxiliary, includeGenerated: true),
+                        ),
                       ],
                     ),
                   ),
@@ -159,11 +143,10 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Conditional.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(tenses: [
-                          widget.verb.conditional.present..generatedConjugations = widget.verb.generatedPresentConditional,
-                          widget.verb.conditional.presentPerfectConditional(selectedAuxiliary)..generatedConjugations = widget.verb.generatedPresentPerfectConditional(selectedAuxiliary),
-                        ]),
+                        Text(Mood.conditional.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
+                        ConjugationTable(
+                          tenses: widget.verb.getConditionalTenses(selectedAuxiliary, includeGenerated: true),
+                        ),
                       ],
                     ),
                   ),
@@ -177,12 +160,10 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       spacing: AppValues.s16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Imperative.name, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
+                        Text(Mood.imperative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                            tenses: [
-                              widget.verb.imperative.positive..generatedConjugations = widget.verb.generatedPositiveImperative,
-                              widget.verb.imperative.negative..generatedConjugations = widget.verb.generatedNegativeImperative,
-                        ], showEnglishPronouns: false),
+                            tenses: widget.verb.getImperativeTenses(includeGenerated: true),
+                            showEnglishPronouns: false),
                       ],
                     ),
                   ),

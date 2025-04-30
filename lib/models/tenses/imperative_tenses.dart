@@ -1,17 +1,17 @@
+import 'italian_tense.dart';
 import 'tense.dart';
 
 /// => Imperativo Positivo
 final class PositiveImperative extends Tense {
-  static const String name = 'Positivo';
-  PositiveImperative({required super.conjugations}) : super(label: name, extendedLabel: '$name - Imperativo');
+  static const String jsonKey = 'positivo';
+  PositiveImperative({required super.conjugations}) : super(type: ItalianTense.positiveImperative);
 
   factory PositiveImperative.fromJson(Map<String, dynamic> json) {
-    return PositiveImperative(conjugations: Tense.convertJsonToConjugations(json));
+    return PositiveImperative(conjugations: Tense.convertJsonToConjugations(json[jsonKey]));
   }
 }
 
 /// => Imperativo Negativo
 final class NegativeImperative extends Tense {
-  static const String name = 'Negativo';
-  NegativeImperative({required super.conjugations}) : super(label: name, extendedLabel: '$name - Imperativo');
+  NegativeImperative({required super.conjugations}) : super(type: ItalianTense.negativeImperative);
 }

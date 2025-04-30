@@ -6,9 +6,8 @@ import '../models/tenses/tense.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true, this.stem = ""});
+  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true});
 
-  final String stem;
   final List<Tense> tenses;
   final bool showEnglishPronouns;
 

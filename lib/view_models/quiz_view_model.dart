@@ -3,17 +3,11 @@ import 'package:flutter/foundation.dart';
 
 import '../main.dart';
 import '../models/answer_result.dart';
-import '../models/auxiliary.dart';
-import '../models/moods/conditional.dart';
-import '../models/moods/imperative.dart';
-import '../models/moods/indicative.dart';
-import '../models/moods/subjunctive.dart';
 import '../models/pronoun.dart';
 import '../models/quiz_item.dart';
-import '../models/tenses/tense.dart';
+import '../models/tenses/italian_tense.dart';
 import '../models/verb.dart';
 import '../utilities/extensions/iterable_extensions.dart';
-import '../utilities/extensions/string_extensions.dart';
 import 'view_model.dart';
 
 class QuizViewModel extends ViewModel {
@@ -46,7 +40,7 @@ class QuizViewModel extends ViewModel {
 
   // Quizzable State
   final List<Verb> _quizzableVerbs = [];
-  final List<Enum> _quizzableTenses = [];
+  final List<ItalianTense> _quizzableTenses = [];
   final List<Pronoun> _quizzablePronouns = [];
 
   updateQuizzable() {
@@ -95,16 +89,7 @@ class QuizViewModel extends ViewModel {
     debugPrint("$_logTag | _findQuizzableTenses() started");
     final tensePrefs = preferenceManager.loadTensePrefs();
     _quizzableTenses.clear();
-
-    for (final prefKey in tensePrefs) {
-      final tense =
-          IndicativeTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
-          ConditionalTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
-          SubjunctiveTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey) ??
-          ImperativeTense.values.firstWhereOrNull((tense) => tense.prefKey == prefKey);
-      if (tense != null) _quizzableTenses.add(tense);
-    }
-
+    _quizzableTenses.addAll(ItalianTense.values.where((tense) => tensePrefs.contains(tense.prefKey)));
     debugPrint("$_logTag | Quizzable Tense Count: ${_quizzableTenses.length}");
     debugPrint("$_logTag | _findQuizzableTenses() ended");
   }
@@ -123,10 +108,20 @@ class QuizViewModel extends ViewModel {
 
     // Reset QuizValues
     if(_currentQuizItem case var quizItem?) {
-      // QuizItem Done
-      debugPrint("$_logTag | Add QuizItem to history");
-      _quizHistory.add(quizItem);
-      debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      if(quizItem.hasTriesLeft){
+        // QuizItem not Finished
+        debugPrint("$_logTag | Add QuizItem to history");
+        _quizzablePronouns.contains(quizItem.pronoun);
+        _quizzableVerbs.contains(quizItem.verb);
+        _quizzableTenses.contains(quizItem.tense.type);
+        _quizHistory.add(_currentQuizItem!);
+        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      } else {
+        // QuizItem Done
+        debugPrint("$_logTag | Add QuizItem to history");
+        _quizHistory.add(quizItem);
+        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      }
       debugPrint("$_logTag | Reset Quiz Values");
       _currentQuizItem = null;
       _currentAnswerResult = null;

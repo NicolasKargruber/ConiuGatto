@@ -2,11 +2,12 @@ import '../../models/tenses/subjunctive_tenses.dart';
 
 import '../../data/compound_verbs.dart';
 import '../../models/auxiliary.dart';
-import '../../models/moods/simple_tense.dart';
+import '../../models/tenses/simple_tense.dart';
 import '../../models/pronoun.dart';
 import '../../models/tenses/conditional_tenses.dart';
 import '../../models/tenses/imperative_tenses.dart';
 import '../../models/tenses/indicative_tenses.dart';
+import '../../models/tenses/tense.dart';
 import '../../models/verb.dart';
 
 extension GenerateIndicative on Verb {
@@ -41,7 +42,7 @@ extension GenerateIndicative on Verb {
   }
 
   /// => Presente Progressivo
-  PresentContinuousIndicative get presentContinuous {
+  PresentContinuousIndicative get presentContinuousIndicative {
     conjugate(Pronoun pronoun) => Conjugation(pronoun, (italian: "${_compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}", english: "${_compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}"));
     return PresentContinuousIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
@@ -53,26 +54,26 @@ extension GenerateIndicative on Verb {
   }
 
   /// => Passato Prossimo
-  PresentPerfectIndicative presentPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.present);
+  PresentPerfectIndicative presentPerfectIndicative(Auxiliary auxiliary) {
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.presentIndicative);
     return PresentPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => GENERATED Passato Prossimo
   ItalianConjugations generatedPresentPerfectIndicative(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.present);
+    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.presentIndicative);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Prossimo
-  PastPerfectIndicative pastPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfect);
+  PastPerfectIndicative pastPerfectIndicative(Auxiliary auxiliary) {
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.imperfectIndicative);
     return PastPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => GENERATED Trapassato Prossimo
   ItalianConjugations generatedPastPerfectIndicative(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.imperfect);
+    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.imperfectIndicative);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
@@ -101,14 +102,14 @@ extension GenerateIndicative on Verb {
   }
 
   /// => Trapassato Remoto
-  HistoricalPastPerfectIndicative historicalPastPerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.historicalPresentPerfect);
+  HistoricalPastPerfectIndicative historicalPastPerfectIndicative(Auxiliary auxiliary) {
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.historicalPresentPerfectIndicative);
     return HistoricalPastPerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => GENERATED Trapassato Remoto
   ItalianConjugations generatedHistoricalPastPerfectIndicative(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.historicalPresentPerfect);
+    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.historicalPresentPerfectIndicative);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
@@ -125,15 +126,29 @@ extension GenerateIndicative on Verb {
   }
 
   /// => Futuro Anteriore
-  FuturePerfectIndicative futurePerfect(Auxiliary auxiliary) {
-    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.future);
+  FuturePerfectIndicative futurePerfectIndicative(Auxiliary auxiliary) {
+    Conjugation conjugate(Pronoun pronoun) => _conjugate(pronoun, auxiliary, SimpleTense.futureIndicative);
     return FuturePerfectIndicative(conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)));
   }
 
   /// => GENERATED Futuro Anteriore
   ItalianConjugations generatedFuturePerfectIndicative(Auxiliary auxiliary) {
-    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.future);
+    conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.futureIndicative);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+  }
+
+  List<Tense> getIndicativeTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
+    return [
+          presentIndicative..generatedConjugations = includeGenerated ? generatedPresentIndicative : null,
+          presentContinuousIndicative..generatedConjugations = includeGenerated ? generatedPresentContinuousIndicative : null,
+          imperfectIndicative..generatedConjugations = includeGenerated ? generatedImperfectIndicative : null,
+          presentPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectIndicative(auxiliary) : null,
+          pastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectIndicative(auxiliary) : null,
+          historicalPresentPerfectIndicative..generatedConjugations = includeGenerated ? generatedHistoricalPresentPerfectIndicative : null,
+          historicalPastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedHistoricalPastPerfectIndicative(auxiliary) : null,
+          futureIndicative..generatedConjugations = includeGenerated ? generatedFutureIndicative : null,
+          futurePerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedFuturePerfectIndicative(auxiliary) : null,
+    ];
   }
 }
 
@@ -203,6 +218,15 @@ extension GenerateSubjunctive on Verb {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.imperfectSubjunctive);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
+
+  List<Tense> getSubjunctiveTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
+    return [
+      presentSubjunctive..generatedConjugations = includeGenerated ? generatedPresentSubjunctive : null,
+      imperfectSubjunctive..generatedConjugations = includeGenerated ? generatedImperfectSubjunctive : null,
+      presentPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectSubjunctive(auxiliary) : null,
+      pastPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectSubjunctive(auxiliary) : null,
+    ];
+  }
 }
 
 extension GenerateConditional on Verb {
@@ -249,6 +273,13 @@ extension GenerateConditional on Verb {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.presentConditional);
     return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
+
+  List<Tense> getConditionalTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
+    return [
+      presentConditional..generatedConjugations = includeGenerated ? generatedPresentConditional : null,
+      presentPerfectConditional(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectConditional(auxiliary) : null,
+    ];
+  }
 }
 
 extension GenerateImperative on Verb {
@@ -267,7 +298,7 @@ extension GenerateImperative on Verb {
   /// => Imperativo Negativo
   NegativeImperative get negativeImperative {
     // Clone (..) and update
-    final conjugations = {...imperative.positive.conjugations}..updateAll((pronoun, conjugation) {
+    final conjugations = {...positiveImperative.conjugations}..updateAll((pronoun, conjugation) {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
@@ -294,5 +325,12 @@ extension GenerateImperative on Verb {
         }
       });
     return conjugations;
+  }
+
+  List<Tense> getImperativeTenses({bool includeGenerated = false}) {
+    return [
+      positiveImperative..generatedConjugations = includeGenerated ? generatedPositiveImperative : null,
+      negativeImperative..generatedConjugations = includeGenerated ? generatedNegativeImperative : null,
+    ];
   }
 }

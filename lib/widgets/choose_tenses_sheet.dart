@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import '../data/app_values.dart';
 import '../data/shared_preference_keys.dart';
 import '../main.dart';
-import '../models/moods/conditional.dart';
-import '../models/moods/imperative.dart';
-import '../models/moods/indicative.dart';
-import '../models/moods/subjunctive.dart';
+import '../models/moods/mood.dart';
+import '../models/tenses/italian_tense.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 
 class ChooseTensesSheet extends StatefulWidget {
@@ -75,16 +73,16 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             ),
           ),
 
-          _buildMoodSection(Indicative.name, IndicativeTense.valuesLabeled),
-          _buildMoodSection(Conditional.name, ConditionalTense.valuesLabeled),
-          _buildMoodSection(Subjunctive.name, SubjunctiveTense.valuesLabeled),
-          _buildMoodSection(Imperative.name, ImperativeTense.valuesLabeled),
+          _buildMoodSection(Mood.indicative.label, ItalianTense.indicativeLabeledPrefs),
+          _buildMoodSection(Mood.conditional.label, ItalianTense.conditionalLabeledPrefs),
+          _buildMoodSection(Mood.subjunctive.label, ItalianTense.subjunctiveLabeledPrefs),
+          _buildMoodSection(Mood.imperative.label, ItalianTense.imperativeLabeledPrefs),
         ],
       ),
     );
   }
 
-  _buildMoodSection(String moodLabel, List<LabeledTense> labeledTenses) {
+  _buildMoodSection(String moodLabel, List<LabeledPrefs> labeledPrefs) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -106,7 +104,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
             spacing: AppValues.s8,
-            children: labeledTenses.map((labeledTense) {
+            children: labeledPrefs.map((labeledTense) {
               return FilterChip(
                     label: Text(labeledTense.label),
                     selected: _tensePrefs.contains(labeledTense.prefKey),

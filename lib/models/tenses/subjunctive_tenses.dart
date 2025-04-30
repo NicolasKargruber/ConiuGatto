@@ -1,33 +1,32 @@
+import 'italian_tense.dart';
 import 'tense.dart';
 
 /// => Congiuntivo Presente
 final class PresentSubjunctive extends Tense {
-  static const String name = 'Presente';
-  PresentSubjunctive({required super.conjugations}) : super(label: name, extendedLabel: '$name - Indicativo',);
+  static const String jsonKey = 'presente';
+  PresentSubjunctive({required super.conjugations}) : super(type: ItalianTense.presentSubjunctive);
 
   factory PresentSubjunctive.fromJson(Map<String, dynamic> json) {
-    return PresentSubjunctive(conjugations: Tense.convertJsonToConjugations(json));
+    return PresentSubjunctive(conjugations: Tense.convertJsonToConjugations(json[jsonKey]));
+  }
+}
+
+/// => Congiuntivo Imperfetto
+final class ImperfectSubjunctive extends Tense {
+  static const String jsonKey = 'imperfetto';
+  ImperfectSubjunctive({required super.conjugations}) : super(type: ItalianTense.imperfectSubjunctive);
+
+  factory ImperfectSubjunctive.fromJson(Map<String, dynamic> json) {
+    return ImperfectSubjunctive(conjugations: Tense.convertJsonToConjugations(json[jsonKey]));
   }
 }
 
 /// => Congiuntivo Passato
 final class PresentPerfectSubjunctive extends Tense {
-  static const String name = 'Passato';
-  PresentPerfectSubjunctive({required super.conjugations}) : super(label: name, extendedLabel: '$name - Indicativo',isCompound: true, usesPastParticiple: true);
+  PresentPerfectSubjunctive({required super.conjugations}) : super(type: ItalianTense.presentPerfectSubjunctive, isCompound: true, usesPastParticiple: true);
 }
 
 /// => Congiuntivo Trapassato
 final class PastPerfectSubjunctive extends Tense {
-  static const String name = 'Trapassato';
-  PastPerfectSubjunctive({required super.conjugations}) : super(label: name, extendedLabel: '$name - Indicativo',isCompound: true, usesPastParticiple: true);
-}
-
-/// => Congiuntivo Imperfetto
-final class ImperfectSubjunctive extends Tense {
-  static const String name = 'Imperfetto';
-  ImperfectSubjunctive({required super.conjugations}) : super(label: name,extendedLabel: '$name - Indicativo',);
-
-  factory ImperfectSubjunctive.fromJson(Map<String, dynamic> json) {
-    return ImperfectSubjunctive(conjugations: Tense.convertJsonToConjugations(json));
-  }
+  PastPerfectSubjunctive({required super.conjugations}) : super(type: ItalianTense.pastPerfectSubjunctive, isCompound: true, usesPastParticiple: true);
 }
