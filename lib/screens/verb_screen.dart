@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../data/app_values.dart';
 import '../utilities/extensions/build_context_extensions.dart';
 import '../view_models/search_view_model.dart';
+import '../view_models/verb_detail_view_model.dart';
 import '../view_models/verb_view_model.dart';
 import 'verb_detail_screen.dart';
 
@@ -81,7 +82,11 @@ class VerbScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => VerbDetailScreen(verb: verbs[index]),
+                                builder: (context) =>
+                                    ChangeNotifierProvider(
+                                      create: (_) => VerbDetailViewModel(verbs[index]),
+                                      child: VerbDetailScreen(),
+                                ),
                               ),
                             );
                           },

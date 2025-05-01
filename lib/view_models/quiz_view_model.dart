@@ -30,6 +30,7 @@ class QuizViewModel extends ViewModel {
     _verbs = verbs;
 
     // Find Quizzable
+    // TODO Without using verbs
     updateQuizzable();
 
     // Random

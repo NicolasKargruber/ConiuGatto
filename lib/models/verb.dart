@@ -22,7 +22,7 @@ class Verb extends BaseVerb {
   final ConjugatedVerb infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
-  final Set<Auxiliary> auxiliaries;
+  final List<Auxiliary> auxiliaries;
 
   /// Used for Shared Preferences
   String get prefKey => italianInfinitive;
@@ -90,7 +90,7 @@ class Verb extends BaseVerb {
       infinitive: conjugatedVerbFrom(json['infinitive']),
       regularity: Regularity.fromJson(json['regularity']),
       irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),
-      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toSet(),
+      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toList(),
       presentIndicative: PresentIndicative.fromJson(json['conjugations']['indicativo']),
       imperfectIndicative: ImperfectIndicative.fromJson(json['conjugations']['indicativo']),
       historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson(json['conjugations']['indicativo']),

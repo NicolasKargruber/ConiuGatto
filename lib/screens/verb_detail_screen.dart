@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../data/app_values.dart';
-import '../models/auxiliary.dart';
 import '../models/moods/mood.dart';
-import '../models/verb.dart';
 import '../utilities/extensions/build_context_extensions.dart';
-import '../utilities/extensions/verb_extensions.dart';
+import '../view_models/verb_detail_view_model.dart';
 import '../widgets/conjugation_table.dart';
 
-class VerbDetailScreen extends StatefulWidget {
-  final Verb verb;
+final _logTag = (VerbDetailScreen).toString();
 
-  const VerbDetailScreen({super.key, required this.verb});
-
-  @override
-  State<VerbDetailScreen> createState() => _VerbDetailScreenState();
-}
-
-class _VerbDetailScreenState extends State<VerbDetailScreen> {
-  final _logTag = (VerbDetailScreen).toString();
-  get verb => widget.verb;
+class VerbDetailScreen extends StatelessWidget {
+  const VerbDetailScreen({super.key});
 
   // TODO factory
   // Colors
@@ -29,23 +21,14 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
     context.colorScheme.surfaceBright;
   }
 
-  // Optional auxiliaries
-  late Auxiliary selectedAuxiliary;
-  List<bool> selectedAuxiliaries = [true, false];
-
-  @override
-  void initState() {
-    selectedAuxiliary = widget.verb.auxiliaries.first;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    debugPrint("$_logTag | Irregularities: ${widget.verb.irregularities}");
+    final viewModel = context.watch<VerbDetailViewModel>();
     
     return Scaffold(
-      appBar: AppBar(title: Text(widget.verb.italianInfinitive)),
+      appBar: AppBar(title: Text(viewModel.italianInfinitive)),
       body: Padding(
         padding: const EdgeInsets.all(AppValues.p16),
         child: Column(
@@ -53,46 +36,32 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
-              child: Text(widget.verb.italianInfinitive, style: TextStyle(fontSize: AppValues.fs24, fontWeight: FontWeight.bold )),
+              child: Text(viewModel.italianInfinitive, style: TextStyle(fontSize: AppValues.fs24, fontWeight: FontWeight.bold )),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
-              child: Text(widget.verb.translation, style: TextStyle(fontSize: AppValues.fs16,)),
+              child: Text(viewModel.translation, style: TextStyle(fontSize: AppValues.fs16,)),
             ),
 
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
               // TODO factory
-              child: widget.verb.isRegular ?
+              child: viewModel.isRegular ?
               FilledButton(onPressed: (){}, child: Text("Regular")) :
               FilledButton.tonal(onPressed: (){}, child: Text("Irregular")),
             ),
 
-            // TODO Move to separate widget
-            if(widget.verb.isDoubleAuxiliary)
+            // TODO Handle it's own state
+            if(viewModel.isDoubleAuxiliary)
               Container(
                 alignment: Alignment.center,
-                child: ToggleButtons(
-                    borderRadius: BorderRadius.circular(AppValues.r24),
-                    isSelected: selectedAuxiliaries,
-                    onPressed: (index) {
-                      setState(() {
-                        selectedAuxiliary = widget.verb.auxiliaries.elementAt(index);
-                        selectedAuxiliaries = [false, false];
-                        selectedAuxiliaries[index] = true;
-                      });
-                    },
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(AppValues.p12),
-                        child: Text(widget.verb.auxiliaries.first.name.toUpperCase()),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(AppValues.p12),
-                        child: Text(widget.verb.auxiliaries.last.name.toUpperCase()),
-                      )
-                    ]),
+                child: ToggleSwitch(
+                  initialLabelIndex: viewModel.selectedAuxiliaryIndex,
+                  inactiveBgColor: context.colorScheme.surfaceContainer,
+                  labels: viewModel.auxiliaryLabels,
+                  onToggle: viewModel.selectAuxiliaryAtIndex,
+                ),
               ),
 
             SizedBox(height: AppValues.s8),
@@ -111,7 +80,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Mood.indicative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                          tenses: widget.verb.getIndicativeTenses(selectedAuxiliary, includeGenerated: true),
+                          tenses: viewModel.indicativeTenses,
                         )
                       ],
                     ),
@@ -128,7 +97,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Mood.subjunctive.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                          tenses: widget.verb.getSubjunctiveTenses(selectedAuxiliary, includeGenerated: true),
+                          tenses: viewModel.subjunctiveTenses,
                         ),
                       ],
                     ),
@@ -145,7 +114,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Mood.conditional.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                          tenses: widget.verb.getConditionalTenses(selectedAuxiliary, includeGenerated: true),
+                          tenses: viewModel.conditionalTenses,
                         ),
                       ],
                     ),
@@ -162,7 +131,7 @@ class _VerbDetailScreenState extends State<VerbDetailScreen> {
                       children: [
                         Text(Mood.imperative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
                         ConjugationTable(
-                            tenses: widget.verb.getImperativeTenses(includeGenerated: true),
+                            tenses: viewModel.imperativeTenses,
                             showEnglishPronouns: false),
                       ],
                     ),
