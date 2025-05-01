@@ -1,14 +1,13 @@
-import '../../models/tenses/subjunctive_tenses.dart';
-
 import '../../data/compound_verbs.dart';
-import '../../models/auxiliary.dart';
-import '../../models/tenses/simple_tense.dart';
-import '../../models/pronoun.dart';
-import '../../models/tenses/conditional_tenses.dart';
-import '../../models/tenses/imperative_tenses.dart';
-import '../../models/tenses/indicative_tenses.dart';
-import '../../models/tenses/tense.dart';
-import '../../models/verb.dart';
+import '../../data/enums/auxiliary.dart';
+import '../../data/enums/pronoun.dart';
+import '../../data/models/tenses/conditional_tenses.dart';
+import '../../data/models/tenses/imperative_tenses.dart';
+import '../../data/models/tenses/indicative_tenses.dart';
+import '../../data/enums/simple_tense.dart';
+import '../../data/models/tenses/subjunctive_tenses.dart';
+import '../../data/models/tenses/tense.dart';
+import '../../data/models/verb.dart';
 
 extension GenerateIndicative on Verb {
   static final _compoundVerbs = CompoundVerbs.instance;

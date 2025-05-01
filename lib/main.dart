@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'data/theme.dart';
-import 'screens/home_screen.dart';
-import 'utilities/shared_preference_manager.dart';
-import 'view_models/verb_view_model.dart';
+import 'presentation/theme.dart';
+import 'presentation/home_screen.dart';
+import 'presentation/verbs/view_models/verb_view_model.dart';
+import 'data/shared_preference_manager.dart';
 
 // TODO Use GetIt for Dependency Injection
 late SharedPreferenceManager preferenceManager;
