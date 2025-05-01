@@ -111,46 +111,7 @@ class ConjugationTable extends StatelessWidget {
     ),
   )).toList();
 
-  // TODO Move to ViewModel
-  // TODO Use show when conjugation is shorter than generation
   _buildTenseRows(BuildContext context) {
-    // Helper function to highlight irregular parts
-    List<TextSpan> buildSpans(String conjugatedForm, String? generatedForm) {
-      List<TextSpan> spans = [];
-      int i = 0;
-
-      // Check if generated is provided
-      if (generatedForm == null) {
-        return spans..add(TextSpan(text: conjugatedForm,
-            style: const TextStyle(color: Colors.black)));
-      }
-
-      // Find the matching prefix (regular part)
-      while (i < generatedForm.length &&
-          i < conjugatedForm.length &&
-          conjugatedForm[i].toLowerCase() == generatedForm[i].toLowerCase()) {
-        i++;
-      }
-
-      // Add regular part in default style
-      if (i > 0) {
-        spans.add(TextSpan(
-          text: conjugatedForm.substring(0, i),
-          style: TextStyle(color: context.colorScheme.onSurface),
-        ));
-      }
-
-      // Add irregular part in red
-      if (i < conjugatedForm.length) {
-        spans.add(TextSpan(
-          text: conjugatedForm.substring(i),
-          style: TextStyle(color: context.colorScheme.secondary, fontWeight: FontWeight.bold),
-        ));
-      }
-
-      return spans;
-    }
-
     return Pronoun.values.map((pronoun) =>
       DataRow(
         cells: tenses.map((tense) =>
@@ -160,11 +121,28 @@ class ConjugationTable extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if(tense.conjugations[pronoun] != null) ...[
-            RichText(
-              text: TextSpan(
-                children: buildSpans(tense.conjugations[pronoun]?.italian ?? "-", tense.generatedConjugations?[pronoun]),
-              ),
-            ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          if(tense.italianConjugationsParted?[pronoun] case var parts?)
+                            ...[
+                              TextSpan(
+                                text: parts.regularPart,
+                                style: TextStyle(color: context.colorScheme.onSurface),
+                              ),
+                              TextSpan(
+                                text: parts.irregularPart,
+                                style: TextStyle(color: context.colorScheme.secondary, fontWeight: FontWeight.bold),
+                              ),
+                            ]
+                          else
+                            TextSpan(
+                              text: "-",
+                              style: TextStyle(color: context.colorScheme.onSurface),
+                            ),
+                        ],
+                      ),
+                    ),
                     Text(
                         "${showEnglishPronouns ? "${pronoun.english} " : ""}${tense.conjugations[pronoun]?.english}",
                         style: TextStyle(fontStyle: FontStyle.italic)

@@ -29,7 +29,7 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Presente
-  ItalianConjugations get generatedPresentIndicative {
+  GeneratedConjugations get generatedPresentIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'o' : ending == 'ERE' ? 'o' : 'o'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'i' : 'i'}",
@@ -47,9 +47,9 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Presente Progressivo
-  ItalianConjugations get generatedPresentContinuousIndicative {
+  GeneratedConjugations get generatedPresentContinuousIndicative {
     conjugate(Pronoun pronoun) => MapEntry(pronoun, "${_compoundVerbs.conjugateStare(pronoun)!} $generatedPresentGerund");
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Passato Prossimo
@@ -59,9 +59,9 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Passato Prossimo
-  ItalianConjugations generatedPresentPerfectIndicative(Auxiliary auxiliary) {
+  GeneratedConjugations generatedPresentPerfectIndicative(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.presentIndicative);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Trapassato Prossimo
@@ -71,13 +71,13 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Trapassato Prossimo
-  ItalianConjugations generatedPastPerfectIndicative(Auxiliary auxiliary) {
+  GeneratedConjugations generatedPastPerfectIndicative(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.imperfectIndicative);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => GENERATED Imperfetto
-  ItalianConjugations get generatedImperfectIndicative {
+  GeneratedConjugations get generatedImperfectIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'avo' : ending == 'ERE' ? 'evo' : 'ivo'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'avi' : ending == 'ERE' ? 'evi' : 'ivi'}",
@@ -89,7 +89,7 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Passato Remoto
-  ItalianConjugations get generatedHistoricalPresentPerfectIndicative {
+  GeneratedConjugations get generatedHistoricalPresentPerfectIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'ai' : ending == 'ERE' ? 'ei' : 'ii'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'asti' : ending == 'ERE' ? 'esti' : 'isti'}",
@@ -107,13 +107,13 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Trapassato Remoto
-  ItalianConjugations generatedHistoricalPastPerfectIndicative(Auxiliary auxiliary) {
+  GeneratedConjugations generatedHistoricalPastPerfectIndicative(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.historicalPresentPerfectIndicative);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => GENERATED Futuro Semplice
-  ItalianConjugations get generatedFutureIndicative {
+  GeneratedConjugations get generatedFutureIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'erò' : ending == 'ERE' ? 'erò' : 'irò'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'erai' : ending == 'ERE' ? 'erai' : 'irai'}",
@@ -131,22 +131,22 @@ extension GenerateIndicative on Verb {
   }
 
   /// => GENERATED Futuro Anteriore
-  ItalianConjugations generatedFuturePerfectIndicative(Auxiliary auxiliary) {
+  GeneratedConjugations generatedFuturePerfectIndicative(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.futureIndicative);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   List<Tense> getIndicativeTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
     return [
-          presentIndicative..generatedConjugations = includeGenerated ? generatedPresentIndicative : null,
-          presentContinuousIndicative..generatedConjugations = includeGenerated ? generatedPresentContinuousIndicative : null,
-          imperfectIndicative..generatedConjugations = includeGenerated ? generatedImperfectIndicative : null,
-          presentPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectIndicative(auxiliary) : null,
-          pastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectIndicative(auxiliary) : null,
-          historicalPresentPerfectIndicative..generatedConjugations = includeGenerated ? generatedHistoricalPresentPerfectIndicative : null,
-          historicalPastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedHistoricalPastPerfectIndicative(auxiliary) : null,
-          futureIndicative..generatedConjugations = includeGenerated ? generatedFutureIndicative : null,
-          futurePerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedFuturePerfectIndicative(auxiliary) : null,
+          presentIndicative..generatedConjugations = includeGenerated ? generatedPresentIndicative : null ..setItalianConjugationsParted(),
+          presentContinuousIndicative..generatedConjugations = includeGenerated ? generatedPresentContinuousIndicative : null ..setItalianConjugationsParted(),
+          imperfectIndicative..generatedConjugations = includeGenerated ? generatedImperfectIndicative : null ..setItalianConjugationsParted(),
+          presentPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectIndicative(auxiliary) : null ..setItalianConjugationsParted(),
+          pastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectIndicative(auxiliary) : null ..setItalianConjugationsParted(),
+          historicalPresentPerfectIndicative..generatedConjugations = includeGenerated ? generatedHistoricalPresentPerfectIndicative : null ..setItalianConjugationsParted(),
+          historicalPastPerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedHistoricalPastPerfectIndicative(auxiliary) : null ..setItalianConjugationsParted(),
+          futureIndicative..generatedConjugations = includeGenerated ? generatedFutureIndicative : null ..setItalianConjugationsParted(),
+          futurePerfectIndicative(auxiliary)..generatedConjugations = includeGenerated ? generatedFuturePerfectIndicative(auxiliary) : null ..setItalianConjugationsParted(),
     ];
   }
 }
@@ -171,7 +171,7 @@ extension GenerateSubjunctive on Verb {
   }
 
   /// => GENERATED Congiuntivo Presente
-  ItalianConjugations get generatedPresentSubjunctive {
+  GeneratedConjugations get generatedPresentSubjunctive {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'a' : 'a'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'a' : 'a'}",
@@ -183,7 +183,7 @@ extension GenerateSubjunctive on Verb {
   }
 
   /// => GENERATED Congiuntivo Imperfetto
-  ItalianConjugations get generatedImperfectSubjunctive {
+  GeneratedConjugations get generatedImperfectSubjunctive {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'assi' : ending == 'ERE' ? 'essi' : 'issi'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'assi' : ending == 'ERE' ? 'essi' : 'issi'}",
@@ -201,9 +201,9 @@ extension GenerateSubjunctive on Verb {
   }
 
   /// => GENERATED Congiuntivo Passato
-  ItalianConjugations generatedPresentPerfectSubjunctive(Auxiliary auxiliary) {
+  GeneratedConjugations generatedPresentPerfectSubjunctive(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.presentSubjunctive);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   /// => Congiuntivo Trapassato
@@ -213,17 +213,17 @@ extension GenerateSubjunctive on Verb {
   }
 
   /// GENERATED Congiuntivo Trapassato
-  ItalianConjugations generatedPastPerfectSubjunctive(Auxiliary auxiliary) {
+  GeneratedConjugations generatedPastPerfectSubjunctive(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.imperfectSubjunctive);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   List<Tense> getSubjunctiveTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
     return [
-      presentSubjunctive..generatedConjugations = includeGenerated ? generatedPresentSubjunctive : null,
-      imperfectSubjunctive..generatedConjugations = includeGenerated ? generatedImperfectSubjunctive : null,
-      presentPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectSubjunctive(auxiliary) : null,
-      pastPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectSubjunctive(auxiliary) : null,
+      presentSubjunctive..generatedConjugations = includeGenerated ? generatedPresentSubjunctive : null ..setItalianConjugationsParted(),
+      imperfectSubjunctive..generatedConjugations = includeGenerated ? generatedImperfectSubjunctive : null ..setItalianConjugationsParted(),
+      presentPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectSubjunctive(auxiliary) : null ..setItalianConjugationsParted(),
+      pastPerfectSubjunctive(auxiliary)..generatedConjugations = includeGenerated ? generatedPastPerfectSubjunctive(auxiliary) : null ..setItalianConjugationsParted(),
     ];
   }
 }
@@ -250,7 +250,7 @@ extension GenerateConditional on Verb {
   }
 
   /// => GENERATED Condizionale Presente
-  ItalianConjugations get generatedPresentConditional {
+  GeneratedConjugations get generatedPresentConditional {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'erei' : ending == 'ERE' ? 'erei' : 'irei'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'eresti' : ending == 'ERE' ? 'eresti' : 'iresti'}",
@@ -268,22 +268,22 @@ extension GenerateConditional on Verb {
   }
 
   /// => GENERATED Condizionale Passato
-  ItalianConjugations generatedPresentPerfectConditional(Auxiliary auxiliary) {
+  GeneratedConjugations generatedPresentPerfectConditional(Auxiliary auxiliary) {
     conjugate(Pronoun pronoun) => _conjugateGenerated(pronoun, auxiliary, SimpleTense.presentConditional);
-    return ItalianConjugations.fromEntries(Pronoun.values.map(conjugate));
+    return GeneratedConjugations.fromEntries(Pronoun.values.map(conjugate));
   }
 
   List<Tense> getConditionalTenses(Auxiliary auxiliary, {bool includeGenerated = false}) {
     return [
-      presentConditional..generatedConjugations = includeGenerated ? generatedPresentConditional : null,
-      presentPerfectConditional(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectConditional(auxiliary) : null,
+      presentConditional..generatedConjugations = includeGenerated ? generatedPresentConditional : null ..setItalianConjugationsParted(),
+      presentPerfectConditional(auxiliary)..generatedConjugations = includeGenerated ? generatedPresentPerfectConditional(auxiliary) : null ..setItalianConjugationsParted(),
     ];
   }
 }
 
 extension GenerateImperative on Verb {
   /// => GENERATED Imperativo Positivo
-  ItalianConjugations get generatedPositiveImperative {
+  GeneratedConjugations get generatedPositiveImperative {
     return {
       Pronoun.firstSingular: null,
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'a' : ending == 'ERE' ? 'i' : 'i'}",
@@ -312,7 +312,7 @@ extension GenerateImperative on Verb {
   }
 
   /// => GENERATED Imperativo Negativo
-  ItalianConjugations get generatedNegativeImperative {
+  GeneratedConjugations get generatedNegativeImperative {
     // Clone (..) and update
     final conjugations = {...generatedPositiveImperative}..updateAll((pronoun, conjugation) {
         if (conjugation == null) return null;
@@ -328,8 +328,8 @@ extension GenerateImperative on Verb {
 
   List<Tense> getImperativeTenses({bool includeGenerated = false}) {
     return [
-      positiveImperative..generatedConjugations = includeGenerated ? generatedPositiveImperative : null,
-      negativeImperative..generatedConjugations = includeGenerated ? generatedNegativeImperative : null,
+      positiveImperative..generatedConjugations = includeGenerated ? generatedPositiveImperative : null ..setItalianConjugationsParted(),
+      negativeImperative..generatedConjugations = includeGenerated ? generatedNegativeImperative : null ..setItalianConjugationsParted(),
     ];
   }
 }

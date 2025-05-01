@@ -13,11 +13,6 @@ import '../enums/italian_tense.dart';
 import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
 
-typedef ConjugatedVerb = ({String italian, String english});
-typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
-typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
-typedef ItalianConjugations = Map<Pronoun, String?>;
-
 class Verb extends BaseVerb {
   final ConjugatedVerb infinitive;
   final Regularity regularity;

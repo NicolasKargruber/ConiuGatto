@@ -1,21 +1,27 @@
-import '../../enums/pronoun.dart';
-import '../verb.dart';
-import '../../enums/italian_tense.dart';
+import 'dart:math';
 
-ConjugatedVerb? _conjugatedVerb(Map<String, dynamic>? json) {
-  try {
-     return (italian: json?['italian'], english: json?['english']);
-  } catch (_) {
-    return null;
-  }
-}
+import '../../enums/italian_tense.dart';
+import '../../enums/pronoun.dart';
+
+// typedefs - Conjugations
+typedef ConjugatedVerb = ({String italian, String english});
+typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
+typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
+
+// typedefs - Generated Conjugations
+typedef GeneratedConjugations = Map<Pronoun, String?>;
+
+// typedefs - Regular & Irregular Parts
+typedef ItalianConjugationParts = ({String regularPart, String irregularPart});
+typedef ItalianConjugationsParted = Map<Pronoun, ItalianConjugationParts?>;
 
 base class Tense {
   final ItalianTense type;
   final bool usesPastParticiple;
   final bool isCompound;
   final Conjugations conjugations;
-  ItalianConjugations? generatedConjugations;
+  GeneratedConjugations? generatedConjugations;
+  ItalianConjugationsParted? italianConjugationsParted;
 
   Tense({required this.type, required this.conjugations, this.usesPastParticiple = false, this.isCompound = false});
 
@@ -33,8 +39,33 @@ base class Tense {
     return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
   }
 
-  // TODO Remove
-  factory Tense.fromJson(Map<String, dynamic> json, {required ItalianTense type}) {
-    return Tense(conjugations: convertJsonToConjugations(json), type: type);
+  // TODO Use show when conjugation is shorter than generation
+  setItalianConjugationsParted() {
+    // Null Safety
+    if (generatedConjugations == null) return;
+    italianConjugationsParted = generatedConjugations!.map<Pronoun, ItalianConjugationParts?>((pronoun, generated) {
+      final original = conjugations[pronoun]?.italian;
+      if (original == null || generated == null) return MapEntry(pronoun, null);
+
+      // Find the longest common prefix (case-insensitive)
+      final maxLength = min(original.length, generated.length);
+
+      // Find the matching prefix (regular part)
+      int i = 0;
+      while (i < maxLength && original[i] == generated[i]) { i++; }
+
+      final regularPart = original.substring(0, i);
+      final irregularPart = original.substring(i);
+
+      return MapEntry(pronoun, (regularPart: regularPart, irregularPart: irregularPart));
+    });
+  }
+}
+
+ConjugatedVerb? _conjugatedVerb(Map<String, dynamic>? json) {
+  try {
+    return (italian: json?['italian'], english: json?['english']);
+  } catch (_) {
+    return null;
   }
 }

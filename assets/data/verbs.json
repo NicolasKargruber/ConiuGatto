@@ -4106,10 +4106,10 @@
         "imperfetto": {
           "io": {"italian": "crescessi", "english": "grew up", "german": "wüchse auf"},
           "tu": {"italian": "crescessi", "english": "grew up", "german": "wüchsest auf"},
-          "lui/lei": {"italian": "crescésse", "english": "grew up", "german": "wüchse auf"},
-          "noi": {"italian": "crescéssimo", "english": "grew up", "german": "wüchsen auf"},
+          "lui/lei": {"italian": "crescesse", "english": "grew up", "german": "wüchse auf"},
+          "noi": {"italian": "crescessimo", "english": "grew up", "german": "wüchsen auf"},
           "voi": {"italian": "cresceste", "english": "grew up", "german": "wüchset auf"},
-          "loro": {"italian": "crescéssero", "english": "grew up", "german": "wüchsen auf"}
+          "loro": {"italian": "crescessero", "english": "grew up", "german": "wüchsen auf"}
         }
       },
       "condizionale": {
