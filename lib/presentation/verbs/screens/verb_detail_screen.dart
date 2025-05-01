@@ -13,14 +13,6 @@ final _logTag = (VerbDetailScreen).toString();
 class VerbDetailScreen extends StatelessWidget {
   const VerbDetailScreen({super.key});
 
-  // TODO factory
-  // Colors
-  Color dividerColor(BuildContext context) {
-    return context.isLightMode ?
-    context.colorScheme.surfaceDim :
-    context.colorScheme.surfaceBright;
-  }
-
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
@@ -45,10 +37,7 @@ class VerbDetailScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
-              // TODO factory
-              child: viewModel.isRegular ?
-              FilledButton(onPressed: (){}, child: Text("Regular")) :
-              FilledButton.tonal(onPressed: (){}, child: Text("Irregular")),
+              child: ButtonFactory.createButton(viewModel.isRegular),
             ),
 
             // TODO Handle it's own state
@@ -65,7 +54,7 @@ class VerbDetailScreen extends StatelessWidget {
 
             SizedBox(height: AppValues.s8),
 
-            Divider(color: dividerColor(context)),
+            Divider(),
 
             Expanded(
               child: ListView(
@@ -85,7 +74,7 @@ class VerbDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: dividerColor(context)),
+                  Divider(height: AppValues.s36),
 
                   // CONGIUNTIVO
                   Padding(
@@ -102,7 +91,7 @@ class VerbDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: dividerColor(context)),
+                  Divider(height: AppValues.s36),
 
                   // CONDIZIONALE
                   Padding(
@@ -119,7 +108,7 @@ class VerbDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Divider(height: AppValues.s36, color: dividerColor(context)),
+                  Divider(height: AppValues.s36),
 
                   // IMPERATIVO
                   Padding(
@@ -142,5 +131,15 @@ class VerbDetailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ButtonFactory {
+  static Widget createButton(bool isRegular) {
+    if (isRegular) {
+      return FilledButton(onPressed: (){}, child: Text("Regular"));
+    } else {
+      return FilledButton.tonal(onPressed: (){}, child: Text("Irregular"));
+    }
   }
 }

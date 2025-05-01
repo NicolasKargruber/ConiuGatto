@@ -19,10 +19,10 @@ class ConjugationTable extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           // Fixed Section
-          // Pronouns (io, tu, lui/lei, noi, voi, loro)
+          // "Pronoun" + (io, tu, lui/lei, noi, voi, loro)
           _buildPronounTable(context),
       
-          // Scrollable Section:
+          // Scrollable Section
           // Tenses (Presente, ...) + Conjugations (mangio, mangi, ...)
           Flexible(
             child: SingleChildScrollView(
@@ -112,6 +112,7 @@ class ConjugationTable extends StatelessWidget {
   )).toList();
 
   // TODO Move to ViewModel
+  // TODO Use show when conjugation is shorter than generation
   _buildTenseRows(BuildContext context) {
     // Helper function to highlight irregular parts
     List<TextSpan> buildSpans(String conjugatedForm, String? generatedForm) {
@@ -123,17 +124,6 @@ class ConjugationTable extends StatelessWidget {
         return spans..add(TextSpan(text: conjugatedForm,
             style: const TextStyle(color: Colors.black)));
       }
-
-      // TODO Use
-      // When conjugation is shorter than generation
-      /*if (conjugatedForm.length < generatedForm.length) {
-        spans.add(TextSpan(text: stem, style: const TextStyle(color: Colors.black)));
-        spans.add(TextSpan(text: conjugatedForm.substring(stem.length), style: const TextStyle(color: Colors.indigoAccent, fontWeight: FontWeight.bold)));
-        return spans;
-      }*/
-
-      // debugPrint("conjugatedForm: $conjugatedForm");
-      // debugPrint("generatedForm: $generatedForm");
 
       // Find the matching prefix (regular part)
       while (i < generatedForm.length &&

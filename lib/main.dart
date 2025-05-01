@@ -26,9 +26,15 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
           colorScheme: schemeLight,
+        dividerTheme: DividerThemeData(
+          color: schemeLight.surfaceDim,
+        ),
       ),
       darkTheme: ThemeData(
           colorScheme: schemeDark,
+          dividerTheme: DividerThemeData(
+            color: schemeDark.surfaceBright,
+          ),
       ),
       home: ChangeNotifierProvider(
         create: (_) => VerbViewModel(),
