@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utilities/app_values.dart';
 
 class ShowSolutionSheet extends StatelessWidget {
-  const ShowSolutionSheet({
-    super.key,
-    required this.solution,
-  });
+  const ShowSolutionSheet({super.key, required this.solution});
 
   final String? solution;
 
@@ -21,12 +18,8 @@ class ShowSolutionSheet extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(AppValues.p12),
-            child: Text(
-              "Correct answer",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: AppValues.fs20,
-              ),
+            child: Text("Correct answer",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs20),
             ),
           ),
 
@@ -38,13 +31,8 @@ class ShowSolutionSheet extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(AppValues.r12)),
               ),
               padding: EdgeInsets.all(AppValues.p12),
-              child: Text(
-                solution ?? '',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: AppValues.fs28,
-                    color: Colors.green.shade700
-                ),
+              child: Text(solution ?? '',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs28, color: Colors.green.shade700),
               ),
             ),
           ),

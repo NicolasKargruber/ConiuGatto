@@ -21,7 +21,6 @@ class VerbDetailScreen extends StatelessWidget {
     context.colorScheme.surfaceBright;
   }
 
-
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");

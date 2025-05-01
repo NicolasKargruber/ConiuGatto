@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../../verbs/view_models/verb_view_model.dart';
+import '../../../domain/service/verb_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verbs_sheet.dart';

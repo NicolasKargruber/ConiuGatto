@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-import '../../../data/models/verb.dart';
-import '../../../domain/view_model.dart';
+import '../../data/models/verb.dart';
+import '../view_model.dart';
+
+final _logTag = (VerbViewModel).toString();
 
 class VerbViewModel extends ViewModel{
-  final _logTag = (VerbViewModel).toString();
 
   List<Verb> _verbs = [];
   List<Verb> get verbs => [..._verbs];
@@ -32,6 +33,7 @@ class VerbViewModel extends ViewModel{
       debugPrint("$_logTag | Caught exception: $e");
     } finally {
       toggleLoading();
+      debugPrint("$_logTag | verbs: ${verbs.map((e) => e.italianInfinitive).toList()}");
       debugPrint("$_logTag | loadVerbs() ended");
     }
   }

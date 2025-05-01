@@ -10,8 +10,9 @@ import '../../../data/models/verb.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../../domain/view_model.dart';
 
+final _logTag = (QuizViewModel).toString();
+
 class QuizViewModel extends ViewModel {
-  final _logTag = (QuizViewModel).toString();
 
   // Initialized in Parent Constructor
   @override

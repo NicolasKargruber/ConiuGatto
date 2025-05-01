@@ -1,13 +1,14 @@
-import 'verbs/view_models/search_view_model.dart';
-import 'grammar/grammar_screen.dart';
-import 'quiz/screens/quiz_screen.dart';
-import 'quiz/view_models/quiz_view_model.dart';
-import 'verbs/view_models/verb_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/service/verb_view_model.dart';
+import 'grammar/grammar_screen.dart';
+import 'quiz/screens/quiz_screen.dart';
+import 'quiz/view_models/quiz_view_model.dart';
 import 'verbs/screens/verbs_screen.dart';
+import 'verbs/view_models/search_view_model.dart';
 
+final _logTag = (HomeScreen).toString();
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _logTag = (HomeScreen).toString();
 
   int _currentIndex = 1;
   final List<Widget> _screens = [

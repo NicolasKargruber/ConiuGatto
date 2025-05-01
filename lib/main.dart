@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'presentation/theme.dart';
 import 'presentation/home_screen.dart';
-import 'presentation/verbs/view_models/verb_view_model.dart';
+import 'domain/service/verb_view_model.dart';
 import 'data/shared_preference_manager.dart';
 
 // TODO Use GetIt for Dependency Injection

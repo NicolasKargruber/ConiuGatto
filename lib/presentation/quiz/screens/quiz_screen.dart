@@ -4,11 +4,13 @@ import 'package:provider/provider.dart';
 import '../../../data/models/verb.dart';
 import '../../../utilities/app_values.dart';
 import '../view_models/quiz_view_model.dart';
-import '../../verbs/view_models/verb_view_model.dart';
+import '../../../domain/service/verb_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/show_solution_sheet.dart';
 import 'quiz_content.dart';
 import '../../settings/screens/settings_screen.dart';
+
+final _logTag = (QuizScreen).toString();
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -18,7 +20,6 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final _logTag = (QuizScreen).toString();
 
   // ViewModel
   late final Future _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
@@ -80,8 +81,6 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.read<QuizViewModel>();
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Quiz 🕹️"),

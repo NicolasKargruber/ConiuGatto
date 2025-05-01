@@ -7,8 +7,9 @@ import 'models/tenses/indicative_tenses.dart';
 
 typedef SharedPreference = ({String key, String value});
 
+final _logTag = (SharedPreferenceManager).toString();
+
 class SharedPreferenceManager {
-  final _logTag = (SharedPreferenceManager).toString();
   final SharedPreferences _prefs;
 
   SharedPreferenceManager._(this._prefs);

@@ -1,17 +1,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../main.dart';
-import '../../../data/enums/answer_result.dart';
 import '../../../data/enums/auxiliary.dart';
-import '../../../data/enums/pronoun.dart';
-import '../../../domain/models/quiz_item.dart';
-import '../../../data/enums/italian_tense.dart';
 import '../../../data/models/tenses/tense.dart';
 import '../../../data/models/verb.dart';
-import '../../../utilities/extensions/iterable_extensions.dart';
-import '../../../utilities/extensions/verb_extensions.dart';
 import '../../../domain/view_model.dart';
+import '../../../utilities/extensions/verb_extensions.dart';
 
 final _logTag = (VerbDetailViewModel).toString();
 

@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import '../../../data/models/verb.dart';
 import '../../../domain/view_model.dart';
 
-class SearchViewModel extends ViewModel{
-  final _logTag = (SearchViewModel).toString();
+final _logTag = (SearchViewModel).toString();
 
+class SearchViewModel extends ViewModel{
   List<Verb> _filteredVerbs = [];
   List<Verb> get filteredVerbs =>
       [..._filteredVerbs.isEmpty ? _verbs : _filteredVerbs];

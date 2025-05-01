@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 
+final _logTag = (ViewModel).toString();
+
 abstract class ViewModel extends ChangeNotifier{
-  final _logTag = (ViewModel).toString();
 
   bool _isInitialized = false;
   late Future initializationFuture;

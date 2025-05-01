@@ -5,7 +5,7 @@ import '../../../utilities/app_values.dart';
 import '../../../main.dart';
 import '../../../data/models/verb.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../../verbs/view_models/verb_view_model.dart';
+import '../../../domain/service/verb_view_model.dart';
 
 class ChooseVerbsSheet extends StatefulWidget {
   const ChooseVerbsSheet({super.key});
