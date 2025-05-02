@@ -4,16 +4,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/enums/italian_tense.dart';
 import '../../utilities/shared_preference_keys.dart';
 import '../../data/enums/pronoun.dart';
-import 'manager.dart';
+import 'service.dart';
 
 typedef SharedPreference = ({String key, String value});
 
-final _logTag = (SharedPreferenceManager).toString();
+final _logTag = (SharedPreferenceService).toString();
 
-class SharedPreferenceManager extends Manager {
+class SharedPreferenceService extends Service {
   late final SharedPreferences _prefs;
 
-  SharedPreferenceManager();
+  SharedPreferenceService();
 
   @override
   Future initialize() async {

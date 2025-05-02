@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'domain/service/verb_manager.dart';
+import 'domain/service/verb_service.dart';
 import 'presentation/theme.dart';
 import 'presentation/home_screen.dart';
-import 'domain/service/shared_preference_manager.dart';
+import 'domain/service/shared_preference_service.dart';
 
 // TODO Use GetIt for Dependency Injection
-late SharedPreferenceManager preferenceManager;
+late SharedPreferenceService preferenceManager;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  preferenceManager = SharedPreferenceManager();
+  preferenceManager = SharedPreferenceService();
   await preferenceManager.initializationFuture;
   runApp(const MyApp());
 }
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           ),
       ),
       home: Provider(
-        create: (_) => VerbManager(),
+        create: (_) => VerbService(),
         child: HomeScreen(),
       ),
     );

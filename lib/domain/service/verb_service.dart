@@ -3,11 +3,11 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/repository/verb_repository.dart';
 import '../models/verb.dart';
-import 'manager.dart';
+import 'service.dart';
 
-final _logTag = (VerbManager).toString();
+final _logTag = (VerbService).toString();
 
-class VerbManager extends Manager {
+class VerbService extends Service {
   // TODO use GetIt
   final VerbRepository _verbRepository = VerbRepository();
   List<Verb> _verbs = [];

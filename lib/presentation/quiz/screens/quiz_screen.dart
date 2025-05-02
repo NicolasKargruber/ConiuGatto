@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
-import '../../../domain/service/verb_manager.dart';
+import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
 import '../view_models/quiz_view_model.dart';
 import '../../widgets/shake_widget.dart';
+import '../widgets/quiz_history_count.dart';
 import '../widgets/show_solution_sheet.dart';
 import 'quiz_content.dart';
 import '../../settings/screens/settings_screen.dart';
@@ -22,8 +23,8 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
 
   // ViewModel
-  late final Future _loadingVerbs = context.read<VerbManager>().initializationFuture;
-  List<Verb> get _verbs => context.read<VerbManager>().verbs;
+  late final Future _loadingVerbs = context.read<VerbService>().initializationFuture;
+  List<Verb> get _verbs => context.read<VerbService>().verbs;
   late final _viewModel = context.read<QuizViewModel>();
 
   // UI Stuff
@@ -33,7 +34,7 @@ class _QuizScreenState extends State<QuizScreen> {
   _checkAnswer() async {
       _viewModel.checkAnswer(_textController.text);
 
-      if(!(_viewModel.currentAnswerResult?.isCorrect ?? false)) {
+      if(!_viewModel.isAnsweredCorrectly) {
         // Show WRONG animation
         debugPrint("$_logTag | Unfortunately wrong!!!");
         _shakeKey.currentState?.shake();
@@ -41,7 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
         if(!_viewModel.hasTriesLeft) await _showCorrectAnswer();
       }
 
-      if(!_viewModel.hasTriesLeft) {
+      if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
         _textController.clear();
         _viewModel.createNewQuizItem();
       }
@@ -62,7 +63,7 @@ class _QuizScreenState extends State<QuizScreen> {
   _showSettingsScreen() async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
         Provider.value(
-          value: context.read<VerbManager>(),
+          value: context.read<VerbService>(),
           child: SettingsScreen(),
         ))
     );
@@ -112,29 +113,5 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
       ),
     );
-  }
-}
-
-class QuizHistoryCount extends StatelessWidget {
-  const QuizHistoryCount({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final viewModel = context.watch<QuizViewModel>();
-    return viewModel.hasQuizzableItems ? Row(
-      children: [
-        Text("${viewModel.negativeQuizCount}",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
-        ),
-        SizedBox(width: AppValues.s2),
-        Text("❌"),
-        SizedBox(width: AppValues.s8),
-        Text("${viewModel.positiveQuizCount}",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
-        ),
-        SizedBox(width: AppValues.s2),
-        Text("✓", style: TextStyle(color: Colors.green, fontWeight: FontWeight.w800, fontSize: AppValues.fs20)),
-      ],
-    ) : Spacer();
   }
 }

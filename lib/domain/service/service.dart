@@ -1,9 +1,9 @@
-abstract class Manager {
+abstract class Service {
   bool _isInitialized = false;
   bool get isInitialized => _isInitialized;
   late Future initializationFuture;
 
-  Manager(){
+  Service(){
     _isInitialized = false;
     initializationFuture = initialize();
     initializationFuture.then((_) => _isInitialized = true);

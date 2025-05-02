@@ -73,6 +73,7 @@ class QuizViewModel extends ViewModel {
   bool get hasCurrentAnswer => _currentQuizItem?.answer != null;
   bool get isDoubleAuxiliary => _currentQuizItem?.isDoubleAuxiliary ?? false;
   bool get hasTriesLeft => _currentQuizItem?.hasTriesLeft ?? false;
+  bool get isAnsweredCorrectly => _currentQuizItem?.isCorrect ?? false;
 
   // Getters - Quiz Labels
   String? get currentTitle => _currentQuizItem?.currentTitle;

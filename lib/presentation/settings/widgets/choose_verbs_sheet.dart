@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/service/verb_manager.dart';
+import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../main.dart';
 import '../../../domain/models/verb.dart';
@@ -18,7 +18,7 @@ class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
   late String logTag = (widget).toString();
 
   // ViewModel
-  List<Verb> get _verbs => context.read<VerbManager>().verbs;
+  List<Verb> get _verbs => context.read<VerbService>().verbs;
   
   // SharedPreferences
   Set<String> _verbPrefs = {};
