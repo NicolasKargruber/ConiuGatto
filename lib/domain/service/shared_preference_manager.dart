@@ -1,29 +1,30 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utilities/shared_preference_keys.dart';
-import 'enums/pronoun.dart';
-import 'models/tenses/indicative_tenses.dart';
+import '../models/enums/italian_tense.dart';
+import '../../utilities/shared_preference_keys.dart';
+import '../../data/enums/pronoun.dart';
+import 'manager.dart';
 
 typedef SharedPreference = ({String key, String value});
 
 final _logTag = (SharedPreferenceManager).toString();
 
-class SharedPreferenceManager {
-  final SharedPreferences _prefs;
+class SharedPreferenceManager extends Manager {
+  late final SharedPreferences _prefs;
 
-  SharedPreferenceManager._(this._prefs);
+  SharedPreferenceManager();
 
-  static Future<SharedPreferenceManager> initialize() async {
-    final prefs = await SharedPreferences.getInstance();
-    return SharedPreferenceManager._(prefs);
+  @override
+  Future initialize() async {
+    _prefs = await SharedPreferences.getInstance();
   }
 
   String get _verbPrefKey => SharedPreferenceKeys.quizzableVerbs;
   String get _tensePrefKey => SharedPreferenceKeys.quizzableTenses;
   String get _pronounPrefKey => SharedPreferenceKeys.quizzablePronouns;
 
-  final _tensesDefaultValue = {(PresentIndicative).toString()};
+  final _tensesDefaultValue = [ItalianTense.presentIndicative.prefKey];
   final _pronounsDefaultValue = Pronoun.values.map((e)=> e.prefKey);
 
   loadVerbPrefs(Iterable<String> defaultValue) => _loadPrefs(_verbPrefKey, defaultValue);

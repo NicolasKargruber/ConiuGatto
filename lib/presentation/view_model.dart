@@ -2,11 +2,15 @@ import 'package:flutter/foundation.dart';
 
 final _logTag = (ViewModel).toString();
 
-abstract class ViewModel extends ChangeNotifier{
-
+abstract class ViewModel extends ChangeNotifier {
+  // Initialize
   bool _isInitialized = false;
-  late Future initializationFuture;
   bool get isInitialized => _isInitialized;
+  late Future initializationFuture;
+
+  // Loading
+  bool _isLoading = false;
+  bool get isLoading => _isLoading || !_isInitialized;
 
   ViewModel(){
     _isInitialized = false;
@@ -15,13 +19,10 @@ abstract class ViewModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  // Initialize => TO BE OVERRIDDEN
   Future initialize();
 
-  bool _isLoading = false;
-  bool get isLoading => _isLoading /*|| currentFuture != null*/;
-
-  //Future? currentFuture;
-
+  // Loading
   toggleLoading(){
     _isLoading = !_isLoading;
     notifyListeners();

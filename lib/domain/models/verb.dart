@@ -1,16 +1,19 @@
 import 'package:collection/collection.dart';
 
-import '../../domain/utils/verb_extensions.dart';
-import '../enums/auxiliary.dart';
-import '../enums/irregularity.dart';
-import '../enums/italian_tense.dart';
-import '../enums/regularity.dart';
+import '../../data/enums/auxiliary.dart';
+import '../../data/enums/irregularity.dart';
+import 'enums/italian_tense.dart';
+import '../../data/enums/regularity.dart';
+import '../../data/models/verb_dto.dart';
+import '../utils/verb_extensions.dart';
 import 'base_verb.dart';
 import 'tenses/conditional_tenses.dart';
 import 'tenses/imperative_tenses.dart';
 import 'tenses/indicative_tenses.dart';
 import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
+
+typedef ConjugatedVerb = ({String italian, String english});
 
 class Verb extends BaseVerb {
   final ConjugatedVerb infinitive;
@@ -20,7 +23,7 @@ class Verb extends BaseVerb {
   final ConjugatedVerb pastParticiple;
   final ConjugatedVerb presentGerund;
 
-  Verb({
+  Verb._({
     required this.infinitive,
     required this.regularity,
     required this.irregularities,
@@ -37,26 +40,25 @@ class Verb extends BaseVerb {
     required this.presentGerund,
   });
 
-  factory Verb.fromJson(Map<String, dynamic> json) {
-    return Verb(
-      infinitive: conjugatedVerbFrom(json['infinitive']),
-      regularity: Regularity.fromJson(json['regularity']),
-      irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),
-      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toList(),
-      presentIndicative: PresentIndicative.fromJson(json['conjugations']['indicativo']),
-      imperfectIndicative: ImperfectIndicative.fromJson(json['conjugations']['indicativo']),
-      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson(json['conjugations']['indicativo']),
-      futureIndicative: FutureIndicative.fromJson(json['conjugations']['indicativo']),
-      presentSubjunctive: PresentSubjunctive.fromJson(json['conjugations']['congiuntivo']),
-      imperfectSubjunctive: ImperfectSubjunctive.fromJson(json['conjugations']['congiuntivo']),
-      presentConditional: PresentConditional.fromJson(json['conjugations']['condizionale']),
-      positiveImperative: PositiveImperative.fromJson(json['conjugations']['imperativo']),
-      pastParticiple: conjugatedVerbFrom(json['participio_passato']),
-      presentGerund: conjugatedVerbFrom(json['gerundio_presente']),
+  factory Verb.fromDTO(VerbDTO dto) {
+    return Verb._(
+      infinitive: dto.infinitive,
+      regularity: dto.regularity,
+      irregularities: dto.irregularities,
+      auxiliaries: dto.auxiliaries,
+      presentIndicative: PresentIndicative(conjugations: dto.presentIndicative.conjugations),
+      imperfectIndicative: ImperfectIndicative(conjugations: dto.imperfectIndicative.conjugations),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative(conjugations: dto.historicalPresentPerfectIndicative.conjugations),
+      futureIndicative: FutureIndicative(conjugations: dto.futureIndicative.conjugations),
+      presentSubjunctive: PresentSubjunctive(conjugations: dto.presentSubjunctive.conjugations),
+      imperfectSubjunctive: ImperfectSubjunctive(conjugations: dto.imperfectSubjunctive.conjugations),
+      presentConditional: PresentConditional(conjugations: dto.presentConditional.conjugations),
+      positiveImperative: PositiveImperative(conjugations: dto.positiveImperative.conjugations),
+      pastParticiple: dto.pastParticiple,
+      presentGerund: dto.presentGerund,
     );
   }
 
-  // TODO Move to business logic
   /// Used for Shared Preferences
   String get prefKey => italianInfinitive;
 

@@ -2,11 +2,11 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../main.dart';
-import '../../../data/enums/answer_result.dart';
+import '../../../domain/models/answer_result.dart';
 import '../../../data/enums/pronoun.dart';
 import '../../../domain/models/quiz_item.dart';
-import '../../../data/enums/italian_tense.dart';
-import '../../../data/models/verb.dart';
+import '../../../domain/models/enums/italian_tense.dart';
+import '../../../domain/models/verb.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
 
@@ -28,7 +28,10 @@ class QuizViewModel extends ViewModel {
     if (ListEquality().equals(_verbs, verbs)) {
       return debugPrint("$_logTag | loaded verbs are still the same");
     }
+
     _verbs = verbs;
+    debugPrint("$_logTag | Loaded Verbs Count: ${_verbs.length}");
+    debugPrint("$_logTag | Loaded Verbs: ${_verbs.map((e) => e.italianInfinitive)}");
 
     // Find Quizzable
     // TODO Without using verbs
@@ -109,25 +112,7 @@ class QuizViewModel extends ViewModel {
     debugPrint("$_logTag | createNewQuizItem() started");
 
     // Reset QuizValues
-    if(_currentQuizItem case var quizItem?) {
-      if(quizItem.hasTriesLeft){
-        // QuizItem not Finished
-        debugPrint("$_logTag | Add QuizItem to history");
-        _quizzablePronouns.contains(quizItem.pronoun);
-        _quizzableVerbs.contains(quizItem.verb);
-        _quizzableTenses.contains(quizItem.tense.type);
-        _quizHistory.add(_currentQuizItem!);
-        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
-      } else {
-        // QuizItem Done
-        debugPrint("$_logTag | Add QuizItem to history");
-        _quizHistory.add(quizItem);
-        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
-      }
-      debugPrint("$_logTag | Reset Quiz Values");
-      _currentQuizItem = null;
-      _currentAnswerResult = null;
-    }
+    resetQuizItem();
 
     if (_verbs.isEmpty) {
       notifyListeners();
@@ -159,7 +144,6 @@ class QuizViewModel extends ViewModel {
       _randomizeQuizItem();
     }
 
-    debugPrint("$_logTag | Current Verb: ${_currentQuizItem?.verb.italianInfinitive}");
     debugPrint("$_logTag | Solution: ${_currentQuizItem?.solutionExtended}");
 
     notifyListeners();
@@ -168,16 +152,42 @@ class QuizViewModel extends ViewModel {
 
   void _randomizeQuizItem() {
     final currentPronoun = _quizzablePronouns.randomElement;
+    debugPrint("$_logTag | Current Pronoun: ${currentPronoun.name}");
     final currentVerb = _quizzableVerbs.randomElementOrNull;
+    debugPrint("$_logTag | Current Verb: ${currentVerb?.italianInfinitive}");
     if (currentVerb == null) return;
     final currentAuxiliary = currentVerb.auxiliaries.randomElement;
+    debugPrint("$_logTag | Current Auxiliary: ${currentAuxiliary.name}");
     final quizzableTense = currentVerb.getTense(_quizzableTenses.randomElement)(currentAuxiliary);
+    debugPrint("$_logTag | Current Tense: ${quizzableTense.type.name}");
     _currentQuizItem = QuizItem(
       verb: currentVerb,
       auxiliary: currentAuxiliary,
       tense: quizzableTense,
       pronoun: currentPronoun,
     );
+  }
+
+  void resetQuizItem(){
+    if(_currentQuizItem case var quizItem?) {
+      if(quizItem.hasTriesLeft){
+        // QuizItem not Finished
+        debugPrint("$_logTag | Add QuizItem to history");
+        _quizzablePronouns.contains(quizItem.pronoun);
+        _quizzableVerbs.contains(quizItem.verb);
+        _quizzableTenses.contains(quizItem.tense.type);
+        _quizHistory.add(_currentQuizItem!);
+        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      } else {
+        // QuizItem Done
+        debugPrint("$_logTag | Add QuizItem to history");
+        _quizHistory.add(quizItem);
+        debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+      }
+      debugPrint("$_logTag | Reset Quiz Values");
+      _currentQuizItem = null;
+      _currentAnswerResult = null;
+    }
   }
 
   void checkAnswer(String answer){

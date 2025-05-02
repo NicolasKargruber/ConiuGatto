@@ -2,8 +2,8 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/auxiliary.dart';
-import '../../../data/models/tenses/tense.dart';
-import '../../../data/models/verb.dart';
+import '../../../domain/models/tenses/tense.dart';
+import '../../../domain/models/verb.dart';
 import '../../view_model.dart';
 import '../../../domain/utils/verb_extensions.dart';
 
@@ -21,6 +21,7 @@ class VerbDetailViewModel extends ViewModel {
     _verb.auxiliaries.sortBy((e) => e.index);
     _selectedAuxiliary = _verb.auxiliaries.first;
     debugPrint("$_logTag | Irregularities: ${_verb.irregularities}");
+    debugPrint("$_logTag | Present indicative: ${_verb.presentIndicative.conjugations.toString()}");
   }
 
   // State

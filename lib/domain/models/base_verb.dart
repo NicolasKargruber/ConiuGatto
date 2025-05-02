@@ -1,37 +1,34 @@
-import 'tenses/conditional_tenses.dart';
-import 'tenses/imperative_tenses.dart';
-import 'tenses/indicative_tenses.dart';
-import 'tenses/subjunctive_tenses.dart';
+import 'tenses/tense.dart';
 
 class BaseVerb {
   // INDICATIVE => START
   /// => Indicativo Presente
-  final PresentIndicative presentIndicative;
+  final Tense presentIndicative;
   /// => Indicativo Imperfecto
-  final ImperfectIndicative imperfectIndicative;
+  final Tense imperfectIndicative;
   /// => Indicativo Passato Remoto
-  final HistoricalPresentPerfectIndicative historicalPresentPerfectIndicative;
+  final Tense historicalPresentPerfectIndicative;
   /// => Indicativo Futuro Semplice
-  final FutureIndicative futureIndicative;
+  final Tense futureIndicative;
   // => Futuro Prossimo
   // TODO: => Futuro GOING TO - futuro prossimo
   // INDICATIVE <= END
 
   // SUBJUNCTIVE => START
   /// => Congiuntivo Presente
-  final PresentSubjunctive presentSubjunctive;
+  final Tense presentSubjunctive;
   /// => Congiuntivo Imperfetto
-  final ImperfectSubjunctive imperfectSubjunctive;
+  final Tense imperfectSubjunctive;
   // SUBJUNCTIVE <= END
 
   // CONDITIONAL => START
   /// Condizionale Presente
-  final PresentConditional presentConditional;
+  final Tense presentConditional;
   // CONDITIONAL <= END
 
   // IMPERATIVE => START
   /// => Imperativo Positivo
-  final PositiveImperative positiveImperative;
+  final Tense positiveImperative;
   // IMPERATIVE <= END
 
   BaseVerb({

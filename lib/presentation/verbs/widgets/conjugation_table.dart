@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../data/enums/pronoun.dart';
-import '../../../data/models/tenses/tense.dart';
+import '../../../domain/models/tenses/tense.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 
 class ConjugationTable extends StatelessWidget {

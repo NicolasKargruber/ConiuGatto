@@ -1,4 +1,4 @@
-import '../../enums/italian_tense.dart';
+import '../enums/italian_tense.dart';
 import 'tense.dart';
 
 /// => Indicativo Presente

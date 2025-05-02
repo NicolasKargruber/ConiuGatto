@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/service/verb_manager.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../../../domain/service/verb_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verbs_sheet.dart';
@@ -27,9 +27,8 @@ class SettingsScreen extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (_) {
-        final verbViewModel = context.read<VerbViewModel>();
-        return ChangeNotifierProvider.value(
-          value: verbViewModel,
+        return Provider.value(
+          value: context.read<VerbManager>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChooseVerbsSheet(),
@@ -43,9 +42,8 @@ class SettingsScreen extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (_) {
-        final verbViewModel = context.read<VerbViewModel>();
-        return ChangeNotifierProvider.value(
-          value: verbViewModel,
+        return Provider.value(
+          value: context.read<VerbManager>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChoosePronounsSheet(),

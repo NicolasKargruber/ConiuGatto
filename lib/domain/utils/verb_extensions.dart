@@ -1,13 +1,13 @@
-import '../../data/compound_verbs.dart';
+import '../models/compound_verbs.dart';
 import '../../data/enums/auxiliary.dart';
 import '../../data/enums/pronoun.dart';
-import '../../data/enums/simple_tense.dart';
-import '../../data/models/tenses/conditional_tenses.dart';
-import '../../data/models/tenses/imperative_tenses.dart';
-import '../../data/models/tenses/indicative_tenses.dart';
-import '../../data/models/tenses/subjunctive_tenses.dart';
-import '../../data/models/tenses/tense.dart';
-import '../../data/models/verb.dart';
+import '../models/enums/simple_tense.dart';
+import '../models/tenses/conditional_tenses.dart';
+import '../models/tenses/imperative_tenses.dart';
+import '../models/tenses/indicative_tenses.dart';
+import '../models/tenses/subjunctive_tenses.dart';
+import '../models/tenses/tense.dart';
+import '../models/verb.dart';
 
 extension GenerateTenses on Verb {
   String get _generatedPastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";

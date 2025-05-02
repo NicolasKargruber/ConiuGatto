@@ -1,11 +1,11 @@
-import 'enums/auxiliary.dart';
-import 'models/base_verb.dart';
+import '../../data/enums/auxiliary.dart';
+import 'base_verb.dart';
 import 'enums/simple_tense.dart';
-import 'enums/pronoun.dart';
-import 'models/tenses/conditional_tenses.dart';
-import 'models/tenses/imperative_tenses.dart';
-import 'models/tenses/indicative_tenses.dart';
-import 'models/tenses/subjunctive_tenses.dart';
+import '../../data/enums/pronoun.dart';
+import 'tenses/conditional_tenses.dart';
+import 'tenses/imperative_tenses.dart';
+import 'tenses/indicative_tenses.dart';
+import 'tenses/subjunctive_tenses.dart';
 
 class CompoundVerbs {
   final BaseVerb essere; // Ausiliare

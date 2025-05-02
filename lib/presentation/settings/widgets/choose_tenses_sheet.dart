@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/shared_preference_keys.dart';
 import '../../../main.dart';
-import '../../../data/enums/mood.dart';
-import '../../../data/enums/italian_tense.dart';
+import '../../../domain/models/enums/mood.dart';
+import '../../../domain/models/enums/italian_tense.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 
 class ChooseTensesSheet extends StatefulWidget {

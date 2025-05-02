@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 
 import '../../utilities/extensions/string_extensions.dart';
-import '../../data/enums/answer_result.dart';
+import 'answer_result.dart';
 import '../../data/enums/auxiliary.dart';
 import '../../data/enums/pronoun.dart';
-import '../../data/models/tenses/tense.dart';
-import '../../data/models/verb.dart';
+import 'tenses/tense.dart';
+import 'verb.dart';
 
 class QuizItem {
   final _logTag = (QuizItem).toString();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/service/verb_view_model.dart';
+import '../../../domain/service/verb_manager.dart';
 import 'verbs_content.dart';
 
 final _logTag = (VerbsScreen).toString();
@@ -17,13 +17,13 @@ class VerbsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Verbs 📚')),
       body: FutureBuilder(
-        future: context.read<VerbViewModel>().initializationFuture,
+        future: context.read<VerbManager>().initializationFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (context.read<VerbViewModel>().verbs.isEmpty) {
+          } else if (context.read<VerbManager>().verbs.isEmpty) {
             return Center(child: Text('No verbs available'));
           } else {
             return VerbsContent(

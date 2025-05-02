@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import '../../../data/enums/mood.dart';
+import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_detail_view_model.dart';

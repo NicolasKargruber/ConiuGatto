@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import '../../enums/italian_tense.dart';
-import '../../enums/pronoun.dart';
+import '../enums/italian_tense.dart';
+import '../../../data/enums/pronoun.dart';
 
 // typedefs - Conjugations
 typedef ConjugatedVerb = ({String italian, String english});

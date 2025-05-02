@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../data/models/verb.dart';
+import '../../../domain/models/verb.dart';
+import '../../../domain/service/verb_manager.dart';
 import '../../../utilities/app_values.dart';
 import '../view_models/quiz_view_model.dart';
-import '../../../domain/service/verb_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/show_solution_sheet.dart';
 import 'quiz_content.dart';
@@ -22,8 +22,8 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
 
   // ViewModel
-  late final Future _loadingVerbs = context.read<VerbViewModel>().initializationFuture;
-  List<Verb> get _verbs => context.read<VerbViewModel>().verbs;
+  late final Future _loadingVerbs = context.read<VerbManager>().initializationFuture;
+  List<Verb> get _verbs => context.read<VerbManager>().verbs;
   late final _viewModel = context.read<QuizViewModel>();
 
   // UI Stuff
@@ -61,8 +61,8 @@ class _QuizScreenState extends State<QuizScreen> {
   // TODO Use Navigator
   _showSettingsScreen() async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
-        ChangeNotifierProvider.value(
-          value: context.read<VerbViewModel>(),
+        Provider.value(
+          value: context.read<VerbManager>(),
           child: SettingsScreen(),
         ))
     );
