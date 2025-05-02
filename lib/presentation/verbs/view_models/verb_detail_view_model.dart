@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import '../../../data/enums/auxiliary.dart';
 import '../../../data/models/tenses/tense.dart';
 import '../../../data/models/verb.dart';
-import '../../../domain/view_model.dart';
-import '../../../utilities/extensions/verb_extensions.dart';
+import '../../view_model.dart';
+import '../../../domain/utils/verb_extensions.dart';
 
 final _logTag = (VerbDetailViewModel).toString();
 

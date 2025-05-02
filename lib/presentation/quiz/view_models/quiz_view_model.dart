@@ -8,7 +8,7 @@ import '../../../domain/models/quiz_item.dart';
 import '../../../data/enums/italian_tense.dart';
 import '../../../data/models/verb.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
-import '../../../domain/view_model.dart';
+import '../../view_model.dart';
 
 final _logTag = (QuizViewModel).toString();
 

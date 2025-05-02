@@ -7,6 +7,8 @@ import '../../enums/pronoun.dart';
 typedef ConjugatedVerb = ({String italian, String english});
 typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
 typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
+conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);
+conjugatedVerbOrNullFrom(Map<String, dynamic>? json) => json != null ? conjugatedVerbFrom(json) : null;
 
 // typedefs - Generated Conjugations
 typedef GeneratedConjugations = Map<Pronoun, String?>;
@@ -35,7 +37,7 @@ base class Tense {
   operator [](Pronoun? pronoun) => conjugations[pronoun];
 
   static Conjugations convertJsonToConjugations(Map<String, dynamic> json) {
-    mapToConjugations(Pronoun pronoun) => Conjugation(pronoun, _conjugatedVerb(json[pronoun.jsonKey]));
+    mapToConjugations(Pronoun pronoun) => Conjugation(pronoun, conjugatedVerbOrNullFrom(json[pronoun.jsonKey]));
     return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
   }
 
@@ -59,13 +61,5 @@ base class Tense {
 
       return MapEntry(pronoun, (regularPart: regularPart, irregularPart: irregularPart));
     });
-  }
-}
-
-ConjugatedVerb? _conjugatedVerb(Map<String, dynamic>? json) {
-  try {
-    return (italian: json?['italian'], english: json?['english']);
-  } catch (_) {
-    return null;
   }
 }

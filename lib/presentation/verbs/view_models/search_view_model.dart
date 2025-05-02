@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../data/models/verb.dart';
-import '../../../domain/view_model.dart';
+import '../../view_model.dart';
 
 final _logTag = (SearchViewModel).toString();
 

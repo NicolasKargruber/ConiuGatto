@@ -1,15 +1,14 @@
 import 'package:collection/collection.dart';
 
-import '../../utilities/extensions/verb_extensions.dart';
+import '../../domain/utils/verb_extensions.dart';
 import '../enums/auxiliary.dart';
-import 'base_verb.dart';
 import '../enums/irregularity.dart';
-import '../enums/pronoun.dart';
+import '../enums/italian_tense.dart';
 import '../enums/regularity.dart';
+import 'base_verb.dart';
 import 'tenses/conditional_tenses.dart';
 import 'tenses/imperative_tenses.dart';
 import 'tenses/indicative_tenses.dart';
-import '../enums/italian_tense.dart';
 import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
 
@@ -18,50 +17,8 @@ class Verb extends BaseVerb {
   final Regularity regularity;
   final Set<Irregularity> irregularities;
   final List<Auxiliary> auxiliaries;
-
-  /// Used for Shared Preferences
-  String get prefKey => italianInfinitive;
-
-  String get stem => italianInfinitive.substring(0, italianInfinitive.length - 3); // ex. 'parl'
-  String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ARE, ERE, IRE
-  String get italianInfinitive => infinitive.italian;
-  String get translation => infinitive.english;
-  bool get isRegular => regularity.isRegular;
-  bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
-
-  Tense Function(Auxiliary) getTense(ItalianTense tense) {
-    return switch(tense) {
-      ItalianTense.presentIndicative => (_) => presentIndicative,
-      ItalianTense.presentContinuousIndicative => (_) => presentContinuousIndicative,
-      ItalianTense.imperfectIndicative => (_) => imperfectIndicative,
-      ItalianTense.presentPerfectIndicative => presentPerfectIndicative,
-      ItalianTense.pastPerfectIndicative => pastPerfectIndicative,
-      ItalianTense.historicalPresentPerfectIndicative => (_) => historicalPresentPerfectIndicative,
-      ItalianTense.historicalPastPerfectIndicative => historicalPastPerfectIndicative,
-      ItalianTense.futureIndicative => (_) => futureIndicative,
-      ItalianTense.futurePerfectIndicative => futurePerfectIndicative,
-      ItalianTense.presentSubjunctive => (_) => presentSubjunctive,
-      ItalianTense.imperfectSubjunctive => (_) => imperfectSubjunctive,
-      ItalianTense.presentPerfectSubjunctive => presentPerfectSubjunctive,
-      ItalianTense.pastPerfectSubjunctive => pastPerfectSubjunctive,
-      ItalianTense.presentConditional => (_) => presentConditional,
-      ItalianTense.presentPerfectConditional => presentPerfectConditional,
-      ItalianTense.positiveImperative => (_) => positiveImperative,
-      ItalianTense.negativeImperative => (_) => negativeImperative,
-    };
-  }
-
   final ConjugatedVerb pastParticiple;
-  String get _generatedPastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";
   final ConjugatedVerb presentGerund;
-  String get generatedPresentGerund => "$stem${ending == 'ARE' ? 'ando' : ending == 'ERE' ? 'endo' : 'endo'}";
-
-  String conditionallyGenderParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
-      auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(pastParticiple.italian, forceGender: true): pastParticiple.italian;
-
-  String conditionallyGenderGenderedParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
-      auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(_generatedPastParticiple, forceGender: true): _generatedPastParticiple;
-
 
   Verb({
     required this.infinitive,
@@ -98,6 +55,39 @@ class Verb extends BaseVerb {
       presentGerund: conjugatedVerbFrom(json['gerundio_presente']),
     );
   }
-}
 
-conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);
+  // TODO Move to business logic
+  /// Used for Shared Preferences
+  String get prefKey => italianInfinitive;
+
+  // Getters - Helpers
+  String get stem => italianInfinitive.substring(0, italianInfinitive.length - 3); // ex. 'parl'
+  String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ARE, ERE, IRE
+  String get italianInfinitive => infinitive.italian;
+  String get translation => infinitive.english;
+  bool get isRegular => regularity.isRegular;
+  bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
+
+  // Helpers
+  Tense Function(Auxiliary) getTense(ItalianTense tense) {
+    return switch(tense) {
+      ItalianTense.presentIndicative => (_) => presentIndicative,
+      ItalianTense.presentContinuousIndicative => (_) => presentContinuousIndicative,
+      ItalianTense.imperfectIndicative => (_) => imperfectIndicative,
+      ItalianTense.presentPerfectIndicative => presentPerfectIndicative,
+      ItalianTense.pastPerfectIndicative => pastPerfectIndicative,
+      ItalianTense.historicalPresentPerfectIndicative => (_) => historicalPresentPerfectIndicative,
+      ItalianTense.historicalPastPerfectIndicative => historicalPastPerfectIndicative,
+      ItalianTense.futureIndicative => (_) => futureIndicative,
+      ItalianTense.futurePerfectIndicative => futurePerfectIndicative,
+      ItalianTense.presentSubjunctive => (_) => presentSubjunctive,
+      ItalianTense.imperfectSubjunctive => (_) => imperfectSubjunctive,
+      ItalianTense.presentPerfectSubjunctive => presentPerfectSubjunctive,
+      ItalianTense.pastPerfectSubjunctive => pastPerfectSubjunctive,
+      ItalianTense.presentConditional => (_) => presentConditional,
+      ItalianTense.presentPerfectConditional => presentPerfectConditional,
+      ItalianTense.positiveImperative => (_) => positiveImperative,
+      ItalianTense.negativeImperative => (_) => negativeImperative,
+    };
+  }
+}

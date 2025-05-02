@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../../data/models/verb.dart';
-import '../view_model.dart';
+import '../../presentation/view_model.dart';
 
 final _logTag = (VerbViewModel).toString();
 
