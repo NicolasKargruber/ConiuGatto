@@ -21,7 +21,6 @@ class VerbDetailViewModel extends ViewModel {
     _verb.auxiliaries.sortBy((e) => e.index);
     _selectedAuxiliary = _verb.auxiliaries.first;
     debugPrint("$_logTag | Irregularities: ${_verb.irregularities}");
-    debugPrint("$_logTag | Present indicative: ${_verb.presentIndicative.conjugations.toString()}");
   }
 
   // State
@@ -31,10 +30,10 @@ class VerbDetailViewModel extends ViewModel {
   // Getters - State
   bool get isRegular => _verb.isRegular;
   bool get isDoubleAuxiliary => _verb.isDoubleAuxiliary;
-  List<Tense> get indicativeTenses => _verb.getIndicativeTenses(_selectedAuxiliary, includeGenerated: true);
-  List<Tense> get subjunctiveTenses => _verb.getSubjunctiveTenses(_selectedAuxiliary, includeGenerated: true);
-  List<Tense> get conditionalTenses => _verb.getConditionalTenses(_selectedAuxiliary, includeGenerated: true);
-  List<Tense> get imperativeTenses => _verb.getImperativeTenses(includeGenerated: true);
+  List<Tense> get indicativeTenses => _verb.getIndicativeTenses(_selectedAuxiliary);
+  List<Tense> get subjunctiveTenses => _verb.getSubjunctiveTenses(_selectedAuxiliary);
+  List<Tense> get conditionalTenses => _verb.getConditionalTenses(_selectedAuxiliary);
+  List<Tense> get imperativeTenses => _verb.getImperativeTenses();
   List<String> get auxiliaryLabels => _verb.auxiliaries.map((e) => e.name.toUpperCase()).toList();
   int get selectedAuxiliaryIndex => _selectedAuxiliary.index;
 

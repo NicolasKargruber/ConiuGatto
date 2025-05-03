@@ -1,10 +1,8 @@
 import '../enums/pronoun.dart';
+import 'verb_dto.dart';
 
 // typedefs - Conjugations
-typedef ConjugatedVerb = ({String italian, String english});
-typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
-typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
-conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);
+typedef Conjugation = MapEntry<Pronoun, TranslatedConjugation?>;
 conjugatedVerbOrNullFrom(Map<String, dynamic>? json) => json != null ? conjugatedVerbFrom(json) : null;
 
 final _logTag = (TenseDTO).toString();

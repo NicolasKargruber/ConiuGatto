@@ -2,26 +2,32 @@ import 'package:collection/collection.dart';
 
 import '../../data/enums/auxiliary.dart';
 import '../../data/enums/irregularity.dart';
-import 'enums/italian_tense.dart';
 import '../../data/enums/regularity.dart';
 import '../../data/models/verb_dto.dart';
+import '../utils/verb_dto_extensions.dart';
 import '../utils/verb_extensions.dart';
 import 'base_verb.dart';
+import 'enums/italian_tense.dart';
 import 'tenses/conditional_tenses.dart';
 import 'tenses/imperative_tenses.dart';
 import 'tenses/indicative_tenses.dart';
 import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
 
-typedef ConjugatedVerb = ({String italian, String english});
 
 class Verb extends BaseVerb {
-  final ConjugatedVerb infinitive;
+  final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
   final List<Auxiliary> auxiliaries;
-  final ConjugatedVerb pastParticiple;
-  final ConjugatedVerb presentGerund;
+  final TranslatedConjugation pastParticiple;
+  final TranslatedConjugation presentGerund;
+
+  // IMPERATIVE => START
+  /// => Imperativo Positivo
+  final Tense positiveImperative;
+  final NegativeImperative negativeImperative;
+  // IMPERATIVE <= END
 
   Verb._({
     required this.infinitive,
@@ -35,7 +41,8 @@ class Verb extends BaseVerb {
     required super.presentSubjunctive,
     required super.imperfectSubjunctive,
     required super.presentConditional,
-    required super.positiveImperative,
+    required this.positiveImperative,
+    required this.negativeImperative,
     required this.pastParticiple,
     required this.presentGerund,
   });
@@ -46,14 +53,15 @@ class Verb extends BaseVerb {
       regularity: dto.regularity,
       irregularities: dto.irregularities,
       auxiliaries: dto.auxiliaries,
-      presentIndicative: PresentIndicative(conjugations: dto.presentIndicative.conjugations),
-      imperfectIndicative: ImperfectIndicative(conjugations: dto.imperfectIndicative.conjugations),
-      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative(conjugations: dto.historicalPresentPerfectIndicative.conjugations),
-      futureIndicative: FutureIndicative(conjugations: dto.futureIndicative.conjugations),
-      presentSubjunctive: PresentSubjunctive(conjugations: dto.presentSubjunctive.conjugations),
-      imperfectSubjunctive: ImperfectSubjunctive(conjugations: dto.imperfectSubjunctive.conjugations),
-      presentConditional: PresentConditional(conjugations: dto.presentConditional.conjugations),
-      positiveImperative: PositiveImperative(conjugations: dto.positiveImperative.conjugations),
+      presentIndicative: PresentIndicative.from(conjugations: dto.presentIndicative.conjugations),
+      imperfectIndicative: ImperfectIndicative.from(conjugations: dto.imperfectIndicative.conjugations),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.from(conjugations: dto.historicalPresentPerfectIndicative.conjugations),
+      futureIndicative: FutureIndicative.from(conjugations: dto.futureIndicative.conjugations),
+      presentSubjunctive: PresentSubjunctive.from(conjugations: dto.presentSubjunctive.conjugations),
+      imperfectSubjunctive: ImperfectSubjunctive.from(conjugations: dto.imperfectSubjunctive.conjugations),
+      presentConditional: PresentConditional.from(conjugations: dto.presentConditional.conjugations, generated: dto.generatePresentConditional),
+      positiveImperative: PositiveImperative.from(conjugations: dto.positiveImperative.conjugations, generated: dto.generatePositiveImperative),
+      negativeImperative: dto.negativeImperative,
       pastParticiple: dto.pastParticiple,
       presentGerund: dto.presentGerund,
     );

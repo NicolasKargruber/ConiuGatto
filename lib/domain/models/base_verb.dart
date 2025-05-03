@@ -26,11 +26,6 @@ class BaseVerb {
   final Tense presentConditional;
   // CONDITIONAL <= END
 
-  // IMPERATIVE => START
-  /// => Imperativo Positivo
-  final Tense positiveImperative;
-  // IMPERATIVE <= END
-
   BaseVerb({
     required this.presentIndicative,
     required this.imperfectIndicative,
@@ -39,6 +34,5 @@ class BaseVerb {
     required this.presentSubjunctive,
     required this.imperfectSubjunctive,
     required this.presentConditional,
-    required this.positiveImperative,
   });
 }

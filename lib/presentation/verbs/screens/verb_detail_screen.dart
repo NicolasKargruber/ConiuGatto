@@ -67,9 +67,7 @@ class VerbDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Mood.indicative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(
-                          tenses: viewModel.indicativeTenses,
-                        )
+                        ConjugationTable(tenses: viewModel.indicativeTenses),
                       ],
                     ),
                   ),
@@ -84,9 +82,7 @@ class VerbDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Mood.subjunctive.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(
-                          tenses: viewModel.subjunctiveTenses,
-                        ),
+                        ConjugationTable(tenses: viewModel.subjunctiveTenses),
                       ],
                     ),
                   ),
@@ -101,9 +97,7 @@ class VerbDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Mood.conditional.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(
-                          tenses: viewModel.conditionalTenses,
-                        ),
+                        ConjugationTable(tenses: viewModel.conditionalTenses),
                       ],
                     ),
                   ),
@@ -118,9 +112,7 @@ class VerbDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Mood.imperative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(
-                            tenses: viewModel.imperativeTenses,
-                            showEnglishPronouns: false),
+                        ConjugationTable(tenses: viewModel.imperativeTenses),
                       ],
                     ),
                   ),

@@ -85,7 +85,7 @@ class QuizItem {
   // Labels
   String? get currentTitle => tense.extendedLabel;
   String get question => "${pronoun.italian} (${verb.italianInfinitive})";
-  String get translation => "${pronoun.english} ${tense[pronoun]?.english}";
+  String? get translation => tense[pronoun]?.englishWithPronoun;
   String? get solutionExtended => "(${pronoun.italian}) $solution";
 
   // Quiz

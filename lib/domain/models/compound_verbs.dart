@@ -1,4 +1,6 @@
 import '../../data/enums/auxiliary.dart';
+import '../../data/models/tense_dto.dart';
+import '../../data/models/verb_dto.dart';
 import 'base_verb.dart';
 import 'enums/simple_tense.dart';
 import '../../data/enums/pronoun.dart';
@@ -20,11 +22,12 @@ class CompoundVerbs {
     required this.stare,
     // required this.andare,
   });
-
   // Singleton instance (since these never change)
   static final instance = CompoundVerbs._(
     avere: BaseVerb(
-      presentIndicative: PresentIndicative.fromJson({"presente": {
+      presentIndicative: PresentIndicative.from(conjugations:
+      convertJsonToConjugations
+      ({
         "io": {
           "italian": "ho",
           "english": "have"
@@ -49,8 +52,8 @@ class CompoundVerbs {
           "italian": "hanno",
           "english": "have"
         }
-      }}),
-      imperfectIndicative: ImperfectIndicative.fromJson({"imperfetto": {
+      })),
+      imperfectIndicative: ImperfectIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "avevo",
           "english": "used to have"
@@ -75,86 +78,86 @@ class CompoundVerbs {
           "italian": "avevano",
           "english": "had"
         }
-      }}),
-      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson({"passato_remoto": {
-            "io": {
-              "italian": "ebbi",
-              "english": "had"
-            },
-            "tu": {
-              "italian": "avesti",
-              "english": "had"
-            },
-            "lui/lei": {
-              "italian": "ebbe",
-              "english": "had"
-            },
-            "noi": {
-              "italian": "avemmo",
-              "english": "had"
-            },
-            "voi": {
-              "italian": "aveste",
-              "english": "had"
-            },
-            "loro": {
-              "italian": "ebbero",
-              "english": "had"
-            }
-          }}),
-      futureIndicative: FutureIndicative.fromJson({"futuro_semplice": {
+      })),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
-          "italian": "avrò",
-          "english": "will have"
+          "italian": "ebbi",
+          "english": "had"
         },
         "tu": {
-          "italian": "avrai",
-          "english": "will have"
+          "italian": "avesti",
+          "english": "had"
         },
         "lui/lei": {
-          "italian": "avrà",
-          "english": "will have"
+          "italian": "ebbe",
+          "english": "had"
         },
         "noi": {
-          "italian": "avremo",
-          "english": "will have"
+          "italian": "avemmo",
+          "english": "had"
         },
         "voi": {
-          "italian": "avrete",
-          "english": " will have"
+          "italian": "aveste",
+          "english": "had"
         },
         "loro": {
-          "italian": "avranno",
-          "english": "will have"
+          "italian": "ebbero",
+          "english": "had"
         }
-      }}),
-      presentSubjunctive: PresentSubjunctive.fromJson({"presente": {
-        "io": {
-          "italian": "abbia",
-          "english": "have"
-        },
-        "tu": {
-          "italian": "abbia",
-          "english": "have"
-        },
-        "lui/lei": {
-          "italian": "abbia",
-          "english": "has"
-        },
-        "noi": {
-          "italian": "abbiamo",
-          "english": "have"
-        },
-        "voi": {
-          "italian": "abbiate",
-          "english": " have"
-        },
-        "loro": {
-          "italian": "abbiano",
-          "english": "have"
-        }
-      }}),
-      imperfectSubjunctive: ImperfectSubjunctive.fromJson({"imperfetto": {
+      })),
+      futureIndicative: FutureIndicative.from(conjugations: convertJsonToConjugations({
+  "io": {
+  "italian": "avrò",
+  "english": "will have"
+  },
+  "tu": {
+  "italian": "avrai",
+  "english": "will have"
+  },
+  "lui/lei": {
+  "italian": "avrà",
+  "english": "will have"
+  },
+  "noi": {
+  "italian": "avremo",
+  "english": "will have"
+  },
+  "voi": {
+  "italian": "avrete",
+  "english": " will have"
+  },
+  "loro": {
+  "italian": "avranno",
+  "english": "will have"
+  }
+  })),
+      presentSubjunctive: PresentSubjunctive.from(conjugations: convertJsonToConjugations({
+  "io": {
+  "italian": "abbia",
+  "english": "have"
+  },
+  "tu": {
+  "italian": "abbia",
+  "english": "have"
+  },
+  "lui/lei": {
+  "italian": "abbia",
+  "english": "has"
+  },
+  "noi": {
+  "italian": "abbiamo",
+  "english": "have"
+  },
+  "voi": {
+  "italian": "abbiate",
+  "english": " have"
+  },
+  "loro": {
+  "italian": "abbiano",
+  "english": "have"
+  }
+  })),
+      imperfectSubjunctive: ImperfectSubjunctive.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "avessi",
           "english": "used to have"
@@ -179,8 +182,8 @@ class CompoundVerbs {
           "italian": "avessero",
           "english": "used to have"
         }
-      }}),
-      presentConditional: PresentConditional.fromJson({"presente": {
+      })),
+      presentConditional: PresentConditional.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "avrei",
           "english": "would have"
@@ -205,33 +208,10 @@ class CompoundVerbs {
           "italian": "avrebbero",
           "english": "would have"
         }
-      }}),
-      positiveImperative: PositiveImperative.fromJson({"positivo": {
-        "io": null,
-        "tu": {
-          "italian": "abbi",
-          "english": "(to you) have!"
-        },
-        "lui/lei": {
-          "italian": "abbia",
-          "english": "(to you formal) have!"
-        },
-        "noi": {
-          "italian": "abbiamo",
-          "english": "let's have!"
-        },
-        "voi": {
-          "italian": "abbiate",
-          "english": "(to you plural) have!"
-        },
-        "loro": {
-          "italian": "abbiano",
-          "english": "(to you plural formal) have!"
-        }
-      }}),
+      })),
     ),
     essere: BaseVerb(
-      presentIndicative: PresentIndicative.fromJson({"presente": {
+      presentIndicative: PresentIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "sono",
           "english": "am"
@@ -256,8 +236,8 @@ class CompoundVerbs {
           "italian": "sono",
           "english": "are"
         }
-      }}),
-      imperfectIndicative: ImperfectIndicative.fromJson({"imperfetto": {
+      })),
+      imperfectIndicative: ImperfectIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "ero",
           "english": "was"
@@ -282,8 +262,8 @@ class CompoundVerbs {
           "italian": "erano",
           "english": "were"
         }
-      }}),
-      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson({"passato_remoto": {
+      })),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "fui",
           "english": "was"
@@ -308,8 +288,8 @@ class CompoundVerbs {
           "italian": "furono",
           "english": "were"
         }
-      }}),
-      futureIndicative: FutureIndicative.fromJson({"futuro_semplice": {
+      })),
+      futureIndicative: FutureIndicative.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "sarò",
           "english": "will be"
@@ -334,8 +314,8 @@ class CompoundVerbs {
           "italian": "saranno",
           "english": "will be"
         }
-      }}),
-      presentSubjunctive: PresentSubjunctive.fromJson({"presente": {
+      })),
+      presentSubjunctive: PresentSubjunctive.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "sia",
           "english": "am"
@@ -360,8 +340,8 @@ class CompoundVerbs {
           "italian": "siano",
           "english": "are"
         }
-      }}),
-      imperfectSubjunctive: ImperfectSubjunctive.fromJson({"imperfetto": {
+      })),
+      imperfectSubjunctive: ImperfectSubjunctive.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "fosse",
           "english": "was"
@@ -382,8 +362,8 @@ class CompoundVerbs {
           "italian": "fossero",
           "english": "were"
         }
-      }}),
-      presentConditional: PresentConditional.fromJson({"presente": {
+      })),
+      presentConditional: PresentConditional.from(conjugations: convertJsonToConjugations({
         "io": {
           "italian": "sarei",
           "english": "would be"
@@ -408,33 +388,10 @@ class CompoundVerbs {
           "italian": "sarebbero",
           "english": "would be"
         }
-      }}),
-      positiveImperative: PositiveImperative.fromJson({"positivo": {
-        "io": null,
-        "tu": {
-          "italian": "sii",
-          "english": "(to you) be!"
-        },
-        "lui/lei": {
-          "italian": "sia",
-          "english": "(to you formal) be!"
-        },
-        "noi": {
-          "italian": "siamo",
-          "english": "let's be!"
-        },
-        "voi": {
-          "italian": "siate",
-          "english": "(to you plural) be!"
-        },
-        "loro": {
-          "italian": "siano",
-          "english": "(to you plural formal) be!"
-        }
-      }}),
+      })),
   ),
     stare: BaseVerb(
-      presentIndicative: PresentIndicative.fromJson({"presente": {
+      presentIndicative: PresentIndicative.from( conjugations: convertJsonToConjugations({
         "io": {
           "italian": "sto",
           "english": "am"
@@ -459,8 +416,8 @@ class CompoundVerbs {
           "italian": "stanno",
           "english": "are"
         }
-      }}),
-      imperfectIndicative: ImperfectIndicative.fromJson({"imperfetto": {
+      })),
+      imperfectIndicative: ImperfectIndicative.from( conjugations: convertJsonToConjugations({
         "io": {
           "italian": "stavo",
           "english": "used to be"
@@ -485,8 +442,8 @@ class CompoundVerbs {
           "italian": "stavano",
           "english": "used to be"
         }
-      }}),
-      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.fromJson({"passato_remoto": {
+      })),
+      historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.from( conjugations: convertJsonToConjugations( {
         "io": {
           "italian": "stetti",
           "english": "was"
@@ -511,8 +468,8 @@ class CompoundVerbs {
           "italian": "stettero",
           "english": "were"
         }
-      }}),
-      futureIndicative: FutureIndicative.fromJson({"futuro_semplice": {
+      })),
+      futureIndicative: FutureIndicative.from( conjugations: convertJsonToConjugations( {
         "io": {
           "italian": "starò",
           "english": "will be"
@@ -537,8 +494,8 @@ class CompoundVerbs {
           "italian": "staranno",
           "english": "will be"
         }
-      }}),
-      presentSubjunctive: PresentSubjunctive.fromJson({"presente": {
+      })),
+      presentSubjunctive: PresentSubjunctive.from( conjugations: convertJsonToConjugations({
         "io": {
           "italian": "stia",
           "english": "am"
@@ -563,8 +520,8 @@ class CompoundVerbs {
           "italian": "stiano",
           "english": "are"
         }
-      }}),
-      imperfectSubjunctive: ImperfectSubjunctive.fromJson({"imperfetto": {
+      })),
+      imperfectSubjunctive: ImperfectSubjunctive.from( conjugations: convertJsonToConjugations({
         "io": {
           "italian": "stessi",
           "english": "used to be"
@@ -589,8 +546,8 @@ class CompoundVerbs {
           "italian": "stessero",
           "english": "used to be"
         }
-      }}),
-      presentConditional: PresentConditional.fromJson({"presente": {
+      })),
+      presentConditional: PresentConditional.from( conjugations: convertJsonToConjugations({
         "io": {
           "italian": "starei",
           "english": "would be"
@@ -615,30 +572,7 @@ class CompoundVerbs {
           "italian": "starebbero",
           "english": "would be"
         }
-      }}),
-      positiveImperative: PositiveImperative.fromJson({"positivo": {
-        "io": null,
-        "tu": {
-          "italian": "stai",
-          "english": "(to you) be!"
-        },
-        "lui/lei": {
-          "italian": "stia",
-          "english": "(to you formal) be!"
-        },
-        "noi": {
-          "italian": "stiamo",
-          "english": "let's be!"
-        },
-        "voi": {
-          "italian": "state",
-          "english": "(to you plural) be!"
-        },
-        "loro": {
-          "italian": "stiano",
-          "english": "(to you plural formal) be!"
-        }
-      }}),
+      })),
     ),
   );
 
@@ -676,4 +610,10 @@ class CompoundVerbs {
 
   String? conjugateStareInEnglish(Pronoun pronoun, {SimpleTense tense = SimpleTense.presentIndicative}) =>
       stare.presentIndicative[pronoun]?.english;
+
+  // TODO Remove in Future
+  static Conjugations convertJsonToConjugations(Map<String, dynamic> json) {
+    mapToConjugations(Pronoun pronoun) => Conjugation(pronoun, conjugatedVerbOrNullFrom(json[pronoun.jsonKey]));
+    return Conjugations.fromEntries(Pronoun.values.map(mapToConjugations));
+  }
 }

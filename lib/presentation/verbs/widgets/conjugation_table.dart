@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../utilities/app_values.dart';
 import '../../../data/enums/pronoun.dart';
+import '../../../domain/models/tenses/conjugation.dart';
 import '../../../domain/models/tenses/tense.dart';
+import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../../widgets/custom_data_table.dart';
 
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.tenses, this.showEnglishPronouns = true});
+  const ConjugationTable({super.key, required this.tenses});
 
   final List<Tense> tenses;
-  final bool showEnglishPronouns;
+  //final bool includeEnglishPronouns;
 
   @override
   Widget build(BuildContext context) {
@@ -20,33 +22,28 @@ class ConjugationTable extends StatelessWidget {
         children: [
           // Fixed Section
           // "Pronoun" + (io, tu, lui/lei, noi, voi, loro)
-          _buildPronounTable(context),
+          PronounTable(),
       
           // Scrollable Section
           // Tenses (Presente, ...) + Conjugations (mangio, mangi, ...)
           Flexible(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: DataTable(
-                headingRowColor: WidgetStateColor.resolveWith((states) => context.colorScheme.inverseSurface),
-                dividerThickness: AppValues.s1,
-                dataRowMinHeight: AppValues.s48,
-                dataRowMaxHeight: AppValues.s52,
-                headingRowHeight: AppValues.s56,
-                decoration: BoxDecoration(border: Border(
+              child: CustomDataTable(
+                decoration: BoxDecoration(
+                  border: Border(
                     right: BorderSide(color: Colors.grey.shade300),
                     top: BorderSide(color: Colors.grey.shade300),
-                    bottom: BorderSide(color: Colors.grey.shade300))
-                  ,
+                    bottom: BorderSide(color: Colors.grey.shade300),
+                  ),
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(AppValues.r12),
                     bottomRight: Radius.circular(AppValues.r12),
                   ),
                   //color: Theme.of(context).cardColor,
                 ),
-                columns: _buildTenseColumns(context),
-                rows: _buildTenseRows(context),
-                clipBehavior: Clip.hardEdge,
+                columns: tenses.map((tense) => _dataColumnsFromLabel(tense.label)).toList(),
+                rows: Pronoun.values.map(_dataRowsFromPronoun).toList(),
               ),
             ),
           ),
@@ -55,15 +52,67 @@ class ConjugationTable extends StatelessWidget {
     );
   }
 
-  _buildPronounTable(BuildContext context){
-    return DataTable(
-        headingRowColor: WidgetStateColor.resolveWith((states) => context.colorScheme.inverseSurface),
-        dividerThickness: AppValues.s1,
-        dataRowMinHeight: AppValues.s48,
-        dataRowMaxHeight: AppValues.s52,
-        headingRowHeight: AppValues.s56,
+  DataColumn _dataColumnsFromLabel(String label) => DataColumn(
+    label: Builder(
+      builder: (context) {
+        return Tooltip(
+          message: label,
+          child: Text(label,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: context.colorScheme.onInverseSurface,
+              fontSize: AppValues.fs13,
+            ),
+          ),
+        );
+      }
+    ),
+  );
 
-        clipBehavior: Clip.hardEdge,
+  DataRow _dataRowsFromPronoun(Pronoun pronoun) => DataRow(
+    cells: tenses.map((tense) => _dataCellsFromTense(tense[pronoun])).toList(),
+  );
+
+  DataCell _dataCellsFromTense(Conjugation? conjugation) => DataCell(
+    Builder(
+      builder: (context) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if(conjugation != null) ...[
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: conjugation.italianRegularPart,
+                      style: TextStyle(color: context.colorScheme.onSurface),
+                    ),
+                    TextSpan(
+                      text: conjugation.italianIrregularPart,
+                      style: TextStyle(color: context.colorScheme.secondary, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              Text(conjugation.englishWithPronoun,
+                  style: TextStyle(fontStyle: FontStyle.italic)
+              )
+            ]
+            else Text("-")
+          ],
+        );
+      }
+    ),
+  );
+}
+
+class PronounTable extends StatelessWidget {
+  const PronounTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomDataTable(
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
             borderRadius: BorderRadius.only(
@@ -83,75 +132,21 @@ class ConjugationTable extends StatelessWidget {
             ),
           ),
         ],
-        rows: Pronoun.values.map((pronoun) => DataRow(
-          cells: [
-            DataCell(
-              Text(pronoun.italian,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: AppValues.fs13,
-                ),
-              ),
-            ),
-          ],
-        )).toList()
+        rows: Pronoun.values.map((pronoun) => _dataRowFromLabel(pronoun.italian)).toList(),
     );
   }
 
-  _buildTenseColumns(BuildContext context) => tenses.map((tense) => DataColumn(
-    label: Tooltip(
-      message: tense.label,
-      child: Text(tense.label,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          color: context.colorScheme.onInverseSurface,
-          fontSize: AppValues.fs13,
+  DataRow _dataRowFromLabel(String label) => DataRow(
+    cells: [
+      DataCell(
+        Text(label,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: AppValues.fs13,
+          ),
         ),
       ),
-    ),
-  )).toList();
-
-  _buildTenseRows(BuildContext context) {
-    return Pronoun.values.map((pronoun) =>
-      DataRow(
-        cells: tenses.map((tense) =>
-            DataCell(
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if(tense.conjugations[pronoun] != null) ...[
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          if(tense.italianConjugationsParted?[pronoun] case var parts?)
-                            ...[
-                              TextSpan(
-                                text: parts.regularPart,
-                                style: TextStyle(color: context.colorScheme.onSurface),
-                              ),
-                              TextSpan(
-                                text: parts.irregularPart,
-                                style: TextStyle(color: context.colorScheme.secondary, fontWeight: FontWeight.bold),
-                              ),
-                            ]
-                          else
-                            TextSpan(
-                              text: "-",
-                              style: TextStyle(color: context.colorScheme.onSurface),
-                            ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                        "${showEnglishPronouns ? "${pronoun.english} " : ""}${tense.conjugations[pronoun]?.english}",
-                        style: TextStyle(fontStyle: FontStyle.italic)
-                    )
-                  ]
-                  else Text("-")
-                ],
-              ),
-            )).toList(),
-      )).toList();
-  }
+    ],
+  );
 }
+

@@ -5,19 +5,17 @@ import '../enums/regularity.dart';
 import 'tense_dto.dart';
 
 // typedefs - Conjugations
-typedef ConjugatedVerb = ({String italian, String english});
-typedef Conjugations = Map<Pronoun, ConjugatedVerb?>;
-typedef Conjugation = MapEntry<Pronoun, ConjugatedVerb?>;
+typedef TranslatedConjugation = ({String italian, String english});
+typedef Conjugations = Map<Pronoun, TranslatedConjugation?>;
 conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);
-conjugatedVerbOrNullFrom(Map<String, dynamic>? json) => json != null ? conjugatedVerbFrom(json) : null;
 
 class VerbDTO {
-  final ConjugatedVerb infinitive;
+  final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
   final List<Auxiliary> auxiliaries;
-  final ConjugatedVerb pastParticiple;
-  final ConjugatedVerb presentGerund;
+  final TranslatedConjugation pastParticiple;
+  final TranslatedConjugation presentGerund;
 
   // INDICATIVE => START
   /// => Indicativo Presente
