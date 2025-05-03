@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             color: schemeDark.surfaceBright,
           ),
       ),
-      home: Provider(
+      home: ChangeNotifierProvider(
         create: (_) => VerbService(),
         child: HomeScreen(),
       ),

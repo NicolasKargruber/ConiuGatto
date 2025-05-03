@@ -21,6 +21,6 @@ class QuizButton extends StatelessWidget {
           ),
         ),
       ),
-    );;
+    );
   }
 }

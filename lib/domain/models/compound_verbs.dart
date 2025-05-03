@@ -5,7 +5,6 @@ import 'base_verb.dart';
 import 'enums/simple_tense.dart';
 import '../../data/enums/pronoun.dart';
 import 'tenses/conditional_tenses.dart';
-import 'tenses/imperative_tenses.dart';
 import 'tenses/indicative_tenses.dart';
 import 'tenses/subjunctive_tenses.dart';
 

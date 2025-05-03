@@ -15,8 +15,10 @@ abstract class ViewModel extends ChangeNotifier {
   ViewModel(){
     _isInitialized = false;
     initializationFuture = initialize();
-    initializationFuture.then((_) => _isInitialized = true);
-    notifyListeners();
+    initializationFuture.then((_) {
+      _isInitialized = true;
+      notifyListeners();
+    });
   }
 
   // Initialize => TO BE OVERRIDDEN

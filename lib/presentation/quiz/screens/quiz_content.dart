@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../utilities/app_values.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/quiz_view_model.dart';
 import '../widgets/quiz_input_fields.dart';
 import '../../widgets/shake_widget.dart';
@@ -12,8 +13,7 @@ import '../widgets/quiz_button.dart';
 final _logTag = (QuizContent).toString();
 
 class QuizContent extends StatelessWidget {
-  const QuizContent({
-    super.key,
+  const QuizContent({super.key,
     required this.onSettingsButtonPressed,
     required this.checkAnswer,
     required this.textController,
@@ -30,15 +30,20 @@ class QuizContent extends StatelessWidget {
     debugPrint("$_logTag | build()");
     final viewModel = context.watch<QuizViewModel>();
 
-    return !viewModel.hasQuizzableItems ? Center(child: _buildNoTensesAvailable()) : Padding(
+    return !viewModel.hasQuizzableItems ?
+    Center(child: _buildNoTensesAvailable()) :
+    Padding(
       padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedSmoothIndicator(
-            activeIndex: viewModel.totalQuizCount, // PageController
+            activeIndex: viewModel.totalQuizCount,
             count: 10,
-            effect: WormEffect(), // your preferred effect
+            effect: WormEffect(
+              activeDotColor: context.colorScheme.primary,
+              dotColor: context.colorScheme.surfaceContainerHighest,
+            ), // your preferred effect
           ),
 
           Expanded(
@@ -53,7 +58,9 @@ class QuizContent extends StatelessWidget {
                         children: [
                           if(viewModel.isDoubleAuxiliary)
                             Chip(label: Text("${viewModel.currentAuxiliaryLabel}")),
+
                           SizedBox(height: AppValues.s4),
+
                           AutoSizeText(
                             viewModel.currentTitle ?? "Not available",
                             style: TextStyle(
