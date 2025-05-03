@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'data/theme.dart';
-import 'screens/home_screen.dart';
-import 'utilities/shared_preference_manager.dart';
-import 'view_models/verb_view_model.dart';
+import 'domain/service/verb_service.dart';
+import 'presentation/theme.dart';
+import 'presentation/home_screen.dart';
+import 'domain/service/shared_preference_service.dart';
 
 // TODO Use GetIt for Dependency Injection
-late SharedPreferenceManager preferenceManager;
+late SharedPreferenceService preferenceManager;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  preferenceManager = await SharedPreferenceManager.initialize();
+  preferenceManager = SharedPreferenceService();
+  await preferenceManager.initializationFuture;
   runApp(const MyApp());
 }
 
@@ -26,12 +27,18 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
           colorScheme: schemeLight,
+        dividerTheme: DividerThemeData(
+          color: schemeLight.surfaceDim,
+        ),
       ),
       darkTheme: ThemeData(
           colorScheme: schemeDark,
+          dividerTheme: DividerThemeData(
+            color: schemeDark.surfaceBright,
+          ),
       ),
       home: ChangeNotifierProvider(
-        create: (_) => VerbViewModel(),
+        create: (_) => VerbService(),
         child: HomeScreen(),
       ),
     );
