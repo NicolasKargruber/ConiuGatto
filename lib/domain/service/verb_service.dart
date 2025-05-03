@@ -16,6 +16,7 @@ class VerbService extends Service {
   @override
   Future initialize() async {
     _verbs = await loadAll();
+    _verbs.sort((a, b) => a.italianInfinitive.compareTo(b.italianInfinitive));
   }
 
   Future loadAll() async {

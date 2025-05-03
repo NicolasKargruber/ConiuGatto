@@ -40,14 +40,12 @@ class VerbsContent extends StatelessWidget {
                   subtitle: Text(verbs[index].translation),
                   onTap: () {
                     Navigator.push(context,
-                    MaterialPageRoute(
-                          builder: (context) {
-                            return ChangeNotifierProvider(
-                              create: (_) => VerbDetailViewModel(verbs[index]),
-                              child: VerbDetailScreen(),
-                            );
-                          },
+                      MaterialPageRoute(
+                        builder: (_) => ChangeNotifierProvider(
+                          create: (_) => VerbDetailViewModel(verbs[index]),
+                          child: VerbDetailScreen(),
                         ),
+                      ),
                     );
                   },
                 );

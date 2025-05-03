@@ -6,7 +6,7 @@ import '../../utilities/shared_preference_keys.dart';
 import '../../data/enums/pronoun.dart';
 import 'service.dart';
 
-typedef SharedPreference = ({String key, String value});
+//typedef SharedPreference = ({String key, String value});
 
 final _logTag = (SharedPreferenceService).toString();
 

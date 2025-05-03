@@ -1,61 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../utilities/app_values.dart';
-import '../../../utilities/shared_preference_keys.dart';
-import '../../../main.dart';
-import '../../../domain/models/enums/mood.dart';
 import '../../../domain/models/enums/italian_tense.dart';
+import '../../../domain/models/enums/mood.dart';
+import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../view_models/settings_view_model.dart';
 
-class ChooseTensesSheet extends StatefulWidget {
+final String _logTag = (ChooseTensesSheet).toString();
+
+class ChooseTensesSheet extends StatelessWidget {
   const ChooseTensesSheet({super.key});
 
-  @override
-  State<ChooseTensesSheet> createState() => _ChooseTensesSheetState();
-}
-
-class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
-  late String logTag = (widget).toString();
-  
-  // SharedPreferences
-  final key = SharedPreferenceKeys.quizzableTenses;
-  Set<String> _tensePrefs = {};
-
-   _loadPrefs() {
-    setState(() {
-      _tensePrefs = preferenceManager.loadTensePrefs();
-    });
-  }
-
-  _onSelectTense(bool selected, {required String prefValue}) {
-    setState(() {
-      if(selected) {
-        _tensePrefs.add(prefValue);
-        debugPrint("$logTag | Added $prefValue");
-      }
-      else {
-        _tensePrefs.remove(prefValue);
-        debugPrint("$logTag | Removed $prefValue");
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    debugPrint("$logTag | initState() ");
-    _loadPrefs();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    debugPrint("$logTag | dispose() ");
-    preferenceManager.updateTensePrefs(_tensePrefs);
-    super.dispose();
+  _onSelectTense(BuildContext context, bool selected, {required ItalianTense tense}) {
+    if(selected) {
+      context.read<SettingsViewModel>().addTense(tense);
+    }
+    else {
+      context.read<SettingsViewModel>().removeTense(tense);
+    }
   }
   
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<SettingsViewModel>();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppValues.p4),
       child: Column(
@@ -73,16 +41,46 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             ),
           ),
 
-          _buildMoodSection(Mood.indicative.label, ItalianTense.indicativeLabeledPrefs),
-          _buildMoodSection(Mood.conditional.label, ItalianTense.conditionalLabeledPrefs),
-          _buildMoodSection(Mood.subjunctive.label, ItalianTense.subjunctiveLabeledPrefs),
-          _buildMoodSection(Mood.imperative.label, ItalianTense.imperativeLabeledPrefs),
+          MoodSection(
+              label: Mood.indicative.label,
+              italianTenses: ItalianTense.indicativeTenses,
+              onSelectedTense: _onSelectTense,
+              isSelected: viewModel.isTenseSelected,
+          ),
+          MoodSection(
+              label: Mood.conditional.label,
+              italianTenses: ItalianTense.conditionalTenses,
+              onSelectedTense: _onSelectTense,
+              isSelected: viewModel.isTenseSelected,
+          ),
+          MoodSection(
+              label: Mood.subjunctive.label,
+              italianTenses: ItalianTense.subjunctiveTenses,
+              onSelectedTense: _onSelectTense,
+              isSelected: viewModel.isTenseSelected,
+          ),
+          MoodSection(
+              label: Mood.imperative.label,
+              italianTenses: ItalianTense.imperativeTenses,
+              onSelectedTense: _onSelectTense,
+              isSelected: viewModel.isTenseSelected,
+          ),
         ],
       ),
     );
   }
+}
 
-  _buildMoodSection(String moodLabel, List<LabeledPrefs> labeledPrefs) {
+class MoodSection extends StatelessWidget {
+  const MoodSection({super.key, required this.label, required this.italianTenses, required this.onSelectedTense, required this.isSelected});
+
+  final String label;
+  final List<ItalianTense> italianTenses;
+  final Function(BuildContext, bool, {required ItalianTense tense}) onSelectedTense;
+  final bool Function(ItalianTense) isSelected;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -92,7 +90,7 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
             padding: EdgeInsets.all(AppValues.p12),
             color: context.colorScheme.surfaceContainerHigh,
             child: Text(
-              moodLabel,
+              label,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: AppValues.fs18,
@@ -104,17 +102,15 @@ class _ChooseTensesSheetState extends State<ChooseTensesSheet> {
           padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
             spacing: AppValues.s8,
-            children: labeledPrefs.map((labeledTense) {
-              return FilterChip(
-                    label: Text(labeledTense.label),
-                    selected: _tensePrefs.contains(labeledTense.prefKey),
-                    onSelected: (selected) => _onSelectTense(selected, prefValue: labeledTense.prefKey)
-                );
-            },
-            ).toList(),
+            children: italianTenses.map((italianTense) => FilterChip(
+                label: Text(italianTense.label),
+                selected: isSelected(italianTense),
+                onSelected: (selected) => onSelectedTense(context, selected, tense: italianTense)
+            )).toList(),
           ),
         )
       ],
     );
   }
 }
+

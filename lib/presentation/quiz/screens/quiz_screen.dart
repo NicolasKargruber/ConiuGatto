@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
+import '../../settings/view_models/settings_view_model.dart';
 import '../view_models/quiz_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/quiz_history_count.dart';
@@ -61,10 +62,15 @@ class _QuizScreenState extends State<QuizScreen> {
 
   // TODO Use Navigator
   _showSettingsScreen() async {
+    final verbService = context.read<VerbService>();
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
-        Provider.value(
-          value: context.read<VerbService>(),
-          child: SettingsScreen(),
+        ChangeNotifierProvider.value(
+          value: verbService,
+          child: ChangeNotifierProxyProvider<VerbService, SettingsViewModel>(
+            create: (_) => SettingsViewModel(),
+            update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
+            child: SettingsScreen(),
+          ),
         ))
     );
 
