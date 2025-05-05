@@ -9,7 +9,7 @@ extension GenerateIndicative on VerbDTO {
   String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ex. 'ARE' | 'ERE' | 'IRE'
 
   /// => GENERATED Presente
-  GeneratedConjugations get generatePresentIndicative {
+  GeneratedConjugations get generatedPresentIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'o' : ending == 'ERE' ? 'o' : 'o'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'i' : 'i'}",
@@ -33,7 +33,7 @@ extension GenerateIndicative on VerbDTO {
   }
 
   /// => GENERATED Passato Remoto
-  GeneratedConjugations get generateHistoricalPresentPerfectIndicative {
+  GeneratedConjugations get generatedHistoricalPresentPerfectIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'ai' : ending == 'ERE' ? 'ei' : 'ii'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'asti' : ending == 'ERE' ? 'esti' : 'isti'}",
@@ -45,7 +45,7 @@ extension GenerateIndicative on VerbDTO {
   }
 
   /// => GENERATED Futuro Semplice
-  GeneratedConjugations get generateFutureIndicative {
+  GeneratedConjugations get generatedFutureIndicative {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'erò' : ending == 'ERE' ? 'erò' : 'irò'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'erai' : ending == 'ERE' ? 'erai' : 'irai'}",
@@ -63,7 +63,7 @@ extension GenerateSubjunctive on VerbDTO {
   String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ex. 'ARE' | 'ERE' | 'IRE'
 
   /// => GENERATED Congiuntivo Presente
-  GeneratedConjugations get generatePresentSubjunctive {
+  GeneratedConjugations get generatedPresentSubjunctive {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'a' : 'a'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'i' : ending == 'ERE' ? 'a' : 'a'}",
@@ -93,7 +93,7 @@ extension GenerateConditional on VerbDTO {
   String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ex. 'ARE' | 'ERE' | 'IRE'
 
   /// => GENERATED Condizionale Presente
-  GeneratedConjugations get generatePresentConditional {
+  GeneratedConjugations get generatedPresentConditional {
     return {
       Pronoun.firstSingular: "$stem${ending == 'ARE' ? 'erei' : ending == 'ERE' ? 'erei' : 'irei'}",
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'eresti' : ending == 'ERE' ? 'eresti' : 'iresti'}",
@@ -111,7 +111,7 @@ extension GenerateImperative on VerbDTO {
   String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ex. 'ARE' | 'ERE' | 'IRE'
 
   /// => GENERATED Imperativo Positivo
-  GeneratedConjugations get generatePositiveImperative {
+  GeneratedConjugations get generatedPositiveImperative {
     return {
       Pronoun.firstSingular: null,
       Pronoun.secondSingular: "$stem${ending == 'ARE' ? 'a' : ending == 'ERE' ? 'i' : 'i'}",
@@ -142,7 +142,7 @@ extension GenerateImperative on VerbDTO {
   /// => GENERATED Imperativo Negativo
   GeneratedConjugations get _generatedNegativeImperative {
     // Clone (..) and update
-    final conjugations = {...generatePositiveImperative}..updateAll((pronoun, conjugation) {
+    final conjugations = {...generatedPositiveImperative}..updateAll((pronoun, conjugation) {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
