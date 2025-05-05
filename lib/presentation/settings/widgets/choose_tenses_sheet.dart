@@ -15,8 +15,6 @@ class ChooseTensesSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    // SELECT -> Listen, Rebuild ...
-    context.select<SettingsViewModel, List<ItalianTense>>((vm) => vm.tenseFilters);
     final viewModel = context.read<SettingsViewModel>();
 
     onSelectTense(bool selected, {required ItalianTense tense}) {
@@ -47,24 +45,29 @@ class ChooseTensesSheet extends StatelessWidget {
               onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
+
           MoodSection(
               label: Mood.conditional.label,
               italianTenses: ItalianTense.conditionalTenses,
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
+
           MoodSection(
               label: Mood.subjunctive.label,
               italianTenses: ItalianTense.subjunctiveTenses,
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
+
           MoodSection(
               label: Mood.imperative.label,
               italianTenses: ItalianTense.imperativeTenses,
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
+
+          SizedBox(height: AppValues.s24),
         ],
       ),
     );
@@ -72,6 +75,8 @@ class ChooseTensesSheet extends StatelessWidget {
 }
 
 class MoodSection extends StatelessWidget {
+  static final String _logTag = (MoodSection).toString();
+
   const MoodSection({super.key,
     required this.label,
     required this.italianTenses,
@@ -86,6 +91,9 @@ class MoodSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SELECT -> Listen, Rebuild ...
+    context.select<SettingsViewModel, List<ItalianTense>>((vm) => vm.tenseFilters);
+    debugPrint("$_logTag | build()");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

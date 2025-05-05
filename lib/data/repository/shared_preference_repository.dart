@@ -87,7 +87,7 @@ class SharedPreferenceRepository {
 
   // Private Helpers
   void _updatePrefs(String key, Set<String> values) {
-    debugPrint('$_logTag | _loadPrefs($key)');
+    debugPrint('$_logTag | _updatePrefs($key)');
     _prefs.setStringList(key, values.toList());
     debugPrint('$_logTag | Updated $key Prefs: $values');
   }

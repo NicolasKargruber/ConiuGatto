@@ -194,7 +194,7 @@ class QuizViewModel extends ViewModel {
     );
   }
 
-  void addAndResetQuestion({bool add = false}){
+  void addAndResetQuestion({bool add = true}){
     if(_currentQuestion case var question?) {
       if(add) {
         if (question.hasTriesLeft) {

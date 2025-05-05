@@ -32,6 +32,8 @@ class ChoosePronounsSheet extends StatelessWidget {
           ),
 
           _PronounFilterChips(),
+
+          SizedBox(height: AppValues.s24),
         ],
       ),
     );

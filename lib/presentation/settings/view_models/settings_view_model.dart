@@ -94,7 +94,7 @@ class SettingsViewModel extends ViewModel {
 
   addPronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | addPronounFilter(${pronoun.prefKey})");
-    pronounFilters.add(pronoun);
+    pronounFilters = List.from(pronounFilters)..add(pronoun);
     preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
@@ -102,7 +102,7 @@ class SettingsViewModel extends ViewModel {
 
   removePronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | removePronounFilter(${pronoun.prefKey})");
-    pronounFilters.remove(pronoun);
+    pronounFilters = List.from(pronounFilters)..remove(pronoun);
     preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronouns in Shared Preferences: $pronounFilters");
     notifyListeners();
@@ -112,7 +112,7 @@ class SettingsViewModel extends ViewModel {
 
   addTenseFilter(ItalianTense tense){
     debugPrint("$_logTag | addTenseFilter(${tense.prefKey})");
-    tenseFilters.add(tense);
+    tenseFilters = List.from(tenseFilters)..add(tense);
     preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
@@ -120,7 +120,7 @@ class SettingsViewModel extends ViewModel {
 
   removeTenseFilter(ItalianTense tense){
     debugPrint("$_logTag | removeTenseFilter(${tense.prefKey})");
-    tenseFilters.remove(tense);
+    tenseFilters = List.from(tenseFilters)..remove(tense);
     preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
