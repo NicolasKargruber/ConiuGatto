@@ -6,7 +6,7 @@ import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/settings_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
-import '../widgets/choose_verbs_sheet.dart';
+import '../widgets/choose_verb_filters_sheet.dart';
 
 final _logTag = (SettingsScreen).toString();
 
@@ -26,14 +26,14 @@ class SettingsScreen extends StatelessWidget {
     if(context.mounted) context.read<SettingsViewModel>().savePrefs();
   }
 
-  _showChooseVerbsSheet(BuildContext context) async {
+  _showChooseVerbFiltersSheet(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
       builder: (_) => ChangeNotifierProvider.value(
           value: context.read<SettingsViewModel>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: ChooseVerbsSheet(),
+            child: ChooseVerbFiltersSheet(),
           ),
         ),
     );
@@ -115,7 +115,7 @@ class SettingsScreen extends StatelessWidget {
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
-                  onPressed: () => _showChooseVerbsSheet(context),
+                  onPressed: () => _showChooseVerbFiltersSheet(context),
                   child: Text("Update verbs"),
                 ),
               ),

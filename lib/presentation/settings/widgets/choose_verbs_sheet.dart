@@ -12,11 +12,11 @@ class ChooseVerbsSheet extends StatelessWidget {
   const ChooseVerbsSheet({super.key});
 
   _onSelectVerb(BuildContext context, bool selected, {required Verb verb}) {
-    if (selected) {
-      context.read<SettingsViewModel>().addVerb(verb);
+    /*if (selected) {
+      context.read<SettingsViewModel>().addCustomVerb(verb);
     } else {
-      context.read<SettingsViewModel>().removeVerb(verb);
-    }
+      context.read<SettingsViewModel>().removeCustomVerb(verb);
+    }*/
   }
 
   @override
@@ -60,7 +60,7 @@ class ChooseVerbsSheet extends StatelessWidget {
                 spacing: AppValues.s8,
                 children: verbs.map((verb) => FilterChip(
                   label: Text(verb.italianInfinitive),
-                  selected: viewModel.isVerbSelected(verb),
+                  selected: true/*viewModel.isCustomVerbSelected(verb)*/,
                   onSelected: (selected) => _onSelectVerb(context, selected, verb: verb),
                 )).toList(),
               ),

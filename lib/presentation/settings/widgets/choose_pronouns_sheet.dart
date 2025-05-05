@@ -13,10 +13,10 @@ class ChoosePronounsSheet extends StatelessWidget {
 
   _onSelectPronoun(BuildContext context, bool selected, {required Pronoun pronoun}) {
       if(selected) {
-        context.read<SettingsViewModel>().addPronoun(pronoun);
+        context.read<SettingsViewModel>().addPronounFilter(pronoun);
       }
       else {
-        context.read<SettingsViewModel>().removePronoun(pronoun);
+        context.read<SettingsViewModel>().removePronounFilter(pronoun);
       }
   }
   
@@ -69,7 +69,7 @@ class ChoosePronounsSheet extends StatelessWidget {
                 spacing: AppValues.s8,
                 children: pronouns.map((pronoun) => FilterChip(
                     label: Text(pronoun.italian),
-                    selected: viewModel.isPronounSelected(pronoun),
+                    selected: viewModel.isPronounFilterSelected(pronoun),
                     onSelected: (selected) => _onSelectPronoun(context, selected, pronoun: pronoun)
                 )).toList(),
               ),

@@ -14,10 +14,10 @@ class ChooseTensesSheet extends StatelessWidget {
 
   _onSelectTense(BuildContext context, bool selected, {required ItalianTense tense}) {
     if(selected) {
-      context.read<SettingsViewModel>().addTense(tense);
+      context.read<SettingsViewModel>().addTenseFilter(tense);
     }
     else {
-      context.read<SettingsViewModel>().removeTense(tense);
+      context.read<SettingsViewModel>().removeTenseFilter(tense);
     }
   }
   

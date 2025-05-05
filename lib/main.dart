@@ -7,12 +7,12 @@ import 'presentation/home_screen.dart';
 import 'domain/service/shared_preference_service.dart';
 
 // TODO Use GetIt for Dependency Injection
-late SharedPreferenceService preferenceManager;
+late SharedPreferenceService preferenceService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  preferenceManager = SharedPreferenceService();
-  await preferenceManager.initializationFuture;
+  preferenceService = SharedPreferenceService();
+  await preferenceService.initializationFuture;
   runApp(const MyApp());
 }
 
