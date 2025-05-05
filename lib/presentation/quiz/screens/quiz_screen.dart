@@ -46,7 +46,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
         _textController.clear();
-        _viewModel.createNewQuizItem();
+        _viewModel.createNewQuestion();
       }
   }
 
@@ -63,10 +63,9 @@ class _QuizScreenState extends State<QuizScreen> {
 
   // TODO Use Navigator
   _showSettingsScreen() async {
-    final verbService = context.read<VerbService>();
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
         ChangeNotifierProvider.value(
-          value: verbService,
+          value: context.read<VerbService>(),
           child: ChangeNotifierProxyProvider<VerbService, SettingsViewModel>(
             create: (_) => SettingsViewModel(context.read<SharedPreferenceService>()),
             update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
@@ -75,9 +74,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ))
     );
 
-    // TODO only update if new prefs come in
-    if(mounted) context.read<QuizViewModel>().updateQuizzable();
-    if(mounted) context.read<QuizViewModel>().createNewQuizItem();
+    if(mounted) context.read<QuizViewModel>().updateQuiz(skipQuestion: true);
   }
 
   @override

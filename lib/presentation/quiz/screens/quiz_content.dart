@@ -30,7 +30,7 @@ class QuizContent extends StatelessWidget {
     debugPrint("$_logTag | build()");
     final viewModel = context.watch<QuizViewModel>();
 
-    return !viewModel.hasQuizzableItems ?
+    return !viewModel.hasQuizzableQuestions ?
     Center(child: _buildNoTensesAvailable()) :
     Padding(
       padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),

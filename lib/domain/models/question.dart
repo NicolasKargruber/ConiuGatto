@@ -7,8 +7,8 @@ import '../../data/enums/pronoun.dart';
 import 'tenses/tense.dart';
 import 'verb.dart';
 
-class QuizItem {
-  final _logTag = (QuizItem).toString();
+class Question {
+  static final _logTag = (Question).toString();
 
   final Verb verb;
   final Auxiliary auxiliary;
@@ -21,7 +21,7 @@ class QuizItem {
   int _triesLeft = 2;
   int get triesLeft => _triesLeft;
 
-  QuizItem({
+  Question({
     required this.verb,
     required this.auxiliary,
     required this.tense,
