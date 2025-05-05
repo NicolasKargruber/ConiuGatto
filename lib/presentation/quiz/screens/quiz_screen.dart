@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../settings/view_models/settings_view_model.dart';
@@ -67,7 +68,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ChangeNotifierProvider.value(
           value: verbService,
           child: ChangeNotifierProxyProvider<VerbService, SettingsViewModel>(
-            create: (_) => SettingsViewModel(),
+            create: (_) => SettingsViewModel(context.read<SharedPreferenceService>()),
             update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
             child: SettingsScreen(),
           ),

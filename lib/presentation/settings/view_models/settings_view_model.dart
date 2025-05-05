@@ -3,26 +3,28 @@ import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/pronoun.dart';
 import '../../../domain/models/enums/italian_tense.dart';
-import '../../../domain/models/enums/reflexive_verb.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
-import '../../../domain/models/enums/verb_favourite_filter.dart';
-import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
-import '../../../main.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
 
 class SettingsViewModel extends ViewModel {
   static final _logTag = (SettingsViewModel).toString();
 
+  final SharedPreferenceService preferenceService;
+
+  SettingsViewModel(this.preferenceService);
+
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
+    await preferenceService.initializationFuture;
     // TODO use GetIt
     tenseFilters = preferenceService.loadTenses();
     pronounFilters = preferenceService.loadPronouns();
+    endingFilter = preferenceService.loadVerbEndingFilter();
     //verbFavouriteFilter = preferenceService.loadVerbFavouriteFilter();
     //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
-    endingFilter = preferenceService.loadVerbEndingFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
     //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
   }
@@ -37,7 +39,7 @@ class SettingsViewModel extends ViewModel {
     }
 
     _verbs = verbs;
-    notifyListeners();
+    if(isInitialized) notifyListeners();
     debugPrint("$_logTag | Loaded Verbs Count: ${_verbs.length}");
     debugPrint("$_logTag | Loaded Verbs: ${_verbs.map((e) => e.italianInfinitive)}");
   }
@@ -46,7 +48,7 @@ class SettingsViewModel extends ViewModel {
   List<Pronoun> pronounFilters = [];
   //late VerbFavouriteFilter verbFavouriteFilter;
   //late VerbIrregularityFilter irregularityFilter;
-  late VerbEndingFilter endingFilter;
+  VerbEndingFilter endingFilter = VerbEndingFilter.all;
   //late ReflexiveVerb _reflexiveFilterPref;
   //List<Verb> _customizedVerbsPrefs = [];
 
@@ -125,21 +127,4 @@ class SettingsViewModel extends ViewModel {
   }
 
   bool isTenseSelected(ItalianTense tense) => tenseFilters.contains(tense);
-
-  /*savePrefs(){
-    debugPrint("$_logTag | savePrefs()");
-    // TODO clean up
-    //preferenceManager.updateCustomizedVerbsPrefs(_customizedVerbsPrefs);
-    // debugPrint("$_logTag | Saved Verb Prefs: $_customizedVerbsPrefs");
-    preferenceService.updateVerbFavourite(verbFavouriteFilter);
-    debugPrint("$_logTag | Saved Verb Favourite Filter Pref: $verbFavouriteFilter");
-    preferenceService.updateIrregularityFilter(irregularityFilter);
-    debugPrint("$_logTag | Saved Verb Irregularity Filter Pref: $irregularityFilter");
-    preferenceService.updateEndingFilter(endingFilter);
-    debugPrint("$_logTag | Saved Verb Ending Filter Pref: $endingFilter");
-    preferenceService.updatePronounPrefs(pronounFilters);
-    debugPrint("$_logTag | Saved Pronoun Prefs: $pronounFilters");
-    preferenceService.updateTensePrefs(tenseFilters);
-    debugPrint("$_logTag | Saved Tense Prefs: $tenseFilters");
-  }*/
 }

@@ -3,15 +3,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/shared_preference_keys.dart';
 
-final _logTag = (SharedPreferenceRepository).toString();
-
 // TODO Move using GetIt
 class SharedPreferenceRepository {
+  static final _logTag = (SharedPreferenceRepository).toString();
   final SharedPreferences _prefs;
 
   SharedPreferenceRepository._(this._prefs);
 
   static Future<SharedPreferenceRepository> initialize() async {
+    debugPrint("$_logTag | initialize()");
     return SharedPreferenceRepository._(await SharedPreferences.getInstance());
   }
 

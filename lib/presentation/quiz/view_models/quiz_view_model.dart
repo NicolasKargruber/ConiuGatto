@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../domain/models/enums/verb_ending_filter.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../../main.dart';
 import '../../../domain/models/answer_result.dart';
 import '../../../data/enums/pronoun.dart';
@@ -15,10 +16,15 @@ final _logTag = (QuizViewModel).toString();
 
 class QuizViewModel extends ViewModel {
 
+  final SharedPreferenceService preferenceService;
+
+  QuizViewModel(this.preferenceService);
+
   // Initialized in Parent Constructor
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
+    await preferenceService.initializationFuture;
   }
 
   // Update & Notify
@@ -35,10 +41,11 @@ class QuizViewModel extends ViewModel {
     debugPrint("$_logTag | Loaded Verbs: ${_verbs.map((e) => e.italianInfinitive)}");
 
     // Find Quizzable
-    // TODO Without using verbs
+    // TODO One triggers the other conditionally and vice versa
     updateQuizzable();
 
     // Random
+    // TODO One triggers the other conditionally and vice versa
     createNewQuizItem();
   }
 

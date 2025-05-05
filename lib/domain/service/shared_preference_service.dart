@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../data/enums/pronoun.dart';
 import '../../data/repository/shared_preference_repository.dart';
@@ -9,16 +10,17 @@ import '../models/enums/verb_irregularity_filter.dart';
 import '../models/verb.dart';
 import 'service.dart';
 
-final _logTag = (SharedPreferenceService).toString();
 
 // TODO Move using GetIt
 class SharedPreferenceService extends Service {
+  static final _logTag = (SharedPreferenceService).toString();
   late final SharedPreferenceRepository _sharedPreferenceRepo;
 
   SharedPreferenceService();
 
   @override
   Future initialize() async {
+    debugPrint("$_logTag | initialize()");
     _sharedPreferenceRepo = await SharedPreferenceRepository.initialize();
   }
 
