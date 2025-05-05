@@ -23,7 +23,6 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
     );
-    if(context.mounted) context.read<SettingsViewModel>().savePrefs();
   }
 
   _showChooseVerbFiltersSheet(BuildContext context) async {
@@ -37,7 +36,6 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
     );
-    if(context.mounted) context.read<SettingsViewModel>().savePrefs();
   }
 
   _showChoosePronounsSheet(BuildContext context) async {
@@ -51,7 +49,6 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
     );
-    if(context.mounted) context.read<SettingsViewModel>().savePrefs();
   }
 
   @override

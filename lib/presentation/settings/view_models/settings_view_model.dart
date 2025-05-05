@@ -11,9 +11,8 @@ import '../../../domain/models/verb.dart';
 import '../../../main.dart';
 import '../../view_model.dart';
 
-final _logTag = (SettingsViewModel).toString();
-
 class SettingsViewModel extends ViewModel {
+  static final _logTag = (SettingsViewModel).toString();
 
   @override
   Future initialize() async {
@@ -21,11 +20,10 @@ class SettingsViewModel extends ViewModel {
     // TODO use GetIt
     tenseFilters = preferenceService.loadTenses();
     pronounFilters = preferenceService.loadPronouns();
-    verbFavouriteFilter = preferenceService.loadVerbFavouriteFilter();
-    irregularityFilter = preferenceService.loadVerbIrregularityFilter();
+    //verbFavouriteFilter = preferenceService.loadVerbFavouriteFilter();
+    //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
     endingFilter = preferenceService.loadVerbEndingFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
-    // TODO use enums
     //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
   }
 
@@ -44,11 +42,10 @@ class SettingsViewModel extends ViewModel {
     debugPrint("$_logTag | Loaded Verbs: ${_verbs.map((e) => e.italianInfinitive)}");
   }
 
-  // TODO Move all to SharedPreferences
   List<ItalianTense> tenseFilters = [];
   List<Pronoun> pronounFilters = [];
-  late VerbFavouriteFilter verbFavouriteFilter;
-  late VerbIrregularityFilter irregularityFilter;
+  //late VerbFavouriteFilter verbFavouriteFilter;
+  //late VerbIrregularityFilter irregularityFilter;
   late VerbEndingFilter endingFilter;
   //late ReflexiveVerb _reflexiveFilterPref;
   //List<Verb> _customizedVerbsPrefs = [];
@@ -56,29 +53,28 @@ class SettingsViewModel extends ViewModel {
   // Labels
   List<Verb> get verbs => _verbs;
 
-  updateVerbFavouriteFilter(VerbFavouriteFilter filter) {
+  /*updateVerbFavouriteFilter(VerbFavouriteFilter filter) {
+    preferenceService.updateVerbFavourite(filter);
+    debugPrint("$_logTag | Saved Verb Favourite Filter in Shared Preferences: $filter");
     verbFavouriteFilter = filter;
-    debugPrint("$_logTag | Updated ${filter.prefKey}");
     notifyListeners();
   }
-
-  bool isVerbFavouriteFilterSelected(VerbFavouriteFilter filter) => verbFavouriteFilter == filter;
 
   updateIrregularityFilter(VerbIrregularityFilter filter) {
+    preferenceService.updateIrregularityFilter(irregularityFilter);
+    debugPrint("$_logTag | Saved Verb Irregularity Filter in Shared Preferences: $irregularityFilter");
     irregularityFilter = filter;
-    debugPrint("$_logTag | Updated ${filter.prefKey}");
     notifyListeners();
-  }
-
-  bool isIrregularityFilterSelected(VerbIrregularityFilter filter) => irregularityFilter == filter;
+  }*/
 
   updateEndingFilter(VerbEndingFilter filter) {
+    debugPrint("$_logTag | updateEndingFilter($filter)");
     endingFilter = filter;
-    debugPrint("$_logTag | Updated ${filter.prefKey}");
+    preferenceService.updateEndingFilter(endingFilter);
+    debugPrint("$_logTag | Saved Verb Ending Filter in Shared Preferences: $endingFilter");
     notifyListeners();
   }
 
-  bool isEndingFilterSelected(VerbEndingFilter filter) => endingFilter == filter;
 /*
   addCustomVerb(Verb verb) {
     _customizedVerbsPrefs.add(verb.prefKey);
@@ -95,40 +91,55 @@ class SettingsViewModel extends ViewModel {
   bool isCustomVerbSelected(Verb verb) => _customizedVerbsPrefs.contains(verb.prefKey);*/
 
   addPronounFilter(Pronoun pronoun) {
+    debugPrint("$_logTag | addPronounFilter(${pronoun.prefKey})");
     pronounFilters.add(pronoun);
-    debugPrint("$_logTag | Added ${pronoun.prefKey}");
+    preferenceService.updatePronounPrefs(pronounFilters);
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
 
   removePronounFilter(Pronoun pronoun) {
+    debugPrint("$_logTag | removePronounFilter(${pronoun.prefKey})");
     pronounFilters.remove(pronoun);
-    debugPrint("$_logTag | Removed ${pronoun.prefKey}");
+    preferenceService.updatePronounPrefs(pronounFilters);
+    debugPrint("$_logTag | Saved Pronouns in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
 
-  bool isPronounFilterSelected(Pronoun pronoun) => pronounFilters.contains(pronoun);
+  bool isPronounSelected(Pronoun pronoun) => pronounFilters.contains(pronoun);
 
   addTenseFilter(ItalianTense tense){
+    debugPrint("$_logTag | addTenseFilter(${tense.prefKey})");
     tenseFilters.add(tense);
-    debugPrint("$_logTag | Added ${tense.prefKey}");
+    preferenceService.updateTensePrefs(tenseFilters);
+    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
   }
 
   removeTenseFilter(ItalianTense tense){
+    debugPrint("$_logTag | removeTenseFilter(${tense.prefKey})");
     tenseFilters.remove(tense);
-    debugPrint("$_logTag | Removed ${tense.prefKey}");
+    preferenceService.updateTensePrefs(tenseFilters);
+    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
   }
 
   bool isTenseSelected(ItalianTense tense) => tenseFilters.contains(tense);
 
-  savePrefs(){
+  /*savePrefs(){
     debugPrint("$_logTag | savePrefs()");
+    // TODO clean up
     //preferenceManager.updateCustomizedVerbsPrefs(_customizedVerbsPrefs);
     // debugPrint("$_logTag | Saved Verb Prefs: $_customizedVerbsPrefs");
+    preferenceService.updateVerbFavourite(verbFavouriteFilter);
+    debugPrint("$_logTag | Saved Verb Favourite Filter Pref: $verbFavouriteFilter");
+    preferenceService.updateIrregularityFilter(irregularityFilter);
+    debugPrint("$_logTag | Saved Verb Irregularity Filter Pref: $irregularityFilter");
+    preferenceService.updateEndingFilter(endingFilter);
+    debugPrint("$_logTag | Saved Verb Ending Filter Pref: $endingFilter");
     preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun Prefs: $pronounFilters");
     preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tense Prefs: $tenseFilters");
-  }
+  }*/
 }

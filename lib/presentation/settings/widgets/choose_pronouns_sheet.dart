@@ -6,19 +6,11 @@ import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/settings_view_model.dart';
 
-final String _logTag = (ChoosePronounsSheet).toString();
 
 class ChoosePronounsSheet extends StatelessWidget {
   const ChoosePronounsSheet({super.key});
 
-  _onSelectPronoun(BuildContext context, bool selected, {required Pronoun pronoun}) {
-      if(selected) {
-        context.read<SettingsViewModel>().addPronounFilter(pronoun);
-      }
-      else {
-        context.read<SettingsViewModel>().removePronounFilter(pronoun);
-      }
-  }
+  static final String _logTag = (ChoosePronounsSheet).toString();
   
   @override
   Widget build(BuildContext context) {
@@ -39,44 +31,54 @@ class ChoosePronounsSheet extends StatelessWidget {
             ),
           ),
 
-          _buildPronounSection(Pronoun.values)
+          _PronounFilterChips(),
         ],
       ),
     );
   }
+}
 
-  _buildPronounSection(List<Pronoun> pronouns) {
-    return Builder(
-      builder: (context) {
-        final viewModel = context.watch<SettingsViewModel>();
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: double.maxFinite,
-              child: Container(
-                padding: EdgeInsets.all(AppValues.p12),
-                color: context.colorScheme.surfaceContainerHigh,
-                child: Text(
-                  "Pronouns",
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
-                ),
-              ),
+class _PronounFilterChips extends StatelessWidget {
+  const _PronounFilterChips({super.key});
+
+  static final _logTag = (_PronounFilterChips).toString();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
+    // SELECT -> Listen, Rebuild ...
+    context.select<SettingsViewModel, List<Pronoun>>((vm) => vm.pronounFilters);
+    final viewModel = context.read<SettingsViewModel>();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: double.maxFinite,
+          child: Container(
+            padding: EdgeInsets.all(AppValues.p12),
+            color: context.colorScheme.surfaceContainerHigh,
+            child: Text(
+              "Pronouns",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
             ),
-            Padding(
-              padding: const EdgeInsets.all(AppValues.p12),
-              child: Wrap(
-                spacing: AppValues.s8,
-                children: pronouns.map((pronoun) => FilterChip(
-                    label: Text(pronoun.italian),
-                    selected: viewModel.isPronounFilterSelected(pronoun),
-                    onSelected: (selected) => _onSelectPronoun(context, selected, pronoun: pronoun)
-                )).toList(),
-              ),
-            )
-          ],
-        );
-      }
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(AppValues.p12),
+          child: Wrap(
+            spacing: AppValues.s8,
+            children: Pronoun.values.map((pronoun) => FilterChip(
+                label: Text(pronoun.italian),
+                selected: viewModel.isPronounSelected(pronoun),
+                onSelected: (selected) {
+                  if(selected) { viewModel.addPronounFilter(pronoun); }
+                  else { viewModel.removePronounFilter(pronoun); }
+                },
+            )).toList(),
+          ),
+        )
+      ],
     );
   }
 }
+

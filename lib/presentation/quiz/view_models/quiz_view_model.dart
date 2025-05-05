@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../main.dart';
 import '../../../domain/models/answer_result.dart';
 import '../../../data/enums/pronoun.dart';
@@ -84,27 +85,33 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzableVerbs() {
     debugPrint("$_logTag | _findQuizzableVerbs() started");
-    final verbPrefs = [];//preferenceService.loadCustomizedVerbsPrefs();
+    List<Verb> verbs = _verbs;
+    final endingFilter = preferenceService.loadVerbEndingFilter();
+    verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
+    // TODO in CON-57
+    //final irregularityFilter = preferenceService.loadVerbIrregularityFilter();
+    //verbs = verbs.where((verb) => irregularityFilter.includesVerb(verb)).toList();
+    //final favouriteFilter = preferenceService.loadVerbFavouriteFilter();
     _quizzableVerbs.clear();
-    _quizzableVerbs.addAll(_verbs.where((verb) => verbPrefs.contains(verb.prefKey)));
+    _quizzableVerbs.addAll(verbs);
     debugPrint("$_logTag | Quizzable Verb Count: ${_quizzableVerbs.length}");
     debugPrint("$_logTag | _findQuizzableVerbs() ended");
   }
 
   void _findQuizzableTenses() {
     debugPrint("$_logTag | _findQuizzableTenses() started");
-    final tensePrefs = preferenceService.loadTenses();
+    final tenses = preferenceService.loadTenses();
     _quizzableTenses.clear();
-    _quizzableTenses.addAll(ItalianTense.values.where((tense) => tensePrefs.contains(tense.prefKey)));
+    _quizzableTenses.addAll(ItalianTense.values.where((tense) => tenses.contains(tense)));
     debugPrint("$_logTag | Quizzable Tense Count: ${_quizzableTenses.length}");
     debugPrint("$_logTag | _findQuizzableTenses() ended");
   }
 
   void _findQuizzablePronouns() {
     debugPrint("$_logTag | _findQuizzablePronouns() started");
-    final pronounPrefs = preferenceService.loadPronouns();
+    final pronouns = preferenceService.loadPronouns();
     _quizzablePronouns.clear();
-    _quizzablePronouns.addAll(Pronoun.values.where((pronoun) => pronounPrefs.contains(pronoun.prefKey)));
+    _quizzablePronouns.addAll(Pronoun.values.where((pronoun) => pronouns.contains(pronoun)));
     debugPrint("$_logTag | Quizzable Pronoun Count: ${_quizzablePronouns.length}");
     debugPrint("$_logTag | _findQuizzablePronouns() ended");
   }

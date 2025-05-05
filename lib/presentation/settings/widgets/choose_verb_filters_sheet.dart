@@ -20,23 +20,6 @@ final String _logTag = (ChooseVerbFiltersSheet).toString();
 class ChooseVerbFiltersSheet extends StatelessWidget {
   const ChooseVerbFiltersSheet({super.key});
 
-  _onSelectedFavouriteFilter(BuildContext context, {required VerbFavouriteFilter favourite}) {
-      context.read<SettingsViewModel>().updateVerbFavouriteFilter(favourite);
-  }
-
-  _onSelectedVerbEndingFilter(BuildContext context, {required VerbEndingFilter ending}) {
-      context.read<SettingsViewModel>().updateEndingFilter(ending);
-  }
-
-  // TODO in CON-12
-  /*_onSelectedReflexiveFilter(BuildContext context, {required ReflexiveVerb reflexive}) {
-    context.read<SettingsViewModel>().updateReflexiveFilter(reflexive);
-  }*/
-
-  _onSelectedIrregularityFilter(BuildContext context, {required VerbIrregularityFilter irregularity}) {
-      context.read<SettingsViewModel>().updateIrregularityFilter(irregularity);
-  }
-
   _showChooseVerbsSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -65,23 +48,16 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
             ),
           ),
 
-          ToggleSection<VerbFavouriteFilter>(
+          /*ToggleSection<VerbFavouriteFilter>(
             title: "Verbs",
             labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
             values: VerbFavouriteFilter.values,
             selected: context.watch<SettingsViewModel>().verbFavouriteFilter,
             //onUnselectedAll: () {},
             onSelected: (favourite) => _onSelectedFavouriteFilter(context, favourite: favourite),
-          ),
+          ),*/
 
-          ToggleSection<VerbEndingFilter>(
-            title: "Endings",
-            labels: VerbEndingFilter.values.map((e) => e.label).toList(),
-            values: VerbEndingFilter.values,
-            selected: context.watch<SettingsViewModel>().endingFilter,
-            //onUnselectedAll: () {},
-            onSelected: (ending) => _onSelectedVerbEndingFilter(context, ending: ending),
-          ),
+          _VerbEndingFilterChips(),
 
           // TODO in CON-12
           /*Padding(
@@ -95,14 +71,14 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
             ),
           ),*/
 
-          ToggleSection<VerbIrregularityFilter>(
+          /*ToggleSection<VerbIrregularityFilter>(
             title: "Irregularity",
             labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
             values: VerbIrregularityFilter.values,
             selected: context.watch<SettingsViewModel>().irregularityFilter,
             //onUnselectedAll: () {},
             onSelected: (irregularity) => _onSelectedIrregularityFilter(context, irregularity: irregularity),
-          ),
+          ),*/
 
           SizedBox(height: AppValues.s24),
         ],
@@ -110,6 +86,25 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
     );
   }
 }
+
+class _VerbEndingFilterChips extends StatelessWidget {
+  const _VerbEndingFilterChips({super.key});
+
+  static final String _logTag = (_VerbEndingFilterChips).toString();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("$_logTag | _VerbEndingFilterChips | build()");
+    return ToggleSection<VerbEndingFilter>(
+      title: "Endings",
+      labels: VerbEndingFilter.values.map((e) => e.label).toList(),
+      values: VerbEndingFilter.values,
+      selected: context.select<SettingsViewModel, VerbEndingFilter>((vm) => vm.endingFilter),
+      onSelected: context.read<SettingsViewModel>().updateEndingFilter,
+    );
+  }
+}
+
 
 class ToggleSection<Filter> extends StatelessWidget {
   const ToggleSection({super.key,

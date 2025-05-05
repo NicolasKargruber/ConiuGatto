@@ -14,6 +14,9 @@ extension GenerateTenses on Verb {
   String get _generatePastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";
   String get _generatePresentGerund => "$stem${ending == 'ARE' ? 'ando' : ending == 'ERE' ? 'endo' : 'endo'}";
 
+  bool get hasIrregularParticiple => pastParticiple.italian != _generatePastParticiple;
+  bool get hasIrregularGerund => presentGerund.italian != _generatePastParticiple;
+
   String conditionallyGenderParticiple({required Auxiliary auxiliary, required Pronoun pronoun}) =>
       auxiliary.requiresGenderedParticiple ? pronoun.genderItalianConjugationIfPossible(pastParticiple.italian, forceGender: true): pastParticiple.italian;
 
