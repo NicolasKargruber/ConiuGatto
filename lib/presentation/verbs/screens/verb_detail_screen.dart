@@ -43,12 +43,24 @@ class VerbDetailScreen extends StatelessWidget {
             // TODO Handle it's own state
             if(viewModel.isDoubleAuxiliary)
               Container(
+                padding: const EdgeInsets.all(AppValues.p8),
                 alignment: Alignment.center,
-                child: ToggleSwitch(
-                  initialLabelIndex: viewModel.selectedAuxiliaryIndex,
-                  inactiveBgColor: context.colorScheme.surfaceContainer,
-                  labels: viewModel.auxiliaryLabels,
-                  onToggle: viewModel.selectAuxiliaryAtIndex,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Auxiliary:", style: TextStyle(fontSize: AppValues.fs16)),
+
+                    SizedBox(width: AppValues.s12),
+
+                    ToggleSwitch(
+                      initialLabelIndex: viewModel.selectedAuxiliaryIndex,
+                      activeBgColors: [[context.colorScheme.tertiary],[context.colorScheme.tertiary]],
+                      inactiveBgColor: context.colorScheme.surfaceContainerHighest,
+                      activeFgColor: context.colorScheme.onTertiary,
+                      labels: viewModel.auxiliaryLabels,
+                      onToggle: viewModel.selectAuxiliaryAtIndex,
+                    ),
+                  ],
                 ),
               ),
 
