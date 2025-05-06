@@ -57,7 +57,12 @@ class QuizContent extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if(viewModel.isDoubleAuxiliary)
-                            Chip(label: Text("${viewModel.currentAuxiliaryLabel}")),
+                            Chip(
+                              label: Text("${viewModel.currentAuxiliaryLabel}",
+                                  style: TextStyle(color: context.colorScheme.tertiary),
+                              ),
+                              side: BorderSide(color: context.colorScheme.tertiary),
+                            ),
 
                           SizedBox(height: AppValues.s4),
 

@@ -75,7 +75,7 @@ class VerbDetailScreen extends StatelessWidget {
                     ToggleSwitch(
                       initialLabelIndex: viewModel.selectedAuxiliaryIndex,
                       activeBgColors: [[context.colorScheme.tertiary],[context.colorScheme.tertiary]],
-                      inactiveBgColor: context.colorScheme.surfaceContainerHighest,
+                      inactiveBgColor: context.colorScheme.surfaceContainer,
                       activeFgColor: context.colorScheme.onTertiary,
                       labels: viewModel.auxiliaryLabels,
                       onToggle: viewModel.selectAuxiliaryAtIndex,
