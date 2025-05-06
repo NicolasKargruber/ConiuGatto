@@ -50,9 +50,9 @@ class SharedPreferenceService extends Service {
     e.prefKey == _sharedPreferenceRepo.loadEndingFilterPref()) ?? _endingFiltersDefaultValue;
   }
   //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
-  List<String> getStarredVerbFrom(List<Verb> verbs) {
+  List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
     final starredVerbPrefs = _sharedPreferenceRepo.loadStarredVerbPrefs() ?? [];
-    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).map((e) => e.prefKey).toList();
+    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).toList();
   }
   //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses

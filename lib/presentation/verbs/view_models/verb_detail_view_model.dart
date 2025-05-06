@@ -25,14 +25,16 @@ class VerbDetailViewModel extends ViewModel {
     _selectedAuxiliary = _verb.auxiliaries.first;
     debugPrint("$_logTag | Irregularities: ${_verb.irregularities}");
     await _preferenceService.initializationFuture;
-    _starredVerbPrefs = _preferenceService.getStarredVerbFrom([_verb]);
+    _isStarred = _preferenceService.getStarredVerbsFrom([_verb]).contains(_verb);
     notifyListeners();
   }
 
   // State
   late Auxiliary _selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
-  List<String> _starredVerbPrefs = [];
+  bool _isStarred = false;
+  bool get isStarred => _isStarred;
+
 
   // Getters - State
   bool get isRegular => _verb.isRegular;
@@ -43,7 +45,6 @@ class VerbDetailViewModel extends ViewModel {
   List<Tense> get imperativeTenses => _verb.getImperativeTenses();
   List<String> get auxiliaryLabels => _verb.auxiliaries.map((e) => e.name.toUpperCase()).toList();
   int get selectedAuxiliaryIndex => _selectedAuxiliary.index;
-  bool get isStarred => _starredVerbPrefs.contains(_verb.prefKey);
 
   // Getters - Quiz Labels
   String get italianInfinitive => _verb.italianInfinitive;
@@ -51,12 +52,11 @@ class VerbDetailViewModel extends ViewModel {
 
   updateStarred(bool star) {
     debugPrint("$_logTag | updateStarred($star)");
+    _isStarred = star;
     if (star) {
-      _starredVerbPrefs.add(_verb.prefKey);
       _preferenceService.addStarredVerb(_verb);
       debugPrint("$_logTag | Added starred verb: ${_verb.prefKey}");
     } else {
-      _starredVerbPrefs.remove(_verb.prefKey);
       _preferenceService.removeStarredVerb(_verb);
       debugPrint("$_logTag | Removed starred verb: ${_verb.prefKey}");
     }

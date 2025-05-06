@@ -49,14 +49,7 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
             ),
           ),
 
-          /*ToggleSection<VerbFavouriteFilter>(
-            title: "Verbs",
-            labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
-            values: VerbFavouriteFilter.values,
-            selected: context.watch<SettingsViewModel>().verbFavouriteFilter,
-            //onUnselectedAll: () {},
-            onSelected: (favourite) => _onSelectedFavouriteFilter(context, favourite: favourite),
-          ),*/
+          _VerbFavouriteChoiceChips(),
 
           _VerbEndingChoiceChips(),
 
@@ -88,6 +81,24 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
   }
 }
 
+class _VerbFavouriteChoiceChips extends StatelessWidget {
+  const _VerbFavouriteChoiceChips({super.key});
+
+  static final String _logTag = (_VerbFavouriteChoiceChips).toString();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
+    return ToggleChoiceChips<VerbFavouriteFilter>(
+      title: "Verbs",
+      labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
+      values: VerbFavouriteFilter.values,
+      selected: context.select<SettingsViewModel, VerbFavouriteFilter>((vm) => vm.favouriteFilter),
+      onSelected: context.read<SettingsViewModel>().updateFavouriteFilter,
+    );
+  }
+}
+
 class _VerbEndingChoiceChips extends StatelessWidget {
   const _VerbEndingChoiceChips({super.key});
 
@@ -95,15 +106,13 @@ class _VerbEndingChoiceChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$_logTag | _VerbEndingFilterChips | build()");
+    debugPrint("$_logTag | build()");
     return ToggleChoiceChips<VerbEndingFilter>(
       title: "Endings",
       labels: VerbEndingFilter.values.map((e) => e.label).toList(),
       values: VerbEndingFilter.values,
       selected: context.select<SettingsViewModel, VerbEndingFilter>((vm) => vm.endingFilter),
-      onSelected: context
-          .read<SettingsViewModel>()
-          .updateEndingFilter,
+      onSelected: context.read<SettingsViewModel>().updateEndingFilter,
     );
   }
 }
