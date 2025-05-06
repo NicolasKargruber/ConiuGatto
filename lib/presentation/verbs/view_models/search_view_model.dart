@@ -24,21 +24,15 @@ class SearchViewModel extends ViewModel{
     // Check if verbs are the same
     Function eq = const ListEquality().equals;
     if(eq(_verbs, verbs)) return debugPrint("$_logTag | loaded verbs are still the same");
-    // Update & Sort Verbs
     _verbs = verbs;
-    _sortVerbs();
-  }
-
-  _sortVerbs() {
-    debugPrint("$_logTag | _sortVerbs()");
-    _verbs.sort((a, b) => a.italianInfinitive.compareTo(b.italianInfinitive));
-    notifyListeners();
   }
 
   filterVerbs(String search) {
     debugPrint("$_logTag | filterVerbs()");
     search = search.toLowerCase();
-    _filteredVerbs = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
+    final filteredVerbsInItalian = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
+    final filteredVerbsInEnglish = _verbs.where((verb) => verb.infinitive.english.contains(search)).toList();
+    _filteredVerbs = filteredVerbsInItalian + filteredVerbsInEnglish;
     notifyListeners();
   }
 }

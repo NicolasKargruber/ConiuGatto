@@ -11,9 +11,8 @@ import '../../../domain/utils/filter_extensions.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
 
-final _logTag = (QuizViewModel).toString();
-
 class QuizViewModel extends ViewModel {
+  static final _logTag = (QuizViewModel).toString();
 
   final SharedPreferenceService preferenceService;
 
@@ -44,8 +43,6 @@ class QuizViewModel extends ViewModel {
     if(isInitialized) updateQuiz();
   }
 
-  // TODO update when new prefs come in
-
   // Quizzable State
   final List<Verb> _quizzableVerbs = [];
   final List<ItalianTense> _quizzableTenses = [];
@@ -57,7 +54,7 @@ class QuizViewModel extends ViewModel {
     _findQuizzableTenses();
     _findQuizzablePronouns();
 
-    // Question not Quizzable => Randomize
+    // Current Question not Quizzable => Randomize
     if(!isCurrentQuestionQuizzable) {
       addAndResetQuestion(add: false);
       createNewQuestion();
