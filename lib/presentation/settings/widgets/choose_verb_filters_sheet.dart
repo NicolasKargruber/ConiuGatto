@@ -14,6 +14,7 @@ import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/settings_view_model.dart';
 import 'choose_verbs_sheet.dart';
+import 'toggle_choice_chips.dart';
 
 final String _logTag = (ChooseVerbFiltersSheet).toString();
 
@@ -57,7 +58,7 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
             onSelected: (favourite) => _onSelectedFavouriteFilter(context, favourite: favourite),
           ),*/
 
-          _VerbEndingFilterChips(),
+          _VerbEndingChoiceChips(),
 
           // TODO in CON-12
           /*Padding(
@@ -87,72 +88,22 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
   }
 }
 
-class _VerbEndingFilterChips extends StatelessWidget {
-  const _VerbEndingFilterChips({super.key});
+class _VerbEndingChoiceChips extends StatelessWidget {
+  const _VerbEndingChoiceChips({super.key});
 
-  static final String _logTag = (_VerbEndingFilterChips).toString();
+  static final String _logTag = (_VerbEndingChoiceChips).toString();
 
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | _VerbEndingFilterChips | build()");
-    return ToggleSection<VerbEndingFilter>(
+    return ToggleChoiceChips<VerbEndingFilter>(
       title: "Endings",
       labels: VerbEndingFilter.values.map((e) => e.label).toList(),
       values: VerbEndingFilter.values,
       selected: context.select<SettingsViewModel, VerbEndingFilter>((vm) => vm.endingFilter),
-      onSelected: context.read<SettingsViewModel>().updateEndingFilter,
-    );
-  }
-}
-
-
-class ToggleSection<Filter> extends StatelessWidget {
-  const ToggleSection({super.key,
-    required this.title,
-    required this.values,
-    required this.labels,
-    required this.selected,
-    //required this.onUnselectedAll,
-    required this.onSelected,
-  });
-
-  final String title;
-  final List<String> labels;
-  final List<Filter> values;
-  final Filter selected;
-  //final Function() onUnselectedAll;
-  final Function(Filter) onSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.all(AppValues.p12),
-          color: context.colorScheme.surfaceContainerHigh,
-          child: Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18)),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppValues.p36, vertical: AppValues.p8),
-          child: Wrap(
-            alignment: WrapAlignment.center,
-            spacing: AppValues.s8,
-            children: [
-              //FilterChip(label: Text("All"), onSelected: (_) => onUnselectedAll(),),
-              ...values.mapIndexed((index, filter) => ChoiceChip(
-                label: Text(labels[index]),
-                selected: filter == selected,
-                onSelected: (_) => onSelected(filter),
-              )),
-              /*ActionChip(label: Text(VerbFavourites.custom.label),
-                  onPressed: () =>_showChooseVerbsSheet(context),
-                ),*/
-            ],
-          ),
-        ),
-      ],
+      onSelected: context
+          .read<SettingsViewModel>()
+          .updateEndingFilter,
     );
   }
 }

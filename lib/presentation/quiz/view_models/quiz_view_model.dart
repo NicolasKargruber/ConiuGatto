@@ -1,14 +1,13 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/models/enums/verb_ending_filter.dart';
-import '../../../domain/service/shared_preference_service.dart';
-import '../../../main.dart';
-import '../../../domain/models/answer_result.dart';
 import '../../../data/enums/pronoun.dart';
-import '../../../domain/models/question.dart';
+import '../../../domain/models/answer_result.dart';
 import '../../../domain/models/enums/italian_tense.dart';
+import '../../../domain/models/question.dart';
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/utils/filter_extensions.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
 

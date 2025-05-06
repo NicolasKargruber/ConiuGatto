@@ -39,28 +39,28 @@ class ChooseTensesSheet extends StatelessWidget {
             ),
           ),
 
-          MoodSection(
+          _MoodSection(
               label: Mood.indicative.label,
               italianTenses: ItalianTense.indicativeTenses,
               onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
 
-          MoodSection(
+          _MoodSection(
               label: Mood.conditional.label,
               italianTenses: ItalianTense.conditionalTenses,
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
 
-          MoodSection(
+          _MoodSection(
               label: Mood.subjunctive.label,
               italianTenses: ItalianTense.subjunctiveTenses,
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
 
-          MoodSection(
+          _MoodSection(
               label: Mood.imperative.label,
               italianTenses: ItalianTense.imperativeTenses,
             onSelectedTense: onSelectTense,
@@ -74,10 +74,10 @@ class ChooseTensesSheet extends StatelessWidget {
   }
 }
 
-class MoodSection extends StatelessWidget {
-  static final String _logTag = (MoodSection).toString();
+class _MoodSection extends StatelessWidget {
+  static final String _logTag = (_MoodSection).toString();
 
-  const MoodSection({super.key,
+  const _MoodSection({super.key,
     required this.label,
     required this.italianTenses,
     required this.onSelectedTense,
