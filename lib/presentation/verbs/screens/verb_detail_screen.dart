@@ -4,6 +4,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
+import '../../../utilities/button_factory.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_detail_view_model.dart';
 import '../widgets/conjugation_table.dart';
@@ -25,19 +26,38 @@ class VerbDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
-              child: Text(viewModel.italianInfinitive, style: TextStyle(fontSize: AppValues.fs24, fontWeight: FontWeight.bold )),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
-              child: Text(viewModel.translation, style: TextStyle(fontSize: AppValues.fs16,)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
+                      child: Text(viewModel.italianInfinitive, style: TextStyle(fontSize: AppValues.fs24, fontWeight: FontWeight.bold )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
+                      child: Text(viewModel.translation, style: TextStyle(fontSize: AppValues.fs16,)),
+                    ),
+                  ],
+                ),
+
+                StarButton(
+                    selected: viewModel.isStarred,
+                    onToggled: viewModel.updateStarred,
+                ),
+              ],
             ),
 
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
-              child: ButtonFactory.createButton(viewModel.isRegular),
+              child: ButtonFactory.createFilledButton(
+                  tonal: !viewModel.isRegular,
+                  label: viewModel.isRegular ? "Regular" : "Irregular",
+              ),
             ),
 
             // TODO Handle it's own state
@@ -138,12 +158,18 @@ class VerbDetailScreen extends StatelessWidget {
   }
 }
 
-class ButtonFactory {
-  static Widget createButton(bool isRegular) {
-    if (isRegular) {
-      return FilledButton(onPressed: (){}, child: Text("Regular"));
-    } else {
-      return FilledButton.tonal(onPressed: (){}, child: Text("Irregular"));
-    }
+class StarButton extends StatelessWidget {
+  const StarButton({super.key, required this.selected, required this.onToggled});
+  final bool selected;
+  final Function(bool) onToggled;
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonFactory.createSelectableIconButton(
+        selected: selected, onPressed: () {
+          onToggled(!selected);
+        },
+    );
   }
 }
+

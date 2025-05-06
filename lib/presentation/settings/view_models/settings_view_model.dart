@@ -11,18 +11,18 @@ import '../../view_model.dart';
 class SettingsViewModel extends ViewModel {
   static final _logTag = (SettingsViewModel).toString();
 
-  final SharedPreferenceService preferenceService;
+  final SharedPreferenceService _preferenceService;
 
-  SettingsViewModel(this.preferenceService);
+  SettingsViewModel(this._preferenceService);
 
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
-    await preferenceService.initializationFuture;
+    await _preferenceService.initializationFuture;
     // TODO use GetIt
-    tenseFilters = preferenceService.loadTenses();
-    pronounFilters = preferenceService.loadPronouns();
-    endingFilter = preferenceService.loadVerbEndingFilter();
+    tenseFilters = _preferenceService.loadTenses();
+    pronounFilters = _preferenceService.loadPronouns();
+    endingFilter = _preferenceService.loadVerbEndingFilter();
     //verbFavouriteFilter = preferenceService.loadVerbFavouriteFilter();
     //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
@@ -72,7 +72,7 @@ class SettingsViewModel extends ViewModel {
   updateEndingFilter(VerbEndingFilter filter) {
     debugPrint("$_logTag | updateEndingFilter($filter)");
     endingFilter = filter;
-    preferenceService.updateEndingFilter(endingFilter);
+    _preferenceService.updateEndingFilter(endingFilter);
     debugPrint("$_logTag | Saved Verb Ending Filter in Shared Preferences: $endingFilter");
     notifyListeners();
   }
@@ -95,7 +95,7 @@ class SettingsViewModel extends ViewModel {
   addPronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | addPronounFilter($pronoun)");
     pronounFilters = List.from(pronounFilters)..add(pronoun);
-    preferenceService.updatePronounPrefs(pronounFilters);
+    _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
@@ -104,7 +104,7 @@ class SettingsViewModel extends ViewModel {
     debugPrint("$_logTag | selectAllPronounFilters()");
     if(UnorderedIterableEquality().equals(pronounFilters, Pronoun.values)) return;
     pronounFilters = List.from(Pronoun.values);
-    preferenceService.updatePronounPrefs(pronounFilters);
+    _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
@@ -112,7 +112,7 @@ class SettingsViewModel extends ViewModel {
   removePronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | removePronounFilter($pronoun)");
     pronounFilters = List.from(pronounFilters)..remove(pronoun);
-    preferenceService.updatePronounPrefs(pronounFilters);
+    _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronouns in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
@@ -122,7 +122,7 @@ class SettingsViewModel extends ViewModel {
   addTenseFilter(ItalianTense tense){
     debugPrint("$_logTag | addTenseFilter($tense)");
     tenseFilters = List.from(tenseFilters)..add(tense);
-    preferenceService.updateTensePrefs(tenseFilters);
+    _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
   }
@@ -131,7 +131,7 @@ class SettingsViewModel extends ViewModel {
     if(tenses.every((tense)=> tenseFilters.contains(tense))) return;
     debugPrint("$_logTag | selectTenseFilters($tenses)");
     tenseFilters = List.from(tenses);
-    preferenceService.updateTensePrefs(tenseFilters);
+    _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
@@ -139,7 +139,7 @@ class SettingsViewModel extends ViewModel {
   removeTenseFilter(ItalianTense tense){
     debugPrint("$_logTag | removeTenseFilter(${tense})");
     tenseFilters = List.from(tenseFilters)..remove(tense);
-    preferenceService.updateTensePrefs(tenseFilters);
+    _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
   }

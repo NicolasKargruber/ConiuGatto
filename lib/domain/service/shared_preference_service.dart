@@ -14,6 +14,7 @@ import 'service.dart';
 // TODO Move using GetIt
 class SharedPreferenceService extends Service {
   static final _logTag = (SharedPreferenceService).toString();
+
   late final SharedPreferenceRepository _sharedPreferenceRepo;
 
   SharedPreferenceService();
