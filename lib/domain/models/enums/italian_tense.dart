@@ -1,8 +1,6 @@
 
 import 'mood.dart';
 
-typedef LabeledPrefs = ({String prefKey, String label});
-
 enum ItalianTense {
   // INDICATIVE
   presentIndicative("Presente", Mood.indicative),
@@ -32,8 +30,8 @@ enum ItalianTense {
 
   String get extendedLabel => "$label - ${mood.label}";
   String get prefKey => toString();
-  static List<LabeledPrefs>  get indicativeLabeledPrefs => values.where((tense) => tense.mood == Mood.indicative).map((e) => (prefKey: e.prefKey, label: e.label)).toList();
-  static List<LabeledPrefs>  get subjunctiveLabeledPrefs => values.where((tense) => tense.mood == Mood.subjunctive).map((e) => (prefKey: e.prefKey, label: e.label)).toList();
-  static List<LabeledPrefs>  get conditionalLabeledPrefs => values.where((tense) => tense.mood == Mood.conditional).map((e) => (prefKey: e.prefKey, label: e.label)).toList();
-  static List<LabeledPrefs>  get imperativeLabeledPrefs => values.where((tense) => tense.mood == Mood.imperative).map((e) => (prefKey: e.prefKey, label: e.label)).toList();
+  static List<ItalianTense>  get indicativeTenses => values.where((tense) => tense.mood == Mood.indicative).toList();
+  static List<ItalianTense>  get subjunctiveTenses => values.where((tense) => tense.mood == Mood.subjunctive).toList();
+  static List<ItalianTense>  get conditionalTenses => values.where((tense) => tense.mood == Mood.conditional).toList();
+  static List<ItalianTense>  get imperativeTenses => values.where((tense) => tense.mood == Mood.imperative).toList();
 }

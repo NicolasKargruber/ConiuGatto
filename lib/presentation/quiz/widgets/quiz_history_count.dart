@@ -10,7 +10,7 @@ class QuizHistoryCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<QuizViewModel>();
-    return viewModel.hasQuizzableItems ? Row(
+    return viewModel.hasQuizzableQuestions ? Row(
       children: [
         Text("${viewModel.negativeQuizCount}",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)

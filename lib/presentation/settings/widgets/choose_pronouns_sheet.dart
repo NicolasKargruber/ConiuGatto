@@ -1,55 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../utilities/app_values.dart';
-import '../../../main.dart';
 import '../../../data/enums/pronoun.dart';
+import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../view_models/settings_view_model.dart';
 
-class ChoosePronounsSheet extends StatefulWidget {
+
+class ChoosePronounsSheet extends StatelessWidget {
   const ChoosePronounsSheet({super.key});
 
-  @override
-  State<ChoosePronounsSheet> createState() => _ChoosePronounsSheetState();
-}
-
-class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
-  late String logTag = (widget).toString();
-  
-  // SharedPreferences
-  Set<String> _pronounPrefs = {};
-
-  _loadPrefs() {
-    setState(() {
-      _pronounPrefs = preferenceManager.loadPronounPrefs();
-    });
-  }
-
-  _onSelectPronoun(bool selected, {required String prefValue}) {
-    setState(() {
-      if(selected) {
-        _pronounPrefs.add(prefValue);
-        debugPrint("$logTag | Added $prefValue");
-      }
-      else {
-        _pronounPrefs.remove(prefValue);
-        debugPrint("$logTag | Removed $prefValue");
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    debugPrint("$logTag | initState() ");
-    _loadPrefs();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    debugPrint("$logTag | dispose() ");
-    preferenceManager.updatePronounPrefs(_pronounPrefs);
-    super.dispose();
-  }
+  static final String _logTag = (ChoosePronounsSheet).toString();
   
   @override
   Widget build(BuildContext context) {
@@ -70,13 +31,26 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
             ),
           ),
 
-          _buildPronounSection(Pronoun.values)
+          _PronounFilterChips(),
+
+          SizedBox(height: AppValues.s24),
         ],
       ),
     );
   }
+}
 
-  _buildPronounSection(List<Pronoun> pronouns) {
+class _PronounFilterChips extends StatelessWidget {
+  const _PronounFilterChips({super.key});
+
+  static final _logTag = (_PronounFilterChips).toString();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
+    // SELECT -> Listen, Rebuild ...
+    context.select<SettingsViewModel, List<Pronoun>>((vm) => vm.pronounFilters);
+    final viewModel = context.read<SettingsViewModel>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -95,18 +69,18 @@ class _ChoosePronounsSheetState extends State<ChoosePronounsSheet> {
           padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(
             spacing: AppValues.s8,
-            children: pronouns.map((pronoun) {
-              return FilterChip(
-                    label: Text(pronoun.italian),
-                    selected: _pronounPrefs.contains(pronoun.prefKey),
-                    onSelected: (selected) =>
-                        _onSelectPronoun(selected, prefValue: pronoun.prefKey)
-                );
-            },
-            ).toList(),
+            children: Pronoun.values.map((pronoun) => FilterChip(
+                label: Text(pronoun.italian),
+                selected: viewModel.isPronounSelected(pronoun),
+                onSelected: (selected) {
+                  if(selected) { viewModel.addPronounFilter(pronoun); }
+                  else { viewModel.removePronounFilter(pronoun); }
+                },
+            )).toList(),
           ),
         )
       ],
     );
   }
 }
+

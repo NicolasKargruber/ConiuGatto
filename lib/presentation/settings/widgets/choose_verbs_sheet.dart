@@ -1,118 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/service/verb_service.dart';
-import '../../../utilities/app_values.dart';
-import '../../../main.dart';
 import '../../../domain/models/verb.dart';
+import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../view_models/settings_view_model.dart';
 
-class ChooseVerbsSheet extends StatefulWidget {
+final String _logTag = (ChooseVerbsSheet).toString();
+
+class ChooseVerbsSheet extends StatelessWidget {
   const ChooseVerbsSheet({super.key});
 
-  @override
-  State<ChooseVerbsSheet> createState() => _ChooseVerbsSheetState();
-}
-
-class _ChooseVerbsSheetState extends State<ChooseVerbsSheet> {
-  late String logTag = (widget).toString();
-
-  // ViewModel
-  List<Verb> get _verbs => context.read<VerbService>().verbs;
-  
-  // SharedPreferences
-  Set<String> _verbPrefs = {};
-  get _defaultVerbPrefs => _verbs.map((e) => e.prefKey);
-
-  _loadPrefs() {
-    setState(() {
-      _verbPrefs = preferenceManager.loadVerbPrefs(_defaultVerbPrefs);
-    });
+  _onSelectVerb(BuildContext context, bool selected, {required Verb verb}) {
+    /*if (selected) {
+      context.read<SettingsViewModel>().addCustomVerb(verb);
+    } else {
+      context.read<SettingsViewModel>().removeCustomVerb(verb);
+    }*/
   }
 
-  _onSelectVerb(bool selected, {required String prefValue}) {
-    setState(() {
-      if(selected) {
-        _verbPrefs.add(prefValue);
-        debugPrint("$logTag | Added $prefValue");
-      }
-      else {
-        _verbPrefs.remove(prefValue);
-        debugPrint("$logTag | Removed $prefValue");
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    debugPrint("$logTag | initState() ");
-    _loadPrefs();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    debugPrint("$logTag | dispose() ");
-    preferenceManager.updateVerbPrefs(_verbPrefs);
-    super.dispose();
-  }
-  
   @override
   Widget build(BuildContext context) {
+    List<Verb> verbs = context.read<SettingsViewModel>().verbs;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(12),
-            child: Text(
-              "Choose from the Verbs below",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-              ),
-            ),
+            child: Text("Choose from the Verbs below", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18)),
           ),
 
-          _buildVerbSection(_verbs)
+          _buildVerbSection(verbs),
         ],
       ),
     );
   }
 
   _buildVerbSection(List<Verb> verbs) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: double.maxFinite,
-          child: Container(
-            padding: EdgeInsets.all(AppValues.p12),
-            color: context.colorScheme.surfaceContainerHigh,
-            child: Text(
-              "Verbs",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
+    return Builder(
+      builder: (context) {
+        final viewModel = context.watch<SettingsViewModel>();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: double.maxFinite,
+              child: Container(
+                padding: EdgeInsets.all(AppValues.p12),
+                color: context.colorScheme.surfaceContainerHigh,
+                child: Text("Verbs", style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18)),
+              ),
             ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppValues.p12),
-          child: Wrap(
-            spacing: AppValues.s8,
-            children: verbs.map((verb) {
-              return FilterChip(
-                    label: Text(verb.italianInfinitive),
-                    selected: _verbPrefs.contains(verb.prefKey),
-                    onSelected: (selected) =>
-                        _onSelectVerb(selected, prefValue: verb.prefKey)
-                );
-            },
-            ).toList(),
-          ),
-        )
-      ],
+            Padding(
+              padding: const EdgeInsets.all(AppValues.p12),
+              child: Wrap(
+                spacing: AppValues.s8,
+                children: verbs.map((verb) => FilterChip(
+                  label: Text(verb.italianInfinitive),
+                  selected: true/*viewModel.isCustomVerbSelected(verb)*/,
+                  onSelected: (selected) => _onSelectVerb(context, selected, verb: verb),
+                )).toList(),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

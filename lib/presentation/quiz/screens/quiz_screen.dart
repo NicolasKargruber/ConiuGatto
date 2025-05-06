@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
+import '../../settings/view_models/settings_view_model.dart';
 import '../view_models/quiz_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/quiz_history_count.dart';
@@ -44,7 +46,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
         _textController.clear();
-        _viewModel.createNewQuizItem();
+        _viewModel.createNewQuestion();
       }
   }
 
@@ -62,15 +64,17 @@ class _QuizScreenState extends State<QuizScreen> {
   // TODO Use Navigator
   _showSettingsScreen() async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
-        Provider.value(
+        ChangeNotifierProvider.value(
           value: context.read<VerbService>(),
-          child: SettingsScreen(),
+          child: ChangeNotifierProxyProvider<VerbService, SettingsViewModel>(
+            create: (_) => SettingsViewModel(context.read<SharedPreferenceService>()),
+            update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
+            child: SettingsScreen(),
+          ),
         ))
     );
 
-    // TODO only update if new prefs come in
-    if(mounted) context.read<QuizViewModel>().updateQuizzable();
-    if(mounted) context.read<QuizViewModel>().createNewQuizItem();
+    if(mounted) context.read<QuizViewModel>().updateQuiz(skipQuestion: true);
   }
 
   @override

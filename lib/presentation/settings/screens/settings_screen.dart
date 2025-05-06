@@ -1,55 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../view_models/settings_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
-import '../widgets/choose_verbs_sheet.dart';
+import '../widgets/choose_verb_filters_sheet.dart';
 
 final _logTag = (SettingsScreen).toString();
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
-
-  _showChooseTensesSheet(BuildContext context) {
-    showModalBottomSheet(
+  _showChooseTensesSheet(BuildContext context) async {
+    await showModalBottomSheet(
       context: context,
-      builder: (context) => SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: ChooseTensesSheet(),
+      builder: (_) => ChangeNotifierProvider.value(
+        value: context.read<SettingsViewModel>(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: ChooseTensesSheet(),
+        ),
       ),
     );
   }
 
-  _showChooseVerbsSheet(BuildContext context) {
-    showModalBottomSheet(
+  _showChooseVerbFiltersSheet(BuildContext context) async {
+    await showModalBottomSheet(
       context: context,
-      builder: (_) {
-        return Provider.value(
-          value: context.read<VerbService>(),
+      builder: (_) => ChangeNotifierProvider.value(
+          value: context.read<SettingsViewModel>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: ChooseVerbsSheet(),
+            child: ChooseVerbFiltersSheet(),
           ),
-        );
-      },
+        ),
     );
   }
 
-  _showChoosePronounsSheet(BuildContext context) {
-    showModalBottomSheet(
+  _showChoosePronounsSheet(BuildContext context) async {
+    await showModalBottomSheet(
       context: context,
-      builder: (_) {
-        return Provider.value(
-          value: context.read<VerbService>(),
+      builder: (_) => ChangeNotifierProvider.value(
+        value: context.read<SettingsViewModel>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChoosePronounsSheet(),
           ),
-        );
-      },
+        ),
     );
   }
 
@@ -88,9 +86,9 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
             ),
-        
+
             SizedBox(height: AppValues.s8),
-        
+
             SizedBox(
               width: double.maxFinite,
               child: Container(
@@ -114,14 +112,14 @@ class SettingsScreen extends StatelessWidget {
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
-                  onPressed: () => _showChooseVerbsSheet(context),
+                  onPressed: () => _showChooseVerbFiltersSheet(context),
                   child: Text("Update verbs"),
                 ),
               ),
             ),
-        
+
             SizedBox(height: AppValues.s8),
-        
+
             SizedBox(
               width: double.maxFinite,
               child: Container(
