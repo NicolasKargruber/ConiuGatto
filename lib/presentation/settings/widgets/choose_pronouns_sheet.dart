@@ -54,17 +54,28 @@ class _PronounFilterChips extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        Container(
           width: double.maxFinite,
-          child: Container(
-            padding: EdgeInsets.all(AppValues.p12),
-            color: context.colorScheme.surfaceContainerHigh,
-            child: Text(
-              "Pronouns",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
-            ),
+          padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p4),
+          color: context.colorScheme.surfaceContainerHigh,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Pronouns",
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
+              ),
+
+              TextButton(
+                onPressed: viewModel.selectAllPronounFilters,
+                child: Text("Select All",
+                  style: TextStyle(fontSize: AppValues.fs16),
+                ),
+              ),
+            ],
           ),
         ),
+
         Padding(
           padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(

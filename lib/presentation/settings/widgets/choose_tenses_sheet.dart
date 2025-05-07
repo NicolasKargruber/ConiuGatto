@@ -43,12 +43,14 @@ class ChooseTensesSheet extends StatelessWidget {
               label: Mood.indicative.label,
               italianTenses: ItalianTense.indicativeTenses,
               onSelectedTense: onSelectTense,
+              onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.indicativeTenses),
               isSelected: viewModel.isTenseSelected,
           ),
 
           _MoodSection(
               label: Mood.conditional.label,
               italianTenses: ItalianTense.conditionalTenses,
+            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.conditionalTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
@@ -56,6 +58,7 @@ class ChooseTensesSheet extends StatelessWidget {
           _MoodSection(
               label: Mood.subjunctive.label,
               italianTenses: ItalianTense.subjunctiveTenses,
+            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.subjunctiveTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
@@ -63,6 +66,7 @@ class ChooseTensesSheet extends StatelessWidget {
           _MoodSection(
               label: Mood.imperative.label,
               italianTenses: ItalianTense.imperativeTenses,
+            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.imperativeTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
@@ -80,12 +84,14 @@ class _MoodSection extends StatelessWidget {
   const _MoodSection({super.key,
     required this.label,
     required this.italianTenses,
+    required this.onSelectedAll,
     required this.onSelectedTense,
     required this.isSelected,
   });
 
   final String label;
   final List<ItalianTense> italianTenses;
+  final Function() onSelectedAll;
   final Function(bool selected, {required ItalianTense tense}) onSelectedTense;
   final bool Function(ItalianTense) isSelected;
 
@@ -97,20 +103,28 @@ class _MoodSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        Container(
           width: double.maxFinite,
-          child: Container(
-            padding: EdgeInsets.all(AppValues.p12),
-            color: context.colorScheme.surfaceContainerHigh,
-            child: Text(
-              label,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: AppValues.fs18,
+          padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p4),
+          color: context.colorScheme.surfaceContainerHigh,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                label,
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
               ),
-            ),
+
+              TextButton(
+                onPressed: onSelectedAll,
+                child: Text("Select All",
+                  style: TextStyle(fontSize: AppValues.fs16),
+                ),
+              ),
+            ],
           ),
         ),
+
         Padding(
           padding: const EdgeInsets.all(AppValues.p12),
           child: Wrap(

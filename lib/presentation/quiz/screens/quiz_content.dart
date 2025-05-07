@@ -31,7 +31,7 @@ class QuizContent extends StatelessWidget {
     final viewModel = context.watch<QuizViewModel>();
 
     return !viewModel.hasQuizzableQuestions ?
-    Center(child: _buildNoTensesAvailable()) :
+    Center(child: _NoQuestionsAvailable(onSettingsButtonPressed: onSettingsButtonPressed)) :
     Padding(
       padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),
       child: Column(
@@ -57,7 +57,12 @@ class QuizContent extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if(viewModel.isDoubleAuxiliary)
-                            Chip(label: Text("${viewModel.currentAuxiliaryLabel}")),
+                            Chip(
+                              label: Text("${viewModel.currentAuxiliaryLabel}",
+                                  style: TextStyle(color: context.colorScheme.tertiary),
+                              ),
+                              side: BorderSide(color: context.colorScheme.tertiary),
+                            ),
 
                           SizedBox(height: AppValues.s4),
 
@@ -118,13 +123,23 @@ class QuizContent extends StatelessWidget {
       ),
     );
   }
+}
 
-  _buildNoTensesAvailable(){
+class _NoQuestionsAvailable extends StatelessWidget {
+  const _NoQuestionsAvailable({
+    super.key,
+    required this.onSettingsButtonPressed,
+  });
+
+  final Function() onSettingsButtonPressed;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       spacing: AppValues.s8,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('No Quizzable Tenses available! 😭',
+        Text('No matching Questions available! 😭',
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20)
         ),
 

@@ -4,15 +4,18 @@ import 'package:flutter/foundation.dart';
 import '../../../data/enums/auxiliary.dart';
 import '../../../domain/models/tenses/tense.dart';
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
 import '../../../domain/utils/verb_extensions.dart';
 
-final _logTag = (VerbDetailViewModel).toString();
 
 class VerbDetailViewModel extends ViewModel {
-  final Verb _verb;
+  static final _logTag = (VerbDetailViewModel).toString();
 
-  VerbDetailViewModel(this._verb);
+  final Verb _verb;
+  final SharedPreferenceService _preferenceService;
+
+  VerbDetailViewModel(this._verb, this._preferenceService);
 
   // Initialized in Parent Constructor
   @override
@@ -21,11 +24,17 @@ class VerbDetailViewModel extends ViewModel {
     _verb.auxiliaries.sortBy((e) => e.index);
     _selectedAuxiliary = _verb.auxiliaries.first;
     debugPrint("$_logTag | Irregularities: ${_verb.irregularities}");
+    await _preferenceService.initializationFuture;
+    _isStarred = _preferenceService.getStarredVerbsFrom([_verb]).contains(_verb);
+    notifyListeners();
   }
 
   // State
   late Auxiliary _selectedAuxiliary;
   List<bool> selectedAuxiliaries = [true, false];
+  bool _isStarred = false;
+  bool get isStarred => _isStarred;
+
 
   // Getters - State
   bool get isRegular => _verb.isRegular;
@@ -40,6 +49,19 @@ class VerbDetailViewModel extends ViewModel {
   // Getters - Quiz Labels
   String get italianInfinitive => _verb.italianInfinitive;
   String get translation => _verb.translation;
+
+  updateStarred(bool star) {
+    debugPrint("$_logTag | updateStarred($star)");
+    _isStarred = star;
+    if (star) {
+      _preferenceService.addStarredVerb(_verb);
+      debugPrint("$_logTag | Added starred verb: ${_verb.prefKey}");
+    } else {
+      _preferenceService.removeStarredVerb(_verb);
+      debugPrint("$_logTag | Removed starred verb: ${_verb.prefKey}");
+    }
+    notifyListeners();
+  }
 
   selectAuxiliaryAtIndex(index) {
     _selectedAuxiliary = _verb.auxiliaries.elementAt(index);

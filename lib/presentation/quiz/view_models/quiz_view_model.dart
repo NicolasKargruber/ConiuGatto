@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../../data/enums/pronoun.dart';
 import '../../../domain/models/answer_result.dart';
 import '../../../domain/models/enums/italian_tense.dart';
+import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/question.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
@@ -99,8 +100,18 @@ class QuizViewModel extends ViewModel {
   void _findQuizzableVerbs() {
     debugPrint("$_logTag | _findQuizzableVerbs() started");
     List<Verb> verbs = _verbs;
-    final endingFilter = preferenceService.loadVerbEndingFilter();
-    verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
+    final favouriteFilter = preferenceService.loadVerbFavouriteFilter();
+    switch (favouriteFilter) {
+      case VerbFavouriteFilter.all:
+        break;
+      case VerbFavouriteFilter.starred:
+        verbs = preferenceService.getStarredVerbsFrom(verbs);
+        break;
+    }
+    if(verbs.isNotEmpty) {
+      final endingFilter = preferenceService.loadVerbEndingFilter();
+      verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
+    }
     // TODO in CON-57
     //final irregularityFilter = preferenceService.loadVerbIrregularityFilter();
     //verbs = verbs.where((verb) => irregularityFilter.includesVerb(verb)).toList();

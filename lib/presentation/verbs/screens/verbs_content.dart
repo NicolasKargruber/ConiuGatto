@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/service/shared_preference_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/search_view_model.dart';
@@ -42,7 +43,7 @@ class VerbsContent extends StatelessWidget {
                     Navigator.push(context,
                       MaterialPageRoute(
                         builder: (_) => ChangeNotifierProvider(
-                          create: (_) => VerbDetailViewModel(verbs[index]),
+                          create: (_) => VerbDetailViewModel(verbs[index], context.read<SharedPreferenceService>()),
                           child: VerbDetailScreen(),
                         ),
                       ),
