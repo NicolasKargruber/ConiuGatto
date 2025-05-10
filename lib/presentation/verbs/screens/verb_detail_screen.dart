@@ -4,7 +4,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
-import '../../../utilities/button_factory.dart';
+import '../../../utilities/widget_factory.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_detail_view_model.dart';
 import '../widgets/conjugation_table.dart';
@@ -44,9 +44,9 @@ class VerbDetailScreen extends StatelessWidget {
                   ],
                 ),
 
-                StarButton(
-                    selected: viewModel.isStarred,
-                    onToggled: viewModel.updateStarred,
+                StarButtonFactory.createSelectableIconButton(
+                  isStarred: viewModel.isStarred,
+                  onPressed: () => viewModel.updateStarred(!viewModel.isStarred),
                 ),
               ],
             ),
@@ -154,21 +154,6 @@ class VerbDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class StarButton extends StatelessWidget {
-  const StarButton({super.key, required this.selected, required this.onToggled});
-  final bool selected;
-  final Function(bool) onToggled;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonFactory.createSelectableIconButton(
-        selected: selected, onPressed: () {
-          onToggled(!selected);
-        },
     );
   }
 }
