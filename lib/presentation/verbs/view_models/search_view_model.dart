@@ -2,11 +2,17 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
 
-final _logTag = (SearchViewModel).toString();
-
 class SearchViewModel extends ViewModel{
+  static final _logTag = (SearchViewModel).toString();
+
+  final SharedPreferenceService _sharedPreferenceService;
+  SearchViewModel(this._sharedPreferenceService);
+
+  List<Verb> _starredVerbs = [];
+
   List<Verb> _filteredVerbs = [];
   List<Verb> get filteredVerbs =>
       [..._filteredVerbs.isEmpty ? _verbs : _filteredVerbs];
@@ -25,6 +31,18 @@ class SearchViewModel extends ViewModel{
     Function eq = const ListEquality().equals;
     if(eq(_verbs, verbs)) return debugPrint("$_logTag | loaded verbs are still the same");
     _verbs = verbs;
+    _starredVerbs = _sharedPreferenceService.getStarredVerbsFrom(_verbs);
+    notifyListeners();
+  }
+
+  updateStarredVerbs() {
+    debugPrint("$_logTag | updateStarredVerbs()");
+    // Check if verbs are the same
+    final starredVerbs = _sharedPreferenceService.getStarredVerbsFrom(_verbs);
+    Function eq = const ListEquality().equals;
+    if(eq(_verbs, starredVerbs)) return debugPrint("$_logTag | loaded starred verbs are still the same");
+    _starredVerbs = starredVerbs;
+    notifyListeners();
   }
 
   filterVerbs(String search) {
@@ -35,4 +53,21 @@ class SearchViewModel extends ViewModel{
     _filteredVerbs = filteredVerbsInItalian + filteredVerbsInEnglish;
     notifyListeners();
   }
+
+  toggleStarredVerb(Verb verb) {
+    debugPrint("$_logTag | toggleStarredVerb()");
+    if(_starredVerbs.contains(verb)) {
+      _starredVerbs.remove(verb);
+      _sharedPreferenceService.removeStarredVerb(verb);
+      notifyListeners();
+      debugPrint("$_logTag | Removed starred verb: ${verb.italianInfinitive}");
+    } else {
+      _starredVerbs.add(verb);
+      _sharedPreferenceService.addStarredVerb(verb);
+      notifyListeners();
+      debugPrint("$_logTag | Added starred verb: ${verb.italianInfinitive}");
+    }
+  }
+
+  isStarredVerb(Verb verb) => _starredVerbs.contains(verb);
 }

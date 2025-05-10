@@ -4,13 +4,13 @@ import 'package:provider/provider.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../../../utilities/widget_factory.dart';
 import '../view_models/search_view_model.dart';
 import '../view_models/verb_detail_view_model.dart';
 import 'verb_detail_screen.dart';
 
-final _logTag = (VerbsContent).toString();
-
 class VerbsContent extends StatelessWidget {
+  static final _logTag = (VerbsContent).toString();
   const VerbsContent({super.key, required this.searchTextController});
 
   final TextEditingController searchTextController;
@@ -22,7 +22,8 @@ class VerbsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final verbs = context.watch<SearchViewModel>().filteredVerbs;
+    final viewModel = context.watch<SearchViewModel>();
+    final verbs = viewModel.filteredVerbs;
     return Column(
       children: [
         Padding(
@@ -36,20 +37,29 @@ class VerbsContent extends StatelessWidget {
             child: ListView.builder(
               itemCount: verbs.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(verbs[index].italianInfinitive),
-                  subtitle: Text(verbs[index].translation),
-                  onTap: () {
-                    Navigator.push(context,
-                      MaterialPageRoute(
-                        builder: (_) => ChangeNotifierProvider(
-                          create: (_) => VerbDetailViewModel(verbs[index], context.read<SharedPreferenceService>()),
-                          child: VerbDetailScreen(),
-                        ),
-                      ),
-                    );
-                  },
-                );
+                final verb = verbs[index];
+                final isStarred = viewModel.isStarredVerb(verb);
+                 return StarButtonFactory.createDismissable(
+                    key: ValueKey<String>(verb.italianInfinitive),
+                    isStarred: isStarred,
+                    onDismissed: () => viewModel.toggleStarredVerb(verb),
+                    child: ListTile(
+                      title: Text(verb.italianInfinitive),
+                      subtitle: Text(verb.translation),
+                      trailing: isStarred ? StarButtonFactory.createIcon() : null,
+                      onTap: () async {
+                        await Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (_) => ChangeNotifierProvider(
+                              create: (_) => VerbDetailViewModel(verb, context.read<SharedPreferenceService>()),
+                              child: VerbDetailScreen(),
+                            ),
+                          ),
+                        );
+                        viewModel.updateStarredVerbs();
+                      },
+                    ),
+                 );
               },
             ),
           ),
@@ -59,7 +69,7 @@ class VerbsContent extends StatelessWidget {
   }
 
   _buildSearchBar(BuildContext context){
-    final viewModel = context.watch<SearchViewModel>();
+    final viewModel = context.read<SearchViewModel>();
     return SearchBar(
       controller: searchTextController,
       leading: Padding(

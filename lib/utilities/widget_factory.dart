@@ -11,12 +11,47 @@ class ButtonFactory {
       return FilledButton(onPressed: (){}, child: Text(label));
     }
   }
+}
+
+class StarButtonFactory {
+  static Widget createDismissable({
+    required  ValueKey<String> key,
+    required bool isStarred,
+    required Function onDismissed,
+    required  Widget child,
+  }) {
+    return Dismissible(
+      key: key,
+      background: Container(
+        color: Colors.yellow.shade500,
+        child: Icon(isStarred ? Icons.star_border_rounded : Icons.star_rounded, color: Colors.yellow.shade900),
+      ),
+      direction: DismissDirection.endToStart,
+      confirmDismiss: (_) async {
+        onDismissed();
+        return false;
+      },
+      child: child,
+    );
+  }
+
+  static Widget createIcon({bool isStarred = true}) =>
+      Builder(builder: (context) {
+        if (isStarred) {
+          return Icon(Icons.star,
+            color: context.isLightMode ? Colors.yellow.shade800 : Colors.yellow.shade500,
+          );
+        }
+        return Icon(Icons.star_border_rounded,
+          color: context.isLightMode ? Colors.yellow.shade500 : Colors.yellow.shade200,
+        );
+      });
 
   static Widget createSelectableIconButton({
-    required bool selected,
+    required bool isStarred,
     required Function() onPressed,
   }) => Builder(builder: (context) {
-    if(selected) {
+    if(isStarred) {
       return IconButton(
         style: IconButton.styleFrom(
           backgroundColor: context.isLightMode ? Colors.yellow.shade700 : Colors.yellow.shade600,
