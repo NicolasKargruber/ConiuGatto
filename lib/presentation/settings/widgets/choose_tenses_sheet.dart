@@ -43,14 +43,14 @@ class ChooseTensesSheet extends StatelessWidget {
               label: Mood.indicative.label,
               italianTenses: ItalianTense.indicativeTenses,
               onSelectedTense: onSelectTense,
-              onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.indicativeTenses),
+              onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.indicativeTenses),
               isSelected: viewModel.isTenseSelected,
           ),
 
           _MoodSection(
               label: Mood.conditional.label,
               italianTenses: ItalianTense.conditionalTenses,
-            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.conditionalTenses),
+            onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.conditionalTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
@@ -58,7 +58,7 @@ class ChooseTensesSheet extends StatelessWidget {
           _MoodSection(
               label: Mood.subjunctive.label,
               italianTenses: ItalianTense.subjunctiveTenses,
-            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.subjunctiveTenses),
+            onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.subjunctiveTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),
@@ -66,7 +66,7 @@ class ChooseTensesSheet extends StatelessWidget {
           _MoodSection(
               label: Mood.imperative.label,
               italianTenses: ItalianTense.imperativeTenses,
-            onSelectedAll: () => viewModel.selectTenseFilters(ItalianTense.imperativeTenses),
+            onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.imperativeTenses),
             onSelectedTense: onSelectTense,
               isSelected: viewModel.isTenseSelected,
           ),

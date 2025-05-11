@@ -20,9 +20,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int _currentIndex = 1;
+  int _currentIndex = 0;
   final List<Widget> _screens = [
-    GrammarScreen(),
+    //GrammarScreen(),
     // Quiz Screen
     ChangeNotifierProxyProvider<VerbService, QuizViewModel>(
       create: (context) => QuizViewModel(context.read<SharedPreferenceService>()),
@@ -49,10 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         items: [
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
             icon: Icon(Icons.badge_outlined),
             label: 'Grammar',
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(Icons.question_mark_rounded),
             label: 'Quiz',
