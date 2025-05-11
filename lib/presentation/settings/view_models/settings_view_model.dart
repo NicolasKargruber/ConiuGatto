@@ -123,23 +123,23 @@ class SettingsViewModel extends ViewModel {
 
   addTenseFilter(ItalianTense tense){
     debugPrint("$_logTag | addTenseFilter($tense)");
-    tenseFilters = List.from(tenseFilters)..add(tense);
+    tenseFilters = tenseFilters + [tense];
     _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
     notifyListeners();
   }
 
-  selectTenseFilters(List<ItalianTense> tenses) {
-    if(tenses.every((tense)=> tenseFilters.contains(tense))) return;
-    debugPrint("$_logTag | selectTenseFilters($tenses)");
-    tenseFilters = List.from(tenses);
+  addTenseFilters(List<ItalianTense> tenses) {
+    if(tenses.every((tense) => tenseFilters.contains(tense))) return;
+    debugPrint("$_logTag | addTenseFilters($tenses)");
+    tenseFilters = tenseFilters + tenses;
     _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
   }
 
   removeTenseFilter(ItalianTense tense){
-    debugPrint("$_logTag | removeTenseFilter(${tense})");
+    debugPrint("$_logTag | removeTenseFilter($tense)");
     tenseFilters = List.from(tenseFilters)..remove(tense);
     _preferenceService.updateTensePrefs(tenseFilters);
     debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
