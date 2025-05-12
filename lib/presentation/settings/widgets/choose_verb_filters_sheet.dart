@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 import '../../../data/enums/irregularity.dart';
 import '../../../data/enums/regularity.dart';

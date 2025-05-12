@@ -43,7 +43,7 @@ class VerbDetailViewModel extends ViewModel {
   List<Tense> get subjunctiveTenses => _verb.getSubjunctiveTenses(_selectedAuxiliary);
   List<Tense> get conditionalTenses => _verb.getConditionalTenses(_selectedAuxiliary);
   List<Tense> get imperativeTenses => _verb.getImperativeTenses();
-  List<String> get auxiliaryLabels => _verb.auxiliaries.map((e) => e.name.toUpperCase()).toList();
+  List<String> get auxiliaryLabels => _verb.auxiliaries.map((e) => e.label).toList();
   int get selectedAuxiliaryIndex => _selectedAuxiliary.index;
 
   // Getters - Quiz Labels

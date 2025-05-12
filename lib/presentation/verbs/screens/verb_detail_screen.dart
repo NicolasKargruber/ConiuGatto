@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
@@ -9,10 +8,10 @@ import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/verb_detail_view_model.dart';
 import '../widgets/conjugation_table.dart';
 
-final _logTag = (VerbDetailScreen).toString();
-
 class VerbDetailScreen extends StatelessWidget {
   const VerbDetailScreen({super.key});
+
+  static final _logTag = (VerbDetailScreen).toString();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class VerbDetailScreen extends StatelessWidget {
                   ],
                 ),
 
-                StarButtonFactory.createSelectableIconButton(
+                StarWidgetFactory.createSelectableIconButton(
                   isStarred: viewModel.isStarred,
                   onPressed: () => viewModel.updateStarred(!viewModel.isStarred),
                 ),
@@ -60,27 +59,12 @@ class VerbDetailScreen extends StatelessWidget {
               ),
             ),
 
-            // TODO Handle it's own state
             if(viewModel.isDoubleAuxiliary)
-              Container(
-                padding: const EdgeInsets.all(AppValues.p8),
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Auxiliary:", style: TextStyle(fontSize: AppValues.fs16)),
-
-                    SizedBox(width: AppValues.s12),
-
-                    ToggleSwitch(
-                      initialLabelIndex: viewModel.selectedAuxiliaryIndex,
-                      activeBgColors: [[context.colorScheme.tertiary],[context.colorScheme.tertiary]],
-                      inactiveBgColor: context.colorScheme.surfaceContainer,
-                      activeFgColor: context.colorScheme.onTertiary,
-                      labels: viewModel.auxiliaryLabels,
-                      onToggle: viewModel.selectAuxiliaryAtIndex,
-                    ),
-                  ],
+              Center(
+                child: AuxiliaryToggleButtons(
+                  selectedAuxiliaryIndex: viewModel.selectedAuxiliaryIndex,
+                  auxiliaryLabels: viewModel.auxiliaryLabels,
+                  onToggle: viewModel.selectAuxiliaryAtIndex,
                 ),
               ),
 
@@ -157,4 +141,34 @@ class VerbDetailScreen extends StatelessWidget {
     );
   }
 }
+
+class AuxiliaryToggleButtons extends StatelessWidget {
+  const AuxiliaryToggleButtons({super.key,
+    required this.selectedAuxiliaryIndex,
+    required this.auxiliaryLabels,
+    required this.onToggle,
+  });
+
+  final int selectedAuxiliaryIndex;
+  final List<String> auxiliaryLabels;
+  final Function(int?) onToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<bool> selectedAuxiliaries = auxiliaryLabels.map((e) => false).toList();
+    selectedAuxiliaries[selectedAuxiliaryIndex] = true;
+    return ToggleButtons(
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      selectedBorderColor: Colors.green.shade700,
+      selectedColor: Colors.white,
+      fillColor: Colors.green.shade200,
+      color: Colors.green.shade400,
+      constraints: const BoxConstraints(minHeight: AppValues.s40, minWidth: AppValues.s80),
+      onPressed: onToggle,
+      isSelected: selectedAuxiliaries,
+      children: auxiliaryLabels.map((label) => Text(label)).toList(),
+    );
+  }
+}
+
 
