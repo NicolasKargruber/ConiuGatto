@@ -39,14 +39,14 @@ class VerbsContent extends StatelessWidget {
               itemBuilder: (context, index) {
                 final verb = verbs[index];
                 final isStarred = viewModel.isStarredVerb(verb);
-                 return StarButtonFactory.createDismissable(
+                 return StarWidgetFactory.createDismissable(
                     key: ValueKey<String>(verb.italianInfinitive),
                     isStarred: isStarred,
                     onDismissed: () => viewModel.toggleStarredVerb(verb),
                     child: ListTile(
                       title: Text(verb.italianInfinitive),
                       subtitle: Text(verb.translation),
-                      trailing: isStarred ? StarButtonFactory.createIcon() : null,
+                      trailing: isStarred ? StarWidgetFactory.createIcon() : null,
                       onTap: () async {
                         await Navigator.push(context,
                           MaterialPageRoute(

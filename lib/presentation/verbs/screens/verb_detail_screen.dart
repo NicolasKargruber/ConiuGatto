@@ -44,7 +44,7 @@ class VerbDetailScreen extends StatelessWidget {
                   ],
                 ),
 
-                StarButtonFactory.createSelectableIconButton(
+                StarWidgetFactory.createSelectableIconButton(
                   isStarred: viewModel.isStarred,
                   onPressed: () => viewModel.updateStarred(!viewModel.isStarred),
                 ),

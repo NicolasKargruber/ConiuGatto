@@ -13,7 +13,7 @@ class ButtonFactory {
   }
 }
 
-class StarButtonFactory {
+class StarWidgetFactory {
   static Widget createDismissable({
     required  ValueKey<String> key,
     required bool isStarred,
