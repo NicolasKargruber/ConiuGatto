@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
           dividerTheme: DividerThemeData(
             color: schemeDark.surfaceBright,
           ),
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          linearTrackColor: schemeDark.primaryContainer,
+        ),
       ),
       home: MultiProvider(
         providers: [

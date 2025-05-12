@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
 import 'grammar/grammar_screen.dart';
+import 'history/screens/history_screen.dart';
+import 'history/view_models/history_view_model.dart';
 import 'quiz/screens/quiz_screen.dart';
 import 'quiz/view_models/quiz_view_model.dart';
 import 'verbs/screens/verbs_screen.dart';
@@ -20,9 +22,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   final List<Widget> _screens = [
     //GrammarScreen(),
+    ChangeNotifierProvider<HistoryViewModel>(
+      create: (_) => HistoryViewModel(),
+      child: HistoryScreen(),
+    ),
     // Quiz Screen
     ChangeNotifierProxyProvider<VerbService, QuizViewModel>(
       create: (context) => QuizViewModel(context.read<SharedPreferenceService>()),
@@ -53,6 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.badge_outlined),
             label: 'Grammar',
           ),*/
+          BottomNavigationBarItem(
+            icon: Icon(Icons.hourglass_bottom_rounded),
+            label: 'History',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.question_mark_rounded),
             label: 'Quiz',

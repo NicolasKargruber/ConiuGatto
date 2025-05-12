@@ -20,10 +20,11 @@ final ColorScheme schemeLight = SeedColorScheme.fromSeeds(
 // Custom LIGHT Tones
 const FlexTones myLightTones = FlexTones.light(
   primaryTone: 35,
+  primaryContainerTone: 86,
+  onPrimaryContainerTone: 30,
   tertiaryTone: 45,
   tertiaryChroma: 40,
-  tertiaryContainerTone: 80,
-  onTertiaryContainerTone: 100,
+  tertiaryContainerTone: 85,
   neutralChroma: 12,
   neutralVariantChroma: 100,
   paletteType: FlexPaletteType.extended,
