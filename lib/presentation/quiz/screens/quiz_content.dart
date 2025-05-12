@@ -5,6 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../../../utilities/widget_factory.dart';
 import '../view_models/quiz_view_model.dart';
 import '../widgets/quiz_input_fields.dart';
 import '../../widgets/shake_widget.dart';
@@ -57,12 +58,7 @@ class QuizContent extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if(viewModel.isDoubleAuxiliary)
-                            Chip(
-                              label: Text("${viewModel.currentAuxiliaryLabel}",
-                                  style: TextStyle(color: context.colorScheme.tertiary),
-                              ),
-                              side: BorderSide(color: context.colorScheme.tertiary),
-                            ),
+                            AuxiliaryWidgetFactory.createChip(label: viewModel.currentAuxiliaryLabel ?? ''),
 
                           SizedBox(height: AppValues.s4),
 

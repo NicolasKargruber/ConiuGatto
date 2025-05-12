@@ -75,3 +75,32 @@ class StarWidgetFactory {
     );
   });
 }
+
+class AuxiliaryWidgetFactory {
+  static Widget createChip({required String label}) {
+    return Chip(
+      label: Text(label, style: TextStyle(color: Colors.green.shade300)),
+      side: BorderSide(color: Colors.green.shade300),
+    );
+  }
+
+  static Widget createToggleButtons({
+    required int selectedAuxiliaryIndex,
+    required List<String> auxiliaryLabels,
+    required Function(int?) onToggle,
+  }) {
+    final List<bool> selectedAuxiliaries = auxiliaryLabels.map((e) => false).toList();
+    selectedAuxiliaries[selectedAuxiliaryIndex] = true;
+    return ToggleButtons(
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      selectedBorderColor: Colors.green.shade700,
+      selectedColor: Colors.white,
+      fillColor: Colors.green.shade200,
+      color: Colors.green.shade400,
+      constraints: const BoxConstraints(minHeight: AppValues.s40, minWidth: AppValues.s80),
+      onPressed: onToggle,
+      isSelected: selectedAuxiliaries,
+      children: auxiliaryLabels.map((label) => Text(label)).toList(),
+    );
+  }
+}
