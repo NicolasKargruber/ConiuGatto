@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/models/enums/language_levels.dart';
+import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
-import '../../../utilities/extensions/build_context_extensions.dart';
-import '../../../utilities/widget_factory.dart';
 import '../view_models/history_view_model.dart';
+import '../widgets/language_level_toggle_chips.dart';
+import '../widgets/tense_history_list_view.dart';
 
 class HistoryScreen extends StatelessWidget {
   static final _logTag = (HistoryScreen).toString();
@@ -18,39 +18,27 @@ class HistoryScreen extends StatelessWidget {
       appBar: AppBar(title: Text("History ⏳")),
       body: DefaultTabController(
         initialIndex: 0,
-        length: 4,
+        length: Mood.values.length,
         child: Padding(
-          padding: const EdgeInsets.all(AppValues.p16),
+          padding: const EdgeInsets.all(AppValues.p4),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Flexible(
-                fit: FlexFit.tight,
-                child: ListView.separated(
-                  itemCount: LanguageLevel.values.length,
-                  separatorBuilder: (context, index) => SizedBox(width: AppValues.s12),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final level = LanguageLevel.values[index];
-                    return CustomChip(
-                    label: level.label,
-                    onSelected: (selected) {
-                      if(selected) viewModel.selectLanguageLevel(level);
-                    },
-                    selected: level == viewModel.selectedLanguageLevel,
-                  );
-                  },
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                  maxHeight: AppValues.s36,
+                ),
+                child: LanguageLevelChoiceChips(
+                  value: viewModel.selectedLanguageLevel,
+                  onSelected: viewModel.selectLanguageLevel,
                 ),
               ),
 
-              SizedBox(height: AppValues.s8),
+              SizedBox(height: AppValues.s12),
 
-              const TabBar(
-                tabs: <Widget>[
-                  Tab(text: 'Indicative',),
-                  Tab(text: 'Subjunctive',),
-                  Tab(text: 'Conditional',),
-                  Tab(text: 'Imperative',),
-                ],
+              TabBar(
+                tabs: Mood.values.map((mood) => Tab(text: mood.label)).toList(),
               ),
 
               Flexible(
@@ -58,161 +46,21 @@ class HistoryScreen extends StatelessWidget {
                 fit: FlexFit.loose,
                 child: TabBarView(
                   children: <Widget>[
-                    ListView(
-                      children: [
-                        SizedBox(height: AppValues.s16),
-
-                        ItalianTenseProgress.createCard(
-                            title: "Presente",
-                            subtitle: "Last quizzed: 10 days ago",
-                            progress: 0.8,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Presente Progressivo",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Imperfetto",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Passato Prossimo",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Trapassato Prossimo",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Passato Remoto",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Trapassato Remoto",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Futuro",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Futuro Anteriore",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s16),
-                      ],
+                    // Indicative
+                    TenseHistoryListView(
+                      quizzedTenses: viewModel.indicativeTenses,
                     ),
-                    ListView(
-                      children: [
-                        SizedBox(height: AppValues.s16),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Presente",
-                          subtitle: "Last quizzed: 10 days ago",
-                          progress: 0.8,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Imperfetto",
-                          subtitle: "Last quizzed: 2 days ago",
-                          progress: 0.6,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Passato",
-                          subtitle: "Last quizzed: Yesterday",
-                          progress: 0.4,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Trapassato",
-                          subtitle: "Last quizzed: Yesterday",
-                          progress: 0.4,
-                        ),
-
-                        SizedBox(height: AppValues.s16),
-                      ],
+                    // Subjunctive
+                    TenseHistoryListView(
+                      quizzedTenses: viewModel.subjunctiveTenses,
                     ),
-                    ListView(
-                      children: [
-                        SizedBox(height: AppValues.s16),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Presente",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Passato",
-                          subtitle: "Last quizzed: Never",
-                          progress: 0.5,
-                        ),
-
-                        SizedBox(height: AppValues.s16),
-                      ],
+                    // Conditional
+                    TenseHistoryListView(
+                      quizzedTenses: viewModel.conditionalTenses,
                     ),
-                    ListView(
-                      children: [
-                        SizedBox(height: AppValues.s16),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Presente",
-                          subtitle: "Last quizzed: Today",
-                          progress: 1.0,
-                        ),
-
-                        SizedBox(height: AppValues.s8),
-
-                        ItalianTenseProgress.createCard(
-                          title: "Negativo",
-                          subtitle: "Last quizzed: Today",
-                          progress: 0.95,
-                        ),
-
-                        SizedBox(height: AppValues.s16),
-                      ],
+                    // Imperative
+                    TenseHistoryListView(
+                      quizzedTenses: viewModel.imperativeTenses,
                     ),
                   ],
                 ),
@@ -225,31 +73,3 @@ class HistoryScreen extends StatelessWidget {
   }
 }
 
-class CustomChip extends StatelessWidget {
-  const CustomChip({
-    super.key,
-    required this.selected,
-    required this.label,
-    required this.onSelected,
-  });
-
-  final bool selected;
-  final String label;
-  final Function(bool) onSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawChip(
-      selected: selected,
-      onSelected: onSelected,
-      label: Text(label,
-        style: TextStyle(color: context.colorScheme.onPrimaryContainer),
-      ),
-      side: BorderSide(color: context.colorScheme.surfaceContainerHigh),
-      backgroundColor: context.colorScheme.surfaceContainerHigh,
-      selectedColor: context.colorScheme.primaryContainer,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(AppValues.r24))),
-      showCheckmark: false,
-    );
-  }
-}
