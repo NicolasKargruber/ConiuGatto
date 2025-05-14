@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _currentIndex = 1;
   final List<Widget> _screens = [
+    // Grammar
     //GrammarScreen(),
     // History
     ChangeNotifierProxyProvider<HistoryService, HistoryViewModel>(
@@ -32,12 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
       update: (_, historyService, historyViewModel) => historyViewModel!..updateHistory(historyService.quizzedQuestions),
       child: HistoryScreen(),
     ),
-    // Quiz Screen
+    // Quiz
     ChangeNotifierProxyProvider<VerbService, QuizViewModel>(
       create: (context) => QuizViewModel(context.read<SharedPreferenceService>()),
       update: (_, verbManager, quizViewModel) => quizViewModel!..updateVerbs(verbManager.verbs),
       child: QuizScreen(),
     ),
+    // Verbs
     ChangeNotifierProxyProvider<VerbService, SearchViewModel>(
       create: (context) => SearchViewModel(context.read<SharedPreferenceService>()),
       update: (_, verbManager, searchViewModel) => searchViewModel!..updateVerbs(verbManager.verbs),

@@ -15,15 +15,15 @@ import '../../view_model.dart';
 class QuizViewModel extends ViewModel {
   static final _logTag = (QuizViewModel).toString();
 
-  final SharedPreferenceService preferenceService;
+  final SharedPreferenceService _preferenceService;
 
-  QuizViewModel(this.preferenceService);
+  QuizViewModel(this._preferenceService);
 
   // Initialized in Parent Constructor
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
-    await preferenceService.initializationFuture;
+    await _preferenceService.initializationFuture;
     updateQuiz();
   }
 
@@ -49,7 +49,7 @@ class QuizViewModel extends ViewModel {
   final List<ItalianTense> _quizzableTenses = [];
   final List<Pronoun> _quizzablePronouns = [];
 
-  updateQuiz({bool skipQuestion = false}){
+  updateQuiz(){
     debugPrint("$_logTag | updateQuiz() started");
     _findQuizzableVerbs();
     _findQuizzableTenses();
@@ -100,16 +100,16 @@ class QuizViewModel extends ViewModel {
   void _findQuizzableVerbs() {
     debugPrint("$_logTag | _findQuizzableVerbs() started");
     List<Verb> verbs = _verbs;
-    final favouriteFilter = preferenceService.loadVerbFavouriteFilter();
+    final favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
     switch (favouriteFilter) {
       case VerbFavouriteFilter.all:
         break;
       case VerbFavouriteFilter.starred:
-        verbs = preferenceService.getStarredVerbsFrom(verbs);
+        verbs = _preferenceService.getStarredVerbsFrom(verbs);
         break;
     }
     if(verbs.isNotEmpty) {
-      final endingFilter = preferenceService.loadVerbEndingFilter();
+      final endingFilter = _preferenceService.loadVerbEndingFilter();
       verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
     }
     // TODO in CON-57
@@ -124,7 +124,7 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzableTenses() {
     debugPrint("$_logTag | _findQuizzableTenses() started");
-    final tenses = preferenceService.loadTenses();
+    final tenses = _preferenceService.loadTenses();
     _quizzableTenses.clear();
     _quizzableTenses.addAll(ItalianTense.values.where((tense) => tenses.contains(tense)));
     debugPrint("$_logTag | Quizzable Tense Count: ${_quizzableTenses.length}");
@@ -133,7 +133,7 @@ class QuizViewModel extends ViewModel {
 
   void _findQuizzablePronouns() {
     debugPrint("$_logTag | _findQuizzablePronouns() started");
-    final pronouns = preferenceService.loadPronouns();
+    final pronouns = _preferenceService.loadPronouns();
     _quizzablePronouns.clear();
     _quizzablePronouns.addAll(Pronoun.values.where((pronoun) => pronouns.contains(pronoun)));
     debugPrint("$_logTag | Quizzable Pronoun Count: ${_quizzablePronouns.length}");

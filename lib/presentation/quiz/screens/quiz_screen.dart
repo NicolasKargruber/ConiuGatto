@@ -74,7 +74,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ))
     );
 
-    if(mounted) context.read<QuizViewModel>().updateQuiz(skipQuestion: true);
+    if(mounted) context.read<QuizViewModel>().updateQuiz();
   }
 
   @override

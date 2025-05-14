@@ -1,4 +1,3 @@
-
 import '../../domain/models/enums/mood.dart';
 
 enum ItalianTense {
@@ -53,7 +52,5 @@ enum ItalianTense {
   static List<ItalianTense> get conditionalTenses => values.where((tense) => tense.mood == Mood.conditional).toList();
   static List<ItalianTense> get imperativeTenses => values.where((tense) => tense.mood == Mood.imperative).toList();
 
-
-  factory ItalianTense.fromJson(dynamic json)
-  => ItalianTense.values.firstWhere((e) => e.jsonKey == json);
+  factory ItalianTense.fromJson(dynamic json) => ItalianTense.values.firstWhere((e) => e.jsonKey == json);
 }
