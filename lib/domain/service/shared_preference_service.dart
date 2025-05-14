@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/enums/pronoun.dart';
 import '../../data/repository/shared_preference_repository.dart';
-import '../models/enums/italian_tense.dart';
+import '../../data/enums/italian_tense.dart';
 import '../models/enums/verb_ending_filter.dart';
 import '../models/enums/verb_favourite_filter.dart';
 import '../models/enums/verb_irregularity_filter.dart';

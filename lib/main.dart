@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'domain/service/history_service.dart';
 import 'domain/service/verb_service.dart';
 import 'presentation/theme.dart';
 import 'presentation/home_screen.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
       ),
       home: MultiProvider(
         providers: [
+          ChangeNotifierProvider(
+            create: (_) => HistoryService(),
+          ),
           ChangeNotifierProvider(
             create: (_) => VerbService(),
           ),

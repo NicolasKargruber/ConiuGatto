@@ -74,7 +74,11 @@ class SharedPreferenceRepository {
   Set<String>? _loadPrefsOrNull(String key) {
     debugPrint('$_logTag | _loadPrefsOrNull($key)');
     final prefs = _prefs.getStringList(key)?.toSet();
-    debugPrint('$_logTag | Available $key Prefs: $prefs');
+    if((prefs?.length ?? 0) > 3) {
+      debugPrint('$_logTag | Available $key Prefs: [${prefs?.elementAt(0)}, ${prefs?.elementAt(1)} ..., ${prefs?.lastOrNull}]');
+    } else {
+      debugPrint('$_logTag | Available $key Prefs: $prefs');
+    }
     return prefs;
   }
 

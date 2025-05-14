@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../domain/utils/quizzed_question_extensions.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/widget_factory.dart';
 import '../view_models/history_view_model.dart';
@@ -22,11 +20,9 @@ class TenseHistoryListView extends StatelessWidget {
       itemCount: quizzedTenses.length,
       itemBuilder: (_, index) {
         final quizzedTense = quizzedTenses[index];
-        // TODO Move to utility
-        final daysAgoLabel = quizzedTense.quizzedQuestions.daysAgoLabel;
         return ItalianTenseProgress.createCard(
           title: quizzedTense.tense.label,
-          subtitle: "Last quizzed: $daysAgoLabel",
+          subtitle: "Last quizzed: ${quizzedTense.daysAgoLabel}",
           progress: quizzedTense.progress,
         );
       },

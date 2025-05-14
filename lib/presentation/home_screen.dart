@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/service/history_service.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
 import 'grammar/grammar_screen.dart';
@@ -25,8 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 1;
   final List<Widget> _screens = [
     //GrammarScreen(),
-    ChangeNotifierProvider<HistoryViewModel>(
-      create: (_) => HistoryViewModel(),
+    // History
+    ChangeNotifierProxyProvider<HistoryService, HistoryViewModel>(
+      create: (context) => HistoryViewModel(context.read<HistoryService>()),
+      update: (_, historyService, historyViewModel) => historyViewModel!..updateHistory(historyService.quizzedQuestions),
       child: HistoryScreen(),
     ),
     // Quiz Screen

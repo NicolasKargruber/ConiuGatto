@@ -7,7 +7,7 @@ import '../../data/models/verb_dto.dart';
 import '../utils/verb_dto_extensions.dart';
 import '../utils/verb_extensions.dart';
 import 'base_verb.dart';
-import 'enums/italian_tense.dart';
+import '../../data/enums/italian_tense.dart';
 import 'tenses/conditional_tenses.dart';
 import 'tenses/imperative_tenses.dart';
 import 'tenses/indicative_tenses.dart';

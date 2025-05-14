@@ -1,4 +1,4 @@
-import 'italian_tense.dart';
+import '../../../data/enums/italian_tense.dart';
 
 enum LanguageLevel {
   a1,
