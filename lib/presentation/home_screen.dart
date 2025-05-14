@@ -35,7 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     // Quiz
     ChangeNotifierProxyProvider<VerbService, QuizViewModel>(
-      create: (context) => QuizViewModel(context.read<SharedPreferenceService>()),
+      create: (context) => QuizViewModel(
+          context.read<SharedPreferenceService>(),
+          context.read<HistoryService>(),
+      ),
       update: (_, verbManager, quizViewModel) => quizViewModel!..updateVerbs(verbManager.verbs),
       child: QuizScreen(),
     ),

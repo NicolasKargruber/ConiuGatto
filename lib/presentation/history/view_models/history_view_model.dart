@@ -65,14 +65,19 @@ class HistoryViewModel extends ViewModel {
   bool _coveredInLanguageLevel(ItalianTense tense) => _selectedLanguageLevel.coveredTenses.contains(tense);
 
   QuizzedTense _toQuizzedTense(ItalianTense tense) {
-    // QuizzedQuestions
-    final quizzedQuestions = _quizzedQuestions.where((question) => question.tense == tense).toList();
+    // QuizzedQuestions - Last 100
+    var quizzedQuestions = _quizzedQuestions.where((question) => question.tense == tense).toList();
     quizzedQuestions.sort((a, b) => b.date.compareTo(a.date));
+    quizzedQuestions = quizzedQuestions.take(100).toList();
     // Progress
     double progress = 0.5;
     if (quizzedQuestions.isNotEmpty) {
       final correctQuestions = quizzedQuestions.where((question) => question.correct);
       progress = correctQuestions.length / quizzedQuestions.length;
+      if(quizzedQuestions.length < 100) {
+        final weight = ((100 - quizzedQuestions.length) / 100);
+        progress = progress + weight * (0.5 - progress);
+      }
     }
     return (tense: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, progress: progress);
   }

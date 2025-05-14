@@ -1,5 +1,6 @@
 import '../../data/enums/italian_tense.dart';
 import '../../data/models/quizzed_question_dto.dart';
+import 'question.dart';
 
 class QuizzedQuestion {
   final DateTime date;
@@ -17,6 +18,14 @@ class QuizzedQuestion {
       date: dto.date,
       tense: dto.tense,
       correct: dto.correct,
+    );
+  }
+
+  factory QuizzedQuestion.fromQuestion(Question question) {
+    return QuizzedQuestion(
+      date: DateTime.now(),
+      tense: question.tense.type,
+      correct: question.isCorrect,
     );
   }
 

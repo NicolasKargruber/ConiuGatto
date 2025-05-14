@@ -7,6 +7,7 @@ import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/question.dart';
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/history_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/filter_extensions.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
@@ -16,8 +17,9 @@ class QuizViewModel extends ViewModel {
   static final _logTag = (QuizViewModel).toString();
 
   final SharedPreferenceService _preferenceService;
+  final HistoryService _historyService;
 
-  QuizViewModel(this._preferenceService);
+  QuizViewModel(this._preferenceService, this._historyService);
 
   // Initialized in Parent Constructor
   @override
@@ -202,27 +204,23 @@ class QuizViewModel extends ViewModel {
   }
 
   void addAndResetQuestion({bool add = true}){
+    debugPrint("$_logTag | addAndResetQuestion(add:$add)");
     if(_currentQuestion case var question?) {
       if(add) {
-        if (question.hasTriesLeft) {
-          // Question not Finished
-          debugPrint("$_logTag | Add Question to history");
-          _quizzablePronouns.contains(question.pronoun);
-          _quizzableVerbs.contains(question.verb);
-          _quizzableTenses.contains(question.tense.type);
-          _quizHistory.add(_currentQuestion!);
-          debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
-        } else {
-          // Question Done
-          debugPrint("$_logTag | Add Question to history");
-          _quizHistory.add(question);
-          debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
-        }
+        _addQuestionToHistory(question);
       }
       debugPrint("$_logTag | Reset Quiz Values");
       _currentQuestion = null;
       _currentAnswerResult = null;
     }
+  }
+
+  void _addQuestionToHistory(Question question){
+    debugPrint("$_logTag | _addQuestionToHistory()");
+    _quizHistory.add(question);
+    debugPrint("$_logTag | QuizHistory has this many items: ${_quizHistory.length}");
+    _historyService.addQuestion(question);
+    notifyListeners();
   }
 
   void checkAnswer(String answer){

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/repository/quizzed_question_repository.dart';
 import '../../data/repository/verb_repository.dart';
+import '../models/question.dart';
 import '../models/quizzed_question.dart';
 import '../models/verb.dart';
 import 'service.dart';
@@ -35,15 +36,18 @@ class HistoryService extends Service {
     _quizzedQuestions = quizzedQuestions;
   }
 
-  Future addQuizzedQuestion(QuizzedQuestion quizzedQuestion) async {
+  Future addQuestion(Question question) async {
     if(!isInitialized) return debugPrint("$_logTag | Not initialized yet");
-    debugPrint("$_logTag | addQuizzedQuestion($quizzedQuestion) started");
+    debugPrint("$_logTag | addQuestion($question) started");
     try {
+      final quizzedQuestion = QuizzedQuestion.fromQuestion(question);
+      _quizzedQuestions.add(quizzedQuestion);
       await _quizzedQuestionRepository.insert(quizzedQuestion.toDTO());
+      notifyListeners();
     } on Exception catch (e) {
       debugPrint("$_logTag | Caught exception: $e");
     } finally {
-      debugPrint("$_logTag | addQuizzedQuestion($quizzedQuestion) ended");
+      debugPrint("$_logTag | addQuestion($question) ended");
     }
   }
 }
