@@ -104,3 +104,80 @@ class AuxiliaryWidgetFactory {
     );
   }
 }
+
+class ItalianTenseProgress {
+  static Widget createCard({
+    required String title,
+    required String subtitle,
+    required double progress,
+    double milestone = 0.75
+  }){
+    return Builder(
+        builder: (context) {
+          final isReached = progress > milestone;
+          return Card(
+            color: isReached ? Color.alphaBlend(Colors.green.withAlpha(50), context.colorScheme.surface) : null,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(AppValues.p4, AppValues.p4, AppValues.p4, AppValues.p0),
+              child: ListTile(
+                isThreeLine: true,
+                title: Text(title),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(subtitle,
+                      style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
+                    ),
+                    SizedBox(height: AppValues.s12),
+                    ItalianTenseProgress.createLinearProgressIndicator(value: progress, milestone: milestone),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+    );
+  }
+
+  static Widget createLinearProgressIndicator({required double value, required double milestone, bool showIndicator = true}) {
+    final isReached = value > milestone;
+    final firstProgressValue = isReached ? 1.0 : value / milestone;
+    final secondProgressValue = isReached ? (value - milestone) / (1.0 - milestone) : 0.0;
+    return Builder(
+      builder: (context) {
+        return Column(
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  flex:  (milestone * 100).toInt(),
+                  child: LinearProgressIndicator(
+                    color: isReached ? context.colorScheme.tertiary : null,
+                    backgroundColor: isReached ? context.colorScheme.tertiaryContainer : null,
+                    value: firstProgressValue,
+                  ),
+                ),
+                SizedBox(width: AppValues.s4),
+                Flexible(
+                  flex: ((1.0 - milestone) * 100).toInt(),
+                  child: LinearProgressIndicator(
+                    color: isReached ? context.colorScheme.tertiary : null,
+                    backgroundColor: isReached ? context.colorScheme.tertiaryContainer : null,
+                    value: secondProgressValue,
+                  ),
+                ),
+              ],
+            ),
+            if(showIndicator) Align(
+              alignment: Alignment(0.535, 0),
+              child: Icon(Icons.arrow_drop_up_rounded,
+                color: isReached ? context.colorScheme.tertiary : null,
+              ),
+            ),
+          ],
+        );
+      }
+    );
+  }
+}
