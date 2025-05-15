@@ -49,6 +49,13 @@ class Question {
   AnswerResult checkAnswer(String answer) {
     if(triesLeft > 0) {
       _triesLeft--;
+
+      // Add Gender to Participle if necessary
+      if (usesEssere && usesPastParticiple) {
+        answer = pronoun.genderItalianConjugationIfPossible(answer);
+        debugPrint("$_logTag | Gendered Answer : $_answer");
+      }
+
       _answer = answer;
 
       // Correct
