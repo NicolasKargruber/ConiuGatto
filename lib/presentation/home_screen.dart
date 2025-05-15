@@ -29,7 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
     //GrammarScreen(),
     // History
     ChangeNotifierProxyProvider<HistoryService, HistoryViewModel>(
-      create: (context) => HistoryViewModel(context.read<HistoryService>()),
+      create: (context) => HistoryViewModel(
+          context.read<SharedPreferenceService>(),
+          context.read<HistoryService>(),
+      ),
       update: (_, historyService, historyViewModel) => historyViewModel!..updateHistory(historyService.quizzedQuestions),
       child: HistoryScreen(),
     ),

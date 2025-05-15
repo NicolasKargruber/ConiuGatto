@@ -9,4 +9,5 @@ enum LanguageLevel {
   //c2;
 
   String get label => name.toUpperCase();
+  String get prefKey => toString();
 }

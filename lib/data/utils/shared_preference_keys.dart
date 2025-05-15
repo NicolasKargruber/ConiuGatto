@@ -11,4 +11,6 @@ class SharedPreferenceKeys {
   static const String endingFilters = "endingFilters";
   static const String reflexiveFilters = "reflexiveFilters";
   static const String irregularityFilters = "irregularityFilters";
+  // Language Level => A1, A2, B1, B2, C1
+  static const String languageLevel = "languageLevel";
 }

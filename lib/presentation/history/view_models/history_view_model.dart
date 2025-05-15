@@ -5,6 +5,7 @@ import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/quizzed_question.dart';
 import '../../../domain/service/history_service.dart';
+import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/language_level_extensions.dart';
 import '../../../domain/utils/quizzed_question_extensions.dart';
 import '../../view_model.dart';
@@ -14,15 +15,18 @@ typedef QuizzedTense = ({ItalianTense tense, String daysAgoLabel, double progres
 class HistoryViewModel extends ViewModel {
   static final _logTag = (HistoryViewModel).toString();
 
+  final SharedPreferenceService _preferenceService;
   final HistoryService _historyService;
 
-  HistoryViewModel(this._historyService);
+  HistoryViewModel(this._preferenceService, this._historyService);
 
   // Initialized in Parent Constructor
   @override
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
+    await _preferenceService.initializationFuture;
     await _historyService.initializationFuture;
+    _selectedLanguageLevel = _preferenceService.loadLanguageLevel();
   }
 
   List<QuizzedQuestion> _quizzedQuestions = [];
@@ -43,6 +47,7 @@ class HistoryViewModel extends ViewModel {
   selectLanguageLevel(LanguageLevel languageLevel) {
     debugPrint("$_logTag | selectLanguageLevel($languageLevel)");
     _selectedLanguageLevel = languageLevel;
+    _preferenceService.updateLanguageLevel(languageLevel);
     notifyListeners();
   }
 

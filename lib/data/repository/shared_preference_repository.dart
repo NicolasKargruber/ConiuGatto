@@ -25,6 +25,8 @@ class SharedPreferenceRepository {
   String get _tensePrefKey => SharedPreferenceKeys.quizzableTenses;
   // Pronoun
   String get _pronounPrefKey => SharedPreferenceKeys.quizzablePronouns;
+  // Language Level
+  String get _languageLevelPrefKey => SharedPreferenceKeys.languageLevel;
 
   // Verbs
   String? loadVerbFavouritePref() => _loadPrefOrNull(_verbFavouriteFiltersPrefKey);
@@ -36,6 +38,8 @@ class SharedPreferenceRepository {
   List<String>? loadTensePrefs() => _loadPrefsOrNull(_tensePrefKey)?.toList();
   // Pronoun
   List<String>? loadPronounPrefs() => _loadPrefsOrNull(_pronounPrefKey)?.toList();
+  // Language Level
+  String? loadLanguageLevelPref() => _loadPrefOrNull(_languageLevelPrefKey);
 
   // Verbs
   void updateVerbFavouritePref(String value) => _updatePref(_verbFavouriteFiltersPrefKey, value);
@@ -51,6 +55,8 @@ class SharedPreferenceRepository {
   void updateTensePrefs(Set<String> values) => _updatePrefs(_tensePrefKey, values);
   // Pronoun
   void updatePronounPrefs(Set<String> values) => _updatePrefs(_pronounPrefKey, values);
+  // Language Level
+  void updateLanguageLevelPref(String value) => _updatePref(_languageLevelPrefKey, value);
 
   // Verbs
   void removeVerbFavouritePref() => _removePref(_verbFavouriteFiltersPrefKey);
