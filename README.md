@@ -6,6 +6,10 @@
 ### 🇮🇹🐈‍⬛ ConiuGatto 🐈‍⬛🇮🇹 - Coniugazioni Italiane
 🐦 A Flutter app to help learn how to use conjugate right each italian tense.
 
+<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/fae48a27-9bf5-4a44-99f0-3cf9ad7bd5e7" /> &nbsp;
+<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/a8886d89-d435-497a-9238-c16a5af078af" /> &nbsp;
+<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/890a4099-0a44-4d76-8df1-1e01ee60f10a" /> &nbsp;
+<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/9d266744-91d1-4e24-a3ee-16968fd1008c" />
 
 ### 🟢 History 🟢
 📚 Shows progress for each Italian tense. Achieve milestone to complete tense. <br />
@@ -20,9 +24,9 @@
 
 ✅ Test yourself and get your italian to the next level!
 
-
 ### 🔴 Verb Lexicon 🔴
 📖 Full conjugation tables for any verb! <br />
 🔍 Irregular forms highlighted for easy spotting.
 
-![ConiuGatto](https://github.com/user-attachments/assets/31c4a486-ea7e-4377-bb7a-c11bfd2f45c3)
+![ConiuGatto_x3](https://github.com/user-attachments/assets/fd465790-7cff-4694-8482-30575fb455ca)
+
