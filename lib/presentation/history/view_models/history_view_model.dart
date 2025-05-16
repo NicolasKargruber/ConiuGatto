@@ -41,8 +41,8 @@ class HistoryViewModel extends ViewModel {
     notifyListeners();
   }
 
-  LanguageLevel _selectedLanguageLevel = LanguageLevel.a1;
-  LanguageLevel get selectedLanguageLevel => _selectedLanguageLevel;
+  LanguageLevel? _selectedLanguageLevel;
+  LanguageLevel? get selectedLanguageLevel => _selectedLanguageLevel;
 
   selectLanguageLevel(LanguageLevel languageLevel) {
     debugPrint("$_logTag | selectLanguageLevel($languageLevel)");
@@ -67,7 +67,7 @@ class HistoryViewModel extends ViewModel {
     return ItalianTense.imperativeTenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
   }
 
-  bool _coveredInLanguageLevel(ItalianTense tense) => _selectedLanguageLevel.coveredTenses.contains(tense);
+  bool _coveredInLanguageLevel(ItalianTense tense) => _selectedLanguageLevel?.coveredTenses.contains(tense) ?? false;
 
   QuizzedTense _toQuizzedTense(ItalianTense tense) {
     // QuizzedQuestions - Last 100

@@ -11,7 +11,7 @@ class LanguageLevelChoiceChips extends StatelessWidget {
     required this.onSelected,
   });
 
-  final LanguageLevel value;
+  final LanguageLevel? value;
   final Function(LanguageLevel) onSelected;
 
   @override
