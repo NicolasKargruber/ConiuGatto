@@ -15,13 +15,12 @@ class VerbService extends Service {
 
   @override
   Future initialize() async {
-    _verbs = await loadAll();
-    _verbs.sort((a, b) => a.italianInfinitive.compareTo(b.italianInfinitive));
+    await _loadAll();
   }
 
-  Future loadAll() async {
+  Future _loadAll() async {
     if(isInitialized) return;
-    debugPrint("$_logTag | loadAll() started");
+    debugPrint("$_logTag | _loadAll() started");
     List<Verb> verbs = [];
     try {
       final verbDTOs = await _verbRepository.getAll();
@@ -29,8 +28,9 @@ class VerbService extends Service {
     } on Exception catch (e) {
       debugPrint("$_logTag | Caught exception: $e");
     } finally {
-      debugPrint("$_logTag | loadAll() ended");
+      debugPrint("$_logTag | _loadAll() ended");
     }
-    return verbs;
+    _verbs = verbs;
+    _verbs.sort((a, b) => a.italianInfinitive.compareTo(b.italianInfinitive));
   }
 }

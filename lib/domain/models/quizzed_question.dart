@@ -1,23 +1,39 @@
-import 'package:flutter/foundation.dart';
-
-import '../../utilities/extensions/string_extensions.dart';
-import 'answer_result.dart';
-import '../../data/enums/auxiliary.dart';
-import '../../data/enums/pronoun.dart';
-import 'enums/italian_tense.dart';
-import 'tenses/tense.dart';
-import 'verb.dart';
+import '../../data/enums/italian_tense.dart';
+import '../../data/models/quizzed_question_dto.dart';
+import 'question.dart';
 
 class QuizzedQuestion {
-  static final _logTag = (QuizzedQuestion).toString();
-
   final DateTime date;
   final ItalianTense tense;
-  final bool wasAnsweredCorrectly;
+  final bool correct;
 
   QuizzedQuestion({
     required this.date,
     required this.tense,
-    required this.wasAnsweredCorrectly,
+    required this.correct,
   });
+
+  factory QuizzedQuestion.fromDTO(QuizzedQuestionDTO dto) {
+    return QuizzedQuestion(
+      date: dto.date,
+      tense: dto.tense,
+      correct: dto.correct,
+    );
+  }
+
+  factory QuizzedQuestion.fromQuestion(Question question) {
+    return QuizzedQuestion(
+      date: DateTime.now(),
+      tense: question.tense.type,
+      correct: question.isCorrect,
+    );
+  }
+
+  QuizzedQuestionDTO toDTO() {
+    return QuizzedQuestionDTO(
+      date: date,
+      tense: tense,
+      correct: correct,
+    );
+  }
 }

@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/pronoun.dart';
-import '../../../domain/models/enums/italian_tense.dart';
+import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/verb.dart';

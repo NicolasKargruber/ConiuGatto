@@ -1,6 +1,6 @@
 import '../../../data/enums/pronoun.dart';
 import '../../../data/models/verb_dto.dart';
-import '../enums/italian_tense.dart';
+import '../../../data/enums/italian_tense.dart';
 import 'conjugation.dart';
 import 'tense.dart';
 

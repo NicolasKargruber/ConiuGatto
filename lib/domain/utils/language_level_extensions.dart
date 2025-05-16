@@ -1,4 +1,4 @@
-import '../models/enums/italian_tense.dart';
+import '../../data/enums/italian_tense.dart';
 import '../models/enums/language_level.dart';
 
 extension LanguageLevelExtensions on LanguageLevel {

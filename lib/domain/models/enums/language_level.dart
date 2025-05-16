@@ -1,4 +1,4 @@
-import 'italian_tense.dart';
+import '../../../data/enums/italian_tense.dart';
 
 enum LanguageLevel {
   a1,
@@ -9,4 +9,5 @@ enum LanguageLevel {
   //c2;
 
   String get label => name.toUpperCase();
+  String get prefKey => toString();
 }

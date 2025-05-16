@@ -1,5 +1,5 @@
 
-import '../enums/italian_tense.dart';
+import '../../../data/enums/italian_tense.dart';
 import '../../../data/enums/pronoun.dart';
 import 'conjugation.dart';
 

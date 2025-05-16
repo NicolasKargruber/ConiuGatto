@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/enums/pronoun.dart';
 import '../../data/repository/shared_preference_repository.dart';
-import '../models/enums/italian_tense.dart';
+import '../../data/enums/italian_tense.dart';
+import '../models/enums/language_level.dart';
 import '../models/enums/verb_ending_filter.dart';
 import '../models/enums/verb_favourite_filter.dart';
 import '../models/enums/verb_irregularity_filter.dart';
@@ -35,6 +36,8 @@ class SharedPreferenceService extends Service {
   final _tensesDefaultValue = [ItalianTense.presentIndicative];
   // Pronoun
   final _pronounsDefaultValue = Pronoun.values.toList();
+  // Language Level
+  final _languageLevelDefaultValue = LanguageLevel.a1;
 
   // Verbs
   VerbFavouriteFilter loadVerbFavouriteFilter() {
@@ -67,6 +70,11 @@ class SharedPreferenceService extends Service {
     return prefs?.map((e) => Pronoun.values.firstWhere((pronoun) => pronoun.prefKey == e)).toList() ??
         _pronounsDefaultValue;
   }
+  // Language Level
+  LanguageLevel loadLanguageLevel() {
+    return LanguageLevel.values.firstWhereOrNull((e) =>
+    e.prefKey == _sharedPreferenceRepo.loadLanguageLevelPref()) ?? _languageLevelDefaultValue;
+  }
 
   // Verbs
   void updateVerbFavourite(VerbFavouriteFilter favourite) =>
@@ -85,6 +93,9 @@ class SharedPreferenceService extends Service {
   // Pronoun
   void updatePronounPrefs(List<Pronoun> values) =>
       _sharedPreferenceRepo.updatePronounPrefs(values.map((e) => e.prefKey).toSet());
+  // Language Level
+  void updateLanguageLevel(LanguageLevel languageLevel) =>
+      _sharedPreferenceRepo.updateLanguageLevelPref(languageLevel.prefKey);
 
   // Removing
   void removeStarredVerb(Verb verb) => _sharedPreferenceRepo.removeStarredVerbFromPrefs(verb.prefKey);

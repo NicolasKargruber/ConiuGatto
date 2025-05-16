@@ -1,5 +1,4 @@
-
-import 'mood.dart';
+import '../../domain/models/enums/mood.dart';
 
 enum ItalianTense {
   // INDICATIVE
@@ -46,9 +45,12 @@ enum ItalianTense {
   const ItalianTense(this.label, this.mood);
 
   String get extendedLabel => "$label - ${mood.label}";
+  String get jsonKey => toString();
   String get prefKey => toString();
-  static List<ItalianTense>  get indicativeTenses => values.where((tense) => tense.mood == Mood.indicative).toList();
-  static List<ItalianTense>  get subjunctiveTenses => values.where((tense) => tense.mood == Mood.subjunctive).toList();
-  static List<ItalianTense>  get conditionalTenses => values.where((tense) => tense.mood == Mood.conditional).toList();
-  static List<ItalianTense>  get imperativeTenses => values.where((tense) => tense.mood == Mood.imperative).toList();
+  static List<ItalianTense> get indicativeTenses => values.where((tense) => tense.mood == Mood.indicative).toList();
+  static List<ItalianTense> get subjunctiveTenses => values.where((tense) => tense.mood == Mood.subjunctive).toList();
+  static List<ItalianTense> get conditionalTenses => values.where((tense) => tense.mood == Mood.conditional).toList();
+  static List<ItalianTense> get imperativeTenses => values.where((tense) => tense.mood == Mood.imperative).toList();
+
+  factory ItalianTense.fromJson(dynamic json) => ItalianTense.values.firstWhere((e) => e.jsonKey == json);
 }
