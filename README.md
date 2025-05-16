@@ -6,10 +6,10 @@
 ### 🇮🇹🐈‍⬛ ConiuGatto 🐈‍⬛🇮🇹 - Coniugazioni Italiane
 🐦 A Flutter app to help learn how to use conjugate right each italian tense.
 
-<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/fae48a27-9bf5-4a44-99f0-3cf9ad7bd5e7" /> &nbsp;
-<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/a8886d89-d435-497a-9238-c16a5af078af" /> &nbsp;
-<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/890a4099-0a44-4d76-8df1-1e01ee60f10a" /> &nbsp;
-<img width="200" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/9d266744-91d1-4e24-a3ee-16968fd1008c" />
+<img width="180" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/fae48a27-9bf5-4a44-99f0-3cf9ad7bd5e7" /> &nbsp;
+<img width="180" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/a8886d89-d435-497a-9238-c16a5af078af" /> &nbsp;
+<img width="180" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/890a4099-0a44-4d76-8df1-1e01ee60f10a" /> &nbsp;
+<img width="180" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/9d266744-91d1-4e24-a3ee-16968fd1008c" />
 
 ### 🟢 History 🟢
 📚 Shows progress for each Italian tense. Achieve milestone to complete tense. <br />
