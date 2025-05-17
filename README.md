@@ -1,6 +1,6 @@
 # 🆙 ConiuGatto v0.3.0 🆙
 
-<img width="1280" alt="Media Preview _ ConiuGatto_media_preview_github" src="https://github.com/user-attachments/assets/167485ee-8661-4de2-a96f-27925cef9f94" />
+<img width="800" alt="Media Preview _ ConiuGatto_media_preview_github" src="https://github.com/user-attachments/assets/167485ee-8661-4de2-a96f-27925cef9f94" />
 
 
 ### 🇮🇹🐈‍⬛ ConiuGatto 🐈‍⬛🇮🇹 - Coniugazioni Italiane
@@ -28,5 +28,6 @@
 📖 Full conjugation tables for any verb! <br />
 🔍 Irregular forms highlighted for easy spotting.
 
-![ConiuGatto_x3](https://github.com/user-attachments/assets/fd465790-7cff-4694-8482-30575fb455ca)
+
+<img width="800" alt="ConiuGatto_x3" src="https://github.com/user-attachments/assets/fd465790-7cff-4694-8482-30575fb455ca" />
 
