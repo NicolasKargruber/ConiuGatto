@@ -42,6 +42,10 @@ class SharedPreferenceService extends Service {
   final _languageLevelDefaultValue = LanguageLevel.a1;
 
   // Verbs
+  List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
+    final starredVerbPrefs = _sharedPreferenceRepo.loadStarredVerbPrefs() ?? [];
+    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).toList();
+  }
   VerbFavouriteFilter loadVerbFavouriteFilter() {
     return VerbFavouriteFilter.values.firstWhereOrNull((e) =>
     e.prefKey == _sharedPreferenceRepo.loadVerbFavouritePref()) ?? _verbFavouritesDefaultValue;
@@ -59,10 +63,6 @@ class SharedPreferenceService extends Service {
     e.prefKey == _sharedPreferenceRepo.loadAuxiliaryFilterPref()) ?? _auxiliaryFiltersDefaultValue;
   }
   //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
-  List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
-    final starredVerbPrefs = _sharedPreferenceRepo.loadStarredVerbPrefs() ?? [];
-    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).toList();
-  }
   //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses
   List<ItalianTense> loadTenses() {
@@ -83,6 +83,7 @@ class SharedPreferenceService extends Service {
   }
 
   // Verbs
+  void addStarredVerb(Verb verb) => _sharedPreferenceRepo.addStarredVerbFromPrefs(verb.prefKey);
   void updateVerbFavourite(VerbFavouriteFilter favourite) =>
       _sharedPreferenceRepo.updateVerbFavouritePref(favourite.prefKey);
   void updateIrregularityFilter(VerbIrregularityFilter irregularity) =>
@@ -92,7 +93,6 @@ class SharedPreferenceService extends Service {
   void updateAuxiliaryFilter(AuxiliaryFilter auxiliary) =>
       _sharedPreferenceRepo.updateAuxiliaryFilterPref(auxiliary.prefKey);
   //updateReflexiveFilterPref(String value) => _updatePref(_reflexiveFiltersPrefKey, value);
-  void addStarredVerb(Verb verb) => _sharedPreferenceRepo.addStarredVerbFromPrefs(verb.prefKey);
   //updateStarredVerbPrefs(Set<String> values) => _sharedPreferenceRepo.update(_starredVerbsPrefKey, values);
   //updateCustomizedVerbsPrefs(Set<String> values) => _updatePrefs(_customizedVerbsPrefKey, values);
   // Tenses
