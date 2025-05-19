@@ -6,6 +6,7 @@ import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/auxiliary_filter.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
+import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
@@ -25,9 +26,9 @@ class SettingsViewModel extends ViewModel {
     tenseFilters = _preferenceService.loadTenses();
     pronounFilters = _preferenceService.loadPronouns();
     favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
-    endingFilter = _preferenceService.loadVerbEndingFilter();
     auxiliaryFilter = _preferenceService.loadAuxiliaryFilter();
-    //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
+    endingFilter = _preferenceService.loadVerbEndingFilter();
+    irregularityFilter = _preferenceService.loadVerbIrregularityFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
     //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
   }
@@ -49,12 +50,12 @@ class SettingsViewModel extends ViewModel {
 
   List<ItalianTense> tenseFilters = [];
   List<Pronoun> pronounFilters = [];
-  VerbFavouriteFilter favouriteFilter = VerbFavouriteFilter.all;
-  //late VerbIrregularityFilter irregularityFilter;
-  VerbEndingFilter endingFilter = VerbEndingFilter.all;
+  VerbFavouriteFilter? favouriteFilter;
+  AuxiliaryFilter? auxiliaryFilter = AuxiliaryFilter.any;
+  VerbEndingFilter? endingFilter;
+  VerbIrregularityFilter? irregularityFilter;
   //late ReflexiveVerb _reflexiveFilterPref;
   //List<Verb> _customizedVerbsPrefs = [];
-  AuxiliaryFilter auxiliaryFilter = AuxiliaryFilter.any;
 
   // Labels
   List<Verb> get verbs => _verbs;
@@ -67,26 +68,27 @@ class SettingsViewModel extends ViewModel {
     notifyListeners();
   }
 
-  /*updateIrregularityFilter(VerbIrregularityFilter filter) {
-    preferenceService.updateIrregularityFilter(irregularityFilter);
-    debugPrint("$_logTag | Saved Verb Irregularity Filter in Shared Preferences: $irregularityFilter");
-    irregularityFilter = filter;
+  updateAuxiliaryFilter(AuxiliaryFilter filter) {
+    debugPrint("$_logTag | updateAuxiliaryFilter($filter)");
+    auxiliaryFilter = filter;
+    _preferenceService.updateAuxiliaryFilter(filter);
+    debugPrint("$_logTag | Saved Auxiliary Filter in Shared Preferences: $filter");
     notifyListeners();
-  }*/
+  }
 
   updateEndingFilter(VerbEndingFilter filter) {
     debugPrint("$_logTag | updateEndingFilter($filter)");
     endingFilter = filter;
-    _preferenceService.updateEndingFilter(endingFilter);
+    _preferenceService.updateEndingFilter(filter);
     debugPrint("$_logTag | Saved Verb Ending Filter in Shared Preferences: $filter");
     notifyListeners();
   }
 
-  updateAuxiliaryFilter(AuxiliaryFilter filter) {
-    debugPrint("$_logTag | updateAuxiliaryFilter($filter)");
-    auxiliaryFilter = filter;
-    _preferenceService.updateAuxiliaryFilter(auxiliaryFilter);
-    debugPrint("$_logTag | Saved Auxiliary Filter in Shared Preferences: $filter");
+  updateIrregularityFilter(VerbIrregularityFilter filter) {
+    debugPrint("$_logTag | updateIrregularityFilter($filter)");
+    irregularityFilter = filter;
+    _preferenceService.updateIrregularityFilter(filter);
+    debugPrint("$_logTag | Saved Verb Irregularity Filter in Shared Preferences: $filter");
     notifyListeners();
   }
 

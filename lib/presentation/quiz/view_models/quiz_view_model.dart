@@ -118,6 +118,10 @@ class QuizViewModel extends ViewModel {
       final endingFilter = _preferenceService.loadVerbEndingFilter();
       verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
     }
+    if(verbs.isNotEmpty){
+      final irregularityFilter = _preferenceService.loadVerbIrregularityFilter();
+      verbs = verbs.where((verb) => irregularityFilter.includesVerb(verb)).toList();
+    }
     // TODO in CON-57
     //final irregularityFilter = preferenceService.loadVerbIrregularityFilter();
     //verbs = verbs.where((verb) => irregularityFilter.includesVerb(verb)).toList();
