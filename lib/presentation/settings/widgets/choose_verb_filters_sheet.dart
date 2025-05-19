@@ -37,6 +37,7 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppValues.p4),
       child: Column(
@@ -59,6 +60,10 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
           SizedBox(height: AppValues.s4),
 
           _VerbEndingChoiceChips(),
+
+          SizedBox(height: AppValues.s4),
+
+          _VerbIrregularityChoiceChips(),
 
           // TODO in CON-12
           /*Padding(
@@ -138,6 +143,24 @@ class _VerbFavouriteChoiceChips extends StatelessWidget {
       values: VerbFavouriteFilter.values,
       selected: context.select<SettingsViewModel, VerbFavouriteFilter>((vm) => vm.favouriteFilter),
       onSelected: context.read<SettingsViewModel>().updateFavouriteFilter,
+    );
+  }
+}
+
+class _VerbIrregularityChoiceChips extends StatelessWidget {
+  const _VerbIrregularityChoiceChips({super.key});
+
+  static final _logTag = (_VerbIrregularityChoiceChips).toString();
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("$_logTag | build()");
+    return ToggleChoiceChips<VerbIrregularityFilter>(
+      title: "Irregularity",
+      labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
+      values: VerbIrregularityFilter.values,
+      selected: context.select<SettingsViewModel, VerbIrregularityFilter>((vm) => vm.irregularityFilter),
+      onSelected: context.read<SettingsViewModel>().updateIrregularityFilter,
     );
   }
 }

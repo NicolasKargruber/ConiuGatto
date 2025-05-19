@@ -6,6 +6,7 @@ import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/auxiliary_filter.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
+import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
@@ -27,7 +28,7 @@ class SettingsViewModel extends ViewModel {
     favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
     endingFilter = _preferenceService.loadVerbEndingFilter();
     auxiliaryFilter = _preferenceService.loadAuxiliaryFilter();
-    //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
+    irregularityFilter = _preferenceService.loadVerbIrregularityFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
     //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
   }
@@ -50,7 +51,7 @@ class SettingsViewModel extends ViewModel {
   List<ItalianTense> tenseFilters = [];
   List<Pronoun> pronounFilters = [];
   VerbFavouriteFilter favouriteFilter = VerbFavouriteFilter.all;
-  //late VerbIrregularityFilter irregularityFilter;
+  VerbIrregularityFilter irregularityFilter = VerbIrregularityFilter.any;
   VerbEndingFilter endingFilter = VerbEndingFilter.all;
   //late ReflexiveVerb _reflexiveFilterPref;
   //List<Verb> _customizedVerbsPrefs = [];
@@ -67,12 +68,13 @@ class SettingsViewModel extends ViewModel {
     notifyListeners();
   }
 
-  /*updateIrregularityFilter(VerbIrregularityFilter filter) {
-    preferenceService.updateIrregularityFilter(irregularityFilter);
-    debugPrint("$_logTag | Saved Verb Irregularity Filter in Shared Preferences: $irregularityFilter");
+  updateIrregularityFilter(VerbIrregularityFilter filter) {
+    debugPrint("$_logTag | updateIrregularityFilter($filter)");
     irregularityFilter = filter;
+    _preferenceService.updateIrregularityFilter(filter);
+    debugPrint("$_logTag | Saved Verb Irregularity Filter in Shared Preferences: $filter");
     notifyListeners();
-  }*/
+  }
 
   updateEndingFilter(VerbEndingFilter filter) {
     debugPrint("$_logTag | updateEndingFilter($filter)");

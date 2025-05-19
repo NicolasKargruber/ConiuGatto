@@ -4150,7 +4150,7 @@
       "english": "to like",
       "german": "gefallen"
     },
-    "regularity": "highly irregular",
+    "regularity": "irregular",
     "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -4244,7 +4244,7 @@
       "english": "to be sorry",
       "german": "leid tun"
     },
-    "regularity": "highly irregular",
+    "regularity": "irregular",
     "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["essere"],
     "conjugations": {
@@ -7230,7 +7230,7 @@
       "german": "bewegen"
     },
     "regularity": "irregular",
-    "irregularities": ["stem change"],
+    "irregularities": ["stem change", "past participle"],
     "auxiliaries": ["avere"],
     "conjugations": {
       "indicativo": {
