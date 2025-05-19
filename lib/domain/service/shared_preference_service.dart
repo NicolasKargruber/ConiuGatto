@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../data/enums/pronoun.dart';
 import '../../data/repository/shared_preference_repository.dart';
 import '../../data/enums/italian_tense.dart';
+import '../models/enums/auxiliary_filter.dart';
 import '../models/enums/language_level.dart';
 import '../models/enums/verb_ending_filter.dart';
 import '../models/enums/verb_favourite_filter.dart';
@@ -32,6 +33,7 @@ class SharedPreferenceService extends Service {
   final _verbFavouritesDefaultValue = VerbFavouriteFilter.all;
   final _irregularityFiltersDefaultValue = VerbIrregularityFilter.any;
   final _endingFiltersDefaultValue = VerbEndingFilter.all;
+  final _auxiliaryFiltersDefaultValue = AuxiliaryFilter.any;
   // Tenses
   final _tensesDefaultValue = [ItalianTense.presentIndicative];
   // Pronoun
@@ -51,6 +53,10 @@ class SharedPreferenceService extends Service {
   VerbEndingFilter loadVerbEndingFilter() {
     return VerbEndingFilter.values.firstWhereOrNull((e) =>
     e.prefKey == _sharedPreferenceRepo.loadEndingFilterPref()) ?? _endingFiltersDefaultValue;
+  }
+  AuxiliaryFilter loadAuxiliaryFilter() {
+    return AuxiliaryFilter.values.firstWhereOrNull((e) =>
+    e.prefKey == _sharedPreferenceRepo.loadAuxiliaryFilterPref()) ?? _auxiliaryFiltersDefaultValue;
   }
   //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
   List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
@@ -83,6 +89,8 @@ class SharedPreferenceService extends Service {
       _sharedPreferenceRepo.updateIrregularityFilterPref(irregularity.prefKey);
   void updateEndingFilter(VerbEndingFilter ending) =>
       _sharedPreferenceRepo.updateEndingFilterPref(ending.prefKey);
+  void updateAuxiliaryFilter(AuxiliaryFilter auxiliary) =>
+      _sharedPreferenceRepo.updateAuxiliaryFilterPref(auxiliary.prefKey);
   //updateReflexiveFilterPref(String value) => _updatePref(_reflexiveFiltersPrefKey, value);
   void addStarredVerb(Verb verb) => _sharedPreferenceRepo.addStarredVerbFromPrefs(verb.prefKey);
   //updateStarredVerbPrefs(Set<String> values) => _sharedPreferenceRepo.update(_starredVerbsPrefKey, values);

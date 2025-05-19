@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/pronoun.dart';
 import '../../../data/enums/italian_tense.dart';
+import '../../../domain/models/enums/auxiliary_filter.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/verb.dart';
@@ -25,6 +26,7 @@ class SettingsViewModel extends ViewModel {
     pronounFilters = _preferenceService.loadPronouns();
     favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
     endingFilter = _preferenceService.loadVerbEndingFilter();
+    auxiliaryFilter = _preferenceService.loadAuxiliaryFilter();
     //irregularityFilter = preferenceService.loadVerbIrregularityFilter();
     //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
     //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
@@ -52,6 +54,7 @@ class SettingsViewModel extends ViewModel {
   VerbEndingFilter endingFilter = VerbEndingFilter.all;
   //late ReflexiveVerb _reflexiveFilterPref;
   //List<Verb> _customizedVerbsPrefs = [];
+  AuxiliaryFilter auxiliaryFilter = AuxiliaryFilter.any;
 
   // Labels
   List<Verb> get verbs => _verbs;
@@ -76,6 +79,14 @@ class SettingsViewModel extends ViewModel {
     endingFilter = filter;
     _preferenceService.updateEndingFilter(endingFilter);
     debugPrint("$_logTag | Saved Verb Ending Filter in Shared Preferences: $filter");
+    notifyListeners();
+  }
+
+  updateAuxiliaryFilter(AuxiliaryFilter filter) {
+    debugPrint("$_logTag | updateAuxiliaryFilter($filter)");
+    auxiliaryFilter = filter;
+    _preferenceService.updateAuxiliaryFilter(auxiliaryFilter);
+    debugPrint("$_logTag | Saved Auxiliary Filter in Shared Preferences: $filter");
     notifyListeners();
   }
 

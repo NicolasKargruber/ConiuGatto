@@ -111,6 +111,10 @@ class QuizViewModel extends ViewModel {
         break;
     }
     if(verbs.isNotEmpty) {
+      final auxiliaryFilter = _preferenceService.loadAuxiliaryFilter();
+      verbs = verbs.where((verb) => auxiliaryFilter.includesVerb(verb)).toList();
+    }
+    if(verbs.isNotEmpty) {
       final endingFilter = _preferenceService.loadVerbEndingFilter();
       verbs = verbs.where((verb) => endingFilter.includesVerb(verb)).toList();
     }
