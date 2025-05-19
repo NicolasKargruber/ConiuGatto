@@ -17,7 +17,7 @@ class ToggleChoiceChips<Filter> extends StatelessWidget {
   final String title;
   final List<String> labels;
   final List<Filter> values;
-  final Filter selected;
+  final Filter? selected;
   //final Function() onUnselectedAll;
   final Function(Filter) onSelected;
 

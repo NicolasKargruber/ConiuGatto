@@ -105,7 +105,7 @@ class _AuxiliaryChoiceChips extends StatelessWidget {
       title: "Auxiliary",
       labels: AuxiliaryFilter.values.map((e) => e.label).toList(),
       values: AuxiliaryFilter.values,
-      selected: context.select<SettingsViewModel, AuxiliaryFilter>((vm) => vm.auxiliaryFilter),
+      selected: context.select<SettingsViewModel, AuxiliaryFilter?>((vm) => vm.auxiliaryFilter),
       onSelected: context.read<SettingsViewModel>().updateAuxiliaryFilter,
     );
   }
@@ -123,7 +123,7 @@ class _VerbEndingChoiceChips extends StatelessWidget {
       title: "Endings",
       labels: VerbEndingFilter.values.map((e) => e.label).toList(),
       values: VerbEndingFilter.values,
-      selected: context.select<SettingsViewModel, VerbEndingFilter>((vm) => vm.endingFilter),
+      selected: context.select<SettingsViewModel, VerbEndingFilter?>((vm) => vm.endingFilter),
       onSelected: context.read<SettingsViewModel>().updateEndingFilter,
     );
   }
@@ -141,7 +141,7 @@ class _VerbFavouriteChoiceChips extends StatelessWidget {
       title: "Verbs",
       labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
       values: VerbFavouriteFilter.values,
-      selected: context.select<SettingsViewModel, VerbFavouriteFilter>((vm) => vm.favouriteFilter),
+      selected: context.select<SettingsViewModel, VerbFavouriteFilter?>((vm) => vm.favouriteFilter),
       onSelected: context.read<SettingsViewModel>().updateFavouriteFilter,
     );
   }
@@ -159,7 +159,7 @@ class _VerbIrregularityChoiceChips extends StatelessWidget {
       title: "Irregularity",
       labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
       values: VerbIrregularityFilter.values,
-      selected: context.select<SettingsViewModel, VerbIrregularityFilter>((vm) => vm.irregularityFilter),
+      selected: context.select<SettingsViewModel, VerbIrregularityFilter?>((vm) => vm.irregularityFilter),
       onSelected: context.read<SettingsViewModel>().updateIrregularityFilter,
     );
   }
