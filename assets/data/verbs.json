@@ -4409,8 +4409,8 @@
           "io": null,
           "tu": {"italian": "manca", "english": "miss!", "german": "fehl!"},
           "lui/lei": {"italian": "manchi", "english": "miss!", "german": "fehle!"},
-          "noi": {"italian": "mancìamo", "english": "let's miss!", "german": "fehlen wir!"},
-          "voi": {"italian": "mancàte", "english": "miss!", "german": "fehlt!"},
+          "noi": {"italian": "manciamo", "english": "let's miss!", "german": "fehlen wir!"},
+          "voi": {"italian": "mancate", "english": "miss!", "german": "fehlt!"},
           "loro": {"italian": "manchino", "english": "miss!", "german": "fehlen Sie!"}
         }
       }
@@ -8537,6 +8537,100 @@
       "italian": "pulendo",
       "english": "cleaning",
       "german": "putzend"
+    }
+  },
+  {
+    "infinitive": {
+      "italian": "cambiare",
+      "english": "to change",
+      "german": "ändern, wechseln"
+    },
+    "regularity": "irregular",
+    "irregularities": ["spelling change"],
+    "auxiliaries": ["avere", "essere"],
+    "conjugations": {
+      "indicativo": {
+        "presente": {
+          "io": {"italian": "cambio", "english": "change", "german": "ändere", "pattern": "regular"},
+          "tu": {"italian": "cambi", "english": "change", "german": "änderst", "pattern": "loses_final_i"},
+          "lui/lei": {"italian": "cambia", "english": "changes", "german": "ändert", "pattern": "regular"},
+          "noi": {"italian": "cambiamo", "english": "change", "german": "ändern", "pattern": "regular"},
+          "voi": {"italian": "cambiate", "english": "change", "german": "ändert", "pattern": "regular"},
+          "loro": {"italian": "cambiano", "english": "change", "german": "ändern", "pattern": "regular"}
+        },
+        "imperfetto": {
+          "io": {"italian": "cambiavo", "english": "used to change", "german": "änderte", "pattern": "regular"},
+          "tu": {"italian": "cambiavi", "english": "used to change", "german": "ändertest", "pattern": "regular"},
+          "lui/lei": {"italian": "cambiava", "english": "used to change", "german": "änderte", "pattern": "regular"},
+          "noi": {"italian": "cambiavamo", "english": "used to change", "german": "änderten", "pattern": "regular"},
+          "voi": {"italian": "cambiavate", "english": "used to change", "german": "ändertet", "pattern": "regular"},
+          "loro": {"italian": "cambiavano", "english": "used to change", "german": "änderten", "pattern": "regular"}
+        },
+        "passato_remoto": {
+          "io": {"italian": "cambiai", "english": "changed", "german": "änderte", "pattern": "regular"},
+          "tu": {"italian": "cambiasti", "english": "changed", "german": "ändertest", "pattern": "regular"},
+          "lui/lei": {"italian": "cambiò", "english": "changed", "german": "änderte", "pattern": "accent_change"},
+          "noi": {"italian": "cambiammo", "english": "changed", "german": "änderten", "pattern": "regular"},
+          "voi": {"italian": "cambiaste", "english": "changed", "german": "ändertet", "pattern": "regular"},
+          "loro": {"italian": "cambiarono", "english": "changed", "german": "änderten", "pattern": "regular"}
+        },
+        "futuro_semplice": {
+          "io": {"italian": "cambierò", "english": "will change", "german": "werde ändern", "pattern": "regular"},
+          "tu": {"italian": "cambierai", "english": "will change", "german": "wirst ändern", "pattern": "regular"},
+          "lui/lei": {"italian": "cambierà", "english": "will change", "german": "wird ändern", "pattern": "accent_change"},
+          "noi": {"italian": "cambieremo", "english": "will change", "german": "werden ändern", "pattern": "regular"},
+          "voi": {"italian": "cambierete", "english": "will change", "german": "werdet ändern", "pattern": "regular"},
+          "loro": {"italian": "cambieranno", "english": "will change", "german": "werden ändern", "pattern": "regular"}
+        }
+      },
+      "congiuntivo": {
+        "presente": {
+          "io": {"italian": "cambi", "english": "change", "german": "ändere", "pattern": "loses_final_i"},
+          "tu": {"italian": "cambi", "english": "change", "german": "änderest", "pattern": "loses_final_i"},
+          "lui/lei": {"italian": "cambi", "english": "change", "german": "ändere", "pattern": "loses_final_i"},
+          "noi": {"italian": "cambiamo", "english": "change", "german": "ändern", "pattern": "regular"},
+          "voi": {"italian": "cambiate", "english": "change", "german": "änderet", "pattern": "regular"},
+          "loro": {"italian": "cambino", "english": "change", "german": "ändern", "pattern": "loses_final_i"}
+        },
+        "imperfetto": {
+          "io": {"italian": "cambiassi", "english": "used to change", "german": "änderte", "pattern": "regular"},
+          "tu": {"italian": "cambiassi", "english": "used to change", "german": "ändertest", "pattern": "regular"},
+          "lui/lei": {"italian": "cambiasse", "english": "used to change", "german": "änderte", "pattern": "regular"},
+          "noi": {"italian": "cambiassimo", "english": "used to change", "german": "änderten", "pattern": "regular"},
+          "voi": {"italian": "cambiaste", "english": "used to change", "german": "ändertet", "pattern": "regular"},
+          "loro": {"italian": "cambiassero", "english": "used to change", "german": "änderten", "pattern": "regular"}
+        }
+      },
+      "condizionale": {
+        "presente": {
+          "io": {"italian": "cambierei", "english": "would change", "german": "würde ändern", "pattern": "regular"},
+          "tu": {"italian": "cambieresti", "english": "would change", "german": "würdest ändern", "pattern": "regular"},
+          "lui/lei": {"italian": "cambierebbe", "english": "would change", "german": "würde ändern", "pattern": "regular"},
+          "noi": {"italian": "cambieremmo", "english": "would change", "german": "würden ändern", "pattern": "regular"},
+          "voi": {"italian": "cambiereste", "english": "would change", "german": "würdet ändern", "pattern": "regular"},
+          "loro": {"italian": "cambierebbero", "english": "would change", "german": "würden ändern", "pattern": "regular"}
+        }
+      },
+      "imperativo": {
+        "positivo": {
+          "io": null,
+          "tu": {"italian": "cambia", "english": "change!", "german": "ändere!", "pattern": "regular"},
+          "lui/lei": {"italian": "cambi", "english": "change!", "german": "ändere!", "pattern": "loses_final_i"},
+          "noi": {"italian": "cambiamo", "english": "let's change!", "german": "ändern wir!", "pattern": "regular"},
+          "voi": {"italian": "cambiate", "english": "change!", "german": "ändert!", "pattern": "regular"},
+          "loro": {"italian": "cambino", "english": "change!", "german": "ändern Sie!", "pattern": "loses_final_i"}
+        }
+      }
+    },
+    "participio_passato": {
+      "italian": "cambiato",
+      "english": "changed",
+      "german": "geändert"
+    },
+    "gerundio_presente": {
+      "italian": "cambiando",
+      "english": "changing",
+      "german": "ändernd"
     }
   }
 ]

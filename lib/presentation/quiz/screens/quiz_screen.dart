@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
@@ -39,12 +40,17 @@ class _QuizScreenState extends State<QuizScreen> {
       if(!_viewModel.isAnsweredCorrectly) {
         // Show WRONG animation
         debugPrint("$_logTag | Unfortunately wrong!!!");
+        HapticFeedback.heavyImpact();
         _shakeKey.currentState?.shake();
 
         if(!_viewModel.hasTriesLeft) await _showCorrectAnswer();
       }
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
+
+        await Future.delayed(Duration(milliseconds: 1500));
+
+        HapticFeedback.lightImpact();
         _textController.clear();
         _viewModel.createNewQuestion();
       }
