@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../data/enums/pronoun.dart';
 import '../../data/repository/shared_preference_repository.dart';
 import '../../data/enums/italian_tense.dart';
+import '../models/enums/auxiliary_filter.dart';
 import '../models/enums/language_level.dart';
 import '../models/enums/verb_ending_filter.dart';
 import '../models/enums/verb_favourite_filter.dart';
@@ -32,6 +33,7 @@ class SharedPreferenceService extends Service {
   final _verbFavouritesDefaultValue = VerbFavouriteFilter.all;
   final _irregularityFiltersDefaultValue = VerbIrregularityFilter.any;
   final _endingFiltersDefaultValue = VerbEndingFilter.all;
+  final _auxiliaryFiltersDefaultValue = AuxiliaryFilter.any;
   // Tenses
   final _tensesDefaultValue = [ItalianTense.presentIndicative];
   // Pronoun
@@ -40,6 +42,10 @@ class SharedPreferenceService extends Service {
   final _languageLevelDefaultValue = LanguageLevel.a1;
 
   // Verbs
+  List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
+    final starredVerbPrefs = _sharedPreferenceRepo.loadStarredVerbPrefs() ?? [];
+    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).toList();
+  }
   VerbFavouriteFilter loadVerbFavouriteFilter() {
     return VerbFavouriteFilter.values.firstWhereOrNull((e) =>
     e.prefKey == _sharedPreferenceRepo.loadVerbFavouritePref()) ?? _verbFavouritesDefaultValue;
@@ -52,11 +58,11 @@ class SharedPreferenceService extends Service {
     return VerbEndingFilter.values.firstWhereOrNull((e) =>
     e.prefKey == _sharedPreferenceRepo.loadEndingFilterPref()) ?? _endingFiltersDefaultValue;
   }
-  //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
-  List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
-    final starredVerbPrefs = _sharedPreferenceRepo.loadStarredVerbPrefs() ?? [];
-    return verbs.where((verb) => starredVerbPrefs.contains(verb.prefKey)).toList();
+  AuxiliaryFilter loadAuxiliaryFilter() {
+    return AuxiliaryFilter.values.firstWhereOrNull((e) =>
+    e.prefKey == _sharedPreferenceRepo.loadAuxiliaryFilterPref()) ?? _auxiliaryFiltersDefaultValue;
   }
+  //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
   //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses
   List<ItalianTense> loadTenses() {
@@ -77,14 +83,16 @@ class SharedPreferenceService extends Service {
   }
 
   // Verbs
+  void addStarredVerb(Verb verb) => _sharedPreferenceRepo.addStarredVerbFromPrefs(verb.prefKey);
   void updateVerbFavourite(VerbFavouriteFilter favourite) =>
       _sharedPreferenceRepo.updateVerbFavouritePref(favourite.prefKey);
   void updateIrregularityFilter(VerbIrregularityFilter irregularity) =>
       _sharedPreferenceRepo.updateIrregularityFilterPref(irregularity.prefKey);
   void updateEndingFilter(VerbEndingFilter ending) =>
       _sharedPreferenceRepo.updateEndingFilterPref(ending.prefKey);
+  void updateAuxiliaryFilter(AuxiliaryFilter auxiliary) =>
+      _sharedPreferenceRepo.updateAuxiliaryFilterPref(auxiliary.prefKey);
   //updateReflexiveFilterPref(String value) => _updatePref(_reflexiveFiltersPrefKey, value);
-  void addStarredVerb(Verb verb) => _sharedPreferenceRepo.addStarredVerbFromPrefs(verb.prefKey);
   //updateStarredVerbPrefs(Set<String> values) => _sharedPreferenceRepo.update(_starredVerbsPrefKey, values);
   //updateCustomizedVerbsPrefs(Set<String> values) => _updatePrefs(_customizedVerbsPrefKey, values);
   // Tenses

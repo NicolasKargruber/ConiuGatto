@@ -33,7 +33,7 @@ class ToggleChoiceChips<Filter> extends StatelessWidget {
         ),
 
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppValues.p36, vertical: AppValues.p8),
+          padding: const EdgeInsets.symmetric(horizontal: AppValues.p36, vertical: AppValues.p12),
           child: Wrap(
             alignment: WrapAlignment.center,
             spacing: AppValues.s8,

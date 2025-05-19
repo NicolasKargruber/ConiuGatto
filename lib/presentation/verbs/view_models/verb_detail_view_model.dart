@@ -31,7 +31,7 @@ class VerbDetailViewModel extends ViewModel {
 
   // State
   late Auxiliary _selectedAuxiliary;
-  List<bool> selectedAuxiliaries = [true, false];
+  Auxiliary get selectedAuxiliary => _selectedAuxiliary;
   bool _isStarred = false;
   bool get isStarred => _isStarred;
 
@@ -63,10 +63,10 @@ class VerbDetailViewModel extends ViewModel {
     notifyListeners();
   }
 
-  selectAuxiliaryAtIndex(index) {
-    _selectedAuxiliary = _verb.auxiliaries.elementAt(index);
-    selectedAuxiliaries = [false, false];
-    selectedAuxiliaries[index] = true;
+  selectAuxiliary(Auxiliary? auxiliary) {
+    debugPrint("$_logTag | selectAuxiliaryAtIndex($auxiliary)");
+    if(auxiliary == null) return;
+    _selectedAuxiliary = auxiliary;
     notifyListeners();
   }
 }

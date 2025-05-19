@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/enums/auxiliary.dart';
 import 'app_values.dart';
 import 'extensions/build_context_extensions.dart';
 
@@ -10,6 +11,15 @@ class ButtonFactory {
     } else {
       return FilledButton(onPressed: (){}, child: Text(label));
     }
+  }
+}
+
+class RegularityWidgetFactory {
+  static Widget createButton({required bool isRegular}) {
+    return ButtonFactory.createFilledButton(
+      tonal: !isRegular,
+      label: isRegular ? "Regular" : "Irregular",
+    );
   }
 }
 
@@ -85,12 +95,11 @@ class AuxiliaryWidgetFactory {
   }
 
   static Widget createToggleButtons({
-    required int selectedAuxiliaryIndex,
-    required List<String> auxiliaryLabels,
-    required Function(int?) onToggle,
+    required Auxiliary selected,
+    required Function(Auxiliary?) onToggle,
   }) {
-    final List<bool> selectedAuxiliaries = auxiliaryLabels.map((e) => false).toList();
-    selectedAuxiliaries[selectedAuxiliaryIndex] = true;
+    final auxiliaries = Auxiliary.values;
+    final List<bool> selectedAuxiliaries = auxiliaries.map((e) => e == selected).toList();
     return ToggleButtons(
       borderRadius: const BorderRadius.all(Radius.circular(8)),
       selectedBorderColor: Colors.green.shade700,
@@ -98,14 +107,14 @@ class AuxiliaryWidgetFactory {
       fillColor: Colors.green.shade200,
       color: Colors.green.shade400,
       constraints: const BoxConstraints(minHeight: AppValues.s40, minWidth: AppValues.s80),
-      onPressed: onToggle,
+      onPressed: (index) => onToggle(auxiliaries.elementAtOrNull(index)),
       isSelected: selectedAuxiliaries,
-      children: auxiliaryLabels.map((label) => Text(label)).toList(),
+      children: auxiliaries.map((e) => Text(e.label)).toList(),
     );
   }
 }
 
-class ItalianTenseProgress {
+class ItalianTenseProgressFactory {
   static Widget createCard({
     required String title,
     required String subtitle,
@@ -129,7 +138,7 @@ class ItalianTenseProgress {
                       style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
                     ),
                     SizedBox(height: AppValues.s12),
-                    ItalianTenseProgress.createLinearProgressIndicator(value: progress, milestone: milestone),
+                    ItalianTenseProgressFactory.createLinearProgressIndicator(value: progress, milestone: milestone),
                   ],
                 ),
               ),

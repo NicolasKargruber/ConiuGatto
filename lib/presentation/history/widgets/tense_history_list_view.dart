@@ -20,7 +20,7 @@ class TenseHistoryListView extends StatelessWidget {
       itemCount: quizzedTenses.length,
       itemBuilder: (_, index) {
         final quizzedTense = quizzedTenses[index];
-        return ItalianTenseProgress.createCard(
+        return ItalianTenseProgressFactory.createCard(
           title: quizzedTense.tense.label,
           subtitle: "Last quizzed: ${quizzedTense.daysAgoLabel}",
           progress: quizzedTense.progress,

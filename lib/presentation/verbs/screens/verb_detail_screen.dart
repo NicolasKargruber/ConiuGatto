@@ -53,18 +53,14 @@ class VerbDetailScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppValues.p8),
-              child: ButtonFactory.createFilledButton(
-                  tonal: !viewModel.isRegular,
-                  label: viewModel.isRegular ? "Regular" : "Irregular",
-              ),
+              child: RegularityWidgetFactory.createButton(isRegular: viewModel.isRegular),
             ),
 
             if(viewModel.isDoubleAuxiliary)
               Center(
-                child: AuxiliaryToggleButtons(
-                  selectedAuxiliaryIndex: viewModel.selectedAuxiliaryIndex,
-                  auxiliaryLabels: viewModel.auxiliaryLabels,
-                  onToggle: viewModel.selectAuxiliaryAtIndex,
+                child: AuxiliaryWidgetFactory.createToggleButtons(
+                  selected: viewModel.selectedAuxiliary,
+                  onToggle: viewModel.selectAuxiliary,
                 ),
               ),
 
@@ -141,34 +137,4 @@ class VerbDetailScreen extends StatelessWidget {
     );
   }
 }
-
-class AuxiliaryToggleButtons extends StatelessWidget {
-  const AuxiliaryToggleButtons({super.key,
-    required this.selectedAuxiliaryIndex,
-    required this.auxiliaryLabels,
-    required this.onToggle,
-  });
-
-  final int selectedAuxiliaryIndex;
-  final List<String> auxiliaryLabels;
-  final Function(int?) onToggle;
-
-  @override
-  Widget build(BuildContext context) {
-    final List<bool> selectedAuxiliaries = auxiliaryLabels.map((e) => false).toList();
-    selectedAuxiliaries[selectedAuxiliaryIndex] = true;
-    return ToggleButtons(
-      borderRadius: const BorderRadius.all(Radius.circular(8)),
-      selectedBorderColor: Colors.green.shade700,
-      selectedColor: Colors.white,
-      fillColor: Colors.green.shade200,
-      color: Colors.green.shade400,
-      constraints: const BoxConstraints(minHeight: AppValues.s40, minWidth: AppValues.s80),
-      onPressed: onToggle,
-      isSelected: selectedAuxiliaries,
-      children: auxiliaryLabels.map((label) => Text(label)).toList(),
-    );
-  }
-}
-
 
