@@ -1,13 +1,27 @@
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import '../../widgets/report_issue_sheet.dart';
+import '../view_models/quiz_view_model.dart';
 
-class ShowSolutionSheet extends StatelessWidget {
-  const ShowSolutionSheet({super.key, required this.solution});
+class SolutionSheet extends StatelessWidget {
+  const SolutionSheet({super.key, required this.solution, required this.reportIssue});
 
-  final String? solution;
+  final String solution;
+  final Function() reportIssue;
+
+  // TODO Use Navigator
+  _showReportIssueSheet(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return ReportIssueSheet(reportIssue: reportIssue);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +40,7 @@ class ShowSolutionSheet extends StatelessWidget {
               children: [
                 // FLAG
                 IconButton(
-                    onPressed: (){},
+                    onPressed: () => _showReportIssueSheet(context),
                     icon: Icon(Icons.flag, color: context.colorScheme.onError),
                 ),
 
@@ -34,8 +48,8 @@ class ShowSolutionSheet extends StatelessWidget {
                 Text(
                   "Incorrect",
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: AppValues.fs18,
+                    fontWeight: FontWeight.w600,
+                    fontSize: AppValues.fs24,
                     color: context.colorScheme.onError,
                   ),
                 ),

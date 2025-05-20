@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../data/enums/pronoun.dart';
 import '../../../domain/models/tenses/conjugation.dart';
@@ -6,12 +7,25 @@ import '../../../domain/models/tenses/tense.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../widgets/custom_data_table.dart';
+import '../../widgets/report_issue_sheet.dart';
+import '../view_models/verb_detail_view_model.dart';
 
 class ConjugationTable extends StatelessWidget {
   const ConjugationTable({super.key, required this.tenses});
 
   final List<Tense> tenses;
   //final bool includeEnglishPronouns;
+
+  // TODO Use Navigator
+  _showReportIssueSheet(BuildContext context, Tense tense) async {
+    final viewModel = context.read<VerbDetailViewModel>();
+    await showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return ReportIssueSheet(reportIssue: () => viewModel.reportTense(tense));
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +56,7 @@ class ConjugationTable extends StatelessWidget {
                   ),
                   //color: Theme.of(context).cardColor,
                 ),
-                columns: tenses.map((tense) => _dataColumnsFromLabel(tense.label)).toList(),
+                columns: tenses.map(_dataColumnsFromTense).toList(),
                 rows: Pronoun.values.map(_dataRowsFromPronoun).toList(),
               ),
             ),
@@ -52,18 +66,29 @@ class ConjugationTable extends StatelessWidget {
     );
   }
 
-  DataColumn _dataColumnsFromLabel(String label) => DataColumn(
+  DataColumn _dataColumnsFromTense(Tense tense) => DataColumn(
     label: Builder(
       builder: (context) {
-        return Tooltip(
-          message: label,
-          child: Text(label,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              color: context.colorScheme.onInverseSurface,
-              fontSize: AppValues.fs13,
+        return Row(
+          children: [
+            Tooltip(
+              message: tense.label,
+              child: Text(tense.label,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: context.colorScheme.onInverseSurface,
+                  fontSize: AppValues.fs13,
+                ),
+              ),
             ),
-          ),
+
+            IconButton(
+              icon: Icon(Icons.flag),
+              onPressed: () => _showReportIssueSheet(context, tense),
+              iconSize: AppValues.s20,
+              color: context.colorScheme.onInverseSurface,
+            ),
+          ],
         );
       }
     ),

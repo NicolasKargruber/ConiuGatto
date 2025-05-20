@@ -5,9 +5,9 @@ import '../../../data/enums/auxiliary.dart';
 import '../../../domain/models/tenses/tense.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/utils/url_helper.dart';
 import '../../view_model.dart';
 import '../../../domain/utils/verb_extensions.dart';
-
 
 class VerbDetailViewModel extends ViewModel {
   static final _logTag = (VerbDetailViewModel).toString();
@@ -68,5 +68,10 @@ class VerbDetailViewModel extends ViewModel {
     if(auxiliary == null) return;
     _selectedAuxiliary = auxiliary;
     notifyListeners();
+  }
+
+  reportTense(Tense tense){
+    debugPrint("$_logTag | reportTense()");
+    UrlHelper.sendMailToReportConjugation(_verb.italianInfinitive, tense.extendedLabel);
   }
 }
