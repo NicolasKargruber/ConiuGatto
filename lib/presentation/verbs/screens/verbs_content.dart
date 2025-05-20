@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
@@ -15,11 +17,6 @@ class VerbsContent extends StatelessWidget {
 
   final TextEditingController searchTextController;
 
-  clearSearch(BuildContext context) {
-    context.read<SearchViewModel>().filterVerbs('');
-    searchTextController.clear();
-  }
-
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<SearchViewModel>();
@@ -28,10 +25,10 @@ class VerbsContent extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(AppValues.p16),
-          child: _buildSearchBar(context),
+          child: _SearchBar(searchTextController: searchTextController),
         ),
         Expanded(
-          child: Scrollbar(
+          child: verbs.isEmpty ? Center(child: _RequestVerb()) : Scrollbar(
             interactive: true,
             thumbVisibility: true,
             child: ListView.builder(
@@ -67,9 +64,22 @@ class VerbsContent extends StatelessWidget {
       ],
     );
   }
+}
 
-  _buildSearchBar(BuildContext context){
+class _SearchBar extends StatelessWidget {
+  const _SearchBar({super.key, required this.searchTextController});
+
+  final TextEditingController searchTextController;
+
+  clearSearch(BuildContext context) {
+    searchTextController.clear();
+    context.read<SearchViewModel>().filterVerbs(searchTextController.text);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final viewModel = context.read<SearchViewModel>();
+    searchTextController.text = viewModel.searchString;
     return SearchBar(
       controller: searchTextController,
       leading: Padding(
@@ -98,3 +108,27 @@ class VerbsContent extends StatelessWidget {
     );
   }
 }
+
+class _RequestVerb extends StatelessWidget {
+  const _RequestVerb({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: AppValues.s12,
+      children: [
+        Text('No verb found! 🔍',
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
+        ),
+      FilledButton(
+        onPressed: () {
+          UrlHelper.sendMailToRequestVerb(context.read<SearchViewModel>().searchString.toUpperCase());
+        },
+        child: Text('Request verb'),
+      ),
+      ],
+    );
+  }
+}
+
