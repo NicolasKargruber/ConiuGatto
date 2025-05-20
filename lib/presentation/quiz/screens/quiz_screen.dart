@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
@@ -32,22 +33,33 @@ class _QuizScreenState extends State<QuizScreen> {
   // UI Stuff
   final _textController = TextEditingController();
   final _shakeKey = GlobalKey<ShakeWidgetState>();
+  bool _isCheckingAnswer = false;
 
   _checkAnswer() async {
+      if(_isCheckingAnswer) return;
+      _isCheckingAnswer = true;
+
       _viewModel.checkAnswer(_textController.text);
 
       if(!_viewModel.isAnsweredCorrectly) {
         // Show WRONG animation
         debugPrint("$_logTag | Unfortunately wrong!!!");
+        HapticFeedback.heavyImpact();
         _shakeKey.currentState?.shake();
 
         if(!_viewModel.hasTriesLeft) await _showCorrectAnswer();
       }
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
+
+        if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 1500));
+
+        HapticFeedback.lightImpact();
         _textController.clear();
         _viewModel.createNewQuestion();
       }
+
+      _isCheckingAnswer = false;
   }
 
   // TODO Use Navigator

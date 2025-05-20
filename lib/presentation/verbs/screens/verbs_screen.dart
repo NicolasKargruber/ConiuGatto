@@ -24,7 +24,7 @@ class VerbsScreen extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (context.read<VerbService>().verbs.isEmpty) {
-            return Center(child: Text('No verbs available'));
+            return Center(child: Text('No verbs available 💨'));
           } else {
             return VerbsContent(
               searchTextController: _searchTextController,
