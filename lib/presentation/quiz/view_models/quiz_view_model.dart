@@ -10,6 +10,7 @@ import '../../../domain/models/verb.dart';
 import '../../../domain/service/history_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/filter_extensions.dart';
+import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
 
@@ -239,5 +240,14 @@ class QuizViewModel extends ViewModel {
       _currentAnswerResult = result;
       notifyListeners();
     }
+  }
+
+  void reportSolution() {
+    debugPrint("$_logTag | reportSolution()");
+    UrlHelper.sendMailToReportSolution(
+        _currentQuestion?.verb.italianInfinitive ?? "",
+        _currentQuestion?.tense.extendedLabel ?? "",
+        _currentQuestion?.solutionExtended ?? "",
+    );
   }
 }

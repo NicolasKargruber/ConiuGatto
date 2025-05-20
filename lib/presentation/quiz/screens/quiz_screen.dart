@@ -67,8 +67,11 @@ class _QuizScreenState extends State<QuizScreen> {
     await showModalBottomSheet(
       context: context,
       builder: (_) {
-        final solution = context.read<QuizViewModel>().currentSolution;
-        return ShowSolutionSheet(solution: solution);
+        final viewModel = context.read<QuizViewModel>();
+        return SolutionSheet(
+          solution:  viewModel.currentSolution ?? '',
+          reportIssue: () => viewModel.reportSolution(),
+        );
       },
     );
   }

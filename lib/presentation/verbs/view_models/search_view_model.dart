@@ -14,8 +14,10 @@ class SearchViewModel extends ViewModel{
   List<Verb> _starredVerbs = [];
 
   List<Verb> _filteredVerbs = [];
-  List<Verb> get filteredVerbs =>
-      [..._filteredVerbs.isEmpty ? _verbs : _filteredVerbs];
+  List<Verb> get filteredVerbs => [..._filteredVerbs];
+
+  String _searchString = '';
+  String get searchString => _searchString;
 
   // Initialized in Parent Constructor
   @override
@@ -32,6 +34,7 @@ class SearchViewModel extends ViewModel{
     if(eq(_verbs, verbs)) return debugPrint("$_logTag | loaded verbs are still the same");
     _verbs = verbs;
     _starredVerbs = _sharedPreferenceService.getStarredVerbsFrom(_verbs);
+    filterVerbs(_searchString);
     notifyListeners();
   }
 
@@ -48,9 +51,16 @@ class SearchViewModel extends ViewModel{
   filterVerbs(String search) {
     debugPrint("$_logTag | filterVerbs()");
     search = search.toLowerCase();
-    final filteredVerbsInItalian = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
-    final filteredVerbsInEnglish = _verbs.where((verb) => verb.infinitive.english.contains(search)).toList();
-    _filteredVerbs = filteredVerbsInItalian + filteredVerbsInEnglish;
+    _searchString = search;
+
+    if(search.isEmpty) {
+      _filteredVerbs = [..._verbs];
+    } else {
+      final filteredVerbsInItalian = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
+      final filteredVerbsInEnglish = _verbs.where((verb) => verb.infinitive.english.contains(search)).toList();
+      _filteredVerbs = filteredVerbsInItalian + filteredVerbsInEnglish;
+    }
+
     notifyListeners();
   }
 
