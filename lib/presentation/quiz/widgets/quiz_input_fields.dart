@@ -26,9 +26,9 @@ class QuizInputFields extends StatelessWidget {
     }
     // Handle normal insertion at cursor position
     else {
-      final cursorPos = selection.base.offset;
-      textController.text = text.replaceRange(cursorPos, cursorPos, letter);
-      textController.selection = TextSelection.collapsed(offset: cursorPos + letter.length);
+      final cursorPosition = selection.base.offset;
+      textController.text = text.replaceRange(cursorPosition, cursorPosition, letter);
+      textController.selection = TextSelection.collapsed(offset: cursorPosition + letter.length);
     }
 
     debugPrint("$_logTag | ${selection.isCollapsed ? 'Added' : 'Replaced'} '$letter' in answer");

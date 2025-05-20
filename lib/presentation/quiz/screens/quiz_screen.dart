@@ -33,8 +33,12 @@ class _QuizScreenState extends State<QuizScreen> {
   // UI Stuff
   final _textController = TextEditingController();
   final _shakeKey = GlobalKey<ShakeWidgetState>();
+  bool _isCheckingAnswer = false;
 
   _checkAnswer() async {
+      if(_isCheckingAnswer) return;
+      _isCheckingAnswer = true;
+
       _viewModel.checkAnswer(_textController.text);
 
       if(!_viewModel.isAnsweredCorrectly) {
@@ -48,12 +52,14 @@ class _QuizScreenState extends State<QuizScreen> {
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
 
-        await Future.delayed(Duration(milliseconds: 1500));
+        if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 1500));
 
         HapticFeedback.lightImpact();
         _textController.clear();
         _viewModel.createNewQuestion();
       }
+
+      _isCheckingAnswer = false;
   }
 
   // TODO Use Navigator

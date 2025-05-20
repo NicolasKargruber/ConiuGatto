@@ -49,7 +49,7 @@ class ShowSolutionSheet extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: AppValues.s24),
+          SizedBox(height: AppValues.s20),
 
           Text("Correct answer",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20),
