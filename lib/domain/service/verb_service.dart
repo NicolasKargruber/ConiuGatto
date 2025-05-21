@@ -1,7 +1,8 @@
-
 import 'package:flutter/foundation.dart';
 
+import '../../data/models/verb_dto.dart';
 import '../../data/repository/verb_repository.dart';
+import '../../utilities/connection_helpers.dart' as connection;
 import '../models/verb.dart';
 import 'service.dart';
 
@@ -15,6 +16,7 @@ class VerbService extends Service {
 
   @override
   Future initialize() async {
+    debugPrint("$_logTag | initialize()");
     await _loadAll();
   }
 
@@ -23,7 +25,14 @@ class VerbService extends Service {
     debugPrint("$_logTag | _loadAll() started");
     List<Verb> verbs = [];
     try {
-      final verbDTOs = await _verbRepository.getAll();
+      final List<VerbDTO> verbDTOs;
+      if(await connection.hasInternet()) {
+        debugPrint("$_logTag | Connected");
+        verbDTOs = await _verbRepository.loadOrUpdateVerbs();
+      } else {
+        debugPrint("$_logTag | Not connected");
+        verbDTOs = await _verbRepository.loadVerbs();
+      }
       verbs = verbDTOs.map((dto) => Verb.fromDTO(dto)).toList();
     } on Exception catch (e) {
       debugPrint("$_logTag | Caught exception: $e");
