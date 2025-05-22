@@ -6,7 +6,7 @@ import 'conjugation.dart';
 // typedefs - Generated Conjugations
 typedef GeneratedConjugations = Map<Pronoun, String?>;
 
-base class Tense {
+class Tense {
   final ItalianTense type;
   final bool usesPastParticiple;
   final bool isCompound;

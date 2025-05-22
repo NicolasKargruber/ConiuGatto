@@ -15,6 +15,7 @@ class VerbRepository {
     final localJson = await _dataSource.loadLocalJson();
     if (localJson != null) {
       try {
+        debugPrint('$_logTag | Local version: ${localJson["meta"]["version"]}');
         final jsonList = localJson["verbs"] as List<dynamic>;
         return jsonList.map((json) => VerbDTO.fromJson(json)).toList();
       } on Exception catch (e) {

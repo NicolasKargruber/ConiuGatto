@@ -66,21 +66,17 @@ class VerbDataSource {
       final double remoteVersion = remoteJson['meta']['version'];
       debugPrint('$_logTag | Remote version: $remoteVersion');
 
-      final List<dynamic> jsonList;
-
       final localJson = await loadLocalJson();
-      final double localVersion = localJson?['meta']?['version'] ?? -1;
+      final double? localVersion = localJson?['meta']?['version'];
+      debugPrint('$_logTag | Local version: $localVersion');
 
-      if (localJson != null && remoteVersion <= localVersion) {
-        debugPrint('$_logTag | Local version: $localVersion');
-        jsonList = localJson["verbs"];
+      if (localJson != null && remoteVersion <= (localVersion ?? -1)) {
+        return localJson["verbs"];
       } else {
         debugPrint('$_logTag | Updating local JSON with remote version $remoteVersion');
         await writeLocalJson(remoteJson);
-        jsonList = remoteJson["verbs"];
+        return remoteJson["verbs"];
       }
-
-      return jsonList;
     } on Exception catch (e) {
       debugPrint("$_logTag | Caught exception: $e");
       return null;
