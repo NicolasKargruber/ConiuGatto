@@ -74,7 +74,7 @@ class QuizContent extends StatelessWidget {
                           SizedBox(height: AppValues.s18),
 
                           AutoSizeText(
-                            viewModel.currentQuestion ?? "Not available",
+                            viewModel.currentQuestionLabel ?? "Not available",
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: AppValues.fs28,

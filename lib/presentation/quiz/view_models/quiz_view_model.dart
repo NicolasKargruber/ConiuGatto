@@ -95,7 +95,7 @@ class QuizViewModel extends ViewModel {
 
   // Getters - Quiz Labels
   String? get currentTitle => _currentQuestion?.currentTitle;
-  String? get currentQuestion => _currentQuestion?.question;
+  String? get currentQuestionLabel => _currentQuestion?.question;
   String? get currentTranslation => _currentQuestion?.translation;
   String? get currentSolution => _currentQuestion?.solution;
   String? get currentAuxiliaryLabel => _currentQuestion?.auxiliary.name.toUpperCase();
