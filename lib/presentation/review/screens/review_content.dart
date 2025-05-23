@@ -6,7 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
-import '../view_models/quiz_view_model.dart';
+import '../view_models/review_view_model.dart';
 import '../widgets/quiz_input_fields.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/quiz_button.dart';
@@ -29,7 +29,7 @@ class QuizContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.watch<QuizViewModel>();
+    final viewModel = context.watch<ReviewViewModel>();
 
     return !viewModel.hasQuizzableQuestions ?
     Center(child: _NoQuestionsAvailable(onSettingsButtonPressed: onSettingsButtonPressed)) :

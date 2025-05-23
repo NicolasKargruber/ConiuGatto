@@ -3,15 +3,16 @@ import 'package:provider/provider.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/quiz_view_model.dart';
+import '../view_models/review_view_model.dart';
 
-final _logTag = (QuizInputFields).toString();
-
+// TODO Move to general widgets
 class QuizInputFields extends StatelessWidget {
   const QuizInputFields({super.key, required this.textController, required this.onSubmitted});
   
   final TextEditingController textController;
   final void Function(String) onSubmitted;
+
+  static final _logTag = (QuizInputFields).toString();
 
   void _addLetterAtSelection(String letter) {
     final selection = textController.selection;
@@ -37,7 +38,7 @@ class QuizInputFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.watch<QuizViewModel>();
+    final viewModel = context.watch<ReviewViewModel>();
     
     return Column(
       children: [

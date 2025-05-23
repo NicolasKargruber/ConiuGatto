@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/quiz_view_model.dart';
+import '../view_models/review_view_model.dart';
 
+// TODO separate viewModel from widget (to "ReviewAppBar")
+// TODO Move to general widgets
 class QuizHistoryCount extends StatelessWidget {
   const QuizHistoryCount({super.key});
 
@@ -17,7 +19,7 @@ class QuizHistoryCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<QuizViewModel>();
+    final viewModel = context.watch<ReviewViewModel>();
 
     return viewModel.hasQuizzableQuestions ? Row(
       children: [

@@ -41,7 +41,7 @@ class _NoTensesAvailable extends StatelessWidget {
       spacing: AppValues.s8,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(' No Tenses to quiz here! 🫙',
+        Text(' No Tenses to review here! 🫙',
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20)
         ),
 

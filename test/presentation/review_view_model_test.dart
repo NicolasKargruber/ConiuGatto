@@ -10,7 +10,7 @@ import 'package:coniugatto/domain/models/tenses/tense.dart';
 import 'package:coniugatto/domain/models/verb.dart';
 import 'package:coniugatto/domain/service/history_service.dart';
 import 'package:coniugatto/domain/service/shared_preference_service.dart';
-import 'package:coniugatto/presentation/quiz/view_models/quiz_view_model.dart';
+import 'package:coniugatto/presentation/review/view_models/review_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -24,7 +24,7 @@ class MockConjugation extends Mock implements Conjugation {}
 void main() {
   late MockSharedPreferenceService mockPreferences;
   late MockHistoryService mockHistory;
-  late QuizViewModel viewModel;
+  late ReviewViewModel viewModel;
 
   setUpAll(() {
     registerFallbackValue(VerbFavouriteFilter.all);
@@ -55,7 +55,7 @@ void main() {
     when(() => mockPreferences.loadPronouns())
         .thenReturn(Pronoun.values);
 
-    viewModel = QuizViewModel(mockPreferences, mockHistory);
+    viewModel = ReviewViewModel(mockPreferences, mockHistory);
   });
 
   test('should update verbs and find quizzable verbs with ALL filters active', () {
