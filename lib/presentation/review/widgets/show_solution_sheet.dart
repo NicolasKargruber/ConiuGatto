@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../widgets/report_issue_sheet.dart';
-import '../view_models/quiz_view_model.dart';
 
+
+// TODO Move to general widgets
 class SolutionSheet extends StatelessWidget {
   const SolutionSheet({super.key, required this.solution, required this.reportIssue});
 

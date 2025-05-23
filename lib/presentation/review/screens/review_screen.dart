@@ -7,28 +7,28 @@ import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../settings/view_models/settings_view_model.dart';
-import '../view_models/quiz_view_model.dart';
+import '../view_models/review_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/quiz_history_count.dart';
 import '../widgets/show_solution_sheet.dart';
-import 'quiz_content.dart';
+import 'review_content.dart';
 import '../../settings/screens/settings_screen.dart';
 
-final _logTag = (QuizScreen).toString();
+final _logTag = (ReviewScreen).toString();
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+class ReviewScreen extends StatefulWidget {
+  const ReviewScreen({super.key});
 
   @override
-  State<QuizScreen> createState() => _QuizScreenState();
+  State<ReviewScreen> createState() => _ReviewScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _ReviewScreenState extends State<ReviewScreen> {
 
   // ViewModel
   late final Future _loadingVerbs = context.read<VerbService>().initializationFuture;
   List<Verb> get _verbs => context.read<VerbService>().verbs;
-  late final _viewModel = context.read<QuizViewModel>();
+  late final _viewModel = context.read<ReviewViewModel>();
 
   // UI Stuff
   final _textController = TextEditingController();
@@ -67,7 +67,7 @@ class _QuizScreenState extends State<QuizScreen> {
     await showModalBottomSheet(
       context: context,
       builder: (_) {
-        final viewModel = context.read<QuizViewModel>();
+        final viewModel = context.read<ReviewViewModel>();
         return SolutionSheet(
           solution:  viewModel.currentSolution ?? '',
           reportIssue: () => viewModel.reportSolution(),
@@ -89,7 +89,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ))
     );
 
-    if(mounted) context.read<QuizViewModel>().updateQuiz();
+    if(mounted) context.read<ReviewViewModel>().updateQuiz();
   }
 
   @override
@@ -103,7 +103,7 @@ class _QuizScreenState extends State<QuizScreen> {
     debugPrint("$_logTag | build()");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Quiz 🕹️"),
+        title: Text("Review 🏅"),
         actions: [
           QuizHistoryCount(),
           IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded)),

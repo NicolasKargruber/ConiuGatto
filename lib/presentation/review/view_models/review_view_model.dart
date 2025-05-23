@@ -14,13 +14,13 @@ import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
 
-class QuizViewModel extends ViewModel {
-  static final _logTag = (QuizViewModel).toString();
+class ReviewViewModel extends ViewModel {
+  static final _logTag = (ReviewViewModel).toString();
 
   final SharedPreferenceService _preferenceService;
   final HistoryService _historyService;
 
-  QuizViewModel(this._preferenceService, this._historyService);
+  ReviewViewModel(this._preferenceService, this._historyService);
 
   // Initialized in Parent Constructor
   @override
