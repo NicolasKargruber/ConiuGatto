@@ -38,14 +38,14 @@ class QuizContent extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AnimatedSmoothIndicator(
+          /*AnimatedSmoothIndicator(
             activeIndex: viewModel.totalQuizCount,
             count: 10,
             effect: WormEffect(
               activeDotColor: context.colorScheme.primary,
               dotColor: context.colorScheme.surfaceContainerHighest,
             ), // your preferred effect
-          ),
+          ),*/
 
           Expanded(
             child: Center(

@@ -10,7 +10,7 @@ import '../../settings/view_models/settings_view_model.dart';
 import '../view_models/review_view_model.dart';
 import '../../widgets/shake_widget.dart';
 import '../widgets/quiz_history_count.dart';
-import '../widgets/show_solution_sheet.dart';
+import '../widgets/solution_sheet.dart';
 import 'review_content.dart';
 import '../../settings/screens/settings_screen.dart';
 
