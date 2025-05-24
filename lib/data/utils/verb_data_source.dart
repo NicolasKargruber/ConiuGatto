@@ -71,6 +71,7 @@ class VerbDataSource {
       debugPrint('$_logTag | Local version: $localVersion');
 
       if (localJson != null && remoteVersion <= (localVersion ?? -1)) {
+        debugPrint('$_logTag | Using local JSON');
         return localJson["verbs"];
       } else {
         debugPrint('$_logTag | Updating local JSON with remote version $remoteVersion');
