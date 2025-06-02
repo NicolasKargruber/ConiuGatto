@@ -52,15 +52,17 @@ class SearchViewModel extends ViewModel{
     debugPrint("$_logTag | filterVerbs()");
     search = search.toLowerCase();
     _searchString = search;
+    Set<Verb> filteredVerbs = {};
 
     if(search.isEmpty) {
-      _filteredVerbs = [..._verbs];
+      filteredVerbs = {..._verbs};
     } else {
       final filteredVerbsInItalian = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
       final filteredVerbsInEnglish = _verbs.where((verb) => verb.infinitive.english.contains(search)).toList();
-      _filteredVerbs = filteredVerbsInItalian + filteredVerbsInEnglish;
+      filteredVerbs = {...filteredVerbsInItalian, ...filteredVerbsInEnglish};
     }
 
+    _filteredVerbs = filteredVerbs.toList();
     notifyListeners();
   }
 
