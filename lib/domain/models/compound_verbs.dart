@@ -357,6 +357,10 @@ class CompoundVerbs {
           "italian": "fossimo",
           "english": "were"
         },
+        "voi": {
+          "italian": "foste",
+          "english": "were"
+        },
         "loro": {
           "italian": "fossero",
           "english": "were"
