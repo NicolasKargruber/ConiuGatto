@@ -1,4 +1,4 @@
-/// Only simple tenses WITHOUT compound tenses
+/// Only simple history WITHOUT compound history
 enum SimpleTense {
   presentIndicative,
   imperfectIndicative,

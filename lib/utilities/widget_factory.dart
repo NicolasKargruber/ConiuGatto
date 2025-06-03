@@ -116,6 +116,7 @@ class AuxiliaryWidgetFactory {
 
 class ItalianTenseProgressFactory {
   static Widget createCard({
+    required String languageLevelLabel,
     required String title,
     required String subtitle,
     required double progress,
@@ -131,6 +132,7 @@ class ItalianTenseProgressFactory {
               child: ListTile(
                 isThreeLine: true,
                 title: Text(title),
+                leading: CircleAvatar(child: Text(languageLevelLabel)),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

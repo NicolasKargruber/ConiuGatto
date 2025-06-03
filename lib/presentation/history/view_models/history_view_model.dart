@@ -6,6 +6,7 @@ import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/quizzed_question.dart';
 import '../../../domain/service/history_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/utils/italian_tense_extensions.dart';
 import '../../../domain/utils/language_level_extensions.dart';
 import '../../../domain/utils/quizzed_question_extensions.dart';
 import '../../view_model.dart';
@@ -51,20 +52,24 @@ class HistoryViewModel extends ViewModel {
     notifyListeners();
   }
 
-  List<QuizzedTense> get indicativeTenses {
-    return ItalianTense.indicativeTenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  List<QuizzedTense> get a1Tenses {
+    return LanguageLevelExtensions.a1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
   }
 
-  List<QuizzedTense> get subjunctiveTenses {
-    return ItalianTense.subjunctiveTenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  List<QuizzedTense> get a2Tenses {
+    return LanguageLevelExtensions.a2Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
   }
 
-  List<QuizzedTense> get conditionalTenses {
-    return ItalianTense.conditionalTenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  List<QuizzedTense> get b1Tenses {
+    return LanguageLevelExtensions.b1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
   }
 
-  List<QuizzedTense> get imperativeTenses {
-    return ItalianTense.imperativeTenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  List<QuizzedTense> get b2Tenses {
+    return LanguageLevelExtensions.b2Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  }
+
+  List<QuizzedTense> get c1Tenses {
+    return LanguageLevelExtensions.c1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
   }
 
   bool _coveredInLanguageLevel(ItalianTense tense) => _selectedLanguageLevel?.coveredTenses.contains(tense) ?? false;

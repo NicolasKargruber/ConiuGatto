@@ -1,37 +1,13 @@
 import '../../data/enums/italian_tense.dart';
 import '../models/enums/language_level.dart';
+import 'italian_tense_extensions.dart';
 
 extension LanguageLevelExtensions on LanguageLevel {
-  static const a1Tenses = [
-    ItalianTense.presentIndicative,
-    ItalianTense.presentPerfectIndicative,
-    ItalianTense.futureIndicative,
-    ItalianTense.positiveImperative,
-  ];
-
-  static const a2Tenses = [
-    ItalianTense.imperfectIndicative,
-    ItalianTense.pastPerfectIndicative,
-    ItalianTense.presentConditional,
-    ItalianTense.negativeImperative,
-  ];
-
-  static const b1Tenses = [
-    ItalianTense.futurePerfectIndicative,
-    ItalianTense.presentSubjunctive,
-    ItalianTense.presentPerfectSubjunctive,
-    ItalianTense.presentPerfectConditional,
-  ];
-
-  static const b2Tenses = [
-    ItalianTense.imperfectSubjunctive,
-    ItalianTense.pastPerfectSubjunctive,
-  ];
-
-  static const c1Tenses = [
-    ItalianTense.historicalPresentPerfectIndicative,
-    ItalianTense.historicalPastPerfectIndicative,
-  ];
+  static List<ItalianTense> get a1Tenses => ItalianTense.values.where((tense) => tense.level == LanguageLevel.a1).toList();
+  static List<ItalianTense> get a2Tenses => ItalianTense.values.where((tense) => tense.level == LanguageLevel.a2).toList();
+  static List<ItalianTense> get b1Tenses => ItalianTense.values.where((tense) => tense.level == LanguageLevel.b1).toList();
+  static List<ItalianTense> get b2Tenses => ItalianTense.values.where((tense) => tense.level == LanguageLevel.b2).toList();
+  static List<ItalianTense> get c1Tenses => ItalianTense.values.where((tense) => tense.level == LanguageLevel.c1).toList();
 
   List<ItalianTense> get coveredTenses {
     switch(this) {

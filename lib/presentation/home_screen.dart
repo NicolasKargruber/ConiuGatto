@@ -70,8 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Grammar',
           ),*/
           BottomNavigationBarItem(
-            icon: Icon(Icons.hourglass_bottom_rounded),
-            label: 'History',
+            icon: Icon(Icons.bar_chart_rounded),
+            label: 'Tenses',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.question_mark_rounded),
