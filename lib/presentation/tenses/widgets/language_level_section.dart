@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/utils/italian_tense_extensions.dart';
 import '../../../utilities/widget_factory.dart';
-import '../view_models/history_view_model.dart';
+import '../view_models/tenses_view_model.dart';
 import 'fluency_details_sheet.dart';
 
 class LanguageLevelSection extends StatelessWidget {

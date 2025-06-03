@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../domain/service/history_service.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
-import 'history/screens/history_screen.dart';
-import 'history/view_models/history_view_model.dart';
 import 'review/screens/review_screen.dart';
 import 'review/view_models/review_view_model.dart';
+import 'tenses/screens/tenses_screen.dart';
+import 'tenses/view_models/tenses_view_model.dart';
 import 'verbs/screens/verbs_screen.dart';
 import 'verbs/view_models/search_view_model.dart';
 
@@ -27,13 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
     // Grammar
     //GrammarScreen(),
     // History
-    ChangeNotifierProxyProvider<HistoryService, HistoryViewModel>(
-      create: (context) => HistoryViewModel(
+    ChangeNotifierProxyProvider<HistoryService, TensesViewModel>(
+      create: (context) => TensesViewModel(
           context.read<SharedPreferenceService>(),
           context.read<HistoryService>(),
       ),
       update: (_, historyService, historyViewModel) => historyViewModel!..updateHistory(historyService.quizzedQuestions),
-      child: HistoryScreen(),
+      child: TensesScreen(),
     ),
     // Quiz
     ChangeNotifierProxyProvider<VerbService, ReviewViewModel>(

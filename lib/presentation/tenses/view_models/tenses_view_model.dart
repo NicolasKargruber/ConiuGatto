@@ -13,13 +13,13 @@ import '../../view_model.dart';
 typedef QuizzedTense = ({ItalianTense type, String daysAgoLabel, double fluency, double milestone});
 typedef QuizzedLanguageLevel = ({List<QuizzedTense> quizzedTenses, LanguageLevel type, double progress});
 
-class HistoryViewModel extends ViewModel {
-  static final _logTag = (HistoryViewModel).toString();
+class TensesViewModel extends ViewModel {
+  static final _logTag = (TensesViewModel).toString();
 
   final SharedPreferenceService _preferenceService;
   final HistoryService _historyService;
 
-  HistoryViewModel(this._preferenceService, this._historyService);
+  TensesViewModel(this._preferenceService, this._historyService);
 
   // Initialized in Parent Constructor
   @override

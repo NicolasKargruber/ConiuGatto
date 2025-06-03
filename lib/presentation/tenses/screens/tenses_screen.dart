@@ -5,17 +5,17 @@ import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/history_view_model.dart';
+import '../view_models/tenses_view_model.dart';
 import '../widgets/language_level_toggle_chips.dart';
 import '../widgets/language_level_section.dart';
 
-class HistoryScreen extends StatelessWidget {
-  static final _logTag = (HistoryScreen).toString();
-  const HistoryScreen({super.key});
+class TensesScreen extends StatelessWidget {
+  static final _logTag = (TensesScreen).toString();
+  const TensesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<HistoryViewModel>();
+    final viewModel = context.watch<TensesViewModel>();
     return Scaffold(
       appBar: AppBar(title: Text("Tenses 📊")),
       body: DefaultTabController(
