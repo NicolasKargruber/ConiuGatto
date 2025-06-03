@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/history_view_model.dart';
 import '../widgets/language_level_toggle_chips.dart';
-import '../widgets/tense_history_list_view.dart';
+import '../widgets/language_level_section.dart';
 
 class HistoryScreen extends StatelessWidget {
   static final _logTag = (HistoryScreen).toString();
@@ -24,44 +25,24 @@ class HistoryScreen extends StatelessWidget {
           padding: const EdgeInsets.all(AppValues.p4),
           child: ListView(
             children: [
-              TenseHistoryListView(
-                quizzedTenses: viewModel.a1Tenses,
+              LanguageLevelSection(
+                quizzedLevel: viewModel.quizzedLevelA1,
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(AppValues.p8),
-                child: Divider(),
+              LanguageLevelSection(
+                quizzedLevel: viewModel.quizzedLevelA2,
               ),
 
-              TenseHistoryListView(
-                quizzedTenses: viewModel.a2Tenses,
+              LanguageLevelSection(
+                quizzedLevel: viewModel.quizzedLevelB1,
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(AppValues.p8),
-                child: Divider(),
+              LanguageLevelSection(
+                quizzedLevel: viewModel.quizzedLevelB2,
               ),
 
-              TenseHistoryListView(
-                quizzedTenses: viewModel.b1Tenses,
-              ),
-
-              Padding(
-                padding: const EdgeInsets.all(AppValues.p8),
-                child: Divider(),
-              ),
-
-              TenseHistoryListView(
-                quizzedTenses: viewModel.b2Tenses,
-              ),
-
-              Padding(
-                padding: const EdgeInsets.all(AppValues.p8),
-                child: Divider(),
-              ),
-
-              TenseHistoryListView(
-                quizzedTenses: viewModel.c1Tenses,
+              LanguageLevelSection(
+                quizzedLevel: viewModel.quizzedLevelC1,
               ),
             ],
           ),

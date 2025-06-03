@@ -6,12 +6,12 @@ import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/quizzed_question.dart';
 import '../../../domain/service/history_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
-import '../../../domain/utils/italian_tense_extensions.dart';
 import '../../../domain/utils/language_level_extensions.dart';
 import '../../../domain/utils/quizzed_question_extensions.dart';
 import '../../view_model.dart';
 
-typedef QuizzedTense = ({ItalianTense tense, String daysAgoLabel, double progress});
+typedef QuizzedTense = ({ItalianTense tense, String daysAgoLabel, double progress, double milestone});
+typedef QuizzedLanguageLevel = ({List<QuizzedTense> quizzedTenses, LanguageLevel type, double progress});
 
 class HistoryViewModel extends ViewModel {
   static final _logTag = (HistoryViewModel).toString();
@@ -31,6 +31,7 @@ class HistoryViewModel extends ViewModel {
   }
 
   List<QuizzedQuestion> _quizzedQuestions = [];
+
   updateHistory(List<QuizzedQuestion> quizzedQuestions) {
     debugPrint("$_logTag | updateHistory()");
 
@@ -42,7 +43,11 @@ class HistoryViewModel extends ViewModel {
     notifyListeners();
   }
 
+  // TODO: Move to Shared Preference
+  final fluencyMilestone = 0.75;
+
   LanguageLevel? _selectedLanguageLevel;
+
   LanguageLevel? get selectedLanguageLevel => _selectedLanguageLevel;
 
   selectLanguageLevel(LanguageLevel languageLevel) {
@@ -52,27 +57,35 @@ class HistoryViewModel extends ViewModel {
     notifyListeners();
   }
 
-  List<QuizzedTense> get a1Tenses {
-    return LanguageLevelExtensions.a1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  QuizzedLanguageLevel get quizzedLevelA1 {
+    final quizzedTenses = LanguageLevelExtensions.a1Tenses.map(_toQuizzedTense).toList();
+    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    return (type: LanguageLevel.a1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
-  List<QuizzedTense> get a2Tenses {
-    return LanguageLevelExtensions.a2Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  QuizzedLanguageLevel get quizzedLevelA2 {
+    final quizzedTenses = LanguageLevelExtensions.a2Tenses.map(_toQuizzedTense).toList();
+    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    return (type: LanguageLevel.a2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
-  List<QuizzedTense> get b1Tenses {
-    return LanguageLevelExtensions.b1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  QuizzedLanguageLevel get quizzedLevelB1 {
+    final quizzedTenses = LanguageLevelExtensions.b1Tenses.map(_toQuizzedTense).toList();
+    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    return (type: LanguageLevel.b1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
-  List<QuizzedTense> get b2Tenses {
-    return LanguageLevelExtensions.b2Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  QuizzedLanguageLevel get quizzedLevelB2 {
+    final quizzedTenses = LanguageLevelExtensions.b2Tenses.map(_toQuizzedTense).toList();
+    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    return (type: LanguageLevel.b2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
-  List<QuizzedTense> get c1Tenses {
-    return LanguageLevelExtensions.c1Tenses.where(_coveredInLanguageLevel).map(_toQuizzedTense).toList();
+  QuizzedLanguageLevel get quizzedLevelC1 {
+    final quizzedTenses = LanguageLevelExtensions.c1Tenses.map(_toQuizzedTense).toList();
+    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    return (type: LanguageLevel.c1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
-
-  bool _coveredInLanguageLevel(ItalianTense tense) => _selectedLanguageLevel?.coveredTenses.contains(tense) ?? false;
 
   QuizzedTense _toQuizzedTense(ItalianTense tense) {
     // QuizzedQuestions - Last 100
@@ -84,11 +97,11 @@ class HistoryViewModel extends ViewModel {
     if (quizzedQuestions.isNotEmpty) {
       final correctQuestions = quizzedQuestions.where((question) => question.correct);
       progress = correctQuestions.length / quizzedQuestions.length;
-      if(quizzedQuestions.length < 100) {
+      if (quizzedQuestions.length < 100) {
         final weight = ((100 - quizzedQuestions.length) / 100);
         progress = progress + weight * (0.5 - progress);
       }
     }
-    return (tense: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, progress: progress);
+    return (tense: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, progress: progress, milestone: fluencyMilestone);
   }
 }

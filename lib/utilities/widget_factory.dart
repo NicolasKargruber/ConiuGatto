@@ -132,7 +132,12 @@ class ItalianTenseProgressFactory {
               child: ListTile(
                 isThreeLine: true,
                 title: Text(title),
-                leading: CircleAvatar(child: Text(languageLevelLabel)),
+                leading: CircleAvatar(
+                  backgroundColor: isReached ? context.colorScheme.tertiaryContainer : null,
+                  child: Text(languageLevelLabel,
+                      style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
+                  ),
+                ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -181,7 +186,7 @@ class ItalianTenseProgressFactory {
               ],
             ),
             if(showIndicator) Align(
-              alignment: Alignment(0.535, 0),
+              alignment: Alignment((milestone - 0.5) * 2.15, 0),
               child: Icon(Icons.arrow_drop_up_rounded,
                 color: isReached ? context.colorScheme.tertiary : null,
               ),
@@ -191,4 +196,40 @@ class ItalianTenseProgressFactory {
       }
     );
   }
+}
+
+class LanguageLevelProgressFactory {
+  static Widget createLabeledCircularProgressIndicator({required String label, required double progress}) =>
+      Builder(builder: (context) {
+        final isFull = progress == 1.0;
+        return Container(
+          padding: const EdgeInsets.all(AppValues.p12),
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: isFull ? context.colorScheme.primary : null,
+                child: Text(label, style: TextStyle(
+                  color: isFull ? context.colorScheme.onPrimary : null,
+                  fontWeight: FontWeight.w600,
+                  fontSize: AppValues.fs16,
+                )),
+              ),
+
+              SizedBox(
+                width: AppValues.s52,
+                height: AppValues.s52,
+                child: CircularProgressIndicator(
+                  backgroundColor: context.colorScheme.primaryContainer,
+                  value: progress,
+                  color: context.colorScheme.primary,
+                  strokeCap: StrokeCap.round,
+                  strokeWidth: AppValues.s6,
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+      );
 }
