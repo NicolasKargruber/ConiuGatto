@@ -1,5 +1,6 @@
 import '../../data/models/tense_dto.dart';
 import '../../data/models/verb_dto.dart';
+import '../../data/utils/pronoun_extensions.dart';
 import '../models/compound_verbs.dart';
 import '../../data/enums/auxiliary.dart';
 import '../../data/enums/pronoun.dart';
