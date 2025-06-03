@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../../data/utils/pronoun_extensions.dart';
 import '../../utilities/extensions/string_extensions.dart';
 import 'answer_result.dart';
 import '../../data/enums/auxiliary.dart';
@@ -16,44 +17,75 @@ class Question {
   final Pronoun pronoun;
 
   String? _answer;
+
   String? get answer => _answer;
 
   int _triesLeft = 2;
+
   int get triesLeft => _triesLeft;
 
-  Question({
-    required this.verb,
-    required this.auxiliary,
-    required this.tense,
-    required this.pronoun,
-  });
+  Question({required this.verb, required this.auxiliary, required this.tense, required this.pronoun});
 
   // Helper
   bool get isDoubleAuxiliary => verb.isDoubleAuxiliary;
+
   bool get usesPastParticiple => tense.usesPastParticiple;
+
   bool get usesEssere => auxiliary.requiresGenderedParticiple;
+
   bool get hasConjugations {
     return tense.conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
   }
+
   bool get hasTriesLeft => _triesLeft > 0;
+
   bool get isCorrect => _answer == solution;
 
   // Helper Method
   void genderAnswer() {
-    if(_answer case var answer?) {
+    if (_answer case var answer?) {
       _answer = pronoun.genderItalianConjugationIfPossible(answer);
       debugPrint("$_logTag | Answer with gender: $_answer");
     }
   }
 
   AnswerResult checkAnswer(String answer) {
-    if(triesLeft > 0) {
+    if (triesLeft > 0) {
       _triesLeft--;
 
       // Add Gender to Participle if necessary
       if (usesEssere && usesPastParticiple) {
+        // Check if lui/lei pronoun + ...o/a is correctly gendered
+        if (pronoun == Pronoun.thirdSingular) {
+          if (answer.startsWith("lui ") && answer.endsWith("a")) {
+            return AnswerResult.wrongPronoun;
+          }
+          if (answer.startsWith("lei ") && answer.endsWith("o")) {
+            return AnswerResult.wrongPronoun;
+          }
+        }
+
         answer = pronoun.genderItalianConjugationIfPossible(answer);
         debugPrint("$_logTag | Gendered Answer : $_answer");
+      }
+
+      // Check for removable Pronouns
+      final pronounPrefix = "${pronoun.italian} ";
+      for (final p in Pronoun.values) {
+        if (answer.startsWith("${p.italian} ")) {
+          if (!answer.startsWith(pronounPrefix)) return AnswerResult.wrongPronoun;
+          answer = answer.replaceFirst(pronounPrefix, "");
+        }
+      }
+
+      // Check for removable Pronoun lui/lei
+      if (pronoun == Pronoun.thirdSingular) {
+        if (answer.startsWith("lui ")) {
+          answer = answer.replaceFirst("lui ", "");
+        }
+        if (answer.startsWith("lei ")) {
+          answer = answer.replaceFirst("lei ", "");
+        }
       }
 
       _answer = answer;
@@ -78,7 +110,9 @@ class Question {
 
       // Force Gendered Participle
       if (pronoun.genderItalianConjugationIfPossible(answer, forceGender: true) == solution) {
-        debugPrint("$_logTag | Answer with forced gender: ${pronoun.genderItalianConjugationIfPossible(answer, forceGender: true)}");
+        debugPrint(
+          "$_logTag | Answer with forced gender: ${pronoun.genderItalianConjugationIfPossible(answer, forceGender: true)}",
+        );
         return AnswerResult.almostCorrect;
       }
     }
@@ -91,8 +125,11 @@ class Question {
 
   // Labels
   String? get currentTitle => tense.extendedLabel;
+
   String get question => "${pronoun.italian} (${verb.italianInfinitive})";
+
   String? get translation => tense[pronoun]?.englishWithPronoun;
+
   String? get solutionExtended => "(${pronoun.italian}) $solution";
 
   // Quiz
