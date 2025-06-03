@@ -10,7 +10,7 @@ import '../../../domain/utils/language_level_extensions.dart';
 import '../../../domain/utils/quizzed_question_extensions.dart';
 import '../../view_model.dart';
 
-typedef QuizzedTense = ({ItalianTense tense, String daysAgoLabel, double progress, double milestone});
+typedef QuizzedTense = ({ItalianTense type, String daysAgoLabel, double fluency, double milestone});
 typedef QuizzedLanguageLevel = ({List<QuizzedTense> quizzedTenses, LanguageLevel type, double progress});
 
 class HistoryViewModel extends ViewModel {
@@ -59,31 +59,31 @@ class HistoryViewModel extends ViewModel {
 
   QuizzedLanguageLevel get quizzedLevelA1 {
     final quizzedTenses = LanguageLevelExtensions.a1Tenses.map(_toQuizzedTense).toList();
-    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.a1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelA2 {
     final quizzedTenses = LanguageLevelExtensions.a2Tenses.map(_toQuizzedTense).toList();
-    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.a2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelB1 {
     final quizzedTenses = LanguageLevelExtensions.b1Tenses.map(_toQuizzedTense).toList();
-    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.b1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelB2 {
     final quizzedTenses = LanguageLevelExtensions.b2Tenses.map(_toQuizzedTense).toList();
-    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.b2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelC1 {
     final quizzedTenses = LanguageLevelExtensions.c1Tenses.map(_toQuizzedTense).toList();
-    final fluentTenses = quizzedTenses.where((tense) => tense.progress >= fluencyMilestone);
+    final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.c1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
@@ -93,15 +93,15 @@ class HistoryViewModel extends ViewModel {
     quizzedQuestions.sort((a, b) => b.date.compareTo(a.date));
     quizzedQuestions = quizzedQuestions.take(100).toList();
     // Progress
-    double progress = 0.5;
+    double fluency = 0.5;
     if (quizzedQuestions.isNotEmpty) {
       final correctQuestions = quizzedQuestions.where((question) => question.correct);
-      progress = correctQuestions.length / quizzedQuestions.length;
+      fluency = correctQuestions.length / quizzedQuestions.length;
       if (quizzedQuestions.length < 100) {
         final weight = ((100 - quizzedQuestions.length) / 100);
-        progress = progress + weight * (0.5 - progress);
+        fluency = fluency + weight * (0.5 - fluency);
       }
     }
-    return (tense: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, progress: progress, milestone: fluencyMilestone);
+    return (type: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, fluency: fluency, milestone: fluencyMilestone);
   }
 }

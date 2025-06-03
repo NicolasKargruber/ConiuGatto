@@ -120,33 +120,38 @@ class ItalianTenseProgressFactory {
     required String title,
     required String subtitle,
     required double progress,
-    double milestone = 0.75
+    double milestone = 0.75,
+    Function()? onTap,
   }){
     return Builder(
         builder: (context) {
           final isReached = progress > milestone;
           return Card(
             color: isReached ? Color.alphaBlend(Colors.green.withAlpha(50), context.colorScheme.surface) : null,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppValues.p4, AppValues.p4, AppValues.p4, AppValues.p0),
-              child: ListTile(
-                isThreeLine: true,
-                title: Text(title),
-                leading: CircleAvatar(
-                  backgroundColor: isReached ? context.colorScheme.tertiaryContainer : null,
-                  child: Text(languageLevelLabel,
-                      style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
-                  ),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(subtitle,
-                      style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
+            child: InkWell(
+              onTap: onTap,
+              borderRadius: BorderRadius.circular(AppValues.r12),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(AppValues.p4, AppValues.p4, AppValues.p4, AppValues.p0),
+                child: ListTile(
+                  isThreeLine: true,
+                  title: Text(title),
+                  leading: CircleAvatar(
+                    backgroundColor: isReached ? context.colorScheme.tertiaryContainer : null,
+                    child: Text(languageLevelLabel,
+                        style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
                     ),
-                    SizedBox(height: AppValues.s12),
-                    ItalianTenseProgressFactory.createLinearProgressIndicator(value: progress, milestone: milestone),
-                  ],
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(subtitle,
+                        style: isReached ? TextStyle(color: context.colorScheme.onTertiaryContainer) : null,
+                      ),
+                      SizedBox(height: AppValues.s12),
+                      ItalianTenseProgressFactory.createLinearProgressIndicator(value: progress, milestone: milestone),
+                    ],
+                  ),
                 ),
               ),
             ),

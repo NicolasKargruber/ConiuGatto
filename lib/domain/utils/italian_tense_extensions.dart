@@ -34,7 +34,47 @@ extension ItalianTenseExtensions on ItalianTense {
 
   }
 
-  /*bool isLevel(LanguageLevel level) {
-    return level == this.level;
-  }*/
+  String get example {
+    return switch(this) {
+      ItalianTense.presentIndicative => "io lavo",
+      ItalianTense.presentContinuousIndicative => "io sto lavando",
+      ItalianTense.imperfectIndicative => "io lavavo",
+      ItalianTense.presentPerfectIndicative => "io ho lavato",
+      ItalianTense.pastPerfectIndicative => "io avevo lavato",
+      ItalianTense.historicalPresentPerfectIndicative => "io lavai",
+      ItalianTense.historicalPastPerfectIndicative => "io ebbi lavato",
+      ItalianTense.futureIndicative => "io laveró",
+      ItalianTense.futurePerfectIndicative => "io avrò lavato",
+      ItalianTense.presentSubjunctive => "io lavi",
+      ItalianTense.imperfectSubjunctive => "io lavassi",
+      ItalianTense.presentPerfectSubjunctive => "io abbia lavato",
+      ItalianTense.pastPerfectSubjunctive => "io avessi lavato",
+      ItalianTense.presentConditional => "io laverei",
+      ItalianTense.presentPerfectConditional => "io avrei lavato",
+      ItalianTense.positiveImperative => "lava!",
+      ItalianTense.negativeImperative => "non lavare!"
+    };
+  }
+
+  String get exampleTranslation {
+    return switch(this) {
+      ItalianTense.presentIndicative => "I  wash",
+      ItalianTense.presentContinuousIndicative => "I  am washing",
+      ItalianTense.imperfectIndicative => "I  used to wash",
+      ItalianTense.presentPerfectIndicative => "I  have washed",
+      ItalianTense.pastPerfectIndicative => "I  had washed",
+      ItalianTense.historicalPresentPerfectIndicative => "I washed",
+      ItalianTense.historicalPastPerfectIndicative => "I had washed",
+      ItalianTense.futureIndicative => "I will wash",
+      ItalianTense.futurePerfectIndicative => "I will have washed",
+      ItalianTense.presentSubjunctive => "I wash",
+      ItalianTense.imperfectSubjunctive => "I washed",
+      ItalianTense.presentPerfectSubjunctive => "I washed",
+      ItalianTense.pastPerfectSubjunctive => "I had washed",
+      ItalianTense.presentConditional => "I would wash",
+      ItalianTense.presentPerfectConditional => "I would have washed",
+      ItalianTense.positiveImperative => "wash!",
+      ItalianTense.negativeImperative => "don't wash!"
+    };
+  }
 }

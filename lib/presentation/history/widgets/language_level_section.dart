@@ -3,11 +3,25 @@ import 'package:flutter/material.dart';
 import '../../../domain/utils/italian_tense_extensions.dart';
 import '../../../utilities/widget_factory.dart';
 import '../view_models/history_view_model.dart';
+import 'fluency_details_sheet.dart';
 
 class LanguageLevelSection extends StatelessWidget {
   const LanguageLevelSection({super.key, required this.quizzedLevel});
 
   final QuizzedLanguageLevel quizzedLevel;
+
+  _showFluencyDetailsSheet(BuildContext context, QuizzedTense quizzedTense) async {
+    await showModalBottomSheet(context: context, builder: (context) {
+      return FluencyDetailsSheet(
+        label: quizzedTense.type.fullLabel,
+        fluency: quizzedTense.fluency,
+        daysAgoLabel: quizzedTense.daysAgoLabel,
+        example: quizzedTense.type.example,
+        exampleTranslation: quizzedTense.type.exampleTranslation,
+        milestonePassed: quizzedTense.fluency >= quizzedTense.milestone,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +35,12 @@ class LanguageLevelSection extends StatelessWidget {
 
         ...quizzedLevel.quizzedTenses.map((quizzedTense) {
         return ItalianTenseProgressFactory.createCard(
-          languageLevelLabel: quizzedTense.tense.level.label,
-          title: quizzedTense.tense.fullLabel,
+          languageLevelLabel: quizzedTense.type.level.label,
+          title: quizzedTense.type.fullLabel,
           subtitle: "Last quizzed: ${quizzedTense.daysAgoLabel}",
-          progress: quizzedTense.progress,
-          milestone: quizzedTense.milestone
+          progress: quizzedTense.fluency,
+          milestone: quizzedTense.milestone,
+          onTap: () => _showFluencyDetailsSheet(context, quizzedTense)
         );
       })
       ],
