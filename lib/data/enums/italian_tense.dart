@@ -44,6 +44,7 @@ enum ItalianTense {
   final Mood mood;
   const ItalianTense(this.label, this.mood);
 
+  String get fullLabel => "${mood.label} $label";
   String get extendedLabel => "$label - ${mood.label}";
   String get jsonKey => toString();
   String get prefKey => toString();
