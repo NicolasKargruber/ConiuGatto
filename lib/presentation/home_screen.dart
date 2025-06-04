@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../domain/service/history_service.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
+import 'about/screens/about_screen.dart';
 import 'review/screens/review_screen.dart';
 import 'review/view_models/review_view_model.dart';
 import 'tenses/screens/tenses_screen.dart';
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       update: (_, verbManager, searchViewModel) => searchViewModel!..updateVerbs(verbManager.verbs),
       child: VerbsScreen(),
     ),
+    AboutScreen(),
   ];
 
   @override
@@ -58,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: null,
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
@@ -80,6 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_stories_rounded),
             label: 'Verbs',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.auto_stories_rounded),
+            label: 'About',
           ),
         ],
       ),
