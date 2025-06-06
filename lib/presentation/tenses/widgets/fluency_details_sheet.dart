@@ -12,7 +12,7 @@ class FluencyDetailsSheet extends StatelessWidget {
     required this.daysAgoLabel,
     required this.example,
     required this.exampleTranslation,
-    this.milestonePassed = true,
+    this.milestonePassed = false,
   });
 
   final String label;
@@ -133,6 +133,18 @@ class FluencyDetailsSheet extends StatelessWidget {
               ),
             ],
           ),
+
+          if(milestonePassed)
+            ...[
+              SizedBox(height: AppValues.s36),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppValues.p52),
+                child: Text("Congratulations! You're now fluent in this tense! 🎉🕺🏻",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16),
+                ),
+              ),
+            ]
         ],
       ),
     );
