@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/models/verb.dart';
+import '../../../domain/service/package_info_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
+import '../../about/screens/about_screen.dart';
 import '../../settings/view_models/settings_view_model.dart';
 import '../view_models/review_view_model.dart';
 import '../../widgets/shake_widget.dart';
@@ -106,7 +108,14 @@ class _ReviewScreenState extends State<ReviewScreen> {
         title: Text("Review 🏅"),
         actions: [
           QuizHistoryCount(),
-          IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded)),
+          IconButton(
+            onPressed: _showSettingsScreen, icon: Icon(Icons.edit_rounded),
+            visualDensity: VisualDensity(horizontal: -1.0),
+          ),
+          IconButton(
+            onPressed: () => AboutScreen.show(context),
+            icon: Icon(Icons.settings_rounded),
+            visualDensity: VisualDensity(horizontal: -4.0),),
         ],
       ),
       body: Padding(

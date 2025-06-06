@@ -7,6 +7,16 @@ import '../../../utilities/app_values.dart';
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
+  // TODO Use Navigator
+  static show(BuildContext context) async {
+    await Navigator.push(context, MaterialPageRoute(builder: (_) =>
+        ChangeNotifierProvider(
+          create: (_) => PackageInfoService(),
+          child: AboutScreen(),
+        ))
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final packageInfo = context.watch<PackageInfoService>();

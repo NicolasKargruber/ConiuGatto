@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/service/verb_service.dart';
+import '../../about/screens/about_screen.dart';
 import 'verbs_content.dart';
 
 final _logTag = (VerbsScreen).toString();
@@ -15,7 +16,12 @@ class VerbsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
     return Scaffold(
-      appBar: AppBar(title: Text('Verbs 📚')),
+      appBar: AppBar(
+        title: Text('Verbs 📚'),
+        actions: [
+          IconButton(onPressed: () => AboutScreen.show(context), icon: Icon(Icons.settings_rounded)),
+        ],
+      ),
       body: FutureBuilder(
         future: context.read<VerbService>().initializationFuture,
         builder: (context, snapshot) {

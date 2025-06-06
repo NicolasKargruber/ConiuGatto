@@ -51,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
       update: (_, verbManager, searchViewModel) => searchViewModel!..updateVerbs(verbManager.verbs),
       child: VerbsScreen(),
     ),
-    AboutScreen(),
   ];
 
   @override
@@ -83,10 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_stories_rounded),
             label: 'Verbs',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.auto_stories_rounded),
-            label: 'About',
           ),
         ],
       ),
