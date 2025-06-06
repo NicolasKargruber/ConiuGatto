@@ -27,7 +27,8 @@ class SharedPreferenceService extends Service {
     _sharedPreferenceRepo = await SharedPreferenceRepository.initialize();
   }
 
-  // TODO Add more default values, make use of them
+  // Introduction
+  final _skipIntroductionDefaultValue = false;
   // Verbs
   //final _reflexiveFiltersDefaultValue = ReflexiveVerb.include;
   final _verbFavouritesDefaultValue = VerbFavouriteFilter.all;
@@ -40,6 +41,10 @@ class SharedPreferenceService extends Service {
   final _pronounsDefaultValue = Pronoun.values.toList();
   // Language Level
   final _languageLevelDefaultValue = LanguageLevel.a1;
+
+  // Introduction
+  bool loadSkipIntroductionPref() => _sharedPreferenceRepo.loadSkipIntroductionPref() ?? _skipIntroductionDefaultValue;
+  void setSkipIntroductionPrefToTrue() => _sharedPreferenceRepo.updateSkipIntroductionPref(true);
 
   // Verbs
   List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
