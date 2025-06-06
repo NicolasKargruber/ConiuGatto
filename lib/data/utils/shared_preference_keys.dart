@@ -1,4 +1,6 @@
 class SharedPreferenceKeys {
+  // Introduction
+  static const String skipIntroduction = "skipIntroduction";
   // Tenses
   static const String quizzableTenses = "quizzableTenses";
   // Pronoun

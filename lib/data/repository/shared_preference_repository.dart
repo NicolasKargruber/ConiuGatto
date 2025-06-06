@@ -15,6 +15,10 @@ class SharedPreferenceRepository {
     return SharedPreferenceRepository._(await SharedPreferences.getInstance());
   }
 
+  // Introduction
+  bool? loadSkipIntroductionPref() => _loadPrefBoolIntOrNull(SharedPreferenceKeys.skipIntroduction);
+  void updateSkipIntroductionPref(bool value) => _updatePrefBool(SharedPreferenceKeys.skipIntroduction, value);
+
   // Verbs
   //String get _customizedVerbsPrefKey => SharedPreferenceKeys.customizedVerbs;
   String get _starredVerbsPrefKey => SharedPreferenceKeys.starredVerbs;
@@ -30,36 +34,36 @@ class SharedPreferenceRepository {
   String get _languageLevelPrefKey => SharedPreferenceKeys.languageLevel;
 
   // Verbs
-  List<String>? loadStarredVerbPrefs() => _loadPrefsOrNull(_starredVerbsPrefKey)?.toList();
-  String? loadVerbFavouritePref() => _loadPrefOrNull(_verbFavouriteFiltersPrefKey);
-  String? loadIrregularityFilterPref() => _loadPrefOrNull(_irregularityFiltersPrefKey);
-  String? loadEndingFilterPref() => _loadPrefOrNull(_endingFiltersPrefKey);
-  String? loadAuxiliaryFilterPref() => _loadPrefOrNull(_auxiliaryFilterPrefKey);
+  List<String>? loadStarredVerbPrefs() => _loadPrefStringListOrNull(_starredVerbsPrefKey)?.toList();
+  String? loadVerbFavouritePref() => _loadPrefStringOrNull(_verbFavouriteFiltersPrefKey);
+  String? loadIrregularityFilterPref() => _loadPrefStringOrNull(_irregularityFiltersPrefKey);
+  String? loadEndingFilterPref() => _loadPrefStringOrNull(_endingFiltersPrefKey);
+  String? loadAuxiliaryFilterPref() => _loadPrefStringOrNull(_auxiliaryFilterPrefKey);
   //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses
-  List<String>? loadTensePrefs() => _loadPrefsOrNull(_tensePrefKey)?.toList();
+  List<String>? loadTensePrefs() => _loadPrefStringListOrNull(_tensePrefKey)?.toList();
   // Pronoun
-  List<String>? loadPronounPrefs() => _loadPrefsOrNull(_pronounPrefKey)?.toList();
+  List<String>? loadPronounPrefs() => _loadPrefStringListOrNull(_pronounPrefKey)?.toList();
   // Language Level
-  String? loadLanguageLevelPref() => _loadPrefOrNull(_languageLevelPrefKey);
+  String? loadLanguageLevelPref() => _loadPrefStringOrNull(_languageLevelPrefKey);
 
   // Verbs
-  void updateStarredVerbsPrefs(Set<String> values) => _updatePrefs(_starredVerbsPrefKey, values);
+  void updateStarredVerbsPrefs(Set<String> values) => _updateStringList(_starredVerbsPrefKey, values);
   void addStarredVerbFromPrefs(String value) {
     final starredVerbs = loadStarredVerbPrefs()?.toSet() ?? {};
     updateStarredVerbsPrefs(starredVerbs..add(value));
   }
-  void updateVerbFavouritePref(String value) => _updatePref(_verbFavouriteFiltersPrefKey, value);
-  void updateIrregularityFilterPref(String value) => _updatePref(_irregularityFiltersPrefKey, value);
-  void updateEndingFilterPref(String value) => _updatePref(_endingFiltersPrefKey, value);
-  void updateAuxiliaryFilterPref(String value) => _updatePref(_auxiliaryFilterPrefKey, value);
+  void updateVerbFavouritePref(String value) => _updatePrefString(_verbFavouriteFiltersPrefKey, value);
+  void updateIrregularityFilterPref(String value) => _updatePrefString(_irregularityFiltersPrefKey, value);
+  void updateEndingFilterPref(String value) => _updatePrefString(_endingFiltersPrefKey, value);
+  void updateAuxiliaryFilterPref(String value) => _updatePrefString(_auxiliaryFilterPrefKey, value);
   //updateCustomizedVerbsPrefs(Set<String> values) => _updatePrefs(_customizedVerbsPrefKey, values);
   // Tenses
-  void updateTensePrefs(Set<String> values) => _updatePrefs(_tensePrefKey, values);
+  void updateTensePrefs(Set<String> values) => _updateStringList(_tensePrefKey, values);
   // Pronoun
-  void updatePronounPrefs(Set<String> values) => _updatePrefs(_pronounPrefKey, values);
+  void updatePronounPrefs(Set<String> values) => _updateStringList(_pronounPrefKey, values);
   // Language Level
-  void updateLanguageLevelPref(String value) => _updatePref(_languageLevelPrefKey, value);
+  void updateLanguageLevelPref(String value) => _updatePrefString(_languageLevelPrefKey, value);
 
   // Verbs
   void removeStarredVerbFromPrefs(String value) {
@@ -72,16 +76,24 @@ class SharedPreferenceRepository {
   //removeCustomizedVerbsPrefs() => _removePref(_customizedVerbsPrefKey);
 
   // Private Helpers
-  String? _loadPrefOrNull(String key, {String? defaultValue}) {
-    debugPrint('$_logTag | _loadPrefOrNull($key)');
+  bool? _loadPrefBoolIntOrNull(String key, {bool? defaultValue}) {
+    debugPrint('$_logTag | _loadPrefBoolIntOrNull($key)');
+    final pref = _prefs.getBool(key) ?? defaultValue;
+    debugPrint('$_logTag | Available $key Pref: $pref');
+    return pref;
+  }
+
+  // Private Helpers
+  String? _loadPrefStringOrNull(String key, {String? defaultValue}) {
+    debugPrint('$_logTag | _loadPrefStringOrNull($key)');
     final pref = _prefs.getString(key) ?? defaultValue;
     debugPrint('$_logTag | Available $key Pref: $pref');
     return pref;
   }
 
   // Private Helpers
-  Set<String>? _loadPrefsOrNull(String key) {
-    debugPrint('$_logTag | _loadPrefsOrNull($key)');
+  Set<String>? _loadPrefStringListOrNull(String key) {
+    debugPrint('$_logTag | _loadPrefStringListOrNull($key)');
     final prefs = _prefs.getStringList(key)?.toSet();
     if((prefs?.length ?? 0) > 3) {
       debugPrint('$_logTag | Available $key Prefs: [${prefs?.elementAt(0)}, ${prefs?.elementAt(1)} ..., ${prefs?.lastOrNull}]');
@@ -92,15 +104,22 @@ class SharedPreferenceRepository {
   }
 
   // Private Helpers
-  void _updatePref(String key, String value) {
-    debugPrint('$_logTag | _updatePref($key)');
+  void _updatePrefBool(String key, bool value) {
+    debugPrint('$_logTag | _updatePrefBool($key)');
+    _prefs.setBool(key, value);
+    debugPrint('$_logTag | Updated $key Pref: $value');
+  }
+
+  // Private Helpers
+  void _updatePrefString(String key, String value) {
+    debugPrint('$_logTag | _updatePrefString($key)');
     _prefs.setString(key, value);
     debugPrint('$_logTag | Updated $key Pref: $value');
   }
 
   // Private Helpers
-  void _updatePrefs(String key, Set<String> values) {
-    debugPrint('$_logTag | _updatePrefs($key)');
+  void _updateStringList(String key, Set<String> values) {
+    debugPrint('$_logTag | _updatePrefStringList($key)');
     _prefs.setStringList(key, values.toList());
     debugPrint('$_logTag | Updated $key Prefs: $values');
   }
