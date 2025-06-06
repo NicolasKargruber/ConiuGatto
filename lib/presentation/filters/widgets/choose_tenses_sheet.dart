@@ -5,7 +5,7 @@ import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/settings_view_model.dart';
+import '../view_models/filters_view_model.dart';
 
 class ChooseTensesSheet extends StatelessWidget {
   const ChooseTensesSheet({super.key});
@@ -15,7 +15,7 @@ class ChooseTensesSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.read<SettingsViewModel>();
+    final viewModel = context.read<FiltersViewModel>();
 
     onSelectTense(bool selected, {required ItalianTense tense}) {
       if(selected) { viewModel.addTenseFilter(tense); }
@@ -98,7 +98,7 @@ class _MoodSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // SELECT -> Listen, Rebuild ...
-    context.select<SettingsViewModel, List<ItalianTense>>((vm) => vm.tenseFilters);
+    context.select<FiltersViewModel, List<ItalianTense>>((vm) => vm.tenseFilters);
     debugPrint("$_logTag | build()");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

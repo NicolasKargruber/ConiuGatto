@@ -3,20 +3,20 @@ import 'package:provider/provider.dart';
 
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/settings_view_model.dart';
+import '../view_models/filters_view_model.dart';
 import '../widgets/choose_pronouns_sheet.dart';
 import '../widgets/choose_tenses_sheet.dart';
 import '../widgets/choose_verb_filters_sheet.dart';
 
-final _logTag = (SettingsScreen).toString();
+final _logTag = (FiltersScreen).toString();
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class FiltersScreen extends StatelessWidget {
+  const FiltersScreen({super.key});
   _showChooseTensesSheet(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
       builder: (_) => ChangeNotifierProvider.value(
-        value: context.read<SettingsViewModel>(),
+        value: context.read<FiltersViewModel>(),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: ChooseTensesSheet(),
@@ -29,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
     await showModalBottomSheet(
       context: context,
       builder: (_) => ChangeNotifierProvider.value(
-          value: context.read<SettingsViewModel>(),
+          value: context.read<FiltersViewModel>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChooseVerbFiltersSheet(),
@@ -42,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
     await showModalBottomSheet(
       context: context,
       builder: (_) => ChangeNotifierProvider.value(
-        value: context.read<SettingsViewModel>(),
+        value: context.read<FiltersViewModel>(),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ChoosePronounsSheet(),
@@ -54,7 +54,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Settings ⚙️")),
+      appBar: AppBar(title: Text("Filters 🕹️")),
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(

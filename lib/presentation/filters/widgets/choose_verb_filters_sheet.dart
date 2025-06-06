@@ -12,7 +12,7 @@ import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/settings_view_model.dart';
+import '../view_models/filters_view_model.dart';
 import 'choose_verbs_sheet.dart';
 import 'toggle_choice_chips.dart';
 
@@ -26,7 +26,7 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (_) => ChangeNotifierProvider.value(
-        value: context.read<SettingsViewModel>(),
+        value: context.read<FiltersViewModel>(),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: ChooseVerbsSheet(),
@@ -105,8 +105,8 @@ class _AuxiliaryChoiceChips extends StatelessWidget {
       title: "Auxiliary",
       labels: AuxiliaryFilter.values.map((e) => e.label).toList(),
       values: AuxiliaryFilter.values,
-      selected: context.select<SettingsViewModel, AuxiliaryFilter?>((vm) => vm.auxiliaryFilter),
-      onSelected: context.read<SettingsViewModel>().updateAuxiliaryFilter,
+      selected: context.select<FiltersViewModel, AuxiliaryFilter?>((vm) => vm.auxiliaryFilter),
+      onSelected: context.read<FiltersViewModel>().updateAuxiliaryFilter,
     );
   }
 }
@@ -123,8 +123,8 @@ class _VerbEndingChoiceChips extends StatelessWidget {
       title: "Endings",
       labels: VerbEndingFilter.values.map((e) => e.label).toList(),
       values: VerbEndingFilter.values,
-      selected: context.select<SettingsViewModel, VerbEndingFilter?>((vm) => vm.endingFilter),
-      onSelected: context.read<SettingsViewModel>().updateEndingFilter,
+      selected: context.select<FiltersViewModel, VerbEndingFilter?>((vm) => vm.endingFilter),
+      onSelected: context.read<FiltersViewModel>().updateEndingFilter,
     );
   }
 }
@@ -141,8 +141,8 @@ class _VerbFavouriteChoiceChips extends StatelessWidget {
       title: "Verbs",
       labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
       values: VerbFavouriteFilter.values,
-      selected: context.select<SettingsViewModel, VerbFavouriteFilter?>((vm) => vm.favouriteFilter),
-      onSelected: context.read<SettingsViewModel>().updateFavouriteFilter,
+      selected: context.select<FiltersViewModel, VerbFavouriteFilter?>((vm) => vm.favouriteFilter),
+      onSelected: context.read<FiltersViewModel>().updateFavouriteFilter,
     );
   }
 }
@@ -159,8 +159,8 @@ class _VerbIrregularityChoiceChips extends StatelessWidget {
       title: "Irregularity",
       labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
       values: VerbIrregularityFilter.values,
-      selected: context.select<SettingsViewModel, VerbIrregularityFilter?>((vm) => vm.irregularityFilter),
-      onSelected: context.read<SettingsViewModel>().updateIrregularityFilter,
+      selected: context.select<FiltersViewModel, VerbIrregularityFilter?>((vm) => vm.irregularityFilter),
+      onSelected: context.read<FiltersViewModel>().updateIrregularityFilter,
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../domain/models/verb.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/settings_view_model.dart';
+import '../view_models/filters_view_model.dart';
 
 final String _logTag = (ChooseVerbsSheet).toString();
 
@@ -21,7 +21,7 @@ class ChooseVerbsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Verb> verbs = context.read<SettingsViewModel>().verbs;
+    List<Verb> verbs = context.read<FiltersViewModel>().verbs;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
@@ -42,7 +42,7 @@ class ChooseVerbsSheet extends StatelessWidget {
   _buildVerbSection(List<Verb> verbs) {
     return Builder(
       builder: (context) {
-        final viewModel = context.watch<SettingsViewModel>();
+        final viewModel = context.watch<FiltersViewModel>();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

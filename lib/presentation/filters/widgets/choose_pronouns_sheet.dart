@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../data/enums/pronoun.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/settings_view_model.dart';
+import '../view_models/filters_view_model.dart';
 
 
 class ChoosePronounsSheet extends StatelessWidget {
@@ -49,8 +49,8 @@ class _PronounFilterChips extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
     // SELECT -> Listen, Rebuild ...
-    context.select<SettingsViewModel, List<Pronoun>>((vm) => vm.pronounFilters);
-    final viewModel = context.read<SettingsViewModel>();
+    context.select<FiltersViewModel, List<Pronoun>>((vm) => vm.pronounFilters);
+    final viewModel = context.read<FiltersViewModel>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
