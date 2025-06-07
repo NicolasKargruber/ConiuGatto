@@ -58,6 +58,7 @@ class AppValues {
   static const r16 = 16.0;
   static const r20 = 20.0;
   static const r24 = 24.0;
+  static const r48 = 48.0;
 
 
   // App Font Size

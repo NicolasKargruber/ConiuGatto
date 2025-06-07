@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../domain/service/package_info_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/error_snack_bar.dart';
-import '../../widgets/error_snackbar.dart';
+import '../../widgets/buy_me_a_coffee_button.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -74,22 +74,8 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: AppValues.s20),
 
-          /*const Text(
-            'Buy me a coffee ☕️',
-            style: TextStyle(fontSize: AppValues.fs20, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: AppValues.s8),*/
+          BuyMeACoffeeButton(onPressed: () => onBuyMeACoffeePressed(context)),
 
-          //FilledButton(onPressed: (){}, child: Text("Small ☕️"),),
-          //FilledButton(onPressed: (){}, child: Text("Medium ☕️")),
-          FilledButton(onPressed: () => onBuyMeACoffeePressed(context),
-            child: Text("Buy me a coffe ☕️",
-          style: TextStyle(color: Colors.black87),
-          ),
-          style: FilledButton.styleFrom(
-            backgroundColor: Colors.yellow.shade800,
-          ),
-          ),
           /*_buildMenuItem(context, 'Buy me coffe '),
           _buildMenuItem(context, 'Community Standards'),
           _buildMenuItem(context, 'Terms of Use'),

@@ -75,6 +75,8 @@ flutter:
   # To add assets to your application, add them like below:
   assets:
     - assets/data/verbs.json
+    - assets/buy_me_a_coffee_dark.jpg
+    - assets/buy_me_a_coffee_light.png
     - assets/coniugatto_512x512.png
     - assets/introduction_auxiliary.jpg
     - assets/introduction_double_auxiliary.jpg
