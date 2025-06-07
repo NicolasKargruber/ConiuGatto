@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 import 'domain/service/history_service.dart';
+import 'domain/service/package_info_service.dart';
 import 'domain/service/verb_service.dart';
 import 'presentation/introduction/screens/on_boarding_screen.dart';
 import 'presentation/introduction/screens/splash_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => VerbService()),
           ChangeNotifierProvider.value(value: GetIt.I<SharedPreferenceService>()),
           ChangeNotifierProvider(create: (_) => SplashViewModel(GetIt.I<SharedPreferenceService>())),
+          ChangeNotifierProvider(create: (_) => PackageInfoService()),
         ],
         child: SplashScreen(),
       ),

@@ -11,12 +11,12 @@ import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../view_model.dart';
 
-class SettingsViewModel extends ViewModel {
-  static final _logTag = (SettingsViewModel).toString();
+class FiltersViewModel extends ViewModel {
+  static final _logTag = (FiltersViewModel).toString();
 
   final SharedPreferenceService _preferenceService;
 
-  SettingsViewModel(this._preferenceService);
+  FiltersViewModel(this._preferenceService);
 
   @override
   Future initialize() async {

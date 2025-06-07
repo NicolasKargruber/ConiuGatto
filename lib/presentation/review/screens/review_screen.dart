@@ -6,13 +6,14 @@ import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
-import '../../settings/view_models/settings_view_model.dart';
-import '../view_models/review_view_model.dart';
+import '../../about/screens/about_screen.dart';
+import '../../filters/screens/filters_screen.dart';
+import '../../filters/view_models/filters_view_model.dart';
 import '../../widgets/shake_widget.dart';
+import '../view_models/review_view_model.dart';
 import '../widgets/quiz_history_count.dart';
 import '../widgets/solution_sheet.dart';
 import 'review_content.dart';
-import '../../settings/screens/settings_screen.dart';
 
 final _logTag = (ReviewScreen).toString();
 
@@ -77,14 +78,14 @@ class _ReviewScreenState extends State<ReviewScreen> {
   }
 
   // TODO Use Navigator
-  _showSettingsScreen() async {
+  _showFiltersScreen() async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
         ChangeNotifierProvider.value(
           value: context.read<VerbService>(),
-          child: ChangeNotifierProxyProvider<VerbService, SettingsViewModel>(
-            create: (_) => SettingsViewModel(context.read<SharedPreferenceService>()),
+          child: ChangeNotifierProxyProvider<VerbService, FiltersViewModel>(
+            create: (_) => FiltersViewModel(context.read<SharedPreferenceService>()),
             update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
-            child: SettingsScreen(),
+            child: FiltersScreen(),
           ),
         ))
     );
@@ -106,7 +107,14 @@ class _ReviewScreenState extends State<ReviewScreen> {
         title: Text("Review 🏅"),
         actions: [
           QuizHistoryCount(),
-          IconButton(onPressed: _showSettingsScreen, icon: Icon(Icons.settings_rounded)),
+          IconButton(
+            onPressed: _showFiltersScreen, icon: Icon(Icons.edit_rounded),
+            visualDensity: VisualDensity(horizontal: -1.0),
+          ),
+          IconButton(
+            onPressed: () => AboutScreen.show(context),
+            icon: Icon(Icons.settings_rounded),
+            visualDensity: VisualDensity(horizontal: -4.0),),
         ],
       ),
       body: Padding(
@@ -122,7 +130,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
               return Center(child: Text('No verbs available 💨'));
             } else {
               return QuizContent(
-                onSettingsButtonPressed: _showSettingsScreen,
+                onSettingsButtonPressed: _showFiltersScreen,
                 checkAnswer: _checkAnswer,
                 textController: _textController,
                 shakeKey: _shakeKey,

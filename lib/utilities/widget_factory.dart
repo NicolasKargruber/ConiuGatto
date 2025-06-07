@@ -235,6 +235,5 @@ class LanguageLevelProgressFactory {
             ],
           ),
         );
-      }
-      );
+      });
 }
