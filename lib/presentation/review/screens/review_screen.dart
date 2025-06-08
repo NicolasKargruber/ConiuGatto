@@ -53,7 +53,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
 
-        if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 1500));
+        if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 800));
 
         HapticFeedback.lightImpact();
         _textController.clear();
