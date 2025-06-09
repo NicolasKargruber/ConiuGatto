@@ -5,7 +5,6 @@ import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../view_models/review_view_model.dart';
 
-// TODO Move to general widgets
 class QuizInputFields extends StatelessWidget {
   const QuizInputFields({super.key, required this.textController, required this.onSubmitted});
   
@@ -48,6 +47,18 @@ class QuizInputFields extends StatelessWidget {
           controller: textController,
           onSubmitted: onSubmitted,
           decoration: InputDecoration(
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: viewModel.hasCorrectAnswer ? context.colorScheme.tertiary : context.colorScheme.primary,
+                width: AppValues.s2,
+              ),
+            ),
+            enabledBorder: viewModel.hasCorrectAnswer ? UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: context.colorScheme.tertiary,
+                width: AppValues.s2,
+              ),
+            ) : null,
             suffixIconConstraints: BoxConstraints(
               maxHeight: AppValues.s24,
               maxWidth: AppValues.s24,
@@ -55,14 +66,24 @@ class QuizInputFields extends StatelessWidget {
             suffixIcon: IconButton.filled(
               padding: EdgeInsets.all(AppValues.p0),
               onPressed: textController.clear,
-              icon: Icon(Icons.clear, size: AppValues.s12, color: context.colorScheme.onPrimary),
+              style: viewModel.hasCorrectAnswer
+                  ? IconButton.styleFrom(backgroundColor: context.colorScheme.tertiary)
+                  : null,
+              icon: Icon(
+                Icons.clear,
+                size: AppValues.s12,
+                color: viewModel.hasCorrectAnswer ? context.colorScheme.onTertiary : context.colorScheme.onPrimary,
+              ),
             ),
           ),
         ),
 
         // Wrong Answer Message
         if(viewModel.currentAnswerResult case var result?)
-          Text(result.message),
+          ...[
+            SizedBox(height: AppValues.s4),
+            Text(result.message),
+          ],
 
         SizedBox(height: AppValues.s4),
 

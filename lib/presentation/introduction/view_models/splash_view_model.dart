@@ -17,6 +17,8 @@ class SplashViewModel extends ViewModel {
     debugPrint("$_logTag | initialize()");
     await _preferenceService.initializationFuture;
     isSkipIntroduction = _preferenceService.loadSkipIntroductionPref();
+    // Debug
+    if(!kReleaseMode) isSkipIntroduction = false;
   }
 
   void skipIntroduction() {

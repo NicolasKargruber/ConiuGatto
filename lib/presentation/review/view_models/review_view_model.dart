@@ -77,6 +77,7 @@ class ReviewViewModel extends ViewModel {
   List<Question> get _positiveQuizHistory => _quizHistory.where((quiz) => quiz.isCorrect).toList();
   int get negativeQuizCount => _negativeQuizHistory.length;
   int get positiveQuizCount => _positiveQuizHistory.length;
+  bool get hasCorrectAnswer => _currentAnswerResult == AnswerResult.correct;
   int get totalQuizCount => _quizHistory.length;
   bool get hasQuizzableQuestions =>
       _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;

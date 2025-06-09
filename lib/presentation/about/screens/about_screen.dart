@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../domain/service/package_info_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/error_snack_bar.dart';
+import '../../introduction/screens/on_boarding_screen.dart';
 import '../../widgets/buy_me_a_coffee_button.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -19,6 +20,14 @@ class AboutScreen extends StatelessWidget {
           create: (_) => PackageInfoService(),
           child: AboutScreen(),
         ))
+    );
+  }
+  
+  static showIntroduction(BuildContext context) async {
+    await Navigator.push(context, MaterialPageRoute(
+        builder: (_) {
+          return OnBoardingScreen(onIntroEnd: () => Navigator.of(context).maybePop());
+        })
     );
   }
 
@@ -72,12 +81,14 @@ class AboutScreen extends StatelessWidget {
           ),
           const Divider(),
 
-          const SizedBox(height: AppValues.s20),
+          const SizedBox(height: AppValues.s12),
 
           BuyMeACoffeeButton(onPressed: () => onBuyMeACoffeePressed(context)),
 
-          /*_buildMenuItem(context, 'Buy me coffe '),
-          _buildMenuItem(context, 'Community Standards'),
+          const SizedBox(height: AppValues.s8),
+
+          _buildMenuItem(context, 'Show Introduction', () => showIntroduction(context)),
+          /*_buildMenuItem(context, 'Community Standards'),
           _buildMenuItem(context, 'Terms of Use'),
           _buildMenuItem(context, 'Third party Notices'),
           _buildMenuItem(context, 'Privacy and Cookies'),*/
@@ -86,13 +97,11 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(BuildContext context, String title) {
+  Widget _buildMenuItem(BuildContext context, String title, Function() onTap) {
     return ListTile(
       title: Text(title),
       trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap: () {
-        // Add your navigation logic here
-      },
+      onTap: onTap,
     );
   }
 }
