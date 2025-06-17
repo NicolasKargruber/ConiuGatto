@@ -53,11 +53,11 @@ class FluencyDetailsSheet extends StatelessWidget {
             children: [
               Text(
                 "Example: $example - ",
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs20, fontStyle: FontStyle.italic),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
               ),
               Text(
                 exampleTranslation,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs20, fontStyle: FontStyle.italic),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
               ),
             ],
           ),
