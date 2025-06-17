@@ -43,6 +43,9 @@ class QuizInputFields extends StatelessWidget {
       children: [
         // Answer Text Field
         TextField(
+          enableSuggestions: false,
+          autocorrect: false,
+          onEditingComplete: () {}, // this prevents keyboard from closing
           textAlign: TextAlign.center,
           controller: textController,
           onSubmitted: onSubmitted,
