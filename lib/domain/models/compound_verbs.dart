@@ -342,7 +342,7 @@ class CompoundVerbs {
       })),
       imperfectSubjunctive: ImperfectSubjunctive.from(conjugations: convertJsonToConjugations({
         "io": {
-          "italian": "fosse",
+          "italian": "fossi",
           "english": "was"
         },
         "tu": {

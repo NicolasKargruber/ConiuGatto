@@ -40,7 +40,12 @@ class _ReviewScreenState extends State<ReviewScreen> {
       if(_isCheckingAnswer) return;
       _isCheckingAnswer = true;
 
-      _viewModel.checkAnswer(_textController.text);
+      // Format answer
+      final answer = _textController.text.replaceAll(",", "").replaceAll(".", "").trim().toLowerCase();
+      _textController.text = answer;
+
+      // CHECK
+      _viewModel.checkAnswer(answer);
 
       if(!_viewModel.isAnsweredCorrectly) {
         // Show WRONG animation
@@ -53,8 +58,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
 
+        // Show CORRECT animation
         if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 800));
 
+        // Quiz continues
         HapticFeedback.lightImpact();
         _textController.clear();
         _viewModel.createNewQuestion();
