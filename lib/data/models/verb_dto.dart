@@ -10,6 +10,7 @@ typedef Conjugations = Map<Pronoun, TranslatedConjugation?>;
 conjugatedVerbFrom(dynamic json) => (italian: json['italian'], english: json['english']);
 
 class VerbDTO {
+  final String id;
   final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
@@ -46,6 +47,7 @@ class VerbDTO {
   // IMPERATIVE <= END
 
   VerbDTO._({
+    required this.id,
     required this.infinitive,
     required this.regularity,
     required this.irregularities,
@@ -64,6 +66,7 @@ class VerbDTO {
 
   factory VerbDTO.fromJson(Map<String, dynamic> json) {
     return VerbDTO._(
+      id: json['id'],
       infinitive: conjugatedVerbFrom(json['infinitive']),
       regularity: Regularity.fromJson(json['regularity']),
       irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),

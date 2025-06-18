@@ -2,13 +2,15 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../enums/auxiliary.dart';
+import '../enums/pronoun.dart';
 import '../models/quizzed_question_dto.dart';
 
 const _databaseName = "SqfliteDB.db";
 
 class QuizzedQuestionRepository {
   static final _logTag = (QuizzedQuestionRepository).toString();
-  static const _version = 1;
+  static const _version = 2;
   static const _tableName = "quizzed_question";
 
   final Database _database;
@@ -27,9 +29,31 @@ class QuizzedQuestionRepository {
           await db.execute("CREATE TABLE $_tableName ("
               "id INTEGER PRIMARY KEY AUTOINCREMENT,"
               "date TEXT,"
+              "verbID TEXT,"
+              "pronoun INTEGER,"
+              "auxiliary INTEGER,"
               "tense INTEGER,"
               "correct BIT"
               ")");
+          debugPrint("$_logTag | Created table ...");
+        },
+        onUpgrade: (Database db, int oldVersion, int newVersion) async {
+          if (oldVersion < _version) {
+            // Migration from version 1 to 2
+            await db.execute('''
+              ALTER TABLE $_tableName 
+              ADD COLUMN verbID TEXT DEFAULT ''
+            ''');
+            await db.execute('''
+              ALTER TABLE $_tableName 
+              ADD COLUMN pronoun INTEGER DEFAULT '${Pronoun.firstSingular.jsonKey}'
+            ''');
+            await db.execute('''
+              ALTER TABLE $_tableName 
+              ADD COLUMN auxiliary INTEGER DEFAULT '${Auxiliary.avere.jsonKey}'
+            ''');
+          }
+          debugPrint("$_logTag | Migrated table from version $oldVersion to $newVersion ...");
         },
       );
     } on Exception catch (e) {
@@ -43,7 +67,8 @@ class QuizzedQuestionRepository {
 
   // Define a function that inserts dogs into the database
   Future<void> insert(QuizzedQuestionDTO quizzedQuestion) async {
-    debugPrint("$_logTag | insert($quizzedQuestion) started");
+    debugPrint("$_logTag | insert() started");
+    debugPrint("$_logTag | QuizzedQuestion: $quizzedQuestion");
     try {
       debugPrint("$_logTag | Insert ...");
       await _database.insert(_tableName,
@@ -54,7 +79,7 @@ class QuizzedQuestionRepository {
       debugPrint("$_logTag | Caught exception: $e");
       rethrow;
     } finally {
-      debugPrint("$_logTag | insert($quizzedQuestion) ended");
+      debugPrint("$_logTag | insert() ended");
     }
   }
 
