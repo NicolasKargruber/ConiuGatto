@@ -6,21 +6,21 @@ extension ItalianTenseExtensions on ItalianTense {
   LanguageLevel get level {
     return switch(this) {
       ItalianTense.presentIndicative => LanguageLevel.a1,
-      ItalianTense.presentContinuousIndicative => LanguageLevel.a1,
-      ItalianTense.imperfectIndicative => LanguageLevel.a2,
+      ItalianTense.presentContinuousIndicative => LanguageLevel.b1,
+      ItalianTense.imperfectIndicative => LanguageLevel.a1,
       ItalianTense.presentPerfectIndicative => LanguageLevel.a1,
-      ItalianTense.pastPerfectIndicative => LanguageLevel.a2,
+      ItalianTense.pastPerfectIndicative => LanguageLevel.b1,
       ItalianTense.historicalPresentPerfectIndicative => LanguageLevel.c1,
       ItalianTense.historicalPastPerfectIndicative => LanguageLevel.c1,
-      ItalianTense.futureIndicative => LanguageLevel.a1,
+      ItalianTense.futureIndicative => LanguageLevel.a2,
       ItalianTense.futurePerfectIndicative => LanguageLevel.b1,
-      ItalianTense.presentSubjunctive => LanguageLevel.b1,
-      ItalianTense.imperfectSubjunctive => LanguageLevel.b2,
-      ItalianTense.presentPerfectSubjunctive => LanguageLevel.b1,
-      ItalianTense.pastPerfectSubjunctive => LanguageLevel.b2,
+      ItalianTense.presentSubjunctive => LanguageLevel.b2,
+      ItalianTense.imperfectSubjunctive => LanguageLevel.c1,
+      ItalianTense.presentPerfectSubjunctive => LanguageLevel.b2,
+      ItalianTense.pastPerfectSubjunctive => LanguageLevel.c1,
       ItalianTense.presentConditional => LanguageLevel.a2,
       ItalianTense.presentPerfectConditional => LanguageLevel.b1,
-      ItalianTense.positiveImperative => LanguageLevel.a1,
+      ItalianTense.positiveImperative => LanguageLevel.a2,
       ItalianTense.negativeImperative => LanguageLevel.a2
     };
   }
