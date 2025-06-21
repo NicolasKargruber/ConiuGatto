@@ -15,4 +15,7 @@ enum Pronoun {
   final String reflexivePronoun; // => "mi"
 
   const Pronoun(this.italian, this.english, this.reflexivePronoun);
+
+  factory Pronoun.fromJson(dynamic json)
+  => Pronoun.values.firstWhere((e) => e.jsonKey == json);
 }

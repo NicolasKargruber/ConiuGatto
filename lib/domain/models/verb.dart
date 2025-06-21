@@ -16,6 +16,7 @@ import 'tenses/tense.dart';
 
 
 class Verb extends BaseVerb {
+  final String id;
   final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
@@ -30,6 +31,7 @@ class Verb extends BaseVerb {
   // IMPERATIVE <= END
 
   Verb._({
+    required this.id,
     required this.infinitive,
     required this.regularity,
     required this.irregularities,
@@ -49,6 +51,7 @@ class Verb extends BaseVerb {
 
   factory Verb.fromDTO(VerbDTO dto) {
     return Verb._(
+      id: dto.id,
       infinitive: dto.infinitive,
       regularity: dto.regularity,
       irregularities: dto.irregularities,
