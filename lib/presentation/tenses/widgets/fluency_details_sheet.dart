@@ -33,8 +33,11 @@ class FluencyDetailsSheet extends StatelessWidget {
           Container(
             width: double.maxFinite,
             alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: !milestonePassed ? context.colorScheme.primary : context.colorScheme.tertiary,
+              borderRadius: BorderRadius.all(Radius.circular(AppValues.r4)),
+            ),
             padding: EdgeInsets.symmetric(vertical: AppValues.p12, horizontal: AppValues.p60),
-            color: !milestonePassed ? context.colorScheme.primary : context.colorScheme.tertiary,
             child: AutoSizeText(
               label,
               style: TextStyle(

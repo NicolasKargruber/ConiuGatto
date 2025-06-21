@@ -33,7 +33,10 @@ class SolutionSheet extends StatelessWidget {
           Container(
             width: double.maxFinite,
             padding: EdgeInsets.symmetric(horizontal: AppValues.p8, vertical: AppValues.p8),
-            color: context.colorScheme.error,
+            decoration: BoxDecoration(
+              color: context.colorScheme.error,
+              borderRadius: BorderRadius.all(Radius.circular(AppValues.r4)),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
