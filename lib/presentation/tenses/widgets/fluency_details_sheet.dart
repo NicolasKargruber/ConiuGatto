@@ -33,8 +33,11 @@ class FluencyDetailsSheet extends StatelessWidget {
           Container(
             width: double.maxFinite,
             alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: !milestonePassed ? context.colorScheme.primary : context.colorScheme.tertiary,
+              borderRadius: BorderRadius.all(Radius.circular(AppValues.r4)),
+            ),
             padding: EdgeInsets.symmetric(vertical: AppValues.p12, horizontal: AppValues.p60),
-            color: !milestonePassed ? context.colorScheme.primary : context.colorScheme.tertiary,
             child: AutoSizeText(
               label,
               style: TextStyle(
@@ -48,18 +51,13 @@ class FluencyDetailsSheet extends StatelessWidget {
 
           SizedBox(height: AppValues.s20),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Example: $example - ",
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
-              ),
-              Text(
-                exampleTranslation,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppValues.p24),
+            child: AutoSizeText(
+              "Example: $example - $exampleTranslation",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
+              maxLines: 1,
+            ),
           ),
 
           SizedBox(height: AppValues.s28),

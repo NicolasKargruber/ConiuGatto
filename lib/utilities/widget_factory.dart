@@ -125,7 +125,7 @@ class ItalianTenseProgressFactory {
   }){
     return Builder(
         builder: (context) {
-          final isReached = progress > milestone;
+          final isReached = progress >= milestone;
           return Card(
             color: isReached ? Color.alphaBlend(Colors.green.withAlpha(50), context.colorScheme.surface) : null,
             child: InkWell(
@@ -161,7 +161,7 @@ class ItalianTenseProgressFactory {
   }
 
   static Widget createLinearProgressIndicator({required double value, required double milestone, bool showIndicator = true}) {
-    final isReached = value > milestone;
+    final isReached = value >= milestone;
     final firstProgressValue = isReached ? 1.0 : value / milestone;
     final secondProgressValue = isReached ? (value - milestone) / (1.0 - milestone) : 0.0;
     return Builder(
@@ -206,7 +206,7 @@ class ItalianTenseProgressFactory {
 class LanguageLevelProgressFactory {
   static Widget createLabeledCircularProgressIndicator({required String label, required double progress}) =>
       Builder(builder: (context) {
-        final isFull = progress == 1.0;
+        final isFull = progress >= 1.0;
         return Container(
           padding: const EdgeInsets.all(AppValues.p12),
           child: Stack(

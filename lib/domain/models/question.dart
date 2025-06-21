@@ -54,6 +54,8 @@ class Question {
     if (triesLeft > 0) {
       _triesLeft--;
 
+      if(answer.isEmpty) return AnswerResult.blank;
+
       String pronounPrefix = "";
       bool usesWrongPronoun = false;
 
