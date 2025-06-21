@@ -91,7 +91,7 @@ class QuizInputFields extends StatelessWidget {
         SizedBox(height: AppValues.s4),
 
         // Accents Buttons
-        Wrap(children: ["è", "à", "ò", "é"]
+        Wrap(children: ["è", "à", "ò", "ì", "é"]
             .map((letter) => ActionChip(
           label: Text(letter),
           onPressed: () => _addLetterAtSelection(letter),

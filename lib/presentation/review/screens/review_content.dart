@@ -84,13 +84,14 @@ class QuizContent extends StatelessWidget {
 
                           SizedBox(height: AppValues.s4),
 
-                          Text(
+                          AutoSizeText(
                             viewModel.currentTranslation ?? "Not available",
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: AppValues.fs20,
                               fontStyle: FontStyle.italic,
                             ),
+                            maxLines: 1,
                           ),
                         ],
                       ),
@@ -98,17 +99,26 @@ class QuizContent extends StatelessWidget {
 
                     SizedBox(height: AppValues.s64),
 
-                    QuizInputFields(
-                      textController: textController,
-                      onSubmitted: (_) => checkAnswer(),
-                    ),
+                    TapRegion(
+                      onTapOutside: (PointerDownEvent event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      child: Column(
+                        children: [
+                          QuizInputFields(
+                            textController: textController,
+                            onSubmitted: (_) => checkAnswer(),
+                          ),
 
-                    SizedBox(height: AppValues.s12),
+                          SizedBox(height: AppValues.s12),
 
-                    // Check Button
-                    QuizButton(
-                        onPressed: checkAnswer,
-                        shakeKey: shakeKey
+                          // Check Button
+                          QuizButton(
+                              onPressed: checkAnswer,
+                              shakeKey: shakeKey
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
