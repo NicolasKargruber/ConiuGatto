@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -91,11 +92,20 @@ class QuizInputFields extends StatelessWidget {
         SizedBox(height: AppValues.s4),
 
         // Accents Buttons
-        Wrap(children: ["è", "à", "ò", "ì", "é"]
-            .map((letter) => ActionChip(
-          label: Text(letter),
-          onPressed: () => _addLetterAtSelection(letter),
-        )).toList()),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppValues.p12),
+          child: FittedBox(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: ["è", "à", "ò", "ì", "é"].map((letter) {
+                  return ActionChip(
+                    label: Text(letter),
+                    onPressed: () => _addLetterAtSelection(letter),
+                  );
+                }).toList(),
+            ),
+          ),
+        ),
       ],
     );
   }
