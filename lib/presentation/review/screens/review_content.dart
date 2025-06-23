@@ -15,13 +15,13 @@ final _logTag = (QuizContent).toString();
 
 class QuizContent extends StatelessWidget {
   const QuizContent({super.key,
-    required this.onSettingsButtonPressed,
+    required this.onFiltersButtonPressed,
     required this.checkAnswer,
     required this.textController,
     required this.shakeKey,
   });
 
-  final Function() onSettingsButtonPressed;
+  final Function() onFiltersButtonPressed;
   final Function() checkAnswer;
   final TextEditingController textController;
   final GlobalKey<ShakeWidgetState> shakeKey;
@@ -32,7 +32,7 @@ class QuizContent extends StatelessWidget {
     final viewModel = context.watch<ReviewViewModel>();
 
     return !viewModel.hasQuizzableQuestions ?
-    Center(child: _NoQuestionsAvailable(onSettingsButtonPressed: onSettingsButtonPressed)) :
+    Center(child: _NoQuestionsAvailable(onFiltersButtonPressed: onFiltersButtonPressed)) :
     Padding(
       padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),
       child: Column(
@@ -134,10 +134,10 @@ class QuizContent extends StatelessWidget {
 class _NoQuestionsAvailable extends StatelessWidget {
   const _NoQuestionsAvailable({
     super.key,
-    required this.onSettingsButtonPressed,
+    required this.onFiltersButtonPressed,
   });
 
-  final Function() onSettingsButtonPressed;
+  final Function() onFiltersButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -153,12 +153,12 @@ class _NoQuestionsAvailable extends StatelessWidget {
 
         Text('Check your Filters in the Settings'),
         FilledButton.tonalIcon(
-          onPressed: onSettingsButtonPressed,
-          icon: Icon(Icons.settings_rounded),
+          onPressed: onFiltersButtonPressed,
+          icon: Icon(Icons.edit_rounded),
           label: Padding(
             padding: const EdgeInsets.all(AppValues.p8),
             child: Text(
-                "Go to Settings",
+                "Go to Filters",
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
             ),
           ),

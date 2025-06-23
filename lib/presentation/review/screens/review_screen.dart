@@ -137,7 +137,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
               return Center(child: Text('No verbs available 💨'));
             } else {
               return QuizContent(
-                onSettingsButtonPressed: _showFiltersScreen,
+                onFiltersButtonPressed: _showFiltersScreen,
                 checkAnswer: _checkAnswer,
                 textController: _textController,
                 shakeKey: _shakeKey,
