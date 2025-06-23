@@ -19,7 +19,7 @@ class QuizViewModel extends ViewModel {
   static final _logTag = (QuizViewModel).toString();
 
   final HistoryService _historyService;
-  final List<QuizzedQuestion> _quizzableQuestions;
+  List<QuizzedQuestion> _quizzableQuestions = [];
   final int quizLength;
 
   QuizViewModel(this._historyService,
@@ -31,14 +31,13 @@ class QuizViewModel extends ViewModel {
   Future initialize() async {
     debugPrint("$_logTag | initialize()");
     // Randomize
-    //_quizzableQuestions.shuffle();
+    _quizzableQuestions = _quizzableQuestions.take(quizLength * 4).toList();
+    _quizzableQuestions.shuffle();
     updateQuiz();
-    debugPrint("$_logTag | initialize() ended");
   }
 
   // Update & Notify
   List<Verb> _verbs = [];
-
   updateVerbs(List<Verb> verbs) async {
     if(!isInitialized) await initializationFuture;
 
@@ -59,11 +58,8 @@ class QuizViewModel extends ViewModel {
 
   updateQuiz(){
     debugPrint("$_logTag | updateQuiz() started");
-    //_findQuizzableVerbs();
-    //_findQuizzableTenses();
-    //_findQuizzablePronouns();
 
-    // Current Question not Quizzable => Randomize
+    // Current Question not Quizzable => Next
     if(_verbs.isNotEmpty) {
       addAndResetQuestion(add: false);
       createNewQuestion();
@@ -85,7 +81,6 @@ class QuizViewModel extends ViewModel {
   int get positiveQuizCount => _positiveQuizHistory.length;
   bool get hasCorrectAnswer => _currentAnswerResult == AnswerResult.correct;
   int get totalQuizCount => _quizHistory.length;
-  //bool get hasQuizzableQuestions => _quizzableVerbs.isNotEmpty && _quizzableTenses.isNotEmpty && _quizzablePronouns.isNotEmpty;
   bool get hasCurrentQuestion => _currentQuestion != null;
   bool get usesEssere => _currentQuestion?.usesEssere ?? false;
   bool get usesPastParticiple => _currentQuestion?.usesPastParticiple ?? false;
@@ -108,17 +103,17 @@ class QuizViewModel extends ViewModel {
     if(hasCurrentQuestion) addAndResetQuestion();
 
     // Create NEW RANDOM Quiz Values
-    _randomizeQuestion();
+    nextQuestion();
 
     while (currentSolution == null) {
-      debugPrint("$_logTag | Re-Randomize Quiz Item");
-      _randomizeQuestion();
+      debugPrint("$_logTag | Invalid Question");
+      nextQuestion();
     }
 
     // Check Previous Quiz
     if(_quizHistory.lastOrNull?.solution == _currentQuestion?.solution) {
       debugPrint("$_logTag | Question again the same");
-      _randomizeQuestion();
+      nextQuestion();
     }
 
     debugPrint("$_logTag | Solution: ${_currentQuestion?.solutionExtended}");
@@ -127,16 +122,18 @@ class QuizViewModel extends ViewModel {
     debugPrint("$_logTag | createNewQuestion() ended");
   }
 
-  void _randomizeQuestion() {
-    debugPrint("$_logTag | _randomizeQuestion()");
-    final currentPronoun = _quizzableQuestions[_quizHistory.length].pronoun;
+  @visibleForTesting
+  void nextQuestion() {
+    debugPrint("$_logTag | _nextQuestion()");
+    final index = _quizHistory.length%_quizzableQuestions.length;
+    final currentPronoun = _quizzableQuestions[index].pronoun;
     debugPrint("$_logTag | Current Pronoun: ${currentPronoun.name}");
-    final currentVerb = _verbs.firstWhereOrNull((verb) => verb.id == _quizzableQuestions[_quizHistory.length].verbID);
+    final currentVerb = _verbs.firstWhereOrNull((verb) => verb.id == _quizzableQuestions[index].verbID);
     debugPrint("$_logTag | Current Verb: ${currentVerb?.italianInfinitive}");
     if (currentVerb == null) return;
-    final currentAuxiliary = _quizzableQuestions[_quizHistory.length].auxiliary;
+    final currentAuxiliary = _quizzableQuestions[index].auxiliary;
     debugPrint("$_logTag | Current Auxiliary: ${currentAuxiliary.name}");
-    final quizzableTense = _quizzableQuestions[_quizHistory.length].tense;
+    final quizzableTense = _quizzableQuestions[index].tense;
     debugPrint("$_logTag | Current Tense: ${quizzableTense.name}");
     _currentQuestion = Question(
       verb: currentVerb,

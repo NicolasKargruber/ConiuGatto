@@ -7,7 +7,7 @@ import '../view_models/quiz_length_view_model.dart';
 import 'counter_button.dart';
 
 
-// TODO Move to general widgets
+// TODO Move logic to viewModel
 class QuizLengthSheet extends StatelessWidget {
   const QuizLengthSheet({super.key, required this.showQuizScreen});
 

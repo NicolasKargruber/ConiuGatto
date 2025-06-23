@@ -38,7 +38,7 @@ class QuizzedQuestionDTO {
     "pronoun": pronoun.jsonKey,
     "auxiliary": auxiliary.jsonKey,
     "tense": tense.jsonKey,
-    "correct": correct,
+    "correct": correct ? 1 : 0,
   };
 
   @override
