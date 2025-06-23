@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/models/answer_result.dart';
 import '../../../domain/models/quizzed_question.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/history_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
-import '../../widgets/quiz_input_fields.dart';
-import '../../widgets/solution_sheet.dart';
-import '../../widgets/shake_widget.dart';
-import '../view_models/quiz_view_model.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
+import '../../revision/screens/revision_screen.dart';
 import '../../widgets/quiz_history_count.dart';
+import '../../widgets/shake_widget.dart';
+import '../../widgets/solution_sheet.dart';
+import '../view_models/quiz_view_model.dart';
 import 'quiz_content.dart';
 
 final _logTag = (QuizScreen).toString();
@@ -77,9 +77,13 @@ class _QuizScreenState extends State<QuizScreen> {
       }
 
       if(!_viewModel.hasTriesLeft || _viewModel.isAnsweredCorrectly) {
-
         // Show CORRECT animation
         if(_viewModel.isAnsweredCorrectly) await Future.delayed(Duration(milliseconds: 800));
+
+        // TODO delete
+        if(_viewModel.quizLength <= _viewModel.totalQuizCount + 1) {
+          if(mounted) RevisionScreen.show(context, history: _viewModel.quizHistory);
+        }
 
         // Quiz continues
         HapticFeedback.lightImpact();
@@ -110,6 +114,34 @@ class _QuizScreenState extends State<QuizScreen> {
     super.dispose();
   }
 
+  Future<bool?> _showBackDialog() {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('End Quiz?'),
+          content: const Text('Are you sure you want to exit this quiz?'),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(textStyle: context.textTheme.labelLarge),
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(textStyle: context.textTheme.labelLarge),
+              child: const Text('Confirm'),
+              onPressed: () {
+                Navigator.pop(context, true);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
@@ -119,25 +151,37 @@ class _QuizScreenState extends State<QuizScreen> {
         actionsPadding: EdgeInsets.only(right: AppValues.p16),
         actions: [_QuizHistoryCount()],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
-        child: FutureBuilder(
-          future: _loadingVerbs,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else if (_verbs.isEmpty) {
-              return Center(child: Text('No verbs available 💨'));
-            } else {
-              return QuizContent(
-                checkAnswer: _checkAnswer,
-                textController: _textController,
-                shakeKey: _shakeKey,
-              );
-            }
-          },
+      body: PopScope<Object?>(
+        canPop: false,
+        onPopInvokedWithResult: (bool didPop, Object? result) async {
+          if (didPop) {
+            return;
+          }
+          final bool shouldPop = await _showBackDialog() ?? false;
+          if (context.mounted && shouldPop) {
+            Navigator.pop(context);
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
+          child: FutureBuilder(
+            future: _loadingVerbs,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else if (_verbs.isEmpty) {
+                return Center(child: Text('No verbs available 💨'));
+              } else {
+                return QuizContent(
+                  checkAnswer: _checkAnswer,
+                  textController: _textController,
+                  shakeKey: _shakeKey,
+                );
+              }
+            },
+          ),
         ),
       ),
     );
