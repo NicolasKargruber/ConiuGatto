@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../utilities/app_values.dart';
-import '../../../utilities/extensions/build_context_extensions.dart';
-import '../../widgets/report_issue_sheet.dart';
+import '../../utilities/app_values.dart';
+import '../../utilities/extensions/build_context_extensions.dart';
+import 'report_issue_sheet.dart';
 
 
 // TODO Move to general widgets

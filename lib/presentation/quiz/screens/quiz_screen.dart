@@ -2,34 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/models/answer_result.dart';
+import '../../../domain/models/quizzed_question.dart';
 import '../../../domain/models/verb.dart';
-import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/service/history_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
-import '../../about/screens/about_screen.dart';
-import '../../filters/screens/filters_screen.dart';
-import '../../filters/view_models/filters_view_model.dart';
-import '../../widgets/quiz_history_count.dart';
-import '../../widgets/shake_widget.dart';
+import '../../widgets/quiz_input_fields.dart';
 import '../../widgets/solution_sheet.dart';
-import '../view_models/review_view_model.dart';
-import 'review_content.dart';
+import '../../widgets/shake_widget.dart';
+import '../view_models/quiz_view_model.dart';
+import '../../widgets/quiz_history_count.dart';
+import 'quiz_content.dart';
 
-final _logTag = (ReviewScreen).toString();
+final _logTag = (QuizScreen).toString();
 
-class ReviewScreen extends StatefulWidget {
-  const ReviewScreen({super.key});
+class QuizScreen extends StatefulWidget {
+  const QuizScreen({super.key});
+
+  // TODO Use Navigator
+  static show(BuildContext context, {required List<QuizzedQuestion> quizzableQuestions, required int quizLength}) async {
+    await Navigator.push(context, MaterialPageRoute(builder: (_) =>
+        MultiProvider(
+          providers: [
+            ChangeNotifierProvider.value(value: context.read<VerbService>()),
+            ChangeNotifierProxyProvider<VerbService, QuizViewModel>(
+              create: (_) => QuizViewModel(
+                context.read<HistoryService>(),
+                quizzableQuestions: quizzableQuestions,
+                quizLength: quizLength,
+              ),
+              update: (_, verbService, quizViewModel) => quizViewModel!..updateVerbs(verbService.verbs),
+            ),
+          ],
+          child: QuizScreen(),
+        )),
+    );
+  }
 
   @override
-  State<ReviewScreen> createState() => _ReviewScreenState();
+  State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _ReviewScreenState extends State<ReviewScreen> {
+class _QuizScreenState extends State<QuizScreen> {
 
   // ViewModel
   late final Future _loadingVerbs = context.read<VerbService>().initializationFuture;
   List<Verb> get _verbs => context.read<VerbService>().verbs;
-  late final _viewModel = context.read<ReviewViewModel>();
+  late final _viewModel = context.read<QuizViewModel>();
 
   // UI Stuff
   final _textController = TextEditingController();
@@ -75,29 +95,13 @@ class _ReviewScreenState extends State<ReviewScreen> {
     await showModalBottomSheet(
       context: context,
       builder: (_) {
-        final viewModel = context.read<ReviewViewModel>();
+        final viewModel = context.read<QuizViewModel>();
         return SolutionSheet(
           solution:  viewModel.currentSolution ?? '',
           reportIssue: () => viewModel.reportSolution(),
         );
       },
     );
-  }
-
-  // TODO Use Navigator
-  _showFiltersScreen() async {
-    await Navigator.push(context, MaterialPageRoute(builder: (_) =>
-        ChangeNotifierProvider.value(
-          value: context.read<VerbService>(),
-          child: ChangeNotifierProxyProvider<VerbService, FiltersViewModel>(
-            create: (_) => FiltersViewModel(context.read<SharedPreferenceService>()),
-            update: (_, verbService, settingsViewModel) => settingsViewModel!..updateVerbs(verbService.verbs),
-            child: FiltersScreen(),
-          ),
-        ))
-    );
-
-    if(mounted) context.read<ReviewViewModel>().updateQuiz();
   }
 
   @override
@@ -111,18 +115,9 @@ class _ReviewScreenState extends State<ReviewScreen> {
     debugPrint("$_logTag | build()");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Review 🏅"),
-        actions: [
-          _QuizHistoryCount(),
-          IconButton(
-            onPressed: _showFiltersScreen, icon: Icon(Icons.edit_rounded),
-            visualDensity: VisualDensity(horizontal: -1.0),
-          ),
-          IconButton(
-            onPressed: () => AboutScreen.show(context),
-            icon: Icon(Icons.settings_rounded),
-            visualDensity: VisualDensity(horizontal: -4.0),),
-        ],
+        title: Text("Quiz 🕹️"),
+        actionsPadding: EdgeInsets.only(right: AppValues.p16),
+        actions: [_QuizHistoryCount()],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
@@ -137,7 +132,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
               return Center(child: Text('No verbs available 💨'));
             } else {
               return QuizContent(
-                onFiltersButtonPressed: _showFiltersScreen,
                 checkAnswer: _checkAnswer,
                 textController: _textController,
                 shakeKey: _shakeKey,
@@ -155,9 +149,10 @@ class _QuizHistoryCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<ReviewViewModel>();
-    return viewModel.hasCurrentQuestion ?
-    QuizHistoryCount(negatives: viewModel.negativeQuizCount, positives: viewModel.positiveQuizCount) :
-    Spacer();
+    final viewModel = context.watch<QuizViewModel>();
+    return QuizHistoryCount(negatives: viewModel.negativeQuizCount, positives: viewModel.positiveQuizCount);
   }
 }
+
+
+

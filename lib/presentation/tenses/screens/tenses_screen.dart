@@ -6,9 +6,11 @@ import '../../../domain/models/enums/mood.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../about/screens/about_screen.dart';
+import '../../quiz/screens/quiz_screen.dart';
 import '../view_models/tenses_view_model.dart';
 import '../widgets/language_level_toggle_chips.dart';
 import '../widgets/language_level_section.dart';
+import '../widgets/quiz_length_sheet.dart';
 
 class TensesScreen extends StatelessWidget {
   static final _logTag = (TensesScreen).toString();
@@ -24,34 +26,63 @@ class TensesScreen extends StatelessWidget {
           IconButton(onPressed: () => AboutScreen.show(context), icon: Icon(Icons.settings_rounded)),
         ],
       ),
-      body: DefaultTabController(
-        initialIndex: 0,
-        length: Mood.values.length,
-        child: Padding(
-          padding: const EdgeInsets.all(AppValues.p4),
-          child: ListView(
-            children: [
-              LanguageLevelSection(
-                quizzedLevel: viewModel.quizzedLevelA1,
+      body: Padding(
+        padding: const EdgeInsets.all(AppValues.p4),
+        child: Column(
+          children: [
+            if(viewModel.hasIncorrectQuestion) Padding(
+              padding: const EdgeInsets.fromLTRB(AppValues.p8, AppValues.p8, AppValues.p8, AppValues.p12),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: context.colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(AppValues.p8),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: AppValues.p20, vertical: AppValues.p8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Quiz Incorrect Conjugations", style: TextStyle(color: context.colorScheme.onPrimaryContainer)),
+                    FilledButton(child: Text("Start"), onPressed: () {
+                      QuizLengthSheet.show(context,
+                        showQuizScreen: (length) =>
+                            QuizScreen.show(context,
+                                quizzableQuestions: viewModel.latestIncorrectQuestions,
+                                quizLength: length,
+                            ),
+                      );
+                    }),
+                  ],
+                ),
               ),
+            ),
 
-              LanguageLevelSection(
-                quizzedLevel: viewModel.quizzedLevelA2,
-              ),
+            Flexible(
+              child: ListView(
+                clipBehavior: Clip.hardEdge,
+                children: [
+                  LanguageLevelSection(
+                    quizzedLevel: viewModel.quizzedLevelA1,
+                  ),
 
-              LanguageLevelSection(
-                quizzedLevel: viewModel.quizzedLevelB1,
-              ),
+                  LanguageLevelSection(
+                    quizzedLevel: viewModel.quizzedLevelA2,
+                  ),
 
-              LanguageLevelSection(
-                quizzedLevel: viewModel.quizzedLevelB2,
-              ),
+                  LanguageLevelSection(
+                    quizzedLevel: viewModel.quizzedLevelB1,
+                  ),
 
-              LanguageLevelSection(
-                quizzedLevel: viewModel.quizzedLevelC1,
+                  LanguageLevelSection(
+                    quizzedLevel: viewModel.quizzedLevelB2,
+                  ),
+
+                  LanguageLevelSection(
+                    quizzedLevel: viewModel.quizzedLevelC1,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

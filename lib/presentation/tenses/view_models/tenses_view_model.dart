@@ -31,6 +31,8 @@ class TensesViewModel extends ViewModel {
   }
 
   List<QuizzedQuestion> _quizzedQuestions = [];
+  List<QuizzedQuestion> get latestIncorrectQuestions => _quizzedQuestions.where((question) => !question.correct).take(100).toList();
+  bool get hasIncorrectQuestion => latestIncorrectQuestions.isNotEmpty;
 
   updateHistory(List<QuizzedQuestion> quizzedQuestions) {
     debugPrint("$_logTag | updateHistory()");
