@@ -1,7 +1,7 @@
 enum AnswerResult {
   incorrect("❌ Wrong Answer!"),
   blank("📄 Blank Answer!"),
-  wrongPronoun("🏳️‍⚧ ️Wrong Pronoun!"),
+  wrongPronoun("🥸 Wrong Pronoun!"),
   missingAccents("🎩 Almost, accents are missing ..."),
   almostCorrect("🧐 There is a typo somewhere ..."),
   correct("✅ Correct Answer!");

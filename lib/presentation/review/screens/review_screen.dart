@@ -9,10 +9,10 @@ import '../../../utilities/app_values.dart';
 import '../../about/screens/about_screen.dart';
 import '../../filters/screens/filters_screen.dart';
 import '../../filters/view_models/filters_view_model.dart';
+import '../../widgets/quiz_history_count.dart';
 import '../../widgets/shake_widget.dart';
+import '../../widgets/solution_sheet.dart';
 import '../view_models/review_view_model.dart';
-import '../widgets/quiz_history_count.dart';
-import '../widgets/solution_sheet.dart';
 import 'review_content.dart';
 
 final _logTag = (ReviewScreen).toString();
@@ -113,7 +113,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
       appBar: AppBar(
         title: Text("Review 🏅"),
         actions: [
-          QuizHistoryCount(),
+          _QuizHistoryCount(),
           IconButton(
             onPressed: _showFiltersScreen, icon: Icon(Icons.edit_rounded),
             visualDensity: VisualDensity(horizontal: -1.0),
@@ -137,7 +137,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
               return Center(child: Text('No verbs available 💨'));
             } else {
               return QuizContent(
-                onSettingsButtonPressed: _showFiltersScreen,
+                onFiltersButtonPressed: _showFiltersScreen,
                 checkAnswer: _checkAnswer,
                 textController: _textController,
                 shakeKey: _shakeKey,
@@ -147,5 +147,17 @@ class _ReviewScreenState extends State<ReviewScreen> {
         ),
       ),
     );
+  }
+}
+
+class _QuizHistoryCount extends StatelessWidget {
+  const _QuizHistoryCount({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final viewModel = context.watch<ReviewViewModel>();
+    return viewModel.hasCurrentQuestion ?
+    QuizHistoryCount(negatives: viewModel.negativeQuizCount, positives: viewModel.positiveQuizCount) :
+    Spacer();
   }
 }

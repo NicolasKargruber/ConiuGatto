@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../utilities/app_values.dart';
-import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/review_view_model.dart';
+import '../../domain/models/answer_result.dart';
+import '../../utilities/app_values.dart';
+import '../../utilities/extensions/build_context_extensions.dart';
 
 class QuizInputFields extends StatelessWidget {
-  const QuizInputFields({super.key, required this.textController, required this.onSubmitted});
+  const QuizInputFields({super.key,
+    required this.textController,
+    required this.onSubmitted,
+    required this.hasCorrectAnswer,
+    this.answerResult,
+  });
   
   final TextEditingController textController;
   final void Function(String) onSubmitted;
+  final bool hasCorrectAnswer;
+  final AnswerResult? answerResult;
 
   static final _logTag = (QuizInputFields).toString();
 
@@ -37,8 +43,6 @@ class QuizInputFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.watch<ReviewViewModel>();
-    
     return Column(
       children: [
         // Answer Text Field
@@ -52,11 +56,11 @@ class QuizInputFields extends StatelessWidget {
           decoration: InputDecoration(
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: viewModel.hasCorrectAnswer ? context.colorScheme.tertiary : context.colorScheme.primary,
+                color: hasCorrectAnswer ? context.colorScheme.tertiary : context.colorScheme.primary,
                 width: AppValues.s2,
               ),
             ),
-            enabledBorder: viewModel.hasCorrectAnswer ? UnderlineInputBorder(
+            enabledBorder: hasCorrectAnswer ? UnderlineInputBorder(
               borderSide: BorderSide(
                 color: context.colorScheme.tertiary,
                 width: AppValues.s2,
@@ -69,20 +73,20 @@ class QuizInputFields extends StatelessWidget {
             suffixIcon: IconButton.filled(
               padding: EdgeInsets.all(AppValues.p0),
               onPressed: textController.clear,
-              style: viewModel.hasCorrectAnswer
+              style: hasCorrectAnswer
                   ? IconButton.styleFrom(backgroundColor: context.colorScheme.tertiary)
                   : null,
               icon: Icon(
                 Icons.clear,
                 size: AppValues.s12,
-                color: viewModel.hasCorrectAnswer ? context.colorScheme.onTertiary : context.colorScheme.onPrimary,
+                color: hasCorrectAnswer ? context.colorScheme.onTertiary : context.colorScheme.onPrimary,
               ),
             ),
           ),
         ),
 
         // Wrong Answer Message
-        if(viewModel.currentAnswerResult case var result?)
+        if(answerResult case var result?)
           ...[
             SizedBox(height: AppValues.s4),
             Text(result.message),
@@ -91,11 +95,20 @@ class QuizInputFields extends StatelessWidget {
         SizedBox(height: AppValues.s4),
 
         // Accents Buttons
-        Wrap(children: ["è", "à", "ò", "ì", "é"]
-            .map((letter) => ActionChip(
-          label: Text(letter),
-          onPressed: () => _addLetterAtSelection(letter),
-        )).toList()),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppValues.p12),
+          child: FittedBox(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: ["è", "à", "ò", "ì", "é"].map((letter) {
+                  return ActionChip(
+                    label: Text(letter),
+                    onPressed: () => _addLetterAtSelection(letter),
+                  );
+                }).toList(),
+            ),
+          ),
+        ),
       ],
     );
   }

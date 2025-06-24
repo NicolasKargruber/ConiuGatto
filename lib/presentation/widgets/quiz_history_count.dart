@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../utilities/app_values.dart';
-import '../../../utilities/extensions/build_context_extensions.dart';
-import '../view_models/review_view_model.dart';
+import '../../utilities/app_values.dart';
 
-// TODO separate viewModel from widget (to "ReviewAppBar")
-// TODO Move to general widgets
 class QuizHistoryCount extends StatelessWidget {
-  const QuizHistoryCount({super.key});
+  const QuizHistoryCount({super.key, required this.negatives, required this.positives});
+
+  final int negatives;
+  final int positives;
 
   static final _tween = Tween<Offset>(
     begin: Offset(0, -1),
@@ -19,9 +17,8 @@ class QuizHistoryCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<ReviewViewModel>();
 
-    return viewModel.hasQuizzableQuestions ? Row(
+    return Row(
       children: [
         AnimatedSwitcher(
           duration: _duration,
@@ -31,8 +28,8 @@ class QuizHistoryCount extends StatelessWidget {
               child: child,
             );
           },
-          child: Text("${viewModel.negativeQuizCount}",
-              key: ValueKey(viewModel.negativeQuizCount),
+          child: Text("$negatives",
+              key: ValueKey(negatives),
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
         ),
@@ -47,14 +44,14 @@ class QuizHistoryCount extends StatelessWidget {
               child: child,
             );
           },
-          child: Text("${viewModel.positiveQuizCount}",
-              key: ValueKey(viewModel.positiveQuizCount),
+          child: Text("$positives",
+              key: ValueKey(positives),
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
           ),
         ),
         SizedBox(width: AppValues.s2),
         Text("✓", style: TextStyle(color: Colors.green, fontWeight: FontWeight.w800, fontSize: AppValues.fs20)),
       ],
-    ) : Spacer();
+    );
   }
 }
