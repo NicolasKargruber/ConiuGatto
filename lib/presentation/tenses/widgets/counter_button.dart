@@ -3,37 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 
-class CounterButton extends StatefulWidget {
-  const CounterButton({super.key, required this.value, required this.onChanged});
+class CounterButton extends StatelessWidget {
+  const CounterButton({super.key, required this.value, required this.increment, required this.decrement});
+
   final int value;
-  final Function(int) onChanged;
-
-  @override
-  State<CounterButton> createState() => _CounterButtonState();
-}
-
-class _CounterButtonState extends State<CounterButton> {
-  int _counter = 0;
-
-  @override
-  void initState() {
-    _counter = widget.value;
-    super.initState();
-  }
-
-  void _increment() {
-    setState(() {
-      _counter++;
-    });
-    widget.onChanged(_counter);
-  }
-
-  void _decrement() {
-    setState(() {
-      _counter--;
-    });
-    widget.onChanged(_counter);
-  }
+  final Function()? increment;
+  final Function()? decrement;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +24,9 @@ class _CounterButtonState extends State<CounterButton> {
           Transform.scale(
             scale: 0.8,
             child: IconButton(
-              onPressed: _decrement,
+              onPressed: decrement,
               icon: Icon(Icons.remove, color: context.colorScheme.onPrimaryContainer),
+              style: ElevatedButton.styleFrom(disabledBackgroundColor: context.colorScheme.surfaceContainer),
             ),
           ),
           Container(
@@ -60,15 +36,16 @@ class _CounterButtonState extends State<CounterButton> {
             ),
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p12, vertical: AppValues.p8),
             child: Text(
-              '$_counter',
+              '$value',
               style: TextStyle(fontSize: AppValues.fs16, color: context.colorScheme.onSurface),
             ),
           ),
           Transform.scale(
             scale: 0.8,
             child: IconButton(
-              onPressed: _increment,
+              onPressed: increment,
               icon: Icon(Icons.add, color: context.colorScheme.onPrimaryContainer),
+              style: ElevatedButton.styleFrom(disabledBackgroundColor: context.colorScheme.surfaceContainer),
             ),
           ),
         ],

@@ -35,14 +35,26 @@ class QuizContent extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AnimatedSmoothIndicator(
+          if(viewModel.quizLength <= 10) AnimatedSmoothIndicator(
             activeIndex: viewModel.totalQuizCount,
             count: viewModel.quizLength,
             effect: WormEffect(
               activeDotColor: context.colorScheme.primary,
               dotColor: context.colorScheme.surfaceContainerHighest,
             ),
+          )
+          else Container(
+            decoration: BoxDecoration(
+              color: context.colorScheme.surfaceContainer,
+              borderRadius: BorderRadius.circular(AppValues.r12),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p8),
+              child: Text("${viewModel.quizHistory.length} / ${viewModel.quizLength}",
+                  style: context.textTheme.headlineLarge,
+              )
           ),
+
+          SizedBox(height: AppValues.s16),
 
           Expanded(
             child: Center(

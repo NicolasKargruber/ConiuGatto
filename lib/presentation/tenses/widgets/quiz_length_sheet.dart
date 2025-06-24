@@ -64,10 +64,7 @@ class QuizLengthSheet extends StatelessWidget {
 
           SizedBox(height: AppValues.s16),
 
-          CounterButton(
-            value: viewModel.quizLength,
-              onChanged: (value) => viewModel.quizLength = value,
-          ),
+          _CounterButton(),
 
           SizedBox(height: AppValues.s16),
           FilledButton(
@@ -79,6 +76,21 @@ class QuizLengthSheet extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CounterButton extends StatelessWidget {
+  const _CounterButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final viewModel = context.watch<QuizLengthViewModel>();
+
+    return CounterButton(
+      value: viewModel.quizLength,
+      increment: viewModel.increment,
+      decrement: viewModel.decrement,
     );
   }
 }

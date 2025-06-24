@@ -16,5 +16,18 @@ class QuizLengthViewModel extends ViewModel {
   @override
   Future initialize() async {}
 
-  int quizLength = 5;
+  int _quizLength = 5;
+  int get quizLength => _quizLength;
+  Function()? get increment => _quizLength < 50 ? _increment : null;
+  Function()? get decrement => _quizLength > 5 ? _decrement : null;
+
+  void _increment() {
+    _quizLength+=5;
+    notifyListeners();
+  }
+
+  void _decrement() {
+    _quizLength-=5;
+    notifyListeners();
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,39 +44,54 @@ class RevisionScreen extends StatelessWidget {
 
                   const SizedBox(height: AppValues.s12),
 
-                  ...viewModel.questions.map((question) {
+                  ...viewModel.questions.mapIndexed((index, question) {
                     return Card(
                       margin: const EdgeInsets.symmetric(vertical: AppValues.p8, horizontal: AppValues.p16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppValues.r12),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: AppValues.p24, vertical: AppValues.p16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                        padding: const EdgeInsets.symmetric(horizontal: AppValues.p20, vertical: AppValues.p16),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              question.tense.extendedLabel,
-                              style: const TextStyle(
-                                fontSize: AppValues.fs18,
-                                fontWeight: FontWeight.w400,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text(
+                                    question.tense.extendedLabel,
+                                    style: const TextStyle(
+                                      fontSize: AppValues.fs18,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  const SizedBox(height: AppValues.s8),
+                                  Text(
+                                    "Answer: ${question.answer??' '}",
+                                    style: TextStyle(
+                                        fontSize: AppValues.fs14,
+                                        color: question.isCorrect ? context.colorScheme.tertiary : context.colorScheme.error,
+                                        fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(height: AppValues.s4),
+                                  Text(
+                                    "Solution: ${question.solutionExtended}",
+                                    style:  TextStyle(
+                                      fontSize: AppValues.fs14,
+                                      color: context.colorScheme.onSurfaceVariant,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: AppValues.s8),
-                            Text(
-                              "Answer: ${question.answer??' '}",
-                              style: TextStyle(
-                                  fontSize: AppValues.fs14,
-                                  color: question.isCorrect ? context.colorScheme.tertiary : context.colorScheme.error,
-                                  fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(height: AppValues.s4),
-                            Text(
-                              "Solution: ${question.solutionExtended}",
-                              style:  TextStyle(
-                                fontSize: AppValues.fs14,
-                                color: context.colorScheme.onSurfaceVariant,
+                            const SizedBox(width: AppValues.s16),
+                            SizedBox(
+                              width: AppValues.s32,
+                              child: CircleAvatar(
+                                backgroundColor: context.colorScheme.surfaceContainerHighest,
+                                child: Text("${index+1}", style: TextStyle(fontSize: AppValues.fs16)),
                               ),
                             ),
                           ],

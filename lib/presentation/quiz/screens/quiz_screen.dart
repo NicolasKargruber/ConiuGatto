@@ -154,13 +154,9 @@ class _QuizScreenState extends State<QuizScreen> {
       body: PopScope<Object?>(
         canPop: false,
         onPopInvokedWithResult: (bool didPop, Object? result) async {
-          if (didPop) {
-            return;
-          }
+          if (didPop) return;
           final bool shouldPop = await _showBackDialog() ?? false;
-          if (context.mounted && shouldPop) {
-            Navigator.pop(context);
-          }
+          if (context.mounted && shouldPop) Navigator.pop(context);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
