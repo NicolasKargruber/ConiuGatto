@@ -49,7 +49,10 @@ class ChooseTensesSheet extends StatelessWidget {
               maxWidth: double.infinity,
               maxHeight: AppValues.s36,
             ),
-            child: LanguageLevelChips(),
+            child: LanguageLevelChips(
+              isSelected: viewModel.coversLanguageLevel,
+              onSelected: (level) => viewModel.addTenseFilters(level.coveredTenses),
+            ),
           ),
 
           SizedBox(height: AppValues.s16),

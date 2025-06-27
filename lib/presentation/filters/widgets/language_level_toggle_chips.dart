@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/models/enums/language_level.dart';
 import '../../../utilities/app_values.dart';
-import '../../widgets/custom_chip.dart';
 
-class LanguageLevelChoiceChips extends StatelessWidget {
-  const LanguageLevelChoiceChips({
-    super.key,
-    required this.value,
-    required this.onSelected,
-  });
+class LanguageLevelChips extends StatelessWidget {
+  const LanguageLevelChips({super.key, required this.isSelected, required this.onSelected});
 
-  final LanguageLevel? value;
+  final bool Function(LanguageLevel) isSelected;
   final Function(LanguageLevel) onSelected;
 
   @override
@@ -19,16 +14,16 @@ class LanguageLevelChoiceChips extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       itemCount: LanguageLevel.values.length,
-      separatorBuilder: (context, index) => SizedBox(width: AppValues.s12),
+      separatorBuilder: (context, index) => SizedBox(width: AppValues.s8),
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         final level = LanguageLevel.values[index];
-        return CustomChip(
-          label: level.label,
+        return FilterChip(
+          label: Text(level.label),
+          selected: isSelected(level),
           onSelected: (selected) {
             if(selected) onSelected(level);
           },
-          selected: level == value,
         );
       },
     );
