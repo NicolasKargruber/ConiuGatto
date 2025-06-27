@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/enums/italian_tense.dart';
+import '../../../domain/models/enums/language_level.dart';
 import '../../../domain/models/enums/mood.dart';
+import '../../../domain/utils/language_level_extensions.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
+import 'language_level_toggle_chips.dart';
 import '../view_models/filters_view_model.dart';
 
 class ChooseTensesSheet extends StatelessWidget {
@@ -15,7 +18,7 @@ class ChooseTensesSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("$_logTag | build()");
-    final viewModel = context.read<FiltersViewModel>();
+    final viewModel = context.watch<FiltersViewModel>();
 
     onSelectTense(bool selected, {required ItalianTense tense}) {
       if(selected) { viewModel.addTenseFilter(tense); }
@@ -39,7 +42,19 @@ class ChooseTensesSheet extends StatelessWidget {
             ),
           ),
 
-          _MoodSection(
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: AppValues.p12),
+            alignment: AlignmentDirectional.center,
+            constraints: BoxConstraints(
+              maxWidth: double.infinity,
+              maxHeight: AppValues.s36,
+            ),
+            child: LanguageLevelChips(),
+          ),
+
+          SizedBox(height: AppValues.s16),
+
+          MoodSection(
               label: Mood.indicative.label,
               italianTenses: ItalianTense.indicativeTenses,
               onSelectedTense: onSelectTense,
@@ -47,7 +62,7 @@ class ChooseTensesSheet extends StatelessWidget {
               isSelected: viewModel.isTenseSelected,
           ),
 
-          _MoodSection(
+          MoodSection(
               label: Mood.conditional.label,
               italianTenses: ItalianTense.conditionalTenses,
             onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.conditionalTenses),
@@ -55,7 +70,7 @@ class ChooseTensesSheet extends StatelessWidget {
               isSelected: viewModel.isTenseSelected,
           ),
 
-          _MoodSection(
+          MoodSection(
               label: Mood.subjunctive.label,
               italianTenses: ItalianTense.subjunctiveTenses,
             onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.subjunctiveTenses),
@@ -63,7 +78,7 @@ class ChooseTensesSheet extends StatelessWidget {
               isSelected: viewModel.isTenseSelected,
           ),
 
-          _MoodSection(
+          MoodSection(
               label: Mood.imperative.label,
               italianTenses: ItalianTense.imperativeTenses,
             onSelectedAll: () => viewModel.addTenseFilters(ItalianTense.imperativeTenses),
@@ -78,10 +93,10 @@ class ChooseTensesSheet extends StatelessWidget {
   }
 }
 
-class _MoodSection extends StatelessWidget {
-  static final String _logTag = (_MoodSection).toString();
+class MoodSection<M> extends StatelessWidget {
+  static final String _logTag = (MoodSection).toString();
 
-  const _MoodSection({super.key,
+  const MoodSection({super.key,
     required this.label,
     required this.italianTenses,
     required this.onSelectedAll,
@@ -97,9 +112,6 @@ class _MoodSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SELECT -> Listen, Rebuild ...
-    context.select<FiltersViewModel, List<ItalianTense>>((vm) => vm.tenseFilters);
-    debugPrint("$_logTag | build()");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

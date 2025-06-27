@@ -8,7 +8,7 @@ import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../about/screens/about_screen.dart';
 import '../../quiz/screens/quiz_screen.dart';
 import '../view_models/tenses_view_model.dart';
-import '../widgets/language_level_toggle_chips.dart';
+import '../../filters/widgets/language_level_toggle_chips.dart';
 import '../widgets/language_level_section.dart';
 import '../widgets/quiz_length_sheet.dart';
 
