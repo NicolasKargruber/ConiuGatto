@@ -5,12 +5,14 @@ import '../../../data/enums/pronoun.dart';
 import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/auxiliary_filter.dart';
 import '../../../domain/models/enums/language_level.dart';
+import '../../../domain/models/enums/mood.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/language_level_extensions.dart';
+import '../../../domain/utils/mood_extensions.dart';
 import '../../view_model.dart';
 
 class FiltersViewModel extends ViewModel {
@@ -123,7 +125,7 @@ class FiltersViewModel extends ViewModel {
     debugPrint("$_logTag | addTenseFilter($tense)");
     tenseFilters = {...tenseFilters, tense};
     _preferenceService.updateTensePrefs(tenseFilters.toList());
-    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
@@ -132,7 +134,7 @@ class FiltersViewModel extends ViewModel {
     debugPrint("$_logTag | addTenseFilters($tenses)");
     tenseFilters = {...tenseFilters, ...tenses};
     _preferenceService.updateTensePrefs(tenseFilters.toList());
-    debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
@@ -140,11 +142,20 @@ class FiltersViewModel extends ViewModel {
     debugPrint("$_logTag | removeTenseFilter($tense)");
     tenseFilters = {...tenseFilters}..remove(tense);
     _preferenceService.updateTensePrefs(tenseFilters.toList());
-    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
+    notifyListeners();
+  }
+
+  removeTenseFilters(List<ItalianTense> tenses) {
+    debugPrint("$_logTag | removeTenseFilters($tenses)");
+    tenseFilters = {...tenseFilters}..removeAll(tenses);
+    _preferenceService.updateTensePrefs(tenseFilters.toList());
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
   bool isTenseSelected(ItalianTense tense) => tenseFilters.contains(tense);
 
   bool coversLanguageLevel(LanguageLevel level) => tenseFilters.containsAll(level.coveredTenses);
+  bool coversMood(Mood mood) => tenseFilters.containsAll(mood.tenses);
 }

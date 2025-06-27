@@ -63,6 +63,7 @@ class TensesViewModel extends ViewModel {
     notifyListeners();
   }
 
+  // TODO: Summarize
   QuizzedLanguageLevel get quizzedLevelA1 {
     final quizzedTenses = LanguageLevel.a1.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);

@@ -7,7 +7,7 @@ class LanguageLevelChips extends StatelessWidget {
   const LanguageLevelChips({super.key, required this.isSelected, required this.onSelected});
 
   final bool Function(LanguageLevel) isSelected;
-  final Function(LanguageLevel) onSelected;
+  final Function(bool selected, {required LanguageLevel level}) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class LanguageLevelChips extends StatelessWidget {
         return FilterChip(
           label: Text(level.label),
           selected: isSelected(level),
-          onSelected: (selected) {
-            if(selected) onSelected(level);
-          },
+          onSelected: (selected) => onSelected(selected, level: level),
         );
       },
     );
