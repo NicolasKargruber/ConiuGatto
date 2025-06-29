@@ -63,32 +63,33 @@ class TensesViewModel extends ViewModel {
     notifyListeners();
   }
 
+  // TODO: Summarize
   QuizzedLanguageLevel get quizzedLevelA1 {
-    final quizzedTenses = LanguageLevelExtensions.a1Tenses.map(_toQuizzedTense).toList();
+    final quizzedTenses = LanguageLevel.a1.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.a1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelA2 {
-    final quizzedTenses = LanguageLevelExtensions.a2Tenses.map(_toQuizzedTense).toList();
+    final quizzedTenses = LanguageLevel.a2.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.a2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelB1 {
-    final quizzedTenses = LanguageLevelExtensions.b1Tenses.map(_toQuizzedTense).toList();
+    final quizzedTenses = LanguageLevel.b1.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.b1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelB2 {
-    final quizzedTenses = LanguageLevelExtensions.b2Tenses.map(_toQuizzedTense).toList();
+    final quizzedTenses = LanguageLevel.b2.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.b2, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }
 
   QuizzedLanguageLevel get quizzedLevelC1 {
-    final quizzedTenses = LanguageLevelExtensions.c1Tenses.map(_toQuizzedTense).toList();
+    final quizzedTenses = LanguageLevel.c1.coveredTenses.map(_toQuizzedTense).toList();
     final fluentTenses = quizzedTenses.where((tense) => tense.fluency >= fluencyMilestone);
     return (type: LanguageLevel.c1, quizzedTenses: quizzedTenses, progress: fluentTenses.length / quizzedTenses.length);
   }

@@ -4,11 +4,15 @@ import 'package:flutter/foundation.dart';
 import '../../../data/enums/pronoun.dart';
 import '../../../data/enums/italian_tense.dart';
 import '../../../domain/models/enums/auxiliary_filter.dart';
+import '../../../domain/models/enums/language_level.dart';
+import '../../../domain/models/enums/mood.dart';
 import '../../../domain/models/enums/verb_ending_filter.dart';
 import '../../../domain/models/enums/verb_favourite_filter.dart';
 import '../../../domain/models/enums/verb_irregularity_filter.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
+import '../../../domain/utils/language_level_extensions.dart';
+import '../../../domain/utils/mood_extensions.dart';
 import '../../view_model.dart';
 
 class FiltersViewModel extends ViewModel {
@@ -23,14 +27,12 @@ class FiltersViewModel extends ViewModel {
     debugPrint("$_logTag | initialize()");
     await _preferenceService.initializationFuture;
     // TODO use GetIt
-    tenseFilters = _preferenceService.loadTenses();
+    tenseFilters = _preferenceService.loadTenses().toSet();
     pronounFilters = _preferenceService.loadPronouns();
     favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
     auxiliaryFilter = _preferenceService.loadAuxiliaryFilter();
     endingFilter = _preferenceService.loadVerbEndingFilter();
     irregularityFilter = _preferenceService.loadVerbIrregularityFilter();
-    //_reflexiveFilterPref = preferenceManager.loadReflexiveFiltersPref();
-    //_customizedVerbsPrefs = preferenceManager.loadCustomizedVerbsPrefs();
   }
 
   // Update & Notify
@@ -43,19 +45,17 @@ class FiltersViewModel extends ViewModel {
     }
 
     _verbs = verbs;
-    if(isInitialized) notifyListeners();
+    if (isInitialized) notifyListeners();
     debugPrint("$_logTag | Loaded Verbs Count: ${_verbs.length}");
     debugPrint("$_logTag | Loaded Verbs: ${_verbs.map((e) => e.italianInfinitive)}");
   }
 
-  List<ItalianTense> tenseFilters = [];
+  Set<ItalianTense> tenseFilters = {};
   List<Pronoun> pronounFilters = [];
   VerbFavouriteFilter? favouriteFilter;
   AuxiliaryFilter? auxiliaryFilter = AuxiliaryFilter.any;
   VerbEndingFilter? endingFilter;
   VerbIrregularityFilter? irregularityFilter;
-  //late ReflexiveVerb _reflexiveFilterPref;
-  //List<Verb> _customizedVerbsPrefs = [];
 
   // Labels
   List<Verb> get verbs => _verbs;
@@ -92,24 +92,10 @@ class FiltersViewModel extends ViewModel {
     notifyListeners();
   }
 
-/*
-  addCustomVerb(Verb verb) {
-    _customizedVerbsPrefs.add(verb.prefKey);
-    debugPrint("$_logTag | Added ${verb.prefKey}");
-    notifyListeners();
-  }
-
-  removeCustomVerb(Verb verb) {
-    _customizedVerbsPrefs.remove(verb.prefKey);
-    debugPrint("$_logTag | Removed ${verb.prefKey}");
-    notifyListeners();
-  }
-
-  bool isCustomVerbSelected(Verb verb) => _customizedVerbsPrefs.contains(verb.prefKey);*/
-
   addPronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | addPronounFilter($pronoun)");
-    pronounFilters = List.from(pronounFilters)..add(pronoun);
+    pronounFilters = List.from(pronounFilters)
+      ..add(pronoun);
     _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
     notifyListeners();
@@ -117,7 +103,7 @@ class FiltersViewModel extends ViewModel {
 
   selectAllPronounFilters() {
     debugPrint("$_logTag | selectAllPronounFilters()");
-    if(UnorderedIterableEquality().equals(pronounFilters, Pronoun.values)) return;
+    if (UnorderedIterableEquality().equals(pronounFilters, Pronoun.values)) return;
     pronounFilters = List.from(Pronoun.values);
     _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
@@ -126,7 +112,8 @@ class FiltersViewModel extends ViewModel {
 
   removePronounFilter(Pronoun pronoun) {
     debugPrint("$_logTag | removePronounFilter($pronoun)");
-    pronounFilters = List.from(pronounFilters)..remove(pronoun);
+    pronounFilters = List.from(pronounFilters)
+      ..remove(pronoun);
     _preferenceService.updatePronounPrefs(pronounFilters);
     debugPrint("$_logTag | Saved Pronouns in Shared Preferences: $pronounFilters");
     notifyListeners();
@@ -134,30 +121,41 @@ class FiltersViewModel extends ViewModel {
 
   bool isPronounSelected(Pronoun pronoun) => pronounFilters.contains(pronoun);
 
-  addTenseFilter(ItalianTense tense){
+  addTenseFilter(ItalianTense tense) {
     debugPrint("$_logTag | addTenseFilter($tense)");
-    tenseFilters = tenseFilters + [tense];
-    _preferenceService.updateTensePrefs(tenseFilters);
-    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
+    tenseFilters = {...tenseFilters, tense};
+    _preferenceService.updateTensePrefs(tenseFilters.toList());
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
   addTenseFilters(List<ItalianTense> tenses) {
-    if(tenses.every((tense) => tenseFilters.contains(tense))) return;
+    if (tenses.every((tense) => tenseFilters.contains(tense))) return;
     debugPrint("$_logTag | addTenseFilters($tenses)");
-    tenseFilters = tenseFilters + tenses;
-    _preferenceService.updateTensePrefs(tenseFilters);
-    debugPrint("$_logTag | Saved Pronoun in Shared Preferences: $pronounFilters");
+    tenseFilters = {...tenseFilters, ...tenses};
+    _preferenceService.updateTensePrefs(tenseFilters.toList());
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
-  removeTenseFilter(ItalianTense tense){
+  removeTenseFilter(ItalianTense tense) {
     debugPrint("$_logTag | removeTenseFilter($tense)");
-    tenseFilters = List.from(tenseFilters)..remove(tense);
-    _preferenceService.updateTensePrefs(tenseFilters);
-    debugPrint("$_logTag | Saved Tenses in Shared Preferences: $tenseFilters");
+    tenseFilters = {...tenseFilters}..remove(tense);
+    _preferenceService.updateTensePrefs(tenseFilters.toList());
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
+    notifyListeners();
+  }
+
+  removeTenseFilters(List<ItalianTense> tenses) {
+    debugPrint("$_logTag | removeTenseFilters($tenses)");
+    tenseFilters = {...tenseFilters}..removeAll(tenses);
+    _preferenceService.updateTensePrefs(tenseFilters.toList());
+    debugPrint("$_logTag | Saved Pronoun in Shared Preferences");
     notifyListeners();
   }
 
   bool isTenseSelected(ItalianTense tense) => tenseFilters.contains(tense);
+
+  bool coversLanguageLevel(LanguageLevel level) => tenseFilters.containsAll(level.coveredTenses);
+  bool coversMood(Mood mood) => tenseFilters.containsAll(mood.tenses);
 }
