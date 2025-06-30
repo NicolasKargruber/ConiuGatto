@@ -1,0 +1,109 @@
+{
+  "tensesLabel": "Zeiten",
+  "tensesAppTitle": "Zeiten 📊",
+  "reviewLabel": "Review",
+  "reviewAppTitle": "Review 🏅",
+  "verbsLabel": "Verben",
+  "verbsAppTitle": "Verben 📚",
+
+  "aboutAppTitle": "Über",
+  "showIntroduction": "Einführung anzeigen",
+
+  "filtersAppTitle": "Filter 🕹️",
+  "tenseFiltersSubtitle": "Die folgenden Zeiten werden im Quiz verwendet.",
+  "updateTenses": "Zeiten ändern",
+  "tensesSheetSubtitle": "Wähle aus den folgenden Zeiten",
+  "verbFiltersSubtitle": "Die folgenden Verben werden im Quiz verwendet.",
+  "updateVerbs": "Verben ändern",
+  "verbsSheetSubtitle": "Wähle aus den folgenden Filtern",
+  "irregularityLabel": "Unregelmäßigkeit",
+  "endingLabel": "Endung",
+  "auxiliaryLabel": "Hilfsverb",
+  "pronounsLabel": "Pronomen",
+  "pronounFiltersSubtitle": "Die folgenden Pronomen werden im Quiz verwendet.",
+  "updatePronouns": "Pronomen ändern",
+  "pronounsSheetSubtitle": "Wähle aus den folgenden Pronomen",
+
+  "noVerbsAvailable": "Keine Verben verfügbar 💨",
+
+  "languageLevelsTitle": "Sprachniveaus",
+  "languageLevelsSubtitle": "Italienische Zeiten sind in\nfolgende GER-Niveaus kategorisiert:\nA1, A2, B1, B2 und C1.",
+  "languageLevelsBody": "Sobald du eine Zeit fließend beherrschst, wird sie als gemeistert markiert.",
+  "quizzingVerbsTitle": "Verben abfragen",
+  "quizzingVerbsSubtitle": "Jede Quizfrage besteht aus einem VERB, einer ZEIT (+ MODUS) und einem PRONOMEN.",
+  "quizzingVerbsBody": "Um eine Frage zu beantworten, musst du das Verb entsprechend konjugieren.",
+  "starringVerbsTitle": "Verben favorisieren",
+  "starringVerbsSubtitle": "Um nur bestimmte Verben abzufragen, kannst du sie mit dem Stern markieren.",
+  "starringVerbsBody": "Wende deine 'Markierten ⭐' Verben in den Quiz-Filtern an.",
+  "doubleAuxiliaryTitle": "Doppelte Hilfsverben",
+  "doubleAuxiliarySubtitle": "Einige italienische Verben können sowohl \nAVERE als auch ESSERE verwenden.",
+  "doubleAuxiliaryBody": "Du kannst wählen, welches Hilfsverb in den Konjugationstabellen angezeigt wird.",
+  "reportIssueTitle": "Problem melden",
+  "reportIssueSubtitle": "Alle Konjugationen haben irgendwo eine kleine Flagge. Tippe sie an, um ein Problem zu melden.",
+  "reportIssueBody": "Das hilft mir (dem Entwickler) sehr!",
+
+  "endQuizTitle": "Quiz beenden?",
+  "endQuizSubtitle": "Möchtest du dieses Quiz wirklich beenden?",
+  "quizAppTitle": "Quiz 🕹️",
+
+  "noMatchingQuestions": "Keine passenden Fragen verfügbar! 😭",
+  "checkYourFiltersLabel": "Überprüfe deine Filter in den Einstellungen",
+  "goToFilters": "Zu den Filtern",
+
+  "revisionAppTitle": "Zusammenfassung️",
+  "revisionAnswer": "Antwort: {answer}",
+  "@revisionAnswer": {
+    "placeholders": {
+      "answer": {
+        "type": "String",
+        "example": "vado"
+      }
+    }
+  },
+  "revisionSolution": "Lösung: {solution}",
+  "@revisionSolution": {
+    "placeholders": {
+      "solution": {
+        "type": "String",
+        "example": "(io) vado"
+      }
+    }
+  },
+
+  "quizIncorrectLabel": "Falsche Konjugationen wiederholen",
+  "tenseExample": "Beispiel: {example}",
+  "@tenseExample": {
+    "placeholders": {
+      "example": {
+        "type": "String",
+        "example": "io vado - Ich gehe"
+      }
+    }
+  },
+  "fluencyScoreLabel": "Sprachkompetenz:",
+  "lastQuizzedLabel": "Zuletzt abgefragt:",
+  "fluencyReachedLabel": "Glückwunsch! Du beherrschst diese Zeitform fließend! 🎉🕺🏻",
+  "revisionSheetTitle": "Wiederholungs-Quiz",
+  "revisionSheetSubtitle": "Anzahl der Fragen",
+  "startQuiz": "Quiz starten",
+
+  "verbSearchbarHint": "Verb suchen ...",
+  "noVerbFound": "Kein Verb gefunden! 🔍",
+  "requestVerb": "Verb anfragen",
+
+  "foundIssueLabel": "Problem gefunden?",
+  "reportIssue": "Problem melden",
+
+  "incorrectLabel": "Falsch",
+  "correctAnswerLabel": "Richtige Antwort",
+
+  "check": "Prüfen",
+  "back": "Zurück",
+  "start": "Start",
+  "skip": "Überspringen",
+  "done": "Fertig",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "selectAll": "Alle auswählen",
+  "unselectOrSelectAll": "Alle ab-/auswählen"
+}

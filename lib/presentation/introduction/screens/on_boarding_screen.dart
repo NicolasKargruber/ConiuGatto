@@ -78,14 +78,14 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
         ),
         // Starring verbs
         PageViewModel(
-          title: "Starring verbs",
+          title: context.localization.starringVerbsTitle,
           bodyWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
             child: Column(
               spacing: AppValues.s24,
               children: [
                 Text(
-                  "To quiz only specific verbs you can star them via the star button.",
+                  context.localization.starringVerbsSubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
@@ -126,7 +126,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   ],
                 ),
                 Text(
-                  "Apply your 'Starred ⭐️' verbs in your quiz filters.",
+                  context.localization.starringVerbsBody,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs18),
                 ),
