@@ -22,6 +22,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
       key: introKey,
       allowImplicitScrolling: true,
       pages: [
+        // Language Levels
         PageViewModel(
           title: "Language Levels",
           bodyWidget: Padding(
@@ -48,6 +49,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
           ),
           decoration: PageDecoration(bodyAlignment: Alignment.center),
         ),
+        // Quizzing verbs
         PageViewModel(
           title: "Quizzing verbs",
           bodyWidget: Padding(
@@ -74,6 +76,66 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
           ),
           decoration: PageDecoration(bodyAlignment: Alignment.center),
         ),
+        // Starring verbs
+        PageViewModel(
+          title: "Starring verbs",
+          bodyWidget: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
+            child: Column(
+              spacing: AppValues.s24,
+              children: [
+                Text(
+                  "To quiz only specific verbs you can star them via the star button.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: AppValues.fs16),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: AppValues.s12,
+                  children: [
+                    Flexible(
+                      flex: 3,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(AppValues.r12),
+                        child: Image.asset('assets/introduction_starred_verbs.jpeg'),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 3,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: AppValues.s12,
+                        children: [
+                          Flexible(
+                            flex: 4,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(AppValues.r12),
+                              child: Image.asset('assets/introduction_star_button.jpeg'),
+                            ),
+                          ),
+                          Flexible(
+                            flex: 3,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(AppValues.r12),
+                              child: Image.asset('assets/introduction_slide_to_star.jpeg'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "Apply your 'Starred ⭐️' verbs in your quiz filters.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: AppValues.fs18),
+                ),
+              ],
+            ),
+          ),
+          decoration: PageDecoration(bodyAlignment: Alignment.center),
+        ),
+        // Double Auxiliary
         PageViewModel(
           title: "Double Auxiliary",
           bodyWidget: Padding(
@@ -100,6 +162,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
           ),
           decoration: PageDecoration(bodyAlignment: Alignment.center),
         ),
+        // Report Issue
         PageViewModel(
           title: "Report an issue",
           bodyWidget: Padding(

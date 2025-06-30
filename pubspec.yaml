@@ -85,6 +85,9 @@ flutter:
     - assets/introduction_language_level.jpg
     - assets/introduction_quiz.jpg
     - assets/introduction_report_issue.jpg
+    - assets/introduction_slide_to_star.jpeg
+    - assets/introduction_star_button.jpeg
+    - assets/introduction_starred_verbs.jpeg
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

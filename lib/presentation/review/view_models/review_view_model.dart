@@ -10,6 +10,7 @@ import '../../../domain/models/verb.dart';
 import '../../../domain/service/history_service.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/filter_extensions.dart';
+import '../../../domain/utils/top_verbs.dart';
 import '../../../domain/utils/url_helper.dart';
 import '../../../utilities/extensions/iterable_extensions.dart';
 import '../../view_model.dart';
@@ -107,6 +108,15 @@ class ReviewViewModel extends ViewModel {
     final favouriteFilter = _preferenceService.loadVerbFavouriteFilter();
     switch (favouriteFilter) {
       case VerbFavouriteFilter.all:
+        break;
+      case VerbFavouriteFilter.top25:
+        verbs = verbs.where((verb) => TopItalianVerbs.top25.contains(verb.id)).toList();
+        break;
+      case VerbFavouriteFilter.top50:
+        verbs = verbs.where((verb) => TopItalianVerbs.top50.contains(verb.id)).toList();
+        break;
+      case VerbFavouriteFilter.top100:
+        verbs = verbs.where((verb) => TopItalianVerbs.top100.contains(verb.id)).toList();
         break;
       case VerbFavouriteFilter.starred:
         verbs = _preferenceService.getStarredVerbsFrom(verbs);
