@@ -470,6 +470,84 @@ abstract class AppLocalizations {
   /// **'Correct Answer'**
   String get correctAnswerLabel;
 
+  /// No description provided for @incorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'❌ Wrong Answer!'**
+  String get incorrectAnswer;
+
+  /// No description provided for @blankAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'📄 Blank Answer!'**
+  String get blankAnswer;
+
+  /// No description provided for @wrongPronounInAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'🥸 Wrong Pronoun!'**
+  String get wrongPronounInAnswer;
+
+  /// No description provided for @missingAccentsInAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'🎩 Almost, accents are missing ...'**
+  String get missingAccentsInAnswer;
+
+  /// No description provided for @almostCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'🧐 There is a typo somewhere ...'**
+  String get almostCorrectAnswer;
+
+  /// No description provided for @correctAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Correct Answer!'**
+  String get correctAnswer;
+
+  /// No description provided for @regular.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular'**
+  String get regular;
+
+  /// No description provided for @irregular.
+  ///
+  /// In en, this message translates to:
+  /// **'Irregular'**
+  String get irregular;
+
+  /// No description provided for @highlyIrregular.
+  ///
+  /// In en, this message translates to:
+  /// **'Highly irregular'**
+  String get highlyIrregular;
+
+  /// No description provided for @never.
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get never;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// No description provided for @daysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days ago'**
+  String daysAgo(int days);
+
   /// No description provided for @check.
   ///
   /// In en, this message translates to:

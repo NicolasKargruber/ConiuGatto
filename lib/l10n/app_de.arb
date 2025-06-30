@@ -97,6 +97,30 @@
   "incorrectLabel": "Falsch",
   "correctAnswerLabel": "Richtige Antwort",
 
+  "incorrectAnswer": "❌ Falsche Antwort!",
+  "blankAnswer": "📄 Leere Eingabe!",
+  "wrongPronounInAnswer": "🥸 Falsches Pronomen!",
+  "missingAccentsInAnswer": "🎩 Fast, Akzente fehlen ...",
+  "almostCorrectAnswer": "🧐 Da ist wohl ein Tippfehler ...",
+  "correctAnswer": "✅ Richtige Antwort!",
+
+  "regular": "regulär",
+  "irregular": "irregulär",
+  "highlyIrregular": "stark irregulär",
+
+  "never": "Noch nie",
+  "today": "Heute",
+  "yesterday": "Gestern",
+  "daysAgo": "{days} Tage her",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+
   "check": "Prüfen",
   "back": "Zurück",
   "start": "Start",

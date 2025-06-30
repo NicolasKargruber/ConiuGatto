@@ -215,6 +215,47 @@ class AppLocalizationsDe extends AppLocalizations {
   String get correctAnswerLabel => 'Richtige Antwort';
 
   @override
+  String get incorrectAnswer => '❌ Falsche Antwort!';
+
+  @override
+  String get blankAnswer => '📄 Leere Eingabe!';
+
+  @override
+  String get wrongPronounInAnswer => '🥸 Falsches Pronomen!';
+
+  @override
+  String get missingAccentsInAnswer => '🎩 Fast, Akzente fehlen ...';
+
+  @override
+  String get almostCorrectAnswer => '🧐 Da ist wohl ein Tippfehler ...';
+
+  @override
+  String get correctAnswer => '✅ Richtige Antwort!';
+
+  @override
+  String get regular => 'regulär';
+
+  @override
+  String get irregular => 'irregulär';
+
+  @override
+  String get highlyIrregular => 'stark irregulär';
+
+  @override
+  String get never => 'Noch nie';
+
+  @override
+  String get today => 'Heute';
+
+  @override
+  String get yesterday => 'Gestern';
+
+  @override
+  String daysAgo(int days) {
+    return '$days Tage her';
+  }
+
+  @override
   String get check => 'Prüfen';
 
   @override

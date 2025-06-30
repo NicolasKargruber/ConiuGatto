@@ -14,7 +14,6 @@ import 'tenses/indicative_tenses.dart';
 import 'tenses/subjunctive_tenses.dart';
 import 'tenses/tense.dart';
 
-
 class Verb extends BaseVerb {
   final String id;
   final TranslatedConjugation infinitive;

@@ -1,20 +1,21 @@
+
+
 enum Pronoun {
-  firstSingular('io', 'I', 'mi'),
-  secondSingular('tu', 'you', 'ti'),
-  thirdSingular('lui/lei', 'he/she', 'si'),
-  firstPlural('noi', 'we', 'ci'),
-  secondPlural('voi', 'you all', 'vi'),
-  thirdPlural('loro', 'they', 'si');
+  firstSingular('io', 'mi'),
+  secondSingular('tu', 'ti'),
+  thirdSingular('lui/lei', 'si'),
+  firstPlural('noi', 'ci'),
+  secondPlural('voi', 'vi'),
+  thirdPlural('loro', 'si');
 
   bool get isPlural => this == Pronoun.firstPlural || this == Pronoun.secondPlural || this == Pronoun.thirdPlural;
 
   String get prefKey => jsonKey;
   String get jsonKey  => italian; // => "io"
   final String italian; // => "io"
-  final String english; // => "I"
   final String reflexivePronoun; // => "mi"
 
-  const Pronoun(this.italian, this.english, this.reflexivePronoun);
+  const Pronoun(this.italian, this.reflexivePronoun);
 
   factory Pronoun.fromJson(dynamic json)
   => Pronoun.values.firstWhere((e) => e.jsonKey == json);

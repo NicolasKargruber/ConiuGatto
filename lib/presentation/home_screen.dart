@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       create: (context) => TensesViewModel(
           context.read<SharedPreferenceService>(),
           context.read<HistoryService>(),
+          context,
       ),
       update: (_, historyService, historyViewModel) => historyViewModel!..updateHistory(historyService.quizzedQuestions),
       child: TensesScreen(),

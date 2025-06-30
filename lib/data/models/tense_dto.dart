@@ -3,7 +3,7 @@ import 'verb_dto.dart';
 
 // typedefs - Conjugations
 typedef Conjugation = MapEntry<Pronoun, TranslatedConjugation?>;
-conjugatedVerbOrNullFrom(Map<String, dynamic>? json) => json != null ? conjugatedVerbFrom(json) : null;
+conjugatedVerbOrNullFrom(Map<String, dynamic>? json) => json != null ? translatedConjugationFrom(json) : null;
 
 final _logTag = (TenseDTO).toString();
 

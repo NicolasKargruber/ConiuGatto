@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../data/utils/pronoun_extensions.dart';
@@ -147,7 +148,7 @@ class Question {
 
   String get question => "${pronoun.italian} (${verb.italianInfinitive})";
 
-  String? get translation => tense[pronoun]?.englishWithPronoun;
+  String? getTranslation(BuildContext context) => tense[pronoun]?.getTranslationWithPronoun(context);
 
   String? get solutionExtended => "(${pronoun.italian}) $solution";
 

@@ -11,6 +11,7 @@ import '../models/tenses/subjunctive_tenses.dart';
 import '../models/tenses/tense.dart';
 import '../models/verb.dart';
 
+// TODO
 extension GenerateTenses on Verb {
   String get _generatePastParticiple => "$stem${ending == 'ARE' ? 'ato' : ending == 'ERE' ? 'uto' : 'ito'}";
   String get _generatePresentGerund => "$stem${ending == 'ARE' ? 'ando' : ending == 'ERE' ? 'endo' : 'endo'}";
@@ -32,6 +33,7 @@ extension GenerateTenses on Verb {
     return Conjugation(pronoun, (
     italian: "$conjugatedItalianAuxiliary $italianPastParticiple",
     english: "$conjugatedEnglishAuxiliary ${pastParticiple.english}",
+    german: "$conjugatedEnglishAuxiliary ${pastParticiple.german}",
     ));
   }
   
@@ -46,7 +48,13 @@ extension GenerateIndicative on Verb {
   /// => Presente Progressivo
   PresentContinuousIndicative get presentContinuousIndicative {
     final compoundVerbs = CompoundVerbs.instance;
-    conjugate(Pronoun pronoun) => Conjugation(pronoun, (italian: "${compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}", english: "${compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}"));
+    conjugate(Pronoun pronoun) => Conjugation(pronoun,
+        (
+          italian: "${compoundVerbs.conjugateStare(pronoun)!} ${presentGerund.italian}",
+          english: "${compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.english}",
+          german: "${compoundVerbs.conjugateStareInEnglish(pronoun)!} ${presentGerund.german}",
+        )
+    );
     return PresentContinuousIndicative.from(
         conjugations: Conjugations.fromEntries(Pronoun.values.map(conjugate)),
         generated: _generatePresentContinuousIndicative,

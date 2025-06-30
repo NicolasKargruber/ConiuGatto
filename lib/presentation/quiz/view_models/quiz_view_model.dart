@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/pronoun.dart';
@@ -92,7 +93,7 @@ class QuizViewModel extends ViewModel {
   // Getters - Quiz Labels
   String? get currentTitle => _currentQuestion?.currentTitle;
   String? get currentQuestionLabel => _currentQuestion?.question;
-  String? get currentTranslation => _currentQuestion?.translation;
+  String? getCurrentTranslation(BuildContext context) => _currentQuestion?.getTranslation(context);
   String? get currentSolution => _currentQuestion?.solution;
   String? get currentAuxiliaryLabel => _currentQuestion?.auxiliary.name.toUpperCase();
 
@@ -167,7 +168,7 @@ class QuizViewModel extends ViewModel {
     // Null safety
     if (_currentQuestion case var question?) {
       final result = question.checkAnswer(answer);
-      debugPrint("$_logTag | ${result.message}");
+      debugPrint("$_logTag | ${result.name}");
       _currentAnswerResult = result;
       notifyListeners();
     }

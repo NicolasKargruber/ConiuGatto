@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../data/enums/italian_tense.dart';
@@ -18,8 +19,9 @@ class TensesViewModel extends ViewModel {
 
   final SharedPreferenceService _preferenceService;
   final HistoryService _historyService;
+  late final BuildContext _context;
 
-  TensesViewModel(this._preferenceService, this._historyService);
+  TensesViewModel(this._preferenceService, this._historyService, this._context);
 
   // Initialized in Parent Constructor
   @override
@@ -109,6 +111,6 @@ class TensesViewModel extends ViewModel {
         fluency = fluency + weight * (0.5 - fluency);
       }
     }
-    return (type: tense, daysAgoLabel: quizzedQuestions.daysAgoLabel, fluency: fluency, milestone: fluencyMilestone);
+    return (type: tense, daysAgoLabel: quizzedQuestions.getDaysAgoLabel(_context), fluency: fluency, milestone: fluencyMilestone);
   }
 }
