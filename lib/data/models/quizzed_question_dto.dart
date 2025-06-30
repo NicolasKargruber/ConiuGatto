@@ -1,4 +1,4 @@
-import '../enums/auxiliary.dart';
+import '../enums/italian_auxiliary.dart';
 import '../enums/italian_tense.dart';
 import '../enums/pronoun.dart';
 
@@ -7,7 +7,7 @@ class QuizzedQuestionDTO {
   final DateTime date;
   final String verbID;
   final Pronoun pronoun;
-  final Auxiliary auxiliary;
+  final ItalianAuxiliary auxiliary;
   final ItalianTense tense;
   final bool correct;
 
@@ -26,7 +26,7 @@ class QuizzedQuestionDTO {
     date: DateTime.parse(json["date"] as String),
     verbID: json["verbID"] as String,
     pronoun: Pronoun.fromJson(json["pronoun"] as String),
-    auxiliary: Auxiliary.fromJson(json["auxiliary"] as String),
+    auxiliary: ItalianAuxiliary.fromJson(json["auxiliary"] as String),
     tense: ItalianTense.fromJson(json["tense"] as String),
     correct: json["correct"] as int == 1,
   );

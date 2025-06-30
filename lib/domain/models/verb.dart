@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 
-import '../../data/enums/auxiliary.dart';
+import '../../data/enums/german_auxiliary.dart';
+import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/irregularity.dart';
 import '../../data/enums/regularity.dart';
 import '../../data/models/verb_dto.dart';
@@ -19,7 +20,8 @@ class Verb extends BaseVerb {
   final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
-  final List<Auxiliary> auxiliaries;
+  final List<ItalianAuxiliary> auxiliaries;
+  final GermanAuxiliary germanAuxiliary;
   final TranslatedConjugation pastParticiple;
   final TranslatedConjugation presentGerund;
 
@@ -35,6 +37,7 @@ class Verb extends BaseVerb {
     required this.regularity,
     required this.irregularities,
     required this.auxiliaries,
+    required this.germanAuxiliary,
     required super.presentIndicative,
     required super.imperfectIndicative,
     required super.historicalPresentPerfectIndicative,
@@ -55,6 +58,7 @@ class Verb extends BaseVerb {
       regularity: dto.regularity,
       irregularities: dto.irregularities,
       auxiliaries: dto.auxiliaries,
+      germanAuxiliary: dto.germanAuxiliary,
       presentIndicative: PresentIndicative.from(conjugations: dto.presentIndicative.conjugations, generated: dto.generatedPresentIndicative),
       imperfectIndicative: ImperfectIndicative.from(conjugations: dto.imperfectIndicative.conjugations, generated: dto.generatedImperfectIndicative),
       historicalPresentPerfectIndicative: HistoricalPresentPerfectIndicative.from(conjugations: dto.historicalPresentPerfectIndicative.conjugations, generated: dto.generatedHistoricalPresentPerfectIndicative),
@@ -78,10 +82,10 @@ class Verb extends BaseVerb {
   String get italianInfinitive => infinitive.italian;
   String get translation => infinitive.english;
   bool get isRegular => regularity.isRegular;
-  bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(Auxiliary.values, auxiliaries);
+  bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(ItalianAuxiliary.values, auxiliaries);
 
   // Helpers
-  Tense Function(Auxiliary) getTense(ItalianTense tense) {
+  Tense Function(ItalianAuxiliary) getTense(ItalianTense tense) {
     return switch(tense) {
       ItalianTense.presentIndicative => (_) => presentIndicative,
       ItalianTense.presentContinuousIndicative => (_) => presentContinuousIndicative,

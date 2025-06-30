@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../data/enums/auxiliary.dart';
+import '../../../data/enums/italian_auxiliary.dart';
 import '../../../domain/models/tenses/tense.dart';
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
@@ -30,8 +30,8 @@ class VerbDetailViewModel extends ViewModel {
   }
 
   // State
-  late Auxiliary _selectedAuxiliary;
-  Auxiliary get selectedAuxiliary => _selectedAuxiliary;
+  late ItalianAuxiliary _selectedAuxiliary;
+  ItalianAuxiliary get selectedAuxiliary => _selectedAuxiliary;
   bool _isStarred = false;
   bool get isStarred => _isStarred;
 
@@ -63,7 +63,7 @@ class VerbDetailViewModel extends ViewModel {
     notifyListeners();
   }
 
-  selectAuxiliary(Auxiliary? auxiliary) {
+  selectAuxiliary(ItalianAuxiliary? auxiliary) {
     debugPrint("$_logTag | selectAuxiliaryAtIndex($auxiliary)");
     if(auxiliary == null) return;
     _selectedAuxiliary = auxiliary;

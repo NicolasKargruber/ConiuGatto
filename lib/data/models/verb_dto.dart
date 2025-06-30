@@ -1,4 +1,5 @@
-import '../enums/auxiliary.dart';
+import '../enums/german_auxiliary.dart';
+import '../enums/italian_auxiliary.dart';
 import '../enums/irregularity.dart';
 import '../enums/pronoun.dart';
 import '../enums/regularity.dart';
@@ -16,7 +17,8 @@ class VerbDTO {
   final TranslatedConjugation infinitive;
   final Regularity regularity;
   final Set<Irregularity> irregularities;
-  final List<Auxiliary> auxiliaries;
+  final List<ItalianAuxiliary> auxiliaries;
+  final GermanAuxiliary germanAuxiliary;
   final TranslatedConjugation pastParticiple;
   final TranslatedConjugation presentGerund;
 
@@ -54,6 +56,7 @@ class VerbDTO {
     required this.regularity,
     required this.irregularities,
     required this.auxiliaries,
+    required this.germanAuxiliary,
     required this.presentIndicative,
     required this.imperfectIndicative,
     required this.historicalPresentPerfectIndicative,
@@ -72,7 +75,8 @@ class VerbDTO {
       infinitive: translatedConjugationFrom(json['infinitive']),
       regularity: Regularity.fromJson(json['regularity']),
       irregularities: (json['irregularities'] as List? ?? []).map((e) => Irregularity.fromJson(e)).toSet(),
-      auxiliaries: (json['auxiliaries'] as List).map((e) => Auxiliary.fromJson(e)).toList(),
+      auxiliaries: (json['auxiliaries'] as List).map((e) => ItalianAuxiliary.fromJson(e)).toList(),
+      germanAuxiliary: GermanAuxiliary.fromJson(json['german_auxiliary']),
       presentIndicative: TenseDTO.fromJson(json['conjugations']['indicativo']['presente']),
       imperfectIndicative: TenseDTO.fromJson(json['conjugations']['indicativo']['imperfetto']),
       historicalPresentPerfectIndicative: TenseDTO.fromJson(json['conjugations']['indicativo']['passato_remoto']),

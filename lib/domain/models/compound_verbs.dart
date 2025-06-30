@@ -1,4 +1,5 @@
-import '../../data/enums/auxiliary.dart';
+import '../../data/enums/german_auxiliary.dart';
+import '../../data/enums/italian_auxiliary.dart';
 import '../../data/models/tense_dto.dart';
 import '../../data/models/verb_dto.dart';
 import 'base_verb.dart';
@@ -52,10 +53,10 @@ class CompoundVerbs {
     ),
   );
 
-  String? conjugateItalianAuxiliary(Pronoun pronoun, Auxiliary auxiliary, SimpleTense tense) {
+  String? conjugateItalianAuxiliary(Pronoun pronoun, ItalianAuxiliary auxiliary, SimpleTense tense) {
     final verb = switch (auxiliary) {
-      Auxiliary.avere => avere,
-      Auxiliary.essere => essere,
+      ItalianAuxiliary.avere => avere,
+      ItalianAuxiliary.essere => essere,
     };
 
     return switch (tense) {
@@ -79,6 +80,49 @@ class CompoundVerbs {
       SimpleTense.imperfectSubjunctive => avere.historicalPresentPerfectIndicative[pronoun]?.english,
       SimpleTense.presentConditional => avere.presentConditional[pronoun]?.english,
     };
+  }
+
+  String? conjugateGermanAuxiliary(Pronoun pronoun, GermanAuxiliary auxiliary, SimpleTense tense) {
+    final verb = switch (auxiliary) {
+      GermanAuxiliary.haben => avere,
+      GermanAuxiliary.sein => essere,
+    };
+
+    return switch (tense) {
+      SimpleTense.presentIndicative => verb.presentIndicative[pronoun]?.german,
+      SimpleTense.imperfectIndicative => verb.imperfectIndicative[pronoun]?.german,
+      SimpleTense.futureIndicative => verb.futureIndicative[pronoun]?.german,
+      SimpleTense.historicalPresentPerfectIndicative => verb.historicalPresentPerfectIndicative[pronoun]?.german,
+      SimpleTense.presentSubjunctive => verb.presentSubjunctive[pronoun]?.german,
+      SimpleTense.imperfectSubjunctive => verb.imperfectSubjunctive[pronoun]?.german,
+      SimpleTense.presentConditional => verb.presentConditional[pronoun]?.german,
+    };
+  }
+
+  String? conjugateGerman(Pronoun pronoun, GermanAuxiliary auxiliary, SimpleTense tense, String pastParticiple) {
+    final verb = switch (auxiliary) {
+      GermanAuxiliary.haben => avere,
+      GermanAuxiliary.sein => essere,
+    };
+
+    switch (tense) {
+      case SimpleTense.presentIndicative:
+        return "${verb.presentIndicative[pronoun]?.german} $pastParticiple";
+      case SimpleTense.imperfectIndicative:
+        return "${verb.imperfectIndicative[pronoun]?.german} $pastParticiple";
+      case SimpleTense.futureIndicative:
+        final futureSplit = verb.futureIndicative[pronoun]?.german.split(" ");
+        return "${futureSplit?[0]} $pastParticiple ${futureSplit?[1]}";
+      case SimpleTense.historicalPresentPerfectIndicative:
+        return "${verb.historicalPresentPerfectIndicative[pronoun]?.german} $pastParticiple";
+      case SimpleTense.presentSubjunctive:
+        return "${verb.presentSubjunctive[pronoun]?.german} $pastParticiple";
+      case SimpleTense.imperfectSubjunctive:
+        return "${verb.imperfectSubjunctive[pronoun]?.german} $pastParticiple";
+      case SimpleTense.presentConditional:
+        final conditionalSplit = verb.presentConditional[pronoun]?.german.split(" ");
+        return "${conditionalSplit?[0]} $pastParticiple ${conditionalSplit?[1]}";
+    }
   }
 
   String? conjugateStare(Pronoun pronoun, {SimpleTense tense = SimpleTense.presentIndicative}) =>
@@ -601,37 +645,37 @@ final _essere =  {
       "io": {
         "italian": "fossi",
         "english": "used to be",
-        "german": "fuhr",
+        "german": "wäre",
         "spanish": "fuera"
       },
       "tu": {
         "italian": "fossi",
         "english": "used to be",
-        "german": "fuhrst",
+        "german": "wärst",
         "spanish": "fueras"
       },
       "lui/lei": {
         "italian": "fosse",
         "english": "used to be",
-        "german": "fuhr",
+        "german": "wärt",
         "spanish": "fuera"
       },
       "noi": {
         "italian": "fossimo",
         "english": "used to be",
-        "german": "fuhrn",
+        "german": "wären",
         "spanish": "fuéramos"
       },
       "voi": {
         "italian": "foste",
         "english": "used to be",
-        "german": "fuhrt",
+        "german": "wärt",
         "spanish": "fuerais"
       },
       "loro": {
         "italian": "fossero",
         "english": "used to be",
-        "german": "fuhrn",
+        "german": "wären",
         "spanish": "fueran"
       }
     }
@@ -641,37 +685,37 @@ final _essere =  {
       "io": {
         "italian": "sarei",
         "english": "would be",
-        "german": "wäre",
+        "german": "würde sein",
         "spanish": "sería"
       },
       "tu": {
         "italian": "saresti",
         "english": "would be",
-        "german": "wärst",
+        "german": "würdest sein",
         "spanish": "serías"
       },
       "lui/lei": {
         "italian": "sarebbe",
         "english": "would be",
-        "german": "wäre",
+        "german": "würde sein",
         "spanish": "sería"
       },
       "noi": {
         "italian": "saremmo",
         "english": "would be",
-        "german": "wären",
+        "german": "würden sein",
         "spanish": "seríamos"
       },
       "voi": {
         "italian": "sareste",
         "english": "would be",
-        "german": "wärt",
+        "german": "würdet sein",
         "spanish": "seríais"
       },
       "loro": {
         "italian": "sarebbero",
         "english": "would be",
-        "german": "wären",
+        "german": "würden sein",
         "spanish": "serían"
       }
     }

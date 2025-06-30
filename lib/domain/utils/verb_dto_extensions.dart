@@ -129,11 +129,11 @@ extension GenerateImperative on VerbDTO {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
-          return (italian: "non $italianInfinitive", english: conjugation.english.replaceAll(")", ") don't"), german: "${conjugation.german} nicht");
+          return (italian: "non $italianInfinitive", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("!", " nicht!"));
         case Pronoun.firstPlural:
-          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "), german: "${conjugation.german} nicht");
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "), german: conjugation.german.replaceAll("!", " nicht!"));
         default:
-          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german: "${conjugation.german} nicht");
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("!", " nicht!"));
       }
     });
     return NegativeImperative.from(conjugations: conjugations, generated: _generatedNegativeImperative);

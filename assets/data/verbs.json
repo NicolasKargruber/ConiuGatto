@@ -12,6 +12,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -349,6 +350,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -547,37 +549,37 @@
           "io": {
             "italian": "fossi",
             "english": "used to be",
-            "german": "fuhr",
+            "german": "wäre",
             "spanish": "fuera"
           },
           "tu": {
             "italian": "fossi",
             "english": "used to be",
-            "german": "fuhrst",
+            "german": "wärst",
             "spanish": "fueras"
           },
           "lui/lei": {
             "italian": "fosse",
             "english": "used to be",
-            "german": "fuhr",
+            "german": "wärt",
             "spanish": "fuera"
           },
           "noi": {
             "italian": "fossimo",
             "english": "used to be",
-            "german": "fuhrn",
+            "german": "wären",
             "spanish": "fuéramos"
           },
           "voi": {
             "italian": "foste",
             "english": "used to be",
-            "german": "fuhrt",
+            "german": "wärt",
             "spanish": "fuerais"
           },
           "loro": {
             "italian": "fossero",
             "english": "used to be",
-            "german": "fuhrn",
+            "german": "wären",
             "spanish": "fueran"
           }
         }
@@ -587,37 +589,37 @@
           "io": {
             "italian": "sarei",
             "english": "would be",
-            "german": "wäre",
+            "german": "würde sein",
             "spanish": "sería"
           },
           "tu": {
             "italian": "saresti",
             "english": "would be",
-            "german": "wärst",
+            "german": "würdest sein",
             "spanish": "serías"
           },
           "lui/lei": {
             "italian": "sarebbe",
             "english": "would be",
-            "german": "wäre",
+            "german": "würde sein",
             "spanish": "sería"
           },
           "noi": {
             "italian": "saremmo",
             "english": "would be",
-            "german": "wären",
+            "german": "würden sein",
             "spanish": "seríamos"
           },
           "voi": {
             "italian": "sareste",
             "english": "would be",
-            "german": "wärt",
+            "german": "würdet sein",
             "spanish": "seríais"
           },
           "loro": {
             "italian": "sarebbero",
             "english": "would be",
-            "german": "wären",
+            "german": "würden sein",
             "spanish": "serían"
           }
         }
@@ -684,6 +686,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1021,6 +1024,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1359,6 +1363,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1697,6 +1702,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2034,6 +2040,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2369,6 +2376,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2706,6 +2714,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3043,6 +3052,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3378,6 +3388,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3716,6 +3727,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4051,6 +4063,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4361,6 +4374,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4673,6 +4687,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5010,6 +5025,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5348,6 +5364,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5685,6 +5702,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5973,6 +5991,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6261,6 +6280,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6549,6 +6569,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6836,6 +6857,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7123,6 +7145,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7410,6 +7433,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7697,6 +7721,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7984,6 +8009,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8271,6 +8297,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8558,6 +8585,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8845,6 +8873,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9134,6 +9163,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9422,6 +9452,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9709,6 +9740,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9996,6 +10028,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10283,6 +10316,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10571,6 +10605,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10858,6 +10893,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11146,6 +11182,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11433,6 +11470,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11720,6 +11758,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12008,6 +12047,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12295,6 +12335,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12584,6 +12625,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12919,6 +12961,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13204,6 +13247,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13489,6 +13533,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13774,6 +13819,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14061,6 +14107,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14346,6 +14393,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14631,6 +14679,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14916,6 +14965,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15203,6 +15253,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15488,6 +15539,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15773,6 +15825,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16058,6 +16111,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16345,6 +16399,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16630,6 +16685,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16915,6 +16971,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17200,6 +17257,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17485,6 +17543,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17770,6 +17829,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18055,6 +18115,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18340,6 +18401,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18625,6 +18687,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18910,6 +18973,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19195,6 +19259,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19480,6 +19545,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19767,6 +19833,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20052,6 +20119,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20337,6 +20405,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20624,6 +20693,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20913,6 +20983,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21250,6 +21321,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21538,6 +21610,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21825,6 +21898,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22110,6 +22184,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22397,6 +22472,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22683,6 +22759,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22969,6 +23046,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23258,6 +23336,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23546,6 +23625,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23832,6 +23912,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24118,6 +24199,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24404,6 +24486,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24690,6 +24773,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24978,6 +25062,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25266,6 +25351,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25607,6 +25693,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25942,6 +26029,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26230,6 +26318,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26518,6 +26607,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26804,6 +26894,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27090,6 +27181,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27426,6 +27518,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27761,6 +27854,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28096,6 +28190,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28431,6 +28526,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28766,6 +28862,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29101,6 +29198,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29436,6 +29534,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29771,6 +29870,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30106,6 +30206,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30441,6 +30542,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30776,6 +30878,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31113,6 +31216,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31448,6 +31552,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31783,6 +31888,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32118,6 +32224,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32453,6 +32560,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32788,6 +32896,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33123,6 +33232,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33461,6 +33571,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33796,6 +33907,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34131,6 +34243,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34468,6 +34581,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34805,6 +34919,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35140,6 +35255,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35475,6 +35591,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35810,6 +35927,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36145,6 +36263,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36481,6 +36600,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36819,6 +36939,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37157,6 +37278,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37493,6 +37615,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37829,6 +37952,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -38167,6 +38291,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -38504,6 +38629,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -38842,6 +38968,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39180,6 +39307,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39515,6 +39643,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39852,6 +39981,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40187,6 +40317,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40522,6 +40653,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40857,6 +40989,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41192,6 +41325,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41527,6 +41661,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41864,6 +41999,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42199,6 +42335,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42534,6 +42671,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42869,6 +43007,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43204,6 +43343,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43539,6 +43679,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43876,6 +44017,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44211,6 +44353,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44546,6 +44689,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44881,6 +45025,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -45216,6 +45361,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -45551,6 +45697,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {

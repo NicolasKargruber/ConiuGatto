@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../data/utils/pronoun_extensions.dart';
 import '../../utilities/extensions/string_extensions.dart';
 import 'answer_result.dart';
-import '../../data/enums/auxiliary.dart';
+import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/pronoun.dart';
 import 'tenses/tense.dart';
 import 'verb.dart';
@@ -13,7 +13,7 @@ class Question {
   static final _logTag = (Question).toString();
 
   final Verb verb;
-  final Auxiliary auxiliary;
+  final ItalianAuxiliary auxiliary;
   final Tense tense;
   final Pronoun pronoun;
 

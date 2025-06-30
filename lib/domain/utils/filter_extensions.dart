@@ -1,4 +1,4 @@
-import '../../data/enums/auxiliary.dart';
+import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/irregularity.dart';
 import '../../data/enums/regularity.dart';
 import '../models/enums/auxiliary_filter.dart';
@@ -28,9 +28,9 @@ extension AuxiliaryFilterExtensions on AuxiliaryFilter {
       case AuxiliaryFilter.any:
         return true;
       case AuxiliaryFilter.essere:
-        return verb.auxiliaries.contains(Auxiliary.essere);
+        return verb.auxiliaries.contains(ItalianAuxiliary.essere);
       case AuxiliaryFilter.avere:
-        return verb.auxiliaries.contains(Auxiliary.avere);
+        return verb.auxiliaries.contains(ItalianAuxiliary.avere);
     }
   }
 }

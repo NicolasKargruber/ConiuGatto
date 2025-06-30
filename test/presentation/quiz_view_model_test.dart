@@ -1,4 +1,4 @@
-import 'package:coniugatto/data/enums/auxiliary.dart';
+import 'package:coniugatto/data/enums/italian_auxiliary.dart';
 import 'package:coniugatto/data/enums/italian_tense.dart';
 import 'package:coniugatto/data/enums/pronoun.dart';
 import 'package:coniugatto/domain/models/question.dart';
@@ -45,7 +45,7 @@ void main() {
       final quizzedQuestion = MockQuizzedQuestion();
       when(() => quizzedQuestion.verbID).thenReturn('andare');
       when(() => quizzedQuestion.pronoun).thenReturn(Pronoun.firstSingular);
-      when(() => quizzedQuestion.auxiliary).thenReturn(Auxiliary.avere);
+      when(() => quizzedQuestion.auxiliary).thenReturn(ItalianAuxiliary.avere);
       when(() => quizzedQuestion.tense).thenReturn(ItalianTense.presentIndicative);
 
       final viewModel = QuizViewModel(
@@ -74,7 +74,7 @@ void main() {
       final quizzedQuestion = MockQuizzedQuestion();
       when(() => quizzedQuestion.verbID).thenReturn('andare');
       when(() => quizzedQuestion.pronoun).thenReturn(Pronoun.firstSingular);
-      when(() => quizzedQuestion.auxiliary).thenReturn(Auxiliary.avere);
+      when(() => quizzedQuestion.auxiliary).thenReturn(ItalianAuxiliary.avere);
       when(() => quizzedQuestion.tense).thenReturn(ItalianTense.presentIndicative);
 
       final viewModel = QuizViewModel(
@@ -107,7 +107,7 @@ void main() {
       final quizzedQuestion = MockQuizzedQuestion();
       when(() => quizzedQuestion.verbID).thenReturn('parlare');
       when(() => quizzedQuestion.pronoun).thenReturn(Pronoun.firstSingular);
-      when(() => quizzedQuestion.auxiliary).thenReturn(Auxiliary.avere);
+      when(() => quizzedQuestion.auxiliary).thenReturn(ItalianAuxiliary.avere);
       when(() => quizzedQuestion.tense).thenReturn(ItalianTense.presentPerfectIndicative);
 
       final viewModel = QuizViewModel(
@@ -135,7 +135,7 @@ void main() {
       final quizzedQuestion = MockQuizzedQuestion();
       when(() => quizzedQuestion.verbID).thenReturn('andare');
       when(() => quizzedQuestion.pronoun).thenReturn(Pronoun.firstSingular);
-      when(() => quizzedQuestion.auxiliary).thenReturn(Auxiliary.avere);
+      when(() => quizzedQuestion.auxiliary).thenReturn(ItalianAuxiliary.avere);
       when(() => quizzedQuestion.tense).thenReturn(ItalianTense.presentPerfectIndicative);
 
       final viewModel = QuizViewModel(
@@ -166,7 +166,7 @@ void main() {
       final quizzedQuestion = MockQuizzedQuestion();
       when(() => quizzedQuestion.verbID).thenReturn('fare');
       when(() => quizzedQuestion.pronoun).thenReturn(Pronoun.firstSingular);
-      when(() => quizzedQuestion.auxiliary).thenReturn(Auxiliary.avere);
+      when(() => quizzedQuestion.auxiliary).thenReturn(ItalianAuxiliary.avere);
       when(() => quizzedQuestion.tense).thenReturn(ItalianTense.presentPerfectIndicative);
 
       final viewModel = QuizViewModel(
