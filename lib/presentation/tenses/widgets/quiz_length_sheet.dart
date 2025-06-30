@@ -47,7 +47,7 @@ class QuizLengthSheet extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(AppValues.r4)),
             ),
             child: Text(
-              "Revision Quiz",
+              context.localization.revisionSheetTitle,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: AppValues.fs24,
@@ -58,7 +58,7 @@ class QuizLengthSheet extends StatelessWidget {
 
           SizedBox(height: AppValues.s20),
 
-          Text("Number of questions",
+          Text(context.localization.revisionSheetSubtitle,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20),
           ),
 
@@ -71,7 +71,7 @@ class QuizLengthSheet extends StatelessWidget {
             onPressed: () => showQuizScreen(viewModel.quizLength),
             child: Padding(
               padding: const EdgeInsets.all(AppValues.p12),
-              child: Text("Start Quiz", style: TextStyle(fontSize: AppValues.fs16)),
+              child: Text(context.localization.startQuiz, style: TextStyle(fontSize: AppValues.fs16)),
             ),
           ),
         ],

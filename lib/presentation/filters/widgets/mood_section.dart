@@ -44,13 +44,13 @@ class MoodSection extends StatelessWidget {
 
               if(onUnselectedAll == null) TextButton(
                 onPressed: onSelectedAll,
-                child: Text("Select All",
+                child: Text(context.localization.selectAll,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
               )
               else TextButton(
                 onPressed: areAllSelected ? onUnselectedAll : onSelectedAll,
-                child: Text("Un-/Select All",
+                child: Text(context.localization.unselectOrSelectAll,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
               ),

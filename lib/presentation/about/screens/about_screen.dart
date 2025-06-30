@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../domain/service/package_info_service.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/error_snack_bar.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../introduction/screens/on_boarding_screen.dart';
 import '../../widgets/buy_me_a_coffee_button.dart';
 
@@ -44,7 +45,7 @@ class AboutScreen extends StatelessWidget {
     final packageInfo = context.watch<PackageInfoService>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About'),
+        title: Text(context.localization.aboutAppTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).maybePop(),
@@ -87,7 +88,7 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: AppValues.s8),
 
-          _buildMenuItem(context, 'Show Introduction', () => showIntroduction(context)),
+          _buildMenuItem(context, context.localization.showIntroduction, () => showIntroduction(context)),
           /*_buildMenuItem(context, 'Community Standards'),
           _buildMenuItem(context, 'Terms of Use'),
           _buildMenuItem(context, 'Third party Notices'),

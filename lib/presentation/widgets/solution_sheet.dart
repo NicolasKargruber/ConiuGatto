@@ -48,7 +48,7 @@ class SolutionSheet extends StatelessWidget {
 
                 // LABEL
                 Text(
-                  "Incorrect",
+                  context.localization.incorrectLabel,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: AppValues.fs24,
@@ -67,7 +67,8 @@ class SolutionSheet extends StatelessWidget {
 
           SizedBox(height: AppValues.s20),
 
-          Text("Correct answer",
+          Text(
+            context.localization.correctAnswerLabel,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20),
           ),
 
@@ -81,7 +82,7 @@ class SolutionSheet extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(AppValues.r12)),
               ),
               padding: EdgeInsets.all(AppValues.p12),
-              child: Text(solution ?? '',
+              child: Text(solution,
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: AppValues.fs24,

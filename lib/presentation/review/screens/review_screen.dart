@@ -6,6 +6,7 @@ import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/service/verb_service.dart';
 import '../../../utilities/app_values.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../about/screens/about_screen.dart';
 import '../../filters/screens/filters_screen.dart';
 import '../../filters/view_models/filters_view_model.dart';
@@ -111,7 +112,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
     debugPrint("$_logTag | build()");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Review 🏅"),
+        title: Text(context.localization.reviewAppTitle),
         actions: [
           _QuizHistoryCount(),
           IconButton(
@@ -134,7 +135,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (_verbs.isEmpty) {
-              return Center(child: Text('No verbs available 💨'));
+              return Center(child: Text(context.localization.noVerbsAvailable));
             } else {
               return QuizContent(
                 onFiltersButtonPressed: _showFiltersScreen,

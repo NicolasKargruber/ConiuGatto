@@ -37,6 +37,7 @@ class LanguageLevelSection extends StatelessWidget {
         return ItalianTenseProgressFactory.createCard(
           languageLevelLabel: quizzedTense.type.level.label,
           title: quizzedTense.type.fullLabel,
+          // TODO translate
           subtitle: "Last quizzed: ${quizzedTense.daysAgoLabel}",
           progress: quizzedTense.fluency,
           milestone: quizzedTense.milestone,

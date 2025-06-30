@@ -24,14 +24,14 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
       pages: [
         // Language Levels
         PageViewModel(
-          title: "Language Levels",
+          title: context.localization.languageLevelsTitle,
           bodyWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
             child: Column(
               spacing: AppValues.s24,
               children: [
                 Text(
-                  "Italian tense are grouped into the following CEFR levels: A1, A2, B1, B2 and C1.",
+                  context.localization.languageLevelsSubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
@@ -40,7 +40,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   child: Image.asset('assets/introduction_language_level.jpg'),
                 ),
                 Text(
-                  "After reaching fluency in the tense it will be successfully marked as fluent.",
+                  context.localization.languageLevelsBody,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs18),
                 ),
@@ -51,14 +51,14 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
         ),
         // Quizzing verbs
         PageViewModel(
-          title: "Quizzing verbs",
+          title: context.localization.quizzingVerbsTitle,
           bodyWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
             child: Column(
               spacing: AppValues.s24,
               children: [
                 Text(
-                  "Every quiz question consists of a VERB, TENSE (+ MOOD) and PRONOUN.",
+                  context.localization.quizzingVerbsSubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
@@ -67,7 +67,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   child: Image.asset('assets/introduction_quiz.jpg'),
                 ),
                 Text(
-                  "In order to answer a question you must conjugate the verb accordingly.",
+                  context.localization.quizzingVerbsBody,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs18),
                 ),
@@ -137,14 +137,14 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
         ),
         // Double Auxiliary
         PageViewModel(
-          title: "Double Auxiliary",
+          title: context.localization.doubleAuxiliaryTitle,
           bodyWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
             child: Column(
               spacing: AppValues.s24,
               children: [
                 Text(
-                  "Some italian verbs can use both \nAVERE and ESSERE.",
+                  context.localization.doubleAuxiliarySubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
@@ -153,7 +153,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   child: Image.asset('assets/introduction_double_auxiliary.jpg'),
                 ),
                 Text(
-                  "You can choose which auxiliary the conjugation tables will display.",
+                  context.localization.doubleAuxiliaryBody,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs18),
                 ),
@@ -164,14 +164,14 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
         ),
         // Report Issue
         PageViewModel(
-          title: "Report an issue",
+          title: context.localization.reportIssueTitle,
           bodyWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p28),
             child: Column(
               spacing: AppValues.s24,
               children: [
                 Text(
-                  "All conjugations have a little flag somewhere. By tapping this flag, you can report an issue.",
+                  context.localization.reportIssueSubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
@@ -195,7 +195,7 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   ],
                 ),
                 Text(
-                  "This helps me (the developer) out a lot!",
+                  context.localization.reportIssueBody,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs18),
                 ),
@@ -212,9 +212,9 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
       showSkipButton: true,
       skipOrBackFlex: 0,
       nextFlex: 0,
-      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
+      skip: Text(context.localization.skip, style: TextStyle(fontWeight: FontWeight.w600)),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: Text(context.localization.done, style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(AppValues.p16),
       dotsDecorator: DotsDecorator(

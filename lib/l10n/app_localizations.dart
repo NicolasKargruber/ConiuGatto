@@ -93,6 +93,432 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+
+  /// No description provided for @tensesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tenses'**
+  String get tensesLabel;
+
+  /// No description provided for @tensesAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tenses 📊'**
+  String get tensesAppTitle;
+
+  /// No description provided for @reviewLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get reviewLabel;
+
+  /// No description provided for @reviewAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review 🏅'**
+  String get reviewAppTitle;
+
+  /// No description provided for @verbsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verbs'**
+  String get verbsLabel;
+
+  /// No description provided for @verbsAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verbs 📚'**
+  String get verbsAppTitle;
+
+  /// No description provided for @aboutAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutAppTitle;
+
+  /// No description provided for @showIntroduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Introduction'**
+  String get showIntroduction;
+
+  /// No description provided for @filtersAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters 🕹️'**
+  String get filtersAppTitle;
+
+  /// No description provided for @tenseFiltersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The following tenses will be included in your Quiz.'**
+  String get tenseFiltersSubtitle;
+
+  /// No description provided for @updateTenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Update tenses'**
+  String get updateTenses;
+
+  /// No description provided for @tensesSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from the Tenses below'**
+  String get tensesSheetSubtitle;
+
+  /// No description provided for @verbFiltersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The following verbs will be included up in your Quiz.'**
+  String get verbFiltersSubtitle;
+
+  /// No description provided for @updateVerbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Update verbs'**
+  String get updateVerbs;
+
+  /// No description provided for @verbsSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from the Filters below'**
+  String get verbsSheetSubtitle;
+
+  /// No description provided for @irregularityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Irregularity'**
+  String get irregularityLabel;
+
+  /// No description provided for @endingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ending'**
+  String get endingLabel;
+
+  /// No description provided for @auxiliaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Auxiliary'**
+  String get auxiliaryLabel;
+
+  /// No description provided for @pronounsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pronouns'**
+  String get pronounsLabel;
+
+  /// No description provided for @pronounFiltersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The following pronouns will be included up in your Quiz.'**
+  String get pronounFiltersSubtitle;
+
+  /// No description provided for @updatePronouns.
+  ///
+  /// In en, this message translates to:
+  /// **'Update pronouns'**
+  String get updatePronouns;
+
+  /// No description provided for @pronounsSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from the Pronouns below'**
+  String get pronounsSheetSubtitle;
+
+  /// No description provided for @noVerbsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No verbs available 💨'**
+  String get noVerbsAvailable;
+
+  /// No description provided for @languageLevelsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Language Levels'**
+  String get languageLevelsTitle;
+
+  /// No description provided for @languageLevelsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Italian tense are grouped into the following CEFR levels: A1, A2, B1, B2 and C1.'**
+  String get languageLevelsSubtitle;
+
+  /// No description provided for @languageLevelsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'After reaching fluency in the tense it will be successfully marked as fluent.'**
+  String get languageLevelsBody;
+
+  /// No description provided for @quizzingVerbsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quizzing verbs'**
+  String get quizzingVerbsTitle;
+
+  /// No description provided for @quizzingVerbsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every quiz question consists of a VERB, TENSE (+ MOOD) and PRONOUN.'**
+  String get quizzingVerbsSubtitle;
+
+  /// No description provided for @quizzingVerbsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'In order to answer a question you must conjugate the verb accordingly.'**
+  String get quizzingVerbsBody;
+
+  /// No description provided for @starringVerbsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Starring verbs'**
+  String get starringVerbsTitle;
+
+  /// No description provided for @starringVerbsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'To quiz only specific verbs you can star them via the star button.'**
+  String get starringVerbsSubtitle;
+
+  /// No description provided for @starringVerbsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply your \'Starred ⭐\' verbs in your quiz filters.'**
+  String get starringVerbsBody;
+
+  /// No description provided for @doubleAuxiliaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Double Auxiliary'**
+  String get doubleAuxiliaryTitle;
+
+  /// No description provided for @doubleAuxiliarySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Some italian verbs can use both \nAVERE and ESSERE.'**
+  String get doubleAuxiliarySubtitle;
+
+  /// No description provided for @doubleAuxiliaryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can choose which auxiliary the conjugation tables will display.'**
+  String get doubleAuxiliaryBody;
+
+  /// No description provided for @reportIssueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Report issue'**
+  String get reportIssueTitle;
+
+  /// No description provided for @reportIssueSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All conjugations have a little flag somewhere. By tapping this flag, you can report an issue.'**
+  String get reportIssueSubtitle;
+
+  /// No description provided for @reportIssueBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This helps me (the developer) out a lot!'**
+  String get reportIssueBody;
+
+  /// No description provided for @endQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'End Quiz?'**
+  String get endQuizTitle;
+
+  /// No description provided for @endQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to exit this quiz?'**
+  String get endQuizSubtitle;
+
+  /// No description provided for @quizAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz 🕹️'**
+  String get quizAppTitle;
+
+  /// No description provided for @noMatchingQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching Questions available! 😭'**
+  String get noMatchingQuestions;
+
+  /// No description provided for @checkYourFiltersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your Filters in the Settings'**
+  String get checkYourFiltersLabel;
+
+  /// No description provided for @goToFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Filters'**
+  String get goToFilters;
+
+  /// No description provided for @revisionAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get revisionAppTitle;
+
+  /// No description provided for @revisionAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer: {answer}'**
+  String revisionAnswer(String answer);
+
+  /// No description provided for @revisionSolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Solution: {solution}'**
+  String revisionSolution(String solution);
+
+  /// No description provided for @quizIncorrectLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Incorrect Conjugations'**
+  String get quizIncorrectLabel;
+
+  /// No description provided for @tenseExample.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: {example}'**
+  String tenseExample(String example);
+
+  /// No description provided for @fluencyScoreLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluency Score:'**
+  String get fluencyScoreLabel;
+
+  /// No description provided for @lastQuizzedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last time quizzed:'**
+  String get lastQuizzedLabel;
+
+  /// No description provided for @fluencyReachedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations! You\'re now fluent in this tense! 🎉🕺🏻'**
+  String get fluencyReachedLabel;
+
+  /// No description provided for @revisionSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Revision Quiz'**
+  String get revisionSheetTitle;
+
+  /// No description provided for @revisionSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of questions'**
+  String get revisionSheetSubtitle;
+
+  /// No description provided for @startQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Start quiz'**
+  String get startQuiz;
+
+  /// No description provided for @verbSearchbarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search verb ...'**
+  String get verbSearchbarHint;
+
+  /// No description provided for @noVerbFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No verb found! 🔍'**
+  String get noVerbFound;
+
+  /// No description provided for @requestVerb.
+  ///
+  /// In en, this message translates to:
+  /// **'Request verb'**
+  String get requestVerb;
+
+  /// No description provided for @foundIssueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Found an issue?'**
+  String get foundIssueLabel;
+
+  /// No description provided for @reportIssue.
+  ///
+  /// In en, this message translates to:
+  /// **'Report issue'**
+  String get reportIssue;
+
+  /// No description provided for @incorrectLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect'**
+  String get incorrectLabel;
+
+  /// No description provided for @correctAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct Answer'**
+  String get correctAnswerLabel;
+
+  /// No description provided for @check.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get check;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @selectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select All'**
+  String get selectAll;
+
+  /// No description provided for @unselectOrSelectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Un-/Select All'**
+  String get unselectOrSelectAll;
 }
 
 class _AppLocalizationsDelegate

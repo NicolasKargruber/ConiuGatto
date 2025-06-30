@@ -46,7 +46,7 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(AppValues.p12),
-            child: Text("Choose from the Filters below",
+            child: Text(context.localization.verbsSheetSubtitle,
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
             ),
           ),
@@ -65,27 +65,6 @@ class ChooseVerbFiltersSheet extends StatelessWidget {
 
           _VerbIrregularityChoiceChips(),
 
-          // TODO in CON-12
-          /*Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppValues.p12, vertical: AppValues.p16),
-            child: ToggleSwitch(
-              labels: ReflexiveVerb.values.map((e) => e.label).toList(),
-              dividerColor:  context.colorScheme.onSurface,
-              inactiveBgColor: context.colorScheme.surfaceContainerLowest,
-              activeBgColor: [context.colorScheme.primary],
-              onToggle: (index) => _onSelectedReflexiveFilter(context, reflexive: ReflexiveVerb.values[index!]),
-            ),
-          ),*/
-
-          /*ToggleSection<VerbIrregularityFilter>(
-            title: "Irregularity",
-            labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
-            values: VerbIrregularityFilter.values,
-            selected: context.watch<SettingsViewModel>().irregularityFilter,
-            //onUnselectedAll: () {},
-            onSelected: (irregularity) => _onSelectedIrregularityFilter(context, irregularity: irregularity),
-          ),*/
-
           SizedBox(height: AppValues.s24),
         ],
       ),
@@ -100,9 +79,9 @@ class _AuxiliaryChoiceChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$_logTag | build()");
+    //debugPrint("$_logTag | build()");
     return ToggleChoiceChips<AuxiliaryFilter>(
-      title: "Auxiliary",
+      title: context.localization.auxiliaryLabel,
       labels: AuxiliaryFilter.values.map((e) => e.label).toList(),
       values: AuxiliaryFilter.values,
       selected: context.select<FiltersViewModel, AuxiliaryFilter?>((vm) => vm.auxiliaryFilter),
@@ -118,9 +97,9 @@ class _VerbEndingChoiceChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$_logTag | build()");
+    //debugPrint("$_logTag | build()");
     return ToggleChoiceChips<VerbEndingFilter>(
-      title: "Endings",
+      title: context.localization.endingLabel,
       labels: VerbEndingFilter.values.map((e) => e.label).toList(),
       values: VerbEndingFilter.values,
       selected: context.select<FiltersViewModel, VerbEndingFilter?>((vm) => vm.endingFilter),
@@ -136,9 +115,9 @@ class _VerbFavouriteChoiceChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$_logTag | build()");
+    //debugPrint("$_logTag | build()");
     return ToggleChoiceChips<VerbFavouriteFilter>(
-      title: "Verbs",
+      title: context.localization.verbsLabel,
       labels: VerbFavouriteFilter.values.map((e) => e.label).toList(),
       values: VerbFavouriteFilter.values,
       selected: context.select<FiltersViewModel, VerbFavouriteFilter?>((vm) => vm.favouriteFilter),
@@ -154,9 +133,9 @@ class _VerbIrregularityChoiceChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$_logTag | build()");
+    //debugPrint("$_logTag | build()");
     return ToggleChoiceChips<VerbIrregularityFilter>(
-      title: "Irregularity",
+      title: context.localization.irregularityLabel,
       labels: VerbIrregularityFilter.values.map((e) => e.label).toList(),
       values: VerbIrregularityFilter.values,
       selected: context.select<FiltersViewModel, VerbIrregularityFilter?>((vm) => vm.irregularityFilter),

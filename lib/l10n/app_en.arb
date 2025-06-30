@@ -1,0 +1,110 @@
+{
+  "tensesLabel": "Tenses",
+  "tensesAppTitle": "Tenses 📊",
+  "reviewLabel": "Review",
+  "reviewAppTitle": "Review 🏅",
+  "verbsLabel": "Verbs",
+  "verbsAppTitle": "Verbs 📚",
+
+  "aboutAppTitle": "About",
+  "showIntroduction": "Show Introduction",
+
+  "filtersAppTitle": "Filters 🕹️",
+  "tenseFiltersSubtitle": "The following tenses will be included in your Quiz.",
+  "updateTenses": "Update tenses",
+  "tensesSheetSubtitle": "Choose from the Tenses below",
+  "verbFiltersSubtitle": "The following verbs will be included up in your Quiz.",
+  "updateVerbs": "Update verbs",
+  "verbsSheetSubtitle": "Choose from the Filters below",
+  "irregularityLabel": "Irregularity",
+  "endingLabel": "Ending",
+  "auxiliaryLabel": "Auxiliary",
+  "pronounsLabel": "Pronouns",
+  "pronounFiltersSubtitle": "The following pronouns will be included up in your Quiz.",
+  "updatePronouns": "Update pronouns",
+  "pronounsSheetSubtitle": "Choose from the Pronouns below",
+
+  "noVerbsAvailable": "No verbs available 💨",
+
+  "languageLevelsTitle": "Language Levels",
+  "languageLevelsSubtitle": "Italian tense are grouped into the following CEFR levels: A1, A2, B1, B2 and C1.",
+  "languageLevelsBody": "After reaching fluency in the tense it will be successfully marked as fluent.",
+  "quizzingVerbsTitle": "Quizzing verbs",
+  "quizzingVerbsSubtitle": "Every quiz question consists of a VERB, TENSE (+ MOOD) and PRONOUN.",
+  "quizzingVerbsBody": "In order to answer a question you must conjugate the verb accordingly.",
+  "starringVerbsTitle": "Starring verbs",
+  "starringVerbsSubtitle": "To quiz only specific verbs you can star them via the star button.",
+  "starringVerbsBody": "Apply your 'Starred ⭐' verbs in your quiz filters.",
+  "doubleAuxiliaryTitle": "Double Auxiliary",
+  "doubleAuxiliarySubtitle": "Some italian verbs can use both \nAVERE and ESSERE.",
+  "doubleAuxiliaryBody": "You can choose which auxiliary the conjugation tables will display.",
+  "reportIssueTitle": "Report issue",
+  "reportIssueSubtitle": "All conjugations have a little flag somewhere. By tapping this flag, you can report an issue.",
+  "reportIssueBody": "This helps me (the developer) out a lot!",
+
+  "endQuizTitle": "End Quiz?",
+  "endQuizSubtitle": "Are you sure you want to exit this quiz?",
+  "quizAppTitle": "Quiz 🕹️",
+
+  "noMatchingQuestions": "No matching Questions available! 😭",
+  "checkYourFiltersLabel": "Check your Filters in the Settings",
+  "goToFilters": "Go to Filters",
+
+
+  "revisionAppTitle": "Revision",
+  "revisionAnswer": "Answer: {answer}",
+  "@revisionAnswer": {
+    "placeholders": {
+      "answer": {
+        "type": "String",
+        "example": "vado"
+      }
+    }
+  },
+  "revisionSolution": "Solution: {solution}",
+  "@revisionSolution": {
+    "placeholders": {
+      "solution": {
+        "type": "String",
+        "example": "(io) vado"
+      }
+    }
+  },
+
+  "quizIncorrectLabel": "Quiz Incorrect Conjugations",
+  "tenseExample": "Example: {example}",
+  "@tenseExample": {
+    "placeholders": {
+      "example": {
+        "type": "String",
+        "example": "io vado - I walk"
+      }
+    }
+  },
+  "fluencyScoreLabel": "Fluency Score:",
+  "lastQuizzedLabel": "Last time quizzed:",
+  "fluencyReachedLabel": "Congratulations! You're now fluent in this tense! 🎉🕺🏻",
+  "revisionSheetTitle": "Revision Quiz",
+  "revisionSheetSubtitle": "Number of questions",
+  "startQuiz": "Start quiz",
+
+  "verbSearchbarHint": "Search verb ...",
+  "noVerbFound": "No verb found! 🔍",
+  "requestVerb": "Request verb",
+
+  "foundIssueLabel": "Found an issue?",
+  "reportIssue": "Report issue",
+
+  "incorrectLabel": "Incorrect",
+  "correctAnswerLabel": "Correct Answer",
+
+  "check": "Check",
+  "back": "Back",
+  "start": "Start",
+  "skip": "Skip",
+  "done": "Done",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "selectAll": "Select All",
+  "unselectOrSelectAll": "Un-/Select All"
+}

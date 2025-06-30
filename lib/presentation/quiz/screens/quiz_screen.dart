@@ -119,19 +119,19 @@ class _QuizScreenState extends State<QuizScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('End Quiz?'),
-          content: const Text('Are you sure you want to exit this quiz?'),
+          title: Text(context.localization.endQuizTitle),
+          content: Text(context.localization.endQuizSubtitle),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(textStyle: context.textTheme.labelLarge),
-              child: const Text('Cancel'),
+              child: Text(context.localization.cancel),
               onPressed: () {
                 Navigator.pop(context, false);
               },
             ),
             TextButton(
               style: TextButton.styleFrom(textStyle: context.textTheme.labelLarge),
-              child: const Text('Confirm'),
+              child: Text(context.localization.confirm),
               onPressed: () {
                 Navigator.pop(context, true);
               },
@@ -147,7 +147,7 @@ class _QuizScreenState extends State<QuizScreen> {
     debugPrint("$_logTag | build()");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Quiz 🕹️"),
+        title: Text(context.localization.quizAppTitle),
         actionsPadding: EdgeInsets.only(right: AppValues.p16),
         actions: [_QuizHistoryCount()],
       ),
@@ -168,7 +168,7 @@ class _QuizScreenState extends State<QuizScreen> {
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else if (_verbs.isEmpty) {
-                return Center(child: Text('No verbs available 💨'));
+                return Center(child: Text(context.localization.noVerbsAvailable));
               } else {
                 return QuizContent(
                   checkAnswer: _checkAnswer,

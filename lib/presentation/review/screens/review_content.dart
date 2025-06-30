@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../domain/models/answer_result.dart';
 import '../../../utilities/app_values.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
 import '../../widgets/quiz_button.dart';
 import '../../widgets/quiz_input_fields.dart';
@@ -34,99 +35,83 @@ class QuizContent extends StatelessWidget {
     Center(child: _NoQuestionsAvailable(onFiltersButtonPressed: onFiltersButtonPressed)) :
     Padding(
       padding: const EdgeInsets.symmetric(horizontal:  AppValues.p48, vertical: AppValues.p16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          /*AnimatedSmoothIndicator(
-            activeIndex: viewModel.totalQuizCount,
-            count: 10,
-            effect: WormEffect(
-              activeDotColor: context.colorScheme.primary,
-              dotColor: context.colorScheme.surfaceContainerHighest,
-            ), // your preferred effect
-          ),*/
-
-          Expanded(
-            child: Center(
-              child: SingleChildScrollView(
-                clipBehavior: Clip.none,
+      child: Center(
+        child: SingleChildScrollView(
+          clipBehavior: Clip.none,
+          child: Column(
+            children: [
+              Center(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if(viewModel.isDoubleAuxiliary)
-                            AuxiliaryWidgetFactory.createChip(label: viewModel.currentAuxiliaryLabel ?? ''),
+                    if(viewModel.isDoubleAuxiliary)
+                      AuxiliaryWidgetFactory.createChip(label: viewModel.currentAuxiliaryLabel ?? ''),
 
-                          SizedBox(height: AppValues.s4),
+                    SizedBox(height: AppValues.s4),
 
-                          AutoSizeText(
-                            viewModel.currentTitle ?? "Not available",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: AppValues.fs24,
-                            ),
-                            maxLines: 1,
-                          ),
-
-                          SizedBox(height: AppValues.s18),
-
-                          AutoSizeText(
-                            viewModel.currentQuestionLabel ?? "Not available",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: AppValues.fs28,
-                            ),
-                            maxLines: 1,
-                          ),
-
-                          SizedBox(height: AppValues.s4),
-
-                          AutoSizeText(
-                            viewModel.currentTranslation ?? "Not available",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: AppValues.fs20,
-                              fontStyle: FontStyle.italic,
-                            ),
-                            maxLines: 1,
-                          ),
-                        ],
+                    AutoSizeText(
+                      viewModel.currentTitle ?? "Not available",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: AppValues.fs24,
                       ),
+                      maxLines: 1,
                     ),
 
-                    SizedBox(height: AppValues.s64),
+                    SizedBox(height: AppValues.s18),
 
-                    TapRegion(
-                      onTapOutside: (PointerDownEvent event) {
-                        FocusManager.instance.primaryFocus?.unfocus();
-                      },
-                      child: Column(
-                        children: [
-                          _QuizInputFields(
-                            textController: textController,
-                            onSubmitted: (_) => checkAnswer(),
-                            hasCorrectAnswer: viewModel.isAnsweredCorrectly,
-                            answerResult: viewModel.currentAnswerResult,
-                          ),
-
-                          SizedBox(height: AppValues.s12),
-
-                          // Check Button
-                          QuizButton(
-                              onPressed: checkAnswer,
-                              shakeKey: shakeKey
-                          ),
-                        ],
+                    AutoSizeText(
+                      viewModel.currentQuestionLabel ?? "Not available",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: AppValues.fs28,
                       ),
+                      maxLines: 1,
+                    ),
+
+                    SizedBox(height: AppValues.s4),
+
+                    AutoSizeText(
+                      viewModel.currentTranslation ?? "Not available",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: AppValues.fs20,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      maxLines: 1,
                     ),
                   ],
                 ),
               ),
-            ),
+
+              SizedBox(height: AppValues.s64),
+
+              TapRegion(
+                onTapOutside: (PointerDownEvent event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: Column(
+                  children: [
+                    _QuizInputFields(
+                      textController: textController,
+                      onSubmitted: (_) => checkAnswer(),
+                      hasCorrectAnswer: viewModel.isAnsweredCorrectly,
+                      answerResult: viewModel.currentAnswerResult,
+                    ),
+
+                    SizedBox(height: AppValues.s12),
+
+                    // Check Button
+                    QuizButton(
+                        onPressed: checkAnswer,
+                        shakeKey: shakeKey
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -172,20 +157,20 @@ class _NoQuestionsAvailable extends StatelessWidget {
       spacing: AppValues.s8,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('No matching Questions available! 😭',
+        Text(context.localization.noMatchingQuestions,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs20)
         ),
 
         SizedBox(height: AppValues.s16),
 
-        Text('Check your Filters in the Settings'),
+        Text(context.localization.checkYourFiltersLabel),
         FilledButton.tonalIcon(
           onPressed: onFiltersButtonPressed,
           icon: Icon(Icons.edit_rounded),
           label: Padding(
             padding: const EdgeInsets.all(AppValues.p8),
             child: Text(
-                "Go to Filters",
+                context.localization.goToFilters,
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
             ),
           ),

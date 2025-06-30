@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../utilities/app_values.dart';
+import '../../utilities/extensions/build_context_extensions.dart';
 import 'shake_widget.dart';
 
 // TODO separate viewModel from widget
@@ -18,7 +19,7 @@ class QuizButton extends StatelessWidget {
         onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(AppValues.p8),
-          child: Text("Check", style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs24),
+          child: Text(context.localization.check, style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs24),
           ),
         ),
       ),

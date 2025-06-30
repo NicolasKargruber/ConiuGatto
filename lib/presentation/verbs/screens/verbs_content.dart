@@ -102,7 +102,7 @@ class _SearchBar extends StatelessWidget {
           ),
         ),
       ],
-      hintText: 'Search verbs...',
+      hintText: context.localization.verbSearchbarHint,
       onChanged: viewModel.filterVerbs,
       elevation: WidgetStateProperty.all(0.0),
     );
@@ -118,14 +118,14 @@ class _RequestVerb extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: AppValues.s12,
       children: [
-        Text('No verb found! 🔍',
+        Text(context.localization.noVerbFound,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
         ),
       FilledButton(
         onPressed: () {
           UrlHelper.sendMailToRequestVerb(context.read<SearchViewModel>().searchString.toUpperCase());
         },
-        child: Text('Request verb'),
+        child: Text(context.localization.requestVerb),
       ),
       ],
     );

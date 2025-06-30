@@ -54,7 +54,7 @@ class FluencyDetailsSheet extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p24),
             child: AutoSizeText(
-              "Example: $example - $exampleTranslation",
+              context.localization.tenseExample("$example - $exampleTranslation"),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: AppValues.fs18, fontStyle: FontStyle.italic),
               maxLines: 1,
             ),
@@ -68,7 +68,9 @@ class FluencyDetailsSheet extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text("Fluency score:", style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)),
+                  Text(context.localization.fluencyScoreLabel,
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16),
+                  ),
 
                   SizedBox(height: AppValues.s12),
 
@@ -100,7 +102,9 @@ class FluencyDetailsSheet extends StatelessWidget {
 
               Column(
                 children: [
-                  Text("Last time quizzed:", style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)),
+                  Text(context.localization.lastQuizzedLabel,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16),
+                  ),
 
                   SizedBox(height: AppValues.s12),
 
@@ -137,7 +141,7 @@ class FluencyDetailsSheet extends StatelessWidget {
               SizedBox(height: AppValues.s36),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppValues.p52),
-                child: Text("Congratulations! You're now fluent in this tense! 🎉🕺🏻",
+                child: Text(context.localization.fluencyReachedLabel,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16),
                 ),

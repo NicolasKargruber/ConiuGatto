@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'domain/service/history_service.dart';
 import 'domain/service/package_info_service.dart';
 import 'domain/service/verb_service.dart';
+import 'l10n/app_localizations.dart';
 import 'presentation/introduction/screens/on_boarding_screen.dart';
 import 'presentation/introduction/screens/splash_screen.dart';
 import 'presentation/introduction/view_models/splash_view_model.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

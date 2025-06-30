@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../domain/service/history_service.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
+import '../l10n/app_localizations.dart';
+import '../utilities/extensions/build_context_extensions.dart';
 import 'about/screens/about_screen.dart';
 import 'review/screens/review_screen.dart';
 import 'review/view_models/review_view_model.dart';
@@ -73,15 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),*/
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart_rounded),
-            label: 'Tenses',
+            label: context.localization.tensesLabel,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.question_mark_rounded),
-            label: 'Review',
+            label: context.localization.reviewLabel,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_stories_rounded),
-            label: 'Verbs',
+            label: context.localization.verbsLabel,
           ),
         ],
       ),

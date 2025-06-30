@@ -16,7 +16,7 @@ class ReportIssueSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Found an issue?",
+          Text(context.localization.foundIssueLabel,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs18),
           ),
 
@@ -27,14 +27,14 @@ class ReportIssueSheet extends StatelessWidget {
             style: FilledButton.styleFrom(
               backgroundColor: context.colorScheme.error,
             ),
-            child: Text("Report Issue", style: TextStyle(color: context.colorScheme.onError)),
+            child: Text(context.localization.reportIssue, style: TextStyle(color: context.colorScheme.onError)),
           ),
 
           SizedBox(height: AppValues.s4),
 
           OutlinedButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel"),
+            child: Text(context.localization.cancel),
           ),
         ],
       ),
