@@ -31,7 +31,7 @@ class SharedPreferenceService extends Service {
   final _skipIntroductionDefaultValue = false;
   // Verbs
   //final _reflexiveFiltersDefaultValue = ReflexiveVerb.include;
-  final _verbFavouritesDefaultValue = VerbFavouriteFilter.all;
+  final _verbFavouritesDefaultValue = VerbFavouriteFilter.top25;
   final _irregularityFiltersDefaultValue = VerbIrregularityFilter.any;
   final _endingFiltersDefaultValue = VerbEndingFilter.all;
   final _auxiliaryFiltersDefaultValue = AuxiliaryFilter.any;

@@ -78,11 +78,14 @@ void main() {
   test('should return no quizzable verbs when auxiliary filter excludes verb', () {
     final verb = MockVerb();
     when(() => verb.auxiliaries).thenReturn([Auxiliary.essere]);
-    //when(() => verb.getTense(any())).thenReturn((aux) => ItalianConjugation(type: ItalianTense.presente, forms: {}));
     when(() => verb.italianInfinitive).thenReturn("andare");
+    when(() => verb.id).thenReturn("andare");
 
     when(() => mockPreferences.loadAuxiliaryFilter())
         .thenReturn(AuxiliaryFilter.avere);
+
+    when(() => mockPreferences.loadVerbFavouriteFilter())
+        .thenReturn(VerbFavouriteFilter.top25);
 
     viewModel.updateVerbs([verb]);
 
@@ -94,7 +97,6 @@ void main() {
     when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
     when(() => verb.italianInfinitive).thenReturn("dormire");
     when(() => verb.ending).thenReturn("IRE");
-    //when(() => verb.getTense(any())).thenReturn((aux) => ItalianConjugation(type: ItalianTense.presente, forms: {}));
 
     when(() => mockPreferences.loadVerbEndingFilter())
         .thenReturn(VerbEndingFilter.inAre);
@@ -109,10 +111,24 @@ void main() {
     when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
     when(() => verb.isRegular).thenReturn(false);
     when(() => verb.italianInfinitive).thenReturn("venire");
-    //when(() => verb.getTense(any())).thenReturn((aux) => ItalianConjugation(type: ItalianTense.presente, forms: {}));
 
     when(() => mockPreferences.loadVerbIrregularityFilter())
         .thenReturn(VerbIrregularityFilter.regular);
+
+    viewModel.updateVerbs([verb]);
+
+    expect(viewModel.hasQuizzableQuestions, isFalse);
+  });
+
+  test('should return no quizzable verbs when favourite filter excludes verb', () {
+    final verb = MockVerb();
+    when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
+    when(() => verb.isRegular).thenReturn(false);
+    when(() => verb.italianInfinitive).thenReturn("dormire");
+    when(() => verb.id).thenReturn("dormire");
+
+    when(() => mockPreferences.loadVerbFavouriteFilter())
+        .thenReturn(VerbFavouriteFilter.top25);
 
     viewModel.updateVerbs([verb]);
 

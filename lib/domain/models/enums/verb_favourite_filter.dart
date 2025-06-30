@@ -1,7 +1,8 @@
 enum VerbFavouriteFilter {
   all("All"),
-  //top100("Top 100"),
-  //top300("Top 300"),
+  top25("Top 25"),
+  top50("Top 50"),
+  top100("Top 100"),
   starred("Starred ⭐️");
   //custom("Choose verbs")
 
