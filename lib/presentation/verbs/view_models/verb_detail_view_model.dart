@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../../../data/enums/italian_auxiliary.dart';
 import '../../../domain/models/tenses/tense.dart';
@@ -48,7 +49,7 @@ class VerbDetailViewModel extends ViewModel {
 
   // Getters - Quiz Labels
   String get italianInfinitive => _verb.italianInfinitive;
-  String get translation => _verb.translation;
+  String getTranslation(BuildContext context) => _verb.getTranslation(context);
 
   updateStarred(bool star) {
     debugPrint("$_logTag | updateStarred($star)");

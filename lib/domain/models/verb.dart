@@ -80,7 +80,6 @@ class Verb extends BaseVerb {
   String get stem => italianInfinitive.substring(0, italianInfinitive.length - 3); // ex. 'parl'
   String get ending => italianInfinitive.substring(italianInfinitive.length - 3).toUpperCase(); // ARE, ERE, IRE
   String get italianInfinitive => infinitive.italian;
-  String get translation => infinitive.english;
   bool get isRegular => regularity.isRegular;
   bool get isDoubleAuxiliary => UnorderedIterableEquality().equals(ItalianAuxiliary.values, auxiliaries);
 

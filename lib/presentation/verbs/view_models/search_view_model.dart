@@ -1,15 +1,18 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../domain/models/verb.dart';
 import '../../../domain/service/shared_preference_service.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../view_model.dart';
 
 class SearchViewModel extends ViewModel{
   static final _logTag = (SearchViewModel).toString();
 
   final SharedPreferenceService _sharedPreferenceService;
-  SearchViewModel(this._sharedPreferenceService);
+  final BuildContext _context;
+  SearchViewModel(this._sharedPreferenceService, this._context);
 
   List<Verb> _starredVerbs = [];
 
@@ -59,7 +62,10 @@ class SearchViewModel extends ViewModel{
     } else {
       final filteredVerbsInItalian = _verbs.where((verb) => verb.italianInfinitive.contains(search)).toList();
       final filteredVerbsInEnglish = _verbs.where((verb) => verb.infinitive.english.contains(search)).toList();
-      filteredVerbs = {...filteredVerbsInItalian, ...filteredVerbsInEnglish};
+      final filteredVerbsInGerman = _verbs.where((verb) => verb.infinitive.german.contains(search)).toList();
+      filteredVerbs = {...filteredVerbsInItalian};
+      if(_context.localization.localeName == 'de') filteredVerbs.addAll(filteredVerbsInGerman);
+      else filteredVerbs.addAll(filteredVerbsInEnglish);
     }
 
     _filteredVerbs = filteredVerbs.toList();

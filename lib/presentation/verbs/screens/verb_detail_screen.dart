@@ -38,7 +38,7 @@ class VerbDetailScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: AppValues.p8),
-                      child: Text(viewModel.translation, style: TextStyle(fontSize: AppValues.fs16,)),
+                      child: Text(viewModel.getTranslation(context), style: TextStyle(fontSize: AppValues.fs16,)),
                     ),
                   ],
                 ),

@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     // Verbs
     ChangeNotifierProxyProvider<VerbService, SearchViewModel>(
-      create: (context) => SearchViewModel(context.read<SharedPreferenceService>()),
+      create: (context) => SearchViewModel(context.read<SharedPreferenceService>(), context),
       update: (_, verbManager, searchViewModel) => searchViewModel!..updateVerbs(verbManager.verbs),
       child: VerbsScreen(),
     ),

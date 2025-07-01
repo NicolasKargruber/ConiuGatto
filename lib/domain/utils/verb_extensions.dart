@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
+
 import '../../data/models/tense_dto.dart';
 import '../../data/models/verb_dto.dart';
 import '../../data/utils/pronoun_extensions.dart';
+import '../../utilities/extensions/build_context_extensions.dart';
 import '../models/compound_verbs.dart';
 import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/pronoun.dart';
@@ -216,4 +219,12 @@ extension GenerateImperative on Verb {
       negativeImperative,
     ];
   }
+}
+
+extension Translations on Verb {
+  String getTranslation(BuildContext context) => switch(context.localization.localeName) {
+    'en' => infinitive.english,
+    'de' => infinitive.german,
+    _ => infinitive.english,
+  };
 }

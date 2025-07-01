@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/url_helper.dart';
+import '../../../domain/utils/verb_extensions.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
@@ -42,7 +43,7 @@ class VerbsContent extends StatelessWidget {
                     onDismissed: () => viewModel.toggleStarredVerb(verb),
                     child: ListTile(
                       title: Text(verb.italianInfinitive),
-                      subtitle: Text(verb.translation),
+                      subtitle: Text(verb.getTranslation(context)),
                       trailing: isStarred ? StarWidgetFactory.createIcon() : null,
                       onTap: () async {
                         await Navigator.push(context,
