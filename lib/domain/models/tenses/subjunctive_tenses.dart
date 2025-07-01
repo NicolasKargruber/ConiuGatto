@@ -19,7 +19,7 @@ final class PresentSubjunctive extends Tense {
   factory PresentSubjunctive.from({required Conjugations conjugations, GeneratedConjugations? generated}) {
     conjugationOrNull(Pronoun pronoun) {
       if(conjugations[pronoun] == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugations[pronoun]!);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugations[pronoun]!);
     }
 
     return PresentSubjunctive(
@@ -52,7 +52,7 @@ final class ImperfectSubjunctive extends Tense {
   factory ImperfectSubjunctive.from({required Conjugations conjugations, GeneratedConjugations? generated}) {
     conjugationOrNull(Pronoun pronoun) {
       if(conjugations[pronoun] == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugations[pronoun]!);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugations[pronoun]!);
     }
 
     return ImperfectSubjunctive(
@@ -84,7 +84,7 @@ final class PresentPerfectSubjunctive extends Tense {
   factory PresentPerfectSubjunctive.from({required Conjugations conjugations, GeneratedConjugations? generated}) {
     conjugationOrNull(Pronoun pronoun) {
       if(conjugations[pronoun] == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugations[pronoun]!);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugations[pronoun]!);
     }
 
     return PresentPerfectSubjunctive(
@@ -112,7 +112,7 @@ final class PastPerfectSubjunctive extends Tense {
   factory PastPerfectSubjunctive.from({required Conjugations conjugations, GeneratedConjugations? generated}) {
     conjugationOrNull(Pronoun pronoun) {
       if(conjugations[pronoun] == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugations[pronoun]!);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugations[pronoun]!);
     }
 
     return PastPerfectSubjunctive(

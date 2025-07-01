@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
 import '../../data/enums/italian_tense.dart';
+import '../../utilities/extensions/build_context_extensions.dart';
 import '../models/enums/language_level.dart';
 import 'language_level_extensions.dart';
 
@@ -56,7 +59,15 @@ extension ItalianTenseExtensions on ItalianTense {
     };
   }
 
-  String get exampleTranslation {
+  String getExampleTranslation(BuildContext context) {
+    return switch(context.localization.localeName) {
+      "en" => _exampleTranslationEnglish,
+      "de" => _exampleTranslationGerman,
+        _ => _exampleTranslationEnglish
+    };
+  }
+
+  String get _exampleTranslationEnglish {
     return switch(this) {
       ItalianTense.presentIndicative => "I  wash",
       ItalianTense.presentContinuousIndicative => "I  am washing",
@@ -75,6 +86,28 @@ extension ItalianTenseExtensions on ItalianTense {
       ItalianTense.presentPerfectConditional => "I would have washed",
       ItalianTense.positiveImperative => "wash!",
       ItalianTense.negativeImperative => "don't wash!"
+    };
+  }
+
+  String get _exampleTranslationGerman {
+    return switch(this) {
+      ItalianTense.presentIndicative => "Ich wasche",
+      ItalianTense.presentContinuousIndicative => "Ich wasche gerade",
+      ItalianTense.imperfectIndicative => "Ich wusch",
+      ItalianTense.presentPerfectIndicative => "Ich habe gewaschen",
+      ItalianTense.pastPerfectIndicative => "Ich hatte gewaschen",
+      ItalianTense.historicalPresentPerfectIndicative => "Ich wusch",
+      ItalianTense.historicalPastPerfectIndicative => "Ich hatte gewaschen",
+      ItalianTense.futureIndicative => "Ich werde waschen",
+      ItalianTense.futurePerfectIndicative => "Ich werde gewaschen haben",
+      ItalianTense.presentSubjunctive => "Ich wasche",
+      ItalianTense.imperfectSubjunctive => "Ich waschte",
+      ItalianTense.presentPerfectSubjunctive => "Ich habe gewaschen",
+      ItalianTense.pastPerfectSubjunctive => "Ich hatte gewaschen",
+      ItalianTense.presentConditional => "Ich würde waschen",
+      ItalianTense.presentPerfectConditional => "Ich würde gewaschen haben",
+      ItalianTense.positiveImperative => "wasch!",
+      ItalianTense.negativeImperative => "wasch nicht!"
     };
   }
 }

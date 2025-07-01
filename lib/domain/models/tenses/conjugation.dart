@@ -1,13 +1,18 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import '../../../data/enums/pronoun.dart';
 import '../../../data/models/verb_dto.dart';
+import '../../../data/utils/pronoun_extensions.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 
 class Conjugation {
   final Pronoun pronoun;
   final String italianRegularPart;
   final String italianIrregularPart;
   final String english;
+  final String german;
   // TODO add german translation
 
   Conjugation({
@@ -15,15 +20,17 @@ class Conjugation {
     required this.italianRegularPart,
     required this.italianIrregularPart,
     required this.english,
+    required this.german,
   });
 
   factory Conjugation.from({
     required Pronoun pronoun,
-    required TranslatedConjugation conjugatedVerb,
+    required TranslatedConjugation translatedConjugation,
     required String? generated,
   }){
-    final original = conjugatedVerb.italian;
-    final english = conjugatedVerb.english;
+    final original = translatedConjugation.italian;
+    final english = translatedConjugation.english;
+    final german = translatedConjugation.german;
     generated ??= original;
 
     // Find the longest common prefix (case-insensitive)
@@ -36,10 +43,20 @@ class Conjugation {
     final regularPart = original.substring(0, i);
     final irregularPart = original.substring(i);
 
-    return Conjugation(pronoun: pronoun, italianRegularPart: regularPart, italianIrregularPart: irregularPart, english: english);
+    return Conjugation(
+      pronoun: pronoun,
+      italianRegularPart: regularPart,
+      italianIrregularPart: irregularPart,
+      english: english,
+      german: german,
+    );
   }
 
   // Getters - Helpers
   String get italian => italianRegularPart + italianIrregularPart;
-  String get englishWithPronoun => "${pronoun.english} $english";
+  String getTranslationWithPronoun(BuildContext context) => switch(context.localization.localeName) {
+    'en' => "${pronoun.english} $english",
+    'de' => "${pronoun.german} $german",
+    _ => "${pronoun.english} $english",
+  };
 }

@@ -1,4 +1,4 @@
-import 'package:coniugatto/data/enums/auxiliary.dart';
+import 'package:coniugatto/data/enums/italian_auxiliary.dart';
 import 'package:coniugatto/data/enums/italian_tense.dart';
 import 'package:coniugatto/data/enums/pronoun.dart';
 import 'package:coniugatto/domain/models/enums/auxiliary_filter.dart';
@@ -62,7 +62,7 @@ void main() {
     final verb = MockVerb();
     final tense = MockTense();
     final conjugation = MockConjugation();
-    when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
+    when(() => verb.auxiliaries).thenReturn([ItalianAuxiliary.avere]);
     when(() => verb.getTense(any())).thenReturn((_) => tense);
     when(() => verb.italianInfinitive).thenReturn("parlare");
     when(() => tense.type).thenReturn(ItalianTense.presentIndicative);
@@ -77,7 +77,7 @@ void main() {
 
   test('should return no quizzable verbs when auxiliary filter excludes verb', () {
     final verb = MockVerb();
-    when(() => verb.auxiliaries).thenReturn([Auxiliary.essere]);
+    when(() => verb.auxiliaries).thenReturn([ItalianAuxiliary.essere]);
     when(() => verb.italianInfinitive).thenReturn("andare");
     when(() => verb.id).thenReturn("andare");
 
@@ -94,7 +94,7 @@ void main() {
 
   test('should return no quizzable verbs when ending filter excludes verb', () {
     final verb = MockVerb();
-    when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
+    when(() => verb.auxiliaries).thenReturn([ItalianAuxiliary.avere]);
     when(() => verb.italianInfinitive).thenReturn("dormire");
     when(() => verb.ending).thenReturn("IRE");
 
@@ -108,7 +108,7 @@ void main() {
 
   test('should return no quizzable verbs when irregularity filter excludes verb', () {
     final verb = MockVerb();
-    when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
+    when(() => verb.auxiliaries).thenReturn([ItalianAuxiliary.avere]);
     when(() => verb.isRegular).thenReturn(false);
     when(() => verb.italianInfinitive).thenReturn("venire");
 
@@ -122,7 +122,7 @@ void main() {
 
   test('should return no quizzable verbs when favourite filter excludes verb', () {
     final verb = MockVerb();
-    when(() => verb.auxiliaries).thenReturn([Auxiliary.avere]);
+    when(() => verb.auxiliaries).thenReturn([ItalianAuxiliary.avere]);
     when(() => verb.isRegular).thenReturn(false);
     when(() => verb.italianInfinitive).thenReturn("dormire");
     when(() => verb.id).thenReturn("dormire");

@@ -19,7 +19,7 @@ final class PresentConditional extends Tense {
   factory PresentConditional.from({required Conjugations conjugations, GeneratedConjugations? generated}) {
     conjugationOrNull(Pronoun pronoun) {
       if(conjugations[pronoun] == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugations[pronoun]!);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugations[pronoun]!);
     }
 
     return PresentConditional(
@@ -53,7 +53,7 @@ final class PresentPerfectConditional extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return PresentPerfectConditional(

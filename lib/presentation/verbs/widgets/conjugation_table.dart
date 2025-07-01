@@ -120,7 +120,7 @@ class ConjugationTable extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(conjugation.englishWithPronoun,
+              Text(conjugation.getTranslationWithPronoun(context),
                   style: TextStyle(fontStyle: FontStyle.italic)
               )
             ]

@@ -2,7 +2,7 @@ import 'package:coniugatto/domain/models/tenses/conjugation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:coniugatto/data/enums/auxiliary.dart';
+import 'package:coniugatto/data/enums/italian_auxiliary.dart';
 import 'package:coniugatto/data/enums/pronoun.dart';
 import 'package:coniugatto/domain/models/answer_result.dart';
 import 'package:coniugatto/domain/models/question.dart';
@@ -41,7 +41,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -61,7 +61,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -82,7 +82,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.essere,
+        auxiliary: ItalianAuxiliary.essere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -102,7 +102,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -122,7 +122,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.essere,
+        auxiliary: ItalianAuxiliary.essere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -142,7 +142,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.essere,
+        auxiliary: ItalianAuxiliary.essere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -162,7 +162,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -180,7 +180,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -198,7 +198,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );
@@ -219,7 +219,7 @@ void main() {
 
       final question = Question(
         verb: verb,
-        auxiliary: Auxiliary.avere,
+        auxiliary: ItalianAuxiliary.avere,
         tense: tense,
         pronoun: pronoun,
       );

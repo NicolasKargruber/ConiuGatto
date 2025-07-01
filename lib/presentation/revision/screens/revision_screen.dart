@@ -34,7 +34,7 @@ class RevisionScreen extends StatelessWidget {
                 children: [
                   Center(
                     child: Text(
-                      "Revision",
+                      context.localization.revisionAppTitle,
                       style: const TextStyle(
                         fontSize: AppValues.fs36,
                         fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class RevisionScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: AppValues.s8),
                                   Text(
-                                    "Answer: ${question.answer??' '}",
+                                    context.localization.revisionAnswer(question.answer??"' '"),
                                     style: TextStyle(
                                         fontSize: AppValues.fs14,
                                         color: question.isCorrect ? context.colorScheme.tertiary : context.colorScheme.error,
@@ -77,7 +77,7 @@ class RevisionScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: AppValues.s4),
                                   Text(
-                                    "Solution: ${question.solutionExtended}",
+                                    context.localization.revisionSolution(question.solutionExtended ?? "' '"),
                                     style:  TextStyle(
                                       fontSize: AppValues.fs14,
                                       color: context.colorScheme.onSurfaceVariant,
@@ -108,7 +108,7 @@ class RevisionScreen extends StatelessWidget {
             FilledButton.tonalIcon(
               icon: const Icon(Icons.exit_to_app_rounded),
               onPressed: () => Navigator.of(context)..pop()..pop(),
-              label: const Text("Back"),
+              label: Text(context.localization.back),
             ),
           ],
         ),

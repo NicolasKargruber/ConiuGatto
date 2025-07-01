@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   auto_size_text: ^3.0.0
   smooth_page_indicator: ^1.2.1
-  provider: ^6.1.4
+  provider: ^6.1.5
   collection: ^1.19.1
   shared_preferences: ^2.5.3
   flex_seed_scheme: ^3.5.1
@@ -48,6 +48,10 @@ dependencies:
   get_it: ^8.0.3
   introduction_screen: ^3.1.17
   package_info_plus: ^8.3.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +62,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   mocktail: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
@@ -66,6 +70,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

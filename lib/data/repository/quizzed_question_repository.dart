@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../enums/auxiliary.dart';
+import '../enums/italian_auxiliary.dart';
 import '../enums/pronoun.dart';
 import '../models/quizzed_question_dto.dart';
 
@@ -50,7 +50,7 @@ class QuizzedQuestionRepository {
             ''');
             await db.execute('''
               ALTER TABLE $_tableName 
-              ADD COLUMN auxiliary INTEGER DEFAULT '${Auxiliary.avere.jsonKey}'
+              ADD COLUMN auxiliary INTEGER DEFAULT '${ItalianAuxiliary.avere.jsonKey}'
             ''');
           }
           debugPrint("$_logTag | Migrated table from version $oldVersion to $newVersion ...");

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/enums/auxiliary.dart';
+import '../data/enums/italian_auxiliary.dart';
 import 'app_values.dart';
 import 'extensions/build_context_extensions.dart';
 
@@ -95,10 +95,10 @@ class AuxiliaryWidgetFactory {
   }
 
   static Widget createToggleButtons({
-    required Auxiliary selected,
-    required Function(Auxiliary?) onToggle,
+    required ItalianAuxiliary selected,
+    required Function(ItalianAuxiliary?) onToggle,
   }) {
-    final auxiliaries = Auxiliary.values;
+    final auxiliaries = ItalianAuxiliary.values;
     final List<bool> selectedAuxiliaries = auxiliaries.map((e) => e == selected).toList();
     return ToggleButtons(
       borderRadius: const BorderRadius.all(Radius.circular(8)),

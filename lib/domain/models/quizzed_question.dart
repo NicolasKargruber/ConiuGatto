@@ -1,4 +1,4 @@
-import '../../data/enums/auxiliary.dart';
+import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/italian_tense.dart';
 import '../../data/enums/pronoun.dart';
 import '../../data/models/quizzed_question_dto.dart';
@@ -8,7 +8,7 @@ class QuizzedQuestion {
   final DateTime date;
   final String? verbID;
   final Pronoun pronoun;
-  final Auxiliary auxiliary;
+  final ItalianAuxiliary auxiliary;
   final ItalianTense tense;
   final bool correct;
 

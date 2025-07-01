@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 extension BuildContextExtensions on BuildContext {
   ThemeData get theme => Theme.of(this);
 
@@ -22,4 +24,6 @@ extension BuildContextExtensions on BuildContext {
   ScaffoldState get scaffold => Scaffold.of(this);
 
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+
+  AppLocalizations get localization => AppLocalizations.of(this)!;
 }

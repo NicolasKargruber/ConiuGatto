@@ -21,7 +21,7 @@ final class PresentIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return PresentIndicative(
@@ -55,7 +55,7 @@ final class PresentContinuousIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return PresentContinuousIndicative(
@@ -87,7 +87,7 @@ final class ImperfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return ImperfectIndicative(
@@ -121,7 +121,7 @@ final class PresentPerfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return PresentPerfectIndicative(
@@ -151,7 +151,7 @@ final class PastPerfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return PastPerfectIndicative(
@@ -182,7 +182,7 @@ final class HistoricalPresentPerfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return HistoricalPresentPerfectIndicative(
@@ -216,7 +216,7 @@ final class HistoricalPastPerfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return HistoricalPastPerfectIndicative(
@@ -247,7 +247,7 @@ final class FutureIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return FutureIndicative(
@@ -281,7 +281,7 @@ final class FuturePerfectIndicative extends Tense {
     conjugationOrNull(Pronoun pronoun) {
       final conjugatedVerb = conjugations[pronoun];
       if(conjugatedVerb == null) return null;
-      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], conjugatedVerb: conjugatedVerb);
+      return Conjugation.from(pronoun: pronoun, generated: generated?[pronoun], translatedConjugation: conjugatedVerb);
     }
 
     return FuturePerfectIndicative(

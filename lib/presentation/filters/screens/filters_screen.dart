@@ -54,7 +54,7 @@ class FiltersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Filters 🕹️")),
+      appBar: AppBar(title: Text(context.localization.filtersAppTitle)),
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
@@ -66,7 +66,7 @@ class FiltersScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: context.colorScheme.surfaceContainer,
                 child: Text(
-                  "Tenses",
+                  context.localization.tensesLabel,
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
@@ -75,14 +75,14 @@ class FiltersScreen extends StatelessWidget {
             SizedBox(height: AppValues.s8),
 
             ListTile(
-              title: Text("The following tenses will be included in your Quiz."),
+              title: Text(context.localization.tenseFiltersSubtitle),
             ),
 
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
                   onPressed: () => _showChooseTensesSheet(context),
-                  child: Text("Update tenses"),
+                  child: Text(context.localization.updateTenses),
                 ),
               ),
             ),
@@ -95,7 +95,7 @@ class FiltersScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: context.colorScheme.surfaceContainer,
                 child: Text(
-                  "Verbs",
+                  context.localization.verbsLabel,
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
@@ -104,16 +104,14 @@ class FiltersScreen extends StatelessWidget {
             SizedBox(height: AppValues.s8),
 
             ListTile(
-              title: Text(
-                "The following verbs will be included up in your Quiz.",
-              ),
+                title: Text(context.localization.verbFiltersSubtitle),
             ),
 
             ListTile(
               title: Center(
                 child: FilledButton.tonal(
                   onPressed: () => _showChooseVerbFiltersSheet(context),
-                  child: Text("Update verbs"),
+                  child: Text(context.localization.updateVerbs),
                 ),
               ),
             ),
@@ -126,7 +124,7 @@ class FiltersScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p12),
                 color: context.colorScheme.surfaceContainer,
                 child: Text(
-                  "Pronouns",
+                  context.localization.pronounsLabel,
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
                 ),
               ),
@@ -136,7 +134,7 @@ class FiltersScreen extends StatelessWidget {
 
             ListTile(
               title: Text(
-                "The following pronouns will be included up in your Quiz.",
+                context.localization.pronounFiltersSubtitle,
               ),
             ),
 
@@ -144,7 +142,7 @@ class FiltersScreen extends StatelessWidget {
               title: Center(
                 child: FilledButton.tonal(
                   onPressed: ()=> _showChoosePronounsSheet(context),
-                  child: Text("Update pronouns"),
+                  child: Text(context.localization.updatePronouns),
                 ),
               ),
             ),

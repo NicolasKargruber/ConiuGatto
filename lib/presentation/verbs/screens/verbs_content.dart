@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/service/shared_preference_service.dart';
 import '../../../domain/utils/url_helper.dart';
+import '../../../domain/utils/verb_extensions.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
@@ -42,7 +43,7 @@ class VerbsContent extends StatelessWidget {
                     onDismissed: () => viewModel.toggleStarredVerb(verb),
                     child: ListTile(
                       title: Text(verb.italianInfinitive),
-                      subtitle: Text(verb.translation),
+                      subtitle: Text(verb.getTranslation(context)),
                       trailing: isStarred ? StarWidgetFactory.createIcon() : null,
                       onTap: () async {
                         await Navigator.push(context,
@@ -102,7 +103,7 @@ class _SearchBar extends StatelessWidget {
           ),
         ),
       ],
-      hintText: 'Search verbs...',
+      hintText: context.localization.verbSearchbarHint,
       onChanged: viewModel.filterVerbs,
       elevation: WidgetStateProperty.all(0.0),
     );
@@ -118,14 +119,14 @@ class _RequestVerb extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: AppValues.s12,
       children: [
-        Text('No verb found! 🔍',
+        Text(context.localization.noVerbFound,
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: AppValues.fs16)
         ),
       FilledButton(
         onPressed: () {
           UrlHelper.sendMailToRequestVerb(context.read<SearchViewModel>().searchString.toUpperCase());
         },
-        child: Text('Request verb'),
+        child: Text(context.localization.requestVerb),
       ),
       ],
     );

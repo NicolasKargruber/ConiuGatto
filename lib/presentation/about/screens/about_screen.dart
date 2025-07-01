@@ -1,10 +1,14 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/service/package_info_service.dart';
+import '../../../main.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/error_snack_bar.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../introduction/screens/on_boarding_screen.dart';
 import '../../widgets/buy_me_a_coffee_button.dart';
 
@@ -44,7 +48,7 @@ class AboutScreen extends StatelessWidget {
     final packageInfo = context.watch<PackageInfoService>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About'),
+        title: Text(context.localization.aboutAppTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).maybePop(),
@@ -87,21 +91,58 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: AppValues.s8),
 
-          _buildMenuItem(context, 'Show Introduction', () => showIntroduction(context)),
-          /*_buildMenuItem(context, 'Community Standards'),
-          _buildMenuItem(context, 'Terms of Use'),
-          _buildMenuItem(context, 'Third party Notices'),
-          _buildMenuItem(context, 'Privacy and Cookies'),*/
+          _buildMenuItem(context, context.localization.showIntroduction, () => showIntroduction(context)),
+          _ChooseLanguageDropDown(),
         ],
       ),
     );
   }
+}
 
-  Widget _buildMenuItem(BuildContext context, String title, Function() onTap) {
-    return ListTile(
-      title: Text(title),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap: onTap,
+Widget _buildMenuItem(BuildContext context, String title, Function()? onTap) {
+  return ListTile(
+    title: Text(title),
+    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+    onTap: onTap,
+  );
+}
+
+class _ChooseLanguageDropDown extends StatelessWidget {
+  const _ChooseLanguageDropDown({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton2(
+        isExpanded: true,
+        customButton: _buildMenuItem(context, context.localization.changeLanguage, null),
+        items: ["English", "Deutsch"].map((item) => DropdownMenuItem(value: item, child: Text(item))).toList(),
+        onChanged: (value) {
+          MyApp.of(context)?.setLocale(Locale(value!.substring(0, 2).toLowerCase()));
+        },
+        buttonStyleData: const ButtonStyleData(
+          padding: EdgeInsets.only(right: 8),
+        ),
+        iconStyleData: const IconStyleData(
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: Colors.black45,
+          ),
+          iconSize: 24,
+        ),
+        dropdownStyleData: DropdownStyleData(
+          direction: DropdownDirection.left,
+          width: AppValues.s180,
+          decoration: BoxDecoration(
+            color: context.colorScheme.surfaceContainerHigh,
+            borderRadius: BorderRadius.circular(AppValues.r16),
+          ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.symmetric(horizontal: AppValues.p16),
+        ),
+      ),
     );
   }
 }
+

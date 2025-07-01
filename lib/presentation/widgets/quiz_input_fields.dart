@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/models/answer_result.dart';
+import '../../domain/utils/answer_result_extensions.dart';
 import '../../utilities/app_values.dart';
 import '../../utilities/extensions/build_context_extensions.dart';
 
@@ -89,7 +90,7 @@ class QuizInputFields extends StatelessWidget {
         if(answerResult case var result?)
           ...[
             SizedBox(height: AppValues.s4),
-            Text(result.message),
+            Text(result.getMessage(context)),
           ],
 
         SizedBox(height: AppValues.s4),

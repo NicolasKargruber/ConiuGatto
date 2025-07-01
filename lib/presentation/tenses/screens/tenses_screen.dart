@@ -21,7 +21,7 @@ class TensesScreen extends StatelessWidget {
     final viewModel = context.watch<TensesViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tenses 📊"),
+        title: Text(context.localization.tensesAppTitle),
         actions: [
           IconButton(onPressed: () => AboutScreen.show(context), icon: Icon(Icons.settings_rounded)),
         ],
@@ -41,8 +41,8 @@ class TensesScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Quiz Incorrect Conjugations", style: TextStyle(color: context.colorScheme.onPrimaryContainer)),
-                    FilledButton(child: Text("Start"), onPressed: () {
+                    Text(context.localization.quizIncorrectLabel, style: TextStyle(color: context.colorScheme.onPrimaryContainer)),
+                    FilledButton(child: Text(context.localization.start), onPressed: () {
                       QuizLengthSheet.show(context,
                         showQuizScreen: (length) =>
                             QuizScreen.show(context,

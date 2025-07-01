@@ -40,7 +40,7 @@ class ChooseTensesSheet extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(AppValues.p12),
             child: Text(
-              "Choose from the Tenses below",
+              context.localization.tensesSheetSubtitle,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: AppValues.fs18,

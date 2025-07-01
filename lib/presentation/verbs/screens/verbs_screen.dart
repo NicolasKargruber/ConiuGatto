@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain/service/verb_service.dart';
+import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../about/screens/about_screen.dart';
 import 'verbs_content.dart';
 
@@ -17,7 +18,7 @@ class VerbsScreen extends StatelessWidget {
     debugPrint("$_logTag | build()");
     return Scaffold(
       appBar: AppBar(
-        title: Text('Verbs 📚'),
+        title: Text(context.localization.verbsAppTitle),
         actions: [
           IconButton(onPressed: () => AboutScreen.show(context), icon: Icon(Icons.settings_rounded)),
         ],
@@ -30,7 +31,7 @@ class VerbsScreen extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (context.read<VerbService>().verbs.isEmpty) {
-            return Center(child: Text('No verbs available 💨'));
+            return Center(child: Text(context.localization.noVerbsAvailable));
           } else {
             return VerbsContent(
               searchTextController: _searchTextController,

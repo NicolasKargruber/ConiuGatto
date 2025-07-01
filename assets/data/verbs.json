@@ -12,6 +12,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -349,6 +350,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -547,37 +549,37 @@
           "io": {
             "italian": "fossi",
             "english": "used to be",
-            "german": "fuhr",
+            "german": "wäre",
             "spanish": "fuera"
           },
           "tu": {
             "italian": "fossi",
             "english": "used to be",
-            "german": "fuhrst",
+            "german": "wärst",
             "spanish": "fueras"
           },
           "lui/lei": {
             "italian": "fosse",
             "english": "used to be",
-            "german": "fuhr",
+            "german": "wärt",
             "spanish": "fuera"
           },
           "noi": {
             "italian": "fossimo",
             "english": "used to be",
-            "german": "fuhrn",
+            "german": "wären",
             "spanish": "fuéramos"
           },
           "voi": {
             "italian": "foste",
             "english": "used to be",
-            "german": "fuhrt",
+            "german": "wärt",
             "spanish": "fuerais"
           },
           "loro": {
             "italian": "fossero",
             "english": "used to be",
-            "german": "fuhrn",
+            "german": "wären",
             "spanish": "fueran"
           }
         }
@@ -587,37 +589,37 @@
           "io": {
             "italian": "sarei",
             "english": "would be",
-            "german": "wäre",
+            "german": "würde sein",
             "spanish": "sería"
           },
           "tu": {
             "italian": "saresti",
             "english": "would be",
-            "german": "wärst",
+            "german": "würdest sein",
             "spanish": "serías"
           },
           "lui/lei": {
             "italian": "sarebbe",
             "english": "would be",
-            "german": "wäre",
+            "german": "würde sein",
             "spanish": "sería"
           },
           "noi": {
             "italian": "saremmo",
             "english": "would be",
-            "german": "wären",
+            "german": "würden sein",
             "spanish": "seríamos"
           },
           "voi": {
             "italian": "sareste",
             "english": "would be",
-            "german": "wärt",
+            "german": "würdet sein",
             "spanish": "seríais"
           },
           "loro": {
             "italian": "sarebbero",
             "english": "would be",
-            "german": "wären",
+            "german": "würden sein",
             "spanish": "serían"
           }
         }
@@ -684,6 +686,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1021,6 +1024,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1359,6 +1363,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -1697,6 +1702,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2034,6 +2040,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2369,6 +2376,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -2706,6 +2714,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3043,6 +3052,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3378,6 +3388,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -3716,6 +3727,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4051,6 +4063,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4361,6 +4374,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -4673,6 +4687,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5010,6 +5025,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5348,6 +5364,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5685,6 +5702,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -5973,6 +5991,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6261,6 +6280,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6549,6 +6569,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -6836,6 +6857,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7123,6 +7145,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7410,6 +7433,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7697,6 +7721,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -7984,6 +8009,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8271,6 +8297,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8558,6 +8585,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -8845,6 +8873,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9134,6 +9163,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9422,6 +9452,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9709,6 +9740,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -9996,6 +10028,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10283,6 +10316,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10571,6 +10605,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -10858,6 +10893,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11146,6 +11182,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11433,6 +11470,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -11720,6 +11758,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12008,6 +12047,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12295,6 +12335,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12584,6 +12625,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -12905,342 +12947,6 @@
     }
   },
   {
-    "id": "dispiacere",
-    "infinitive": {
-      "italian": "dispiacere",
-      "english": "to be sorry",
-      "german": "leid tun",
-      "spanish": "llamentar"
-    },
-    "regularity": "irregular",
-    "irregularities": [
-      "spelling change",
-      "past participle"
-    ],
-    "auxiliaries": [
-      "essere"
-    ],
-    "conjugations": {
-      "indicativo": {
-        "presente": {
-          "io": {
-            "italian": "dispiaccio",
-            "english": "am sorry",
-            "german": "tue leid",
-            "spanish": "llamento"
-          },
-          "tu": {
-            "italian": "dispiaci",
-            "english": "are sorry",
-            "german": "tust leid",
-            "spanish": "llamentas"
-          },
-          "lui/lei": {
-            "italian": "dispiace",
-            "english": "is sorry",
-            "german": "tut leid",
-            "spanish": "llamenta"
-          },
-          "noi": {
-            "italian": "dispiacciamo",
-            "english": "are sorry",
-            "german": "tun leid",
-            "spanish": "llamentamos"
-          },
-          "voi": {
-            "italian": "dispiacete",
-            "english": "are sorry",
-            "german": "tut leid",
-            "spanish": "llamentaste"
-          },
-          "loro": {
-            "italian": "dispiacciono",
-            "english": "are sorry",
-            "german": "tun leid",
-            "spanish": "llamentan"
-          }
-        },
-        "imperfetto": {
-          "io": {
-            "italian": "dispiacevo",
-            "english": "used to be sorry",
-            "german": "tat leid",
-            "spanish": "llamentaba"
-          },
-          "tu": {
-            "italian": "dispiacevi",
-            "english": "used to be sorry",
-            "german": "tatest leid",
-            "spanish": "llamentabas"
-          },
-          "lui/lei": {
-            "italian": "dispiaceva",
-            "english": "used to be sorry",
-            "german": "tat leid",
-            "spanish": "llamentaba"
-          },
-          "noi": {
-            "italian": "dispiacevamo",
-            "english": "used to be sorry",
-            "german": "taten leid",
-            "spanish": "llamentábamos"
-          },
-          "voi": {
-            "italian": "dispiacevate",
-            "english": "used to be sorry",
-            "german": "tatet leid",
-            "spanish": "llamentabais"
-          },
-          "loro": {
-            "italian": "dispiacevano",
-            "english": "used to be sorry",
-            "german": "taten leid",
-            "spanish": "llamentaban"
-          }
-        },
-        "passato_remoto": {
-          "io": {
-            "italian": "dispiacqui",
-            "english": "was sorry",
-            "german": "tat leid",
-            "spanish": "llamenté"
-          },
-          "tu": {
-            "italian": "dispiacesti",
-            "english": "were sorry",
-            "german": "tatest leid",
-            "spanish": "llamentaste"
-          },
-          "lui/lei": {
-            "italian": "dispiacque",
-            "english": "was sorry",
-            "german": "tat leid",
-            "spanish": "llamentó"
-          },
-          "noi": {
-            "italian": "dispiacemmo",
-            "english": "were sorry",
-            "german": "taten leid",
-            "spanish": "llamentamos"
-          },
-          "voi": {
-            "italian": "dispiaceste",
-            "english": "were sorry",
-            "german": "tatet leid",
-            "spanish": "llamentasteis"
-          },
-          "loro": {
-            "italian": "dispiacquero",
-            "english": "were sorry",
-            "german": "taten leid",
-            "spanish": "llamentaron"
-          }
-        },
-        "futuro_semplice": {
-          "io": {
-            "italian": "dispiacerò",
-            "english": "will be sorry",
-            "german": "werde leid tun",
-            "spanish": "llamentaré"
-          },
-          "tu": {
-            "italian": "dispiacerai",
-            "english": "will be sorry",
-            "german": "wirst leid tun",
-            "spanish": "llamentarás"
-          },
-          "lui/lei": {
-            "italian": "dispiacerà",
-            "english": "will be sorry",
-            "german": "wird leid tun",
-            "spanish": "llamentará"
-          },
-          "noi": {
-            "italian": "dispiaceremo",
-            "english": "will be sorry",
-            "german": "werden leid tun",
-            "spanish": "llamentaremos"
-          },
-          "voi": {
-            "italian": "dispiacerete",
-            "english": "will be sorry",
-            "german": "werdet leid tun",
-            "spanish": "llamentaréis"
-          },
-          "loro": {
-            "italian": "dispiaceranno",
-            "english": "will be sorry",
-            "german": "werden leid tun",
-            "spanish": "llamentarán"
-          }
-        }
-      },
-      "congiuntivo": {
-        "presente": {
-          "io": {
-            "italian": "dispiaccia",
-            "english": "be sorry",
-            "german": "tue leid",
-            "spanish": "llamente"
-          },
-          "tu": {
-            "italian": "dispiaccia",
-            "english": "be sorry",
-            "german": "tuest leid",
-            "spanish": "llamentes"
-          },
-          "lui/lei": {
-            "italian": "dispiaccia",
-            "english": "be sorry",
-            "german": "tue leid",
-            "spanish": "llamente"
-          },
-          "noi": {
-            "italian": "dispiacciamo",
-            "english": "be sorry",
-            "german": "tun leid",
-            "spanish": "llamentemos"
-          },
-          "voi": {
-            "italian": "dispiacciate",
-            "english": "be sorry",
-            "german": "tut leid",
-            "spanish": "llamentéis"
-          },
-          "loro": {
-            "italian": "dispiacciano",
-            "english": "be sorry",
-            "german": "tun leid",
-            "spanish": "llamenten"
-          }
-        },
-        "imperfetto": {
-          "io": {
-            "italian": "dispiacessi",
-            "english": "were sorry",
-            "german": "täte leid",
-            "spanish": "llamentara"
-          },
-          "tu": {
-            "italian": "dispiacessi",
-            "english": "were sorry",
-            "german": "tätest leid",
-            "spanish": "llamentaras"
-          },
-          "lui/lei": {
-            "italian": "dispiacesse",
-            "english": "were sorry",
-            "german": "täte leid",
-            "spanish": "llamentara"
-          },
-          "noi": {
-            "italian": "dispiacessimo",
-            "english": "were sorry",
-            "german": "täten leid",
-            "spanish": "llamentaramos"
-          },
-          "voi": {
-            "italian": "dispiaceste",
-            "english": "were sorry",
-            "german": "tätet leid",
-            "spanish": "llamentarais"
-          },
-          "loro": {
-            "italian": "dispiacessero",
-            "english": "were sorry",
-            "german": "täten leid",
-            "spanish": "llamentaran"
-          }
-        }
-      },
-      "condizionale": {
-        "presente": {
-          "io": {
-            "italian": "dispiacerei",
-            "english": "would be sorry",
-            "german": "würde leid tun",
-            "spanish": "llamentaría"
-          },
-          "tu": {
-            "italian": "dispiaceresti",
-            "english": "would be sorry",
-            "german": "würdest leid tun",
-            "spanish": "llamentarías"
-          },
-          "lui/lei": {
-            "italian": "dispiacerebbe",
-            "english": "would be sorry",
-            "german": "würde leid tun",
-            "spanish": "llamentaría"
-          },
-          "noi": {
-            "italian": "dispiaceremmo",
-            "english": "would be sorry",
-            "german": "würden leid tun",
-            "spanish": "llamentaríamos"
-          },
-          "voi": {
-            "italian": "dispiacereste",
-            "english": "would be sorry",
-            "german": "würdet leid tun",
-            "spanish": "llamentaríais"
-          },
-          "loro": {
-            "italian": "dispiacerebbero",
-            "english": "would be sorry",
-            "german": "würden leid tun",
-            "spanish": "llamentarían"
-          }
-        }
-      },
-      "imperativo": {
-        "positivo": {
-          "io": null,
-          "tu": {
-            "italian": "dispiaci",
-            "english": "be sorry!",
-            "german": "tu leid!",
-            "spanish": "llamente"
-          },
-          "lui/lei": {
-            "italian": "dispiaccia",
-            "english": "be sorry!",
-            "german": "tue leid!",
-            "spanish": "llamenta"
-          },
-          "noi": {
-            "italian": "dispiacciamo",
-            "english": "let's be sorry!",
-            "german": "tun wir leid!",
-            "spanish": "llamentemos"
-          },
-          "voi": {
-            "italian": "dispiacete",
-            "english": "be sorry!",
-            "german": "tut leid!",
-            "spanish": "llamentad"
-          },
-          "loro": {
-            "italian": "dispiacciano",
-            "english": "be sorry!",
-            "german": "tun Sie leid!",
-            "spanish": "llamenten"
-          }
-        }
-      }
-    },
-    "participio_passato": {
-      "italian": "dispiaciuto",
-      "english": "been sorry",
-      "german": "leid getan"
-    },
-    "gerundio_presente": {
-      "italian": "dispiacendo",
-      "english": "being sorry",
-      "german": "leid tuend"
-    }
-  },
-  {
     "id": "mancare",
     "infinitive": {
       "italian": "mancare",
@@ -13255,6 +12961,7 @@
       "essere",
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13540,6 +13247,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -13825,6 +13533,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14110,6 +13819,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14397,6 +14107,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14682,6 +14393,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -14967,6 +14679,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15252,6 +14965,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15539,6 +15253,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -15824,6 +15539,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16109,6 +15825,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16394,6 +16111,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16681,6 +16399,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -16966,6 +16685,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17251,6 +16971,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17536,6 +17257,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -17821,6 +17543,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18106,6 +17829,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18391,6 +18115,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18676,6 +18401,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -18961,6 +18687,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19246,6 +18973,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19531,6 +19259,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -19816,6 +19545,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20103,6 +19833,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20388,6 +20119,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20673,6 +20405,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -20960,6 +20693,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21249,6 +20983,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21586,6 +21321,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -21874,6 +21610,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22161,6 +21898,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22446,6 +22184,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -22733,6 +22472,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23019,6 +22759,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23305,6 +23046,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23594,6 +23336,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -23618,7 +23361,7 @@
             "german": "kochen"
           },
           "voi": {
-            "italian": "coucete",
+            "italian": "cuocete",
             "english": "cook",
             "german": "kocht"
           },
@@ -23882,6 +23625,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24168,6 +23912,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24454,6 +24199,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -24740,6 +24486,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25026,6 +24773,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25314,6 +25062,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25602,6 +25351,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -25943,6 +25693,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26278,6 +26029,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26566,6 +26318,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -26854,6 +26607,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27140,6 +26894,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27426,6 +27181,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -27762,6 +27518,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28097,6 +27854,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28432,6 +28190,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -28767,6 +28526,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29102,6 +28862,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29437,6 +29198,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -29772,6 +29534,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30107,6 +29870,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30442,6 +30206,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -30777,6 +30542,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31112,6 +30878,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31449,6 +31216,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -31784,6 +31552,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32119,6 +31888,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32454,6 +32224,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -32789,6 +32560,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33124,6 +32896,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33459,6 +33232,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -33797,6 +33571,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34132,6 +33907,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34467,6 +34243,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -34804,6 +34581,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35141,6 +34919,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35469,13 +35248,14 @@
       "italian": "fermare",
       "english": "to stop",
       "german": "anhalten",
-      "spanish": "detener"
+      "spanish": "parar"
     },
     "regularity": "regular",
     "irregularities": [],
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -35483,37 +35263,37 @@
             "italian": "fermo",
             "english": "stop",
             "german": "halte an",
-            "spanish": "detengo"
+            "spanish": "paro"
           },
           "tu": {
             "italian": "fermi",
             "english": "stop",
             "german": "hältst an",
-            "spanish": "detienes"
+            "spanish": "paras"
           },
           "lui/lei": {
             "italian": "ferma",
             "english": "stops",
             "german": "hält an",
-            "spanish": "detiene"
+            "spanish": "para"
           },
           "noi": {
             "italian": "fermiamo",
             "english": "stop",
             "german": "halten an",
-            "spanish": "detenemos"
+            "spanish": "paramos"
           },
           "voi": {
             "italian": "fermate",
             "english": "stop",
             "german": "haltet an",
-            "spanish": "detenéis"
+            "spanish": "paráis"
           },
           "loro": {
-            "italian": "fermanno",
+            "italian": "fermano",
             "english": "stop",
             "german": "halten an",
-            "spanish": "detienen"
+            "spanish": "paran"
           }
         },
         "imperfetto": {
@@ -35521,37 +35301,37 @@
             "italian": "fermavo",
             "english": "used to stop",
             "german": "hielt an",
-            "spanish": "detenía"
+            "spanish": "paraba"
           },
           "tu": {
             "italian": "fermavi",
             "english": "used to stop",
             "german": "hieltst an",
-            "spanish": "detenías"
+            "spanish": "parabas"
           },
           "lui/lei": {
             "italian": "fermava",
             "english": "used to stop",
             "german": "hielt an",
-            "spanish": "detenía"
+            "spanish": "paraba"
           },
           "noi": {
             "italian": "fermavamo",
             "english": "used to stop",
             "german": "hielten an",
-            "spanish": "deteníamos"
+            "spanish": "parábamos"
           },
           "voi": {
             "italian": "fermavate",
             "english": "used to stop",
             "german": "hieltet an",
-            "spanish": "deteníais"
+            "spanish": "parabais"
           },
           "loro": {
             "italian": "fermavano",
             "english": "used to stop",
             "german": "hielten an",
-            "spanish": "detenían"
+            "spanish": "paraban"
           }
         },
         "passato_remoto": {
@@ -35559,37 +35339,37 @@
             "italian": "fermai",
             "english": "stopped",
             "german": "hielt an",
-            "spanish": "detuve"
+            "spanish": "paré"
           },
           "tu": {
             "italian": "fermaste",
             "english": "stopped",
             "german": "hieltst an",
-            "spanish": "detuviste"
+            "spanish": "paraste"
           },
           "lui/lei": {
             "italian": "fermò",
             "english": "stopped",
             "german": "hielt an",
-            "spanish": "detuvo"
+            "spanish": "paró"
           },
           "noi": {
             "italian": "fermammo",
             "english": "stopped",
             "german": "hielten an",
-            "spanish": "detuvimos"
+            "spanish": "paramos"
           },
           "voi": {
             "italian": "fermaste",
             "english": "stopped",
             "german": "hieltet an",
-            "spanish": "detuvisteis"
+            "spanish": "parasteis"
           },
           "loro": {
             "italian": "fermarono",
             "english": "stopped",
             "german": "hielten an",
-            "spanish": "detuvieron"
+            "spanish": "pararon"
           }
         },
         "futuro_semplice": {
@@ -35597,37 +35377,37 @@
             "italian": "fermerò",
             "english": "will stop",
             "german": "werde anhalten",
-            "spanish": "detendré"
+            "spanish": "pararé"
           },
           "tu": {
             "italian": "fermerai",
             "english": "will stop",
             "german": "wirst anhalten",
-            "spanish": "detendrás"
+            "spanish": "pararás"
           },
           "lui/lei": {
             "italian": "fermerà",
             "english": "will stop",
             "german": "wird anhalten",
-            "spanish": "detendrá"
+            "spanish": "parará"
           },
           "noi": {
             "italian": "fermeremo",
             "english": "will stop",
             "german": "werden anhalten",
-            "spanish": "detendremos"
+            "spanish": "pararemos"
           },
           "voi": {
             "italian": "fermerete",
             "english": "will stop",
             "german": "werdet anhalten",
-            "spanish": "detendréis"
+            "spanish": "pararéis"
           },
           "loro": {
             "italian": "fermeranno",
             "english": "will stop",
             "german": "werden anhalten",
-            "spanish": "detendrán"
+            "spanish": "pararán"
           }
         }
       },
@@ -35637,37 +35417,37 @@
             "italian": "fermi",
             "english": "stop",
             "german": "halte an",
-            "spanish": "detenga"
+            "spanish": "pare"
           },
           "tu": {
             "italian": "fermi",
             "english": "stop",
             "german": "hältst an",
-            "spanish": "detengas"
+            "spanish": "pares"
           },
           "lui/lei": {
             "italian": "fermi",
             "english": "stop",
             "german": "halte an",
-            "spanish": "detenga"
+            "spanish": "pare"
           },
           "noi": {
             "italian": "fermiamo",
             "english": "stop",
             "german": "halten an",
-            "spanish": "detengamos"
+            "spanish": "paremos"
           },
           "voi": {
             "italian": "fermiate",
             "english": "stop",
             "german": "haltet an",
-            "spanish": "detengáis"
+            "spanish": "paréis"
           },
           "loro": {
-            "italian": "fermiano",
+            "italian": "fermino",
             "english": "stop",
             "german": "halten an",
-            "spanish": "detengan"
+            "spanish": "paren"
           }
         },
         "imperfetto": {
@@ -35675,37 +35455,37 @@
             "italian": "fermassi",
             "english": "stopped",
             "german": "hielte an",
-            "spanish": "detuviera"
+            "spanish": "parara"
           },
           "tu": {
             "italian": "fermassi",
             "english": "stopped",
             "german": "hieltest an",
-            "spanish": "detuvieras"
+            "spanish": "pararas"
           },
           "lui/lei": {
             "italian": "fermasse",
             "english": "stopped",
             "german": "hielte an",
-            "spanish": "detuviera"
+            "spanish": "parara"
           },
           "noi": {
             "italian": "fermassimo",
             "english": "stopped",
             "german": "hielten an",
-            "spanish": "detuviéramos"
+            "spanish": "paráramos"
           },
           "voi": {
-            "italian": "fermasti",
+            "italian": "fermaste",
             "english": "stopped",
             "german": "hieltet an",
-            "spanish": "detuvierais"
+            "spanish": "pararais"
           },
           "loro": {
             "italian": "fermassero",
             "english": "stopped",
             "german": "hielten an",
-            "spanish": "detuvieran"
+            "spanish": "pararan"
           }
         }
       },
@@ -35715,37 +35495,37 @@
             "italian": "fermerei",
             "english": "would stop",
             "german": "würde anhalten",
-            "spanish": "detendría"
+            "spanish": "pararía"
           },
           "tu": {
             "italian": "fermeresti",
             "english": "would stop",
             "german": "würdest anhalten",
-            "spanish": "detendrías"
+            "spanish": "pararías"
           },
           "lui/lei": {
             "italian": "fermerebbe",
             "english": "would stop",
             "german": "würde anhalten",
-            "spanish": "detendría"
+            "spanish": "pararía"
           },
           "noi": {
             "italian": "fermeremmo",
             "english": "would stop",
             "german": "würden anhalten",
-            "spanish": "detendríamos"
+            "spanish": "pararíamos"
           },
           "voi": {
             "italian": "fermereste",
             "english": "would stop",
             "german": "würdet anhalten",
-            "spanish": "detendríais"
+            "spanish": "pararíais"
           },
           "loro": {
             "italian": "fermerebbero",
             "english": "would stop",
             "german": "würden anhalten",
-            "spanish": "detendrían"
+            "spanish": "pararían"
           }
         }
       },
@@ -35756,31 +35536,31 @@
             "italian": "ferma",
             "english": "stop!",
             "german": "halt an!",
-            "spanish": "¡detén!"
+            "spanish": "¡para!"
           },
           "lui/lei": {
             "italian": "fermi",
             "english": "stop!",
             "german": "halte an!",
-            "spanish": "¡detenga!"
+            "spanish": "¡pare!"
           },
           "noi": {
             "italian": "fermiamo",
             "english": "let's stop!",
             "german": "halten wir an!",
-            "spanish": "¡detengamos!"
+            "spanish": "¡paremos!"
           },
           "voi": {
             "italian": "fermate",
             "english": "stop!",
             "german": "haltet an!",
-            "spanish": "¡detened!"
+            "spanish": "¡parad!"
           },
           "loro": {
-            "italian": "fermiano",
+            "italian": "fermino",
             "english": "stop!",
             "german": "halten Sie an!",
-            "spanish": "¡detengan!"
+            "spanish": "¡paren!"
           }
         }
       }
@@ -35789,13 +35569,13 @@
       "italian": "fermato",
       "english": "stopped",
       "german": "angehalten",
-      "spanish": "detenido"
+      "spanish": "parado"
     },
     "gerundio_presente": {
       "italian": "fermando",
       "english": "stopping",
       "german": "anhaltend",
-      "spanish": "deteniendo"
+      "spanish": "parando"
     }
   },
   {
@@ -35811,6 +35591,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36146,6 +35927,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36481,6 +36263,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -36817,11 +36600,12 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
           "io": {
-            "italian": "piove",
+            "italian": "piovo",
             "english": "rains",
             "german": "regnet",
             "spanish": "llueve"
@@ -37155,6 +36939,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37493,6 +37278,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37503,13 +37289,13 @@
             "spanish": "duelo"
           },
           "tu": {
-            "italian": "doli",
+            "italian": "duoli",
             "english": "hurt",
             "german": "schmerzt",
             "spanish": "dueles"
           },
           "lui/lei": {
-            "italian": "dole",
+            "italian": "duole",
             "english": "hurts",
             "german": "schmerzt",
             "spanish": "duele"
@@ -37521,9 +37307,9 @@
             "spanish": "dolemos"
           },
           "voi": {
-            "italian": "doliate",
+            "italian": "dolete",
             "english": "hurt",
-            "german": "schmerz",
+            "german": "schmerzt",
             "spanish": "doléis"
           },
           "loro": {
@@ -37543,7 +37329,7 @@
           "tu": {
             "italian": "dolevi",
             "english": "used to hurt",
-            "german": "schmerztet",
+            "german": "schmerztest",
             "spanish": "dolías"
           },
           "lui/lei": {
@@ -37573,7 +37359,7 @@
         },
         "passato_remoto": {
           "io": {
-            "italian": "dolei",
+            "italian": "dolsi",
             "english": "hurt",
             "german": "schmerzte",
             "spanish": "dolí"
@@ -37581,7 +37367,7 @@
           "tu": {
             "italian": "dolesti",
             "english": "hurt",
-            "german": "schmerztet",
+            "german": "schmerztest",
             "spanish": "doliste"
           },
           "lui/lei": {
@@ -37603,7 +37389,7 @@
             "spanish": "dolisteis"
           },
           "loro": {
-            "italian": "dolerono",
+            "italian": "dolsero",
             "english": "hurt",
             "german": "schmerzten",
             "spanish": "dolieron"
@@ -37611,37 +37397,37 @@
         },
         "futuro_semplice": {
           "io": {
-            "italian": "dolrò",
+            "italian": "dorrò",
             "english": "will hurt",
             "german": "werde schmerzen",
             "spanish": "doleré"
           },
           "tu": {
-            "italian": "dolrai",
+            "italian": "dorrai",
             "english": "will hurt",
             "german": "wirst schmerzen",
             "spanish": "dolerás"
           },
           "lui/lei": {
-            "italian": "dolrà",
+            "italian": "dorrà",
             "english": "will hurt",
             "german": "wird schmerzen",
             "spanish": "dolerá"
           },
           "noi": {
-            "italian": "dolremo",
+            "italian": "dorremo",
             "english": "will hurt",
             "german": "werden schmerzen",
             "spanish": "doleremos"
           },
           "voi": {
-            "italian": "dolrete",
+            "italian": "dorrete",
             "english": "will hurt",
             "german": "werdet schmerzen",
             "spanish": "doleréis"
           },
           "loro": {
-            "italian": "dolranno",
+            "italian": "dorranno",
             "english": "will hurt",
             "german": "werden schmerzen",
             "spanish": "dolerán"
@@ -37651,19 +37437,19 @@
       "congiuntivo": {
         "presente": {
           "io": {
-            "italian": "dolia",
+            "italian": "dolga",
             "english": "hurt",
             "german": "schmerze",
             "spanish": "duela"
           },
           "tu": {
-            "italian": "dolia",
+            "italian": "dolga",
             "english": "hurt",
-            "german": "schmerzt",
+            "german": "schmerzest",
             "spanish": "duelas"
           },
           "lui/lei": {
-            "italian": "dolia",
+            "italian": "dolga",
             "english": "hurt",
             "german": "schmerze",
             "spanish": "duela"
@@ -37675,13 +37461,13 @@
             "spanish": "dolamos"
           },
           "voi": {
-            "italian": "doliati",
+            "italian": "doliate",
             "english": "hurt",
-            "german": "schmerz",
+            "german": "schmerzet",
             "spanish": "doláis"
           },
           "loro": {
-            "italian": "dolino",
+            "italian": "dolgano",
             "english": "hurt",
             "german": "schmerzen",
             "spanish": "duelan"
@@ -37689,37 +37475,37 @@
         },
         "imperfetto": {
           "io": {
-            "italian": "dolevo",
+            "italian": "dolessi",
             "english": "hurt",
             "german": "schmerzte",
             "spanish": "doliera"
           },
           "tu": {
-            "italian": "dolevi",
+            "italian": "dolessi",
             "english": "hurt",
-            "german": "schmerztet",
+            "german": "schmerztest",
             "spanish": "dolieras"
           },
           "lui/lei": {
-            "italian": "doleva",
+            "italian": "dolesse",
             "english": "hurt",
             "german": "schmerzte",
             "spanish": "doliera"
           },
           "noi": {
-            "italian": "dolevamo",
+            "italian": "dolessimo",
             "english": "hurt",
             "german": "schmerzten",
             "spanish": "doliéramos"
           },
           "voi": {
-            "italian": "dolevate",
+            "italian": "doleste",
             "english": "hurt",
             "german": "schmerztet",
             "spanish": "dolierais"
           },
           "loro": {
-            "italian": "dolevano",
+            "italian": "dolessero",
             "english": "hurt",
             "german": "schmerzten",
             "spanish": "dolieran"
@@ -37729,37 +37515,37 @@
       "condizionale": {
         "presente": {
           "io": {
-            "italian": "dolrei",
+            "italian": "dorrei",
             "english": "would hurt",
             "german": "würde schmerzen",
             "spanish": "dolería"
           },
           "tu": {
-            "italian": "dolresti",
+            "italian": "dorresti",
             "english": "would hurt",
             "german": "würdest schmerzen",
             "spanish": "dolerías"
           },
           "lui/lei": {
-            "italian": "dolrebbe",
+            "italian": "dorrebbe",
             "english": "would hurt",
             "german": "würde schmerzen",
             "spanish": "dolería"
           },
           "noi": {
-            "italian": "dolremmo",
+            "italian": "dorremmo",
             "english": "would hurt",
             "german": "würden schmerzen",
             "spanish": "doleríamos"
           },
           "voi": {
-            "italian": "dolreste",
+            "italian": "dorreste",
             "english": "would hurt",
             "german": "würdet schmerzen",
             "spanish": "doleríais"
           },
           "loro": {
-            "italian": "dolrebbero",
+            "italian": "dorrebbero",
             "english": "would hurt",
             "german": "würden schmerzen",
             "spanish": "dolerían"
@@ -37770,13 +37556,13 @@
         "positivo": {
           "io": null,
           "tu": {
-            "italian": "doli",
+            "italian": "duoli",
             "english": "hurt!",
             "german": "schmerze!",
             "spanish": "¡dueles!"
           },
           "lui/lei": {
-            "italian": "dolia",
+            "italian": "dolga",
             "english": "hurt!",
             "german": "schmerze!",
             "spanish": "¡duela!"
@@ -37788,13 +37574,13 @@
             "spanish": "¡dolamos!"
           },
           "voi": {
-            "italian": "doliati",
+            "italian": "dolete",
             "english": "hurt!",
-            "german": "schmerz!",
-            "spanish": "¡doléis!"
+            "german": "schmerzt!",
+            "spanish": "¡doled!"
           },
           "loro": {
-            "italian": "dolino",
+            "italian": "dolgano",
             "english": "hurt!",
             "german": "schmerzen Sie!",
             "spanish": "¡duelan!"
@@ -37829,6 +37615,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -37915,7 +37702,7 @@
             "spanish": "empecé"
           },
           "tu": {
-            "italian": "iniziaste",
+            "italian": "iniziasti",
             "english": "began",
             "german": "begannst",
             "spanish": "empezaste"
@@ -38165,6 +37952,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -38503,6 +38291,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -38840,6 +38629,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39178,6 +38968,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39516,6 +39307,7 @@
       "avere",
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -39851,6 +39643,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40134,7 +39927,7 @@
             "spanish": "¡canta!"
           },
           "lui/lei": {
-            "italian": "canta",
+            "italian": "canti",
             "english": "sing!",
             "german": "sing!",
             "spanish": "¡cante!"
@@ -40188,6 +39981,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40523,6 +40317,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -40858,6 +40653,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41193,6 +40989,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41528,6 +41325,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -41863,6 +41661,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42200,6 +41999,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42535,6 +42335,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -42870,6 +42671,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43205,6 +43007,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43540,6 +43343,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -43875,6 +43679,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44212,6 +44017,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44547,6 +44353,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -44882,6 +44689,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -45217,6 +45025,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -45552,6 +45361,7 @@
     "auxiliaries": [
       "avere"
     ],
+    "german_auxiliary": "haben",
     "conjugations": {
       "indicativo": {
         "presente": {
@@ -45887,6 +45697,7 @@
     "auxiliaries": [
       "essere"
     ],
+    "german_auxiliary": "sein",
     "conjugations": {
       "indicativo": {
         "presente": {

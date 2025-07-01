@@ -23,7 +23,7 @@ class ChoosePronounsSheet extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(AppValues.p12),
             child: Text(
-              "Choose from the Pronouns below",
+              context.localization.pronounsSheetSubtitle,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: AppValues.fs18,
@@ -62,13 +62,13 @@ class _PronounFilterChips extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Pronouns",
+                context.localization.pronounsLabel,
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: AppValues.fs18),
               ),
 
               TextButton(
                 onPressed: viewModel.selectAllPronounFilters,
-                child: Text("Select All",
+                child: Text(context.localization.selectAll,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
               ),
