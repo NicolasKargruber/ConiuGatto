@@ -1,4 +1,6 @@
 class SharedPreferenceKeys {
+  // Localization - Language Code
+  static const String languageCode = "languageCode";
   // Introduction
   static const String skipIntroduction = "skipIntroduction";
   // Tenses

@@ -33,6 +33,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get showIntroduction => 'Einführung anzeigen';
 
   @override
+  String get changeLanguage => 'Sprache ändern';
+
+  @override
   String get filtersAppTitle => 'Filter 🕹️';
 
   @override

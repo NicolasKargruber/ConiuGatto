@@ -19,6 +19,10 @@ class SharedPreferenceRepository {
   bool? loadSkipIntroductionPref() => _loadPrefBoolIntOrNull(SharedPreferenceKeys.skipIntroduction);
   void updateSkipIntroductionPref(bool value) => _updatePrefBool(SharedPreferenceKeys.skipIntroduction, value);
 
+  // Localization
+  String? loadLocale() => _loadPrefStringOrNull(SharedPreferenceKeys.languageCode);
+  void updateLocale(String value) => _updatePrefString(SharedPreferenceKeys.languageCode, value);
+
   // Verbs
   //String get _customizedVerbsPrefKey => SharedPreferenceKeys.customizedVerbs;
   String get _starredVerbsPrefKey => SharedPreferenceKeys.starredVerbs;

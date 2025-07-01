@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
@@ -112,8 +114,14 @@ class SharedPreferenceService extends Service {
 
   // Removing
   void removeStarredVerb(Verb verb) => _sharedPreferenceRepo.removeStarredVerbFromPrefs(verb.prefKey);
-  //removeVerbFavouritePref() => _sharedPreferenceRepo.removeVerbFavouritePref();
-  //removeIrregularityFilterPref() => _sharedPreferenceRepo.removeIrregularityFilterPref();
-  //removeEndingFilterPref() => _sharedPreferenceRepo.removeEndingFilterPref();
-  //removeCustomizedVerbsPrefs() => _removePref(_customizedVerbsPrefKey);
+
+  // Localization
+  Locale? get locale {
+    try {
+      return Locale(_sharedPreferenceRepo.loadLocale()!);
+    } catch (_) {
+      return null;
+    }
+  }
+  set locale(Locale? locale) => _sharedPreferenceRepo.updateLocale(locale?.languageCode ?? '');
 }

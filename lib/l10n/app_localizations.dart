@@ -146,6 +146,12 @@ abstract class AppLocalizations {
   /// **'Show Introduction'**
   String get showIntroduction;
 
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
   /// No description provided for @filtersAppTitle.
   ///
   /// In en, this message translates to:
