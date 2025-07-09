@@ -31,6 +31,9 @@ class AppValues {
   static const s120 = 120.0;
   static const s128 = 128.0;
   static const s180 = 180.0;
+  static const s480 = 480.0;
+  static const s600 = 600.0;
+  static const s720 = 720.0;
 
   // App Padding
   static const p0 = 0.0;

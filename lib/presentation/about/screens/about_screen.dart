@@ -87,7 +87,8 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: AppValues.s12),
 
-          BuyMeACoffeeButton(onPressed: () => onBuyMeACoffeePressed(context)),
+          // Buy Me A Coffee Button
+          Center(child: BuyMeACoffeeButton(onPressed: () => onBuyMeACoffeePressed(context))),
 
           const SizedBox(height: AppValues.s8),
 
