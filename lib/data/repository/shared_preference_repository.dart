@@ -16,15 +16,18 @@ class SharedPreferenceRepository {
   }
 
   // Introduction
-  bool? loadSkipIntroductionPref() => _loadPrefBoolIntOrNull(SharedPreferenceKeys.skipIntroduction);
+  bool? loadSkipIntroductionPref() => _loadPrefBoolOrNull(SharedPreferenceKeys.skipIntroduction);
   void updateSkipIntroductionPref(bool value) => _updatePrefBool(SharedPreferenceKeys.skipIntroduction, value);
 
   // Localization
   String? loadLocale() => _loadPrefStringOrNull(SharedPreferenceKeys.languageCode);
   void updateLocale(String value) => _updatePrefString(SharedPreferenceKeys.languageCode, value);
 
+  // InAppReview
+  int? loadLaunchCount() => _loadPrefIntOrNull(SharedPreferenceKeys.launchCount);
+  void updateLaunchCount(int value) => _updatePrefInt(SharedPreferenceKeys.launchCount, value);
+
   // Verbs
-  //String get _customizedVerbsPrefKey => SharedPreferenceKeys.customizedVerbs;
   String get _starredVerbsPrefKey => SharedPreferenceKeys.starredVerbs;
   String get _verbFavouriteFiltersPrefKey => SharedPreferenceKeys.verbFavouriteFilter;
   String get _irregularityFiltersPrefKey => SharedPreferenceKeys.irregularityFilter;
@@ -43,7 +46,6 @@ class SharedPreferenceRepository {
   String? loadIrregularityFilterPref() => _loadPrefStringOrNull(_irregularityFiltersPrefKey);
   String? loadEndingFilterPref() => _loadPrefStringOrNull(_endingFiltersPrefKey);
   String? loadAuxiliaryFilterPref() => _loadPrefStringOrNull(_auxiliaryFilterPrefKey);
-  //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses
   List<String>? loadTensePrefs() => _loadPrefStringListOrNull(_tensePrefKey)?.toList();
   // Pronoun
@@ -77,12 +79,19 @@ class SharedPreferenceRepository {
   void removeVerbFavouritePref() => _removePref(_verbFavouriteFiltersPrefKey);
   void removeIrregularityFilterPref() => _removePref(_irregularityFiltersPrefKey);
   void removeEndingFilterPref() => _removePref(_endingFiltersPrefKey);
-  //removeCustomizedVerbsPrefs() => _removePref(_customizedVerbsPrefKey);
 
   // Private Helpers
-  bool? _loadPrefBoolIntOrNull(String key, {bool? defaultValue}) {
-    debugPrint('$_logTag | _loadPrefBoolIntOrNull($key)');
+  bool? _loadPrefBoolOrNull(String key, {bool? defaultValue}) {
+    debugPrint('$_logTag | _loadPrefBoolOrNull($key)');
     final pref = _prefs.getBool(key) ?? defaultValue;
+    debugPrint('$_logTag | Available $key Pref: $pref');
+    return pref;
+  }
+
+  // Private Helpers
+  int? _loadPrefIntOrNull(String key, {int? defaultValue}) {
+    debugPrint('$_logTag | _loadPrefIntOrNull($key)');
+    final pref = _prefs.getInt(key) ?? defaultValue;
     debugPrint('$_logTag | Available $key Pref: $pref');
     return pref;
   }
@@ -108,30 +117,37 @@ class SharedPreferenceRepository {
   }
 
   // Private Helpers
+  void _updatePrefInt(String key, int value) {
+    debugPrint('$_logTag | _updatePrefInt($key)');
+    _prefs.setInt(key, value);
+    debugPrint('$_logTag | Updated "$key" Pref: $value');
+  }
+
+  // Private Helpers
   void _updatePrefBool(String key, bool value) {
     debugPrint('$_logTag | _updatePrefBool($key)');
     _prefs.setBool(key, value);
-    debugPrint('$_logTag | Updated $key Pref: $value');
+    debugPrint('$_logTag | Updated "$key" Pref: $value');
   }
 
   // Private Helpers
   void _updatePrefString(String key, String value) {
     debugPrint('$_logTag | _updatePrefString($key)');
     _prefs.setString(key, value);
-    debugPrint('$_logTag | Updated $key Pref: $value');
+    debugPrint('$_logTag | Updated "$key" Pref: $value');
   }
 
   // Private Helpers
   void _updateStringList(String key, Set<String> values) {
     debugPrint('$_logTag | _updatePrefStringList($key)');
     _prefs.setStringList(key, values.toList());
-    debugPrint('$_logTag | Updated $key Prefs: $values');
+    debugPrint('$_logTag | Updated "$key" Prefs: $values');
   }
 
   // Private Helpers
   void _removePref(String key) {
     debugPrint('$_logTag | _removePref($key)');
     _prefs.remove(key);
-    debugPrint('$_logTag | Removed $key Pref');
+    debugPrint('$_logTag | Removed "$key" Pref');
   }
 }

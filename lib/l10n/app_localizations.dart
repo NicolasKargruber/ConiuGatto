@@ -152,6 +152,12 @@ abstract class AppLocalizations {
   /// **'Change Language'**
   String get changeLanguage;
 
+  /// No description provided for @showInStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to store'**
+  String get showInStore;
+
   /// No description provided for @filtersAppTitle.
   ///
   /// In en, this message translates to:

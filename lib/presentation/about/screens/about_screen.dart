@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../domain/service/in_app_review_service.dart';
 import '../../../domain/service/package_info_service.dart';
 import '../../../main.dart';
 import '../../../utilities/app_values.dart';
@@ -20,10 +21,18 @@ class AboutScreen extends StatelessWidget {
   // TODO Use Navigator
   static show(BuildContext context) async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) =>
-        ChangeNotifierProvider(
-          create: (_) => PackageInfoService(),
+        MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (_) => PackageInfoService()
+            ),
+            ChangeNotifierProvider.value(
+              value: context.read<InAppReviewService>(),
+            ),
+          ],
           child: AboutScreen(),
-        ))
+        ),
+    )
     );
   }
   
@@ -92,15 +101,18 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: AppValues.s8),
 
-          _buildMenuItem(context, context.localization.showIntroduction, () => showIntroduction(context)),
+          _buildMenuItem(context.localization.showIntroduction, () => showIntroduction(context)),
+
           _ChooseLanguageDropDown(),
+
+          _buildMenuItem(context.localization.showInStore, context.read<InAppReviewService>().openStoreListing),
         ],
       ),
     );
   }
 }
 
-Widget _buildMenuItem(BuildContext context, String title, Function()? onTap) {
+Widget _buildMenuItem(String title, Function()? onTap) {
   return ListTile(
     title: Text(title),
     trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -116,7 +128,7 @@ class _ChooseLanguageDropDown extends StatelessWidget {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         isExpanded: true,
-        customButton: _buildMenuItem(context, context.localization.changeLanguage, null),
+        customButton: _buildMenuItem(context.localization.changeLanguage, null),
         items: ["English", "Deutsch"].map((item) => DropdownMenuItem(value: item, child: Text(item))).toList(),
         onChanged: (value) {
           MyApp.of(context)?.setLocale(Locale(value!.substring(0, 2).toLowerCase()));

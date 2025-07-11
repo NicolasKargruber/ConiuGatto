@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 import 'domain/service/history_service.dart';
+import 'domain/service/in_app_review_service.dart';
 import 'domain/service/package_info_service.dart';
 import 'domain/service/shared_preference_service.dart';
 import 'domain/service/verb_service.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider.value(value: GetIt.I<SharedPreferenceService>()),
           ChangeNotifierProvider(create: (_) => SplashViewModel(GetIt.I<SharedPreferenceService>())),
           ChangeNotifierProvider(create: (_) => PackageInfoService()),
+          ChangeNotifierProvider(create: (_) => InAppReviewService(GetIt.I<SharedPreferenceService>())),
         ],
         child: SplashScreen(),
       ),

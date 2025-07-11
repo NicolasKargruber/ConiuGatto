@@ -29,10 +29,7 @@ class SharedPreferenceService extends Service {
     _sharedPreferenceRepo = await SharedPreferenceRepository.initialize();
   }
 
-  // Introduction
-  final _skipIntroductionDefaultValue = false;
   // Verbs
-  //final _reflexiveFiltersDefaultValue = ReflexiveVerb.include;
   final _verbFavouritesDefaultValue = VerbFavouriteFilter.top25;
   final _irregularityFiltersDefaultValue = VerbIrregularityFilter.any;
   final _endingFiltersDefaultValue = VerbEndingFilter.all;
@@ -45,8 +42,14 @@ class SharedPreferenceService extends Service {
   final _languageLevelDefaultValue = LanguageLevel.a1;
 
   // Introduction
+  final _skipIntroductionDefaultValue = false;
   bool loadSkipIntroductionPref() => _sharedPreferenceRepo.loadSkipIntroductionPref() ?? _skipIntroductionDefaultValue;
   void setSkipIntroductionPrefToTrue() => _sharedPreferenceRepo.updateSkipIntroductionPref(true);
+
+  // InAppReview
+  final _launchCountDefaultValue = 0;
+  int loadLaunchCount() => _sharedPreferenceRepo.loadLaunchCount() ?? _launchCountDefaultValue;
+  void updateLaunchCount(int value) => _sharedPreferenceRepo.updateLaunchCount(value);
 
   // Verbs
   List<Verb> getStarredVerbsFrom(List<Verb> verbs) {
@@ -69,8 +72,6 @@ class SharedPreferenceService extends Service {
     return AuxiliaryFilter.values.firstWhereOrNull((e) =>
     e.prefKey == _sharedPreferenceRepo.loadAuxiliaryFilterPref()) ?? _auxiliaryFiltersDefaultValue;
   }
-  //loadReflexiveFiltersPref() => _loadPref(_reflexiveFiltersPrefKey);
-  //loadCustomizedVerbsPrefs() => _loadPrefs(_customizedVerbsPrefKey);
   // Tenses
   List<ItalianTense> loadTenses() {
     final List<String>? prefs = _sharedPreferenceRepo.loadTensePrefs();
@@ -99,9 +100,6 @@ class SharedPreferenceService extends Service {
       _sharedPreferenceRepo.updateEndingFilterPref(ending.prefKey);
   void updateAuxiliaryFilter(AuxiliaryFilter auxiliary) =>
       _sharedPreferenceRepo.updateAuxiliaryFilterPref(auxiliary.prefKey);
-  //updateReflexiveFilterPref(String value) => _updatePref(_reflexiveFiltersPrefKey, value);
-  //updateStarredVerbPrefs(Set<String> values) => _sharedPreferenceRepo.update(_starredVerbsPrefKey, values);
-  //updateCustomizedVerbsPrefs(Set<String> values) => _updatePrefs(_customizedVerbsPrefKey, values);
   // Tenses
   void updateTensePrefs(List<ItalianTense> values) =>
       _sharedPreferenceRepo.updateTensePrefs(values.map((e) => e.prefKey).toSet());
