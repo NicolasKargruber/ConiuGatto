@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:provider/provider.dart';
 
 import '../domain/service/history_service.dart';
+import '../domain/service/in_app_review_service.dart';
+import '../domain/service/package_info_service.dart';
 import '../domain/service/shared_preference_service.dart';
 import '../domain/service/verb_service.dart';
 import '../l10n/app_localizations.dart';
@@ -24,6 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final InAppReviewService _inAppReviewService;
 
   int _currentIndex = 1;
   final List<Widget> _screens = [
@@ -55,6 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
       child: VerbsScreen(),
     ),
   ];
+
+  @override
+  void initState() {
+    if(context.mounted) {
+      _inAppReviewService = context.read<InAppReviewService>();
+      _inAppReviewService.initializationFuture.then((_) => _inAppReviewService.maybeRequestReview());
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -35,9 +35,12 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppValues.r12),
-                  child: Image.asset('assets/introduction_language_level.jpg'),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: AppValues.s480),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppValues.r12),
+                    child: Image.asset('assets/introduction_language_level.jpg'),
+                  ),
                 ),
                 Text(
                   context.localization.languageLevelsBody,
@@ -62,9 +65,12 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppValues.r12),
-                  child: Image.asset('assets/introduction_quiz.jpg'),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: AppValues.s480),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppValues.r12),
+                    child: Image.asset('assets/introduction_quiz.jpg'),
+                  ),
                 ),
                 Text(
                   context.localization.quizzingVerbsBody,
@@ -89,41 +95,44 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: AppValues.s12,
-                  children: [
-                    Flexible(
-                      flex: 3,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(AppValues.r12),
-                        child: Image.asset('assets/introduction_starred_verbs.jpeg'),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: AppValues.s480),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: AppValues.s12,
+                    children: [
+                      Flexible(
+                        flex: 3,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(AppValues.r12),
+                          child: Image.asset('assets/introduction_starred_verbs.jpeg'),
+                        ),
                       ),
-                    ),
-                    Flexible(
-                      flex: 3,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: AppValues.s12,
-                        children: [
-                          Flexible(
-                            flex: 4,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(AppValues.r12),
-                              child: Image.asset('assets/introduction_star_button.jpeg'),
+                      Flexible(
+                        flex: 3,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          spacing: AppValues.s12,
+                          children: [
+                            Flexible(
+                              flex: 4,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(AppValues.r12),
+                                child: Image.asset('assets/introduction_star_button.jpeg'),
+                              ),
                             ),
-                          ),
-                          Flexible(
-                            flex: 3,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(AppValues.r12),
-                              child: Image.asset('assets/introduction_slide_to_star.jpeg'),
+                            Flexible(
+                              flex: 3,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(AppValues.r12),
+                                child: Image.asset('assets/introduction_slide_to_star.jpeg'),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Text(
                   context.localization.starringVerbsBody,
@@ -148,9 +157,12 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppValues.r12),
-                  child: Image.asset('assets/introduction_double_auxiliary.jpg'),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: AppValues.s480),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppValues.r12),
+                    child: Image.asset('assets/introduction_double_auxiliary.jpg'),
+                  ),
                 ),
                 Text(
                   context.localization.doubleAuxiliaryBody,
@@ -175,24 +187,27 @@ class OnBoardingPageState extends State<OnBoardingScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: AppValues.fs16),
                 ),
-                Row(
-                  spacing: AppValues.s16,
-                  children: [
-                    Flexible(
-                      flex: 4,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(AppValues.r12),
-                        child: Image.asset('assets/introduction_flag_conjugation.jpg'),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: AppValues.s480),
+                  child: Row(
+                    spacing: AppValues.s16,
+                    children: [
+                      Flexible(
+                        flex: 4,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(AppValues.r12),
+                          child: Image.asset('assets/introduction_flag_conjugation.jpg'),
+                        ),
                       ),
-                    ),
-                    Flexible(
-                      flex: 3,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(AppValues.r12),
-                        child: Image.asset('assets/introduction_flag_solution.jpg'),
+                      Flexible(
+                        flex: 3,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(AppValues.r12),
+                          child: Image.asset('assets/introduction_flag_solution.jpg'),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Text(
                   context.localization.reportIssueBody,

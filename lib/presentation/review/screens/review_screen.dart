@@ -125,23 +125,29 @@ class _ReviewScreenState extends State<ReviewScreen> {
             visualDensity: VisualDensity(horizontal: -4.0),),
         ],
       ),
-      body: Padding(
+      body: Container(
+        alignment: AlignmentDirectional.center,
         padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
         child: FutureBuilder(
           future: _loadingVerbs,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return CircularProgressIndicator();
             } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
+              return Text('Error: ${snapshot.error}');
             } else if (_verbs.isEmpty) {
-              return Center(child: Text(context.localization.noVerbsAvailable));
+              return Text(context.localization.noVerbsAvailable);
             } else {
-              return QuizContent(
-                onFiltersButtonPressed: _showFiltersScreen,
-                checkAnswer: _checkAnswer,
-                textController: _textController,
-                shakeKey: _shakeKey,
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: AppValues.s480,
+                ),
+                child: QuizContent(
+                  onFiltersButtonPressed: _showFiltersScreen,
+                  checkAnswer: _checkAnswer,
+                  textController: _textController,
+                  shakeKey: _shakeKey,
+                ),
               );
             }
           },

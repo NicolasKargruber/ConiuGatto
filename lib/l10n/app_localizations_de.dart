@@ -36,6 +36,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get changeLanguage => 'Sprache ändern';
 
   @override
+  String get showInStore => 'Im Store anzeigen';
+
+  @override
   String get filtersAppTitle => 'Filter 🕹️';
 
   @override

@@ -1,6 +1,8 @@
 class SharedPreferenceKeys {
   // Localization - Language Code
   static const String languageCode = "languageCode";
+  // InAppReview
+  static const String launchCount = "launchCount";
   // Introduction
   static const String skipIntroduction = "skipIntroduction";
   // Tenses

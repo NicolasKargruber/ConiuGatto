@@ -158,22 +158,28 @@ class _QuizScreenState extends State<QuizScreen> {
           final bool shouldPop = await _showBackDialog() ?? false;
           if (context.mounted && shouldPop) Navigator.pop(context);
         },
-        child: Padding(
+        child: Container(
+          alignment: AlignmentDirectional.center,
           padding: const EdgeInsets.symmetric(horizontal: AppValues.p16),
           child: FutureBuilder(
             future: _loadingVerbs,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return CircularProgressIndicator();
               } else if (snapshot.hasError) {
-                return Center(child: Text('Error: ${snapshot.error}'));
+                return Text('Error: ${snapshot.error}');
               } else if (_verbs.isEmpty) {
-                return Center(child: Text(context.localization.noVerbsAvailable));
+                return Text(context.localization.noVerbsAvailable);
               } else {
-                return QuizContent(
-                  checkAnswer: _checkAnswer,
-                  textController: _textController,
-                  shakeKey: _shakeKey,
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: AppValues.s480,
+                  ),
+                  child: QuizContent(
+                    checkAnswer: _checkAnswer,
+                    textController: _textController,
+                    shakeKey: _shakeKey,
+                  ),
                 );
               }
             },
