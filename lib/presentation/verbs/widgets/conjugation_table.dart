@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/enums/pronoun.dart';
+import '../../../data/utils/pronoun_extensions.dart';
 import '../../../domain/models/tenses/conjugation.dart';
 import '../../../domain/models/tenses/tense.dart';
 import '../../../utilities/app_values.dart';
@@ -11,13 +12,14 @@ import '../../widgets/report_issue_sheet.dart';
 import '../view_models/verb_detail_view_model.dart';
 
 class ConjugationTable extends StatelessWidget {
-  const ConjugationTable({super.key, required this.tenses});
+  const ConjugationTable({super.key, required this.tenses, this.useImperativePronouns = false});
 
   final List<Tense> tenses;
+  final bool useImperativePronouns;
   //final bool includeEnglishPronouns;
 
   // TODO Use Navigator
-  _showReportIssueSheet(BuildContext context, Tense tense) async {
+  void _showReportIssueSheet(BuildContext context, Tense tense) async {
     final viewModel = context.read<VerbDetailViewModel>();
     await showModalBottomSheet(
       context: context,
@@ -36,7 +38,7 @@ class ConjugationTable extends StatelessWidget {
         children: [
           // Fixed Section
           // "Pronoun" + (io, tu, lui/lei, noi, voi, loro)
-          PronounTable(),
+          PronounTable(useImperativePronouns: useImperativePronouns),
       
           // Scrollable Section
           // Tenses (Presente, ...) + Conjugations (mangio, mangi, ...)
@@ -120,7 +122,7 @@ class ConjugationTable extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(conjugation.getTranslationWithPronoun(context),
+              Text(conjugation.getTranslationWithPronoun(context, useImperativePronoun: useImperativePronouns),
                   style: TextStyle(fontStyle: FontStyle.italic)
               )
             ]
@@ -133,7 +135,9 @@ class ConjugationTable extends StatelessWidget {
 }
 
 class PronounTable extends StatelessWidget {
-  const PronounTable({super.key});
+  const PronounTable({super.key, this.useImperativePronouns = false});
+
+  final bool useImperativePronouns;
 
   @override
   Widget build(BuildContext context) {
@@ -157,14 +161,14 @@ class PronounTable extends StatelessWidget {
             ),
           ),
         ],
-        rows: Pronoun.values.map((pronoun) => _dataRowFromLabel(pronoun.italian)).toList(),
+        rows: Pronoun.values.map(_dataRowFromPronoun).toList(),
     );
   }
 
-  DataRow _dataRowFromLabel(String label) => DataRow(
+  DataRow _dataRowFromPronoun(Pronoun pronoun) => DataRow(
     cells: [
       DataCell(
-        Text(label,
+        Text(useImperativePronouns ? pronoun.italianImperative : pronoun.italian,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: AppValues.fs13,

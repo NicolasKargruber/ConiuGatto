@@ -2,6 +2,11 @@ import '../../utilities/extensions/string_extensions.dart';
 import '../enums/pronoun.dart';
 
 extension PronounExtensions on Pronoun {
+  String get italianImperative => switch(this) {
+    Pronoun.thirdSingular => "lei",
+    _ => italian,
+  };
+
   String get english => switch(this) {
     Pronoun.firstSingular => "I",
     Pronoun.secondSingular => "you",
@@ -18,6 +23,11 @@ extension PronounExtensions on Pronoun {
     Pronoun.firstPlural => "wir",
     Pronoun.secondPlural => "ihr",
     Pronoun.thirdPlural => "sie",
+  };
+
+  String get germanImperative => switch(this) {
+    Pronoun.thirdSingular => "Sie",
+    _ => german,
   };
 
   bool _canBeGendered(String italianParticiple) {

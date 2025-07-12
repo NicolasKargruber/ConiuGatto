@@ -6,6 +6,7 @@ import '../../utilities/extensions/string_extensions.dart';
 import 'answer_result.dart';
 import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/pronoun.dart';
+import 'enums/mood.dart';
 import 'tenses/tense.dart';
 import 'verb.dart';
 
@@ -146,9 +147,12 @@ class Question {
   // Labels
   String? get currentTitle => tense.extendedLabel;
 
-  String get question => "${pronoun.italian} (${verb.italianInfinitive})";
+  String get question {
+    if(tense.isImperative) return "${pronoun.italianImperative} (${verb.italianInfinitive})";
+    return "${pronoun.italian} (${verb.italianInfinitive})";
+  }
 
-  String? getTranslation(BuildContext context) => tense[pronoun]?.getTranslationWithPronoun(context);
+  String? getTranslation(BuildContext context) => tense[pronoun]?.getTranslationWithPronoun(context, useImperativePronoun: tense.isImperative);
 
   String? get solutionExtended => "(${pronoun.italian}) $solution";
 
