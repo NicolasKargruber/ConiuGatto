@@ -500,6 +500,12 @@ abstract class AppLocalizations {
   /// **'🥸 Wrong Pronoun!'**
   String get wrongPronounInAnswer;
 
+  /// No description provided for @pronounNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'🗑️ Remove pronoun!'**
+  String get pronounNotAllowed;
+
   /// No description provided for @missingAccentsInAnswer.
   ///
   /// In en, this message translates to:

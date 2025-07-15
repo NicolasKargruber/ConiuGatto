@@ -102,6 +102,8 @@ class Question {
 
       // Remove pronoun prefix
       if(pronounPrefix.isNotEmpty) {
+        if(tense.isImperative) return AnswerResult.removePronoun;
+
         answer = answer.replaceFirst(pronounPrefix, "");
         debugPrint("$_logTag | Without pronoun prefix: $answer");
         // TODO: Save answer with (any) pronoun prefix -> add solutionWithPronoun

@@ -230,6 +230,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get wrongPronounInAnswer => '🥸 Falsches Pronomen!';
 
   @override
+  String get pronounNotAllowed => '🗑️ Entferne das Pronomen!';
+
+  @override
   String get missingAccentsInAnswer => '🎩 Fast, Akzente fehlen ...';
 
   @override
