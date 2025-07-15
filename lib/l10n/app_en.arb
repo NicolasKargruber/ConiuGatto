@@ -103,6 +103,7 @@
   "incorrectAnswer": "❌ Wrong Answer!",
   "blankAnswer": "📄 Blank Answer!",
   "wrongPronounInAnswer": "🥸 Wrong Pronoun!",
+  "pronounNotAllowed": "🗑️ Remove pronoun!",
   "missingAccentsInAnswer": "🎩 Almost, accents are missing ...",
   "almostCorrectAnswer": "🧐 There is a typo somewhere ...",
   "correctAnswer": "✅ Correct Answer!",

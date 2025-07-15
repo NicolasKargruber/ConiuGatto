@@ -2,6 +2,7 @@ enum AnswerResult {
   incorrect,
   blank,
   wrongPronoun,
+  removePronoun,
   missingAccents,
   almostCorrect,
   correct;

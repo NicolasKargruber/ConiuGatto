@@ -122,6 +122,16 @@ extension GenerateImperative on VerbDTO {
     };
   }
 
+  String _germanNegative(String germanPositive) {
+    if(germanPositive.contains(" ")) {
+      final splitIndex = germanPositive.indexOf(" ");
+      return "${germanPositive.substring(0, splitIndex)} nicht${germanPositive.substring(splitIndex)}";
+    }
+    else {
+      return germanPositive.replaceAll("!", " nicht!");
+    }
+  }
+
   /// => Imperativo Negativo
   NegativeImperative get negativeImperative {
     // Clone (..) and update
@@ -129,11 +139,15 @@ extension GenerateImperative on VerbDTO {
       if (conjugation == null) return null;
       switch (pronoun) {
         case Pronoun.secondSingular:
-          return (italian: "non $italianInfinitive", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("!", " nicht!"));
+          return (italian: "non $italianInfinitive", english: conjugation.english.replaceAll(")", ") don't"), german: _germanNegative(conjugation.german));
+        case Pronoun.thirdSingular:
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("Sie", "Sie nicht"));
         case Pronoun.firstPlural:
-          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "), german: conjugation.german.replaceAll("!", " nicht!"));
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll("let's ", "let's not "), german: conjugation.german.replaceAll("wir", "wir nicht"));
+        case Pronoun.thirdPlural:
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("sie", "sie nicht"));
         default:
-          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german: conjugation.german.replaceAll("!", " nicht!"));
+          return (italian: "non ${conjugation.italian}", english: conjugation.english.replaceAll(")", ") don't"), german:_germanNegative(conjugation.german));
       }
     });
     return NegativeImperative.from(conjugations: conjugations, generated: _generatedNegativeImperative);

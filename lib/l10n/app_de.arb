@@ -102,6 +102,7 @@
   "incorrectAnswer": "❌ Falsche Antwort!",
   "blankAnswer": "📄 Leere Eingabe!",
   "wrongPronounInAnswer": "🥸 Falsches Pronomen!",
+  "pronounNotAllowed": "🗑️ Entferne das Pronomen!",
   "missingAccentsInAnswer": "🎩 Fast, Akzente fehlen ...",
   "almostCorrectAnswer": "🧐 Da ist wohl ein Tippfehler ...",
   "correctAnswer": "✅ Richtige Antwort!",

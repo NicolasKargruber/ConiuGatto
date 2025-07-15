@@ -1,6 +1,6 @@
-
 import '../../../data/enums/italian_tense.dart';
 import '../../../data/enums/pronoun.dart';
+import '../enums/mood.dart';
 import 'conjugation.dart';
 
 // typedefs - Generated Conjugations
@@ -47,6 +47,7 @@ class Tense {
 
   // Helpers
   bool get hasConjugations => conjugations.values.any((conjugatedVerb) => conjugatedVerb != null);
+  bool get isImperative => type.mood == Mood.imperative;
 
   Conjugation? operator [](Pronoun pronoun) =>
       switch (pronoun) {

@@ -54,9 +54,21 @@ class Conjugation {
 
   // Getters - Helpers
   String get italian => italianRegularPart + italianIrregularPart;
-  String getTranslationWithPronoun(BuildContext context) => switch(context.localization.localeName) {
-    'en' => "${pronoun.english} $english",
-    'de' => "${pronoun.german} $german",
-    _ => "${pronoun.english} $english",
-  };
+
+  String getTranslationWithPronoun(BuildContext context, {bool useImperativePronoun = false}) {
+    switch (context.localization.localeName) {
+      case 'en':
+        if (useImperativePronoun) {
+          if (pronoun != Pronoun.secondPlural) {
+            return "(${pronoun.english}) $english";
+          }
+        }
+        return "${pronoun.english} $english";
+      case 'de':
+        if (useImperativePronoun) return german;
+        return "${pronoun.german} $german";
+      default:
+        return "${pronoun.english} $english";
+    }
+  }
 }

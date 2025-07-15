@@ -6,6 +6,7 @@ import '../../utilities/extensions/string_extensions.dart';
 import 'answer_result.dart';
 import '../../data/enums/italian_auxiliary.dart';
 import '../../data/enums/pronoun.dart';
+import 'enums/mood.dart';
 import 'tenses/tense.dart';
 import 'verb.dart';
 
@@ -101,6 +102,8 @@ class Question {
 
       // Remove pronoun prefix
       if(pronounPrefix.isNotEmpty) {
+        if(tense.isImperative) return AnswerResult.removePronoun;
+
         answer = answer.replaceFirst(pronounPrefix, "");
         debugPrint("$_logTag | Without pronoun prefix: $answer");
         // TODO: Save answer with (any) pronoun prefix -> add solutionWithPronoun
@@ -146,9 +149,12 @@ class Question {
   // Labels
   String? get currentTitle => tense.extendedLabel;
 
-  String get question => "${pronoun.italian} (${verb.italianInfinitive})";
+  String get question {
+    if(tense.isImperative) return "${pronoun.italianImperative} (${verb.italianInfinitive})";
+    return "${pronoun.italian} (${verb.italianInfinitive})";
+  }
 
-  String? getTranslation(BuildContext context) => tense[pronoun]?.getTranslationWithPronoun(context);
+  String? getTranslation(BuildContext context) => tense[pronoun]?.getTranslationWithPronoun(context, useImperativePronoun: tense.isImperative);
 
   String? get solutionExtended => "(${pronoun.italian}) $solution";
 

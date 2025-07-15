@@ -1,5 +1,3 @@
-
-
 enum Pronoun {
   firstSingular('io', 'mi'),
   secondSingular('tu', 'ti'),

@@ -142,7 +142,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 constraints: BoxConstraints(
                   maxWidth: AppValues.s480,
                 ),
-                child: QuizContent(
+                child: ReviewContent(
                   onFiltersButtonPressed: _showFiltersScreen,
                   checkAnswer: _checkAnswer,
                   textController: _textController,

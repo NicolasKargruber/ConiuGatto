@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/models/answer_result.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
@@ -11,10 +10,11 @@ import '../../widgets/quiz_input_fields.dart';
 import '../../widgets/shake_widget.dart';
 import '../view_models/review_view_model.dart';
 
-final _logTag = (QuizContent).toString();
+final _logTag = (ReviewContent).toString();
 
-class QuizContent extends StatelessWidget {
-  const QuizContent({super.key,
+// TODO combine with QuizContent
+class ReviewContent extends StatelessWidget {
+  const ReviewContent({super.key,
     required this.onFiltersButtonPressed,
     required this.checkAnswer,
     required this.textController,
@@ -82,7 +82,7 @@ class QuizContent extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: AppValues.s36),
+            SizedBox(height: AppValues.s44),
 
             TapRegion(
               onTapOutside: (PointerDownEvent event) {
@@ -90,7 +90,7 @@ class QuizContent extends StatelessWidget {
               },
               child: Column(
                 children: [
-                  _QuizInputFields(
+                  QuizInputFields(
                     textController: textController,
                     onSubmitted: (_) => checkAnswer(),
                     hasCorrectAnswer: viewModel.isAnsweredCorrectly,
@@ -110,31 +110,6 @@ class QuizContent extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _QuizInputFields extends StatelessWidget {
-  const _QuizInputFields({super.key,
-    required this.textController,
-    required this.onSubmitted,
-    required this.hasCorrectAnswer,
-    this.answerResult,
-  });
-
-  final TextEditingController textController;
-  final void Function(String) onSubmitted;
-  final bool hasCorrectAnswer;
-  final AnswerResult? answerResult;
-
-  @override
-  Widget build(BuildContext context) {
-    final viewModel = context.watch<ReviewViewModel>();
-    return QuizInputFields(
-      textController: textController,
-      onSubmitted: onSubmitted,
-      hasCorrectAnswer: viewModel.isAnsweredCorrectly,
-      answerResult: viewModel.currentAnswerResult,
     );
   }
 }

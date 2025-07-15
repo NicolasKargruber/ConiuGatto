@@ -8,6 +8,7 @@ extension AnswerResultExtensions on AnswerResult {
     AnswerResult.incorrect => context.localization.incorrectAnswer,
     AnswerResult.blank => context.localization.blankAnswer,
     AnswerResult.wrongPronoun => context.localization.wrongPronounInAnswer,
+    AnswerResult.removePronoun => context.localization.pronounNotAllowed,
     AnswerResult.missingAccents => context.localization.missingAccentsInAnswer,
     AnswerResult.almostCorrect => context.localization.almostCorrectAnswer,
     AnswerResult.correct => context.localization.correctAnswer

@@ -21,7 +21,7 @@ class InAppReviewService extends Service {
     _launchCount = _sharedPreferenceService.loadLaunchCount();
   }
 
-  bool get _showReviewDialog => _launchCount >= 0 && (_launchCount % 5 == 0);
+  bool get _showReviewDialog => _launchCount > 0 && (_launchCount % 5 == 0);
 
   void _updateLaunchCount() {
     debugPrint("$_logTag | updateLaunchCount()");

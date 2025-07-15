@@ -124,7 +124,7 @@ class VerbDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Mood.imperative.label, style: TextStyle(fontSize: AppValues.fs18, fontWeight: FontWeight.bold)),
-                        ConjugationTable(tenses: viewModel.imperativeTenses),
+                        ConjugationTable(tenses: viewModel.imperativeTenses, useImperativePronouns: true),
                       ],
                     ),
                   ),

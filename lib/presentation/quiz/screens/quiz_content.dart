@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../domain/models/answer_result.dart';
 import '../../../utilities/app_values.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../../utilities/widget_factory.dart';
@@ -35,24 +34,8 @@ class QuizContent extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if(viewModel.quizLength <= 10) AnimatedSmoothIndicator(
-            activeIndex: viewModel.totalQuizCount,
-            count: viewModel.quizLength,
-            effect: WormEffect(
-              activeDotColor: context.colorScheme.primary,
-              dotColor: context.colorScheme.surfaceContainerHighest,
-            ),
-          )
-          else Container(
-            decoration: BoxDecoration(
-              color: context.colorScheme.surfaceContainer,
-              borderRadius: BorderRadius.circular(AppValues.r12),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p8),
-              child: Text("${viewModel.quizHistory.length} / ${viewModel.quizLength}",
-                  style: context.textTheme.headlineLarge,
-              )
-          ),
+
+          QuizCount(count: viewModel.totalQuizCount, quizLength: viewModel.quizLength),
 
           SizedBox(height: AppValues.s16),
 
@@ -80,7 +63,7 @@ class QuizContent extends StatelessWidget {
                             maxLines: 1,
                           ),
 
-                          SizedBox(height: AppValues.s18),
+                          SizedBox(height: AppValues.s8),
 
                           AutoSizeText(
                             viewModel.currentQuestionLabel ?? "Not available",
@@ -106,7 +89,7 @@ class QuizContent extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: AppValues.s64),
+                    SizedBox(height: AppValues.s44),
 
                     TapRegion(
                       onTapOutside: (PointerDownEvent event) {
@@ -114,7 +97,7 @@ class QuizContent extends StatelessWidget {
                       },
                       child: Column(
                         children: [
-                          _QuizInputFields(
+                          QuizInputFields(
                             textController: textController,
                             onSubmitted: (_) => checkAnswer(),
                             hasCorrectAnswer: viewModel.isAnsweredCorrectly,
@@ -142,27 +125,36 @@ class QuizContent extends StatelessWidget {
   }
 }
 
-class _QuizInputFields extends StatelessWidget {
-  const _QuizInputFields({super.key,
-    required this.textController,
-    required this.onSubmitted,
-    required this.hasCorrectAnswer,
-    this.answerResult,
-  });
+class QuizCount extends StatelessWidget {
+  const QuizCount({super.key, required this.count, required this.quizLength});
 
-  final TextEditingController textController;
-  final void Function(String) onSubmitted;
-  final bool hasCorrectAnswer;
-  final AnswerResult? answerResult;
+  final int count;
+  final int quizLength;
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<QuizViewModel>();
-    return QuizInputFields(
-      textController: textController,
-      onSubmitted: onSubmitted,
-      hasCorrectAnswer: viewModel.isAnsweredCorrectly,
-      answerResult: viewModel.currentAnswerResult,
+    return Column(
+      children: [
+        if(quizLength <= 10) AnimatedSmoothIndicator(
+          activeIndex: count,
+          count: quizLength,
+          effect: WormEffect(
+            activeDotColor: context.colorScheme.primary,
+            dotColor: context.colorScheme.surfaceContainerHighest,
+          ),
+        )
+        else Container(
+            decoration: BoxDecoration(
+              color: context.colorScheme.surfaceContainer,
+              borderRadius: BorderRadius.circular(AppValues.r12),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p8),
+            child: Text("$count / $quizLength",
+              style: context.textTheme.headlineLarge,
+            )
+        ),
+      ],
     );
   }
 }
+
