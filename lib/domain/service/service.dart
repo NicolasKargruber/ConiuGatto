@@ -5,6 +5,10 @@ abstract class Service extends ChangeNotifier {
   bool get isInitialized => _isInitialized;
   late Future initializationFuture;
 
+  // Loading
+  bool _isLoading = false;
+  bool get isLoading => _isLoading || !_isInitialized;
+
   Service(){
     _isInitialized = false;
     initializationFuture = initialize();
@@ -16,4 +20,10 @@ abstract class Service extends ChangeNotifier {
 
   // Initialize => TO BE OVERRIDDEN
   Future initialize();
+
+  // Loading
+  toggleLoading(){
+    _isLoading = !_isLoading;
+    notifyListeners();
+  }
 }

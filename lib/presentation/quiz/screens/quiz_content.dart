@@ -150,7 +150,7 @@ class QuizCount extends StatelessWidget {
             ),
             padding: const EdgeInsets.symmetric(horizontal: AppValues.p16, vertical: AppValues.p8),
             child: Text("$count / $quizLength",
-              style: context.textTheme.headlineLarge,
+              style: context.textTheme.headlineSmall,
             )
         ),
       ],

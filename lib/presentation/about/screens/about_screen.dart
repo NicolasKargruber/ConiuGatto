@@ -1,17 +1,16 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../../../domain/service/billing_service.dart';
 import '../../../domain/service/in_app_review_service.dart';
 import '../../../domain/service/package_info_service.dart';
 import '../../../main.dart';
 import '../../../utilities/app_values.dart';
-import '../../../utilities/error_snack_bar.dart';
 import '../../../utilities/extensions/build_context_extensions.dart';
 import '../../introduction/screens/on_boarding_screen.dart';
 import '../../widgets/buy_me_a_coffee_button.dart';
+import '../../widgets/donation_sheet.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -29,6 +28,9 @@ class AboutScreen extends StatelessWidget {
             ChangeNotifierProvider.value(
               value: context.read<InAppReviewService>(),
             ),
+            ChangeNotifierProvider.value(
+              value: context.read<BillingService>(),
+            ),
           ],
           child: AboutScreen(),
         ),
@@ -42,14 +44,6 @@ class AboutScreen extends StatelessWidget {
           return OnBoardingScreen(onIntroEnd: () => Navigator.of(context).maybePop());
         })
     );
-  }
-
-  onBuyMeACoffeePressed(BuildContext context) async {
-    final Uri url = Uri.parse('https://buymeacoffee.com/nicolaskargruber');
-    if (!await launchUrl(url)) {
-      debugPrint("$_logTag | Exception: Could not launch $url");
-      if(context.mounted) ErrorSnackbar.show(context, "Could not launch $url");
-    }
   }
 
   @override
@@ -97,7 +91,7 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: AppValues.s12),
 
           // Buy Me A Coffee Button
-          Center(child: BuyMeACoffeeButton(onPressed: () => onBuyMeACoffeePressed(context))),
+          Center(child: BuyMeACoffeeButton(onPressed: () => DonationSheet.show(context))),
 
           const SizedBox(height: AppValues.s8),
 

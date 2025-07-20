@@ -25,7 +25,7 @@ abstract class ViewModel extends ChangeNotifier {
   Future initialize();
 
   // Loading
-  toggleLoading(){
+  void toggleLoading(){
     _isLoading = !_isLoading;
     notifyListeners();
   }
