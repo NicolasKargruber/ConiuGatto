@@ -53,6 +53,8 @@ dependencies:
   intl: ^0.20.2
   dropdown_button2: ^2.3.9
   in_app_review: ^2.0.10
+  purchases_flutter: ^9.0.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
