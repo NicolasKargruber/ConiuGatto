@@ -1,7 +1,7 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/nicolaskargruber)
 
-# 🆙 ConiuGatto v1.2.1 🆙
+# 🆙 ConiuGatto v1.3.0 🆙
 
 <img width="800" alt="Media Preview _ ConiuGatto_media_preview_github" src="https://github.com/user-attachments/assets/167485ee-8661-4de2-a96f-27925cef9f94" />
 
