@@ -7,7 +7,7 @@
 
 
 ### 🇮🇹🐈‍⬛ ConiuGatto 🐈‍⬛🇮🇹 - Coniugazioni Italiane
-🐦 A Flutter app to help learn how to use conjugate right each italian tense.
+🐦 A Flutter app to help learn how to conjugate each verb and italian tense right.
 
 <img width="190" alt="Screenshot_20250712_100226" src="https://github.com/user-attachments/assets/2bcb3697-d5c5-44a1-910d-b882033f3384" /> &nbsp;
 <img width="190" alt="Screenshot_20250515_121618" src="https://github.com/user-attachments/assets/e6fa1f9c-962a-464d-9fdb-fb123846cdf2" /> &nbsp;
